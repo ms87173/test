@@ -1,0 +1,80 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+@import './assets/styles/color.scss';
+
+body {
+    margin: 0;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.citi-text-grey {
+    color: $citi-light-gray;
+}
+
+.margin-bottom-0x {
+    margin-bottom: 0px !important;
+}
+
+.no-padding-left {
+    padding-left: 0px !important;
+}
+
+.margin-top-0x {
+    margin-top: 0px !important;
+}
+
+@for $i from 0 through 6 {
+    .space-top-#{$i}x {
+        margin-top: 10px* $i !important;
+    }
+}
+
+@for $i from 0 through 6 {
+    .space-bottom-#{$i}x {
+        margin-bottom: 10px* $i !important;
+    }
+}
+@for $i from 0 through 6 {
+    .space-left-#{$i}x {
+        margin-left: 10px* $i !important;
+    }
+}
+@for $i from 0 through 6 {
+    .space-right-#{$i}x {
+        margin-right: 10px* $i !important;
+    }
+}
+
+@for $i from 0 through 6 {
+    .padding-right-#{$i}x {
+        padding-right: 10px* $i !important;
+    }
+}
+
+@for $i from 0 through 6 {
+    .padding-left-#{$i}x {
+        padding-left: 10px* $i !important;
+    }
+}
+
+@for $i from 0 through 6 {
+    .border-left-#{$i}x {
+        border-left: 1px* $i solid grey !important;
+    }
+}
+
+.divider {
+    border-bottom: 2px solid darkgray;
+}
+
+.success {
+    color: green;
+}
+.warning {
+    color: orange;
+}

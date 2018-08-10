@@ -1,0 +1,76 @@
+.side-nav {
+    border: 1px solid #eeeeee;
+    &__tab {
+        position: absolute;
+        transform: translate(0, -50%);
+        top: 50%;
+        width: 100%;
+    }
+    .status-icon {
+        position: absolute;
+        transform: translate(0, -50%);
+        top: 50%;
+        &--inprogress {
+            color: orange;
+        }
+        &--completed {
+            color: green;
+        }
+    }
+    &__heading {
+        line-height: 100%;
+    }
+    .role {
+        font-size: 0.7rem;
+        color: darkgrey;
+    }
+    .card {
+        border: 0;
+    }
+    .card-header {
+        background-color: white;
+        cursor: pointer;
+        min-height: 65px;
+        max-height: 65px
+    }
+    .card-body {
+        padding: 0;
+    }
+    .list-item {
+        padding-left: 14%;
+        cursor: pointer;
+        min-height: 65px;
+        border: 0;
+        background: #fafafa;
+        &:hover {
+            background: #e6f8fe;
+        }
+        &.active {
+            background: #e6f8fe;
+            color: black;
+            border-left: 5px solid #005AA1;
+        }
+        .status-icon {
+            position: absolute;
+            right: 9%;
+        }
+    }
+}
+
+.child-link {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.panel-open {
+    .collapsible-icon {
+        transform: rotate(90deg);
+    }
+    .side-nav__tab {
+        position: absolute;
+        transform: translate(0, -50%);
+        top: 11%;
+        width: 100%;
+    }
+}

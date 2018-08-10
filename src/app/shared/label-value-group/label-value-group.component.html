@@ -1,0 +1,8 @@
+<div [ngClass]='config.containerClass'>
+  <span [ngClass]='config.labelContainerClass'>
+    <i class="fa" [ngClass]='config.iconClass' *ngIf='config.iconClass'></i>
+    <span [ngClass]='config.labelClass'>{{config.label}}</span>
+    <span class="badge badge-pill" *ngIf='config.badgeTitle' [ngClass]='config.badgeClass'>{{config.badgeTitle}}</span>
+  </span>
+  <span [ngClass]='config.valueClass'>{{config.value}}</span>
+</div>

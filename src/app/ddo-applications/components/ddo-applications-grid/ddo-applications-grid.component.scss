@@ -1,0 +1,35 @@
+.ddo-applications-grid{
+    & .table {
+        &__body {
+            .table-row {
+                vertical-align: middle;
+            }
+            .dropdown-menu {
+                position: absolute;
+                will-change: transform;
+                top: 0px;
+                left: 0px;
+                -webkit-transform: translate3d(-160px, 0px, 0px) !important;
+                transform: translate3d(-160px, 0, 0px) !important;
+                .dropdown-item {
+                    cursor: pointer;
+                }
+            }
+            .grid-label {
+                font-weight: bold;
+            }
+            .grid-label-container {
+                display: block;
+            }
+            .grid-value {
+                font-size: smaller;
+            }
+            .btn-group{
+                z-index: 1000;
+            }
+            .grid-badge {
+                margin-left: 10px;
+            }
+        }
+    }
+}

@@ -1,0 +1,36 @@
+<div class="ddo-applications-grid table-responsive">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th *ngFor="let item of config.headings">
+          {{item.value}}
+          <a *ngIf='item.showSortOption' (click)="ongridItemClick($event, 'sort', item.key);">
+            <i class="fa fa-sort" aria-hidden="true"></i>
+          </a>
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="table__body">
+      <tr *ngFor="let item of config.data">
+        <td *ngFor="let col of item.columns" class="table-row" (click)='ongridItemClick($event, "rowClicked", item.id)'>
+          <label-value-group [config]='getRowDetails(col)'></label-value-group>
+        </td>
+        <td>
+          <div class="col-sm-12">
+            <div class="btn-group" dropdown>
+              <a id="button-config1" dropdownToggle class="kebab-link" aria-controls="dropdown-config1">
+                <i class="fa fa-ellipsis-v"></i>
+              </a>
+              <ul id="dropdown-config1" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-config1">
+                <li role="menuitem">
+                  <a class="dropdown-item" (click)='ongridItemClick($event, "kebabIconClicked", "1")'>Complete Now</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

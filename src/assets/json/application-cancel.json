@@ -1,0 +1,10 @@
+//Request
+{
+    "comments": "Why did user cancel the account"
+}
+
+//Response
+{
+    "code": "<any>",
+    "message": "<string>"
+}

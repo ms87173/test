@@ -1,0 +1,73 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h4>Label value group:</h4>
+    </div>
+    <div class="col-sm-12">
+      <label-value-group [config]='labelValueConfig'></label-value-group>
+    </div>
+  </div>
+  <p class="divider mt-2"></p>
+  <div class="row mt-3">
+    <div class="col-sm-12">
+      <h4>Label value group with badge:</h4>
+    </div>
+    <div class="col-sm-12">
+      <label-value-group [config]='labelValueConfigWithBadge'></label-value-group>
+    </div>
+  </div>
+  <p class="divider mt-2"></p>
+  <div class="row mt-3">
+    <div class="col-sm-12">
+      <h4>Label with icon:</h4>
+    </div>
+    <div class="col-sm-12">
+      <label-value-group [config]='labelValueConfigWithIcon'></label-value-group>
+    </div>
+  </div>
+  <p class="divider mt-2"></p>
+
+  <div class="row mt-3">
+    <div class="col-sm-12">
+      <h4>Label value group for form values:</h4>
+    </div>
+    <div class="col-sm-12">
+      <label-value-group [config]='labelValueConfigForFormValues'></label-value-group>
+    </div>
+  </div>
+  <p class="divider mt-2"></p>
+  <div class="row mt-3">
+    <div class="col-sm-12">
+      <h4>Label value group with icon:</h4>
+    </div>
+    <div class="col-sm-12">
+      <label-value-group [config]='labelValueWithIcon'></label-value-group>
+    </div>
+  </div>
+  <p class="divider mt-2"></p>
+  <div class="row mt-3">
+    <div class="col-sm-12">
+      <h4>Kebab with Dropdown</h4>
+    </div>
+    <div class="col-sm-12">
+      <div class="btn-group" dropdown>
+        <a id="button-config" dropdownToggle class="kebab-link" aria-controls="dropdown-config">
+          <i class="fa fa-ellipsis-v"></i>
+        </a>
+        <ul id="dropdown-config" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-config">
+          <li role="menuitem">
+            Action
+          </li>
+          <li role="menuitem">
+            Another action
+          </li>
+          <li role="menuitem">
+            Something else here
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<grid></grid>

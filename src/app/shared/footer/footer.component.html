@@ -1,0 +1,13 @@
+<div class="footer" *ngIf='config'>
+  <div class="footer__contact-details">
+    <i class="fa" [ngClass]='config.iconClass'></i>
+    <div class="bold">{{config.heading}}</div>
+    <div>{{config.subHeading}}</div>
+    <div>
+      <i class="fa fa-envelope footer__contact-icon"></i>
+      <a href=`mailto:${config.email}`>{{config.email}}</a>
+    </div>
+    <div>
+      <i class="fa fa-phone footer__contact-icon"></i>{{config.phone}}</div>
+  </div>
+</div>

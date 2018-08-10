@@ -1,0 +1,39 @@
+<div class="table-responsive">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th *ngFor="let col of columns">
+          {{col}}
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="table__body">
+      <tr *ngFor="let item of gridData" (click)="rowClick(item)">
+        <td *ngFor="let col of item" class="table-row">
+          <label-value-group [config]='getRowDetails(col)'></label-value-group>
+        </td>
+        <td>
+          <div class="col-sm-12">
+            <div class="btn-group" dropdown>
+              <a id="button-config1" dropdownToggle class="kebab-link" aria-controls="dropdown-config1">
+                <i class="fa fa-ellipsis-v"></i>
+              </a>
+              <ul id="dropdown-config1" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-config1">
+                <li role="menuitem">
+                  Action
+                </li>
+                <li role="menuitem">
+                  Another action
+                </li>
+                <li role="menuitem">
+                  Something else here
+                </li>
+              </ul>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

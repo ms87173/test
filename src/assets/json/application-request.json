@@ -1,0 +1,44 @@
+{
+    "application": {
+        "id": "",
+        "title": "",
+        "accountHolders": [
+            {
+                "firstName": "",
+                "lastName": "",
+                "middleName": "",
+                "email": "",
+                "role": [
+                    "primary", "custodial"
+                ]
+            }
+        ],
+        "states": [
+            "new" //can be more required on business
+        ],
+        "type": "",
+        "status": {
+            "code": "",
+            "description": ""
+        },
+        "lastUpdatedBy": "",
+        "lastUpdate": "",
+        "prodcuts": [
+            {
+                "id": "interestCheckingAccount",
+                "label": "Interest Checking Account"
+            },
+            {
+                "id": "savingsAccount",
+                "label": "Savings Account"
+            }
+        ],
+        "workflowStatus": [//TODO: Need to discuss this is for successful submission of application
+            {
+                "status": "",
+                "label": "",
+                "type": ""
+            }
+        ]
+    }
+}
