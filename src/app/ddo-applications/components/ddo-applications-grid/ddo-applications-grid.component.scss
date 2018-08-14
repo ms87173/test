@@ -1,5 +1,6 @@
-.ddo-applications-grid{
+.ddo-applications-grid {
     & .table {
+        white-space: nowrap;
         &__body {
             .table-row {
                 vertical-align: middle;
@@ -24,8 +25,9 @@
             .grid-value {
                 font-size: smaller;
             }
-            .btn-group{
+            .btn-group {
                 z-index: 1000;
+                cursor: pointer;
             }
             .grid-badge {
                 margin-left: 10px;

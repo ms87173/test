@@ -37,7 +37,7 @@
                 "code": "submitted",
                 "reason": "Waiting for Jane Robbins"
             },
-            "type": "Joint",
+            "type": "joint",
             "state": [
                 "New"
             ],
@@ -63,7 +63,7 @@
                 "code": "completed",
                 "reason": "Account Opened"
             },
-            "type": "Individual",
+            "type": "individual",
             "state": [
                 "New"
             ],
@@ -98,7 +98,7 @@
                 "code": "inProgress",
                 "reason": ""
             },
-            "type": "Joint",
+            "type": "joint",
             "state": [
                 "New"
             ],
@@ -133,7 +133,7 @@
                 "code": "cancelledByBanker",
                 "reason": "Cancelled by Banker"
             },
-            "type": "Custodial",
+            "type": "custodial",
             "lastUpdatedBy": "John Robbins",
             "lastUpdateDate": "03 Aug 2018"
         },
@@ -165,7 +165,7 @@
                 "code": "cancelledByUser",
                 "reason": "Cancelled by Jose Mourinho"
             },
-            "type": "Trust",
+            "type": "trust",
             "lastUpdatedBy": "John Robbins",
             "lastUpdateDate": "03 Aug 2018"
         }

@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import {
   GetApplications, SetActiveApplication, SortApplications
 } from '../store/actions/applications.actions';
+import { APPLICATION_GRID_HEADING, APPLICATION_DROPDOWN_OPTIONS, ACTION_TYPES } from '../core/constants/applications.constants';
 
 
 @Component({
@@ -25,36 +26,12 @@ export class DdoApplicationsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const headings = [
-      {
-        key: 'description',
-        value: 'DESCRIPTION',
-        showSortOption: false
-      },
-      {
-        key: 'type',
-        value: 'TYPE',
-        showSortOption: false
-      },
-      {
-        key: 'lastUpdated',
-        value: 'LAST UPDATE',
-        showSortOption: true
-      },
-      {
-        key: 'lastUpdatedBy',
-        value: 'LAST UPDATED BY',
-        showSortOption: true
-      },
-      {
-        key: 'status',
-        value: 'STATUS',
-        showSortOption: true
-      }
-    ];
+    const headings = APPLICATION_GRID_HEADING;
+    const dropDownOptions = APPLICATION_DROPDOWN_OPTIONS;
     this.gridConfig = {
       headings,
-      data: []
+      data: [],
+      dropDownOptions
     };
     this.store.dispatch(new GetApplications());
     this.store.select(fromRootSelectors.applicationsSelectors.getApplicaitons)
@@ -65,13 +42,12 @@ export class DdoApplicationsComponent implements OnInit {
   }
   gridActions(payload) {
     switch (payload.actionType) {
-      case 'rowClicked': this.store.dispatch(new SetActiveApplication(payload.id));
+      case ACTION_TYPES.rowClicked: this.store.dispatch(new SetActiveApplication(payload.id));
         break;
-      case 'sort': this.store.dispatch(new SortApplications(payload.params));
+      case ACTION_TYPES.sort: this.store.dispatch(new SortApplications(payload.params));
         break;
-      case 'kebabIconClicked': console.log('you have open the kebab icon.')
+      case ACTION_TYPES.completeNow: console.log('you have open the kebab icon.');
     }
-    console.log(payload)
+    console.log(payload);
   }
-
 }

@@ -4,7 +4,7 @@
       <tr>
         <th *ngFor="let item of config.headings">
           {{item.value}}
-          <a *ngIf='item.showSortOption' (click)="ongridItemClick($event, 'sort', item.key);">
+          <a *ngIf='item.showSortOption' (click)="ongridItemClick(actionTypes.sort, item.key);">
             <i class="fa fa-sort" aria-hidden="true"></i>
           </a>
         </th>
@@ -13,7 +13,7 @@
     </thead>
     <tbody class="table__body">
       <tr *ngFor="let item of config.data">
-        <td *ngFor="let col of item.columns" class="table-row" (click)='ongridItemClick($event, "rowClicked", item.id)'>
+        <td *ngFor="let col of item.columns" class="table-row" (click)='ongridItemClick(actionTypes.rowClicked, item.id)'>
           <label-value-group [config]='getRowDetails(col)'></label-value-group>
         </td>
         <td>
@@ -24,7 +24,9 @@
               </a>
               <ul id="dropdown-config1" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-config1">
                 <li role="menuitem">
-                  <a class="dropdown-item" (click)='ongridItemClick($event, "kebabIconClicked", "1")'>Complete Now</a>
+                  <a class="dropdown-item"
+                    *ngFor='let dropdownItem of config.dropDownOptions'
+                    (click)='ongridItemClick(dropdownItem.key, item.id)'>{{dropdownItem.value}}</a>
                 </li>
               </ul>
             </div>

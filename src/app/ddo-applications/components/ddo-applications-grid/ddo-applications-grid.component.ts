@@ -2,6 +2,7 @@ import {
   Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation
 } from '@angular/core';
 import { BsDropdownConfig } from 'ngx-bootstrap';
+import { ACTION_TYPES } from '../../../core/constants/applications.constants';
 
 @Component({
   selector: 'app-ddo-applications-grid',
@@ -17,14 +18,17 @@ import { BsDropdownConfig } from 'ngx-bootstrap';
 export class DdoApplicationsGridComponent implements OnInit {
   @Input() config: any;
   @Output() actions: any = new EventEmitter();
-  constructor() { }
+  actionTypes: any;
+  constructor() {
+    this.actionTypes = ACTION_TYPES;
+  }
 
   ngOnInit() {
   }
   getRowDetails(data) {
     return Object.values(data)[0];
   }
-  ongridItemClick(event, actionType: string, params: string) {
+  ongridItemClick(actionType: string, params: string) {
     this.actions.emit({ actionType, params });
   }
 }

@@ -1,4 +1,5 @@
 import LabelValueGroupModel from './label-value-group.model';
+import { STATUS_MAPPING, APPLICATION_TYPE } from '../constants/applications.constants';
 export class ApplicationGridModel {
     columns: any;
     id: any;
@@ -6,38 +7,8 @@ export class ApplicationGridModel {
         if (!data) {
             return null;
         }
-        const statusMapping = {
-            inProgress: {
-                label: 'Action Required',
-                iconClass: 'fa-exclamation-circle warning status-icon',
-                labelClass: 'status-label status-label-icon',
-                valueClass: 'status-value status-value-icon'
-            },
-            cancelledByUser: {
-                label: 'Cancelled',
-                iconClass: 'fa-circle-o status-icon',
-                labelClass: 'status-label status-label-icon',
-                valueClass: 'status-value status-value-icon'
-            },
-            submitted: {
-                label: 'Submitted',
-                iconClass: 'fa-check success status-icon',
-                labelClass: 'status-label status-label-icon',
-                valueClass: 'status-value status-value-icon'
-            },
-            completed: {
-                label: 'Done',
-                iconClass: 'fa-circle-o status-icon',
-                labelClass: 'status-label status-label-icon',
-                valueClass: 'status-value status-value-icon'
-            },
-            cancelledByBanker: {
-                label: 'Cancelled',
-                iconClass: 'fa-circle-o status-icon',
-                labelClass: 'status-label status-label-icon',
-                valueClass: 'status-value status-value-icon'
-            }
-        }
+        const applicationType = new Map(Object.entries(APPLICATION_TYPE));
+        const statusMapping = STATUS_MAPPING;
         this.id = data.id;
         const descriptionData = {
             label: data.heading,
@@ -49,7 +20,7 @@ export class ApplicationGridModel {
         };
         const viewData = {
             description: new LabelValueGroupModel(descriptionData),
-            ownerShip: new LabelValueGroupModel({ label: data.type }),
+            ownerShip: new LabelValueGroupModel({ label: applicationType.get(data.type) }),
             lastUpdate: new LabelValueGroupModel({ label: data.lastUpdate }),
             lastUpdatedBy: new LabelValueGroupModel({ label: data.lastUpdatedBy }),
             status: new LabelValueGroupModel({
