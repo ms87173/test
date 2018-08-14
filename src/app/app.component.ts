@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // this.auth.setToken();
     this.store.dispatch(new userActions.GetUser());
+    this.store.dispatch(new userActions.GetUserContactPerson());
     this.store.pipe(select(fromUserSelectors.getUserState))
       .subscribe((user) => {
         // console.log(user);

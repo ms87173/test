@@ -20,6 +20,7 @@ export class DdoApplicationsComponent implements OnInit {
   data: any;
   columns: string[];
   gridConfig: any;
+  contactPersonDetails: any;
   constructor(
     public apiService: ApiService,
     private store: Store<fromRootReducers.AppState>
@@ -34,6 +35,11 @@ export class DdoApplicationsComponent implements OnInit {
       dropDownOptions
     };
     this.store.dispatch(new GetApplications());
+    this.store.select(fromRootSelectors.userSelectors.getUserContactPerson).
+      subscribe((contactDetail: any) => {
+        this.contactPersonDetails = contactDetail;
+        console.log(this.contactPersonDetails);
+      });
     this.store.select(fromRootSelectors.applicationsSelectors.getApplicaitons)
       .subscribe((applications: any) => {
         this.gridConfig.data =

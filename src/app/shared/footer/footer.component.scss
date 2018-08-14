@@ -1,7 +1,9 @@
 .footer {
-    &__contact-details{
-        background: #FFFFFF;
+    float: left;
+    &__contact-details {
+        background: #e6f8fe;
         text-align: center;
+        padding: 12px;
     }
     &__contact-icon {
         font-size: smaller;
