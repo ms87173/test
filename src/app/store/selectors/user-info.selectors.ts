@@ -23,3 +23,7 @@ export const getUserEntitlements = createSelector(
     getUserState,
     fromUser.getUserEntitlements
 );
+export const getUserContactPerson = createSelector(
+    getUserState,
+    fromUser.getUserContactPerson
+);

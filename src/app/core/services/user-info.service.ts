@@ -9,4 +9,7 @@ export class UserInfoService {
   getUserInfo(): Observable<any> {
     return this.apiService.get("user");
   }
+  getUserContactPerson(): Observable<any> {
+    return this.apiService.get("contact");
+  }
 }
