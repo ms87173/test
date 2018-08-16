@@ -35,14 +35,14 @@
             ],
             "status": {
                 "code": "submitted",
-                "reason": "Waiting for Jane Robbins"
+                "description": "Waiting for Jane Robbins"
             },
             "type": "joint",
             "state": [
                 "New"
             ],
-            "lastUpdatedBy": "John Robbins",
-            "lastUpdateDate": "03 Aug 2018"
+            "lastUpdatedBy": "Vikash Kumar",
+            "lastUpdateDate": "05-23-2018"
         },
         {
             "id": "2",
@@ -61,14 +61,14 @@
             ],
             "status": {
                 "code": "completed",
-                "reason": "Account Opened"
+                "description": "Account Opened"
             },
             "type": "individual",
             "state": [
                 "New"
             ],
-            "lastUpdatedBy": "Jurgen Klopp",
-            "lastUpdateDate": "03 Aug 2018"
+            "lastUpdatedBy": "Karan Sharma",
+            "lastUpdateDate": "03-15-2018"
         },
         {
             "id": "3",
@@ -96,14 +96,14 @@
             ],
             "status": {
                 "code": "inProgress",
-                "reason": ""
+                "description": "In Progress"
             },
             "type": "joint",
             "state": [
                 "New"
             ],
-            "lastUpdatedBy": "John Robbins",
-            "lastUpdateDate": "03 Aug 2018"
+            "lastUpdatedBy": "Tinsu Sasi",
+            "lastUpdateDate": "09-12-2018"
         },
         {
             "id": "4",
@@ -131,11 +131,11 @@
             ],
             "status": {
                 "code": "cancelledByBanker",
-                "reason": "Cancelled by Banker"
+                "description": "Cancelled"
             },
             "type": "custodial",
-            "lastUpdatedBy": "John Robbins",
-            "lastUpdateDate": "03 Aug 2018"
+            "lastUpdatedBy": "Lionel Messi",
+            "lastUpdateDate": "03-05-2018"
         },
         {
             "id": "4",
@@ -163,11 +163,11 @@
             ],
             "status": {
                 "code": "cancelledByUser",
-                "reason": "Cancelled by Jose Mourinho"
+                "description": "Done"
             },
             "type": "trust",
-            "lastUpdatedBy": "John Robbins",
-            "lastUpdateDate": "03 Aug 2018"
+            "lastUpdatedBy": "Cristiano Ronaldo",
+            "lastUpdateDate": "10-05-2017"
         }
     ],
     "contact": {

@@ -4,11 +4,11 @@ import { ApplicationGridModel } from '../core/models/application-grid.model';
 import { fromRootReducers, fromRootSelectors } from '../store';
 import { Store } from '@ngrx/store';
 import {
-  GetApplications, SetActiveApplication, SortApplications
+  GetApplications, SetActiveApplication
 } from '../store/actions/applications.actions';
 import { APPLICATION_GRID_HEADING, APPLICATION_DROPDOWN_OPTIONS, ACTION_TYPES } from '../core/constants/applications.constants';
 import { ContactDetailsModel } from '../core/models/contact-detail.model';
-
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-ddo-applications',
@@ -22,6 +22,7 @@ export class DdoApplicationsComponent implements OnInit {
   columns: string[];
   gridConfig: any;
   contactPersonDetails: any;
+  applicationsData: any;
   constructor(
     public apiService: ApiService,
     private store: Store<fromRootReducers.AppState>
@@ -39,22 +40,41 @@ export class DdoApplicationsComponent implements OnInit {
     this.store.select(fromRootSelectors.userSelectors.getUserContactPerson).
       subscribe((contactDetail: any) => {
         this.contactPersonDetails = new ContactDetailsModel(contactDetail);
-        console.log(this.contactPersonDetails);
       });
     this.store.select(fromRootSelectors.applicationsSelectors.getApplicaitons)
       .subscribe((applications: any) => {
         this.gridConfig.data =
           applications.map((application) => new ApplicationGridModel(application));
+        this.applicationsData = applications;
       });
   }
   gridActions(payload) {
     switch (payload.actionType) {
       case ACTION_TYPES.rowClicked: this.store.dispatch(new SetActiveApplication(payload.id));
         break;
-      case ACTION_TYPES.sort: this.store.dispatch(new SortApplications(payload.params));
+      case ACTION_TYPES.sort: this.sortApplications(this.applicationsData, payload.params);
         break;
       case ACTION_TYPES.completeNow: console.log('you have open the kebab icon.');
     }
     console.log(payload);
+  }
+  sortApplications(data, params) {
+    console.log(data);
+    let formatedData;
+    switch (params) {
+      case 'lastUpdatedBy':
+        formatedData = _.sortBy(data, params);
+        break;
+      case 'status':
+        formatedData = _.sortBy(data, 'status.description');
+        break;
+      case 'lastUpdate':
+        formatedData = _.sortBy(data, params);
+        break;
+    }
+    if (formatedData) {
+      this.gridConfig.data = formatedData.map((application) =>
+        new ApplicationGridModel(application));
+    }
   }
 }
