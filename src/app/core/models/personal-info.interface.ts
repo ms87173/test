@@ -13,13 +13,13 @@ export class PersonalInfoModel implements PersonalInfoInterface {
     email;
     contactNumber;
     constructor(data) {
-       if(!data) {
-           return null;
-       }
-       this.firstName = data.firstName;
-       this.lastName = data.lastName;
-       this.middleName = data.middleName;
-       this.email = data.email;
-       this.contactNumber = data.contactNumber;
+        if (!data) {
+            return null;
+        }
+        this.firstName = data.firstName;
+        this.lastName = data.lastName;
+        this.middleName = data.middleName;
+        this.email = data.email;
+        this.contactNumber = data.contactNumber;
     }
 }

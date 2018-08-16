@@ -1,0 +1,11 @@
+.contact-detail {
+    &__content{
+        background: #e6f8fe;
+        text-align: center;
+    }
+    &__icon {
+        font-size: smaller;
+        height: 20px;
+        margin-right: 5px
+    }
+}
