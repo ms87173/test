@@ -56,10 +56,8 @@ export class DdoApplicationsComponent implements OnInit {
         break;
       case ACTION_TYPES.completeNow: console.log('you have open the kebab icon.');
     }
-    console.log(payload);
   }
   sortApplications(data, params) {
-    console.log(data);
     let formatedData;
     switch (params) {
       case 'lastUpdatedBy':
