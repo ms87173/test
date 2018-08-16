@@ -12,8 +12,8 @@
       </tr>
     </thead>
     <tbody class="table__body">
-      <tr *ngFor="let item of config.data">
-        <td *ngFor="let col of item.columns" class="table-row" (click)='ongridItemClick(actionTypes.rowClicked, item.id)'>
+      <tr *ngFor="let item of config.data" class="table-row">
+        <td *ngFor="let col of item.columns" class="table-col" (click)='ongridItemClick(actionTypes.rowClicked, item.id)'>
           <label-value-group [config]='getRowDetails(col)'></label-value-group>
         </td>
         <td>

@@ -32,9 +32,7 @@ export class UserInfoEffectsService {
                 .pipe(
                     map(
                         (contactPerson) => {
-                            return new GetUserContactPersonSuccess(
-                                new PersonalInfoModel(contactPerson)
-                            );
+                            return new GetUserContactPersonSuccess(contactPerson);
                         }
                     ),
                     catchError(

@@ -1,0 +1,13 @@
+<div class="contact-detail" *ngIf='config'>
+  <div class="contact-detail__content">
+    <i class="fa" [ngClass]='config.iconClass'></i>
+    <div class="bold">{{config.role}}</div>
+    <div>{{config.name}}</div>
+    <div>
+      <i class="fa fa-envelope contact-detail__icon"></i>
+      <a href=`mailto:${config.email}`>{{config.emailAddress}}</a>
+    </div>
+    <div>
+      <i class="fa fa-phone contact-detail__icon"></i>{{config.phoneNumber}}</div>
+  </div>
+</div>

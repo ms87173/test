@@ -1,12 +1,11 @@
-.footer {
-    float: left;
-    &__contact-details {
+.contact-detail {
+    &__content{
         background: #e6f8fe;
         text-align: center;
-        padding: 12px;
     }
-    &__contact-icon {
+    &__icon {
         font-size: smaller;
         height: 20px;
+        margin-right: 5px
     }
 }

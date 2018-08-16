@@ -1,5 +1,6 @@
 import { ActionTypes, UserActions } from "../actions/user-info.actions";
 import { PersonalInfoInterface, PersonalInfoModel } from "../../core/models/personal-info.interface";
+import { UserInfoInterface, UserInfoModel } from "../../core/models/user-info.interface";
 
 //TODO: we can discuss the naming convention
 export interface UserInfoState {
@@ -9,7 +10,6 @@ export interface UserInfoState {
     isAuthenticated: boolean,
     entitlements: Array<any>,
     contactPerson: any
-    //TODO: user level request entitlements
 }
 
 export const InitialUserInfoState: UserInfoState = {
@@ -18,7 +18,7 @@ export const InitialUserInfoState: UserInfoState = {
     isLoggedIn: false,
     isAuthenticated: null,
     entitlements: [],
-    contactPerson: {}
+    contactPerson: null
 }
 
 export function reducer(state: UserInfoState = InitialUserInfoState, action: UserActions) {
@@ -32,12 +32,17 @@ export function reducer(state: UserInfoState = InitialUserInfoState, action: Use
                 role,
                 isLoggedIn: true,
                 isAuthenticated: true
-            }
+            };
         case ActionTypes.GET_USER_FAIL:
             return {
                 ...state,
                 isAuthenticated: false
-            }
+            };
+        case ActionTypes.GET_USER_CONTACT_PERSON_SUCCESS:
+            return {
+                ...state,
+                contactPerson: action.payload
+            };
         default:
             return state;
     }

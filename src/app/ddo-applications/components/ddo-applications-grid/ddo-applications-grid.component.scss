@@ -3,7 +3,10 @@
         white-space: nowrap;
         &__body {
             .table-row {
-                vertical-align: middle;
+                border-bottom: 1px solid #dee2e6;
+                .table-col {
+                    vertical-align: middle;
+                }
             }
             .dropdown-menu {
                 position: absolute;

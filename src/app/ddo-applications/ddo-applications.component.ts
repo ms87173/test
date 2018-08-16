@@ -7,6 +7,7 @@ import {
   GetApplications, SetActiveApplication, SortApplications
 } from '../store/actions/applications.actions';
 import { APPLICATION_GRID_HEADING, APPLICATION_DROPDOWN_OPTIONS, ACTION_TYPES } from '../core/constants/applications.constants';
+import { ContactDetailsModel } from '../core/models/contact-detail.model';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class DdoApplicationsComponent implements OnInit {
   data: any;
   columns: string[];
   gridConfig: any;
+  contactPersonDetails: any;
   constructor(
     public apiService: ApiService,
     private store: Store<fromRootReducers.AppState>
@@ -34,6 +36,11 @@ export class DdoApplicationsComponent implements OnInit {
       dropDownOptions
     };
     this.store.dispatch(new GetApplications());
+    this.store.select(fromRootSelectors.userSelectors.getUserContactPerson).
+      subscribe((contactDetail: any) => {
+        this.contactPersonDetails = new ContactDetailsModel(contactDetail);
+        console.log(this.contactPersonDetails);
+      });
     this.store.select(fromRootSelectors.applicationsSelectors.getApplicaitons)
       .subscribe((applications: any) => {
         this.gridConfig.data =

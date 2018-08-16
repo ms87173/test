@@ -79,3 +79,6 @@ export const APPLICATION_TYPE = {
     trust: 'Trust'
 };
 
+export const ROLE = {
+    assistantBanker: 'Assistant Banker'
+};

@@ -1,5 +1,5 @@
 .ddo-applications {
-    .heading{
+    .heading {
         border: 1px solid #e8ecf1;
     }
     .grid-label {
@@ -14,44 +14,41 @@
         color: #fff;
         background-color: #5e5ea7;
     }
-    .status-label{
+    .status-label {
         display: inline-block;
         font-size: 16px;
-        &-icon{
+        &-icon {
             margin-left: 10px
         }
     }
-    .status-icon{
+    .status-icon {
         font-size: 15px;
     }
-    .fa-circle-o{
+    .fa-circle-o {
         visibility: hidden;
     }
     .status-value {
         display: block;
         font-size: 12px;
-        &-icon{
+        &-icon {
             margin-left: 24px;
         }
     }
-    .consumer-table{
-        .table-responsive{
+    .consumer-table {
+        .table-responsive {
             padding: 12px 10px 0px 10px;
-            table{
-                thead{
-                    border:2px solid #212529;
+            table {
+                thead {
+                    border: 2px solid #212529;
                 }
-                tbody{
+                tbody {
                     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
                 }
             }
         }
     }
-    .table {
-        &__body {
-            .table-row {
-                vertical-align: middle;
-            }
-        }
+    .contact-icon {
+        font-size: 85px;
+        color: #aedae8;
     }
 }
