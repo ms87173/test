@@ -23,9 +23,9 @@ export class ApplicationGridModel {
             ownerShip: new LabelValueGroupModel({ label: applicationType.get(data.type) }),
             lastUpdate: new LabelValueGroupModel({ label: data.lastUpdate }),
             lastUpdatedBy: new LabelValueGroupModel({ label: data.lastUpdatedBy }),
-            status: new LabelValueGroupModel({
-                ...statusMapping[`${data.status.code}`],
-                value: data.status.reason
+            status: new LabelValueGroupModel({ label: data.status.description
+                // ...statusMapping[`${data.status.code}`],
+                // value: data.status.reason
             })
         };
         this.columns = Object.entries(viewData).map((e) => {

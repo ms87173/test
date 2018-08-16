@@ -17,7 +17,7 @@ export const APPLICATION_GRID_HEADING = [
         showSortOption: false
     },
     {
-        key: 'lastUpdated',
+        key: 'lastUpdate',
         value: 'LAST UPDATE',
         showSortOption: true
     },
