@@ -8,7 +8,7 @@ export interface UserInfoState {
     isLoggedIn: boolean,
     isAuthenticated: boolean,
     entitlements: Array<any>,
-    contactPerson: PersonalInfoInterface
+    contactPerson: any
     //TODO: user level request entitlements
 }
 
@@ -18,7 +18,7 @@ export const InitialUserInfoState: UserInfoState = {
     isLoggedIn: false,
     isAuthenticated: null,
     entitlements: [],
-    contactPerson: new PersonalInfoModel(null)
+    contactPerson: {}
 }
 
 export function reducer(state: UserInfoState = InitialUserInfoState, action: UserActions) {
