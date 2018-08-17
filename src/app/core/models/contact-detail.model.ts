@@ -19,7 +19,7 @@ export class ContactDetailsModel {
     }
     formatPhoneNumber(number) {
         const formatedNumber = number.replace(/[^\d]+/g, '')
-            .replace(/(\d{3})(\d{3})(\d{4})/, '+($1) $2-$3');
+            .replace(/(\d{1})(\d{3})(\d{3})(\d{4})/, '+$1($2)$3-$4');
         return formatedNumber;
     }
 }
