@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
-// import decode from 'jwt-decode';
 
 @Injectable()
 export class AuthenticationService {
+    token: any;
     //MOCK authentication service
-    public getToken(): string {
-        return localStorage.getItem('token');
+    public getToken(): any {
+        return this.token;
     }
     public setToken() {
-        localStorage.setItem('token', "qwertyuiopasdfghjklzxcvbnm");
-        document.cookie = 'Authorization=qwertyuiopasdfghjklzxcvbnm';
+        document.cookie = 'userId=KERMIT COBELEAD';
+        this.token = {
+            userId: 'KERMIT COBELEAD'
+        };
         return null;
     }
     public clearToken() {
-        localStorage.setItem('token', "");
+        this.token = null;
         document.cookie = '';
     }
 }

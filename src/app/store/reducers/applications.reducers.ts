@@ -18,7 +18,7 @@ export const InitialState: ApplicationsState = {
 export function reducer(
     state: ApplicationsState = InitialState,
     action: ApplicationActions
-) {
+): ApplicationsState {
     switch (action.type) {
         case ActionTypes.APPLICATIONS_SORT_SUCCESS:
         case ActionTypes.GET_APPLICATIONS_SUCCESS:

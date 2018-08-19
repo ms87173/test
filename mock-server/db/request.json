@@ -1,0 +1,46 @@
+{
+    "request": {
+        "id": "1",
+        "heading": "Application for 2 Joint Accounts",
+        "title": "John Robbins, Jane Robbins and Susan Sandron",
+        "accountHolders": [
+            {
+                "firstName": "John",
+                "lastName": "Robbins",
+                "middleName": "",
+                "email": "johnRobbins@gmail.com",
+                "role": [
+                    "primary"
+                ]
+            },
+            {
+                "firstName": "Jane",
+                "lastName": "Robbins",
+                "middleName": "",
+                "email": "janeRobbins@gmail.com",
+                "role": [
+                    "coApplicant"
+                ]
+            },
+            {
+                "firstName": "Susan",
+                "lastName": "Sandron",
+                "middleName": "",
+                "email": "susanSandron@gmail.com",
+                "role": [
+                    "coApplicant"
+                ]
+            }
+        ],
+        "status": {
+            "code": "submitted",
+            "description": "Waiting for Jane Robbins"
+        },
+        "type": "joint",
+        "state": [
+            "New"
+        ],
+        "lastUpdatedBy": "Vikash Kumar",
+        "lastUpdateDate": "05-23-2018"
+    }
+}

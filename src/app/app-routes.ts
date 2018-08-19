@@ -18,6 +18,10 @@ export const AppRoutes: Routes = [
             {
                 path: 'my-applications',
                 loadChildren: './ddo-applications/ddo-applications.module#DdoApplicationsModule'
+            },
+            {
+                path: 'applications/:applicationId',
+                loadChildren: './ddo-application-request/ddo-application-request.module#DdoApplicationRequestModule'
             }
         ]
     },

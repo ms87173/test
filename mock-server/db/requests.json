@@ -169,13 +169,5 @@
             "lastUpdatedBy": "Cristiano Ronaldo",
             "lastUpdateDate": "10-05-2017"
         }
-    ],
-    "contact": {
-        "phoneNumber": "+14536741234",
-        "firstName": "Sean",
-        "middleName": "",
-        "lastName": "Parker",
-        "emailAddress": "sean@gmail.com",
-        "role": "assistantBanker"
-    }
+    ]
 }
