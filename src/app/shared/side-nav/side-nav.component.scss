@@ -1,15 +1,16 @@
 .side-nav {
     border: 1px solid #eeeeee;
     &__tab {
-        position: absolute;
-        transform: translate(0, -50%);
-        top: 50%;
-        width: 100%;
+        // position: absolute;
+        // transform: translate(0, -50%);
+        // top: 50%;
+        // width: 100%;
     }
     .status-icon {
         position: absolute;
         transform: translate(0, -50%);
         top: 50%;
+        right: 50%;
         &--inprogress {
             color: orange;
         }
@@ -68,9 +69,9 @@
         transform: rotate(90deg);
     }
     .side-nav__tab {
-        position: absolute;
-        transform: translate(0, -50%);
-        top: 11%;
-        width: 100%;
+        // position: absolute;
+        // transform: translate(0, -50%);
+        // top: 11%;
+        // width: 100%;
     }
 }
