@@ -1,0 +1,30 @@
+.side-nav--bordered {
+    border-right: 2px solid grey;
+}
+
+.mat-radio-button {
+    margin-right: 15px;
+}
+
+.form__footer {
+    bottom: 0px;
+    z-index: -1;
+    position: fixed;
+    width: 100%;
+}
+
+.contact-icon {
+    font-size: 70px;
+    color: #aedae8;
+}
+
+formly-field-radio>div {
+    display: inline-flex;
+    .radio {
+        margin-right: 35px;
+    }
+}
+
+.form-control-label {
+    display: block
+}

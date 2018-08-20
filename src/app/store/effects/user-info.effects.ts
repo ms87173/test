@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserInfoService } from '../../core/services/user-info.service';
-import { Effect, Actions, ofType } from "@ngrx/effects";
-import { GetUserSuccess, GetUserFailure, ActionTypes, GetUserContactPersonSuccess, GetUserContactPersonFailure } from "../actions/user-info.actions";
+import { Effect, Actions, ofType } from '@ngrx/effects';
+import { GetUserSuccess, GetUserFailure, ActionTypes, GetUserContactPersonSuccess, GetUserContactPersonFailure } from '../actions/user-info.actions';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { UserInfoModel } from '../../core/models/user-info.interface';

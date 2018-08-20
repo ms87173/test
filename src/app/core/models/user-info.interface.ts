@@ -1,4 +1,4 @@
-import { PersonalInfoInterface, PersonalInfoModel } from "./personal-info.interface";
+import { PersonalInfoInterface, PersonalInfoModel } from './personal-info.interface';
 
 export interface UserInfoInterface {
     personalInfo: PersonalInfoInterface;

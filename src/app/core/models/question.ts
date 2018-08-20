@@ -1,4 +1,4 @@
-import { Option } from "./option";
+import { Option } from './option';
 
 export class Question {
     id:string;
@@ -10,6 +10,7 @@ export class Question {
     readOnly: boolean;
     placeHolder: string;
     options:Option[];
+    serverErrorMessage ?:string
 
 }
 

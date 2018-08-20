@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { ApplicationsService } from '../../core/services/applications.service';
-import { Effect, Actions, ofType } from "@ngrx/effects";
+import { Effect, Actions, ofType } from '@ngrx/effects';
 import {
     ActionTypes,
     GetApplicationsSuccess,
     GetApplicationsFailure,
     SortApplicationsSuccess
-} from "../actions/applications.actions";
+} from '../actions/applications.actions';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { ApplicationModel } from '../../core/models/application.interface';

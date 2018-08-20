@@ -1,4 +1,4 @@
-import { Question } from "./question";
+import { Question } from './question';
 
 export class Section{
     // ToDo: May need to do for custom type

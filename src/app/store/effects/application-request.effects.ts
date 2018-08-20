@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApplicationRequestService } from '../../core/services/application-request.service';
-import { Effect, Actions, ofType } from "@ngrx/effects";
+import { Effect, Actions, ofType } from '@ngrx/effects';
 import {
     ActionTypes,
     GetApplicationRequestSuccess,
@@ -9,7 +9,7 @@ import {
     GetApplicationRequestWorkflowsFailure,
     GetApplicationRequest,
     GetApplicationRequestWorkflows
-} from "../actions/application-request.actions";
+} from '../actions/application-request.actions';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 

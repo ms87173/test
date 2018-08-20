@@ -10,8 +10,8 @@ export const effects: any[] = [
     ApplicationsEffectsService
 ]
 
-export * from "./questionnaire-effects.service";
-export * from "./user-info.effects";
-export * from "./questionnaire-effects.service";
-export * from "./applications.effects";
-export * from "./application-request.effects";
+export * from './questionnaire-effects.service';
+export * from './user-info.effects';
+export * from './questionnaire-effects.service';
+export * from './applications.effects';
+export * from './application-request.effects';

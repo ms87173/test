@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ProductsListService } from '../services/products-list.service';
-import { Effect, Actions, ofType } from "@ngrx/effects";
-import { ActionTypes, GetProductsSuccess, GetProductsFailure } from "./actions";
+import { Effect, Actions, ofType } from '@ngrx/effects';
+import { ActionTypes, GetProductsSuccess, GetProductsFailure } from './actions';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -16,8 +16,7 @@ export class EffectsService {
       ))
     ))
 
-  constructor(
-    private productListService: ProductsListService,
+  constructor(private productListService: ProductsListService,
     private actions$: Actions) { }
 
 }

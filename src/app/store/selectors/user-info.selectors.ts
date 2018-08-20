@@ -1,6 +1,6 @@
-import * as fromStore from "../reducers/";
+import * as fromStore from '../reducers/';
 import * as fromUser from '../reducers/user-info.reducers';
-import { createSelector } from "@ngrx/store";
+import { createSelector } from '@ngrx/store';
 
 export const getUserState = (state: fromStore.AppState) => state.user;
 export const getUserPersonalInfo = createSelector(

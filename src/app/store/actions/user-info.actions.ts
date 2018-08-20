@@ -1,12 +1,12 @@
 import { Action } from '@ngrx/store';
 
 export enum ActionTypes {
-    GET_USER = "[userFeature]  Get User",
-    GET_USER_SUCCESS = "[userFeature]  Get User Success",
-    GET_USER_FAIL = "[userFeature]  Get User Failure",
-    GET_USER_CONTACT_PERSON = "[userFeature] Get User Contact Person",
-    GET_USER_CONTACT_PERSON_SUCCESS = "[userFeature] Get User Contact Person Success",
-    GET_USER_CONTACT_PERSON_FAILURE = "[userFeature] Get User Contact Person Failure",
+    GET_USER = '[userFeature]  Get User',
+    GET_USER_SUCCESS = '[userFeature]  Get User Success',
+    GET_USER_FAIL = '[userFeature]  Get User Failure',
+    GET_USER_CONTACT_PERSON = '[userFeature] Get User Contact Person',
+    GET_USER_CONTACT_PERSON_SUCCESS = '[userFeature] Get User Contact Person Success',
+    GET_USER_CONTACT_PERSON_FAILURE = '[userFeature] Get User Contact Person Failure',
 }
 
 export class GetUser implements Action {

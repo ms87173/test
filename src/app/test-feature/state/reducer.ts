@@ -1,7 +1,7 @@
-import { ActionTypes, ProductsActions } from "./actions"
-import { Product } from "../models/product";
-import { IntialProductState } from "./intialState";
-import * as fromRoot from "../../store/reducers";
+import { ActionTypes, ProductsActions } from './actions'
+import { Product } from '../models/product';
+import { IntialProductState } from './intialState';
+import * as fromRoot from '../../store/reducers';
 
 export interface State extends fromRoot.AppState {
     products: ProductState;

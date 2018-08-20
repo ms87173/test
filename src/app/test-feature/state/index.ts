@@ -1,6 +1,6 @@
-import * as TestFeatureActions from "./actions";
+import * as TestFeatureActions from './actions';
 
-export { TestFeatureStateModule } from "./test-feature-state.module";
+export { TestFeatureStateModule } from './test-feature-state.module';
 export { 
     TestFeatureActions
 };

@@ -1,13 +1,13 @@
 import { Action } from '@ngrx/store';
 
 export enum ActionTypes {
-    GET_APPLICATIONS = "[App State] Get Applications",
-    GET_APPLICATIONS_SUCCESS = "[App State] Get Applications Success",
-    GET_APPLICATIONS_FAIL = "[App State] Get Applications Failure",
-    SET_ACTIVE_APPLICATION = "[App State] Set Active Application in List",
-    CLEAR_ACTIVE_APPLICATION = "[App State] Clear Active Application from List",
-    SORT_APPLICATIONS = "[App State] Sort Applications",
-    APPLICATIONS_SORT_SUCCESS = "[App State] Applications Sort Success"
+    GET_APPLICATIONS = '[App State] Get Applications',
+    GET_APPLICATIONS_SUCCESS = '[App State] Get Applications Success',
+    GET_APPLICATIONS_FAIL = '[App State] Get Applications Failure',
+    SET_ACTIVE_APPLICATION = '[App State] Set Active Application in List',
+    CLEAR_ACTIVE_APPLICATION = '[App State] Clear Active Application from List',
+    SORT_APPLICATIONS = '[App State] Sort Applications',
+    APPLICATIONS_SORT_SUCCESS = '[App State] Applications Sort Success'
 }
 
 export class GetApplications implements Action {

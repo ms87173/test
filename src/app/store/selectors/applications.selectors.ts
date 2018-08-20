@@ -1,6 +1,6 @@
-import * as fromStore from "../reducers/";
+import * as fromStore from '../reducers/';
 import * as fromApplications from '../reducers/applications.reducers';
-import { createSelector } from "@ngrx/store";
+import { createSelector } from '@ngrx/store';
 
 export const getApplicaitonsState = (state: fromStore.AppState) => state.applications;
 

@@ -9,7 +9,7 @@ import { EffectsService } from './effects.service';
   imports: [
     CommonModule,
     EffectsModule.forFeature([EffectsService]),
-    StoreModule.forFeature("testFeature", reducer)
+    StoreModule.forFeature('testFeature', reducer)
   ],
   declarations: []
 })

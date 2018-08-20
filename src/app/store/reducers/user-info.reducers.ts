@@ -1,6 +1,6 @@
-import { ActionTypes, UserActions } from "../actions/user-info.actions";
-import { PersonalInfoInterface, PersonalInfoModel } from "../../core/models/personal-info.interface";
-import { UserInfoInterface, UserInfoModel } from "../../core/models/user-info.interface";
+import { ActionTypes, UserActions } from '../actions/user-info.actions';
+import { PersonalInfoInterface, PersonalInfoModel } from '../../core/models/personal-info.interface';
+import { UserInfoInterface, UserInfoModel } from '../../core/models/user-info.interface';
 
 //TODO: we can discuss the naming convention
 export interface UserInfoState {
@@ -14,7 +14,7 @@ export interface UserInfoState {
 
 export const InitialUserInfoState: UserInfoState = {
     personalInfo: new PersonalInfoModel(null),
-    role: "",
+    role: '',
     isLoggedIn: false,
     isAuthenticated: null,
     entitlements: [],

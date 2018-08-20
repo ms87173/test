@@ -19,6 +19,7 @@ import { TileComponent } from './tile/tile.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
+import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 
 @NgModule({
   imports: [
@@ -53,7 +54,8 @@ import { ContactDetailComponent } from './contact-detail/contact-detail.componen
     CardFooterComponent,
     GridComponent,
     TileComponent,
-    ContactDetailComponent
+    ContactDetailComponent,
+    QuestionnaireComponent
   ],
   exports: [
     HeaderComponent,
@@ -69,7 +71,8 @@ import { ContactDetailComponent } from './contact-detail/contact-detail.componen
     CardFooterComponent,
     GridComponent,
     TileComponent,
-    ContactDetailComponent
+    ContactDetailComponent,
+    QuestionnaireComponent
   ]
 })
 export class SharedModule { }

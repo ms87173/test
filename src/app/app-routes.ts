@@ -22,6 +22,10 @@ export const AppRoutes: Routes = [
             {
                 path: 'applications/:applicationId',
                 loadChildren: './ddo-application-request/ddo-application-request.module#DdoApplicationRequestModule'
+            },
+            {
+                path: 'testfeature',
+                loadChildren: './test-feature/test-feature.module#TestFeatureModule'
             }
         ]
     },

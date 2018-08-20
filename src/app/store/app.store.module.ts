@@ -20,7 +20,7 @@ export function getReducers() {
     StoreModule.forRoot(REDUCER_TOKEN),
     EffectsModule.forRoot(effects),
     !environment.production ? StoreDevtoolsModule.instrument({
-      name: "Citi DDO UI",
+      name: 'Citi DDO UI',
       maxAge: 25,
       logOnly: environment.production
     }): [],

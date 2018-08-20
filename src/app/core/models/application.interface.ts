@@ -1,4 +1,4 @@
-import { UserInfoInterface, UserInfoModel } from "./user-info.interface";
+import { UserInfoInterface, UserInfoModel } from './user-info.interface';
 
 export interface ApplicationInterface {
     id: any;

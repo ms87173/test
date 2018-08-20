@@ -7,9 +7,9 @@ import { ApiService } from './api.service';
 export class UserInfoService {
   constructor(private http: HttpClient, private apiService: ApiService) { }
   getUserInfo(): Observable<any> {
-    return this.apiService.get("user");
+    return this.apiService.get('user');
   }
   getUserContactPerson(): Observable<any> {
-    return this.apiService.get("contact");
+    return this.apiService.get('contact');
   }
 }
