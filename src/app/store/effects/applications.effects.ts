@@ -7,7 +7,7 @@ import {
     GetApplicationsFailure,
     SortApplicationsSuccess
 } from '../actions/applications.actions';
-import { switchMap, map, catchError } from 'rxjs/operators';
+import { switchMap, map, catchError, concatMap, filter } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { ApplicationModel } from '../../core/models/application.interface';
 
@@ -43,7 +43,8 @@ export class ApplicationsEffectsService {
                                 const payload = applications.map(e => new ApplicationModel(e));
                                 return new SortApplicationsSuccess(payload);
                             }
-                            return new SortApplicationsSuccess([])}
+                            return new SortApplicationsSuccess([])
+                        }
                     ),
                     catchError(
                         (err) => of(new GetApplicationsFailure(err))

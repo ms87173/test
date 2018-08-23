@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    // apiUrl: 'http://localhost:3000/'
+    apiUrl: 'http://mktdevvm100621.nam.nsroot.net:9090/'
   };

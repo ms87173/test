@@ -2,11 +2,11 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ApplicationGridModel } from '../core/models/application-grid.model';
 import { fromRootReducers, fromRootSelectors } from '../store';
 import { Store } from '@ngrx/store';
-import { GetApplications, SetActiveApplication } from '../store/actions/applications.actions';
+import { GetApplications } from '../store/actions/applications.actions';
 import { APPLICATION_GRID_HEADING, APPLICATION_DROPDOWN_OPTIONS, ACTION_TYPES } from '../core/constants/applications.constants';
 import { ContactDetailsModel } from '../core/models/contact-detail.model';
 import * as _ from 'lodash';
-import { Router } from '@angular/router';
+import { RouteChange } from '../store/actions/router.actions';
 
 @Component({
   selector: 'app-ddo-applications',
@@ -22,7 +22,6 @@ export class DdoApplicationsComponent implements OnInit {
   contactPersonDetails: any;
   applicationsData: any;
   constructor(
-    private router: Router,
     private store: Store<fromRootReducers.AppState>
   ) { }
 
@@ -48,27 +47,30 @@ export class DdoApplicationsComponent implements OnInit {
   }
   gridActions(payload) {
     switch (payload.actionType) {
-      case ACTION_TYPES.rowClicked: this.store.dispatch(new SetActiveApplication(payload.params));
-        this.router.navigateByUrl('/applications/1');
+      case ACTION_TYPES.rowClicked:
+        this.store.dispatch(
+          new RouteChange({
+            path: `applications/:applicationId`,
+            params: {
+              applicationId: payload.applicationId
+            }
+          })
+        );
         break;
       case ACTION_TYPES.sort: this.sortApplications(this.applicationsData, payload.params);
         break;
-      case ACTION_TYPES.completeNow: console.log('you have open the kebab icon.');
+      case ACTION_TYPES.completeNow:
     }
   }
   sortApplications(data, params) {
     let formatedData;
-    switch (params) {
-      case 'lastUpdatedBy':
-        formatedData = _.sortBy(data, params);
-        break;
-      case 'status':
-        formatedData = _.sortBy(data, 'status.description');
-        break;
-      case 'lastUpdate':
-        formatedData = _.sortBy(data, params);
-        break;
+    let { key } = params
+    if (params.key === 'status') {
+      key = 'status.description';
     }
+    formatedData = _.orderBy(data, [key], [params.sortOrder]);
+    params.sortOrder = params.sortOrder === 'asc' ? 'desc' : 'asc';
+    //TODO refactor this completely via actions or this container being store.
     if (formatedData) {
       this.gridConfig.data = formatedData.map((application) =>
         new ApplicationGridModel(application));

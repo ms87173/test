@@ -33,17 +33,17 @@ export function reducer(
                 isLoaded: false
             };
         }
-        case ActionTypes.SET_ACTIVE_APPLICATION:
-            const id = action.payload;
-            let applications = [];
-            applications = state.applications.map(e =>{
-                e.active = e.id === id
-                return e
-            });
-            return {
-                ...state,
-                applications
-            };
+        // case ActionTypes.SET_ACTIVE_APPLICATION:
+        //     const id = action.payload;
+        //     let applications = [];
+        //     applications = state.applications.map(e =>{
+        //         e.active = e.id === id
+        //         return e
+        //     });
+        //     return {
+        //         ...state,
+        //         applications
+        //     };
         case ActionTypes.GET_APPLICATIONS_FAIL:
         default:
             return state;

@@ -14,7 +14,6 @@ import { ContactDetailsModel } from '../../../core/models/contact-detail.model';
   encapsulation: ViewEncapsulation.None
 })
 export class DdoApplicationRequestComponent implements OnInit {
-  id: any;
   application: any;
   workflows: any;
   selectedWorkflowId: string;
@@ -24,19 +23,13 @@ export class DdoApplicationRequestComponent implements OnInit {
   contactPersonDetails: any;
 
   constructor(
-    private store: Store<fromRootReducers.AppState>,
-    private route: ActivatedRoute
+    private store: Store<fromRootReducers.AppState>
   ) { }
 
   ngOnInit() {
     this.selectedWorkflowId = '1';
     this.selectedTaskId = '2';
-    this.route.params.subscribe(params => {
-      this.id = params.applicationId;
-    });
     this.applicationHeading = new Map(Object.entries(APPLICATION_HEADING));
-    this.store.dispatch(new GetApplicationRequest(this.id));
-    this.store.dispatch(new GetApplicationRequestWorkflows(this.id));
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaitonRequest).
       subscribe((application: any) => {
         this.application = application;

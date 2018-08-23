@@ -38,7 +38,7 @@ export class ApplicationModel implements ApplicationInterface {
         this.status = data.status;
         this.title = data.title;
         this.active = false;
-        this.accountHolders = data.accountHolders.map(e => {
+        this.accountHolders = data.accountHolders && data.accountHolders.map(e => {
             new UserInfoModel(e)
         })
         this.contactPerson = new UserInfoModel(data.contactPerson);
