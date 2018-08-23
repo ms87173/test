@@ -1,6 +1,9 @@
 .ddo-application-request {
-    .heading {
+    &__page-heading {
         border: 1px solid #e8ecf1;
+        .heading {
+            margin-left: 30px;
+        }
     }
     .cancel-application {
         top: 25%;
