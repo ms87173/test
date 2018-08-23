@@ -1,1 +1,12 @@
 <router-outlet></router-outlet>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <app-side-nav 
+                [config]='workflows'
+                [selectedParentId]= 'selectedWorkflowId'
+                [selectedChildId]= 'selectedTaskId'
+                (actions)='onSideNavClick($event)'></app-side-nav>
+        </div>
+    </div>
+</div>

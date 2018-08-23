@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-side-nav',
@@ -10,16 +10,20 @@ export class SideNavComponent implements OnInit {
   oneAtATime = true;
   menuItemConfig: any;
   @Input() config: any;
-  @Input() sideNavOpen: boolean;
+  @Input() selectedParentId: any;
+  @Input() selectedChildId: any;
+  @Output() actions: any = new EventEmitter();
+
   workFlowId: any;
   taskId: any;
   type: any;
+  selectedId: any;
   constructor() { }
-
   ngOnInit() {
   }
-  setSelectedId(childId, type) {
-    this.taskId = childId;
-    this.type = type;
+  setSelectedId(parentId, childId, type) {
+    this.selectedParentId = parentId;
+    this.selectedChildId = childId;
+    this.actions.emit({ parentId, childId, type });
   }
 }

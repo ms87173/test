@@ -5,10 +5,12 @@ import { DdoApplicationRequestRoutingModule } from './ddo-application-request-ro
 import { DdoApplicationRequestComponent } from './components/ddo-application-request/ddo-application-request.component';
 import { DdoApplicationRequestDashboardComponent } from './components/ddo-application-request-dashboard/ddo-application-request-dashboard.component';
 import { DdoApplicationRequestTasksComponent } from './components/ddo-application-request-tasks/ddo-application-request-tasks.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
     DdoApplicationRequestRoutingModule
   ],
   declarations: [
