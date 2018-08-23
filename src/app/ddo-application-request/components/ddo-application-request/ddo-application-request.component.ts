@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { fromRootReducers, fromRootSelectors } from '../../../store';
-import { ActivatedRoute } from '@angular/router';
-import { GetApplicationRequest, GetApplicationRequestWorkflows } from '../../../store/actions/application-request.actions';
+import { GetApplicationRequestWorkflows } from '../../../store/actions/application-request.actions';
 
 @Component({
   selector: 'ddo-application-request',
@@ -10,21 +9,14 @@ import { GetApplicationRequest, GetApplicationRequestWorkflows } from '../../../
   styleUrls: ['./ddo-application-request.component.scss']
 })
 export class DdoApplicationRequestComponent implements OnInit {
-  id: any;
   application: any;
   workflows: any;
 
   constructor(
-    private store: Store<fromRootReducers.AppState>,
-    private route: ActivatedRoute
+    private store: Store<fromRootReducers.AppState>
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.id = params.applicationId;
-    })
-    this.store.dispatch(new GetApplicationRequest(this.id));
-    this.store.dispatch(new GetApplicationRequestWorkflows(this.id));
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaitonRequest).
       subscribe((application: any) => {
         this.application = application;

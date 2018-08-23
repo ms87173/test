@@ -4,14 +4,14 @@ import {
 } from '../actions/application-request.actions';
 
 export interface ApplicationRequestState {
-    data: any;
+    application: any;
     workflows: any;
     loaded: boolean;
     loading: boolean;
 }
 
 export const InitialState: ApplicationRequestState = {
-    data: {},
+    application: {},
     workflows: [],
     loaded: false,
     loading: false
@@ -30,7 +30,7 @@ export function reducer(
         case ActionTypes.GET_APPLICATION_REQUEST_SUCCESS:
         return {
             ...state,
-            data: action.payload,
+            application: action.payload,
             loaded: true,
             loading: false
         };
@@ -44,5 +44,5 @@ export function reducer(
     }
 }
 
-export const getApplicaitonRequets = (state: ApplicationRequestState) => state.data;
+export const getApplicaitonRequets = (state: ApplicationRequestState) => state.application;
 export const getApplicationWorkflows = (state: ApplicationRequestState) => state.workflows;
