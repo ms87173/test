@@ -17,7 +17,6 @@ export const InitialQuestionnaireState: QuestionnaireState = {
     mergedCurrentTaskWithDelta: null,
     currentQuestionId: null,
     errors: []
-
 }
 
 export function reducer(state: QuestionnaireState = InitialQuestionnaireState, action: QuesitonnaireActions) {

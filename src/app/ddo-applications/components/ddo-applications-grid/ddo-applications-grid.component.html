@@ -2,18 +2,24 @@
   <table class="table table-hover">
     <thead class="thead-dark">
       <tr>
-        <th *ngFor="let item of config.headings">
+        <th *ngFor="let item of config.headings"
+          [ngClass]="item.showSortOption ? 'cursor-pointer': 'cursor-default'"
+          (click)="ongridItemClick(actionTypes.sort, item)">
           {{item.value}}
-          <a *ngIf='item.showSortOption' (click)="ongridItemClick(actionTypes.sort, item.key);">
-            <i class="fa fa-sort" aria-hidden="true"></i>
+          <a *ngIf='item.showSortOption'>
+            <i *ngIf="item.sortOrder === 'asc'" class="fa fa-caret-up" aria-hidden="true"></i>
+            <i *ngIf="item.sortOrder === 'desc'" class="fa fa-caret-down" aria-hidden="true"></i>
           </a>
         </th>
         <th></th>
       </tr>
     </thead>
     <tbody class="table__body">
-      <tr *ngFor="let item of config.data" class="table-row">
-        <td *ngFor="let col of item.columns" class="table-col" (click)='ongridItemClick(actionTypes.rowClicked, item.id)'>
+      <tr *ngFor="let item of config.data"
+        class="table-row">
+        <td *ngFor="let col of item.columns"
+          class="table-col"
+          (click)='ongridItemClick(actionTypes.rowClicked, item.id)'>
           <label-value-group [config]='getRowDetails(col)'></label-value-group>
         </td>
         <td>
@@ -26,7 +32,9 @@
                 <li role="menuitem">
                   <a class="dropdown-item"
                     *ngFor='let dropdownItem of config.dropDownOptions'
-                    (click)='ongridItemClick(dropdownItem.key, item.id)'>{{dropdownItem.value}}</a>
+                    (click)='ongridItemClick(dropdownItem.key, item.id)'>
+                    {{dropdownItem.value}}
+                  </a>
                 </li>
               </ul>
             </div>

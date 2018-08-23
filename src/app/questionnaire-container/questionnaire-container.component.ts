@@ -34,9 +34,6 @@ export class QuestionnaireContainerComponent implements OnInit, OnDestroy {
     private store: Store<fromRootReducers.AppState>,
     fb: FormBuilder
   ) {
-
-
-
     this.form = fb.group({});
 
     this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask('1'));
@@ -61,8 +58,6 @@ export class QuestionnaireContainerComponent implements OnInit, OnDestroy {
       if (formlyConfig) {
         this.fields = formlyConfig;
         this.cd.detectChanges();
-
-
         if (this.currentFieldChange && this.questionnaireFormErrors) {
           this.questionnaireFormErrors.forEach((errorField) => {
             this.form.get(errorField.id)
@@ -71,7 +66,6 @@ export class QuestionnaireContainerComponent implements OnInit, OnDestroy {
 
           });
         }
-
       }
     });
 

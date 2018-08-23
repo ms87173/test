@@ -24,7 +24,8 @@ export class ApplicationGridModel {
             ownerShip: new LabelValueGroupModel({ label: applicationType.get(data.type) }),
             lastUpdate: new LabelValueGroupModel({ label: moment(data.lastUpdate).format('DD MMM YYYY') }),
             lastUpdatedBy: new LabelValueGroupModel({ label: data.lastUpdatedBy }),
-            status: new LabelValueGroupModel({ label: data.status.description
+            status: new LabelValueGroupModel({ 
+                label: data.status.description
                 // ...statusMapping[`${data.status.code}`],
                 // value: data.status.reason
             })

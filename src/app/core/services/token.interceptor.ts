@@ -14,12 +14,13 @@ export class TokenInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         request = request.clone({
             setHeaders: {
-                //for custom header options
-                Authorization: `Bearer ${this.auth.getToken()}`,
+                'userId': `${this.auth.getToken()}`,
+                'Content-type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': '*',
                 'Cache-Control': 'no-cache, no-store, must-revalidate',
                 'Pragma': 'no-cache'
             },
-            //for token in cookie
             withCredentials: true
         });
         return next.handle(request);

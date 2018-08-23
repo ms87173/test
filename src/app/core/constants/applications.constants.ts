@@ -5,6 +5,12 @@ export const APPLICATION_DROPDOWN_OPTIONS = [
     }
 ];
 
+export const SORT_ORDER = {
+    default: 'default',
+    ascending: 'asc',
+    descending: 'desc'
+}
+
 export const APPLICATION_GRID_HEADING = [
     {
         key: 'description',
@@ -19,17 +25,20 @@ export const APPLICATION_GRID_HEADING = [
     {
         key: 'lastUpdate',
         value: 'LAST UPDATE',
-        showSortOption: true
+        showSortOption: true,
+        sortOrder: 'desc'
     },
     {
         key: 'lastUpdatedBy',
         value: 'LAST UPDATED BY',
-        showSortOption: true
+        showSortOption: true,
+        sortOrder: 'desc'
     },
     {
         key: 'status',
         value: 'STATUS',
-        showSortOption: true
+        showSortOption: true,
+        sortOrder: 'desc'
     }
 ];
 

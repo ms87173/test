@@ -27,7 +27,12 @@ body {
 .margin-top-0x {
     margin-top: 0px !important;
 }
-
+.cursor-pointer {
+    cursor: pointer !important;
+}
+.cursor-default {
+    cursor: default !important;
+}
 @for $i from 0 through 6 {
     .space-top-#{$i}x {
         margin-top: 10px* $i !important;
