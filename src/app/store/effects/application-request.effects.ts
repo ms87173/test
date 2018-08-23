@@ -8,7 +8,8 @@ import {
     GetApplicationRequestWorkflowsSuccess,
     GetApplicationRequestWorkflowsFailure,
     GetApplicationRequest,
-    GetApplicationRequestWorkflows
+    GetApplicationRequestWorkflows,
+    DeterminePendingTaskOfApplication
 } from '../actions/application-request.actions';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -47,7 +48,16 @@ export class ApplicationRequestEffects {
                         )
                     )
         ))
-
+    @Effect() determinePendingTaskOfApplication = this.actions$.pipe(
+        ofType(ActionTypes.DETERMINE_PENDING_TASK_OF_APPLICATION_REQUEST),
+        switchMap(
+            (action: DeterminePendingTaskOfApplication) =>
+                action.payload
+                    .filter(([actions$: Actions, storeState: AppState]) {
+                        console.log(storeState);
+                    })
+        )
+    )
     constructor(
         private applicationRequestService: ApplicationRequestService,
         private actions$: Actions

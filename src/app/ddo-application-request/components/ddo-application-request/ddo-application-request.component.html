@@ -1,12 +1,30 @@
-<router-outlet></router-outlet>
-<div class="container-fluid">
+<div class="container-fluid ddo-application-request">
+    <div class="row heading mt-3 mb-3">
+        <div class="col-md-10  pt-2 pb-2">
+            <h2>{{heading}}</h2>
+        </div>
+        <div class="col-md-2  pt-2 pb-2">
+            <a class="cancel-application" href="#" (click)="cancelApplication()">Cancel Application</a>
+        </div>
+    </div>
     <div class="row">
         <div class="col-sm-3">
-            <app-side-nav 
-                [config]='workflows'
-                [selectedParentId]= 'selectedWorkflowId'
-                [selectedChildId]= 'selectedTaskId'
-                (actions)='onSideNavClick($event)'></app-side-nav>
+            <app-side-nav [config]='workflows' [selectedParentId]='selectedWorkflowId' [selectedChildId]='selectedTaskId' (actions)='onSideNavClick($event)'></app-side-nav>
+            <contact-detail [config]='contactPersonDetails'></contact-detail>
+        </div>
+        <div class="col-sm-9">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <div class="row ddo-application-request__footer">
+        <div class="col-sm-3 mt-3 mb-3 ">
+            <button type="button" class="btn ddo-application-request__button btn-outline-primary float-left">Save for Later</button>
+        </div>
+        <div class="col-sm-9 mt-3 mb-3">
+            <div class="float-right">
+                <button type="button" class="btn btn-outline-primary ddo-application-request__button  mr-3">Back</button>
+                <button type="button" class="btn btn-outline-primary ddo-application-request__button--next">Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+            </div>
         </div>
     </div>
 </div>

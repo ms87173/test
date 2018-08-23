@@ -6,6 +6,7 @@ import { GetApplications, SetActiveApplication } from '../store/actions/applicat
 import { APPLICATION_GRID_HEADING, APPLICATION_DROPDOWN_OPTIONS, ACTION_TYPES } from '../core/constants/applications.constants';
 import { ContactDetailsModel } from '../core/models/contact-detail.model';
 import * as _ from 'lodash';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ddo-applications',
@@ -21,6 +22,7 @@ export class DdoApplicationsComponent implements OnInit {
   contactPersonDetails: any;
   applicationsData: any;
   constructor(
+    private router: Router,
     private store: Store<fromRootReducers.AppState>
   ) { }
 
@@ -46,7 +48,8 @@ export class DdoApplicationsComponent implements OnInit {
   }
   gridActions(payload) {
     switch (payload.actionType) {
-      case ACTION_TYPES.rowClicked: this.store.dispatch(new SetActiveApplication(payload.id));
+      case ACTION_TYPES.rowClicked: this.store.dispatch(new SetActiveApplication(payload.params));
+        this.router.navigateByUrl('/applications/1');
         break;
       case ACTION_TYPES.sort: this.sortApplications(this.applicationsData, payload.params);
         break;
