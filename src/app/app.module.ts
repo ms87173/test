@@ -17,7 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './core/services/token.interceptor';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { BsDropdownModule } from 'ngx-bootstrap';
+import { WindowRef } from './core/services/window-ref.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,8 @@ import { BsDropdownModule } from 'ngx-bootstrap';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }
+    },
+    WindowRef
   ],
   bootstrap: [AppComponent]
 })
