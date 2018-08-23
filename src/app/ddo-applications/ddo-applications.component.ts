@@ -6,7 +6,7 @@ import { GetApplications } from '../store/actions/applications.actions';
 import { APPLICATION_GRID_HEADING, APPLICATION_DROPDOWN_OPTIONS, ACTION_TYPES } from '../core/constants/applications.constants';
 import { ContactDetailsModel } from '../core/models/contact-detail.model';
 import * as _ from 'lodash';
-import { RouteChange } from '../store/actions/router.actions';
+import { RouteChange, RouterGo } from '../store/actions/router.actions';
 
 @Component({
   selector: 'app-ddo-applications',
@@ -49,12 +49,10 @@ export class DdoApplicationsComponent implements OnInit {
     switch (payload.actionType) {
       case ACTION_TYPES.rowClicked:
         this.store.dispatch(
-          new RouteChange({
-            path: `applications/:applicationId`,
-            params: {
-              applicationId: payload.applicationId
-            }
-          })
+          new RouterGo({
+            path: ['applications', payload.params ],
+          }
+          )
         );
         break;
       case ACTION_TYPES.sort: this.sortApplications(this.applicationsData, payload.params);
