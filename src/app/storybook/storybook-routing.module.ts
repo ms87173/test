@@ -4,6 +4,7 @@ import { LabelValueConsumerComponent } from './label-value-consumer/label-value-
 import { StorybookComponent } from './storybook/storybook.component';
 import { TileConsumerComponent } from './tile-consumer/tile-consumer.component';
 import { GridConsumerComponent } from './grid-consumer/grid-consumer.component';
+import { CheckboxConsumerComponent } from './checkbox-consumer/checkbox-consumer.component';
 
 const routes: Routes = [
     {
@@ -21,6 +22,10 @@ const routes: Routes = [
     {
         path: 'grid',
         component: GridConsumerComponent
+    },
+    {
+        path: 'checkbox',
+        component: CheckboxConsumerComponent
     }
 ];
 @NgModule({

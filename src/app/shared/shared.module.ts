@@ -20,11 +20,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
+import { CheckboxComponent } from './checkbox/checkbox.component';
 
 @NgModule({
   imports: [
     CoreModule,
-    FormsModule,
     ReactiveFormsModule,
     CommonModule,
     AccordionModule.forRoot(),
@@ -55,7 +55,8 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
     GridComponent,
     TileComponent,
     ContactDetailComponent,
-    QuestionnaireComponent
+    QuestionnaireComponent,
+    CheckboxComponent
   ],
   exports: [
     HeaderComponent,
