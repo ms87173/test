@@ -1,0 +1,27 @@
+{
+    "id": "",
+    "title": "John Robbins or Jane Robbins",
+    "heading": "Application for 2 Accounts",
+    "type": "", //joint, individual, custodial, trust,
+    "Products": [
+        "<string>" /// Interest checking
+    ],
+
+
+        "accountHolders": [
+        {
+            "firstName": "",
+            "lastName": "",
+            "middleName": "",
+            "email": "",
+            "role": [
+                "primary",
+                "custodial"
+            ]
+        }
+    ],
+    "status": {
+        "code": "", //completed, submitted, inProgress, cancelledByUser, cancelledByBanker
+        "description": "" //Waiting for Banker Review, Received by Banker Team, Account opened
+    }
+}

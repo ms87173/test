@@ -6,4 +6,5 @@ export * from './questionaire-delta-request';
 export * from './questionaire-delta-response';
 export * from './section';
 export * from './task';
+export * from './ngx-formly-models'
 

@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Task, QuestionaireDeltaRequest, QuestionaireDeltaResponse, QuestionaireDeltaError } from '../../core/models';
+import { Task, QuestionaireDeltaRequest, QuestionaireDeltaResponse, QuestionaireDeltaError, FormlyFieldConfigArrayCollection } from '../../core/models';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 export enum ActionTypes {
@@ -9,6 +9,7 @@ export enum ActionTypes {
     GET_CURRENT_TASK_FAIL = '[App State] Get Current Task Fail',
 
     ///Formly Parser Actions
+    ///Todo: Remove this  
     GET_CURRENT_FORMLY_CONFIG = '[App State] Get Current formly config',
     GET_CURRENT_FORMLY_CONFIG_SUCCESS = '[App State] Get Current formly config Success',
     GET_CURRENT_FORMLY_CONFIG_FAIL = '[App State] Get Current formly config Failure',
@@ -28,12 +29,18 @@ export enum ActionTypes {
     UPDATE_CURRENT_TASK = '[App State] Update Current Task',
 
     ///QuestionnaireErrors list
-    SET_QUESTIONNAIRE_ERRORS='[App State] Set Current Questionnaire Errors List',
-    DELETE_QUESTIONNAIRE_ERRORS_BY_QUESTION_ID='[App State] Delete Questionnaire Error From  Questionnaire Errors List By Questionnaire Id ',
+    SET_QUESTIONNAIRE_ERRORS = '[App State] Set Current Questionnaire Errors List',
+    DELETE_QUESTIONNAIRE_ERRORS_BY_QUESTION_ID = '[App State] Delete Questionnaire Error From  Questionnaire Errors List By Questionnaire Id ',
 
 
     ///Reset Questionnaire State
-    RESET_QUESTIONNAIRE_STATE_TO_INTIAL_STATE='[App State] Reset Questionnaire State To Intial State'
+    RESET_QUESTIONNAIRE_STATE_TO_INTIAL_STATE = '[App State] Reset Questionnaire State To Intial State',
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///Formly Parser Actions
+    GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG = '[App State] Get Current Questionnaire formly config',
+    GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG_SUCCESS = '[App State] Get Current Questionnaire formly config Success',
+    GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG_FAIL = '[App State] Get Current  Questionnaire formly config Failure',
 
 }
 
@@ -133,7 +140,28 @@ export class DeleteQuestionnaireErrorByQuestionId implements Action {
 }
 export class ResetQuestionnaireState implements Action {
     readonly type = ActionTypes.RESET_QUESTIONNAIRE_STATE_TO_INTIAL_STATE
-    
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+
+export class GetCurrentQuestionnaireFormlyConfig implements Action {
+    readonly type = ActionTypes.GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG
+    constructor(public payload: { task: Task, currentQuestionId: string }) {
+        this.payload = payload
+    }
+}
+export class GetCurrentQuestionnaireFormlyConfigSuccess implements Action {
+    readonly type = ActionTypes.GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG_SUCCESS
+    constructor(public payload:  FormlyFieldConfigArrayCollection[]) {
+        this.payload = payload
+    }
+}
+export class GetCurrentQuestionnaireFormlyConfigFailure implements Action {
+    readonly type = ActionTypes.GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG_FAIL
+    constructor(public payload) {
+        this.payload = payload
+    }
 }
 
 export type QuesitonnaireActions = GetCurrentTask
@@ -151,4 +179,9 @@ export type QuesitonnaireActions = GetCurrentTask
     | UpdateCurrentTask
     | SetQuestionnaireErrors
     | DeleteQuestionnaireErrorByQuestionId
-    | ResetQuestionnaireState;
+    | ResetQuestionnaireState
+    ////////////////////////////////////////////
+    | GetCurrentQuestionnaireFormlyConfig
+    | GetCurrentQuestionnaireFormlyConfigSuccess
+    | GetCurrentQuestionnaireFormlyConfigFailure
+    ;

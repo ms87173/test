@@ -12,7 +12,7 @@ import * as _ from 'lodash';
 import { Store } from '@ngrx/store';
 import { fromRootReducers } from '../../store'
 import { questionnaireActions, } from '../../store/actions';
-import { Task } from '../models';
+import { Task, FormlyFieldConfigArrayCollection } from '../models';
 import { debounceTime } from 'rxjs/operators';
 
 @Injectable()
@@ -145,7 +145,7 @@ export class NgxFormlyParserService {
       }
 
       ////Todo:Error loop for delta
-      
+
       if (delta.errors) {
         delta.errors.forEach((error) => {
           let currentSection = currTask.sections.find((section) => {
@@ -159,6 +159,64 @@ export class NgxFormlyParserService {
       }
     }
     return of(currTask);
+  }
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+
+  getFormlyFieldConfigArrayCollectionFromTask(currentTask: Task, currentQuestionId: string): Observable<FormlyFieldConfigArrayCollection[]> {
+
+    let formlyFieldConfigArrayCollections: FormlyFieldConfigArrayCollection[] = [];
+    let currTask = { ...currentTask };
+    currTask.sections.map((section: Section) => {
+      let FormlyFieldConfigArray: FormlyFieldConfig[] = this.getFormlyFieldConfigArrayFromSection(section, currentQuestionId);
+      let formlyFieldConfigArray:FormlyFieldConfigArrayCollection= new FormlyFieldConfigArrayCollection(FormlyFieldConfigArray, section.title);
+      formlyFieldConfigArrayCollections.push(formlyFieldConfigArray);
+
+
+    });
+    return of(formlyFieldConfigArrayCollections);
+  }
+
+  getFormlyFieldConfigArrayFromSection(currentSection: Section, currentQuestionId: string): FormlyFieldConfig[] {
+    let FormlyFieldConfigArray: FormlyFieldConfig[] = [];
+    let currSection = { ...currentSection };
+    currSection.questions.map((question: Question) => {
+      let field: FormlyFieldConfig = {};
+
+      //Todo: for focus on questions
+      // if (question.id == currentQuestionId) {
+      //   console.log(question.id);
+      //   console.log(currentQuestionId);
+      //   field.focus = true;
+      // }
+
+      field.key = question.id;
+      field.type = question.type;
+
+      //Todo: Need to create field trigger for delta changes
+      // field.lifecycle = this.fieldChangeLifecycleTrigger;
+
+      field.templateOptions = {
+        label: question.label,
+        options: question.options,
+        required: question.required,
+      };
+      //Todo: Implement error messgaes
+      // if (question.serverErrorMessage) {
+      //   field.validators = {
+      //     ip: {
+      //       expression: (c) => true,
+      //       message: (error, field: FormlyFieldConfig) => question.serverErrorMessage,
+      //     }
+      //   }
+      // }
+
+      FormlyFieldConfigArray.push(field);
+    });
+
+
+    return FormlyFieldConfigArray;
+
   }
 
   constructor(private apiService: ApiService,

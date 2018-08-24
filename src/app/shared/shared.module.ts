@@ -8,7 +8,7 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormGroupWrapperComponent } from './form-group-wrapper/form-group-wrapper.component';
 import { FormlyModule } from '@ngx-formly/core';
-import { AccordionModule } from 'ngx-bootstrap';
+import { AccordionModule, ButtonsModule } from 'ngx-bootstrap';
 import { LabelValueGroupComponent } from './label-value-group/label-value-group.component';
 import { CardComponent } from './card/card.component';
 import { CardHeaderComponent } from './card-header/card-header.component';
@@ -20,6 +20,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
+import { SectionComponent } from './section/section.component';
 
 @NgModule({
   imports: [
@@ -35,6 +36,9 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
       wrappers: [
         { name: 'form-group', component: FormGroupWrapperComponent },
       ],
+      validationMessages:[
+        {name: 'server-error', message: (err) => err }
+      ]
     }),
     FormlyBootstrapModule,
     CoreModule
@@ -55,7 +59,8 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
     GridComponent,
     TileComponent,
     ContactDetailComponent,
-    QuestionnaireComponent
+    QuestionnaireComponent,
+    SectionComponent
   ],
   exports: [
     HeaderComponent,
@@ -72,7 +77,8 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
     GridComponent,
     TileComponent,
     ContactDetailComponent,
-    QuestionnaireComponent
+    QuestionnaireComponent,
+    SectionComponent
   ]
 })
 export class SharedModule { }

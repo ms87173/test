@@ -7,7 +7,7 @@ import { TestFeatureRoutes } from './test-feature-routes';
 import { ProductsListService } from './services/products-list.service';
 import { CoreModule } from '../core';
 import { SharedModule } from '../shared/shared.module';
-import { QuestionnaireContainerComponent } from '../questionnaire-container/questionnaire-container.component';
+import { TaskContainerComponent } from '../task-container/task-container.component';
 
 @NgModule({
   imports: [
@@ -18,7 +18,7 @@ import { QuestionnaireContainerComponent } from '../questionnaire-container/ques
     RouterModule.forChild(TestFeatureRoutes)
   ],
   declarations: [ProductsListComponent,
-    QuestionnaireContainerComponent ],
+  TaskContainerComponent ],
   providers:[ProductsListService ],
 
 })
