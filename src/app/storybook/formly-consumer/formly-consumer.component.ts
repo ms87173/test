@@ -16,7 +16,7 @@ export class FormlyConsumerComponent implements OnInit {
 
   fields: Array<FormlyFieldConfig> = [
     {
-      key: 'termsAndCondition',
+      key: 'requiredCheckBox',
       type: 'customCheckbox',
       templateOptions: {
         label: 'Hey there you need to check this box as this is required',
@@ -24,7 +24,7 @@ export class FormlyConsumerComponent implements OnInit {
       },
     },
     {
-      key: 'termsAndCondition',
+      key: 'requiredWithNoMarker',
       type: 'customCheckbox',
       templateOptions: {
         label: 'Hey there you need to check this box as this is required but i have no required marker ',
@@ -33,7 +33,7 @@ export class FormlyConsumerComponent implements OnInit {
       },
     },
     {
-      key: 'termsAndCondition',
+      key: 'OptionalCheckbox',
       type: 'customCheckbox',
       templateOptions: {
         label: 'Hey there i am an optional checkbox. But please do not ignore me. ',
@@ -41,7 +41,7 @@ export class FormlyConsumerComponent implements OnInit {
       },
     },
     {
-      key: 'termsAndCondition',
+      key: 'checkboxWithHelpText',
       type: 'customCheckbox',
       templateOptions: {
         label: 'I am a checkbox with little help text ',
