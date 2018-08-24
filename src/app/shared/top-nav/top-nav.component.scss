@@ -1,20 +1,23 @@
-.example-icon {
-    padding: 0 14px;
-}
+.top-nav {
+    .example-icon {
+        padding: 0 14px;
+    }
 
-.example-spacer {
-    flex: 1 1 auto;
-}
+    .example-spacer {
+        flex: 1 1 auto;
+    }
 
-.navbar--primary {
-    background: #0d4061;
-}
-.navbar-brand {
-  color: white !important;
-}
-.mat-icon {
-    cursor: pointer;
-}
-.btn-link {
-  color: white;
+    .navbar--primary {
+        background: #0d4061;
+    }
+    .navbar-brand {
+    color: white !important;
+    }
+    .mat-icon {
+        cursor: pointer;
+    }
+    .btn-link {
+    color: white;
+
+    }
 }
