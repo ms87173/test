@@ -20,7 +20,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
-import { CheckboxComponent } from './checkbox/checkbox.component';
 
 @NgModule({
   imports: [
@@ -35,9 +34,7 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
       wrappers: [
         { name: 'form-group', component: FormGroupWrapperComponent },
       ],
-    }),
-    FormlyBootstrapModule,
-    CoreModule
+    })
   ],
   providers: [],
   declarations: [
@@ -56,7 +53,6 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
     TileComponent,
     ContactDetailComponent,
     QuestionnaireComponent,
-    CheckboxComponent
   ],
   exports: [
     HeaderComponent,

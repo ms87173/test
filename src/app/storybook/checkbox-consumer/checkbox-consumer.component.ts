@@ -16,7 +16,7 @@ export class CheckboxConsumerComponent implements OnInit {
   fields: FormlyFieldConfig[] = [
     {
       key: 'name',
-      type: 'custom-checkbox',
+      type: 'customCheckbox',
       templateOptions: {
         label: 'Do you agree Terms and condition',
         required: true,

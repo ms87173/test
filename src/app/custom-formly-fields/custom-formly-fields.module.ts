@@ -13,7 +13,8 @@ import { TooltipModule } from 'ngx-bootstrap';
     FormsModule,
     FormlyModule.forRoot({
       types: [
-        { name: 'custom-checkbox', component: CheckboxComponent },
+        { name: 'customCheckbox', component: CheckboxComponent },
+        { name: 'select', component: DropdownComponent }
       ]
     }),
     FormlyBootstrapModule,
