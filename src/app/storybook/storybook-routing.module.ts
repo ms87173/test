@@ -4,23 +4,35 @@ import { LabelValueConsumerComponent } from './label-value-consumer/label-value-
 import { StorybookComponent } from './storybook/storybook.component';
 import { TileConsumerComponent } from './tile-consumer/tile-consumer.component';
 import { GridConsumerComponent } from './grid-consumer/grid-consumer.component';
+import { FormlyConsumerComponent } from './formly-consumer/formly-consumer.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: StorybookComponent
-    },
-    {
-        path: 'labelgroup',
-        component: LabelValueConsumerComponent
-    },
-    {
-        path: 'tile',
-        component: TileConsumerComponent
-    },
-    {
-        path: 'grid',
-        component: GridConsumerComponent
+        component: StorybookComponent,
+        children: [
+            {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: 'labelgroup'
+            },
+            {
+                path: 'labelgroup',
+                component: LabelValueConsumerComponent
+            },
+            {
+                path: 'tile',
+                component: TileConsumerComponent
+            },
+            {
+                path: 'grid',
+                component: GridConsumerComponent
+            },
+            {
+                path: 'formly',
+                component: FormlyConsumerComponent
+            }
+        ]
     }
 ];
 @NgModule({

@@ -6,6 +6,9 @@
         // top: 50%;
         // width: 100%;
     }
+    .collapsible-icon {
+        -webkit-text-stroke: 2px white;
+    }
     .status-icon {
         position: absolute;
         transform: translate(0, -50%);
@@ -16,6 +19,7 @@
         }
         &--completed {
             color: green;
+            -webkit-text-stroke: 2px white;
         }
     }
     &__heading {
@@ -38,18 +42,29 @@
         padding: 0;
     }
     .list-item {
-        padding-left: 14%;
+        padding-left: 18%;
         cursor: pointer;
         min-height: 65px;
         border: 0;
         background: #fafafa;
+        border: 1px solid #e5e5e5;
         &:hover {
             background: #e6f8fe;
+            .collapsible-icon {
+                -webkit-text-stroke: 2px #e6f8fe;
+            }
         }
         &.active {
             background: #e6f8fe;
             color: black;
+            font-weight: bold;
             border-left: 5px solid #005AA1;
+            a {
+                font-weight: bold;
+            }
+            i {
+                -webkit-text-stroke: 2px #e6f8fe;
+            }
         }
         .status-icon {
             position: absolute;

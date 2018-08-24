@@ -53,9 +53,11 @@ export class GetApplicationRequestWorkflowsFailure implements Action {
         this.payload = payload;
     }
 }
-export class DeterminePendingTaskOfApplicat implements Action {
+export class DeterminePendingTaskOfApplication implements Action {
     readonly type = ActionTypes.DETERMINE_PENDING_TASK_OF_APPLICATION_REQUEST;
-    constructor() { }
+    constructor(public payload) {
+        this.payload = payload;
+     }
 }
 export class GetApplicationRequestTask implements Action {
     readonly type = ActionTypes.GET_APPLICATION_REQUEST_TASK;
@@ -66,7 +68,7 @@ export class GetApplicationRequestTask implements Action {
 export class GetApplicationRequestTaskSuccess implements Action {
     readonly type = ActionTypes.GET_APPLICATION_REQUEST_TASK_SUCCESS;
     constructor(public payload) {
-        this.payload = payload
+        this.payload = payload;
     }
 }
 export class GetApplicationRequestTaskFailure implements Action {
@@ -81,7 +83,7 @@ export type ApplicationRequestActions = GetApplicationRequest
     | GetApplicationRequestTask
     | GetApplicationRequestTaskFailure
     | GetApplicationRequestTaskSuccess
-    | DeterminePendingTaskOfApplicat
+    | DeterminePendingTaskOfApplication
     | GetApplicationRequestWorkflows
     | GetApplicationRequestWorkflowsFailure
     | GetApplicationRequestWorkflowsSuccess

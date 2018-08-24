@@ -8,11 +8,13 @@ export interface ApplicationRequestState {
     workflows: any;
     loaded: boolean;
     loading: boolean;
+    activeTask: any;
 }
 
 export const InitialState: ApplicationRequestState = {
     application: {},
     workflows: [],
+    activeTask: null,
     loaded: false,
     loading: false
 }
@@ -22,11 +24,11 @@ export function reducer(
     action: ApplicationRequestActions
 ): ApplicationRequestState {
     switch (action.type) {
-        case ActionTypes.GET_APPLICATION_REQUEST: 
-        return {
-            ...state,
-            loading: true
-        }
+        case ActionTypes.GET_APPLICATION_REQUEST:
+            return {
+                ...state,
+                loading: true
+            }
         case ActionTypes.GET_APPLICATION_REQUEST_SUCCESS:
         return {
             ...state,
@@ -35,10 +37,19 @@ export function reducer(
             loading: false
         };
         case ActionTypes.GET_APPLICATION_REQUEST_WORKFLOWS_SUCCESS:
-        return {
-            ...state,
-            workflows: action.payload
-        }
+            return {
+                ...state,
+                workflows: action.payload
+            };
+        case ActionTypes.DETERMINE_PENDING_TASK_OF_APPLICATION_REQUEST:
+            let workflows = [];
+            workflows = state.workflows.find(e => {
+                console.log(e);
+            });
+            return {
+                ...state,
+                workflows
+            };
         default:
             return state;
     }

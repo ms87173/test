@@ -1,12 +1,30 @@
-
-    i.right {
-        border: solid black;
-        border-width: 0 3px 3px 0;
-        display: inline-block;
-        padding: 3px;
-      }
-      .right {
-        transform: rotate(-45deg);
-        -webkit-transform: rotate(-45deg);
+.ddo-application-request {
+    &__page-heading {
+        border: 1px solid #e8ecf1;
+        .heading {
+            margin-left: 30px;
+        }
     }
-          
+    .cancel-application {
+        top: 25%;
+        position: absolute;
+    }
+    &__footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        border: 1px solid #e8ecf1;
+        background: #ffffff;
+        color: #ffffff;
+        text-align: center;
+        max-height: 65px;
+    }
+    &__button{
+        border: 1px solid #002d72;
+        color: #002d72;
+        &--next{
+            background: #002d72;
+            color: #ffffff;
+        }
+    }
+}

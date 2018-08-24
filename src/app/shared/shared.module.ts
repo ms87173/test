@@ -25,8 +25,6 @@ import { SectionComponent } from './section/section.component';
 @NgModule({
   imports: [
     CoreModule,
-    FormsModule,
-    ReactiveFormsModule,
     CommonModule,
     AccordionModule.forRoot(),
     ReactiveFormsModule,
