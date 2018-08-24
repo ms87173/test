@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: []
+  declarations: [DropdownComponent]
 })
 export class CustomFormlyFieldsModule { }
