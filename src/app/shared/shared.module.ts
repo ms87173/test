@@ -24,8 +24,6 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
 @NgModule({
   imports: [
     CoreModule,
-    FormsModule,
-    ReactiveFormsModule,
     CommonModule,
     AccordionModule.forRoot(),
     ReactiveFormsModule,
@@ -35,9 +33,7 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
       wrappers: [
         { name: 'form-group', component: FormGroupWrapperComponent },
       ],
-    }),
-    FormlyBootstrapModule,
-    CoreModule
+    })
   ],
   providers: [],
   declarations: [

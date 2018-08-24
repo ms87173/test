@@ -1,3 +1,10 @@
-<p>
-  dropdown works!
-</p>
+<select class="form-control"
+  [formControl]="formControl"
+  [class.is-invalid]="showError"
+  [formlyAttributes]="field">
+    <ng-container *ngFor="let item of to.options">
+      <option [value]="item[valueProp]" [disabled]="item.disabled">
+        {{ item[labelProp] }}
+      </option>
+    </ng-container>
+</select>
