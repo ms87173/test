@@ -59,11 +59,7 @@ import { SectionComponent } from './section/section.component';
     TileComponent,
     ContactDetailComponent,
     QuestionnaireComponent,
-<<<<<<< HEAD
     SectionComponent  ],
-=======
-  ],
->>>>>>> 4980d5945aea65fbfadfc510a998631cc72ab27e
   exports: [
     HeaderComponent,
     TabsComponent,
