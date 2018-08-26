@@ -12,18 +12,20 @@
                         {
                             "id": "InterestCheckingCheckBox",
                             "label": "Would you like to earn interest this account?",
-                            "type": "radio",
+                            "type": "select",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Interest Account",
                             "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
+                                {"label": "Iron Man", "value": "iron_man"
                                 },
-                                {
-                                    "label": "No",
-                                    "value": "False"
+                                {"label": "Captain America", "value": "captain_america"
+                                },
+                                {"label": "Black Widow", "value": "black_widow"
+                                },
+                                {"label": "Hulk", "value": "hulk"
+                                },
+                                {"label": "Captain Marvel", "value": "captain_marvel"
                                 }
                             ],
                             "tooltipText": "<string>",

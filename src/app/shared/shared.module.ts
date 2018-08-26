@@ -58,8 +58,7 @@ import { SectionComponent } from './section/section.component';
     TileComponent,
     ContactDetailComponent,
     QuestionnaireComponent,
-    SectionComponent
-  ],
+    SectionComponent  ],
   exports: [
     HeaderComponent,
     TabsComponent,
