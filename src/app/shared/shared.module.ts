@@ -31,10 +31,15 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
     FormsModule,
     FormlyBootstrapModule,
     FormlyModule.forRoot({
-      wrappers: [
-        { name: 'form-group', component: FormGroupWrapperComponent },
+      wrappers:  [
+        {  name:  'form-group',  component:  FormGroupWrapperComponent  },
       ],
+      validationMessages: [
+        { name:  'server-error',  message:  (err)  =>  err  }
+      ]
     })
+
+
   ],
   providers: [],
   declarations: [
