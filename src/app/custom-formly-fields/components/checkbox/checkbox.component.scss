@@ -1,0 +1,11 @@
+.custom-checkbox {
+    .control-label-help {
+        cursor: pointer;
+        -webkit-text-stroke: 1px #0d4061;
+        background: #ffffff;
+        color: white;
+    }
+    .custom-control-label::before {
+        border-radius: 0;
+    }
+}
