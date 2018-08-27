@@ -1,4 +1,5 @@
 export class QuestionaireDeltaRequest {
-    id:string;
-    value:string;
+  model:any;
+  questionType:string;
+  questionId
 }

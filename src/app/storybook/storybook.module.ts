@@ -8,8 +8,8 @@ import { TileConsumerComponent } from './tile-consumer/tile-consumer.component';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { GridConsumerComponent } from './grid-consumer/grid-consumer.component';
 import { CustomFormlyFieldsModule } from '../custom-formly-fields/custom-formly-fields.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {FormlyModule} from '@ngx-formly/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormlyModule } from '@ngx-formly/core';
 import { FormlyConsumerComponent } from './formly-consumer/formly-consumer.component';
 
 @NgModule({
@@ -20,7 +20,8 @@ import { FormlyConsumerComponent } from './formly-consumer/formly-consumer.compo
     SharedModule,
     CustomFormlyFieldsModule,
     FormlyModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    
   ],
   declarations: [LabelValueConsumerComponent,
     StorybookComponent,

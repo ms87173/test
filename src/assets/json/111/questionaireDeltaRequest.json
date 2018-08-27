@@ -1,0 +1,8 @@
+{
+    "requestid":"<string>",
+    "workFlowId":"<string>",
+    "taskId":"<string>",
+    "questionId":"string",
+    "questionType":"<string>",
+    "answer":"string"
+}

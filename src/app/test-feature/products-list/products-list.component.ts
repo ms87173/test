@@ -17,11 +17,6 @@ export class ProductsListComponent implements OnInit {
     private store: Store<fromProductReducers.State>) { }
 
   ngOnInit() {
-
-    // this.store.dispatch(new TestFeatureActions.GetProducts())
-    // this.store.pipe(select(FromProductSelectors.getProducts))
-    //   .subscribe((products) => {
-    //     this.products = products;
-    //   });
   }
 }
+

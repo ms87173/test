@@ -34,6 +34,6 @@ export function applicationReducer(
     }
 }
 
-export const getApplicaitonRequets = (state: ApplicationState) => state.application;
+export const getApplicaiton = (state: ApplicationState) => state.application;
 export const getApplicationLoaded = (state: ApplicationState) => state.loaded;
 export const getApplicationLoading = (state: ApplicationState) => state.loading;

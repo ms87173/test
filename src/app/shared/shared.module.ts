@@ -7,8 +7,7 @@ import { TopNavComponent } from './top-nav/top-nav.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormGroupWrapperComponent } from './form-group-wrapper/form-group-wrapper.component';
-import { FormlyModule } from '@ngx-formly/core';
-import { AccordionModule } from 'ngx-bootstrap';
+import { AccordionModule, ButtonsModule } from 'ngx-bootstrap';
 import { LabelValueGroupComponent } from './label-value-group/label-value-group.component';
 import { CardComponent } from './card/card.component';
 import { CardHeaderComponent } from './card-header/card-header.component';
@@ -17,9 +16,9 @@ import { CardFooterComponent } from './card-footer/card-footer.component';
 import { GridComponent } from './grid/grid.component';
 import { TileComponent } from './tile/tile.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
-import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
+import { TooltipModule } from 'ngx-bootstrap';
+
 
 @NgModule({
   imports: [
@@ -28,17 +27,9 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
     CommonModule,
     AccordionModule.forRoot(),
     FormsModule,
-    FormlyBootstrapModule,
-    FormlyModule.forRoot({
-      wrappers:  [
-        {  name:  'form-group',  component:  FormGroupWrapperComponent  },
-      ],
-      validationMessages: [
-        { name:  'server-error',  message:  (err)  =>  err  }
-      ]
-    })
-
-
+    
+    CoreModule,
+    TooltipModule.forRoot(),
   ],
   providers: [],
   declarations: [
@@ -55,8 +46,7 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
     CardFooterComponent,
     GridComponent,
     TileComponent,
-    ContactDetailComponent,
-    QuestionnaireComponent
+    ContactDetailComponent
   ],
   exports: [
     HeaderComponent,
@@ -72,8 +62,9 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
     CardFooterComponent,
     GridComponent,
     TileComponent,
-    ContactDetailComponent,
-    QuestionnaireComponent
+    ContactDetailComponent  
+
+
   ]
 })
 export class SharedModule { }
