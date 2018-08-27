@@ -9,6 +9,7 @@ import { ContactDetailsModel } from '../../../core/models/contact-detail.model';
 import { RouterGo } from '../../../store/actions/router.actions';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'ddo-application-request',
   templateUrl: './ddo-application-request.component.html',
   styleUrls: ['./ddo-application-request.component.scss'],
@@ -22,7 +23,7 @@ export class DdoApplicationRequestComponent implements OnInit {
   applicationHeading: any;
   heading: any;
   contactPersonDetails: any;
-  initalRender: boolean = true;
+  initalRender = true;
   constructor(
     private store: Store<fromRootReducers.AppState>
   ) { }
@@ -41,7 +42,7 @@ export class DdoApplicationRequestComponent implements OnInit {
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationWorkflows)
       .subscribe((workflows: any) => {
         this.workflows = workflows && workflows.map((workflow) => new WorkFlowsSideNavModel(workflow));
-        if(this.initalRender && this.workflows && this.workflows.length > 0) {
+        if (this.initalRender && this.workflows && this.workflows.length > 0) {
           this.store.dispatch(new DeterminePendingTaskOfApplication(this.workflows));
         }
       });
@@ -56,14 +57,12 @@ export class DdoApplicationRequestComponent implements OnInit {
   onSideNavClick(payload) {
     this.selectedTaskId = payload.childId;
     this.selectedWorkflowId = payload.parentId;
-    this.store.dispatch(
-      new RouterGo({
-        path: ['applications', payload.childId ],
-      }
-      )
-    );
-    console.log(payload)
-    console.log(this.selectedTaskId, this.selectedWorkflowId);
+    // this.store.dispatch(
+    //   new RouterGo({
+    //     path: ['applications', this.application.id, 'tasks', payload.type],
+    //   }
+    //   )
+    // );
   }
 
 }

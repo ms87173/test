@@ -8,11 +8,10 @@ const routes: Routes = [
   {
     path: '',
     component: DdoApplicationRequestComponent,
-    children:[
+    children: [
       {
-        path:"tasks",
-        component:DdoApplicationRequestTasksComponent
-        
+        path: 'tasks',
+        component: DdoApplicationRequestTasksComponent
       }
     ]
   },
