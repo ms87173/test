@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
-// import {BrowserModule} from '@angular/platform-browser';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { FormlyModule } from '@ngx-formly/core';

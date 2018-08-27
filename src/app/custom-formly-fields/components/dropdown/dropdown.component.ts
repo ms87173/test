@@ -10,5 +10,4 @@ import { FieldType } from '@ngx-formly/core';
 export class DropdownComponent extends FieldType {
   get labelProp(): string { return this.to.labelProp || 'label'; }
   get valueProp(): string { return this.to.valueProp || 'value'; }
-  get groupProp(): string { return this.to.groupProp || 'group'; }
 }

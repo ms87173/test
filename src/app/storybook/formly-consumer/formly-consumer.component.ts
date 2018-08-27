@@ -19,27 +19,12 @@ export class FormlyConsumerComponent implements OnInit {
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
-
-  fields: Array<FormlyFieldConfig> = [
-    {
-      key: 'marvel1',
-      type: 'select',
-      templateOptions: {
-        label: 'Normal Select',
-        options: [
-          { label: 'Iron Man', value: 'iron_man' },
-          { label: 'Captain America', value: 'captain_america' },
-          { label: 'Black Widow', value: 'black_widow' },
-          { label: 'Hulk', value: 'hulk' },
-          { label: 'Captain Marvel', value: 'captain_marvel' },
-        ],
-      }
-    },
-  ];
+  fields: Array<FormlyFieldConfig>;
   listData: any;
+
   constructor() { }
+
   ngOnInit() {
-    // private fields: Array<FormlyFieldConfig> = [];
     this.listData = ['Alabama', 'Alaska'];
     this.fields = [
       {
@@ -48,7 +33,7 @@ export class FormlyConsumerComponent implements OnInit {
         templateOptions: {
           label: 'Hey there you need to check this box as this is required',
           required: true,
-        },
+        }
       },
       {
         key: 'requiredWithNoMarker',
@@ -57,7 +42,7 @@ export class FormlyConsumerComponent implements OnInit {
           label: 'Hey there you need to check this box as this is required but i have no required marker ',
           required: true,
           hideRequiredMarker: true,
-        },
+        }
       },
       {
         key: 'OptionalCheckbox',
@@ -65,7 +50,7 @@ export class FormlyConsumerComponent implements OnInit {
         templateOptions: {
           label: 'Hey there i am an optional checkbox. But please do not ignore me. ',
           hideRequiredMarker: true,
-        },
+        }
       },
       {
         key: 'checkboxWithHelpText',
@@ -78,7 +63,7 @@ export class FormlyConsumerComponent implements OnInit {
             content: 'Hey this is tooltip',
             placement: 'right'
           }
-        },
+        }
       },
       {
         key: 'marvel1',
@@ -90,9 +75,9 @@ export class FormlyConsumerComponent implements OnInit {
             { label: 'Captain America', value: 'captain_america' },
             { label: 'Black Widow', value: 'black_widow' },
             { label: 'Hulk', value: 'hulk' },
-            { label: 'Captain Marvel', value: 'captain_marvel' },
-          ],
-        },
+            { label: 'Captain Marvel', value: 'captain_marvel' }
+          ]
+        }
       },
       {
         key: 'radioButtonText',
@@ -101,23 +86,24 @@ export class FormlyConsumerComponent implements OnInit {
           label: 'Do you have a U.S. Social Security Number?',
           options: [
             { name: 'Yes', value: 'Yes', id: 0 },
-            { name: 'No', value: 'No', id: 1 },
+            { name: 'No', value: 'No', id: 1 }
           ],
           valueProp: 'value',
-          labelProp: 'name',
+          labelProp: 'name'
         },
       },
-      // {   key: 'text',
-      //     type: 'typeahead',
-      //     templateOptions: {
-      //       label: 'Username',
-      //       options: (text$: Observable<string>) =>
-      //         text$
-      //         .distinctUntilChanged()
-      //         .map(term => term.length < 2 ? []
-      //           : this.listData.filter(v => new RegExp(term, 'gi').test(v)).splice(0, 10)),
-      //     },
-      //   },
+      {
+        key: 'text',
+        type: 'typeahead',
+        templateOptions: {
+          label: 'Username',
+          options: (text$: Observable<string>) =>
+            text$
+              .distinctUntilChanged()
+              .map(term => term.length < 2 ? []
+                : this.listData.filter(v => new RegExp(term, 'gi').test(v)).splice(0, 10)),
+        }
+      }
     ];
   }
 }
