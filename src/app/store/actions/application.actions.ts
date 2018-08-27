@@ -35,54 +35,7 @@ export class ClearApplicationRequest implements Action {
     readonly type = ActionTypes.CLEAR_APPLICATION_REQUEST;
     constructor() { }
 }
-export class GetApplicationRequestWorkflows implements Action {
-    readonly type = ActionTypes.GET_APPLICATION_REQUEST_WORKFLOWS;
-    constructor(public payload) {
-        this.payload = payload;
-    }
-}
-export class GetApplicationRequestWorkflowsSuccess implements Action {
-    readonly type = ActionTypes.GET_APPLICATION_REQUEST_WORKFLOWS_SUCCESS;
-    constructor(public payload) {
-        this.payload = payload;
-    }
-}
-export class GetApplicationRequestWorkflowsFailure implements Action {
-    readonly type = ActionTypes.GET_APPLICATION_REQUEST_WORKFLOWS_FAILURE;
-    constructor(public payload) {
-        this.payload = payload;
-    }
-}
-export class DeterminePendingTaskOfApplicat implements Action {
-    readonly type = ActionTypes.DETERMINE_PENDING_TASK_OF_APPLICATION_REQUEST;
-    constructor() { }
-}
-export class GetApplicationRequestTask implements Action {
-    readonly type = ActionTypes.GET_APPLICATION_REQUEST_TASK;
-    constructor(public payload) {
-        this.payload = payload;
-    }
-}
-export class GetApplicationRequestTaskSuccess implements Action {
-    readonly type = ActionTypes.GET_APPLICATION_REQUEST_TASK_SUCCESS;
-    constructor(public payload) {
-        this.payload = payload
-    }
-}
-export class GetApplicationRequestTaskFailure implements Action {
-    readonly type = ActionTypes.GET_APPLICATION_REQUEST_TASK_FAILURE;
-    constructor(public payload) {
-        this.payload = payload;
-    }
-}
-export type ApplicationRequestActions = GetApplicationRequest
+export type ApplicationActions = GetApplicationRequest
     | GetApplicationRequestFailure
     | GetApplicationRequestSuccess
-    | GetApplicationRequestTask
-    | GetApplicationRequestTaskFailure
-    | GetApplicationRequestTaskSuccess
-    | DeterminePendingTaskOfApplicat
-    | GetApplicationRequestWorkflows
-    | GetApplicationRequestWorkflowsFailure
-    | GetApplicationRequestWorkflowsSuccess
     | ClearApplicationRequest;
