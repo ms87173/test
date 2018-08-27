@@ -4,12 +4,15 @@
 [model]="model"
 [fields]="fields"
 ></app-questionnaire> -->
+
+
 <div *ngIf="formlyFieldConfigArrayCollections?.length > 0">
 
 
   <div *ngFor="let formlyFieldConfigArray of formlyFieldConfigArrayCollections; let index = index;">
     <section [formlyFieldConfigArray]="formlyFieldConfigArray">
-    </section>
+    </section> 
 
   </div>
 </div>
+

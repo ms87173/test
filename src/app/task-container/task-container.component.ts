@@ -13,16 +13,10 @@ import { Task } from '../core/models';
   styleUrls: ['./task-container.component.css']
 })
 export class TaskContainerComponent implements OnInit, OnDestroy {
-  // form = new FormGroup({});
-  // options: FormlyFormOptions = {};
-  // model: any = {}
-  // fields: FormlyFieldConfig[];
 
-  forms: FormArray=null;
-  options: FormlyFormOptions[] =[];
-  model: any = {}
-
-
+  forms: FormArray = null;
+  options: FormlyFormOptions[] = [];
+  model: any = {};
   currentTask: Task;
   currentFieldChange: QuestionaireDeltaResponse;
   mergedCurrentTaskWithDelta: Task;
@@ -32,7 +26,7 @@ export class TaskContainerComponent implements OnInit, OnDestroy {
 
   /////////////////////////////////////////
 
-  formlyFieldConfigArrayCollections:FormlyFieldConfigArrayCollection[]=[];
+  formlyFieldConfigArrayCollections: FormlyFieldConfigArrayCollection[] = [];
 
 
   constructor(
@@ -50,7 +44,6 @@ export class TaskContainerComponent implements OnInit, OnDestroy {
       takeWhile(() => this.isComponentActive)
     ).subscribe(
       (currTask) => {
-
         if (currTask) {
           this.currentTask = currTask;
           this.store.dispatch(new fromRootActions
@@ -65,9 +58,9 @@ export class TaskContainerComponent implements OnInit, OnDestroy {
     ).subscribe((formlyFieldConfigArrayCollections) => {
       if (formlyFieldConfigArrayCollections) {
         // this.fields = formlyConfig;
-        this.formlyFieldConfigArrayCollections=formlyFieldConfigArrayCollections;
+        this.formlyFieldConfigArrayCollections = formlyFieldConfigArrayCollections;
         this.forms = new FormArray(this.formlyFieldConfigArrayCollections.map(() => new FormGroup({})));
-        this.options = this.formlyFieldConfigArrayCollections.map(() => <FormlyFormOptions>{});    
+        this.options = this.formlyFieldConfigArrayCollections.map(() => <FormlyFormOptions>{});
         this.cd.detectChanges();
         //Todo: Show server error changes   
         // if (this.currentFieldChange && this.questionnaireFormErrors) {

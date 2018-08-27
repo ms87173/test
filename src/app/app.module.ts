@@ -19,11 +19,12 @@ import { TokenInterceptor } from './core/services/token.interceptor';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { WindowRef } from './core/services/window-ref.service';
 import { CustomFormlyFieldsService } from './custom-formly-fields/services/custom-formly-fields.service';
+import { CustomFormlyFieldsModule } from './custom-formly-fields/custom-formly-fields.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent  
   ],
   imports: [
     AngularFontAwesomeModule,
@@ -36,7 +37,7 @@ import { CustomFormlyFieldsService } from './custom-formly-fields/services/custo
     HttpClientModule,
     HttpModule,
     AppStoreModule,
-    // CustomFormlyFieldsModule,
+    CustomFormlyFieldsModule,
     AppRoutingModule
   ],
   providers: [

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
-import { FormlyFieldConfigArrayCollection } from '../../core';
+import { FormlyFieldConfigArrayCollection } from '../core';
 
 @Component({
   selector: 'section',
