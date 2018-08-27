@@ -6,6 +6,7 @@ import { DeterminePendingTaskOfApplication } from '../../../store/actions/workfl
 import WorkFlowsSideNavModel from '../../../core/models/workflow-sidenav.model';
 import { APPLICATION_HEADING } from '../../../core/constants/application-request.constants';
 import { ContactDetailsModel } from '../../../core/models/contact-detail.model';
+import { RouterGo } from '../../../store/actions/router.actions';
 
 @Component({
   selector: 'ddo-application-request',
@@ -53,7 +54,16 @@ export class DdoApplicationRequestComponent implements OnInit {
   }
 
   onSideNavClick(payload) {
-    // console.log(payload);
+    this.selectedTaskId = payload.childId;
+    this.selectedWorkflowId = payload.parentId;
+    this.store.dispatch(
+      new RouterGo({
+        path: ['applications', payload.childId ],
+      }
+      )
+    );
+    console.log(payload)
+    console.log(this.selectedTaskId, this.selectedWorkflowId);
   }
 
 }

@@ -9,7 +9,7 @@
     </div>
     <div class="row">
         <div class="col-sm-3 pl-0">
-            <app-side-nav [config]='workflows' [selectedParentId]='selectedWorkflowId' [selectedChildId]='selectedTaskId' (actions)='onSideNavClick($event)'></app-side-nav>
+            <app-side-nav [config]='workflows' [(selectedParentId)]='selectedWorkflowId' [(selectedChildId)]='selectedTaskId' (actions)='onSideNavClick($event)'></app-side-nav>
             <contact-detail [config]='contactPersonDetails'></contact-detail>
         </div>
         <div class="col-sm-9">
