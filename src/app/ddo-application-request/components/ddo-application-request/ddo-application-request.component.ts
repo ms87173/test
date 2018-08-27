@@ -29,7 +29,7 @@ export class DdoApplicationRequestComponent implements OnInit {
     this.selectedWorkflowId = '1';
     this.selectedTaskId = '2';
     this.applicationHeading = new Map(Object.entries(APPLICATION_HEADING));
-    this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaitonRequest).
+    this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaiton).
       subscribe((application: any) => {
         this.application = application;
         this.heading = this.applicationHeading.get(this.application.type);
@@ -38,7 +38,7 @@ export class DdoApplicationRequestComponent implements OnInit {
       subscribe((contactDetail: any) => {
         this.contactPersonDetails = new ContactDetailsModel(contactDetail);
       });
-    this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationRequestWorkflows)
+    this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationWorkflows)
       .subscribe((workflows: any) => {
         this.workflows = workflows && workflows.map((workflow) => new WorkFlowsSideNavModel(workflow));
       });
