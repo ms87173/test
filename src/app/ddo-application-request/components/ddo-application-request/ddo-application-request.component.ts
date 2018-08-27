@@ -21,14 +21,12 @@ export class DdoApplicationRequestComponent implements OnInit {
   applicationHeading: any;
   heading: any;
   contactPersonDetails: any;
-
+  initalRender: boolean = true;
   constructor(
     private store: Store<fromRootReducers.AppState>
   ) { }
 
   ngOnInit() {
-    this.selectedWorkflowId = '1';
-    this.selectedTaskId = '2';
     this.applicationHeading = new Map(Object.entries(APPLICATION_HEADING));
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaiton).
       subscribe((application: any) => {
@@ -42,9 +40,18 @@ export class DdoApplicationRequestComponent implements OnInit {
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationWorkflows)
       .subscribe((workflows: any) => {
         this.workflows = workflows && workflows.map((workflow) => new WorkFlowsSideNavModel(workflow));
+        if(this.initalRender && this.workflows && this.workflows.length > 0) {
+          this.store.dispatch(new DeterminePendingTaskOfApplication(this.workflows));
+        }
       });
-    this.store.dispatch(new DeterminePendingTaskOfApplication(this.workflows));
+    this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationActiveTask)
+      .subscribe((activeTaskData: any) => {
+        this.selectedTaskId = activeTaskData.taskId;
+        this.selectedWorkflowId = activeTaskData.workflowId;
+        this.initalRender = this.selectedTaskId && this.selectedWorkflowId ? false : true;
+      });
   }
+
   onSideNavClick(payload) {
     // console.log(payload);
   }
