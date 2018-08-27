@@ -1,4 +1,5 @@
 import { ActionTypes, WorkflowsActions } from '../actions/workflows.action';
+import { Action } from 'rxjs/internal/scheduler/Action';
 
 export interface WorkflowsState {
     workflows: any,
@@ -49,18 +50,15 @@ export function reducer(
                 loading: true,
                 workflows: action.payload
             }
-        // case ActionTypes.SET_ACTIVE_APPLICATION:
-        //     const id = action.payload;
-        //     let applications = [];
-        //     applications = state.applications.map(e =>{
-        //         e.active = e.id === id
-        //         return e
-        //     });
-        //     return {
-        //         ...state,
-        //         applications
-        //     };
-        // case ActionTypes.GET_APPLICATION_REQUEST_WORKFLOWS_FAIL:
+        case ActionTypes.SET_ACTIVE_TASK:
+            const {workflowId, taskId} = action.payload;
+            return {
+                ...state,
+                activeTask: {
+                    workflowId,
+                    taskId
+                }
+            }
         default:
             return state;
     }
@@ -69,8 +67,5 @@ export function reducer(
 export const getWorkflows = (state: WorkflowsState) => state.workflows;
 export const getWorkflowsLoaded = (state: WorkflowsState) => state.loaded;
 export const getWorkflowsLoading = (state: WorkflowsState) => state.loading;
-export const getActiveWorkflow = (state: WorkflowsState) => state.workflows.filter(e => e.active);
-export const getActiveWorkflowTask = (state: WorkflowsState) => {
-    const application = state.workflows.find(e => e.active);
-    return application ? application.id : null;
-};
+export const getActiveWorkflowId = (state: WorkflowsState) => state.activeTask.workflowId;
+export const getActiveWorkflowTaskId = (state: WorkflowsState) => state.activeTask.taskId

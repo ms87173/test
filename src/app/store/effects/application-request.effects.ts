@@ -5,13 +5,9 @@ import {
     ActionTypes,
     GetApplicationRequestSuccess,
     GetApplicationRequestFailure,
-    GetApplicationRequestWorkflowsSuccess,
-    GetApplicationRequestWorkflowsFailure,
-    GetApplicationRequest,
-    GetApplicationRequestWorkflows,
-    DeterminePendingTaskOfApplication
-} from '../actions/application-request.actions';
-import { switchMap, map, catchError, filter, concatMap, mergeMap } from 'rxjs/operators';
+    GetApplicationRequest
+} from '../actions/application.actions';
+import { switchMap, map, catchError, filter } from 'rxjs/operators';
 import { of } from 'rxjs';
 import * as fromRouterActions from '../actions/router.actions';
 
@@ -22,12 +18,9 @@ export class ApplicationRequestEffects {
         ofType(fromRouterActions.ActionTypes.ROUTE_CHANGE),
         filter((routeChangeAction: fromRouterActions.RouteChange) =>
             routeChangeAction.payload.path === 'applications/:applicationId'),
-        mergeMap((action) => {
+        map((action) => {
             const { applicationId } = action.payload.params;
-            return [
-                new GetApplicationRequest(applicationId),
-                new GetApplicationRequestWorkflows(applicationId)
-            ];
+            return new GetApplicationRequest(applicationId)
         })
     );
     @Effect() getApplicationRequestEffect = this.actions$.pipe(
@@ -45,23 +38,6 @@ export class ApplicationRequestEffects {
                         )
                     )
         ));
-    @Effect() getApplicationRequestWorkflowsEffect = this.actions$.pipe(
-        ofType(ActionTypes.GET_APPLICATION_REQUEST_WORKFLOWS),
-        switchMap(
-            (action: GetApplicationRequestWorkflows) =>
-                this.applicationRequestService.getApplicationRequestWorkflows(action.payload)
-                    .pipe(
-                        map(
-                            (workflows) => {
-                                return new GetApplicationRequestWorkflowsSuccess(workflows)
-                            }
-                        ),
-                        catchError(
-                            (err) => of(new GetApplicationRequestWorkflowsFailure(err))
-                        )
-                    )
-        ));
-
     constructor(
         private applicationRequestService: ApplicationRequestService,
         private actions$: Actions
