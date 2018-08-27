@@ -2,10 +2,10 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { fromRootReducers, fromRootSelectors } from '../../../store';
 import { ActivatedRoute } from '@angular/router';
-import { GetApplicationRequest, GetApplicationRequestWorkflows, DeterminePendingTaskOfApplication } from '../../../store/actions/application-request.actions';
 import WorkFlowsSideNavModel from '../../../core/models/workflow-sidenav.model';
 import { APPLICATION_HEADING } from '../../../core/constants/application-request.constants';
 import { ContactDetailsModel } from '../../../core/models/contact-detail.model';
+import { DeterminePendingTaskOfApplication } from '../../../store/actions/workflows.action';
 
 @Component({
   selector: 'ddo-application-request',

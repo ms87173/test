@@ -7,6 +7,5 @@ import { FieldType } from '@ngx-formly/core';
   encapsulation: ViewEncapsulation.None
 })
 export class CheckboxComponent extends FieldType {
-
 }
 

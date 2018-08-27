@@ -233,21 +233,29 @@ export class NgxFormlyParserService {
           fieldGroup: [
             {
               className: 'col-sm-4',
-              type: 'input',
+              type: 'select',
               key: 'investmentName',
               templateOptions: {
                 label: 'Name of Investment:',
                 required: true,
+                options: [
+                  { label: 'Iron Man', value: 'iron_man' },
+                  { label: 'Captain America', value: 'captain_america' },
+                  { label: 'Black Widow', value: 'black_widow' },
+                  { label: 'Hulk', value: 'hulk' },
+                  { label: 'Captain Marvel', value: 'captain_marvel' }
+                ]
               },
             },
             {
-              type: 'input',
-              key: 'investmentDate',
+              key: 'requiredCheckBox',
               className: 'col-sm-3',
+
+              type: 'customCheckbox',
               templateOptions: {
-                type: 'date',
-                label: 'Date of Investment:',
-              },
+                label: 'Hey there you need to check this box as this is required',
+                required: true,
+              }
             },
             {
               type: 'input',

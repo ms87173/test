@@ -26,6 +26,9 @@ import { CheckboxComponent } from '../custom-formly-fields/components/checkbox/c
 import { DropdownComponent } from '../custom-formly-fields/components/dropdown/dropdown.component';
 import { TooltipModule } from 'ngx-bootstrap';
 import { AddressComponent } from '../custom-formly-fields/components/address/address.component';
+import { AutoCompleteComponent } from '../custom-formly-fields/components/auto-complete/auto-complete.component';
+import { RadiobuttonComponent } from '../custom-formly-fields/components/radiobutton/radiobutton.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -34,12 +37,12 @@ import { AddressComponent } from '../custom-formly-fields/components/address/add
     ReactiveFormsModule,
     CommonModule,
     AccordionModule.forRoot(),
-    ReactiveFormsModule,
     FormsModule,
     FormlyBootstrapModule,
+    NgbModule.forRoot(),
     FormlyModule.forRoot({
-      wrappers: [
-        { name: 'form-group', component: FormGroupWrapperComponent },
+      wrappers:  [
+        {  name:  'form-group',  component:  FormGroupWrapperComponent  },
       ],
       validationMessages: [
         { name: 'server-error', message: (err) => err }
@@ -47,13 +50,14 @@ import { AddressComponent } from '../custom-formly-fields/components/address/add
       types: [
         { name: 'customCheckbox', component: CheckboxComponent },
         { name: 'select', component: DropdownComponent },
-        { name: 'address', component: AddressComponent }
-
+        { name: 'radioButton', component: RadiobuttonComponent},
+        { name: 'typeahead', component: AutoCompleteComponent, extends: 'input'},
+        {name:"address", component:AddressComponent}
       ]
     }),
     FormlyBootstrapModule,
     CoreModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
   ],
   providers: [],
   declarations: [
@@ -73,10 +77,11 @@ import { AddressComponent } from '../custom-formly-fields/components/address/add
     ContactDetailComponent,
     QuestionnaireComponent,
     SectionComponent,
-    ///////////////////////////
-    DropdownComponent,
+    AddressComponent,
     CheckboxComponent,
-    AddressComponent
+    DropdownComponent,
+    RadiobuttonComponent,
+    AutoCompleteComponent
   ],
   exports: [
     HeaderComponent,
@@ -95,10 +100,12 @@ import { AddressComponent } from '../custom-formly-fields/components/address/add
     ContactDetailComponent,
     QuestionnaireComponent,
     SectionComponent,
-     ///////////////////////////
-     DropdownComponent,
-     CheckboxComponent,
-     AddressComponent
+    AddressComponent,
+    CheckboxComponent,
+    DropdownComponent,
+    RadiobuttonComponent,
+    AutoCompleteComponent
+     
 
 
   ]

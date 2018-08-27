@@ -1,59 +1,24 @@
-import {
-    ApplicationRequestActions,
-    ActionTypes
-} from '../actions/application-request.actions';
+import * as workflowsReducer from './workflows.reducer';
+import * as applicationReducer from './application.reducer';
+import { ActionReducer } from 'ngx-bootstrap/mini-ngrx';
+import { combineReducers } from '@ngrx/store';
 
 export interface ApplicationRequestState {
-    application: any;
-    workflows: any;
-    loaded: boolean;
-    loading: boolean;
-    activeTask: any;
+    application: applicationReducer.ApplicationState;
+    workflows: workflowsReducer.WorkflowsState;
 }
 
 export const InitialState: ApplicationRequestState = {
-    application: {},
-    workflows: [],
-    activeTask: null,
-    loaded: false,
-    loading: false
+    application: applicationReducer.InitialState,
+    workflows: workflowsReducer.InitialState,
 }
 
-export function reducer(
-    state: ApplicationRequestState = InitialState,
-    action: ApplicationRequestActions
-): ApplicationRequestState {
-    switch (action.type) {
-        case ActionTypes.GET_APPLICATION_REQUEST:
-            return {
-                ...state,
-                loading: true
-            }
-        case ActionTypes.GET_APPLICATION_REQUEST_SUCCESS:
-        return {
-            ...state,
-            application: action.payload,
-            loaded: true,
-            loading: false
-        };
-        case ActionTypes.GET_APPLICATION_REQUEST_WORKFLOWS_SUCCESS:
-            return {
-                ...state,
-                workflows: action.payload
-            };
-        case ActionTypes.DETERMINE_PENDING_TASK_OF_APPLICATION_REQUEST:
-            let workflows = [];
-            workflows = state.workflows.find(e => {
-                console.log(e);
-            });
-            return {
-                ...state,
-                workflows
-            };
-        default:
-            return state;
-    }
+const reducers = {
+    application: applicationReducer.applicationReducer,
+    workflows: workflowsReducer.reducer
 }
+
+export const reducer : ActionReducer<ApplicationRequestState> = combineReducers(reducers);
 
 export const getApplicaitonRequets = (state: ApplicationRequestState) => state.application;
 export const getApplicationWorkflows = (state: ApplicationRequestState) => state.workflows;
