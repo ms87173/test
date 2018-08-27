@@ -1,5 +1,4 @@
 import { ActionTypes, WorkflowsActions } from '../actions/workflows.action';
-import { Action } from 'rxjs/internal/scheduler/Action';
 
 export interface WorkflowsState {
     workflows: any,
