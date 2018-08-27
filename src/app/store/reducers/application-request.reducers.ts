@@ -18,7 +18,6 @@ const reducers = {
     workflows: workflowsReducer.reducer
 }
 
-
 export const reducer : ActionReducer<ApplicationRequestState> = combineReducers(reducers);
 
 export const getApplicaitonRequets = (state: ApplicationRequestState) => state.application;

@@ -8,7 +8,8 @@ import {
     GetApplicationRequestWorkflowsSuccess,
     GetApplicationRequestWorkflowsFailure,
     GetApplicationRequest,
-    GetApplicationRequestWorkflows
+    GetApplicationRequestWorkflows,
+    DeterminePendingTaskOfApplication
 } from '../actions/application-request.actions';
 import { switchMap, map, catchError, filter, concatMap, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';

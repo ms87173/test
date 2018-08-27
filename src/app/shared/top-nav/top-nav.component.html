@@ -1,7 +1,9 @@
-<nav class="navbar navbar-dark navbar--primary">
-  <a class="navbar-brand" href="#">
+<div class="top-nav">
+  <nav class="navbar navbar-dark navbar--primary">
+    <a class="navbar-brand" href="#">
     <img src="/assets/image/Citi.png" height="45" class="d-inline-block align-top" alt="">
   </a>
-  <span class="example-spacer"></span>
-  <app-tabs *ngFor='let tabs of config' [config]='tabs'></app-tabs>
-</nav>
+    <span class="example-spacer"></span>
+    <app-tabs *ngFor='let tabs of config' [config]='tabs'></app-tabs>
+  </nav>
+</div>
