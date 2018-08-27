@@ -27,7 +27,6 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
     ReactiveFormsModule,
     CommonModule,
     AccordionModule.forRoot(),
-    ReactiveFormsModule,
     FormsModule,
     FormlyBootstrapModule,
     FormlyModule.forRoot({
@@ -57,7 +56,7 @@ import { QuestionnaireComponent } from './questionnaire/questionnaire.component'
     GridComponent,
     TileComponent,
     ContactDetailComponent,
-    QuestionnaireComponent,
+    QuestionnaireComponent
   ],
   exports: [
     HeaderComponent,

@@ -11,7 +11,7 @@ import { FormlyFormOptions, FormlyFieldConfig, FormlyConfig } from '@ngx-formly/
 export class QuestionnaireComponent implements OnInit {
   @Input() form = new FormGroup({});
   @Input() options: FormlyFormOptions = {};
-  @Input() model: any = {}
+  @Input() model: any = {};
   @Input() fields: FormlyFieldConfig[];
   constructor() {}
   ngOnInit() {
