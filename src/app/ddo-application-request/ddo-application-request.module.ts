@@ -6,12 +6,14 @@ import { DdoApplicationRequestComponent } from './components/ddo-application-req
 import { DdoApplicationRequestDashboardComponent } from './components/ddo-application-request-dashboard/ddo-application-request-dashboard.component';
 import { DdoApplicationRequestTasksComponent } from './components/ddo-application-request-tasks/ddo-application-request-tasks.component';
 import { SharedModule } from '../shared/shared.module';
+import { CustomFormlyFieldsModule } from '../custom-formly-fields/custom-formly-fields.module';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
-    DdoApplicationRequestRoutingModule
+    DdoApplicationRequestRoutingModule,
+    CustomFormlyFieldsModule
   ],
   declarations: [
     DdoApplicationRequestComponent,

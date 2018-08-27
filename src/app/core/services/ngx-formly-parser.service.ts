@@ -190,6 +190,7 @@ export class NgxFormlyParserService {
       field.key = question.id;
       field.type = question.type;
 
+      //Todo:Switch case for custom
       if (question.type !== "address") {
 
 
@@ -277,6 +278,11 @@ export class NgxFormlyParserService {
 
 
     return FormlyFieldConfigArray;
+
+  }
+
+  getFormlyConfigByQuestionType(questionType:string)
+  {
 
   }
 

@@ -38,7 +38,13 @@ export class TaskContainerComponent implements OnInit, OnDestroy {
     fb: FormBuilder
   ) {
 
-    this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask('1'));
+    this.store.pipe(select(fromRootSelectors.applicationRequestSelectors.getApplicationActiveTask),
+    takeWhile(() => this.isComponentActive))
+    .subscribe((activeTask)=>{
+      this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask(activeTask.taskId));    });
+
+    //Todo: Uncomment to use questionnaire seperately
+    // this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask('1'));
 
     this.store.pipe(select(fromRootSelectors.questionnaireSelectors.getCurrentTask),
       takeWhile(() => this.isComponentActive)

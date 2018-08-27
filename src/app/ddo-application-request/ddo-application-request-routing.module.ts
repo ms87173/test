@@ -7,22 +7,29 @@ import { DdoApplicationRequestTasksComponent } from './components/ddo-applicatio
 const routes: Routes = [
   {
     path: '',
-    component: DdoApplicationRequestComponent
+    component: DdoApplicationRequestComponent,
+    children:[
+      {
+        path:"tasks",
+        component:DdoApplicationRequestTasksComponent
+        
+      }
+    ]
   },
   {
     path: 'dashboard',
     component: DdoApplicationRequestDashboardComponent
   },
-  {
-    path: 'tasks',
-    component: DdoApplicationRequestTasksComponent,
-    // children: [
-    //   {
-    //     path: 'questionnaire',
-    //     component 
-    //   }
-    // ]
-  }
+  // {
+  //   path: 'tasks',
+  //   component: DdoApplicationRequestTasksComponent,
+  //   // children: [
+  //   //   {
+  //   //     path: 'questionnaire',
+  //   //     component 
+  //   //   }
+  //   // ]
+  // }
 ];
 
 @NgModule({
