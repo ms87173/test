@@ -67,5 +67,4 @@ export function reducer(
 export const getWorkflows = (state: WorkflowsState) => state.workflows;
 export const getWorkflowsLoaded = (state: WorkflowsState) => state.loaded;
 export const getWorkflowsLoading = (state: WorkflowsState) => state.loading;
-export const getActiveWorkflowId = (state: WorkflowsState) => state.activeTask.workflowId;
-export const getActiveWorkflowTaskId = (state: WorkflowsState) => state.activeTask.taskId
+export const getActiveWorkflowTask = (state: WorkflowsState) => state.activeTask

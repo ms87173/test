@@ -20,5 +20,11 @@ const reducers = {
 
 export const reducer : ActionReducer<ApplicationRequestState> = combineReducers(reducers);
 
-export const getApplicaitonRequets = (state: ApplicationRequestState) => state.application;
-export const getApplicationWorkflows = (state: ApplicationRequestState) => state.workflows;
+export const getApplicaitonRequestState = (state: ApplicationRequestState) => state.application;
+export const getApplicationWorkflowsState = (state: ApplicationRequestState) => state.workflows;
+
+//NEED TO DISCUSS: how to set selectors in state tree. Ideally at reducer we should have state selectors
+// but combining the reducer at top where will the selectors go?
+export const getApplicationWorkflows = (state: ApplicationRequestState) => state.workflows.workflows;
+export const getApplication = (state: ApplicationRequestState) => state.application.application;
+export const getApplicationActiveTask = (state: ApplicationRequestState) => state.workflows.activeTask;
