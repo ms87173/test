@@ -8,6 +8,8 @@ import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { TooltipModule } from 'ngx-bootstrap';
 import { RadiobuttonComponent } from './components/radiobutton/radiobutton.component';
 import { AutoCompleteComponent } from './components/auto-complete/auto-complete.component';
+import { DatePickerComponent } from './components/date-picker/date-picker.component';
+import { BsDatepickerModule } from 'ngx-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddressComponent } from './components/address/address.component';
 import { FormGroupWrapperComponent } from '../shared/form-group-wrapper/form-group-wrapper.component';
@@ -31,29 +33,30 @@ import { TaskContainerComponent } from '../task-container/task-container.compone
       ],
       types: [
         { name: 'customCheckbox', component: CheckboxComponent },
-        { name: 'select', component: DropdownComponent },
+        { name: 'dropdown', component: DropdownComponent },
         { name: 'radioButton', component: RadiobuttonComponent },
         { name: 'typeahead', component: AutoCompleteComponent, extends: 'input' },
-        { name: "address", component: AddressComponent }
+        { name: 'datePicker', component: DatePickerComponent },
+        { name: 'address', component: AddressComponent }
       ]
     }),
 
     FormlyBootstrapModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    BsDatepickerModule.forRoot()
   ],
   declarations: [
     DropdownComponent,
     CheckboxComponent,
     RadiobuttonComponent,
     AutoCompleteComponent,
+    DatePickerComponent,
     AddressComponent,
     QuestionnaireComponent,
     SectionComponent,
     TaskContainerComponent
-    
-    
   ],
-  exports:[   
+  exports: [
     AddressComponent,
     CheckboxComponent,
     DropdownComponent,

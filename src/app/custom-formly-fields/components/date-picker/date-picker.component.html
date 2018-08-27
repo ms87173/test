@@ -1,0 +1,27 @@
+<div class="formly-date-picker form-group">
+  <label class="formly-date-picker__label" [for]="id">
+    {{ to.label }}
+    <span *ngIf="to.required && to.hideRequiredMarker !== true">*</span>
+    <span *ngIf='!to.required' class="float-right">(optional)</span>
+    <i *ngIf="to.tooltip"
+      class="control-label-help fa fa-question-circle ml-3"
+      containerClass="{{to.tooltip.containerClass}}"
+      tooltip="{{to.tooltip.content}}"
+      placement="{{to.tooltip.placement}}"></i>
+  </label>
+  <div class="input-group">
+    <input [id]="id" class="form-control formly-date-picker__input"
+      [formControl]="formControl"
+      [placeholder]="to.placeholder"
+      [formlyAttributes]="field" ngModel
+      bsDatepicker #dp="bsDatepicker"
+      [minDate]="to.datepickerOptions && to.datepickerOptions.minDate"
+      [maxDate]="to.datepickerOptions && to.datepickerOptions.maxDate"
+      showWeekNumbers="false">
+    <div class="input-group-append">
+      <div class="input-group-text">
+        <i class="fa fa-calendar-o" aria-hidden="true" (click)="dp.toggle()"></i>
+      </div>
+    </div>
+  </div>
+</div>
