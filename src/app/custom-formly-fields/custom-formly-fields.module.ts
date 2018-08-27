@@ -9,7 +9,8 @@ import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { TooltipModule } from 'ngx-bootstrap';
 import { RadiobuttonComponent } from './components/radiobutton/radiobutton.component';
 import { AutoCompleteComponent } from './components/auto-complete/auto-complete.component';
-
+import { DatePickerComponent } from './components/date-picker/date-picker.component';
+import { BsDatepickerModule } from 'ngx-bootstrap';
 @NgModule({
   imports: [
     CommonModule,
@@ -19,14 +20,20 @@ import { AutoCompleteComponent } from './components/auto-complete/auto-complete.
     FormlyModule.forRoot({
       types: [
         { name: 'customCheckbox', component: CheckboxComponent },
-        { name: 'select', component: DropdownComponent },
-        { name: 'radioButton', component: RadiobuttonComponent},
-        { name: 'typeahead', component: AutoCompleteComponent, extends: 'input'}
+        { name: 'dropdown', component: DropdownComponent },
+        { name: 'radioButton', component: RadiobuttonComponent },
+        { name: 'typeahead', component: AutoCompleteComponent, extends: 'input' },
+        { name: 'datePicker', component: DatePickerComponent }
       ]
     }),
     FormlyBootstrapModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    BsDatepickerModule.forRoot()
   ],
-  declarations: [DropdownComponent, CheckboxComponent, RadiobuttonComponent, AutoCompleteComponent]
+  declarations: [DropdownComponent,
+    CheckboxComponent,
+    RadiobuttonComponent,
+    AutoCompleteComponent,
+    DatePickerComponent]
 })
 export class CustomFormlyFieldsModule { }

@@ -67,7 +67,7 @@ export class FormlyConsumerComponent implements OnInit {
       },
       {
         key: 'marvel1',
-        type: 'select',
+        type: 'dropdown',
         templateOptions: {
           label: 'Normal Select',
           options: [
@@ -91,6 +91,13 @@ export class FormlyConsumerComponent implements OnInit {
           valueProp: 'value',
           labelProp: 'name'
         },
+      },
+      {
+        key: 'dateOfBirth',
+        type: 'datePicker',
+        templateOptions: {
+          label: 'Date of Birth',
+        }
       },
       {
         key: 'text',
