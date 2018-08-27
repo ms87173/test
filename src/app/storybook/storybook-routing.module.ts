@@ -9,30 +9,23 @@ import { FormlyConsumerComponent } from './formly-consumer/formly-consumer.compo
 const routes: Routes = [
     {
         path: '',
-        component: StorybookComponent,
-        children: [
-            {
-                path: '',
-                pathMatch: 'full',
-                redirectTo: 'labelgroup'
-            },
-            {
-                path: 'labelgroup',
-                component: LabelValueConsumerComponent
-            },
-            {
-                path: 'tile',
-                component: TileConsumerComponent
-            },
-            {
-                path: 'grid',
-                component: GridConsumerComponent
-            },
-            {
-                path: 'formly',
-                component: FormlyConsumerComponent
-            }
-        ]
+        component: StorybookComponent
+    },
+    {
+        path: 'labelgroup',
+        component: LabelValueConsumerComponent
+    },
+    {
+        path: 'tile',
+        component: TileConsumerComponent
+    },
+    {
+        path: 'grid',
+        component: GridConsumerComponent
+    },
+    {
+        path: 'formly',
+        component: FormlyConsumerComponent
     }
 ];
 @NgModule({

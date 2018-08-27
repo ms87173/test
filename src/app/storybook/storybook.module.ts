@@ -7,31 +7,22 @@ import { SharedModule } from './../shared/shared.module';
 import { TileConsumerComponent } from './tile-consumer/tile-consumer.component';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { GridConsumerComponent } from './grid-consumer/grid-consumer.component';
-import { FormlyConsumerComponent } from './formly-consumer/formly-consumer.component';
 import { CustomFormlyFieldsModule } from '../custom-formly-fields/custom-formly-fields.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
-import { FormlyModule } from '@ngx-formly/core';
-import { DropdownComponent } from 'src/app/custom-formly-fields/components/dropdown/dropdown.component';
+import {FormlyModule} from '@ngx-formly/core';
+import { FormlyConsumerComponent } from './formly-consumer/formly-consumer.component';
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     StorybookRoutingModule,
     SharedModule,
-    BsDropdownModule.forRoot(),
     CustomFormlyFieldsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    FormlyBootstrapModule,
-    FormlyModule.forRoot({
-      types: [
-        { name: 'select', component: DropdownComponent }
-      ],
-    })
+    FormlyModule,
+    BsDropdownModule.forRoot()
   ],
-  declarations: [
-    LabelValueConsumerComponent,
+  declarations: [LabelValueConsumerComponent,
     StorybookComponent,
     TileConsumerComponent,
     GridConsumerComponent,
