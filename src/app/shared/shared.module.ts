@@ -21,6 +21,12 @@ import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 import { SectionComponent } from './section/section.component';
+import { CustomFormlyFieldsModule } from '../custom-formly-fields/custom-formly-fields.module';
+import { CheckboxComponent } from '../custom-formly-fields/components/checkbox/checkbox.component';
+import { DropdownComponent } from '../custom-formly-fields/components/dropdown/dropdown.component';
+import { TooltipModule } from 'ngx-bootstrap';
+import { AddressComponent } from '../custom-formly-fields/components/address/address.component';
+
 
 @NgModule({
   imports: [
@@ -35,12 +41,19 @@ import { SectionComponent } from './section/section.component';
       wrappers: [
         { name: 'form-group', component: FormGroupWrapperComponent },
       ],
-      validationMessages:[
-        {name: 'server-error', message: (err) => err }
+      validationMessages: [
+        { name: 'server-error', message: (err) => err }
+      ],
+      types: [
+        { name: 'customCheckbox', component: CheckboxComponent },
+        { name: 'select', component: DropdownComponent },
+        { name: 'address', component: AddressComponent }
+
       ]
     }),
     FormlyBootstrapModule,
-    CoreModule
+    CoreModule,
+    TooltipModule.forRoot()
   ],
   providers: [],
   declarations: [
@@ -59,7 +72,12 @@ import { SectionComponent } from './section/section.component';
     TileComponent,
     ContactDetailComponent,
     QuestionnaireComponent,
-    SectionComponent  ],
+    SectionComponent,
+    ///////////////////////////
+    DropdownComponent,
+    CheckboxComponent,
+    AddressComponent
+  ],
   exports: [
     HeaderComponent,
     TabsComponent,
@@ -76,7 +94,13 @@ import { SectionComponent } from './section/section.component';
     TileComponent,
     ContactDetailComponent,
     QuestionnaireComponent,
-    SectionComponent
+    SectionComponent,
+     ///////////////////////////
+     DropdownComponent,
+     CheckboxComponent,
+     AddressComponent
+
+
   ]
 })
 export class SharedModule { }

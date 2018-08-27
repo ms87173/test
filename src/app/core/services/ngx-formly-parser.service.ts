@@ -32,13 +32,16 @@ export class NgxFormlyParserService {
         .pipe(debounceTime(600))
         //Todo: To be Decided
         .subscribe((fieldValue) => {
-          this.currentQuestionId = key;
-          let questionaireRequest: QuestionaireDeltaRequest = {
-            id: key,
-            value: fieldValue
-          };
-          this.store.dispatch(new questionnaireActions.DeleteQuestionnaireErrorByQuestionId(this.currentQuestionId));
-          this.store.dispatch(new questionnaireActions.GetCurrentFieldChangeDelta(questionaireRequest));
+          console.log("field changes occured")
+          console.log(fieldValue);
+          console.log(field.defaultValue);
+          // this.currentQuestionId = key;
+          // let questionaireRequest: QuestionaireDeltaRequest = {
+          //   id: key,
+          //   value: fieldValue
+          // };
+          // this.store.dispatch(new questionnaireActions.DeleteQuestionnaireErrorByQuestionId(this.currentQuestionId));
+          // this.store.dispatch(new questionnaireActions.GetCurrentFieldChangeDelta(questionaireRequest));
         });
     }
   }
@@ -60,8 +63,7 @@ export class NgxFormlyParserService {
       section.questions.map((question: Question) => {
         let field: FormlyFieldConfig = {};
         if (question.id == currentQuestionId) {
-          console.log(question.id);
-          console.log(currentQuestionId);
+
           field.focus = true;
         }
 
@@ -169,7 +171,7 @@ export class NgxFormlyParserService {
     let currTask = { ...currentTask };
     currTask.sections.map((section: Section) => {
       let FormlyFieldConfigArray: FormlyFieldConfig[] = this.getFormlyFieldConfigArrayFromSection(section, currentQuestionId);
-      let formlyFieldConfigArray:FormlyFieldConfigArrayCollection= new FormlyFieldConfigArrayCollection(FormlyFieldConfigArray, section.title);
+      let formlyFieldConfigArray: FormlyFieldConfigArrayCollection = new FormlyFieldConfigArrayCollection(FormlyFieldConfigArray, section.title);
       formlyFieldConfigArrayCollections.push(formlyFieldConfigArray);
 
 
@@ -185,35 +187,83 @@ export class NgxFormlyParserService {
       /// Todo: Need to check if it is simple or custom type
 
       let field: FormlyFieldConfig = {};
-
-      //Todo: for focus on questions
-      // if (question.id == currentQuestionId) {
-      //   console.log(question.id);
-      //   console.log(currentQuestionId);
-      //   field.focus = true;
-      // }
-
       field.key = question.id;
       field.type = question.type;
 
-      //Todo: Need to create field trigger for delta changes
-      // field.lifecycle = this.fieldChangeLifecycleTrigger;
+      if (question.type !== "address") {
 
-      field.templateOptions = {
-        label: question.label,
-        options: question.options,
-        required: question.required,
-      };
-      //Todo: Implement error messgaes
-      // if (question.serverErrorMessage) {
-      //   field.validators = {
-      //     ip: {
-      //       expression: (c) => true,
-      //       message: (error, field: FormlyFieldConfig) => question.serverErrorMessage,
-      //     }
-      //   }
-      // }
 
+
+        //Todo: for focus on questions
+        // if (question.id == currentQuestionId) {
+        //   console.log(question.id);
+        //   console.log(currentQuestionId);
+        //   field.focus = true;
+        // }
+
+
+
+
+        //Todo: Need to create field trigger for delta changes
+        // field.lifecycle = this.fieldChangeLifecycleTrigger;
+
+        field.templateOptions = {
+          label: question.label,
+          options: question.options,
+          required: question.required,
+        };
+
+        // field.defaultValue= question.defaultValue;
+        //Todo: Implement error messgaes
+        // if (question.serverErrorMessage) {
+        //   field.validators = {
+        //     ip: {
+        //       expression: (c) => true,
+        //       message: (error, field: FormlyFieldConfig) => question.serverErrorMessage,
+        //     }
+        //   }
+        // }
+      }
+      else {
+        field.fieldArray = {
+          fieldGroupClassName: 'row',
+          templateOptions: {
+            btnText: 'Add another investment',
+          },
+          fieldGroup: [
+            {
+              className: 'col-sm-4',
+              type: 'input',
+              key: 'investmentName',
+              templateOptions: {
+                label: 'Name of Investment:',
+                required: true,
+              },
+            },
+            {
+              type: 'input',
+              key: 'investmentDate',
+              className: 'col-sm-3',
+              templateOptions: {
+                type: 'date',
+                label: 'Date of Investment:',
+              },
+            },
+            {
+              type: 'input',
+              key: 'stockIdentifier',
+              className: 'col-sm-3',
+              templateOptions: {
+                label: 'Stock Identifier:',
+                addonRight: {
+                  class: 'fa fa-code',
+                  onClick: (to, fieldType, $event) => console.log(to, fieldType, $event),
+                },
+              },
+            },
+          ],
+        }
+      }
       FormlyFieldConfigArray.push(field);
     });
 

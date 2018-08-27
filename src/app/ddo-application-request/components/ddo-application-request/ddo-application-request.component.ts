@@ -46,7 +46,7 @@ export class DdoApplicationRequestComponent implements OnInit {
     this.store.dispatch(new DeterminePendingTaskOfApplication(this.workflows));
   }
   onSideNavClick(payload) {
-    console.log(payload);
+    // console.log(payload);
   }
 
 }

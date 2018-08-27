@@ -2,7 +2,9 @@
   "questionnaireDeltaResponses": [
       {
         "id":1,
-          "new":[
+          "new":
+          
+          [
               {
                   "id": "InterestCurrentCheckBox",
                   "label": "Would you like to earn Current this account?",
@@ -53,80 +55,7 @@
 
           ]        
       
-      },
-      {
-        "id":2,
-          "new":[
-              {
-                  "id": "ColorInputBox",
-                  "label": "Which is your favourate color?",
-                  "type": "input",
-                  "required": true,
-                  "readOnly": false,
-                  "placeHolder": "Current Account",
-                  "options": [
-                    {
-                      "label": "Yes",
-                      "value": "true"
-                    },
-                    {
-                      "label": "No",
-                      "value": "false"
-                    }
-                  ],
-                  "tooltipText": "<string>",
-                  "defaultValue": true,
-                  "questionIdAfterToBeInserted": "SavingAccountTextBox",
-                  "sectionName": "Account Information"
-                
-                
-                
-                }
-                
-          ],
-          "update":null,
-      
-          "delete":null,
-          "errors":null
-      
-      
-      },
-      {
-        "id":3,
-          "new":[
-              {
-                  "id": "FavourateMovieInput",
-                  "label": "What is your favourate Moview?",
-                  "type": "radio",
-                  "required": true,
-                  "readOnly": false,
-                  "placeHolder": "Current Account",
-                  "options": [
-                    {
-                      "label": "Yes",
-                      "value": "true"
-                    },
-                    {
-                      "label": "No",
-                      "value": "false"
-                    }
-                  ],
-                  "tooltipText": "<string>",
-                  "defaultValue": true,
-                  "questionIdAfterToBeInserted": "ColorInputBox",
-                  "sectionName": "Account Information"
-                
-                
-                
-                }
-                
-          ],
-          "update":null,
-      
-          "delete":null,
-          "errors":null
-      
-      
       }
+     
   ]
 }

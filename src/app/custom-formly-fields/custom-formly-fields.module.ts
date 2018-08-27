@@ -6,20 +6,21 @@ import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { TooltipModule } from 'ngx-bootstrap';
+import { AddressComponent } from './components/address/address.component';
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
     FormlyModule.forRoot({
-      types: [
-        { name: 'customCheckbox', component: CheckboxComponent },
-        { name: 'select', component: DropdownComponent }
-      ]
+      // types: [
+      //   { name: 'customCheckbox', component: CheckboxComponent },
+      //   { name: 'select', component: DropdownComponent }
+      // ]
     }),
     FormlyBootstrapModule,
     TooltipModule.forRoot()
   ],
-  declarations: [DropdownComponent, CheckboxComponent]
+  declarations: [DropdownComponent, CheckboxComponent, AddressComponent],
 })
 export class CustomFormlyFieldsModule { }

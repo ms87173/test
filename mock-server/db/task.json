@@ -52,6 +52,46 @@
                             "defaultValue": "<any>"
                         },
                         {
+                            "id": "SavingAccountCheckBox",
+                            "label": "Would you like to earn saving this account?",
+                            "type": "customCheckbox",
+                            "required": "true",
+                            "readOnly": "false",
+                            "placeHolder": "Saving Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": "true"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "False"
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "defaultValue": "<any>"
+                        },
+                        {
+                            "id": "permanentAddress",
+                            "label": "Permananet Address?",
+                            "type": "address",
+                            "required": "true",
+                            "readOnly": "false",
+                            "placeHolder": "Saving Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": "true"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "False"
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "defaultValue": "<any>"
+                        },
+                        {
                             "id": "ChildDependentTextBox",
                             "label": "Do you have an Child Dependent?",
                             "type": "input",
@@ -97,27 +137,29 @@
                     "title": "Account Information 2",
                     "questions": [
                         {
-                            "id": "InterestCheckingCheckBox2",
+                            "id": "InterestCheckingCheckBox",
                             "label": "Would you like to earn interest this account?",
-                            "type": "radio",
+                            "type": "select",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Interest Account",
                             "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
+                                {"label": "Iron Man", "value": "iron_man"
                                 },
-                                {
-                                    "label": "No",
-                                    "value": "False"
+                                {"label": "Captain America", "value": "captain_america"
+                                },
+                                {"label": "Black Widow", "value": "black_widow"
+                                },
+                                {"label": "Hulk", "value": "hulk"
+                                },
+                                {"label": "Captain Marvel", "value": "captain_marvel"
                                 }
                             ],
                             "tooltipText": "<string>",
                             "defaultValue": "<any>"
                         },
                         {
-                            "id": "SavingAccountTextBox2",
+                            "id": "SavingAccountTextBox",
                             "label": "Would you like to earn saving this account?",
                             "type": "input",
                             "required": "true",
@@ -137,74 +179,9 @@
                             "defaultValue": "<any>"
                         },
                         {
-                            "id": "ChildDependentTextBox2",
-                            "label": "Do you have an Child Dependent?",
-                            "type": "input",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Saving Account",
-                            "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "False"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        },
-                        {
-                            "id": "RemoveOnAnswerQuestion2",
-                            "label": "I will be removed as soon as question 1 is answered",
-                            "type": "input",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Saving Account",
-                            "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "False"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        }
-                    ]
-                },
-                {
-                    "title": "Account Information 2",
-                    "questions": [
-                        {
-                            "id": "InterestCheckingCheckBox2",
-                            "label": "Would you like to earn interest this account?",
-                            "type": "radio",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Interest Account",
-                            "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "False"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        },
-                        {
-                            "id": "SavingAccountTextBox2",
+                            "id": "SavingAccountCheckBox",
                             "label": "Would you like to earn saving this account?",
-                            "type": "input",
+                            "type": "customCheckbox",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",
@@ -222,7 +199,27 @@
                             "defaultValue": "<any>"
                         },
                         {
-                            "id": "ChildDependentTextBox2",
+                            "id": "permanentAddress",
+                            "label": "Permananet Address?",
+                            "type": "address",
+                            "required": "true",
+                            "readOnly": "false",
+                            "placeHolder": "Saving Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": "true"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "False"
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "defaultValue": "<any>"
+                        },
+                        {
+                            "id": "ChildDependentTextBox",
                             "label": "Do you have an Child Dependent?",
                             "type": "input",
                             "required": "true",
@@ -242,7 +239,7 @@
                             "defaultValue": "<any>"
                         },
                         {
-                            "id": "RemoveOnAnswerQuestion2",
+                            "id": "RemoveOnAnswerQuestion1",
                             "label": "I will be removed as soon as question 1 is answered",
                             "type": "input",
                             "required": "true",
@@ -263,6 +260,7 @@
                         }
                     ]
                 }
+                
             ]
         }
     ]

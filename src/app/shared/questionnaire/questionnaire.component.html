@@ -1,5 +1,8 @@
-    <form [formGroup]="form" (ngSubmit)="submit()">
-      <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form">
+    <form [formGroup]="form" (ngSubmit)="submit()" 
+   
+    >
+      <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"
+      (fieldChange)="fieldChanged()">
       </formly-form>
     </form>
 

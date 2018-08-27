@@ -54,11 +54,10 @@ export class QuestionnaireEffectsService {
         this.questionnaireService.getFieldChangeDelta(action.payload)
           .pipe(
             map((fieldChangeDelta) => {
-             
-                return (new GetCurrentFieldChangeDeltaSuccess({ fieldChangeDelta: fieldChangeDelta, currentQuestionId: action.payload.id }))
+                return (new GetCurrentFieldChangeDeltaSuccess({ fieldChangeDelta: fieldChangeDelta                 }))
               
             }
-            ),
+            ),   
             catchError(
               (err) => of(new GetCurrentFieldChangeDeltaFailure(err))
             )
@@ -66,24 +65,24 @@ export class QuestionnaireEffectsService {
     )
   )
 
-  @Effect() getMergedCurrentTaskWithDelta = this.actions$.pipe(
-    ofType(ActionTypes.MERGE_DELTA_FIELD_CHANGE_DELTA_AND_CURRENT_TASK),
-    switchMap(
-      (action: MergeDeltaFieldChangeAndCurrentTask) =>
-        this.ngxFormlyParserService.mergeFieldChangeDeltaAndCurrentcurrentTask(
-          action.payload.currentTask,
-          action.payload.delta,
-          action.payload.model)
+  // @Effect() getMergedCurrentTaskWithDelta = this.actions$.pipe(
+  //   ofType(ActionTypes.MERGE_DELTA_FIELD_CHANGE_DELTA_AND_CURRENT_TASK),
+  //   switchMap(
+  //     (action: MergeDeltaFieldChangeAndCurrentTask) =>
+  //       this.ngxFormlyParserService.mergeFieldChangeDeltaAndCurrentcurrentTask(
+  //         action.payload.currentTask,
+  //         action.payload.delta,
+  //         action.payload.model)
 
-          .pipe(
-            map((mergedCurrentTaskWithDelta) => (new MergeDeltaFieldChangeAndCurrentTaskSuccess(mergedCurrentTaskWithDelta))
-            ),
-            catchError(
-              (err) => of(new MergeDeltaFieldChangeAndCurrentTaskFailure(err))
-            )
-          )
-    )
-  )
+  //         .pipe(
+  //           map((mergedCurrentTaskWithDelta) => (new MergeDeltaFieldChangeAndCurrentTaskSuccess(mergedCurrentTaskWithDelta))
+  //           ),
+  //           catchError(
+  //             (err) => of(new MergeDeltaFieldChangeAndCurrentTaskFailure(err))
+  //           )
+  //         )
+  //   )
+  // )
 //////////////////////////////////////////////////////////////////////////////////////////
 
 @Effect() getCurrentQuestionnaireConfig = this.actions$.pipe(

@@ -90,7 +90,10 @@ export class GetCurrentFieldChangeDelta implements Action {
 }
 export class GetCurrentFieldChangeDeltaSuccess implements Action {
     readonly type = ActionTypes.GET_CURRENT_FIELD_CHANGE_DELTA_SUCCESS
-    constructor(public payload: { fieldChangeDelta: QuestionaireDeltaResponse, currentQuestionId: string }) {
+    // constructor(public payload: { fieldChangeDelta: QuestionaireDeltaResponse, currentQuestionId: string }) {
+    //     this.payload = payload
+    // }
+    constructor(public payload) {
         this.payload = payload
     }
 }
@@ -147,7 +150,7 @@ export class ResetQuestionnaireState implements Action {
 
 export class GetCurrentQuestionnaireFormlyConfig implements Action {
     readonly type = ActionTypes.GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG
-    constructor(public payload: { task: Task, currentQuestionId: string }) {
+    constructor(public payload: { task: Task, currentQuestionId: string}) {
         this.payload = payload
     }
 }
