@@ -29,7 +29,7 @@ export class FormlyConsumerComponent implements OnInit {
     this.fields = [
       {
         key: 'requiredCheckBox',
-        type: 'customCheckbox',
+        type: 'custom-checkbox',
         templateOptions: {
           label: 'Hey there you need to check this box as this is required',
           required: true,
@@ -37,7 +37,7 @@ export class FormlyConsumerComponent implements OnInit {
       },
       {
         key: 'requiredWithNoMarker',
-        type: 'customCheckbox',
+        type: 'custom-checkbox',
         templateOptions: {
           label: 'Hey there you need to check this box as this is required but i have no required marker ',
           required: true,
@@ -46,7 +46,7 @@ export class FormlyConsumerComponent implements OnInit {
       },
       {
         key: 'OptionalCheckbox',
-        type: 'customCheckbox',
+        type: 'custom-checkbox',
         templateOptions: {
           label: 'Hey there i am an optional checkbox. But please do not ignore me. ',
           hideRequiredMarker: true,
@@ -54,7 +54,7 @@ export class FormlyConsumerComponent implements OnInit {
       },
       {
         key: 'checkboxWithHelpText',
-        type: 'customCheckbox',
+        type: 'custom-checkbox',
         templateOptions: {
           label: 'I am a checkbox with little help text ',
           required: true,

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ApiService } from './api.service';
-import { Task, QuestionaireDeltaResponse, QuestionaireDeltaRequest } from '../models';
+import { Task, QuestionaireDeltaResponse, QuestionaireDeltaRequest, TaskRequest } from '../models';
 @Injectable()
 export class QuestionnaireService {
   constructor(private apiService: ApiService) { }
@@ -60,8 +60,10 @@ export class QuestionnaireService {
   //   }
   // }
 
-  getCurrentTask(taskId: string): Observable<Task> {
-    return this.apiService.get('tasks/' + taskId);
+  getCurrentTask(taskRequest: TaskRequest): Observable<Task> {    
+    return this.apiService.get('tasks/' + taskRequest.taskId);
+    //Todo: Uncomment to use Production Url
+    // return this.apiService.post("api/ddo/questionnaire/tasks/questions",taskRequest)
   }
 
   getFieldChangeDelta(deltaRequest: QuestionaireDeltaRequest): Observable<QuestionaireDeltaResponse> {

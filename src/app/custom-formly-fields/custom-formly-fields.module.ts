@@ -32,12 +32,12 @@ import { TaskContainerComponent } from '../task-container/task-container.compone
         { name: 'server-error', message: (err) => err }
       ],
       types: [
-        { name: 'customCheckbox', component: CheckboxComponent },
-        { name: 'dropdown', component: DropdownComponent },
-        { name: 'radioButton', component: RadiobuttonComponent },
+        { name: 'custom-checkbox', component: CheckboxComponent },
+        { name: 'custom-dropdown', component: DropdownComponent },
+        { name: 'custom-radio-button', component: RadiobuttonComponent },
         { name: 'typeahead', component: AutoCompleteComponent, extends: 'input' },
-        { name: 'datePicker', component: DatePickerComponent },
-        { name: 'address', component: AddressComponent }
+        { name: 'custom-datepicker', component: DatePickerComponent },
+        { name: 'custom-address-field ', component: AddressComponent }
       ]
     }),
 

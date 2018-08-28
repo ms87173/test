@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig, FormlyConfig } from '@ngx-formly/core';
 import { Store, select } from '@ngrx/store';
 import { fromRootReducers, fromRootActions, fromRootSelectors } from '../store'
-import { QuestionaireDeltaResponse, QuestionaireDeltaError, FormlyFieldConfigArrayCollection } from '../core/models';
+import { QuestionaireDeltaResponse, QuestionaireDeltaError, FormlyFieldConfigArrayCollection, TaskRequest } from '../core/models';
 import { takeWhile } from 'rxjs/operators';
 import { NgxFormlyParserService, QuestionnaireService, ApiService } from '../core/services';
 import { Task } from '../core/models';
@@ -23,6 +23,7 @@ export class TaskContainerComponent implements OnInit, OnDestroy {
   currentQuestionId: string;
   questionnaireFormErrors: QuestionaireDeltaError[];
   isComponentActive = true;
+  requestId:string=null;
 
   /////////////////////////////////////////
 
@@ -38,10 +39,25 @@ export class TaskContainerComponent implements OnInit, OnDestroy {
     fb: FormBuilder
   ) {
 
+    this.store.pipe(select(fromRootSelectors.applicationRequestSelectors.getApplicaiton),
+      takeWhile(() => this.isComponentActive))
+      .subscribe((application) => {
+        if (application && application.id) {
+         this.requestId=application.id;
+
+        }
+      });
+
+
     this.store.pipe(select(fromRootSelectors.applicationRequestSelectors.getApplicationActiveTask),
-    takeWhile(() => this.isComponentActive))
-    .subscribe((activeTask)=>{
-      this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask(activeTask.taskId));    });
+      takeWhile(() => this.isComponentActive))
+      .subscribe((activeTask) => {
+        let taskRequest = new TaskRequest();
+        taskRequest.workFlowId = activeTask.workflowId;
+        taskRequest.taskId = activeTask.taskId;
+       taskRequest.requestId= this.requestId;
+        this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask(taskRequest));
+      });
 
     //Todo: Uncomment to use questionnaire seperately
     // this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask('1'));
