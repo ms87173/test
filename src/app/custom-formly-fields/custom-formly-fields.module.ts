@@ -27,6 +27,11 @@ import { AutoCompleteComponent } from './components/auto-complete/auto-complete.
     FormlyBootstrapModule,
     TooltipModule.forRoot()
   ],
-  declarations: [DropdownComponent, CheckboxComponent, RadiobuttonComponent, AutoCompleteComponent]
+  declarations: [
+    DropdownComponent,
+    CheckboxComponent,
+    RadiobuttonComponent,
+    AutoCompleteComponent
+  ]
 })
 export class CustomFormlyFieldsModule { }

@@ -7,7 +7,7 @@ import {
     GetApplicationsFailure,
     SortApplicationsSuccess
 } from '../actions/applications.actions';
-import { switchMap, map, catchError, concatMap, filter } from 'rxjs/operators';
+import { switchMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { ApplicationModel } from '../../core/models/application.interface';
 
