@@ -1,9 +1,8 @@
 <div class="formly-dropdown form-group">
   <label class="formly-dropdown__label" [for]="id">
     {{to.label}}
-    <span *ngIf="to.required && to.hideRequiredMarker !== true">*</span>
     <span *ngIf='!to.required' class="ml-4 float-right">(optional)</span>
-    <i *ngIf="to.tooltip" class="control-label-help fa fa-question-circle ml-3" containerClass="{{to.tooltip.containerClass}}"
+    <i *ngIf="to.tooltip" class="control-label-help fa fa-question-circle-o ml-3" containerClass="{{to.tooltip.containerClass}}"
       tooltip="{{to.tooltip.content}}" placement="{{to.tooltip.placement}}"></i>
   </label>
   <select class="form-control" [formControl]="formControl" [class.is-invalid]="showError" [formlyAttributes]="field">

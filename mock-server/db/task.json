@@ -12,7 +12,7 @@
                         {
                             "id": "InterestCheckingCheckBox",
                             "label": "Would you like to earn interest this account?",
-                            "type": "select",
+                            "type": "custom-dropdown",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Interest Account",
@@ -34,7 +34,7 @@
                         {
                             "id": "SavingAccountTextBox",
                             "label": "Would you like to earn saving this account?",
-                            "type": "input",
+                            "type": "custom-radio-button",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",
@@ -54,7 +54,7 @@
                         {
                             "id": "SavingAccountCheckBox",
                             "label": "Would you like to earn saving this account?",
-                            "type": "customCheckbox",
+                            "type": "custom-checkbox",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",
@@ -74,7 +74,7 @@
                         {
                             "id": "permanentAddress",
                             "label": "Permananet Address?",
-                            "type": "address",
+                            "type": "custom-address-field",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",
@@ -94,7 +94,7 @@
                         {
                             "id": "ChildDependentTextBox",
                             "label": "Do you have an Child Dependent?",
-                            "type": "input",
+                            "type": "custom-radio-button",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",
@@ -139,7 +139,7 @@
                         {
                             "id": "InterestCheckingCheckBox",
                             "label": "Would you like to earn interest this account?",
-                            "type": "select",
+                            "type": "custom-dropdown",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Interest Account",
@@ -161,7 +161,7 @@
                         {
                             "id": "SavingAccountTextBox",
                             "label": "Would you like to earn saving this account?",
-                            "type": "input",
+                            "type": "custom-radio-button",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",
@@ -181,7 +181,7 @@
                         {
                             "id": "SavingAccountCheckBox",
                             "label": "Would you like to earn saving this account?",
-                            "type": "customCheckbox",
+                            "type": "custom-checkbox",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",
@@ -201,7 +201,7 @@
                         {
                             "id": "permanentAddress",
                             "label": "Permananet Address?",
-                            "type": "address",
+                            "type": "custom-address-field",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",
@@ -221,7 +221,7 @@
                         {
                             "id": "ChildDependentTextBox",
                             "label": "Do you have an Child Dependent?",
-                            "type": "input",
+                            "type": "custom-radio-button",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",
@@ -274,8 +274,8 @@
                     "questions": [
                         {
                             "id": "InterestCheckingCheckBox",
-                            "label": "Would you Earn some extra money, YOU KNOW WHAT I MEAN?",
-                            "type": "select",
+                            "label": "Would you Earn some extra money",
+                            "type": "custom-dropdown",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Interest Account",
@@ -297,7 +297,7 @@
                         {
                             "id": "SavingAccountTextBox",
                             "label": "Would you like to earn saving this account?",
-                            "type": "input",
+                            "type": "custom-radio-button",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",
@@ -317,7 +317,7 @@
                         {
                             "id": "SavingAccountCheckBox",
                             "label": "Would you like to earn saving this account?",
-                            "type": "customCheckbox",
+                            "type": "custom-checkbox",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",
@@ -337,7 +337,7 @@
                         {
                             "id": "permanentAddress",
                             "label": "Permananet Address?",
-                            "type": "address",
+                            "type": "custom-address-field ",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",

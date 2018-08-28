@@ -7,6 +7,6 @@ import { FieldType } from '@ngx-formly/core';
   encapsulation: ViewEncapsulation.None
 })
 export class RadiobuttonComponent extends FieldType {
-  get labelProp(): string { return this.to.labelProp || 'name'; }
+  get labelProp(): string { return this.to.labelProp || 'label'; }
   get valueProp(): string { return this.to.valueProp || 'value'; }
 }
