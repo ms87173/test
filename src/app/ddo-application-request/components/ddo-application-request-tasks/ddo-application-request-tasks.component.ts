@@ -14,7 +14,6 @@ import { Task } from '../../../core/models';
   encapsulation: ViewEncapsulation.None
 })
 export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
-
   forms: FormArray = null;
   options: FormlyFormOptions[] = [];
   model: any = {};
@@ -26,7 +25,6 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
   isComponentActive = true;
   requestId: string = null;
   formlyFieldConfigArrayCollections: FormlyFieldConfigArrayCollection[] = [];
-
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -47,7 +45,7 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
       .subscribe((activeTask) => {
         const taskRequest = new TaskRequest();
         taskRequest.workFlowId = activeTask.workflowId;
-        taskRequest.taskId = activeTask.taskId;
+        taskRequest.taskId = activeTask.task.id;
         taskRequest.requestId = this.requestId;
         this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask(taskRequest));
       });
@@ -82,7 +80,6 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.isComponentActive = false;
     this.store.dispatch(new fromRootActions.questionnaireActions.ResetQuestionnaireState());
-
   }
 }
 

@@ -15,7 +15,7 @@ import { RouterGo } from '../../../store/actions/router.actions';
   styleUrls: ['./ddo-application-request.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class DdoApplicationRequestComponent implements OnInit {
+export class DdoApplicationRequestComponent {
   application: any;
   workflows: any;
   selectedWorkflowId: string;
@@ -26,14 +26,12 @@ export class DdoApplicationRequestComponent implements OnInit {
   initalRender = true;
   constructor(
     private store: Store<fromRootReducers.AppState>
-  ) { }
-
-  ngOnInit() {
+  ) {
     this.applicationHeading = new Map(Object.entries(APPLICATION_HEADING));
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaiton).
       subscribe((application: any) => {
         this.application = application;
-        this.heading = this.applicationHeading.get(this.application.type);
+        this.heading = this.applicationHeading.get(application.type);
       });
     this.store.select(fromRootSelectors.userSelectors.getUserContactPerson).
       subscribe((contactDetail: any) => {
@@ -43,6 +41,7 @@ export class DdoApplicationRequestComponent implements OnInit {
       .subscribe((workflows: any) => {
         this.workflows = workflows && workflows.map((workflow) => new WorkFlowsSideNavModel(workflow));
         if (this.initalRender && this.workflows && this.workflows.length > 0) {
+          //TODO: to avoid further dispatching when we re fetch the configuration
           this.store.dispatch(new DeterminePendingTaskOfApplication(workflows));
         }
       });
@@ -50,19 +49,18 @@ export class DdoApplicationRequestComponent implements OnInit {
       .subscribe((activeTaskData: any) => {
         this.selectedTaskId = activeTaskData.taskId;
         this.selectedWorkflowId = activeTaskData.workflowId;
-        this.initalRender = this.selectedTaskId && this.selectedWorkflowId ? false : true;
+        this.initalRender = !(this.selectedTaskId && this.selectedWorkflowId);
+        if(this.selectedTaskId) {
+          this.store.dispatch(
+            new RouterGo({
+              path: ['applications', this.application.id, ],
+            })
+          );
+        }
       });
   }
 
   onSideNavClick(payload) {
-    this.selectedTaskId = payload.childId;
-    this.selectedWorkflowId = payload.parentId;
-    this.store.dispatch(
-      new RouterGo({
-        path: ['applications', this.application.id, payload.type],
-      }
-      )
-    );
     const data = {
       workflowId: payload.parentId,
       taskId: payload.childId

@@ -23,7 +23,7 @@ export class TaskContainerComponent implements OnInit, OnDestroy {
   currentQuestionId: string;
   questionnaireFormErrors: QuestionaireDeltaError[];
   isComponentActive = true;
-  requestId:string=null;
+  requestId: string = null;
 
   /////////////////////////////////////////
 
@@ -39,8 +39,7 @@ export class TaskContainerComponent implements OnInit, OnDestroy {
       takeWhile(() => this.isComponentActive))
       .subscribe((application) => {
         if (application && application.id) {
-         this.requestId=application.id;
-
+          this.requestId = application.id;
         }
       });
 
@@ -50,8 +49,8 @@ export class TaskContainerComponent implements OnInit, OnDestroy {
       .subscribe((activeTask) => {
         let taskRequest = new TaskRequest();
         taskRequest.workFlowId = activeTask.workflowId;
-        taskRequest.taskId = activeTask.taskId;
-       taskRequest.requestId= this.requestId;
+        taskRequest.taskId = activeTask.task.id;
+        taskRequest.requestId = this.requestId;
         this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask(taskRequest));
       });
 
