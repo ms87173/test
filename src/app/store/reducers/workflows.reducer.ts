@@ -4,15 +4,33 @@ export interface WorkflowsState {
     workflows: any,
     activeTask: {
         workflowId: string,
-        taskId: string
+        task: {
+            label: string,
+            description: string,
+            id: string,
+            status: string,
+            type: string
+        }
     },
     previousTask: {
         workflowId: string,
-        taskId: string
+        task: {
+            label: string,
+            description: string,
+            id: string,
+            status: string,
+            type: string
+        }
     },
     nextTask: {
         workflowId: string,
-        taskId: string
+        task: {
+            label: string,
+            description: string,
+            id: string,
+            status: string,
+            type: string
+        }
     },
     loaded: boolean,
     loading: boolean
@@ -22,16 +40,34 @@ export interface WorkflowsState {
 export const InitialState: WorkflowsState = {
     workflows: [],
     activeTask: {
-        workflowId: null,
-        taskId: null
+        workflowId: '',
+        task: {
+            label: '',
+            description: '',
+            id: '',
+            status: '',
+            type: ''
+        }
     },
     previousTask: {
-        workflowId: null,
-        taskId: null
+        workflowId: '',
+        task: {
+            label: '',
+            description: '',
+            id: '',
+            status: '',
+            type: ''
+        }
     },
     nextTask: {
-        workflowId: null,
-        taskId: null
+        workflowId: '',
+        task: {
+            label: '',
+            description: '',
+            id: '',
+            status: '',
+            type: ''
+        }
     },
     loaded: false,
     loading: false
@@ -46,16 +82,20 @@ export function reducer(
             return {
                 ...state,
                 loaded: true,
-                loading: true,
+                loading: false,
                 workflows: action.payload
             }
         case ActionTypes.SET_ACTIVE_TASK:
-            const {workflowId, taskId} = action.payload;
+            const { workflowId, taskId } = action.payload;
+            //TODO: change this to key value pair
+            //determine routing as well with different actions
+            const workflow = state.workflows.find(e => e.id === workflowId);
+            const task = workflow.tasks.find(e => e.id === taskId);
             return {
                 ...state,
                 activeTask: {
                     workflowId,
-                    taskId
+                    task
                 }
             }
         default:
@@ -66,4 +106,5 @@ export function reducer(
 export const getWorkflows = (state: WorkflowsState) => state.workflows;
 export const getWorkflowsLoaded = (state: WorkflowsState) => state.loaded;
 export const getWorkflowsLoading = (state: WorkflowsState) => state.loading;
-export const getActiveWorkflowTask = (state: WorkflowsState) => state.activeTask
+export const getActiveWorkflowTask = (state: WorkflowsState) => state.activeTask.task;
+export const getActiveWorkflowTaskId = (state: WorkflowsState) => state.activeTask.task.id;

@@ -9,7 +9,7 @@ export class ApplicationRequestService {
         // return this.apiService.post('application', { id });
         return this.apiService.get('request');
     }
-    getApplicationRequestWorkflows(id: string): Observable<any> {
+    getApplicationRequestWorkflows(id: string): Observable<any[]> {
         // return this.apiService.post('applications/workflows', { id });
         return this.apiService.get('workflows');
     }

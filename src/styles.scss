@@ -3,11 +3,23 @@
 
 @import '../node_modules/bootstrap/dist/css/bootstrap.css';
 @import './assets/styles/color.scss';
+// @import './assets/styles/helper.scss';
 @import '../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
 
 body {
     margin: 0;
-    padding-bottom: 65px;
+    padding-bottom: 90px;
+}
+
+.form-group {
+    > label{
+        width: 100%
+    }
+}
+
+.control-label-help {
+    cursor: pointer;
+    color: #0d4061;
 }
 
 .bold {
@@ -84,4 +96,7 @@ body {
 }
 .warning {
     color: orange;
+}
+.btn {
+    min-width: 90px;
 }

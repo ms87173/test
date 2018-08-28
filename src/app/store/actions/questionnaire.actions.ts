@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Task, QuestionaireDeltaRequest, QuestionaireDeltaResponse, QuestionaireDeltaError, FormlyFieldConfigArrayCollection } from '../../core/models';
+import { Task, QuestionaireDeltaRequest, QuestionaireDeltaResponse, QuestionaireDeltaError, FormlyFieldConfigArrayCollection, TaskRequest } from '../../core/models';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 export enum ActionTypes {
@@ -46,7 +46,7 @@ export enum ActionTypes {
 
 export class GetCurrentTask implements Action {
     readonly type = ActionTypes.GET_CURRENT_TASK
-    constructor(public payload: string) {
+    constructor(public payload: TaskRequest) {
         this.payload = payload
     }
 }

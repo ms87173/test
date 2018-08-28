@@ -23,9 +23,7 @@ export class DdoApplicationsComponent implements OnInit {
   applicationsData: any;
   constructor(
     private store: Store<fromRootReducers.AppState>
-  ) { }
-
-  ngOnInit() {
+  ) {
     const headings = APPLICATION_GRID_HEADING;
     const dropDownOptions = APPLICATION_DROPDOWN_OPTIONS;
     this.gridConfig = {
@@ -33,7 +31,6 @@ export class DdoApplicationsComponent implements OnInit {
       data: [],
       dropDownOptions
     };
-    this.store.dispatch(new GetApplications());
     this.store.select(fromRootSelectors.userSelectors.getUserContactPerson).
       subscribe((contactDetail: any) => {
         this.contactPersonDetails = new ContactDetailsModel(contactDetail);
@@ -45,6 +42,11 @@ export class DdoApplicationsComponent implements OnInit {
         this.applicationsData = applications;
       });
   }
+
+  ngOnInit() {
+    this.store.dispatch(new GetApplications());
+  }
+
   gridActions(payload) {
     switch (payload.actionType) {
       case ACTION_TYPES.rowClicked:

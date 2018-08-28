@@ -191,7 +191,7 @@ export class NgxFormlyParserService {
       field.type = question.type;
 
       //Todo:Switch case for custom
-      if (question.type !== "address") {
+      if (question.type !== "custom-address-field") {
 
 
 
@@ -234,7 +234,7 @@ export class NgxFormlyParserService {
           fieldGroup: [
             {
               className: 'col-sm-4',
-              type: 'select',
+              type: 'custom-dropdown',
               key: 'investmentName',
               templateOptions: {
                 label: 'Name of Investment:',
@@ -252,7 +252,7 @@ export class NgxFormlyParserService {
               key: 'requiredCheckBox',
               className: 'col-sm-3',
 
-              type: 'customCheckbox',
+              type: 'custom-checkbox',
               templateOptions: {
                 label: 'Hey there you need to check this box as this is required',
                 required: true,

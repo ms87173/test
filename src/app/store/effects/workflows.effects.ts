@@ -3,11 +3,9 @@ import { ApplicationRequestService } from '../../core/services/application-reque
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import {
     ActionTypes,
-    DeterminePendingTaskOfApplication,
     GetApplicationWorkflows,
     GetApplicationWorkflowsFailure,
     GetApplicationWorkflowsSuccess,
-    SetActiveTask
 } from '../actions/workflows.action';
 import { switchMap, map, catchError, filter } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -41,28 +39,8 @@ export class ApplicationWorkflowsEffects {
                     )
         ));
 
-    @Effect() setPendingTask = this.actions$.pipe(
-        ofType(ActionTypes.DETERMINE_PENDING_TASK_OF_APPLICATION_REQUEST),
-        switchMap(
-            (action: DeterminePendingTaskOfApplication) =>
-                this.determinePendingTask(action.payload)
-                    .pipe(
-                        map(
-                            (data) => {
-                                return new SetActiveTask(data);
-                            })
-                    )
-        ));
-
     constructor(
         private applicationRequestService: ApplicationRequestService,
         private actions$: Actions
     ) { }
-    determinePendingTask(workflows) {
-        console.log(workflows);
-        return of({
-            workflowId: '2',
-            taskId: '1'
-        });
-    }
 }

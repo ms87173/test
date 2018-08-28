@@ -1,6 +1,6 @@
-<div *ngIf="formlyFieldConfigArrayCollections?.length > 0">
-  <div *ngFor="let formlyFieldConfigArray of formlyFieldConfigArrayCollections; let index = index;">
-    <section [formlyFieldConfigArray]="formlyFieldConfigArray">
-    </section>
+  <div *ngIf="formlyFieldConfigArrayCollections?.length > 0">
+    <div *ngFor="let formlyFieldConfigArray of formlyFieldConfigArrayCollections; let index = index;">
+      <section [formlyFieldConfigArray]="formlyFieldConfigArray">
+      </section>
+    </div>
   </div>
-</div>

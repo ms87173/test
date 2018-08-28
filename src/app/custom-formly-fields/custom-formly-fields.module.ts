@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DropdownComponent } from './components/dropdown/dropdown.component';
-import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { FormlyModule } from '@ngx-formly/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
-import { TooltipModule } from 'ngx-bootstrap';
+import { TooltipModule, BsDatepickerModule } from 'ngx-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { TextboxComponent } from './components/textbox/textbox.component';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { RadiobuttonComponent } from './components/radiobutton/radiobutton.component';
 import { AutoCompleteComponent } from './components/auto-complete/auto-complete.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
-import { BsDatepickerModule } from 'ngx-bootstrap';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgSelectModule } from '@ng-select/ng-select';
 import { AddressComponent } from './components/address/address.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { FormGroupWrapperComponent } from '../shared/form-group-wrapper/form-group-wrapper.component';
 import { QuestionnaireComponent } from '../questionnaire/questionnaire.component';
 import { SectionComponent } from '../section/section.component';
@@ -36,15 +37,15 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
         { name: 'server-error', message: (err) => err }
       ],
       types: [
-        { name: 'customCheckbox', component: CheckboxComponent },
-        { name: 'dropdown', component: DropdownComponent },
-        { name: 'radioButton', component: RadiobuttonComponent },
-        { name: 'typeahead', component: AutoCompleteComponent },
-        { name: 'datePicker', component: DatePickerComponent },
-        { name: 'address', component: AddressComponent }
+        { name: 'custom-checkbox', component: CheckboxComponent },
+        { name: 'custom-dropdown', component: DropdownComponent },
+        { name: 'custom-radio-button', component: RadiobuttonComponent },
+        { name: 'typeahead', component: AutoCompleteComponent, extends: 'input' },
+        { name: 'custom-datepicker', component: DatePickerComponent },
+        { name: 'custom-address-field', component: AddressComponent },
+        { name: 'custom-textbox', component: TextboxComponent }
       ]
     }),
-
     FormlyBootstrapModule,
     TooltipModule.forRoot(),
     BsDatepickerModule.forRoot()
@@ -59,18 +60,21 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     QuestionnaireComponent,
     SectionComponent,
     TaskContainerComponent,
-    UploadFileComponent
+    UploadFileComponent,
+    TextboxComponent
   ],
   exports: [
-    AddressComponent,
-    CheckboxComponent,
     DropdownComponent,
+    CheckboxComponent,
     RadiobuttonComponent,
     AutoCompleteComponent,
+    DatePickerComponent,
+    AddressComponent,
     QuestionnaireComponent,
     SectionComponent,
     TaskContainerComponent,
-    UploadFileComponent
+    UploadFileComponent,
+    TextboxComponent
   ]
 })
 export class CustomFormlyFieldsModule { }

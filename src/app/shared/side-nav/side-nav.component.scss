@@ -18,8 +18,8 @@
             color: orange;
         }
         &--completed {
-            color: green;
-            -webkit-text-stroke: 2px white;
+            color: #1568a9;
+            -webkit-text-stroke: 1px white;
         }
     }
     &__heading {
@@ -51,10 +51,11 @@
         &:hover {
             background: #e6f8fe;
             .collapsible-icon {
-                -webkit-text-stroke: 2px #e6f8fe;
+                -webkit-text-stroke: 1px #e6f8fe;
             }
         }
         &.active {
+            padding-left: 17%;
             background: #e6f8fe;
             color: black;
             font-weight: bold;
@@ -62,8 +63,8 @@
             a {
                 font-weight: bold;
             }
-            i {
-                -webkit-text-stroke: 2px #e6f8fe;
+            i.status-icon--completed {
+                -webkit-text-stroke: 1px #e6f8fe;
             }
         }
         .status-icon {

@@ -28,4 +28,3 @@ export const getApplicationActiveTask = createSelector(
     getApplicaitonRequestState,
     fromApplicationRequest.getApplicationActiveTask
 );
-
