@@ -114,11 +114,11 @@ export class FormlyConsumerComponent implements OnInit {
         templateOptions: {
           label: 'Do you have a U.S. Social Security Number?',
           options: [
-            { name: 'Yes', value: 'Yes', id: 0 },
-            { name: 'No', value: 'No', id: 1 }
+            { label: 'Yes', value: 'Yes', id: 0 },
+            { label: 'No', value: 'No', id: 1 }
           ],
           valueProp: 'value',
-          labelProp: 'name'
+          labelProp: 'label'
         },
       },
       {
