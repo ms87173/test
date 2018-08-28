@@ -57,11 +57,12 @@ import { TaskContainerComponent } from '../task-container/task-container.compone
     TaskContainerComponent
   ],
   exports: [
-    AddressComponent,
-    CheckboxComponent,
     DropdownComponent,
+    CheckboxComponent,
     RadiobuttonComponent,
     AutoCompleteComponent,
+    DatePickerComponent,
+    AddressComponent,
     QuestionnaireComponent,
     SectionComponent,
     TaskContainerComponent

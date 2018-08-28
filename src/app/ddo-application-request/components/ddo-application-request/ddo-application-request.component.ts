@@ -42,8 +42,8 @@ export class DdoApplicationRequestComponent implements OnInit {
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationWorkflows)
       .subscribe((workflows: any) => {
         this.workflows = workflows && workflows.map((workflow) => new WorkFlowsSideNavModel(workflow));
-        if (this.initalRender && this.workflows && this.workflows.length > 0) {
-          this.store.dispatch(new DeterminePendingTaskOfApplication(this.workflows));
+        if(this.initalRender && this.workflows && this.workflows.length > 0) {
+          this.store.dispatch(new DeterminePendingTaskOfApplication(workflows));
         }
       });
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationActiveTask)

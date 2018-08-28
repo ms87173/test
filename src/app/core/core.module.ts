@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ConstantsModule } from './constants/constants.module';
-import { ApiService, UserInfoService, QuestionnaireService, WorkflowsTasksService } from './services';
+import { ApiService, UserInfoService, QuestionnaireService } from './services';
 import { NgxFormlyParserService } from './services/ngx-formly-parser.service';
 import { ApplicationsService } from './services/applications.service';
 import { ApplicationRequestService } from './services/application-request.service';
@@ -17,7 +17,6 @@ import { ApplicationRequestService } from './services/application-request.servic
     ApiService,
     UserInfoService,
     QuestionnaireService,
-    WorkflowsTasksService,
     ApplicationsService,
     ApplicationRequestService
   ],

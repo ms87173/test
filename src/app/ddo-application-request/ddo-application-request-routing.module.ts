@@ -10,7 +10,7 @@ const routes: Routes = [
     component: DdoApplicationRequestComponent,
     children: [
       {
-        path: 'tasks',
+        path: 'questionnaire',
         component: DdoApplicationRequestTasksComponent
       }
     ]
@@ -18,17 +18,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DdoApplicationRequestDashboardComponent
-  },
-  // {
-  //   path: 'tasks',
-  //   component: DdoApplicationRequestTasksComponent,
-  //   // children: [
-  //   //   {
-  //   //     path: 'questionnaire',
-  //   //     component 
-  //   //   }
-  //   // ]
-  // }
+  }
 ];
 
 @NgModule({
