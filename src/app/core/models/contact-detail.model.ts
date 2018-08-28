@@ -10,6 +10,7 @@ export class ContactDetailsModel {
         if (!data) {
             return null;
         } else {
+            this.iconClass = 'fa-comments';
             const contactPersonsRole = new Map(Object.entries(ROLE));
             this.role = `Contact your ${contactPersonsRole.get(data.role)}`;
             this.name = `${data.firstName} ${data.middleName} ${data.lastName}`;

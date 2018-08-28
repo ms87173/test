@@ -1,11 +1,18 @@
 .contact-detail {
-    &__content{
-        background: #e6f8fe;
+    &__content {
+        background: #ffffff;
         text-align: center;
+        border: 1px solid #dfdfdf;
+        border-top: 0;
     }
     &__icon {
         font-size: smaller;
         height: 20px;
-        margin-right: 5px
+        margin-right: 5px;
+        &--chat {
+            font-size: 85px;
+            color: #e6f8fe;
+            -webkit-text-stroke: 1px #194481;
+        }
     }
 }

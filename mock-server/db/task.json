@@ -262,6 +262,142 @@
                 }
                 
             ]
+        },
+        {
+            "id": 2,
+            "label": "Savings Account",
+            "description": "This is your primary interest bearing account.",
+            "status": "InProgress",
+            "sections": [
+                {
+                    "title": "Saving Information",
+                    "questions": [
+                        {
+                            "id": "InterestCheckingCheckBox",
+                            "label": "Would you Earn some extra money, YOU KNOW WHAT I MEAN?",
+                            "type": "select",
+                            "required": "true",
+                            "readOnly": "false",
+                            "placeHolder": "Interest Account",
+                            "options": [
+                                {"label": "Iron Man", "value": "iron_man"
+                                },
+                                {"label": "Captain America", "value": "captain_america"
+                                },
+                                {"label": "Black Widow", "value": "black_widow"
+                                },
+                                {"label": "Hulk", "value": "hulk"
+                                },
+                                {"label": "Captain Marvel", "value": "captain_marvel"
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "defaultValue": "<any>"
+                        },
+                        {
+                            "id": "SavingAccountTextBox",
+                            "label": "Would you like to earn saving this account?",
+                            "type": "input",
+                            "required": "true",
+                            "readOnly": "false",
+                            "placeHolder": "Saving Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": "true"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "False"
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "defaultValue": "<any>"
+                        },
+                        {
+                            "id": "SavingAccountCheckBox",
+                            "label": "Would you like to earn saving this account?",
+                            "type": "customCheckbox",
+                            "required": "true",
+                            "readOnly": "false",
+                            "placeHolder": "Saving Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": "true"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "False"
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "defaultValue": "<any>"
+                        },
+                        {
+                            "id": "permanentAddress",
+                            "label": "Permananet Address?",
+                            "type": "address",
+                            "required": "true",
+                            "readOnly": "false",
+                            "placeHolder": "Saving Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": "true"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "False"
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "defaultValue": "<any>"
+                        },
+                        {
+                            "id": "ChildDependentTextBox",
+                            "label": "Do you have an Child Dependent?",
+                            "type": "input",
+                            "required": "true",
+                            "readOnly": "false",
+                            "placeHolder": "Saving Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": "true"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "False"
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "defaultValue": "<any>"
+                        },
+                        {
+                            "id": "RemoveOnAnswerQuestion1",
+                            "label": "I will be removed as soon as question 1 is answered",
+                            "type": "input",
+                            "required": "true",
+                            "readOnly": "false",
+                            "placeHolder": "Saving Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": "true"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "False"
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "defaultValue": "<any>"
+                        }
+                    ]
+                }
+                
+            ]
         }
     ]
 }
