@@ -11,6 +11,7 @@ import { CustomFormlyFieldsModule } from '../custom-formly-fields/custom-formly-
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyConsumerComponent } from './formly-consumer/formly-consumer.component';
+import { NgxUploaderModule } from 'ngx-uploader';
 
 @NgModule({
   imports: [
@@ -21,7 +22,11 @@ import { FormlyConsumerComponent } from './formly-consumer/formly-consumer.compo
     CustomFormlyFieldsModule,
     FormlyModule,
     BsDropdownModule.forRoot(),
-    
+    NgxUploaderModule
+  ],
+  exports: [
+    CommonModule,
+    NgxUploaderModule
   ],
   declarations: [LabelValueConsumerComponent,
     StorybookComponent,

@@ -34,7 +34,7 @@
                         {
                             "id": "SavingAccountTextBox",
                             "label": "Would you like to earn saving this account?",
-                            "type": "input",
+                            "type": "radioButton",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",
@@ -54,7 +54,7 @@
                         {
                             "id": "SavingAccountCheckBox",
                             "label": "Would you like to earn saving this account?",
-                            "type": "customCheckbox",
+                            "type": "address",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",

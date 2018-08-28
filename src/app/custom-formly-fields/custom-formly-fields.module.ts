@@ -11,18 +11,22 @@ import { AutoCompleteComponent } from './components/auto-complete/auto-complete.
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { AddressComponent } from './components/address/address.component';
 import { FormGroupWrapperComponent } from '../shared/form-group-wrapper/form-group-wrapper.component';
 import { QuestionnaireComponent } from '../questionnaire/questionnaire.component';
 import { SectionComponent } from '../section/section.component';
 import { TaskContainerComponent } from '../task-container/task-container.component';
-
+import { NgxUploaderModule } from 'ngx-uploader';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
     FormlyBootstrapModule,
+    NgSelectModule,
+    NgxUploaderModule,
     NgbModule.forRoot(),
     FormlyModule.forRoot({
       wrappers: [
@@ -35,7 +39,7 @@ import { TaskContainerComponent } from '../task-container/task-container.compone
         { name: 'customCheckbox', component: CheckboxComponent },
         { name: 'dropdown', component: DropdownComponent },
         { name: 'radioButton', component: RadiobuttonComponent },
-        { name: 'typeahead', component: AutoCompleteComponent, extends: 'input' },
+        { name: 'typeahead', component: AutoCompleteComponent },
         { name: 'datePicker', component: DatePickerComponent },
         { name: 'address', component: AddressComponent }
       ]
@@ -54,7 +58,8 @@ import { TaskContainerComponent } from '../task-container/task-container.compone
     AddressComponent,
     QuestionnaireComponent,
     SectionComponent,
-    TaskContainerComponent
+    TaskContainerComponent,
+    UploadFileComponent
   ],
   exports: [
     AddressComponent,
@@ -64,7 +69,8 @@ import { TaskContainerComponent } from '../task-container/task-container.compone
     AutoCompleteComponent,
     QuestionnaireComponent,
     SectionComponent,
-    TaskContainerComponent
+    TaskContainerComponent,
+    UploadFileComponent
   ]
 })
 export class CustomFormlyFieldsModule { }
