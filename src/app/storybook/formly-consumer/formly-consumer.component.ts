@@ -28,6 +28,35 @@ export class FormlyConsumerComponent implements OnInit {
     this.listData = ['Alabama', 'Alaska'];
     this.fields = [
       {
+        key: 'text',
+        type: 'custom-textbox',
+        templateOptions: {
+          label: 'Require text',
+          placeholder: 'Formly is terrific!',
+          required: true
+        }
+      },
+      {
+        key: 'text',
+        type: 'custom-textbox',
+        templateOptions: {
+          label: 'Optional text',
+          placeholder: 'Formly is terrific!'
+        }
+      },
+      {
+        key: 'text',
+        type: 'custom-textbox',
+        templateOptions: {
+          label: 'Optional Text + tooltip',
+          placeholder: 'Formly is terrific!',
+          tooltip: {
+            content: 'Hey this is tooltip',
+            placement: 'right'
+          }
+        }
+      },
+      {
         key: 'requiredCheckBox',
         type: 'custom-checkbox',
         templateOptions: {
@@ -67,7 +96,7 @@ export class FormlyConsumerComponent implements OnInit {
       },
       {
         key: 'marvel1',
-        type: 'dropdown',
+        type: 'custom-dropdown',
         templateOptions: {
           label: 'Normal Select',
           options: [
@@ -81,7 +110,7 @@ export class FormlyConsumerComponent implements OnInit {
       },
       {
         key: 'radioButtonText',
-        type: 'radioButton',
+        type: 'custom-radio-button',
         templateOptions: {
           label: 'Do you have a U.S. Social Security Number?',
           options: [
@@ -94,7 +123,7 @@ export class FormlyConsumerComponent implements OnInit {
       },
       {
         key: 'dateOfBirth',
-        type: 'datePicker',
+        type: 'custom-datepicker',
         templateOptions: {
           label: 'Date of Birth',
         }

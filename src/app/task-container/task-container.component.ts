@@ -31,12 +31,8 @@ export class TaskContainerComponent implements OnInit, OnDestroy {
 
 
   constructor(
-    private questionnaireService: QuestionnaireService,
-    private apiService: ApiService,
     private cd: ChangeDetectorRef,
-    private ngxFormlyParserService: NgxFormlyParserService,
-    private store: Store<fromRootReducers.AppState>,
-    fb: FormBuilder
+    private store: Store<fromRootReducers.AppState>
   ) {
 
     this.store.pipe(select(fromRootSelectors.applicationRequestSelectors.getApplicaiton),
