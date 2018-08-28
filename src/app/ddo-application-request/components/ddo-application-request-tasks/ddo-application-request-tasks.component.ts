@@ -43,12 +43,14 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
     this.store.pipe(select(fromRootSelectors.applicationRequestSelectors.getApplicationActiveTask),
       takeWhile(() => this.isComponentActive))
       .subscribe((activeTask) => {
-        const taskRequest = new TaskRequest();
-        taskRequest.workFlowId = activeTask.workflowId;
-        taskRequest.taskId = activeTask.task.id;
-        taskRequest.requestId = this.requestId;
-        this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask(taskRequest));
-      });
+        if (activeTask && activeTask.workflowId && activeTask.task.id) {
+          const taskRequest = new TaskRequest();
+          taskRequest.workFlowId = activeTask.workflowId;
+          taskRequest.taskId = activeTask.task.id;
+          taskRequest.requestId = this.requestId;
+          this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask(taskRequest));  
+        }}
+      );
     this.store.pipe(select(fromRootSelectors.questionnaireSelectors.getCurrentTask),
       takeWhile(() => this.isComponentActive)
     ).subscribe(
