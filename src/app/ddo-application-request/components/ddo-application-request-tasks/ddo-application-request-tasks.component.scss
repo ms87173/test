@@ -6,6 +6,10 @@
             border: 0;
             padding-left: 0;
             padding-top: 20px;
+            &__description {
+                color: #67696d;
+                font-family: sans-serif;
+            }
         }
         .card-body {
             border: 1px solid #dfdfdf;
