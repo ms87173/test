@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Field } from '@ngx-formly/core';
 
 @Component({
@@ -6,7 +6,5 @@ import { Field } from '@ngx-formly/core';
   templateUrl: './auto-complete.component.html',
   styleUrls: ['./auto-complete.component.css']
 })
-export class AutoCompleteComponent extends Field {
 
-
-}
+export class AutoCompleteComponent extends Field { }

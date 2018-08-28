@@ -30,21 +30,15 @@ export class TaskContainerComponent implements OnInit, OnDestroy {
 
 
   constructor(
-    private questionnaireService: QuestionnaireService,
-    private apiService: ApiService,
     private cd: ChangeDetectorRef,
-    private ngxFormlyParserService: NgxFormlyParserService,
-    private store: Store<fromRootReducers.AppState>,
-    fb: FormBuilder
+    private store: Store<fromRootReducers.AppState>
   ) {
 
     this.store.pipe(select(fromRootSelectors.applicationRequestSelectors.getApplicationActiveTask),
     takeWhile(() => this.isComponentActive))
     .subscribe((activeTask)=>{
-      this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask(activeTask.taskId));    });
-
-    //Todo: Uncomment to use questionnaire seperately
-    // this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask('1'));
+      this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask(activeTask.taskId));
+    });
 
     this.store.pipe(select(fromRootSelectors.questionnaireSelectors.getCurrentTask),
       takeWhile(() => this.isComponentActive)

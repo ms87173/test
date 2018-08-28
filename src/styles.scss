@@ -10,6 +10,17 @@ body {
     padding-bottom: 65px;
 }
 
+.form-group {
+    > label{
+        width: 100%
+    }
+}
+
+.control-label-help {
+    cursor: pointer;
+    color: #0d4061;
+}
+
 .bold {
     font-weight: bold;
 }

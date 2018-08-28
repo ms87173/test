@@ -4,8 +4,7 @@
     [formControl]="formControl" [formlyAttributes]="field">
   <label class="custom-control-label" [for]="id">
     {{ to.label }}
-    <span *ngIf="to.required && to.hideRequiredMarker !== true">*</span>
   </label>
   <span *ngIf='!to.required' class="ml-4">(optional)</span>
-  <i *ngIf="to.tooltip" class="control-label-help fa fa-question-circle ml-3" containerClass="{{to.tooltip.containerClass}}" tooltip="{{to.tooltip.content}}" placement="{{to.tooltip.placement}}"></i>
+  <i *ngIf="to.tooltip" class="control-label-help fa fa-question-circle-o ml-3" containerClass="{{to.tooltip.containerClass}}" tooltip="{{to.tooltip.content}}" placement="{{to.tooltip.placement}}"></i>
 </div>

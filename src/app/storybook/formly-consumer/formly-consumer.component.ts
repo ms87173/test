@@ -28,8 +28,37 @@ export class FormlyConsumerComponent implements OnInit {
     this.listData = ['Alabama', 'Alaska'];
     this.fields = [
       {
+        key: 'text',
+        type: 'custom-textbox',
+        templateOptions: {
+          label: 'Require text',
+          placeholder: 'Formly is terrific!',
+          required: true
+        }
+      },
+      {
+        key: 'text',
+        type: 'custom-textbox',
+        templateOptions: {
+          label: 'Optional text',
+          placeholder: 'Formly is terrific!'
+        }
+      },
+      {
+        key: 'text',
+        type: 'custom-textbox',
+        templateOptions: {
+          label: 'Optional Text + tooltip',
+          placeholder: 'Formly is terrific!',
+          tooltip: {
+            content: 'Hey this is tooltip',
+            placement: 'right'
+          }
+        }
+      },
+      {
         key: 'requiredCheckBox',
-        type: 'customCheckbox',
+        type: 'custom-checkbox',
         templateOptions: {
           label: 'Hey there you need to check this box as this is required',
           required: true,
@@ -37,7 +66,7 @@ export class FormlyConsumerComponent implements OnInit {
       },
       {
         key: 'requiredWithNoMarker',
-        type: 'customCheckbox',
+        type: 'custom-checkbox',
         templateOptions: {
           label: 'Hey there you need to check this box as this is required but i have no required marker ',
           required: true,
@@ -46,7 +75,7 @@ export class FormlyConsumerComponent implements OnInit {
       },
       {
         key: 'OptionalCheckbox',
-        type: 'customCheckbox',
+        type: 'custom-checkbox',
         templateOptions: {
           label: 'Hey there i am an optional checkbox. But please do not ignore me. ',
           hideRequiredMarker: true,
@@ -54,7 +83,7 @@ export class FormlyConsumerComponent implements OnInit {
       },
       {
         key: 'checkboxWithHelpText',
-        type: 'customCheckbox',
+        type: 'custom-checkbox',
         templateOptions: {
           label: 'I am a checkbox with little help text ',
           required: true,
@@ -67,7 +96,7 @@ export class FormlyConsumerComponent implements OnInit {
       },
       {
         key: 'marvel1',
-        type: 'dropdown',
+        type: 'custom-dropdown',
         templateOptions: {
           label: 'Normal Select',
           options: [
@@ -81,7 +110,7 @@ export class FormlyConsumerComponent implements OnInit {
       },
       {
         key: 'radioButtonText',
-        type: 'radioButton',
+        type: 'custom-radio-button',
         templateOptions: {
           label: 'Do you have a U.S. Social Security Number?',
           options: [
@@ -94,7 +123,7 @@ export class FormlyConsumerComponent implements OnInit {
       },
       {
         key: 'dateOfBirth',
-        type: 'datePicker',
+        type: 'custom-datepicker',
         templateOptions: {
           label: 'Date of Birth',
         }
