@@ -47,13 +47,13 @@ export class DdoApplicationRequestComponent {
       });
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationActiveTask)
       .subscribe((activeTaskData: any) => {
-        this.selectedTaskId = activeTaskData.taskId;
+        this.selectedTaskId = activeTaskData.task.id;
         this.selectedWorkflowId = activeTaskData.workflowId;
         this.initalRender = !(this.selectedTaskId && this.selectedWorkflowId);
         if(this.selectedTaskId) {
           this.store.dispatch(
             new RouterGo({
-              path: ['applications', this.application.id, ],
+              path: ['applications', this.application.id, 'questionnaire'],
             })
           );
         }
