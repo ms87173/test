@@ -18,12 +18,13 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './core/services/token.interceptor';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { WindowRef } from './core/services/window-ref.service';
+import { CustomFormlyFieldsService } from './custom-formly-fields/services/custom-formly-fields.service';
 import { CustomFormlyFieldsModule } from './custom-formly-fields/custom-formly-fields.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent  
   ],
   imports: [
     AngularFontAwesomeModule,
@@ -46,7 +47,8 @@ import { CustomFormlyFieldsModule } from './custom-formly-fields/custom-formly-f
       useClass: TokenInterceptor,
       multi: true
     },
-    WindowRef
+    WindowRef,
+    CustomFormlyFieldsService
   ],
   bootstrap: [AppComponent]
 })

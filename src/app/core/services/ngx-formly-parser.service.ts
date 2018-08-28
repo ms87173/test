@@ -12,7 +12,7 @@ import * as _ from 'lodash';
 import { Store } from '@ngrx/store';
 import { fromRootReducers } from '../../store'
 import { questionnaireActions, } from '../../store/actions';
-import { Task } from '../models';
+import { Task, FormlyFieldConfigArrayCollection } from '../models';
 import { debounceTime } from 'rxjs/operators';
 
 @Injectable()
@@ -32,13 +32,16 @@ export class NgxFormlyParserService {
         .pipe(debounceTime(600))
         //Todo: To be Decided
         .subscribe((fieldValue) => {
-          this.currentQuestionId = key;
-          let questionaireRequest: QuestionaireDeltaRequest = {
-            id: key,
-            value: fieldValue
-          };
-          this.store.dispatch(new questionnaireActions.DeleteQuestionnaireErrorByQuestionId(this.currentQuestionId));
-          this.store.dispatch(new questionnaireActions.GetCurrentFieldChangeDelta(questionaireRequest));
+          console.log("field changes occured")
+          console.log(fieldValue);
+          console.log(field.defaultValue);
+          // this.currentQuestionId = key;
+          // let questionaireRequest: QuestionaireDeltaRequest = {
+          //   id: key,
+          //   value: fieldValue
+          // };
+          // this.store.dispatch(new questionnaireActions.DeleteQuestionnaireErrorByQuestionId(this.currentQuestionId));
+          // this.store.dispatch(new questionnaireActions.GetCurrentFieldChangeDelta(questionaireRequest));
         });
     }
   }
@@ -60,8 +63,7 @@ export class NgxFormlyParserService {
       section.questions.map((question: Question) => {
         let field: FormlyFieldConfig = {};
         if (question.id == currentQuestionId) {
-          console.log(question.id);
-          console.log(currentQuestionId);
+
           field.focus = true;
         }
 
@@ -145,7 +147,7 @@ export class NgxFormlyParserService {
       }
 
       ////Todo:Error loop for delta
-      
+
       if (delta.errors) {
         delta.errors.forEach((error) => {
           let currentSection = currTask.sections.find((section) => {
@@ -159,6 +161,129 @@ export class NgxFormlyParserService {
       }
     }
     return of(currTask);
+  }
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+
+  getFormlyFieldConfigArrayCollectionFromTask(currentTask: Task, currentQuestionId: string): Observable<FormlyFieldConfigArrayCollection[]> {
+
+    let formlyFieldConfigArrayCollections: FormlyFieldConfigArrayCollection[] = [];
+    let currTask = { ...currentTask };
+    currTask.sections.map((section: Section) => {
+      let FormlyFieldConfigArray: FormlyFieldConfig[] = this.getFormlyFieldConfigArrayFromSection(section, currentQuestionId);
+      let formlyFieldConfigArray: FormlyFieldConfigArrayCollection = new FormlyFieldConfigArrayCollection(FormlyFieldConfigArray, section.title);
+      formlyFieldConfigArrayCollections.push(formlyFieldConfigArray);
+
+
+    });
+    return of(formlyFieldConfigArrayCollections);
+  }
+
+  getFormlyFieldConfigArrayFromSection(currentSection: Section, currentQuestionId: string): FormlyFieldConfig[] {
+    let FormlyFieldConfigArray: FormlyFieldConfig[] = [];
+    let currSection = { ...currentSection };
+    currSection.questions.map((question: Question) => {
+
+      /// Todo: Need to check if it is simple or custom type
+
+      let field: FormlyFieldConfig = {};
+      field.key = question.id;
+      field.type = question.type;
+
+      //Todo:Switch case for custom
+      if (question.type !== "address") {
+
+
+
+        //Todo: for focus on questions
+        // if (question.id == currentQuestionId) {
+        //   console.log(question.id);
+        //   console.log(currentQuestionId);
+        //   field.focus = true;
+        // }
+
+
+
+
+        //Todo: Need to create field trigger for delta changes
+        // field.lifecycle = this.fieldChangeLifecycleTrigger;
+
+        field.templateOptions = {
+          label: question.label,
+          options: question.options,
+          required: question.required,
+        };
+
+        // field.defaultValue= question.defaultValue;
+        //Todo: Implement error messgaes
+        // if (question.serverErrorMessage) {
+        //   field.validators = {
+        //     ip: {
+        //       expression: (c) => true,
+        //       message: (error, field: FormlyFieldConfig) => question.serverErrorMessage,
+        //     }
+        //   }
+        // }
+      }
+      else {
+        field.fieldArray = {
+          fieldGroupClassName: 'row',
+          templateOptions: {
+            btnText: 'Add another investment',
+          },
+          fieldGroup: [
+            {
+              className: 'col-sm-4',
+              type: 'select',
+              key: 'investmentName',
+              templateOptions: {
+                label: 'Name of Investment:',
+                required: true,
+                options: [
+                  { label: 'Iron Man', value: 'iron_man' },
+                  { label: 'Captain America', value: 'captain_america' },
+                  { label: 'Black Widow', value: 'black_widow' },
+                  { label: 'Hulk', value: 'hulk' },
+                  { label: 'Captain Marvel', value: 'captain_marvel' }
+                ]
+              },
+            },
+            {
+              key: 'requiredCheckBox',
+              className: 'col-sm-3',
+
+              type: 'customCheckbox',
+              templateOptions: {
+                label: 'Hey there you need to check this box as this is required',
+                required: true,
+              }
+            },
+            {
+              type: 'input',
+              key: 'stockIdentifier',
+              className: 'col-sm-3',
+              templateOptions: {
+                label: 'Stock Identifier:',
+                addonRight: {
+                  class: 'fa fa-code',
+                  onClick: (to, fieldType, $event) => console.log(to, fieldType, $event),
+                },
+              },
+            },
+          ],
+        }
+      }
+      FormlyFieldConfigArray.push(field);
+    });
+
+
+    return FormlyFieldConfigArray;
+
+  }
+
+  getFormlyConfigByQuestionType(questionType:string)
+  {
+
   }
 
   constructor(private apiService: ApiService,

@@ -1,0 +1,13 @@
+///Request
+{
+    "requestId":"<string>",
+    "workFlowId":"<string>",
+    "taskId":"<string>"
+}
+
+
+//Response
+{
+    "code": "<any>",
+    "message": "<string>"
+}

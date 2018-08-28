@@ -16,4 +16,9 @@ export class QuestionnaireComponent implements OnInit {
   constructor() {}
   ngOnInit() {
   }
+  fieldChanged() {
+    debugger;
+    console.log(" fieldChanged called")
+
+  }
 }

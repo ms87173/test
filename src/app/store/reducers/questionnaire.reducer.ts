@@ -1,9 +1,9 @@
 import { ActionTypes, QuesitonnaireActions } from '../actions/questionnaire.actions';
-import { Task, QuestionaireDeltaResponse, QuestionaireDeltaError } from '../../core/models'
+import { Task, QuestionaireDeltaResponse, QuestionaireDeltaError, FormlyFieldConfigArrayCollection } from '../../core/models'
 import { FormlyFieldConfig } from '@ngx-formly/core';
 export interface QuestionnaireState {
     readonly currentTask: Task,
-    readonly currentQuestionnaireConfig: FormlyFieldConfig[],
+    readonly currentQuestionnaireConfig:  FormlyFieldConfigArrayCollection[],
     readonly currentQuestionnaireDelta: QuestionaireDeltaResponse,
     readonly mergedCurrentTaskWithDelta: Task,
     readonly currentQuestionId: string,
@@ -37,16 +37,16 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
 
             }
 
-        case ActionTypes.GET_CURRENT_FORMLY_CONFIG_SUCCESS:
-            return {
-                ...state,
-                currentQuestionnaireConfig: action.payload
-            }
-        /// Todo : handle error case wit error object
-        case ActionTypes.GET_CURRENT_FORMLY_CONFIG_FAIL:
-            return {
-                ...state,
-            }
+        // case ActionTypes.GET_CURRENT_FORMLY_CONFIG_SUCCESS:
+        //     return {
+        //         ...state,
+        //         currentQuestionnaireConfig: action.payload
+        //     }
+        // /// Todo : handle error case wit error object
+        // case ActionTypes.GET_CURRENT_FORMLY_CONFIG_FAIL:
+        //     return {
+        //         ...state,
+        //     }
 
         case ActionTypes.GET_CURRENT_FIELD_CHANGE_DELTA_SUCCESS:
             if (action.payload.fieldChangeDelta) {
@@ -107,7 +107,6 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
         case ActionTypes.DELETE_QUESTIONNAIRE_ERRORS_BY_QUESTION_ID:
 
             if (action.payload) {
-
                 errorList = state.errors.filter((error) => {
                     return error.id != action.payload;
                 });
@@ -120,10 +119,22 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
             } else {
                 return state;
             }
-        
-            case ActionTypes.RESET_QUESTIONNAIRE_STATE_TO_INTIAL_STATE:
+
+        case ActionTypes.RESET_QUESTIONNAIRE_STATE_TO_INTIAL_STATE:
 
             return InitialQuestionnaireState;
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        case ActionTypes.GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG_SUCCESS:
+            return {
+                ...state,
+                currentQuestionnaireConfig: action.payload
+            }
+        /// Todo : handle error case wit error object
+        case ActionTypes.GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG_FAIL:
+            return {
+                ...state
+            }
 
         default:
             return state;
@@ -136,3 +147,6 @@ export const getCurrentQuestionnaireDelta = (state: QuestionnaireState) => state
 export const getMergedCurrentTaskWithDelta = (state: QuestionnaireState) => state.mergedCurrentTaskWithDelta;
 export const getCurrentQuestionId = (state: QuestionnaireState) => state.currentQuestionId;
 export const getCurrentQuestionnaireErrors = (state: QuestionnaireState) => state.errors;
+///////////////////////////////////////////////////////////////////////////////////////////
+
+

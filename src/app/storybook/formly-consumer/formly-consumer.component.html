@@ -3,7 +3,7 @@
     <div class="col-sm-12">
       <h4>Formly custom fields :</h4>
     </div>
-    <div class="col-sm-12 mt-3">
+    <div class="col-sm-6 mt-3">
       <form class="formly-consumer" [formGroup]="form" (ngSubmit)="submit()">
         <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form">
           <!-- <button type="submit" class="btn btn-primary submit-button" [disabled]="!form.valid">Submit</button> -->
@@ -12,4 +12,3 @@
     </div>
   </div>
 </div>
- {{ model|json }}

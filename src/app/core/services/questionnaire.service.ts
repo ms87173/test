@@ -65,19 +65,24 @@ export class QuestionnaireService {
   }
 
   getFieldChangeDelta(deltaRequest: QuestionaireDeltaRequest): Observable<QuestionaireDeltaResponse> {
-    switch (deltaRequest.id) {
-      case 'InterestCheckingCheckBox':
-        return this.apiService.get('questionnaireDeltaResponses/1');
+    console.log(deltaRequest);
+  return this.apiService.get('questionnaireDeltaResponses/1');
 
-      case 'SavingAccountTextBox':
-        return this.apiService.get('questionnaireDeltaResponses/2');
+    //Todo: uncomment  and change for mock service
+    // switch (deltaRequest.id) {
+    //   case 'InterestCheckingCheckBox':
+    //     return this.apiService.get('questionnaireDeltaResponses/1');
 
-      case 'ColorInputBox':
-        return this.apiService.get('questionnaireDeltaResponses/3');
+    //   case 'SavingAccountTextBox':
+    //     return this.apiService.get('questionnaireDeltaResponses/2');
 
-      default:
-        return of(null);
-    }
+    //   case 'ColorInputBox':
+    //     return this.apiService.get('questionnaireDeltaResponses/3');
+
+    //   default:
+    //     return of(null);
+    // }
   }
+ 
 
 }

@@ -1,110 +1,61 @@
 {
   "questionnaireDeltaResponses": [
-    {
-      "id": 1,
-      "new": [
-        {
-          "id": "InterestCurrentCheckBox",
-          "label": "Would you like to earn Current this account?",
-          "type": "radio",
-          "required": true,
-          "readOnly": false,
-          "placeHolder": "Current Account",
-          "options": [
+      {
+        "id":1,
+          "new":
+          
+          [
+              {
+                  "id": "InterestCurrentCheckBox",
+                  "label": "Would you like to earn Current this account?",
+                  "type": "radio",
+                  "required": true,
+                  "readOnly": false,
+                  "placeHolder": "Current Account",
+                  "options": [
+                    {
+                      "label": "Yes",
+                      "value": "true"
+                    },
+                    {
+                      "label": "No",
+                      "value": "false"
+                    }
+                  ],
+                  "tooltipText": "<string>",
+                  "defaultValue": true,
+                  "questionIdAfterToBeInserted": "InterestCheckingCheckBox",
+                  "sectionName": "Account Information"
+                
+                
+                
+                }
+                
+          ],
+          "update":null,
+      
+          "delete":[
+              {
+                  "id":"RemoveOnAnswerQuestion1",
+                  "sectionName": "Account Information"
+      
+              }
+          ],
+          "errors":[
             {
-              "label": "Yes",
-              "value": "true"
+              "id":"SavingAccountTextBox",
+              "sectionName": "Account Information",
+              "errorMessage":"Incorrect informaiton Saving Account"
             },
             {
-              "label": "No",
-              "value": "false"
+              "id":"ChildDependentTextBox",
+              "sectionName": "Account Information",
+              "errorMessage":"Incorrect information in child dependent box"
             }
-          ],
-          "tooltipText": "<string>",
-          "defaultValue": true,
-          "questionIdAfterToBeInserted": "InterestCheckingCheckBox",
-          "sectionName": "Account Information"
-        }
-      ],
-      "update": null,
-      "delete": [
-        {
-          "id": "RemoveOnAnswerQuestion1",
-          "sectionName": "Account Information"
-        }
-      ],
-      "errors": [
-        {
-          "id": "SavingAccountTextBox",
-          "sectionName": "Account Information",
-          "errorMessage": "Incorrect informaiton Saving Account"
-        },
-        {
-          "id": "ChildDependentTextBox",
-          "sectionName": "Account Information",
-          "errorMessage": "Incorrect information in child dependent box"
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "new": [
-        {
-          "id": "ColorInputBox",
-          "label": "Which is your favourate color?",
-          "type": "input",
-          "required": true,
-          "readOnly": false,
-          "placeHolder": "Current Account",
-          "options": [
-            {
-              "label": "Yes",
-              "value": "true"
-            },
-            {
-              "label": "No",
-              "value": "false"
-            }
-          ],
-          "tooltipText": "<string>",
-          "defaultValue": true,
-          "questionIdAfterToBeInserted": "SavingAccountTextBox",
-          "sectionName": "Account Information"
-        }
-      ],
-      "update": null,
-      "delete": null,
-      "errors": null
-    },
-    {
-      "id": 3,
-      "new": [
-        {
-          "id": "FavourateMovieInput",
-          "label": "What is your favourate Moview?",
-          "type": "radio",
-          "required": true,
-          "readOnly": false,
-          "placeHolder": "Current Account",
-          "options": [
-            {
-              "label": "Yes",
-              "value": "true"
-            },
-            {
-              "label": "No",
-              "value": "false"
-            }
-          ],
-          "tooltipText": "<string>",
-          "defaultValue": true,
-          "questionIdAfterToBeInserted": "ColorInputBox",
-          "sectionName": "Account Information"
-        }
-      ],
-      "update": null,
-      "delete": null,
-      "errors": null
-    }
+
+          ]        
+      
+      }
+     
   ]
 }

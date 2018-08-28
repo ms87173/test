@@ -19,7 +19,7 @@ export class FormlyConsumerComponent implements OnInit {
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
-  fields: Array<FormlyFieldConfig>;
+  fields: Array<any>;
   listData: any;
 
   constructor() { }
@@ -67,7 +67,7 @@ export class FormlyConsumerComponent implements OnInit {
       },
       {
         key: 'marvel1',
-        type: 'select',
+        type: 'dropdown',
         templateOptions: {
           label: 'Normal Select',
           options: [
@@ -91,7 +91,14 @@ export class FormlyConsumerComponent implements OnInit {
           valueProp: 'value',
           labelProp: 'name'
         },
-      // },
+      },
+      {
+        key: 'dateOfBirth',
+        type: 'datePicker',
+        templateOptions: {
+          label: 'Date of Birth',
+        }
+      },
       // {
       //   key: 'text',
       //   type: 'typeahead',
@@ -103,7 +110,7 @@ export class FormlyConsumerComponent implements OnInit {
       //         .map(term => term.length < 2 ? []
       //           : this.listData.filter(v => new RegExp(term, 'gi').test(v)).splice(0, 10)),
       //   }
-      }
+      // }
     ];
   }
 }

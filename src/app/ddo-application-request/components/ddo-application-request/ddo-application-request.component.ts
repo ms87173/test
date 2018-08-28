@@ -1,12 +1,15 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { fromRootReducers, fromRootSelectors } from '../../../store';
+import { ActivatedRoute } from '@angular/router';
 import { DeterminePendingTaskOfApplication } from '../../../store/actions/workflows.action';
 import WorkFlowsSideNavModel from '../../../core/models/workflow-sidenav.model';
 import { APPLICATION_HEADING } from '../../../core/constants/application-request.constants';
 import { ContactDetailsModel } from '../../../core/models/contact-detail.model';
+import { RouterGo } from '../../../store/actions/router.actions';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'ddo-application-request',
   templateUrl: './ddo-application-request.component.html',
   styleUrls: ['./ddo-application-request.component.scss'],
@@ -20,7 +23,7 @@ export class DdoApplicationRequestComponent implements OnInit {
   applicationHeading: any;
   heading: any;
   contactPersonDetails: any;
-  initalRender: boolean = true;
+  initalRender = true;
   constructor(
     private store: Store<fromRootReducers.AppState>
   ) { }
@@ -52,7 +55,14 @@ export class DdoApplicationRequestComponent implements OnInit {
   }
 
   onSideNavClick(payload) {
-    console.log(payload);
+    this.selectedTaskId = payload.childId;
+    this.selectedWorkflowId = payload.parentId;
+    // this.store.dispatch(
+    //   new RouterGo({
+    //     path: ['applications', this.application.id, 'tasks', payload.type],
+    //   }
+    //   )
+    // );
   }
 
 }

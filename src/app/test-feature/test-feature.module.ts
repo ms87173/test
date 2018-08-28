@@ -7,7 +7,7 @@ import { TestFeatureRoutes } from './test-feature-routes';
 import { ProductsListService } from './services/products-list.service';
 import { CoreModule } from '../core';
 import { SharedModule } from '../shared/shared.module';
-import { QuestionnaireContainerComponent } from '../questionnaire-container/questionnaire-container.component';
+import { CustomFormlyFieldsModule } from '../custom-formly-fields/custom-formly-fields.module';
 
 @NgModule({
   imports: [
@@ -15,10 +15,10 @@ import { QuestionnaireContainerComponent } from '../questionnaire-container/ques
     TestFeatureStateModule,
     CoreModule,
     SharedModule,
-    RouterModule.forChild(TestFeatureRoutes)
+    RouterModule.forChild(TestFeatureRoutes),
+    CustomFormlyFieldsModule
   ],
-  declarations: [ProductsListComponent,
-    QuestionnaireContainerComponent ],
+  declarations: [ProductsListComponent ],
   providers:[ProductsListService ],
 
 })

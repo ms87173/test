@@ -1,6 +1,7 @@
 import { Option } from './option';
 
 export class QuestionaireDeltaQuestion {
+    
     id:string;
     label:string;
     type:string;

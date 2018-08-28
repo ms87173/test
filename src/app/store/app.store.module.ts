@@ -1,6 +1,6 @@
 import { NgModule, InjectionToken } from '@angular/core';
 import { StoreModule, ActionReducerMap } from '@ngrx/store';
-import { AppState, rootReducers, CustomSerializer,  } from './reducers';
+import { AppState, rootReducers, CustomSerializer, } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../../environments/environment';
@@ -9,7 +9,7 @@ import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router
 
 export const REDUCER_TOKEN = new InjectionToken<
   ActionReducerMap<AppState>
->('Registered Reducers');
+  >('Registered Reducers');
 
 export function getReducers() {
   return rootReducers;
@@ -23,7 +23,7 @@ export function getReducers() {
       name: 'Citi DDO UI',
       maxAge: 25,
       logOnly: environment.production
-    }): [],
+    }) : [],
     StoreRouterConnectingModule
   ],
   providers: [
@@ -38,4 +38,4 @@ export function getReducers() {
   ],
 })
 
-export class AppStoreModule {}
+export class AppStoreModule { }

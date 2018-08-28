@@ -12,17 +12,13 @@ const routes: Routes = [
       {
         path: 'questionnaire',
         component: DdoApplicationRequestTasksComponent
-      // },
-      // {
-      //   path: 'review',
-        
       }
     ]
   },
   {
     path: 'dashboard',
     component: DdoApplicationRequestDashboardComponent
-  },
+  }
 ];
 
 @NgModule({
