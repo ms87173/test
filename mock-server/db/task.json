@@ -337,7 +337,7 @@
                         {
                             "id": "permanentAddress",
                             "label": "Permananet Address?",
-                            "type": "custom-address-field ",
+                            "type": "custom-address-field",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",

@@ -19,12 +19,15 @@
         text-align: center;
         max-height: 90px;
     }
-    &__button{
+    &__button {
         border: 1px solid #002d72;
         color: #002d72;
-        &--next{
+        &--next {
             background: #002d72;
             color: #ffffff;
         }
+    }
+    &__tasks {
+        background: #fafafa;
     }
 }
