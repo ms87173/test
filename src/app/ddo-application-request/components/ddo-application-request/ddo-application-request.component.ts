@@ -43,6 +43,7 @@ export class DdoApplicationRequestComponent implements OnInit {
       .subscribe((workflows: any) => {
         this.workflows = workflows && workflows.map((workflow) => new WorkFlowsSideNavModel(workflow));
         if (this.initalRender && this.workflows && this.workflows.length > 0) {
+          //TODO: to avoid further dispatching when we re fetch the configuration
           this.store.dispatch(new DeterminePendingTaskOfApplication(workflows));
         }
       });
@@ -51,18 +52,15 @@ export class DdoApplicationRequestComponent implements OnInit {
         this.selectedTaskId = activeTaskData.taskId;
         this.selectedWorkflowId = activeTaskData.workflowId;
         this.initalRender = this.selectedTaskId && this.selectedWorkflowId ? false : true;
+        this.store.dispatch(
+          new RouterGo({
+            path: ['applications', this.application.id, activeTaskData.task.type],
+          })
+        );
       });
   }
 
   onSideNavClick(payload) {
-    this.selectedTaskId = payload.childId;
-    this.selectedWorkflowId = payload.parentId;
-    this.store.dispatch(
-      new RouterGo({
-        path: ['applications', this.application.id, payload.type],
-      }
-      )
-    );
     const data = {
       workflowId: payload.parentId,
       taskId: payload.childId

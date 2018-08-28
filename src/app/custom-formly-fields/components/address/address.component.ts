@@ -16,7 +16,6 @@ export class AddressComponent extends FieldArrayType  implements OnInit, OnChang
 
   constructor(builder: FormlyFormBuilder) {
     super(builder);
-   
   }
 
   ngOnInit() {}
