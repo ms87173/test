@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { fromRootReducers, fromRootSelectors } from '../../../store';
 import { ActivatedRoute } from '@angular/router';
-import { DeterminePendingTaskOfApplication } from '../../../store/actions/workflows.action';
+import { DeterminePendingTaskOfApplication, SetActiveTask } from '../../../store/actions/workflows.action';
 import WorkFlowsSideNavModel from '../../../core/models/workflow-sidenav.model';
 import { APPLICATION_HEADING } from '../../../core/constants/application-request.constants';
 import { ContactDetailsModel } from '../../../core/models/contact-detail.model';
@@ -48,6 +48,7 @@ export class DdoApplicationRequestComponent implements OnInit {
       });
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationActiveTask)
       .subscribe((activeTaskData: any) => {
+        console.log(activeTaskData)
         this.selectedTaskId = activeTaskData.taskId;
         this.selectedWorkflowId = activeTaskData.workflowId;
         this.initalRender = this.selectedTaskId && this.selectedWorkflowId ? false : true;
@@ -63,6 +64,13 @@ export class DdoApplicationRequestComponent implements OnInit {
     //   }
     //   )
     // );
+    const data = {
+      workflowId: payload.parentId,
+      taskId: payload.childId
+    };
+    this.store.dispatch(
+      new SetActiveTask(data)
+    );
   }
 
 }

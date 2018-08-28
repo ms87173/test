@@ -26,9 +26,7 @@ export class AppComponent implements OnInit {
     this.store.dispatch(new userActions.GetUserContactPerson());
     this.store.pipe(select(fromUserSelectors.getUserState))
       .subscribe((user) => {
-        console.log(user);
       });
-    
       //TODO: Mohammad to place in view code here.
   }
 }
