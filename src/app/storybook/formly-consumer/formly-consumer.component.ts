@@ -149,18 +149,27 @@ export class FormlyConsumerComponent implements OnInit {
           },
         }
       },
-      // {
-      //   key: 'text',
-      //   type: 'typeahead',
-      //   templateOptions: {
-      //     label: 'Username',
-      //     options: (text$: Observable<string>) =>
-      //       text$
-      //         .distinctUntilChanged()
-      //         .map(term => term.length < 2 ? []
-      //           : this.listData.filter(v => new RegExp(term, 'gi').test(v)).splice(0, 10)),
-      //   }
-      // }
+    //   {
+    //   key: 'investments',
+    //   type: 'repeat',
+    //  fieldArray: {
+    //    fieldGroupClassName: 'row',
+    //     templateOptions: {
+    //       btnText: 'Add another investment',
+    //     },
+    //     fieldGroup: [
+    //       {
+    //         className: 'col-sm-4',
+    //         type: 'input',
+    //         key: 'investmentName',
+    //         templateOptions: {
+    //           label: 'Name of Investment:',
+    //           required: true,
+    //         },
+    //       },
+    //     ],
+    //  },
+    // },
     ];
   }
 }

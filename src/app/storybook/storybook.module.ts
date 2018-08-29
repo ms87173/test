@@ -20,7 +20,9 @@ import { NgxUploaderModule } from 'ngx-uploader';
     StorybookRoutingModule,
     SharedModule,
     CustomFormlyFieldsModule,
-    FormlyModule,
+    FormlyModule.forRoot({
+      types: [{ name: 'repeat', component: FormlyConsumerComponent }]
+    }),
     BsDropdownModule.forRoot(),
     NgxUploaderModule
   ],

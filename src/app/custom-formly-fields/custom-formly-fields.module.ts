@@ -12,7 +12,7 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { RadiobuttonComponent } from './components/radiobutton/radiobutton.component';
 import { AutoCompleteComponent } from './components/auto-complete/auto-complete.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
-import { AddressComponent } from './components/address/address.component';
+// import { AddressComponent } from './components/address/address.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormGroupWrapperComponent } from '../shared/form-group-wrapper/form-group-wrapper.component';
 import { QuestionnaireComponent } from '../questionnaire/questionnaire.component';
@@ -20,6 +20,8 @@ import { SectionComponent } from '../section/section.component';
 import { TaskContainerComponent } from '../task-container/task-container.component';
 import { NgxUploaderModule } from 'ngx-uploader';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { RepeatTypeComponent } from './components/repeat-section.type';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -42,8 +44,9 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
         { name: 'custom-radio-button', component: RadiobuttonComponent },
         { name: 'typeahead', component: AutoCompleteComponent, extends: 'input' },
         { name: 'custom-datepicker', component: DatePickerComponent },
-        { name: 'custom-address-field', component: AddressComponent },
-        { name: 'custom-textbox', component: TextboxComponent }
+        // { name: 'custom-address-field', component: AddressComponent },
+        { name: 'custom-textbox', component: TextboxComponent },
+        { name: 'repeat', component: RepeatTypeComponent},
       ]
     }),
     FormlyBootstrapModule,
@@ -56,7 +59,8 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     RadiobuttonComponent,
     AutoCompleteComponent,
     DatePickerComponent,
-    AddressComponent,
+    // AddressComponent,
+    RepeatTypeComponent,
     QuestionnaireComponent,
     SectionComponent,
     TaskContainerComponent,
@@ -69,7 +73,8 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     RadiobuttonComponent,
     AutoCompleteComponent,
     DatePickerComponent,
-    AddressComponent,
+    // AddressComponent,
+    RepeatTypeComponent,
     QuestionnaireComponent,
     SectionComponent,
     TaskContainerComponent,

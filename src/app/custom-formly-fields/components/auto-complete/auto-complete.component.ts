@@ -7,7 +7,7 @@ import { filter } from 'rxjs/operators/filter';
 import { debounceTime } from 'rxjs/operators/debounceTime';
 import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 import { switchMap } from 'rxjs/operators/switchMap';
-import { Field } from '@ngx-formly/core';
+// import { Field } from '@ngx-formly/core';
 
 @Component({
   selector: 'auto-complete',
