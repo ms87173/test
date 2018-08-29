@@ -1,8 +1,8 @@
-<div [formGroup]="form">
+<div [formGroup]="form" class="custom-radio-button pb-3 pt-3">
   <label class="custom-control-radio-label" [for]="name">
     {{ to.label }}
   </label>
-  <div class="custom-control custom-radio" *ngFor="let option of to.options ; let i = index;">        
+  <div class="custom-control custom-radio mr-5" *ngFor="let option of to.options ; let i = index;">        
     <input class="custom-control-input" type="radio"  
       [id]="id + '_' + i"   
       [name]="id"

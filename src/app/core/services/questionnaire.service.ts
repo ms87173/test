@@ -60,15 +60,15 @@ export class QuestionnaireService {
   //   }
   // }
 
-  getCurrentTask(taskRequest: TaskRequest): Observable<Task> {    
+  getCurrentTask(taskRequest: TaskRequest): Observable<Task> {
     return this.apiService.get('tasks/' + taskRequest.taskId);
     //Todo: Uncomment to use Production Url
-    // return this.apiService.post("api/ddo/questionnaire/tasks/questions",taskRequest)
+    // return this.apiService.post("api/ddo/questionnaire/taskQuestions",taskRequest)
   }
 
   getFieldChangeDelta(deltaRequest: QuestionaireDeltaRequest): Observable<QuestionaireDeltaResponse> {
     console.log(deltaRequest);
-  return this.apiService.get('questionnaireDeltaResponses/1');
+    return this.apiService.get('questionnaireDeltaResponses/1');
 
     //Todo: uncomment  and change for mock service
     // switch (deltaRequest.id) {
@@ -85,6 +85,6 @@ export class QuestionnaireService {
     //     return of(null);
     // }
   }
- 
+
 
 }

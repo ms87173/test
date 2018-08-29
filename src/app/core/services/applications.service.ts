@@ -6,6 +6,9 @@ import { ApiService } from './api.service';
 export class ApplicationsService {
   constructor(private apiService: ApiService) { }
   getApplications(): Observable<any[]> {
+
+    ///Todo : Production Url
+    //  return this. apiService.get("api/ddo/request/all");
     return this.apiService.get('requests');
   }
   //TODO: remove this as we are doing sorting on our end
