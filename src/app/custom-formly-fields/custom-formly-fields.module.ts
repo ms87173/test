@@ -20,6 +20,7 @@ import { SectionComponent } from '../section/section.component';
 import { TaskContainerComponent } from '../task-container/task-container.component';
 import { NgxUploaderModule } from 'ngx-uploader';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { EmailComponent } from './components/email/email.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -43,7 +44,9 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
         { name: 'typeahead', component: AutoCompleteComponent, extends: 'input' },
         { name: 'custom-datepicker', component: DatePickerComponent },
         { name: 'custom-address-field', component: AddressComponent },
-        { name: 'custom-textbox', component: TextboxComponent }
+        { name: 'custom-textbox', component: TextboxComponent },
+        { name: 'custom-email', component: EmailComponent }
+
       ]
     }),
     FormlyBootstrapModule,
@@ -61,7 +64,8 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     SectionComponent,
     TaskContainerComponent,
     UploadFileComponent,
-    TextboxComponent
+    TextboxComponent,
+    EmailComponent
   ],
   exports: [
     DropdownComponent,
@@ -74,7 +78,9 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     SectionComponent,
     TaskContainerComponent,
     UploadFileComponent,
-    TextboxComponent
+    TextboxComponent,
+    EmailComponent
+
   ]
 })
 export class CustomFormlyFieldsModule { }
