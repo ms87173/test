@@ -72,26 +72,6 @@
                             "defaultValue": "<any>"
                         },
                         {
-                            "id": "permanentAddress",
-                            "label": "Permananet Address?",
-                            "type": "custom-address-field",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Saving Account",
-                            "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "False"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        },
-                        {
                             "id": "ChildDependentTextBox",
                             "label": "Do you have an Child Dependent?",
                             "type": "custom-radio-button",
@@ -114,7 +94,7 @@
                         {
                             "id": "RemoveOnAnswerQuestion1",
                             "label": "I will be removed as soon as question 1 is answered",
-                            "type": "input",
+                            "type": "custom-textbox",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",
@@ -199,26 +179,6 @@
                             "defaultValue": "<any>"
                         },
                         {
-                            "id": "permanentAddress",
-                            "label": "Permananet Address?",
-                            "type": "custom-address-field",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Saving Account",
-                            "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "False"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        },
-                        {
                             "id": "ChildDependentTextBox",
                             "label": "Do you have an Child Dependent?",
                             "type": "custom-radio-button",
@@ -241,7 +201,7 @@
                         {
                             "id": "RemoveOnAnswerQuestion1",
                             "label": "I will be removed as soon as question 1 is answered",
-                            "type": "input",
+                            "type": "custom-textbox",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",
@@ -335,29 +295,9 @@
                             "defaultValue": "<any>"
                         },
                         {
-                            "id": "permanentAddress",
-                            "label": "Permananet Address?",
-                            "type": "custom-address-field",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Saving Account",
-                            "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "False"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        },
-                        {
                             "id": "ChildDependentTextBox",
                             "label": "Do you have an Child Dependent?",
-                            "type": "input",
+                            "type": "custom-textbox",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",
@@ -377,7 +317,7 @@
                         {
                             "id": "RemoveOnAnswerQuestion1",
                             "label": "I will be removed as soon as question 1 is answered",
-                            "type": "input",
+                            "type": "custom-textbox",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",

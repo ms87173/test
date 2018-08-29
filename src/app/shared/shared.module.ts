@@ -6,7 +6,6 @@ import { TabsComponent } from './tabs/tabs.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { FooterComponent } from './footer/footer.component';
-import { FormGroupWrapperComponent } from './form-group-wrapper/form-group-wrapper.component';
 import { AccordionModule, ButtonsModule } from 'ngx-bootstrap';
 import { LabelValueGroupComponent } from './label-value-group/label-value-group.component';
 import { CardComponent } from './card/card.component';
@@ -19,7 +18,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { TooltipModule } from 'ngx-bootstrap';
 
-
 @NgModule({
   imports: [
     CoreModule,
@@ -27,9 +25,7 @@ import { TooltipModule } from 'ngx-bootstrap';
     CommonModule,
     AccordionModule.forRoot(),
     FormsModule,
-    
-    CoreModule,
-    TooltipModule.forRoot(),
+    TooltipModule.forRoot()
   ],
   providers: [],
   declarations: [
@@ -38,7 +34,6 @@ import { TooltipModule } from 'ngx-bootstrap';
     TopNavComponent,
     SideNavComponent,
     FooterComponent,
-    FormGroupWrapperComponent,
     LabelValueGroupComponent,
     CardComponent,
     CardHeaderComponent,
@@ -54,7 +49,6 @@ import { TooltipModule } from 'ngx-bootstrap';
     TopNavComponent,
     SideNavComponent,
     FooterComponent,
-    FormGroupWrapperComponent,
     LabelValueGroupComponent,
     CardComponent,
     CardHeaderComponent,
@@ -63,8 +57,6 @@ import { TooltipModule } from 'ngx-bootstrap';
     GridComponent,
     TileComponent,
     ContactDetailComponent  
-
-
   ]
 })
 export class SharedModule { }

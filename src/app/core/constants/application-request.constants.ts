@@ -3,8 +3,9 @@ export const APPLICATION_HEADING = {
 };
 
 export const TASK_STATUSES = {
-    pending: 'pending',
-    completed: 'completed'
+    inProgress: 'IN_PROGRESS',
+    completed: 'COMPLETED',
+    disabled: 'DISABLED'
 }
 export const TASK_TYPES = {
     QUESTION: 'questionnaire'

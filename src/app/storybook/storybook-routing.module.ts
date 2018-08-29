@@ -5,6 +5,7 @@ import { StorybookComponent } from './storybook/storybook.component';
 import { TileConsumerComponent } from './tile-consumer/tile-consumer.component';
 import { GridConsumerComponent } from './grid-consumer/grid-consumer.component';
 import { FormlyConsumerComponent } from './formly-consumer/formly-consumer.component';
+import { FormlyAddressConsumerComponent } from './formly-address-consumer/formly-address-consumer.component';
 
 const routes: Routes = [
     {
@@ -26,6 +27,10 @@ const routes: Routes = [
     {
         path: 'formly',
         component: FormlyConsumerComponent
+    },
+    {
+        path: 'formly-address',
+        component: FormlyAddressConsumerComponent
     }
 ];
 @NgModule({

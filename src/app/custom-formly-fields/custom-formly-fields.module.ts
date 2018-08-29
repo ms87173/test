@@ -6,6 +6,9 @@ import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { TooltipModule, BsDatepickerModule } from 'ngx-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgxUploaderModule } from 'ngx-uploader';
+
 import { TextboxComponent } from './components/textbox/textbox.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
@@ -13,12 +16,11 @@ import { RadiobuttonComponent } from './components/radiobutton/radiobutton.compo
 import { AutoCompleteComponent } from './components/auto-complete/auto-complete.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 // import { AddressComponent } from './components/address/address.component';
-import { NgSelectModule } from '@ng-select/ng-select';
 import { FormGroupWrapperComponent } from '../shared/form-group-wrapper/form-group-wrapper.component';
+import { AddressFieldsComponent } from './components/address-fields/address-fields.component';
 import { QuestionnaireComponent } from '../questionnaire/questionnaire.component';
 import { SectionComponent } from '../section/section.component';
 import { TaskContainerComponent } from '../task-container/task-container.component';
-import { NgxUploaderModule } from 'ngx-uploader';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { RepeatTypeComponent } from './components/repeat-section.type';
 
@@ -32,9 +34,6 @@ import { RepeatTypeComponent } from './components/repeat-section.type';
     NgxUploaderModule,
     NgbModule.forRoot(),
     FormlyModule.forRoot({
-      wrappers: [
-        { name: 'form-group', component: FormGroupWrapperComponent },
-      ],
       validationMessages: [
         { name: 'server-error', message: (err) => err }
       ],
@@ -47,6 +46,8 @@ import { RepeatTypeComponent } from './components/repeat-section.type';
         // { name: 'custom-address-field', component: AddressComponent },
         { name: 'custom-textbox', component: TextboxComponent },
         { name: 'repeat', component: RepeatTypeComponent},
+        { name: 'custom-address-fields', component: AddressFieldsComponent },
+        { name: 'custom-textbox', component: TextboxComponent }
       ]
     }),
     FormlyBootstrapModule,
@@ -65,7 +66,8 @@ import { RepeatTypeComponent } from './components/repeat-section.type';
     SectionComponent,
     TaskContainerComponent,
     UploadFileComponent,
-    TextboxComponent
+    TextboxComponent,
+    AddressFieldsComponent
   ],
   exports: [
     DropdownComponent,
@@ -79,7 +81,8 @@ import { RepeatTypeComponent } from './components/repeat-section.type';
     SectionComponent,
     TaskContainerComponent,
     UploadFileComponent,
-    TextboxComponent
+    TextboxComponent,
+    AddressFieldsComponent
   ]
 })
 export class CustomFormlyFieldsModule { }

@@ -1,4 +1,4 @@
-<div class="formly-date-picker form-group">
+<div class="formly-date-picker form-group pb-3 pt-3">
   <label class="formly-date-picker__label" [for]="id">
     {{ to.label }}
     <span *ngIf='!to.required' class="float-right">(optional)</span>
@@ -12,7 +12,7 @@
     <input [id]="id" class="form-control formly-date-picker__input"
       [formControl]="formControl"
       [placeholder]="to.placeholder"
-      [formlyAttributes]="field" ngModel
+      [formlyAttributes]="field"
       bsDatepicker #dp="bsDatepicker"
       [minDate]="to.datepickerOptions && to.datepickerOptions.minDate"
       [maxDate]="to.datepickerOptions && to.datepickerOptions.maxDate"

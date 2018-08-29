@@ -187,8 +187,36 @@ export class NgxFormlyParserService {
       /// Todo: Need to check if it is simple or custom type
 
       let field: FormlyFieldConfig = {};
-      field.key = question.id;
+      field.key = question.id.toString();
       field.type = question.type;
+
+
+      field.templateOptions = {
+        label: question.label,
+        options: question.options || [],
+        required: question.required || false,
+        disabled: question.disabled
+      };
+
+      if (question.max) {
+        field.templateOptions.max = question.max;
+      }
+      if (question.maxLength) {
+        field.templateOptions.maxLength = question.maxLength;
+      }
+
+      if (question.min) {
+        field.templateOptions.min = question.min;
+      }
+      if (question.minLength) {
+        field.templateOptions.minLength = question.minLength;
+      }
+
+      if (question.tooltipText) {
+        field.templateOptions.tooltipText = question.tooltipText;
+      }
+
+
 
       //Todo:Switch case for custom
       if (question.type !== "custom-address-field") {
@@ -207,12 +235,6 @@ export class NgxFormlyParserService {
 
         //Todo: Need to create field trigger for delta changes
         // field.lifecycle = this.fieldChangeLifecycleTrigger;
-
-        field.templateOptions = {
-          label: question.label,
-          options: question.options,
-          required: question.required,
-        };
 
         // field.defaultValue= question.defaultValue;
         //Todo: Implement error messgaes
@@ -281,8 +303,7 @@ export class NgxFormlyParserService {
 
   }
 
-  getFormlyConfigByQuestionType(questionType:string)
-  {
+  getFormlyConfigByQuestionType(questionType: string) {
 
   }
 
