@@ -1,25 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+
 /* You can add global styles to this file, and also import other style files */
 
 @import '../node_modules/bootstrap/dist/css/bootstrap.css';
 @import './assets/styles/color.scss';
 // @import './assets/styles/helper.scss';
 @import '../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
-
 body {
     margin: 0;
     padding-bottom: 90px;
 }
 
 .form-group {
-    > label{
+    margin-bottom: 0;
+    >label {
         width: 100%
     }
+    .form-control {
+        border-radius: 0;
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}
+
+label {
+    font-size: 12px;
+    margin-bottom: 0.3rem;
+    color: #898b8d;
 }
 
 .control-label-help {
     cursor: pointer;
     color: #0d4061;
+}
+
+.custom-control-label {
+    position: relative;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: #1b1b1b;
 }
 
 .bold {
@@ -41,12 +62,15 @@ body {
 .margin-top-0x {
     margin-top: 0px !important;
 }
+
 .cursor-pointer {
     cursor: pointer !important;
 }
+
 .cursor-default {
     cursor: default !important;
 }
+
 @for $i from 0 through 6 {
     .space-top-#{$i}x {
         margin-top: 10px* $i !important;
@@ -58,11 +82,13 @@ body {
         margin-bottom: 10px* $i !important;
     }
 }
+
 @for $i from 0 through 6 {
     .space-left-#{$i}x {
         margin-left: 10px* $i !important;
     }
 }
+
 @for $i from 0 through 6 {
     .space-right-#{$i}x {
         margin-right: 10px* $i !important;
@@ -94,9 +120,11 @@ body {
 .success {
     color: green;
 }
+
 .warning {
     color: orange;
 }
+
 .btn {
     min-width: 90px;
 }
