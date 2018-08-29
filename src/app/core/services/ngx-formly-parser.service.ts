@@ -213,7 +213,6 @@ export class NgxFormlyParserService {
       }
 
       if (question.tooltipText) {
-        debugger;
         field.templateOptions.tooltipText = question.tooltipText;
       }
 
