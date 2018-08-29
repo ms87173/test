@@ -14,8 +14,8 @@
           </div>
           <div class="col-sm-2 no-padding-left">
               <i *ngIf = 'item.status'
-              [ngClass]="{'status-icon--completed fa-check': item.status === 'completed',
-                'status-icon--inprogress fa-circle': item.status === 'pending'}"
+              [ngClass]="{'status-icon--completed fa-check': item.status === status.completed,
+                'status-icon--inprogress fa-circle': item.status === status.inProgress}"
                 class="fa status-icon float-right pull-right"></i>
           </div>
         </div>
@@ -26,8 +26,8 @@
         (click) = 'setSelectedId(item.id, child.id, child.type)'>
           <a class='child-link' routerLink="['/workflow/',item.id]"> {{child.label}}</a>
           <i *ngIf= 'child.status'
-            [ngClass]="{'status-icon--completed fa-check': child.status === 'completed',
-              'status-icon--inprogress fa-circle': child.status === 'pending'}"
+            [ngClass]="{'status-icon--completed fa-check': child.status === status.completed,
+              'status-icon--inprogress fa-circle': child.status === status.inProgress}"
               class="fa  status-icon float-right pull-right"></i>
         </li>
       </ul>

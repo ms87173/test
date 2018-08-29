@@ -4,20 +4,20 @@
             "id": "1",
             "label": "Banking accounts",
             "description": "",
-            "status": "completed",
+            "status": "COMPLETED",
             "tasks": [
                 {
                     "label": "Interest Checking",
                     "description": "This is your primary interest bearing account.",
                     "id": "1",
-                    "status": "completed",
+                    "status": "COMPLETED",
                     "type": "questionnaire"
                 },
                 {
                     "label": "Saving",
                     "description": "This is your primary interest bearing account.",
                     "id": "2",
-                    "status": "completed",
+                    "status": "COMPLETED",
                     "type": "questionnaire"
                 }
             ]
@@ -27,27 +27,27 @@
             "label": "John Robbins",
             "description": "Primary",
             "subHeading": "Primary",
-            "status": "pending",
+            "status": "IN_PROGRESS",
             "tasks": [
                 {
                     "label": "Documents",
                     "description": "This is your primary interest bearing account.",
                     "id": "1",
-                    "status": "pending",
+                    "status": "IN_PROGRESS",
                     "type": "questionnaire"
                 },
                 {
                     "label": "Personal Information",
                     "description": "This is your primary interest bearing account.",
                     "id": "2",
-                    "status": "pending",
+                    "status": "IN_PROGRESS",
                     "type": "questionnaire"
                 },
                 {
                     "label": "Trusted Contact",
                     "description": "This is your primary interest bearing account.",
                     "id": "3",
-                    "status": "pending",
+                    "status": "IN_PROGRESS",
                     "type": "questionnaire"
                 }
             ]
@@ -56,28 +56,28 @@
             "id": "3",
             "label": "Jane Robbins",
             "description": "Co-applicant",
-            "status": "pending",
+            "status": "IN_PROGRESS",
             "subHeading": "Co-applicant",
             "tasks": [
                 {
                     "label": "Documents",
                     "description": "This is your primary interest bearing account.",
                     "id": "1",
-                    "status": "pending",
+                    "status": "IN_PROGRESS",
                     "type": "questionnaire"
                 },
                 {
                     "label": "Personal Information",
                     "description": "This is your primary interest bearing account.",
                     "id": "2",
-                    "status": "pending",
+                    "status": "IN_PROGRESS",
                     "type": "questionnaire"
                 },
                 {
                     "label": "Trusted Contact",
                     "description": "This is your primary interest bearing account.",
                     "id": "3",
-                    "status": "pending",
+                    "status": "IN_PROGRESS",
                     "type": "questionnaire"
                 }
             ]
@@ -87,27 +87,27 @@
             "label": "Susan Robbins",
             "description": "Co-applicant",
             "subHeading": "Co-applicant",
-            "status": "completed",
+            "status": "COMPLETED",
             "tasks": [
                 {
                     "label": "Documents",
                     "description": "This is your primary interest bearing account.",
                     "id": "1",
-                    "status": "completed",
+                    "status": "COMPLETED",
                     "type": "questionnaire"
                 },
                 {
                     "label": "Personal Information",
                     "description": "This is your primary interest bearing account.",
                     "id": "2",
-                    "status": "completed",
+                    "status": "COMPLETED",
                     "type": "questionnaire"
                 },
                 {
                     "label": "Trusted Contact",
                     "description": "This is your primary interest bearing account.",
                     "id": "3",
-                    "status": "completed",
+                    "status": "COMPLETED",
                     "type": "questionnaire"
                 }
             ]

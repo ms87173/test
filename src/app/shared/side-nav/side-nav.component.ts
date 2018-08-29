@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
+import { TASK_STATUSES } from '../../core/constants/application-request.constants';
 
 @Component({
   selector: 'app-side-nav',
@@ -13,13 +14,14 @@ export class SideNavComponent implements OnInit {
   @Input() selectedParentId: any;
   @Input() selectedChildId: any;
   @Output() actions: any = new EventEmitter();
-
   workFlowId: any;
   taskId: any;
   type: any;
   selectedId: any;
+  status: any;
   constructor() { }
   ngOnInit() {
+    this.status = TASK_STATUSES;
   }
   setSelectedId(parentId, childId, type) {
     this.selectedParentId = parentId;
