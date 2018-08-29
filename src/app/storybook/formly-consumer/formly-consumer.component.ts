@@ -2,11 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
 import { ViewEncapsulation } from '@angular/core';
+
+import { of as observableOf } from 'rxjs/observable/of';
 // import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounce';
 import 'rxjs/add/operator/distinctUntilChanged';
 import { Observable } from 'rxjs/Observable';
+import { UploadFileComponent } from 'src/app/custom-formly-fields/components/upload-file/upload-file.component';
+
+
 // import { debounce } from 'rxjs/internal/operators/debounce';
 
 @Component({
@@ -25,7 +30,9 @@ export class FormlyConsumerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.listData = ['Alabama', 'Alaska'];
+    this.listData = ['Alabama', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island',
+    'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Islands', 'Virginia',
+    'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
     this.fields = [
       {
         key: 'text',
@@ -126,6 +133,20 @@ export class FormlyConsumerComponent implements OnInit {
         type: 'custom-datepicker',
         templateOptions: {
           label: 'Date of Birth',
+        }
+      },
+      {
+        key: 'state',
+        type: 'typeahead',
+        templateOptions: {
+          placeholder: 'Search for a state:',
+          label: 'Search for a state:',
+          search$: (term) => {
+            if ((!term || term === '')) {
+              return observableOf(this.listData);
+            }
+            return observableOf(this.listData.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
+          },
         }
       },
       // {

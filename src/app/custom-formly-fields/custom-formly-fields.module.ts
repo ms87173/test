@@ -13,18 +13,21 @@ import { RadiobuttonComponent } from './components/radiobutton/radiobutton.compo
 import { AutoCompleteComponent } from './components/auto-complete/auto-complete.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { AddressComponent } from './components/address/address.component';
-
+import { NgSelectModule } from '@ng-select/ng-select';
 import { FormGroupWrapperComponent } from '../shared/form-group-wrapper/form-group-wrapper.component';
 import { QuestionnaireComponent } from '../questionnaire/questionnaire.component';
 import { SectionComponent } from '../section/section.component';
 import { TaskContainerComponent } from '../task-container/task-container.component';
-
+import { NgxUploaderModule } from 'ngx-uploader';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
     FormlyBootstrapModule,
+    NgSelectModule,
+    NgxUploaderModule,
     NgbModule.forRoot(),
     FormlyModule.forRoot({
       wrappers: [
@@ -57,6 +60,7 @@ import { TaskContainerComponent } from '../task-container/task-container.compone
     QuestionnaireComponent,
     SectionComponent,
     TaskContainerComponent,
+    UploadFileComponent,
     TextboxComponent
   ],
   exports: [
@@ -69,6 +73,7 @@ import { TaskContainerComponent } from '../task-container/task-container.compone
     QuestionnaireComponent,
     SectionComponent,
     TaskContainerComponent,
+    UploadFileComponent,
     TextboxComponent
   ]
 })
