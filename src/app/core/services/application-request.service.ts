@@ -5,12 +5,15 @@ import { ApiService } from './api.service';
 @Injectable()
 export class ApplicationRequestService {
     constructor(private apiService: ApiService) { }
-    getApplicationRequest(id: string): Observable<any> {
-        // return this.apiService.post('application', { id });
+    getApplicationRequest(requestId: string): Observable<any> {
+
+        //Todo: Production Url
+        // return this.apiService.post('api/ddo/request/details', { requestId });
         return this.apiService.get('request');
     }
-    getApplicationRequestWorkflows(id: string): Observable<any[]> {
-        // return this.apiService.post('applications/workflows', { id });
+    getApplicationRequestWorkflows(requestId: string): Observable<any[]> {
+        //Todo: Production Url
+        // return this.apiService.post('api/ddo/request/workflowsAndTasks', { requestId });
         return this.apiService.get('workflows');
     }
 }
