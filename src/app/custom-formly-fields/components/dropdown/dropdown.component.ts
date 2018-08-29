@@ -7,7 +7,10 @@ import { FieldType } from '@ngx-formly/core';
   styleUrls: ['./dropdown.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class DropdownComponent extends FieldType {
+export class DropdownComponent extends FieldType implements OnInit {
   get labelProp(): string { return this.to.labelProp || 'label'; }
   get valueProp(): string { return this.to.valueProp || 'value'; }
+  ngOnInit() {
+    console.log(this);
+  }
 }
