@@ -90,7 +90,7 @@ export function reducer(
             //TODO: change this to key value pair
             //determine routing as well with different actions
             const workflow = state.workflows.find(e => e.id === workflowId);
-            const task = workflow.tasks.find(e => e.id === taskId);
+            const task = workflow && workflow.tasks.find(e => e.id === taskId);
             return {
                 ...state,
                 activeTask: {
