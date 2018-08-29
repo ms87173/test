@@ -20,11 +20,13 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { WindowRef } from './core/services/window-ref.service';
 import { CustomFormlyFieldsService } from './custom-formly-fields/services/custom-formly-fields.service';
 import { CustomFormlyFieldsModule } from './custom-formly-fields/custom-formly-fields.module';
+import { StorybookModule } from './storybook/storybook.module';
+// import { UploadFileComponent } from './custom-formly-fields/components/upload-file/upload-file.component';
 
-@NgModule({
+  @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent  
+    HomeComponent,
   ],
   imports: [
     AngularFontAwesomeModule,
@@ -38,7 +40,8 @@ import { CustomFormlyFieldsModule } from './custom-formly-fields/custom-formly-f
     HttpModule,
     AppStoreModule,
     CustomFormlyFieldsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StorybookModule,
   ],
   providers: [
     AuthenticationService,

@@ -1,4 +1,13 @@
 
-<input type="text" class="form-control" [formControl]="formControl" 
-[ngbTypeahead]="templateOptions?.options" [id]="id"
-      [formlyAttributes]="field"/>
+
+      <!-- <ng-select [items]="options$ | async"
+      [placeholder]="to.placeholder"  class="form-control"
+      [typeahead]="search$"
+      [formControl]="formControl">
+    </ng-select> -->
+    <p>{{to.label}}</p>
+     <ng-select [items]="options$ | async"
+      class="form-control col-6"
+      [typeahead]="search$"
+      [formControl]="formControl">
+    </ng-select>
