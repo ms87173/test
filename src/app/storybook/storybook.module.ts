@@ -15,6 +15,7 @@ import { BsDropdownModule } from 'ngx-bootstrap';
 import { GridConsumerComponent } from './grid-consumer/grid-consumer.component';
 import { FormlyConsumerComponent } from './formly-consumer/formly-consumer.component';
 import { FormlyAddressConsumerComponent } from './formly-address-consumer/formly-address-consumer.component';
+import { FormlyPhoneConsumerComponent } from './formly-phone-consumer/formly-phone-consumer.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { FormlyAddressConsumerComponent } from './formly-address-consumer/formly
     TileConsumerComponent,
     GridConsumerComponent,
     FormlyConsumerComponent,
-    FormlyAddressConsumerComponent
+    FormlyAddressConsumerComponent,
+    FormlyPhoneConsumerComponent
   ]
 })
 export class StorybookModule { }

@@ -147,7 +147,7 @@ export class FormlyAddressConsumerComponent implements OnInit {
             },
             {
               key: 'state',
-              type: 'select',
+              type: 'custom-dropdown',
               className: 'col-sm-6 mt-2',
               templateOptions: {
                 label: 'State',
@@ -173,7 +173,7 @@ export class FormlyAddressConsumerComponent implements OnInit {
             },
             {
               key: 'country',
-              type: 'select',
+              type: 'custom-dropdown',
               className: 'col-sm-6 mt-2',
               templateOptions: {
                 required: true,

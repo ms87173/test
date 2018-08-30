@@ -24,6 +24,8 @@ import { EmailComponent } from './components/email/email.component';
 import { CustomComponentsEnum } from './enums/custom-components.enum';
 import { PhoneComponent } from './components/phone/phone.component';
 
+import { FormlySelectOptionsPipe } from './pipes/select-options.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -38,15 +40,15 @@ import { PhoneComponent } from './components/phone/phone.component';
         { name: 'server-error', message: (err) => err }
       ],
       types: [
-        { name: CustomComponentsEnum.CUSTOM_CHECKBOX, component: CheckboxComponent },
         { name: CustomComponentsEnum.CUSTOM_DROPDOWN, component: DropdownComponent },
         { name: CustomComponentsEnum.CUSTOM_RADIO_BUTTON, component: RadiobuttonComponent },
         { name: CustomComponentsEnum.CUSTOM_TYPEAHEAD, component: AutoCompleteComponent, extends: 'input' },
         { name: CustomComponentsEnum.CUSTOM_DATEPICKER, component: DatePickerComponent },
-        { name: CustomComponentsEnum.CUSTOM_ADDRESS_FIELD, component: AddressFieldsComponent },
+        { name: CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS, component: AddressFieldsComponent },
         { name: CustomComponentsEnum.CUSTOM_TEXTBOX, component: TextboxComponent },
         { name: CustomComponentsEnum.CUSTOM_EMAIL, component: EmailComponent },
-        { name: CustomComponentsEnum.CUSTOM_PHONE, component: PhoneComponent }
+        { name: CustomComponentsEnum.CUSTOM_PHONE, component: PhoneComponent },
+        { name: CustomComponentsEnum.CUSTOM_CHECKBOX, component: CheckboxComponent }
       ]
     }),
     FormlyBootstrapModule,
@@ -64,9 +66,10 @@ import { PhoneComponent } from './components/phone/phone.component';
     TaskContainerComponent,
     UploadFileComponent,
     TextboxComponent,
-    EmailComponent,
     PhoneComponent,
-    AddressFieldsComponent
+    AddressFieldsComponent,
+    EmailComponent,
+    FormlySelectOptionsPipe
   ],
   exports: [
     DropdownComponent,
@@ -79,9 +82,10 @@ import { PhoneComponent } from './components/phone/phone.component';
     TaskContainerComponent,
     UploadFileComponent,
     TextboxComponent,
+    AddressFieldsComponent,
     EmailComponent,
     PhoneComponent,
-    AddressFieldsComponent
+    FormlySelectOptionsPipe
   ]
 })
 export class CustomFormlyFieldsModule { }

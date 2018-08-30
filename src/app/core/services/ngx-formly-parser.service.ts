@@ -1,27 +1,25 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { Observable, BehaviorSubject, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 import { Section } from '../models/section';
 import { Question } from '../models/question';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { FormlyLifeCycleOptions } from '@ngx-formly/core/lib/components/formly.field.config';
-import { QuestionaireDeltaRequest } from '../models/questionaire-delta-request';
 import { QuestionaireDeltaResponse } from '../models/questionaire-delta-response';
 import * as _ from 'lodash';
 import { Store } from '@ngrx/store';
-import { fromRootReducers } from '../../store'
-import { questionnaireActions, } from '../../store/actions';
+import { fromRootReducers } from '../../store';
 import { Task, FormlyFieldConfigArrayCollection } from '../models';
 import { debounceTime } from 'rxjs/operators';
 import { CustomComponentsEnum } from '../../custom-formly-fields/enums/custom-components.enum';
 import { emailFieldArray } from '../../custom-formly-fields/formly-configs/email';
 import { FormlyFieldsService } from './formly-fields.service';
+import { PhoneFieldConfig } from '../../custom-formly-fields/formly-configs/phone-field.config';
 
 @Injectable()
 export class NgxFormlyParserService {
-
-  ///Todo: Waiting for client Store module. 
+  /// Todo: Waiting for client Store module. 
   /// this should be handled in a property from state
   public currentQuestionId: string = null;
   public fieldChangeObj = null;
@@ -172,8 +170,8 @@ export class NgxFormlyParserService {
   getFormlyFieldConfigArrayCollectionFromTask(currentTask: Task, currentQuestionId: string,
     requestId: string, workflowId: string, taskId: string): Observable<FormlyFieldConfigArrayCollection[]> {
 
-    let formlyFieldConfigArrayCollections: FormlyFieldConfigArrayCollection[] = [];
-    let currTask = { ...currentTask };
+    const formlyFieldConfigArrayCollections: FormlyFieldConfigArrayCollection[] = [];
+    const currTask = { ...currentTask };
     currTask.sections.map((section: Section) => {
       let FormlyFieldConfigArray: FormlyFieldConfig[] = this.getFormlyFieldConfigArrayFromSection(section, currentQuestionId, requestId, workflowId, taskId);
       let formlyFieldConfigArray: FormlyFieldConfigArrayCollection = new FormlyFieldConfigArrayCollection(FormlyFieldConfigArray, section.title);
@@ -216,7 +214,7 @@ export class NgxFormlyParserService {
       }
       if (question.maxLength) {
         field.templateOptions.maxLength = question.maxLength;
-      }      
+      }
       if (question.min) {
         field.templateOptions.min = question.min;
       }
@@ -226,23 +224,23 @@ export class NgxFormlyParserService {
       if (question.tooltipText) {
         field.templateOptions.tooltipText = question.tooltipText;
       }
-      field = this.getFormlyFieldArrayConfigByQuestionType(field);      
+      field = this.getFormlyFieldArrayConfigByQuestionType(field);
       FormlyFieldConfigArray.push(field);
     });
     return FormlyFieldConfigArray;
-    }
+  }
 
-  getFormlyFieldArrayConfigByQuestionType(formlyField:FormlyFieldConfig) : FormlyFieldConfig {
+  getFormlyFieldArrayConfigByQuestionType(formlyField: FormlyFieldConfig): FormlyFieldConfig {
 
-    let field :FormlyFieldConfig ={...formlyField};
+    const field: FormlyFieldConfig = { ...formlyField };
 
-    switch(field.type)
-    {
+    switch (field.type) {
       case CustomComponentsEnum.CUSTOM_EMAIL:
-      field.fieldArray=emailFieldArray;
-      break;
-      //Todo: UI Team will add their respective field array reference here
-      default:
+        field.fieldArray = emailFieldArray;
+        break;
+      // Todo: UI Team will add their respective field array reference here
+      case CustomComponentsEnum.CUSTOM_PHONE:
+        field.fieldArray = PhoneFieldConfig.fieldArray;
     }
     return field;
 
@@ -252,5 +250,4 @@ export class NgxFormlyParserService {
     private store: Store<fromRootReducers.AppState>,
     private formlyFieldsService:FormlyFieldsService
   ) { }
-
 }

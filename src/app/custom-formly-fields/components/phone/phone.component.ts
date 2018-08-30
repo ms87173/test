@@ -1,9 +1,10 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { FieldType, FieldArrayType, FormlyFormBuilder, FormlyConfig, FormlyFieldConfig } from '@ngx-formly/core';
+import { Component, OnInit, OnChanges, ViewEncapsulation } from '@angular/core';
+import {  FieldArrayType, FormlyFormBuilder } from '@ngx-formly/core';
 @Component({
   selector: 'phone',
   templateUrl: './phone.component.html',
-  styleUrls: ['./phone.component.css']
+  styleUrls: ['./phone.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PhoneComponent extends FieldArrayType implements OnInit, OnChanges {
 

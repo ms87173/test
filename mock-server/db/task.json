@@ -2,12 +2,12 @@
     "tasks": [
         {
             "id": 1,
-            "label": "Interest Checking",
-            "description": "This is your primary interest bearing account.",
+            "label": "John Robbins",
+            "description": "This is the information we have on you.",
             "status": "InProgress",
             "sections": [
                 {
-                    "title": "Account Information",
+                    "title": "Personal Information",
                     "questions": [
                         {
                             "id": "InterestCheckingCheckBox",
@@ -25,132 +25,137 @@
                                     "label": "No",
                                     "value": "False"
                                 }
-                                
                             ],
                             "tooltipText": "<string>",
                             "defaultValue": ""
                         }
-                      
                     ]
-                }
-               
-                
-            ]
-        },
-        {
-            "id": 2,
-            "label": "Savings Account",
-            "description": "This is your primary interest bearing account.",
-            "status": "InProgress",
-            "sections": [
+                },
                 {
-                    "title": "Saving Information",
-                    "questions": [
+                    "id": 2,
+                    "label": "Savings Account",
+                    "description": "This is your primary interest bearing account.",
+                    "status": "InProgress",
+                    "sections": [
                         {
-                            "id": "InterestCheckingCheckBox",
-                            "label": "Would you Earn some extra money",
-                            "type": "custom-dropdown",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Interest Account",
-                            "options": [
-                                {"label": "Iron Man", "value": "iron_man"
+                            "title": "Saving Information",
+                            "questions": [
+                                {
+                                    "id": "InterestCheckingCheckBox",
+                                    "label": "Would you Earn some extra money",
+                                    "type": "custom-dropdown",
+                                    "required": "true",
+                                    "readOnly": "false",
+                                    "placeHolder": "Interest Account",
+                                    "options": [
+                                        {
+                                            "label": "Iron Man",
+                                            "value": "iron_man"
+                                        },
+                                        {
+                                            "label": "Captain America",
+                                            "value": "captain_america"
+                                        },
+                                        {
+                                            "label": "Black Widow",
+                                            "value": "black_widow"
+                                        },
+                                        {
+                                            "label": "Hulk",
+                                            "value": "hulk"
+                                        },
+                                        {
+                                            "label": "Captain Marvel",
+                                            "value": "captain_marvel"
+                                        }
+                                    ],
+                                    "tooltipText": "<string>",
+                                    "defaultValue": "<any>"
                                 },
-                                {"label": "Captain America", "value": "captain_america"
+                                {
+                                    "id": "SavingAccountTextBox",
+                                    "label": "Would you like to earn saving this account?",
+                                    "type": "custom-radio-button",
+                                    "required": "true",
+                                    "readOnly": "false",
+                                    "placeHolder": "Saving Account",
+                                    "options": [
+                                        {
+                                            "label": "Yes",
+                                            "value": "true"
+                                        },
+                                        {
+                                            "label": "No",
+                                            "value": "False"
+                                        }
+                                    ],
+                                    "tooltipText": "<string>",
+                                    "defaultValue": "<any>"
                                 },
-                                {"label": "Black Widow", "value": "black_widow"
+                                {
+                                    "id": "SavingAccountCheckBox",
+                                    "label": "Would you like to earn saving this account?",
+                                    "type": "custom-checkbox",
+                                    "required": "true",
+                                    "readOnly": "false",
+                                    "placeHolder": "Saving Account",
+                                    "options": [
+                                        {
+                                            "label": "Yes",
+                                            "value": "true"
+                                        },
+                                        {
+                                            "label": "No",
+                                            "value": "False"
+                                        }
+                                    ],
+                                    "tooltipText": "<string>",
+                                    "defaultValue": "<any>"
                                 },
-                                {"label": "Hulk", "value": "hulk"
+                                {
+                                    "id": "ChildDependentTextBox",
+                                    "label": "Do you have an Child Dependent?",
+                                    "type": "custom-textbox",
+                                    "required": "true",
+                                    "readOnly": "false",
+                                    "placeHolder": "Saving Account",
+                                    "options": [
+                                        {
+                                            "label": "Yes",
+                                            "value": "true"
+                                        },
+                                        {
+                                            "label": "No",
+                                            "value": "False"
+                                        }
+                                    ],
+                                    "tooltipText": "<string>",
+                                    "defaultValue": "<any>"
                                 },
-                                {"label": "Captain Marvel", "value": "captain_marvel"
+                                {
+                                    "id": "RemoveOnAnswerQuestion1",
+                                    "label": "I will be removed as soon as question 1 is answered",
+                                    "type": "custom-textbox",
+                                    "required": "true",
+                                    "readOnly": "false",
+                                    "placeHolder": "Saving Account",
+                                    "options": [
+                                        {
+                                            "label": "Yes",
+                                            "value": "true"
+                                        },
+                                        {
+                                            "label": "No",
+                                            "value": "False"
+                                        }
+                                    ],
+                                    "tooltipText": "<string>",
+                                    "defaultValue": "<any>"
                                 }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        },
-                        {
-                            "id": "SavingAccountTextBox",
-                            "label": "Would you like to earn saving this account?",
-                            "type": "custom-radio-button",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Saving Account",
-                            "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "False"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        },
-                        {
-                            "id": "SavingAccountCheckBox",
-                            "label": "Would you like to earn saving this account?",
-                            "type": "custom-checkbox",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Saving Account",
-                            "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "False"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        },
-                        {
-                            "id": "ChildDependentTextBox",
-                            "label": "Do you have an Child Dependent?",
-                            "type": "custom-textbox",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Saving Account",
-                            "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "False"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        },
-                        {
-                            "id": "RemoveOnAnswerQuestion1",
-                            "label": "I will be removed as soon as question 1 is answered",
-                            "type": "custom-textbox",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Saving Account",
-                            "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "False"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
+                            ]
                         }
                     ]
                 }
-                
             ]
         }
     ]

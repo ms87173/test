@@ -87,6 +87,8 @@ export class QuestionnaireService {
     //Todo : Production Url
     // return this.apiService.post("api/ddo/request/taskQuestionnaire/question",deltaRequest)
   }
-
+  getCountryCode(): Observable<any[]> {
+    return this.apiService.get('countryCode');
+  }
 
 }
