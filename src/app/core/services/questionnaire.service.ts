@@ -85,6 +85,8 @@ export class QuestionnaireService {
     //     return of(null);
     // }
   }
-
+  getCountryCode(): Observable<any[]> {
+    return this.apiService.get('countryCode');
+  }
 
 }

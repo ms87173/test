@@ -41,7 +41,7 @@ import { PhoneComponent } from './components/phone/phone.component';
         { name: 'custom-radio-button', component: RadiobuttonComponent },
         { name: 'typeahead', component: AutoCompleteComponent, extends: 'input' },
         { name: 'custom-datepicker', component: DatePickerComponent },
-        { name: 'custom-address-field', component: AddressComponent },
+        { name: 'custom-address-fields', component: AddressFieldsComponent },
         { name: 'custom-textbox', component: TextboxComponent },
         { name: 'custom-phone', component: PhoneComponent }
       ]
@@ -61,7 +61,7 @@ import { PhoneComponent } from './components/phone/phone.component';
     TaskContainerComponent,
     UploadFileComponent,
     TextboxComponent,
-    PhoneComponent
+    PhoneComponent,
     AddressFieldsComponent
   ],
   exports: [
