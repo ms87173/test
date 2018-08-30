@@ -70,7 +70,7 @@ export class FormlyConsumerComponent implements OnInit {
                 label: 'Home Phone Number',
               }
             },
-              {
+            {
               type: 'custom-checkbox',
               key: 'setAsPrimary',
               className: 'col-sm-12',
@@ -224,56 +224,54 @@ export class FormlyConsumerComponent implements OnInit {
           },
         }
       },
-        {
-          key: 'data',
-          type: 'repeatAddressData',
-          fieldArray: {
-            fieldGroupClassName: 'row col-12 nogutter',
-            templateOptions: {
-              btnText: 'Add a new address proof',
-              tooltip: {
-                content: 'Hey this is tooltip',
-                placement: 'right'
+      {
+        key: 'data',
+        type: 'repeatAddressData',
+        fieldArray: {
+          fieldGroupClassName: 'row col-12 nogutter',
+          templateOptions: {
+            btnText: 'Add a new address proof',
+            tooltip: {
+              content: 'Hey this is tooltip',
+              placement: 'right'
+            }
+          },
+          fieldGroup: [
+            {
+              key: 'IdDropdown',
+              type: 'custom-dropdown',
+              className: 'col-sm-4 PaddingLeftZero',
+              templateOptions: {
+                label: 'ID Country',
+                options: [
+                  { label: 'Iron Man', value: 'iron_man' },
+                  { label: 'Captain America', value: 'captain_america' },
+                  { label: 'Black Widow', value: 'black_widow' },
+                  { label: 'Hulk', value: 'hulk' },
+                  { label: 'Captain Marvel', value: 'captain_marvel' }
+                ]
               }
             },
-            fieldGroup: [
-              {
-                key: 'IdDropdown',
-                type: 'custom-dropdown',
-                className: 'col-sm-4 PaddingLeftZero',
-                templateOptions: {
-                  label: 'ID Country',
-                  options: [
-                    { label: 'Iron Man', value: 'iron_man' },
-                    { label: 'Captain America', value: 'captain_america' },
-                    { label: 'Black Widow', value: 'black_widow' },
-                    { label: 'Hulk', value: 'hulk' },
-                    { label: 'Captain Marvel', value: 'captain_marvel' }
-                  ]
-                }
+            {
+              className: 'col-sm-4',
+              type: 'custom-textbox',
+              key: 'idNum',
+              templateOptions: {
+                label: 'ID Number',
+                required: true,
               },
-              {
-                className: 'col-sm-4',
-                type: 'custom-textbox',
-                key: 'idNum',
-                templateOptions: {
-                  label: 'ID Number',
-                  required: true,
-                },
-              },
-              {
-                key: 'dateOfBirth',
-                type: 'custom-datepicker',
-                className: 'col-sm-4 PaddingRightZero',
-                templateOptions: {
-                  label: 'Date of Birth',
-                }
-              },
-            ],
-          },
+            },
+            {
+              key: 'dateOfBirth',
+              type: 'custom-datepicker',
+              className: 'col-sm-4 PaddingRightZero',
+              templateOptions: {
+                label: 'Date of Birth',
+              }
+            },
+          ],
         },
-      ];
-    }
+    }];
 
-  }
+}
 }
