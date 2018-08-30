@@ -7,5 +7,7 @@ export enum CustomComponentsEnum {
     CUSTOM_ADDRESS_FIELD="custom-address-field",
     CUSTOM_TEXTBOX="custom-textbox",
     CUSTOM_EMAIL="custom-email",
+    CUSTOM_PHONE="custom-phone"
+
 
 }

@@ -185,9 +185,6 @@ export class NgxFormlyParserService {
     let FormlyFieldConfigArray: FormlyFieldConfig[] = [];
     let currSection = { ...currentSection };
     currSection.questions.map((question: Question) => {
-
-      /// Todo: Need to check if it is simple or custom type
-
       let field: FormlyFieldConfig = {};
       field.key = question.id.toString();
       field.type = question.type;
