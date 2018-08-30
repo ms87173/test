@@ -12,7 +12,7 @@
                         {
                             "id": "InterestCheckingCheckBox",
                             "label": "Would you like to earn interest this account?",
-                            "type": "custom-dropdown",
+                            "type": "custom-email",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Interest Account",

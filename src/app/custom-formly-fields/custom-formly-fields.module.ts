@@ -20,6 +20,8 @@ import { QuestionnaireComponent } from '../questionnaire/questionnaire.component
 import { SectionComponent } from '../section/section.component';
 import { TaskContainerComponent } from '../task-container/task-container.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { EmailComponent } from './components/email/email.component';
+import { CustomComponentsEnum } from './enums/custom-components.enum';
 import { PhoneComponent } from './components/phone/phone.component';
 
 @NgModule({
@@ -36,14 +38,15 @@ import { PhoneComponent } from './components/phone/phone.component';
         { name: 'server-error', message: (err) => err }
       ],
       types: [
-        { name: 'custom-checkbox', component: CheckboxComponent },
-        { name: 'custom-dropdown', component: DropdownComponent },
-        { name: 'custom-radio-button', component: RadiobuttonComponent },
-        { name: 'typeahead', component: AutoCompleteComponent, extends: 'input' },
-        { name: 'custom-datepicker', component: DatePickerComponent },
-        { name: 'custom-address-fields', component: AddressFieldsComponent },
-        { name: 'custom-textbox', component: TextboxComponent },
-        { name: 'custom-phone', component: PhoneComponent }
+        { name: CustomComponentsEnum.CUSTOM_CHECKBOX, component: CheckboxComponent },
+        { name: CustomComponentsEnum.CUSTOM_DROPDOWN, component: DropdownComponent },
+        { name: CustomComponentsEnum.CUSTOM_RADIO_BUTTON, component: RadiobuttonComponent },
+        { name: CustomComponentsEnum.CUSTOM_TYPEAHEAD, component: AutoCompleteComponent, extends: 'input' },
+        { name: CustomComponentsEnum.CUSTOM_DATEPICKER, component: DatePickerComponent },
+        { name: CustomComponentsEnum.CUSTOM_ADDRESS_FIELD, component: AddressFieldsComponent },
+        { name: CustomComponentsEnum.CUSTOM_TEXTBOX, component: TextboxComponent },
+        { name: CustomComponentsEnum.CUSTOM_EMAIL, component: EmailComponent },
+        { name: CustomComponentsEnum.CUSTOM_PHONE, component: PhoneComponent }
       ]
     }),
     FormlyBootstrapModule,
@@ -61,6 +64,7 @@ import { PhoneComponent } from './components/phone/phone.component';
     TaskContainerComponent,
     UploadFileComponent,
     TextboxComponent,
+    EmailComponent,
     PhoneComponent,
     AddressFieldsComponent
   ],
@@ -75,6 +79,8 @@ import { PhoneComponent } from './components/phone/phone.component';
     TaskContainerComponent,
     UploadFileComponent,
     TextboxComponent,
+    EmailComponent,
+    PhoneComponent,
     AddressFieldsComponent
   ]
 })

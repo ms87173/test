@@ -13,6 +13,7 @@ export class SectionComponent implements OnInit, OnChanges {
   options: FormlyFormOptions = {};
   model: any = {};
   fields: FormlyFieldConfig[] = [];
+  isReadonly:boolean=false;
   @Input() formlyFieldConfigArray: FormlyFieldConfigArrayCollection;
 
   constructor() { }
