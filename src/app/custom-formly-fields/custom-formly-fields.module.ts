@@ -69,7 +69,6 @@ import { FormlySelectOptionsPipe } from './pipes/select-options.pipe';
     PhoneComponent,
     AddressFieldsComponent,
     EmailComponent,
-    PhoneComponent,
     FormlySelectOptionsPipe
   ],
   exports: [
