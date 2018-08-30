@@ -26,7 +26,20 @@ export const PhoneFieldConfig: FormlyFieldConfig = {
                 className: 'col-sm-6',
                 templateOptions: {
                     label: 'Country Code',
-                    options: []
+                    options: [
+                        {
+                            'label': '+91',
+                            'value': '+91'
+                        },
+                        {
+                            'label': '+1',
+                            'value': '+1'
+                        },
+                        {
+                            'label': '+111',
+                            'value': '+111'
+                        },
+                    ]
                 },
             },
             {
