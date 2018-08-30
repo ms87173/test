@@ -14,6 +14,8 @@ import { fromRootReducers } from '../../store'
 import { questionnaireActions, } from '../../store/actions';
 import { Task, FormlyFieldConfigArrayCollection } from '../models';
 import { debounceTime } from 'rxjs/operators';
+import { CustomComponentsEnum } from '../../custom-formly-fields/enums/custom-components.enum';
+import { emailFieldArray } from '../../custom-formly-fields/formly-configs/email';
 
 @Injectable()
 export class NgxFormlyParserService {
@@ -189,8 +191,6 @@ export class NgxFormlyParserService {
       let field: FormlyFieldConfig = {};
       field.key = question.id.toString();
       field.type = question.type;
-
-
       field.templateOptions = {
         label: question.label,
         options: question.options || [],
@@ -203,107 +203,35 @@ export class NgxFormlyParserService {
       }
       if (question.maxLength) {
         field.templateOptions.maxLength = question.maxLength;
-      }
-
+      }      
       if (question.min) {
         field.templateOptions.min = question.min;
       }
       if (question.minLength) {
         field.templateOptions.minLength = question.minLength;
       }
-
       if (question.tooltipText) {
         field.templateOptions.tooltipText = question.tooltipText;
       }
-
-
-
-      //Todo:Switch case for custom
-      if (question.type !== "custom-address-field") {
-
-
-
-        //Todo: for focus on questions
-        // if (question.id == currentQuestionId) {
-        //   console.log(question.id);
-        //   console.log(currentQuestionId);
-        //   field.focus = true;
-        // }
-
-
-
-
-        //Todo: Need to create field trigger for delta changes
-        // field.lifecycle = this.fieldChangeLifecycleTrigger;
-
-        // field.defaultValue= question.defaultValue;
-        //Todo: Implement error messgaes
-        // if (question.serverErrorMessage) {
-        //   field.validators = {
-        //     ip: {
-        //       expression: (c) => true,
-        //       message: (error, field: FormlyFieldConfig) => question.serverErrorMessage,
-        //     }
-        //   }
-        // }
-      }
-      else {
-        field.fieldArray = {
-          fieldGroupClassName: 'row',
-          templateOptions: {
-            btnText: 'Add another investment',
-          },
-          fieldGroup: [
-            {
-              className: 'col-sm-4',
-              type: 'custom-dropdown',
-              key: 'investmentName',
-              templateOptions: {
-                label: 'Name of Investment:',
-                required: true,
-                options: [
-                  { label: 'Iron Man', value: 'iron_man' },
-                  { label: 'Captain America', value: 'captain_america' },
-                  { label: 'Black Widow', value: 'black_widow' },
-                  { label: 'Hulk', value: 'hulk' },
-                  { label: 'Captain Marvel', value: 'captain_marvel' }
-                ]
-              },
-            },
-            {
-              key: 'requiredCheckBox',
-              className: 'col-sm-3',
-
-              type: 'custom-checkbox',
-              templateOptions: {
-                label: 'Hey there you need to check this box as this is required',
-                required: true,
-              }
-            },
-            {
-              type: 'input',
-              key: 'stockIdentifier',
-              className: 'col-sm-3',
-              templateOptions: {
-                label: 'Stock Identifier:',
-                addonRight: {
-                  class: 'fa fa-code',
-                  onClick: (to, fieldType, $event) => console.log(to, fieldType, $event),
-                },
-              },
-            },
-          ],
-        }
-      }
+      field = this.getFormlyFieldArrayConfigByQuestionType(field);      
       FormlyFieldConfigArray.push(field);
     });
-
-
     return FormlyFieldConfigArray;
+    }
 
-  }
+  getFormlyFieldArrayConfigByQuestionType(formlyField:FormlyFieldConfig) : FormlyFieldConfig {
 
-  getFormlyConfigByQuestionType(questionType: string) {
+    let field :FormlyFieldConfig ={...formlyField};
+
+    switch(field.type)
+    {
+      case CustomComponentsEnum.CUSTOM_EMAIL:
+      field.fieldArray=emailFieldArray;
+      break;
+      //Todo: UI Team will add their respective field array reference here
+
+    }
+    return field;
 
   }
 
