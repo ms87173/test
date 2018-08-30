@@ -2,7 +2,7 @@ import { TASK_STATUSES } from "../constants/application-request.constants";
 import { of } from "rxjs";
 
 export function determinePendingTask(workflows) {
-    let pendingTask = false, count = 0, taskId = null, workflowId = null;
+    let count = 0, taskId = '', workflowId = '';
     while(count < workflows.length) {
         const workflow = workflows[count];
         if (workflow.status === TASK_STATUSES.inProgress) {
@@ -12,7 +12,6 @@ export function determinePendingTask(workflows) {
                 const task = workflow.tasks[count1];
                 if (task.status === TASK_STATUSES.inProgress) {
                     taskId = task.id;
-                    pendingTask = true;
                     break;
                 }
                 count1++;
@@ -20,6 +19,10 @@ export function determinePendingTask(workflows) {
             break;
         }
         count++;
+    }
+    if(workflows && workflows.length > 0 && !workflowId && !taskId) {
+        workflowId = workflows[0].id;
+        taskId = workflows[0].tasks[0].id;
     }
     return of({
         workflowId,
