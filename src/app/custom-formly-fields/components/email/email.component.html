@@ -6,17 +6,13 @@
 
 <div class="row">
   <div class="col-xs-12 col-md-12 col-lg-12">
-    <!-- <div *ngFor="let data of field.fieldGroup; let i = index;">
+    <div *ngFor="let data of field.fieldGroup; let i = index;">
       <formly-group [field]="data" [options]="options" [form]="formControl">
-        <div class="col-sm-2 d-flex align-items-center">
-          <button class="btn btn-danger" type="button" (click)="remove(i)">Remove</button>
-        </div>
       </formly-group>
-    </div> -->
+    </div>
 
   </div>
 </div>
 
-<a  class="btn btn-link" (click)="add()">
-  <i class="fa fa-plus" aria-hidden="true"></i>
-  Link</a>
+<a class=" btn-link btn-link--primary" (click)="add()">
+  + Add a new email</a>
