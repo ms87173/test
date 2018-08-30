@@ -48,6 +48,7 @@ import { FormlySelectOptionsPipe } from './pipes/select-options.pipe';
         { name: CustomComponentsEnum.CUSTOM_TEXTBOX, component: TextboxComponent },
         { name: CustomComponentsEnum.CUSTOM_EMAIL, component: EmailComponent },
         { name: CustomComponentsEnum.CUSTOM_PHONE, component: PhoneComponent }
+        { name: CustomComponentsEnum.CUSTOM_CHECKBOX, component: CheckboxComponent }
       ]
     }),
     FormlyBootstrapModule,
@@ -68,7 +69,6 @@ import { FormlySelectOptionsPipe } from './pipes/select-options.pipe';
     PhoneComponent,
     AddressFieldsComponent,
     EmailComponent,
-    PhoneComponent,
     FormlySelectOptionsPipe
   ],
   exports: [
