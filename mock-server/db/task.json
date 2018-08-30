@@ -217,6 +217,13 @@
                             ],
                             "tooltipText": "<string>",
                             "defaultValue": "<any>"
+                        },
+                        {
+                            "id": "phoneNumber",
+                            "label": "Phone Number",
+                            "type": "custom-phone",
+                            "required": true,
+                            "defaultValue": [{}]
                         }
                     ]
                 }

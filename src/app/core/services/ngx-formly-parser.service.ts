@@ -14,6 +14,7 @@ import { Task, FormlyFieldConfigArrayCollection } from '../models';
 import { debounceTime } from 'rxjs/operators';
 import { CustomComponentsEnum } from '../../custom-formly-fields/enums/custom-components.enum';
 import { emailFieldArray } from '../../custom-formly-fields/formly-configs/email';
+import { PhoneFieldConfig } from '../../custom-formly-fields/formly-configs/phone-field.config';
 
 @Injectable()
 export class NgxFormlyParserService {
@@ -33,6 +34,7 @@ export class NgxFormlyParserService {
           console.log('field changes occured')
           console.log(fieldValue);
           console.log(field.defaultValue);
+          console.log(model);
           // this.currentQuestionId = key;
           // let questionaireRequest: QuestionaireDeltaRequest = {
           //   id: key,
@@ -214,7 +216,8 @@ export class NgxFormlyParserService {
         field.fieldArray = emailFieldArray;
         break;
       // Todo: UI Team will add their respective field array reference here
-
+      case CustomComponentsEnum.CUSTOM_PHONE:
+        field.fieldArray = PhoneFieldConfig.fieldArray;
     }
     return field;
 

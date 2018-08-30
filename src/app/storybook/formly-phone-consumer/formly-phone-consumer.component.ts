@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
+import { of, Observable } from 'rxjs';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'formly-phone-consumer',
@@ -80,10 +81,9 @@ export class FormlyPhoneConsumerComponent implements OnInit {
         }
       }
     ];
-    console.log(this.fields)
   }
-  getCountryCode() {
-    return [
+  getCountryCode(): Observable<any> {
+    return of([
       {
         label: '+91',
         value: '+91'
@@ -112,6 +112,6 @@ export class FormlyPhoneConsumerComponent implements OnInit {
         label: '+155',
         value: '+155'
       },
-    ];
+    ]);
   }
 }
