@@ -169,7 +169,6 @@ export class NgxFormlyParserService {
 
   getFormlyFieldConfigArrayCollectionFromTask(currentTask: Task, currentQuestionId: string,
     requestId: string, workflowId: string, taskId: string): Observable<FormlyFieldConfigArrayCollection[]> {
-
     const formlyFieldConfigArrayCollections: FormlyFieldConfigArrayCollection[] = [];
     const currTask = { ...currentTask };
     currTask.sections.map((section: Section) => {
