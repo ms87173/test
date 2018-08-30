@@ -111,15 +111,14 @@ export class NgxFormlyParserService {
         });
       }
 
-      ////Todo: Update Loop for delta
-
+      //// Todo: Update Loop for delta
       if (delta.new) {
         delta.new.forEach((question) => {
           let currentSection = currTask.sections.find((section) => {
             return section.title === question.sectionName;
           });
           let currentQuestionIndex = currentSection.questions.findIndex((questioItem) => {
-            return questioItem.id == question.questionIdAfterToBeInserted;
+            return questioItem.id === question.questionIdAfterToBeInserted;
           });
 
           let newQuestion: Question = {
