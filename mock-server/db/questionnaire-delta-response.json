@@ -2,12 +2,12 @@
   "questionnaireDeltaResponses": [
     {
       "id": 1,
-      "label": "Interest Checking",
-      "description": "This is your primary interest bearing account.",
+      "label": "John Robbins",
+      "description": "This is the information we have on you.",
       "status": "InProgress",
       "sections": [
         {
-          "title": "Account Information",
+          "title": "Personal Information",
           "questions": [
             {
               "id": "InterestCheckingCheckBox",
@@ -28,46 +28,6 @@
               ],
               "tooltipText": "<string>",
               "defaultValue": "true"
-            },
-            {
-              "id": "ChildDependentTextBox",
-              "label": "Do you have an Child Dependent?",
-              "type": "custom-radio-button",
-              "required": "true",
-              "readOnly": "false",
-              "placeHolder": "Saving Account",
-              "options": [
-                {
-                  "label": "Yes",
-                  "value": "true"
-                },
-                {
-                  "label": "No",
-                  "value": "False"
-                }
-              ],
-              "tooltipText": "<string>",
-              "defaultValue": "<any>"
-            },
-            {
-              "id": "RemoveOnAnswerQuestion1",
-              "label": "I will be removed as soon as question 1 is answered",
-              "type": "custom-textbox",
-              "required": "true",
-              "readOnly": "false",
-              "placeHolder": "Saving Account",
-              "options": [
-                {
-                  "label": "Yes",
-                  "value": "true"
-                },
-                {
-                  "label": "No",
-                  "value": "False"
-                }
-              ],
-              "tooltipText": "<string>",
-              "defaultValue": "<any>"
             }
           ]
         },
