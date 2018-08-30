@@ -5,7 +5,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { NgxUploaderModule } from 'ngx-uploader';
 
 import { StorybookRoutingModule } from './storybook-routing.module';
-import { SharedModule } from './../shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 import { CustomFormlyFieldsModule } from '../custom-formly-fields/custom-formly-fields.module';
 
 import { LabelValueConsumerComponent } from './label-value-consumer/label-value-consumer.component';

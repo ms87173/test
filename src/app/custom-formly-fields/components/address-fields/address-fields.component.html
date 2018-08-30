@@ -2,7 +2,7 @@
     <formly-group [field]="data" [options]="options" [form]="formControl">
     </formly-group>
 </div>
-<div *ngIf="field.fieldArray.recurrent">
+<div *ngIf="field.fieldArray?.recurrent">
     <button class="btn btn-link mt-2" type="button" (click)="add()">
         {{ field.fieldArray.templateOptions.btnText }}
     </button>

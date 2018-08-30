@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounce';
 import 'rxjs/add/operator/distinctUntilChanged';
 import { Observable } from 'rxjs/Observable';
-import { UploadFileComponent } from 'src/app/custom-formly-fields/components/upload-file/upload-file.component';
+import { UploadFileComponent } from '../../custom-formly-fields/components/upload-file/upload-file.component';
 
 
 // import { debounce } from 'rxjs/internal/operators/debounce';

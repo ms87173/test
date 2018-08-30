@@ -25,6 +25,7 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
   isComponentActive = true;
   requestId: string = null;
   formlyFieldConfigArrayCollections: FormlyFieldConfigArrayCollection[] = [];
+  taskRequest: TaskRequest;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -43,14 +44,13 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
     this.store.pipe(select(fromRootSelectors.applicationRequestSelectors.getApplicationActiveTask),
       takeWhile(() => this.isComponentActive))
       .subscribe((activeTask) => {
-        if (activeTask && activeTask.workflowId && activeTask.task.id) {
-          const taskRequest = new TaskRequest();
-          taskRequest.workFlowId = activeTask.workflowId;
-          taskRequest.taskId = activeTask.task.id;
-          taskRequest.requestId = this.requestId;
-          this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask(taskRequest));  
-        }}
-      );
+        this.taskRequest = new TaskRequest();
+        this.taskRequest.workflowId = activeTask.workflowId;
+        this.taskRequest.taskId = activeTask.task.id;
+        this.taskRequest.requestId = this.requestId;
+        this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask(this.taskRequest));
+      });
+
     this.store.pipe(select(fromRootSelectors.questionnaireSelectors.getCurrentTask),
       takeWhile(() => this.isComponentActive)
     ).subscribe(
@@ -59,14 +59,20 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
           this.currentTask = currTask;
           this.store.dispatch(new fromRootActions
             .questionnaireActions
-            .GetCurrentQuestionnaireFormlyConfig({ task: this.currentTask, currentQuestionId: this.currentQuestionId }));
+            .GetCurrentQuestionnaireFormlyConfig({
+              task: this.currentTask,
+              currentQuestionId: this.currentQuestionId,
+              requestId: this.requestId,
+              workflowId: this.taskRequest.workflowId,
+              taskId: this.taskRequest.taskId
+            }));
         }
       }
     );
 
     this.store.pipe(select(fromRootSelectors.questionnaireSelectors.getCurrentQuestionnaireConfig),
-      takeWhile(() => this.isComponentActive)
-    ).subscribe((formlyFieldConfigArrayCollections) => {
+      takeWhile(() => this.isComponentActive))
+      .subscribe((formlyFieldConfigArrayCollections) => {
       if (formlyFieldConfigArrayCollections) {
         this.formlyFieldConfigArrayCollections = formlyFieldConfigArrayCollections;
         this.forms = new FormArray(this.formlyFieldConfigArrayCollections.map(() => new FormGroup({})));
@@ -74,7 +80,16 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
         this.cd.detectChanges();
       }
     });
+
+    this.store.pipe(select(fromRootSelectors.questionnaireSelectors.getCurrentQuestionId),
+      takeWhile(() => this.isComponentActive))
+      .subscribe((currentQuestionId) => {
+      if (currentQuestionId) {
+        this.currentQuestionId = currentQuestionId;
+      }
+    });
   }
+
 
   ngOnInit() {
   }

@@ -24,6 +24,7 @@ export class TaskContainerComponent implements OnInit, OnDestroy {
   questionnaireFormErrors: QuestionaireDeltaError[];
   isComponentActive = true;
   requestId: string = null;
+ taskRequest = new TaskRequest();
 
   /////////////////////////////////////////
 
@@ -47,15 +48,12 @@ export class TaskContainerComponent implements OnInit, OnDestroy {
     this.store.pipe(select(fromRootSelectors.applicationRequestSelectors.getApplicationActiveTask),
       takeWhile(() => this.isComponentActive))
       .subscribe((activeTask) => {
-        let taskRequest = new TaskRequest();
-        taskRequest.workFlowId = activeTask.workflowId;
-        taskRequest.taskId = activeTask.task.id;
-        taskRequest.requestId = this.requestId;
-        this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask(taskRequest));
+         this.taskRequest = new TaskRequest();
+        this.taskRequest.workflowId = activeTask.workflowId;
+        this.taskRequest.taskId = activeTask.task.id;
+        this.taskRequest.requestId = this.requestId;
+        this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask(this.taskRequest));
       });
-
-    //Todo: Uncomment to use questionnaire seperately
-    // this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask('1'));
 
     this.store.pipe(select(fromRootSelectors.questionnaireSelectors.getCurrentTask),
       takeWhile(() => this.isComponentActive)
@@ -65,7 +63,13 @@ export class TaskContainerComponent implements OnInit, OnDestroy {
           this.currentTask = currTask;
           this.store.dispatch(new fromRootActions
             .questionnaireActions
-            .GetCurrentQuestionnaireFormlyConfig({ task: this.currentTask, currentQuestionId: this.currentQuestionId }));
+            .GetCurrentQuestionnaireFormlyConfig({ 
+              task: this.currentTask,
+               currentQuestionId: this.currentQuestionId,
+               requestId:this.requestId,
+               workflowId:this.taskRequest.workflowId,
+               taskId:this.taskRequest.taskId
+             }));
         }
       }
     );

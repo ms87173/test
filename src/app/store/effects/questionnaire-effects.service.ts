@@ -51,13 +51,15 @@ export class QuestionnaireEffectsService {
     ofType(ActionTypes.GET_CURRENT_FIELD_CHANGE_DELTA),
     switchMap(
       (action: GetCurrentFieldChangeDelta) =>
+
+      
         this.questionnaireService.getFieldChangeDelta(action.payload)
           .pipe(
-            map((fieldChangeDelta) => {
-                return (new GetCurrentFieldChangeDeltaSuccess({ fieldChangeDelta: fieldChangeDelta                 }))
-              
+            map((currentTask) => {
+              return (new GetCurrentFieldChangeDeltaSuccess(currentTask))
+
             }
-            ),   
+            ),
             catchError(
               (err) => of(new GetCurrentFieldChangeDeltaFailure(err))
             )
@@ -83,23 +85,30 @@ export class QuestionnaireEffectsService {
   //         )
   //   )
   // )
-//////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////
 
-@Effect() getCurrentQuestionnaireConfig = this.actions$.pipe(
-  ofType(ActionTypes.GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG),
-  switchMap(
-    (action: GetCurrentQuestionnaireFormlyConfig) => this.ngxFormlyParserService
-      .getFormlyFieldConfigArrayCollectionFromTask(action.payload.task, action.payload.currentQuestionId)
+  @Effect() getCurrentQuestionnaireConfig = this.actions$.pipe(
+    ofType(ActionTypes.GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG),
+    switchMap(
+      (action: GetCurrentQuestionnaireFormlyConfig) => this.ngxFormlyParserService
+        .getFormlyFieldConfigArrayCollectionFromTask
+        (action.payload.task,
+        action.payload.currentQuestionId,
+        action.payload.requestId,
+        action.payload.workflowId,
+        action.payload.taskId
 
-      .pipe(
-        map((FormlyFieldConfigArrayCollections) => (new GetCurrentQuestionnaireFormlyConfigSuccess(FormlyFieldConfigArrayCollections))
-        ),
-        catchError(
-          (err) => of(new GetCurrentQuestionnaireFormlyConfigFailure(err))
         )
-      )
+
+        .pipe(
+          map((FormlyFieldConfigArrayCollections) => (new GetCurrentQuestionnaireFormlyConfigSuccess(FormlyFieldConfigArrayCollections))
+          ),
+          catchError(
+            (err) => of(new GetCurrentQuestionnaireFormlyConfigFailure(err))
+          )
+        )
+    )
   )
-)
 
 
 
