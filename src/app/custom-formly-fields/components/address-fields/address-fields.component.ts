@@ -8,8 +8,12 @@ import { FieldArrayType, FormlyFormBuilder  } from '@ngx-formly/core';
   encapsulation: ViewEncapsulation.None
 })
 
-export class AddressFieldsComponent extends FieldArrayType{
+export class AddressFieldsComponent extends FieldArrayType implements OnInit {
   constructor(builder: FormlyFormBuilder) {
     super(builder);
+  }
+  ngOnInit() {
+    this.add();
+    console.log(this.field.fieldGroup[0].templateOptions.tooltip, ':::::Field');
   }
 }

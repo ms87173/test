@@ -16,13 +16,12 @@ import { RadiobuttonComponent } from './components/radiobutton/radiobutton.compo
 import { AutoCompleteComponent } from './components/auto-complete/auto-complete.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 // import { AddressComponent } from './components/address/address.component';
-import { FormGroupWrapperComponent } from '../shared/form-group-wrapper/form-group-wrapper.component';
+// import { FormGroupWrapperComponent } from '../shared/form-group-wrapper/form-group-wrapper.component';
 import { AddressFieldsComponent } from './components/address-fields/address-fields.component';
 import { QuestionnaireComponent } from '../questionnaire/questionnaire.component';
 import { SectionComponent } from '../section/section.component';
 import { TaskContainerComponent } from '../task-container/task-container.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
-import { RepeatTypeComponent } from './components/repeat-section.type';
 
 @NgModule({
   imports: [
@@ -43,10 +42,10 @@ import { RepeatTypeComponent } from './components/repeat-section.type';
         { name: 'custom-radio-button', component: RadiobuttonComponent },
         { name: 'typeahead', component: AutoCompleteComponent, extends: 'input' },
         { name: 'custom-datepicker', component: DatePickerComponent },
-        // { name: 'custom-address-field', component: AddressComponent },
+      // { name: 'custom-address-field', component: AddressComponent },
         { name: 'custom-textbox', component: TextboxComponent },
-        { name: 'repeat', component: RepeatTypeComponent},
-        { name: 'custom-address-fields', component: AddressFieldsComponent },
+        // { name: 'custom-datepicker', component: DatePickerComponent },
+        { name: 'repeatAddressData', component: AddressFieldsComponent },
         { name: 'custom-textbox', component: TextboxComponent }
       ]
     }),
@@ -61,7 +60,6 @@ import { RepeatTypeComponent } from './components/repeat-section.type';
     AutoCompleteComponent,
     DatePickerComponent,
     // AddressComponent,
-    RepeatTypeComponent,
     QuestionnaireComponent,
     SectionComponent,
     TaskContainerComponent,
@@ -76,7 +74,6 @@ import { RepeatTypeComponent } from './components/repeat-section.type';
     AutoCompleteComponent,
     DatePickerComponent,
     // AddressComponent,
-    RepeatTypeComponent,
     QuestionnaireComponent,
     SectionComponent,
     TaskContainerComponent,
