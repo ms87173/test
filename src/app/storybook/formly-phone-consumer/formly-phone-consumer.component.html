@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h4>Formly Address fields :</h4>
+    </div>
+    <div class="col-sm-8 mt-3">
+      <form class="formly-consumer" [formGroup]="form" (ngSubmit)="submit()">
+        <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form">
+        </formly-form>
+      </form>
+    </div>
+  </div>
+</div>

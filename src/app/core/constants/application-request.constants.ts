@@ -6,7 +6,11 @@ export const TASK_STATUSES = {
     inProgress: 'IN_PROGRESS',
     completed: 'COMPLETED',
     disabled: 'DISABLED'
-}
+};
 export const TASK_TYPES = {
     QUESTION: 'questionnaire'
-}
+};
+
+export const QUESTIONS_TYPE = {
+    phone: 'custom-phone'
+};
