@@ -128,8 +128,10 @@ label {
 .btn {
     min-width: 90px;
 }
-.btn-link {
-    &.btn-link--primary {
-    color: #007bff !important;
+
+.btn-link {
+    &.btn-link--primary {
+        color: #007bff !important;
+        cursor: pointer;
     }
 }

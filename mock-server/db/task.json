@@ -72,26 +72,6 @@
                             "defaultValue": "<any>"
                         },
                         {
-                            "id": "permanentAddress",
-                            "label": "Permananet Address?",
-                            "type": "custom-address-field",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Saving Account",
-                            "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "False"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        },
-                        {
                             "id": "ChildDependentTextBox",
                             "label": "Do you have an Child Dependent?",
                             "type": "custom-radio-button",
@@ -182,26 +162,6 @@
                             "id": "SavingAccountCheckBox",
                             "label": "Would you like to earn saving this account?",
                             "type": "custom-checkbox",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Saving Account",
-                            "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "False"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        },
-                        {
-                            "id": "permanentAddress",
-                            "label": "Permananet Address?",
-                            "type": "custom-address-field",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",
@@ -318,26 +278,6 @@
                             "id": "SavingAccountCheckBox",
                             "label": "Would you like to earn saving this account?",
                             "type": "custom-checkbox",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Saving Account",
-                            "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "False"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        },
-                        {
-                            "id": "permanentAddress",
-                            "label": "Permananet Address?",
-                            "type": "custom-address-field",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Saving Account",

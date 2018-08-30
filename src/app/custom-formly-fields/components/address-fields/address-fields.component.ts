@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { FieldType } from '@ngx-formly/core';
+import { FieldArrayType, FormlyFormBuilder  } from '@ngx-formly/core';
 
 @Component({
   selector: 'address-fields',
@@ -8,6 +8,8 @@ import { FieldType } from '@ngx-formly/core';
   encapsulation: ViewEncapsulation.None
 })
 
-export class AddressFieldsComponent extends FieldType implements OnInit{
-    
+export class AddressFieldsComponent extends FieldArrayType{
+  constructor(builder: FormlyFormBuilder) {
+    super(builder);
+  }
 }

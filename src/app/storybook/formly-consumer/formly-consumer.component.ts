@@ -22,7 +22,9 @@ import { UploadFileComponent } from 'src/app/custom-formly-fields/components/upl
 })
 export class FormlyConsumerComponent implements OnInit {
   form = new FormGroup({});
-  model: any = {};
+  model: any = {
+    'Phone': [{}]
+  };
   options: FormlyFormOptions = {};
   fields: Array<any>;
   listData: any;
@@ -31,9 +33,61 @@ export class FormlyConsumerComponent implements OnInit {
 
   ngOnInit() {
     this.listData = ['Alabama', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island',
-    'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Islands', 'Virginia',
-    'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+      'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Islands', 'Virginia',
+      'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
     this.fields = [
+      {
+        key: 'Phone',
+        type: 'custom-phone',
+        fieldArray: {
+          fieldGroupClassName: 'row',
+          templateOptions: {
+            btnText: '+',
+          },
+          fieldGroup: [
+            {
+              className: 'col-sm-12',
+              type: 'custom-textbox',
+              key: 'description',
+              templateOptions: {
+                label: 'Phone Description',
+                required: true,
+              },
+            },
+            {
+              type: 'custom-textbox',
+              key: 'countryCode',
+              className: 'col-sm-6',
+              templateOptions: {
+                label: 'Country Code',
+              },
+            },
+            {
+              type: 'custom-textbox',
+              key: 'homePhone',
+              className: 'col-sm-6',
+              templateOptions: {
+                label: 'Home Phone Number',
+              },
+              {
+              type: 'custom-checkbox',
+              key: 'setAsPrimary',
+              className: 'col-sm-12',
+              templateOptions: {
+                label: 'Use this number as primary contact',
+              },
+            },
+            {
+              type: 'custom-checkbox',
+              key: 'setForBanking',
+              className: 'col-sm-12',
+              templateOptions: {
+                label: 'Use this number for approving banking activity',
+              },
+            }
+          ],
+        },
+      },
       {
         key: 'text',
         type: 'custom-textbox',

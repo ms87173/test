@@ -6,22 +6,24 @@ import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import { TooltipModule, BsDatepickerModule } from 'ngx-bootstrap';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgxUploaderModule } from 'ngx-uploader';
+
 import { TextboxComponent } from './components/textbox/textbox.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { RadiobuttonComponent } from './components/radiobutton/radiobutton.component';
 import { AutoCompleteComponent } from './components/auto-complete/auto-complete.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
-import { AddressComponent } from './components/address/address.component';
-import { NgSelectModule } from '@ng-select/ng-select';
-import { FormGroupWrapperComponent } from '../shared/form-group-wrapper/form-group-wrapper.component';
+import { AddressFieldsComponent } from './components/address-fields/address-fields.component';
 import { QuestionnaireComponent } from '../questionnaire/questionnaire.component';
 import { SectionComponent } from '../section/section.component';
 import { TaskContainerComponent } from '../task-container/task-container.component';
-import { NgxUploaderModule } from 'ngx-uploader';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { EmailComponent } from './components/email/email.component';
 import { CustomComponentsEnum } from './enums/custom-components.enum';
+import { PhoneComponent } from './components/phone/phone.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -32,9 +34,6 @@ import { CustomComponentsEnum } from './enums/custom-components.enum';
     NgxUploaderModule,
     NgbModule.forRoot(),
     FormlyModule.forRoot({
-      wrappers: [
-        { name: 'form-group', component: FormGroupWrapperComponent },
-      ],
       validationMessages: [
         { name: 'server-error', message: (err) => err }
       ],
@@ -44,10 +43,10 @@ import { CustomComponentsEnum } from './enums/custom-components.enum';
         { name: CustomComponentsEnum.CUSTOM_RADIO_BUTTON, component: RadiobuttonComponent },
         { name: CustomComponentsEnum.CUSTOM_TYPEAHEAD, component: AutoCompleteComponent, extends: 'input' },
         { name: CustomComponentsEnum.CUSTOM_DATEPICKER, component: DatePickerComponent },
-        { name: CustomComponentsEnum.CUSTOM_ADDRESS_FIELD, component: AddressComponent },
+        { name: CustomComponentsEnum.CUSTOM_ADDRESS_FIELD, component: AddressFieldsComponent },
         { name: CustomComponentsEnum.CUSTOM_TEXTBOX, component: TextboxComponent },
-        { name: CustomComponentsEnum.CUSTOM_EMAIL, component: EmailComponent }
-
+        { name: CustomComponentsEnum.CUSTOM_EMAIL, component: EmailComponent },
+        { name: CustomComponentsEnum.CUSTOM_PHONE, component: PhoneComponent }
       ]
     }),
     FormlyBootstrapModule,
@@ -60,13 +59,14 @@ import { CustomComponentsEnum } from './enums/custom-components.enum';
     RadiobuttonComponent,
     AutoCompleteComponent,
     DatePickerComponent,
-    AddressComponent,
     QuestionnaireComponent,
     SectionComponent,
     TaskContainerComponent,
     UploadFileComponent,
     TextboxComponent,
-    EmailComponent
+    EmailComponent,
+    PhoneComponent,
+    AddressFieldsComponent
   ],
   exports: [
     DropdownComponent,
@@ -74,14 +74,14 @@ import { CustomComponentsEnum } from './enums/custom-components.enum';
     RadiobuttonComponent,
     AutoCompleteComponent,
     DatePickerComponent,
-    AddressComponent,
     QuestionnaireComponent,
     SectionComponent,
     TaskContainerComponent,
     UploadFileComponent,
     TextboxComponent,
-    EmailComponent
-
+    EmailComponent,
+    PhoneComponent,
+    AddressFieldsComponent
   ]
 })
 export class CustomFormlyFieldsModule { }

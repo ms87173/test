@@ -15,15 +15,14 @@ export class TasksEffects {
         ofType(ActionTypes.DETERMINE_PENDING_TASK_OF_APPLICATION_REQUEST),
         switchMap(
             (action: DeterminePendingTaskOfApplication) => 
-                { console.log(action.payload);
-                return determinePendingTask(action.payload)
+                determinePendingTask(action.payload)
                     .pipe(
                         map(
                             (data) => {
                                 return new SetActiveTask(data);
                             })
                     )
-                }));
+            ));
 
     constructor(
         private actions$: Actions

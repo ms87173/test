@@ -8,8 +8,9 @@ export const AppRoutes: Routes = [
         component: HomeComponent,
         children: [
             {
-                path: 'testfeature',
-                loadChildren: './test-feature/test-feature.module#TestFeatureModule'
+                path: '',
+                pathMatch: 'full',
+                redirectTo: 'my-applications'
             },
             {
                 path: 'storybook',
