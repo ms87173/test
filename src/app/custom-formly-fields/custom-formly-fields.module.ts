@@ -22,6 +22,8 @@ import { TaskContainerComponent } from '../task-container/task-container.compone
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { PhoneComponent } from './components/phone/phone.component';
 
+import { FormlySelectOptionsPipe } from './pipes/select-options.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -41,7 +43,7 @@ import { PhoneComponent } from './components/phone/phone.component';
         { name: 'custom-radio-button', component: RadiobuttonComponent },
         { name: 'typeahead', component: AutoCompleteComponent, extends: 'input' },
         { name: 'custom-datepicker', component: DatePickerComponent },
-        { name: 'custom-address-field', component: AddressComponent },
+        { name: 'custom-address-fields', component: AddressFieldsComponent },
         { name: 'custom-textbox', component: TextboxComponent },
         { name: 'custom-phone', component: PhoneComponent }
       ]
@@ -61,8 +63,9 @@ import { PhoneComponent } from './components/phone/phone.component';
     TaskContainerComponent,
     UploadFileComponent,
     TextboxComponent,
-    PhoneComponent
-    AddressFieldsComponent
+    PhoneComponent,
+    AddressFieldsComponent,
+    FormlySelectOptionsPipe
   ],
   exports: [
     DropdownComponent,
@@ -75,7 +78,8 @@ import { PhoneComponent } from './components/phone/phone.component';
     TaskContainerComponent,
     UploadFileComponent,
     TextboxComponent,
-    AddressFieldsComponent
+    AddressFieldsComponent,
+    FormlySelectOptionsPipe
   ]
 })
 export class CustomFormlyFieldsModule { }
