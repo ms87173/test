@@ -1,4 +1,4 @@
-import * as fromStore from '../reducers/';
+import * as fromStore from '../reducers';
 import * as fromWorkflows from '../reducers/workflows.reducer';
 import { createSelector } from '@ngrx/store';
 

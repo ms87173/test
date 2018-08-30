@@ -22,6 +22,11 @@ import { QuestionnaireComponent } from '../questionnaire/questionnaire.component
 import { SectionComponent } from '../section/section.component';
 import { TaskContainerComponent } from '../task-container/task-container.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { EmailComponent } from './components/email/email.component';
+import { CustomComponentsEnum } from './enums/custom-components.enum';
+import { PhoneComponent } from './components/phone/phone.component';
+
+import { FormlySelectOptionsPipe } from './pipes/select-options.pipe';
 
 @NgModule({
   imports: [
@@ -37,16 +42,15 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
         { name: 'server-error', message: (err) => err }
       ],
       types: [
-        { name: 'custom-checkbox', component: CheckboxComponent },
-        { name: 'custom-dropdown', component: DropdownComponent },
-        { name: 'custom-radio-button', component: RadiobuttonComponent },
-        { name: 'typeahead', component: AutoCompleteComponent, extends: 'input' },
-        { name: 'custom-datepicker', component: DatePickerComponent },
-      // { name: 'custom-address-field', component: AddressComponent },
-        { name: 'custom-textbox', component: TextboxComponent },
-        // { name: 'custom-datepicker', component: DatePickerComponent },
-        { name: 'repeatAddressData', component: AddressFieldsComponent },
-        { name: 'custom-textbox', component: TextboxComponent }
+        { name: CustomComponentsEnum.CUSTOM_DROPDOWN, component: DropdownComponent },
+        { name: CustomComponentsEnum.CUSTOM_RADIO_BUTTON, component: RadiobuttonComponent },
+        { name: CustomComponentsEnum.CUSTOM_TYPEAHEAD, component: AutoCompleteComponent, extends: 'input' },
+        { name: CustomComponentsEnum.CUSTOM_DATEPICKER, component: DatePickerComponent },
+        { name: CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS, component: AddressFieldsComponent },
+        { name: CustomComponentsEnum.CUSTOM_TEXTBOX, component: TextboxComponent },
+        { name: CustomComponentsEnum.CUSTOM_EMAIL, component: EmailComponent },
+        { name: CustomComponentsEnum.CUSTOM_PHONE, component: PhoneComponent },
+        { name: CustomComponentsEnum.CUSTOM_CHECKBOX, component: CheckboxComponent }
       ]
     }),
     FormlyBootstrapModule,
@@ -65,7 +69,10 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     TaskContainerComponent,
     UploadFileComponent,
     TextboxComponent,
-    AddressFieldsComponent
+    PhoneComponent,
+    AddressFieldsComponent,
+    EmailComponent,
+    FormlySelectOptionsPipe
   ],
   exports: [
     DropdownComponent,
@@ -79,7 +86,10 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     TaskContainerComponent,
     UploadFileComponent,
     TextboxComponent,
-    AddressFieldsComponent
+    AddressFieldsComponent,
+    EmailComponent,
+    PhoneComponent,
+    FormlySelectOptionsPipe
   ]
 })
 export class CustomFormlyFieldsModule { }

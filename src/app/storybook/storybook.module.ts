@@ -5,7 +5,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { NgxUploaderModule } from 'ngx-uploader';
 
 import { StorybookRoutingModule } from './storybook-routing.module';
-import { SharedModule } from './../shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 import { CustomFormlyFieldsModule } from '../custom-formly-fields/custom-formly-fields.module';
 
 import { LabelValueConsumerComponent } from './label-value-consumer/label-value-consumer.component';
@@ -15,6 +15,7 @@ import { BsDropdownModule } from 'ngx-bootstrap';
 import { GridConsumerComponent } from './grid-consumer/grid-consumer.component';
 import { FormlyConsumerComponent } from './formly-consumer/formly-consumer.component';
 import { FormlyAddressConsumerComponent } from './formly-address-consumer/formly-address-consumer.component';
+import { FormlyPhoneConsumerComponent } from './formly-phone-consumer/formly-phone-consumer.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { FormlyAddressConsumerComponent } from './formly-address-consumer/formly
     TileConsumerComponent,
     GridConsumerComponent,
     FormlyConsumerComponent,
-    FormlyAddressConsumerComponent
+    FormlyAddressConsumerComponent,
+    FormlyPhoneConsumerComponent
   ]
 })
 export class StorybookModule { }

@@ -1,61 +1,154 @@
 {
   "questionnaireDeltaResponses": [
-      {
-        "id":1,
-          "new":
-          
-          [
-              {
-                  "id": "InterestCurrentCheckBox",
-                  "label": "Would you like to earn Current this account?",
-                  "type": "radio",
-                  "required": true,
-                  "readOnly": false,
-                  "placeHolder": "Current Account",
-                  "options": [
-                    {
-                      "label": "Yes",
-                      "value": "true"
-                    },
-                    {
-                      "label": "No",
-                      "value": "false"
-                    }
-                  ],
-                  "tooltipText": "<string>",
-                  "defaultValue": true,
-                  "questionIdAfterToBeInserted": "InterestCheckingCheckBox",
-                  "sectionName": "Account Information"
-                
-                
-                
-                }
-                
-          ],
-          "update":null,
-      
-          "delete":[
-              {
-                  "id":"RemoveOnAnswerQuestion1",
-                  "sectionName": "Account Information"
-      
-              }
-          ],
-          "errors":[
+    {
+      "id": 1,
+      "label": "John Robbins",
+      "description": "This is the information we have on you.",
+      "status": "InProgress",
+      "sections": [
+        {
+          "title": "Personal Information",
+          "questions": [
             {
-              "id":"SavingAccountTextBox",
-              "sectionName": "Account Information",
-              "errorMessage":"Incorrect informaiton Saving Account"
+              "id": "InterestCheckingCheckBox",
+              "label": "Would you like to earn interest this account?",
+              "type": "custom-checkbox",
+              "required": "true",
+              "readOnly": "false",
+              "placeHolder": "Interest Account",
+              "options": [
+                {
+                  "label": "Yes",
+                  "value": "true"
+                },
+                {
+                  "label": "No",
+                  "value": "False"
+                }
+              ],
+              "tooltipText": "<string>",
+              "defaultValue": "true"
+            }
+          ]
+        },
+        {
+          "title": "Account Information 2",
+          "questions": [
+            {
+              "id": "InterestCheckingCheckBox2",
+              "label": "Where should i invest ?",
+              "type": "custom-dropdown",
+              "required": "true",
+              "readOnly": "false",
+              "placeHolder": "Interest Account",
+              "options": [
+                {
+                  "label": "Iron Man",
+                  "value": "iron_man"
+                },
+                {
+                  "label": "Captain America",
+                  "value": "captain_america"
+                },
+                {
+                  "label": "Black Widow",
+                  "value": "black_widow"
+                },
+                {
+                  "label": "Hulk",
+                  "value": "hulk"
+                },
+                {
+                  "label": "Captain Marvel",
+                  "value": "captain_marvel"
+                }
+              ],
+              "tooltipText": "<string>",
+              "defaultValue": "<any>"
             },
             {
-              "id":"ChildDependentTextBox",
-              "sectionName": "Account Information",
-              "errorMessage":"Incorrect information in child dependent box"
+              "id": "SavingAccountTextBox2",
+              "label": "Super hero?",
+              "type": "custom-radio-button",
+              "required": "true",
+              "readOnly": "false",
+              "placeHolder": "Saving Account",
+              "options": [
+                {
+                  "label": "Yes",
+                  "value": "true"
+                },
+                {
+                  "label": "No",
+                  "value": "False"
+                }
+              ],
+              "tooltipText": "<string>",
+              "defaultValue": "<any>"
+            },
+            {
+              "id": "SavingAccountCheckBox2",
+              "label": "where is super man?",
+              "type": "custom-checkbox",
+              "required": "true",
+              "readOnly": "false",
+              "placeHolder": "Saving Account",
+              "options": [
+                {
+                  "label": "Yes",
+                  "value": "true"
+                },
+                {
+                  "label": "No",
+                  "value": "False"
+                }
+              ],
+              "tooltipText": "<string>",
+              "defaultValue": ""
+            },
+            {
+              "id": "ChildDependentTextBox2",
+              "label": "where are we?",
+              "type": "custom-radio-button",
+              "required": "true",
+              "readOnly": "false",
+              "placeHolder": "Saving Account",
+              "options": [
+                {
+                  "label": "Yes",
+                  "value": "true"
+                },
+                {
+                  "label": "No",
+                  "value": "False"
+                }
+              ],
+              "tooltipText": "<string>",
+              "defaultValue": "<any>"
+            },
+            {
+              "id": "RemoveOnAnswerQuestion2",
+              "label": "what is ur name",
+              "type": "custom-textbox",
+              "required": "true",
+              "readOnly": "false",
+              "placeHolder": "Saving Account",
+              "options": [
+                {
+                  "label": "Yes",
+                  "value": "true"
+                },
+                {
+                  "label": "No",
+                  "value": "False"
+                }
+              ],
+              "tooltipText": "<string>",
+              "defaultValue": "<any>"
             }
-
-          ]        
-      
-      }
-     
+          ]
+        }
+      ]
+    }
   ]
 }

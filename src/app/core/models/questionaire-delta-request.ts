@@ -1,5 +1,12 @@
 export class QuestionaireDeltaRequest {
-  model:any;
-  questionType:string;
-  questionId
+  requestId: string;
+  workflowId: string;
+  taskId: string;
+  questionnaireItems:QuestionnaireItem[]
+ 
+}
+export class QuestionnaireItem{
+  questionId: string;
+  type: string;
+  answerKey: string;
 }

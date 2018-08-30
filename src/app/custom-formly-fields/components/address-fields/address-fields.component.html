@@ -11,11 +11,9 @@
       [options]="options"
       [form]="formControl">
     </formly-group>
-  </div>
-  <div style="margin:30px 0;">
-      <span class="addmoreaddress">
-          <a class="fa fa-plus" (click)="add()"> {{ field.fieldArray.templateOptions.btnText }}</a>
-      </span>
-    <!-- <button class="btn btn-primary" type="button" (click)="add()">{{ field.fieldArray.templateOptions.btnText }}</button> -->
-  </div>
+</div>
+<div *ngIf="field.fieldArray?.recurrent">
+    <button class="btn btn-link mt-2" type="button" (click)="add()">
+        {{ field.fieldArray.templateOptions.btnText }}
+    </button>
 </div>

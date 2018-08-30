@@ -1,4 +1,4 @@
-import * as fromStore from '../reducers/';
+import * as fromStore from '../reducers';
 import * as fromApplicationRequest from '../reducers/application-request.reducer';
 import { createSelector } from '@ngrx/store';
 
