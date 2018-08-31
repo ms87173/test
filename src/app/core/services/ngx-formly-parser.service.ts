@@ -205,7 +205,13 @@ export class NgxFormlyParserService {
       
       if(question.defaultValue)
       {
-        field.defaultValue=question.defaultValue;
+        if(field.type ===CustomComponentsEnum.CUSTOM_CHECKBOX)
+        {
+          field.defaultValue= question.defaultValue === 'true'? true :false;
+        }else{
+          field.defaultValue=question.defaultValue;
+
+        }
       }
 
       if (question.max) {
