@@ -1,5 +1,15 @@
-<div *ngFor="let data of field.fieldGroup; let i = index;">
-    <formly-group [field]="data" [options]="options" [form]="formControl">
+<div class="Addressfield">
+    <h4>Documents</h4>
+<div *ngFor="let field of field.fieldGroup; let i = index;">
+    <p>Address Proof</p>
+    <div class="box_wrapper">
+        <upload-file></upload-file>
+    </div>
+    <formly-group
+    [model]="model[i]"
+      [field]="field"
+      [options]="options"
+      [form]="formControl">
     </formly-group>
 </div>
 <div *ngIf="field.fieldArray?.recurrent">

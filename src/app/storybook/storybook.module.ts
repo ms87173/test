@@ -24,7 +24,9 @@ import { FormlyPhoneConsumerComponent } from './formly-phone-consumer/formly-pho
     StorybookRoutingModule,
     SharedModule,
     CustomFormlyFieldsModule,
-    FormlyModule,
+    FormlyModule.forRoot({
+      types: [{ name: 'repeat', component: FormlyConsumerComponent }]
+    }),
     BsDropdownModule.forRoot(),
     NgxUploaderModule
   ],
