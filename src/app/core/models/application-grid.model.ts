@@ -22,9 +22,11 @@ export class ApplicationGridModel {
         const viewData = {
             description: new LabelValueGroupModel(descriptionData),
             ownerShip: new LabelValueGroupModel({ label: applicationType.get(data.type) }),
+            ///Todo : Need to discuss on  with server team  where to keep mapping or not
+            // ownerShip: new LabelValueGroupModel({ label: data.type }),
             lastUpdate: new LabelValueGroupModel({ label: moment(data.lastUpdate).format('DD MMM YYYY') }),
             lastUpdatedBy: new LabelValueGroupModel({ label: data.lastUpdatedBy }),
-            status: new LabelValueGroupModel({ 
+            status: new LabelValueGroupModel({
                 label: data.status.description
                 // ...statusMapping[`${data.status.code}`],
                 // value: data.status.reason
