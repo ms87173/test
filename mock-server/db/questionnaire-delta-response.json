@@ -100,11 +100,11 @@
                 },
                 {
                   "label": "No",
-                  "value": "False"
+                  "value": "false"
                 }
               ],
               "tooltipText": "<string>",
-              "defaultValue": ""
+              "defaultValue": "false"
             },
             {
               "id": "ChildDependentTextBox2",
