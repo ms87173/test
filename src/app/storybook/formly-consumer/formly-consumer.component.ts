@@ -32,9 +32,12 @@ export class FormlyConsumerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.listData = ['Alabama', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island',
-      'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Islands', 'Virginia',
-      'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+    this.listData = [
+    { label: 'New York', value: 'new-york' },
+    { label: 'Illinois', value: 'illinois' },
+    { label: 'California', value: 'california' },
+    { label: 'Michigan', value: 'michigan' },
+    { label: 'Ohio', value: 'ohio' }];
     this.fields = [
       {
         key: 'Phone',
@@ -42,7 +45,7 @@ export class FormlyConsumerComponent implements OnInit {
         fieldArray: {
           fieldGroupClassName: 'row',
           templateOptions: {
-            btnText: '+',
+            btnText: '+ add new phone information',
           },
           fieldGroup: [
             {
@@ -217,10 +220,17 @@ export class FormlyConsumerComponent implements OnInit {
           placeholder: 'Search for a state:',
           label: 'Search for a state:',
           search$: (term) => {
+            console.log('inner search', term);
             if ((!term || term === '')) {
               return observableOf(this.listData);
             }
-            return observableOf(this.listData.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
+            return observableOf(
+              this.listData.filter(
+                (v) =>  {
+                  console.log(v, ':::VData');
+                 return v.value.toLowerCase().indexOf(term.toLowerCase()) > -1;     
+                }
+              ).slice(0, 10))
           },
         }
       },
@@ -271,7 +281,8 @@ export class FormlyConsumerComponent implements OnInit {
             },
           ],
         },
-    }];
+    }
+  ];
 
 }
 }
