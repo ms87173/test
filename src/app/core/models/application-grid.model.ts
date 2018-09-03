@@ -19,12 +19,17 @@ export class ApplicationGridModel {
             valueClass: 'grid-value',
             badgeClass: 'grid-badge'
         };
+        const lastModifiedBy = {
+            label: moment(data.lastUpdate).format('DD MMM YYYY'),
+            value: `By ${data.lastUpdatedBy}`,
+            labelClass: 'grid-label',
+            valueClass: 'grid-value'
+        };
         const viewData = {
             description: new LabelValueGroupModel(descriptionData),
             ownerShip: new LabelValueGroupModel({ label: applicationType.get(data.type) }),
-            lastUpdate: new LabelValueGroupModel({ label: moment(data.lastUpdate).format('DD MMM YYYY') }),
-            lastUpdatedBy: new LabelValueGroupModel({ label: data.lastUpdatedBy }),
-            status: new LabelValueGroupModel({ 
+            lastUpdate: new LabelValueGroupModel(lastModifiedBy),
+            status: new LabelValueGroupModel({
                 label: data.status.description
                 // ...statusMapping[`${data.status.code}`],
                 // value: data.status.reason

@@ -19,6 +19,7 @@ export class DdoApplicationsGridComponent implements OnInit {
   @Input() config: any;
   @Output() actions: any = new EventEmitter();
   actionTypes: any;
+  sortByKey: any;
   constructor() {
     this.actionTypes = ACTION_TYPES;
   }
@@ -28,7 +29,8 @@ export class DdoApplicationsGridComponent implements OnInit {
   getRowDetails(data) {
     return Object.values(data)[0];
   }
-  ongridItemClick(actionType: string, params: string) {
+  ongridItemClick(actionType: string, params: any) {
+    this.sortByKey = params.key;
     this.actions.emit({ actionType, params });
   }
 }
