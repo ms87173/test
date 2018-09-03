@@ -130,7 +130,6 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
             }
 
         case ActionTypes.SET_CURRENT_QUESTION_ID:
-        debugger;
             return {
                 ...state,
                 currentQuestionId:action.payload

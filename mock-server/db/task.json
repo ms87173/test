@@ -28,6 +28,26 @@
                             ],
                             "tooltipText": "<string>",
                             "defaultValue": "false"
+                        },
+                        {
+                            "id": "InterestCheckingCheckBox",
+                            "label": "Would you like to earn interest this account?",
+                            "type": "custom-email",
+                            "required": "true",
+                            "readOnly": "false",
+                            "placeHolder": "Interest Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": "true"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "false"
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "defaultValue": ""
                         }
                     ]
                 }           

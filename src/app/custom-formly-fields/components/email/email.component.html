@@ -1,18 +1,13 @@
-<div class="row">
-  <div class="col-xs-12 col-md-12 col-lg-12">
-    <h5>Email</h5>
+<div class="formly-email mt-3">
+  <span class="formly-phone__title bold">Email</span>
+  <div *ngFor="let data of field.fieldGroup; let i = index;">
+    <formly-group [field]="data" [options]="options" [form]="formControl">
+    </formly-group>
+  </div>
+  <div>
+    <button class="btn btn-link mt-2 pl-0" type="button" (click)="add()">
+      {{ field.fieldArray.templateOptions.btnText }}
+    </button>
   </div>
 </div>
-
-<div class="row">
-  <div class="col-xs-12 col-md-12 col-lg-12">
-    <div *ngFor="let data of field.fieldGroup; let i = index;">
-      <formly-group [field]="data" [options]="options" [form]="formControl">
-      </formly-group>
-    </div>
-
-  </div>
-</div>
-
-<a class=" btn-link btn-link--primary" (click)="add()">
-  + Add a new email</a>
+{{model | json}}

@@ -7,6 +7,7 @@ import { debounceTime } from 'rxjs/operators';
 import { FormlyLifeCycleOptions } from '@ngx-formly/core/lib/components/formly.field.config';
 import { questionnaireActions } from '../../store/actions';
 import { QuestionaireDeltaRequest } from '../models';
+import { CustomComponentsEnum } from '../../custom-formly-fields/enums/custom-components.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,9 @@ export class FormlyFieldsService {
     workflowId: string, taskId: string): FormlyLifeCycleOptions {
 
     switch (questionType) {
+      case CustomComponentsEnum.CUSTOM_PHONE:
+        return null;
       default:
-
         const GENERIC_LIFECYCLE_EVENT: FormlyLifeCycleOptions =
         {
           onInit: (form?: FormGroup, field?: FormlyFieldConfig, model?: any, options?: FormlyFormOptions) => {
@@ -33,11 +35,11 @@ export class FormlyFieldsService {
                   requestId: requestId,
                   workflowId: workflowId,
                   taskId: taskId,
-                  questionnaireItems:[{
+                  questionnaireItems: [{
                     answerKey: fieldValue,
                     questionId: key,
                     type: questionType
-                  }]                 
+                  }]
                 };
                 // this.store.dispatch(new questionnaireActions.DeleteQuestionnaireErrorByQuestionId(key));
                 this.store.dispatch(new questionnaireActions.SetCurrentQuestionId(key));

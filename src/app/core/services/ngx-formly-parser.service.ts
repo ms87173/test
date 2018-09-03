@@ -13,7 +13,7 @@ import { fromRootReducers } from '../../store';
 import { Task, FormlyFieldConfigArrayCollection } from '../models';
 import { debounceTime } from 'rxjs/operators';
 import { CustomComponentsEnum } from '../../custom-formly-fields/enums/custom-components.enum';
-import { emailFieldArray } from '../../custom-formly-fields/formly-configs/email';
+import { emailFieldArray } from '../../custom-formly-fields/formly-configs/email-field-array';
 import { FormlyFieldsService } from './formly-fields.service';
 import { PhoneFieldConfig } from '../../custom-formly-fields/formly-configs/phone-field.config';
 
@@ -188,29 +188,30 @@ export class NgxFormlyParserService {
     currSection.questions.map((question: Question) => {
       let field: FormlyFieldConfig = {};
       field.key = question.id.toString();
-      if(field.key == currentQuestionId)
-      {
-        field.focus=true;
+      if (field.key == currentQuestionId) {
+        field.focus = true;
       }
       field.type = question.type;
-      
-      field.lifecycle= this.formlyFieldsService
-      .getFormlyLifeCycleEventByQuestionType(field.type ,requestId, workflowId, taskId);
+
+      field.lifecycle = this.formlyFieldsService
+        .getFormlyLifeCycleEventByQuestionType(field.type, requestId, workflowId, taskId);
       field.templateOptions = {
         label: question.label || "",
         options: question.options || [],
         required: question.required || false,
-        disabled: question.disabled || false     
-      };
-      
-      if(question.defaultValue)
-      {
-        if(field.type ===CustomComponentsEnum.CUSTOM_CHECKBOX)
-        {
-          field.defaultValue= question.defaultValue === 'true'? true :false;
-        }else{
-          field.defaultValue=question.defaultValue;
+        disabled: question.disabled || false
 
+      };
+      field.templateOptions.tooltip = {
+        content: 'Hey this is tooltip',
+        placement: 'right'
+      }
+
+      if (question.defaultValue) {
+        if (field.type === CustomComponentsEnum.CUSTOM_CHECKBOX) {
+          field.defaultValue = question.defaultValue === 'true' ? true : false;
+        } else {
+          field.defaultValue = question.defaultValue;
         }
       }
 
@@ -225,9 +226,6 @@ export class NgxFormlyParserService {
       }
       if (question.minLength) {
         field.templateOptions.minLength = question.minLength;
-      }
-      if (question.tooltipText) {
-        field.templateOptions.tooltipText = question.tooltipText;
       }
       field = this.getFormlyFieldArrayConfigByQuestionType(field);
       FormlyFieldConfigArray.push(field);
@@ -246,6 +244,7 @@ export class NgxFormlyParserService {
       // Todo: UI Team will add their respective field array reference here
       case CustomComponentsEnum.CUSTOM_PHONE:
         field.fieldArray = PhoneFieldConfig.fieldArray;
+        break;
     }
     return field;
 
@@ -253,6 +252,6 @@ export class NgxFormlyParserService {
 
   constructor(private apiService: ApiService,
     private store: Store<fromRootReducers.AppState>,
-    private formlyFieldsService:FormlyFieldsService
+    private formlyFieldsService: FormlyFieldsService
   ) { }
 }
