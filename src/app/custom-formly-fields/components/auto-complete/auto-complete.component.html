@@ -9,5 +9,9 @@
      <ng-select [items]="options$ | async"
       class="form-control"
       [typeahead]="search$"
-      [formControl]="formControl">
+      [formControl]="formControl"
+      (clear)="clearSelect($event)"
+      (change)="searchChanges($event)"
+      (blur)="searchChanges1($event)"
+      (focus)="searchChanges1($event)">
     </ng-select>

@@ -58,7 +58,7 @@ export class FormlyPhoneConsumerComponent implements OnInit {
                 label: 'Home Phone Number',
               }
             },
-              {
+            {
               type: 'custom-checkbox',
               key: 'setAsPrimary',
               className: 'col-sm-12',

@@ -18,19 +18,13 @@ export const APPLICATION_GRID_HEADING = [
         showSortOption: false
     },
     {
-        key: 'type',
-        value: 'TYPE',
+        key: 'ownership',
+        value: 'OWNERSHIP',
         showSortOption: false
     },
     {
-        key: 'lastUpdate',
-        value: 'LAST UPDATE',
-        showSortOption: true,
-        sortOrder: 'desc'
-    },
-    {
-        key: 'lastUpdatedBy',
-        value: 'LAST UPDATED BY',
+        key: 'modified',
+        value: 'MODIFIED',
         showSortOption: true,
         sortOrder: 'desc'
     },
@@ -39,7 +33,12 @@ export const APPLICATION_GRID_HEADING = [
         value: 'STATUS',
         showSortOption: true,
         sortOrder: 'desc'
-    }
+    },
+    {
+        key: 'actions',
+        value: 'ACTIONS',
+        showSortOption: false
+    },
 ];
 
 export const ACTION_TYPES = {

@@ -201,11 +201,7 @@ export class NgxFormlyParserService {
         required: question.required || false,
         disabled: question.disabled || false
 
-      };
-      field.templateOptions.tooltip = {
-        content: 'Hey this is tooltip',
-        placement: 'right'
-      }
+      };      
 
       if (question.defaultValue) {
         if (field.type === CustomComponentsEnum.CUSTOM_CHECKBOX) {

@@ -1,45 +1,45 @@
 <div class="ddo-applications-grid table-responsive">
   <table class="table table-hover">
-    <thead class="thead-dark">
+    <thead>
       <tr>
         <th *ngFor="let item of config.headings"
-          [ngClass]="item.showSortOption ? 'cursor-pointer': 'cursor-default'"
-          (click)="ongridItemClick(actionTypes.sort, item)">
+            [ngClass]="item.showSortOption ? 'cursor-pointer': 'cursor-default'"
+            [class.active] = 'sortByKey === item.key'
+            (click)="item.showSortOption && ongridItemClick(actionTypes.sort, item)">
           {{item.value}}
           <a *ngIf='item.showSortOption'>
-            <i *ngIf="item.sortOrder === 'asc'" class="fa fa-caret-up" aria-hidden="true"></i>
-            <i *ngIf="item.sortOrder === 'desc'" class="fa fa-caret-down" aria-hidden="true"></i>
+            <i *ngIf="item.sortOrder === 'asc'" class="fa fa-caret-up float-right" aria-hidden="true"></i>
+            <i *ngIf="item.sortOrder === 'desc'" class="fa fa-caret-down float-right" aria-hidden="true"></i>
           </a>
         </th>
         <th></th>
       </tr>
     </thead>
     <tbody class="table__body">
-      <tr *ngFor="let item of config.data"
-        class="table-row">
-        <td *ngFor="let col of item.columns"
-          class="table-col"
-          (click)='ongridItemClick(actionTypes.rowClicked, item.id)'>
+      <tr *ngFor="let item of config.data" class="table-row">
+        <td *ngFor="let col of item.columns" class="table-col" (click)='ongridItemClick(actionTypes.rowClicked, item.id)'>
           <label-value-group [config]='getRowDetails(col)'></label-value-group>
         </td>
         <td>
-          <div class="col-sm-12">
-            <div class="btn-group" dropdown>
-              <a id="button-config1" dropdownToggle class="kebab-link" aria-controls="dropdown-config1">
-                <i class="fa fa-ellipsis-v"></i>
-              </a>
-              <ul id="dropdown-config1" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-config1">
-                <li role="menuitem">
-                  <a class="dropdown-item"
-                    *ngFor='let dropdownItem of config.dropDownOptions'
-                    (click)='ongridItemClick(dropdownItem.key, item.id)'>
-                    {{dropdownItem.value}}
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <a class="btn btn-link btn-link--primary" (click)='ongridItemClick(actionTypes.rowClicked, item.id)'>Continue Now</a>
         </td>
+        <td>
+          <td>
+            <div class="col-sm-12">
+              <div class="btn-group" dropdown>
+                <a id="button-config1" dropdownToggle class="kebab-link" aria-controls="dropdown-config1">
+                  <i class="fa fa-ellipsis-v"></i>
+                </a>
+                <ul id="dropdown-config1" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-config1">
+                  <li role="menuitem">
+                    <a class="dropdown-item" *ngFor='let dropdownItem of config.dropDownOptions' (click)='ongridItemClick(dropdownItem.key, item.id)'>
+                      {{dropdownItem.value}}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </td>
       </tr>
     </tbody>
   </table>

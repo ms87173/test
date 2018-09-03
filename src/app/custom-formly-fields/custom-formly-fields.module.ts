@@ -27,6 +27,7 @@ import { CustomComponentsEnum } from './enums/custom-components.enum';
 import { PhoneComponent } from './components/phone/phone.component';
 
 import { FormlySelectOptionsPipe } from './pipes/select-options.pipe';
+import { AddressProofComponent } from './components/address-proof/address-proof.component';
 
 @NgModule({
   imports: [
@@ -46,13 +47,15 @@ import { FormlySelectOptionsPipe } from './pipes/select-options.pipe';
         { name: CustomComponentsEnum.CUSTOM_RADIO_BUTTON, component: RadiobuttonComponent },
         { name: CustomComponentsEnum.CUSTOM_TYPEAHEAD, component: AutoCompleteComponent, extends: 'input' },
         { name: CustomComponentsEnum.CUSTOM_DATEPICKER, component: DatePickerComponent },
-        { name: CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS, component: AddressFieldsComponent },
+        // { name: CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS, component: AddressFieldsComponent },
         { name: CustomComponentsEnum.CUSTOM_TEXTBOX, component: TextboxComponent },
         { name: CustomComponentsEnum.CUSTOM_EMAIL, component: EmailComponent },
         { name: CustomComponentsEnum.CUSTOM_PHONE, component: PhoneComponent },
-        { name: CustomComponentsEnum.CUSTOM_CHECKBOX, component: CheckboxComponent }
+        { name: CustomComponentsEnum.CUSTOM_CHECKBOX, component: CheckboxComponent },
+        { name: CustomComponentsEnum.CUSTOM_ADDRESS_PROOF, component: AddressProofComponent },
       ]
     }),
+    
     FormlyBootstrapModule,
     TooltipModule.forRoot(),
     BsDatepickerModule.forRoot()
@@ -63,6 +66,7 @@ import { FormlySelectOptionsPipe } from './pipes/select-options.pipe';
     RadiobuttonComponent,
     AutoCompleteComponent,
     DatePickerComponent,
+    AddressProofComponent,
     // AddressComponent,
     QuestionnaireComponent,
     SectionComponent,
@@ -80,6 +84,7 @@ import { FormlySelectOptionsPipe } from './pipes/select-options.pipe';
     RadiobuttonComponent,
     AutoCompleteComponent,
     DatePickerComponent,
+    AddressProofComponent,
     // AddressComponent,
     QuestionnaireComponent,
     SectionComponent,

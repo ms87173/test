@@ -6,7 +6,6 @@
   "scripts": {
     "unify-mock": "gulp watch",
     "mock-server": "gulp & json-server --watch db.json"
-
   },
   "keywords": [
     "json-server"
