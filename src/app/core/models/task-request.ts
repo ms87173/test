@@ -1,6 +1,6 @@
 export class TaskRequest {
     requestId: string;
-    workFlowId: string
+    workflowId: string
     taskId: string;
     constructor(){
         

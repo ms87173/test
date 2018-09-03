@@ -15,6 +15,8 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { RadiobuttonComponent } from './components/radiobutton/radiobutton.component';
 import { AutoCompleteComponent } from './components/auto-complete/auto-complete.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
+// import { AddressComponent } from './components/address/address.component';
+// import { FormGroupWrapperComponent } from '../shared/form-group-wrapper/form-group-wrapper.component';
 import { AddressFieldsComponent } from './components/address-fields/address-fields.component';
 import { QuestionnaireComponent } from '../questionnaire/questionnaire.component';
 import { SectionComponent } from '../section/section.component';
@@ -25,6 +27,7 @@ import { CustomComponentsEnum } from './enums/custom-components.enum';
 import { PhoneComponent } from './components/phone/phone.component';
 
 import { FormlySelectOptionsPipe } from './pipes/select-options.pipe';
+import { AddressProofComponent } from './components/address-proof/address-proof.component';
 
 @NgModule({
   imports: [
@@ -44,13 +47,15 @@ import { FormlySelectOptionsPipe } from './pipes/select-options.pipe';
         { name: CustomComponentsEnum.CUSTOM_RADIO_BUTTON, component: RadiobuttonComponent },
         { name: CustomComponentsEnum.CUSTOM_TYPEAHEAD, component: AutoCompleteComponent, extends: 'input' },
         { name: CustomComponentsEnum.CUSTOM_DATEPICKER, component: DatePickerComponent },
-        { name: CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS, component: AddressFieldsComponent },
+        // { name: CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS, component: AddressFieldsComponent },
         { name: CustomComponentsEnum.CUSTOM_TEXTBOX, component: TextboxComponent },
         { name: CustomComponentsEnum.CUSTOM_EMAIL, component: EmailComponent },
         { name: CustomComponentsEnum.CUSTOM_PHONE, component: PhoneComponent },
-        { name: CustomComponentsEnum.CUSTOM_CHECKBOX, component: CheckboxComponent }
+        { name: CustomComponentsEnum.CUSTOM_CHECKBOX, component: CheckboxComponent },
+        { name: CustomComponentsEnum.CUSTOM_ADDRESS_PROOF, component: AddressProofComponent },
       ]
     }),
+    
     FormlyBootstrapModule,
     TooltipModule.forRoot(),
     BsDatepickerModule.forRoot()
@@ -61,6 +66,8 @@ import { FormlySelectOptionsPipe } from './pipes/select-options.pipe';
     RadiobuttonComponent,
     AutoCompleteComponent,
     DatePickerComponent,
+    AddressProofComponent,
+    // AddressComponent,
     QuestionnaireComponent,
     SectionComponent,
     TaskContainerComponent,
@@ -77,6 +84,8 @@ import { FormlySelectOptionsPipe } from './pipes/select-options.pipe';
     RadiobuttonComponent,
     AutoCompleteComponent,
     DatePickerComponent,
+    AddressProofComponent,
+    // AddressComponent,
     QuestionnaireComponent,
     SectionComponent,
     TaskContainerComponent,

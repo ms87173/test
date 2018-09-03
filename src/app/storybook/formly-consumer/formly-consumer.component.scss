@@ -31,7 +31,13 @@
     border-color: #999 transparent transparent;
     border-style: solid;
     border-width: 5px 5px 2.5px;
+    //-webkit-appearance: none;
 }
+// .ng-select .ng-arrow-zone .ng-arrow:after{
+//     content: "\f107";
+//     position: absolute;
+//     left:0px;
+// }
 
 .ng-select.opened>.ng-control .ng-arrow {
     top: -2px;
@@ -44,4 +50,23 @@
     height: 0;
     width: 0;
     position: relative;
+}
+
+.custom-control-label::before{
+    left:-22px;
+}
+
+.PaddingLeftZero{
+    padding-left:0px;
+}
+.PaddingRightZero{
+    padding-right:0px;
+}
+.nogutter{
+    margin-right: 0px;
+    padding-right: 0px;
+}
+.ng-select-dropdown-outer.bottom{
+   background-color: #fff;
+   right:0px;
 }

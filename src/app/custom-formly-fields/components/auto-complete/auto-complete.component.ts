@@ -7,12 +7,12 @@ import { filter } from 'rxjs/operators/filter';
 import { debounceTime } from 'rxjs/operators/debounceTime';
 import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 import { switchMap } from 'rxjs/operators/switchMap';
-import { Field } from '@ngx-formly/core';
+// import { Field } from '@ngx-formly/core';
 
 @Component({
   selector: 'auto-complete',
   templateUrl: './auto-complete.component.html',
-  styleUrls: ['./auto-complete.component.css']
+  styleUrls: ['./auto-complete.component.scss']
 })
 export class AutoCompleteComponent extends FieldType implements OnInit, OnDestroy {
   onDestroy$ = new Subject<void>();
@@ -29,9 +29,28 @@ export class AutoCompleteComponent extends FieldType implements OnInit, OnDestro
       switchMap(this.to.search$),
     );
     this.options$.subscribe();
+    console.log(this.to, '::::3222', this);
+    // this.field.templateOptions.serachTerm = function () {
+    //   console.log('at the serach');
+    // }
   }
 
   ngOnDestroy() {
     this.onDestroy$.complete();
+  }
+
+  clearSelect(evt) {
+    this.search$.emit('');
+    console.log('clearselect',evt);
+  }    
+  searchChanges(evt){
+
+    evt = typeof evt == 'string' ? evt : '';
+    this.search$.emit(evt);
+    console.log('::::blucrchanges',evt);
+  }
+
+  searchChanges1() {
+    this.search$.emit('');
   }
 }

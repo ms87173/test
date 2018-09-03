@@ -66,24 +66,26 @@ export class QuestionnaireService {
     // return this.apiService.post("api/ddo/questionnaire/taskQuestions",taskRequest)
   }
 
-  getFieldChangeDelta(deltaRequest: QuestionaireDeltaRequest): Observable<QuestionaireDeltaResponse> {
-    console.log(deltaRequest);
-    return this.apiService.get('questionnaireDeltaResponses/1');
+  getFieldChangeDelta(deltaRequest: QuestionaireDeltaRequest): Observable<Task> {
 
-    //Todo: uncomment  and change for mock service
-    // switch (deltaRequest.id) {
-    //   case 'InterestCheckingCheckBox':
-    //     return this.apiService.get('questionnaireDeltaResponses/1');
+   /// Todo: uncomment to use mock service
+    switch (deltaRequest.questionnaireItems[0].questionId) {
+      
+      case 'InterestCheckingCheckBox':
+        return this.apiService.get('questionnaireDeltaResponses/1');
 
-    //   case 'SavingAccountTextBox':
-    //     return this.apiService.get('questionnaireDeltaResponses/2');
+      case 'SavingAccountTextBox':
+        return this.apiService.get('questionnaireDeltaResponses/2');
 
-    //   case 'ColorInputBox':
-    //     return this.apiService.get('questionnaireDeltaResponses/3');
+      case 'ColorInputBox':
+        return this.apiService.get('questionnaireDeltaResponses/3');
 
-    //   default:
-    //     return of(null);
-    // }
+      default:
+        return of(null);
+    }
+
+    //Todo : Production Url
+    // return this.apiService.post("api/ddo/questionnaire/tasks/question",deltaRequest)
   }
   getCountryCode(): Observable<any[]> {
     return this.apiService.get('countryCode');

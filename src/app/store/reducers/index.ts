@@ -3,9 +3,9 @@ import { ActionReducerMap } from '@ngrx/store';
 import * as fromRouter from '@ngrx/router-store';
 import { Params, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
-import * as userInfoReducer from '../reducers/user-info.reducer';
-import * as questionnaireReducer from '../reducers/questionnaire.reducer';
-import * as applicationsReducer from '../reducers/applications.reducer';
+import * as userInfoReducer from './user-info.reducer';
+import * as questionnaireReducer from './questionnaire.reducer';
+import * as applicationsReducer from './applications.reducer';
 import * as applicationRequestReducer from './application-request.reducer';
 
 export interface RouteStateUrl {

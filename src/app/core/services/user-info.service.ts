@@ -11,5 +11,8 @@ export class UserInfoService {
   }
   getUserContactPerson(): Observable<any> {
     return this.apiService.get('contact');
+    ///Todo : Production Url
+    // return this.apiService.get('api/ddo/application/contact');
+
   }
 }

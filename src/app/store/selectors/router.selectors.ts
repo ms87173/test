@@ -1,4 +1,4 @@
-import * as fromStore from '../reducers/';
+import * as fromStore from '../reducers';
 import * as fromRouter from '@ngrx/router-store';
 import { createFeatureSelector } from '@ngrx/store';
 

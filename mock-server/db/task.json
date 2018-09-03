@@ -10,264 +10,27 @@
                     "title": "Personal Information",
                     "questions": [
                         {
-                            "id": "firstName",
-                            "label": "First Name",
-                            "type": "custom-textbox",
-                            "required": "true",
-                            "readOnly": "false"
-                        },
-                        {
-                            "id": "middleName",
-                            "label": "Middle Name",
-                            "type": "custom-textbox",
-                            "required": "false",
-                            "readOnly": "false"
-                        },
-                        {
-                            "id": "lastName",
-                            "label": "Last Name",
-                            "type": "custom-textbox",
-                            "required": "true",
-                            "readOnly": "false"
-                        },
-                        {
-                            "id": "suffix",
-                            "label": "Suffix(Sr.,Jr.)",
-                            "type": "custom-textbox",
-                            "required": "false",
-                            "readOnly": "false"
-                        },
-                        {
-                            "id": "relationToPrimary",
-                            "label": "Relation to Primary Account Holder",
-                            "type": "custom-dropdown",
-                            "required": "true",
-                            "readOnly": "false",
-                            "options": [
-                                {
-                                    "label": "Father",
-                                    "value": "father"
-                                },
-                                {
-                                    "label": "Mother",
-                                    "value": "mother"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        },
-                        {
-                            "id": "haveSSN",
-                            "label": "Do you have a US Social Security Number?",
-                            "type": "custom-radio-button",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Saving Account",
-                            "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "False"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        },
-                        {
-                            "id": "maritalStatus",
-                            "label": "Marital Status",
-                            "type": "custom-radio-button",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Saving Account",
-                            "options": [
-                                {
-                                    "label": "Single",
-                                    "value": "single"
-                                },
-                                {
-                                    "label": "Married",
-                                    "value": "married"
-                                },
-                                {
-                                    "label": "Divorced",
-                                    "value": "divorced"
-                                },
-                                {
-                                    "label": "Widowed",
-                                    "value": "widowed"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        }
-                    ]
-                },
-                {
-                    "title": "Contact Information",
-                    "questions": [
-                        {
-                            "id": "preferedCommunication",
-                            "label": "What is your preffered method of communication?",
-                            "type": "custom-radio-button",
-                            "required": "true",
-                            "readOnly": "false",
-                            "options": [
-                                {
-                                    "label": "Mail",
-                                    "value": "mail"
-                                },
-                                {
-                                    "label": "Phone",
-                                    "value": "phone"
-                                },
-                                {
-                                    "label": "Email",
-                                    "value": "email"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        },
-                        {
-                            "id": "phoneNumber",
-                            "label": "Phone Number",
-                            "type": "custom-phone",
-                            "required": true,
-                            "defaultValue": [
-                                {}
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "label": "Savings Account",
-            "description": "This is your primary interest bearing account.",
-            "status": "InProgress",
-            "sections": [
-                {
-                    "title": "Saving Information",
-                    "questions": [
-                        {
                             "id": "InterestCheckingCheckBox",
-                            "label": "Would you Earn some extra money",
-                            "type": "custom-dropdown",
+                            "label": "Would you like to earn interest this account?",
+                            "type": "custom-checkbox",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Interest Account",
                             "options": [
                                 {
-                                    "label": "Iron Man",
-                                    "value": "iron_man"
-                                },
-                                {
-                                    "label": "Captain America",
-                                    "value": "captain_america"
-                                },
-                                {
-                                    "label": "Black Widow",
-                                    "value": "black_widow"
-                                },
-                                {
-                                    "label": "Hulk",
-                                    "value": "hulk"
-                                },
-                                {
-                                    "label": "Captain Marvel",
-                                    "value": "captain_marvel"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        },
-                        {
-                            "id": "SavingAccountTextBox",
-                            "label": "Would you like to earn saving this account?",
-                            "type": "custom-radio-button",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Saving Account",
-                            "options": [
-                                {
                                     "label": "Yes",
                                     "value": "true"
                                 },
                                 {
                                     "label": "No",
-                                    "value": "False"
+                                    "value": "false"
                                 }
                             ],
                             "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        },
-                        {
-                            "id": "SavingAccountCheckBox",
-                            "label": "Would you like to earn saving this account?",
-                            "type": "custom-checkbox",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Saving Account",
-                            "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "False"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        },
-                        {
-                            "id": "ChildDependentTextBox",
-                            "label": "Do you have an Child Dependent?",
-                            "type": "custom-textbox",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Saving Account",
-                            "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "False"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
-                        },
-                        {
-                            "id": "RemoveOnAnswerQuestion1",
-                            "label": "I will be removed as soon as question 1 is answered",
-                            "type": "custom-textbox",
-                            "required": "true",
-                            "readOnly": "false",
-                            "placeHolder": "Saving Account",
-                            "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "False"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "defaultValue": "<any>"
+                            "defaultValue": "false"
                         }
                     ]
-                }
+                }           
             ]
         }
     ]

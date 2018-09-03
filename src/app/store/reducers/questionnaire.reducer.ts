@@ -3,7 +3,7 @@ import { Task, QuestionaireDeltaResponse, QuestionaireDeltaError, FormlyFieldCon
 import { FormlyFieldConfig } from '@ngx-formly/core';
 export interface QuestionnaireState {
     readonly currentTask: Task,
-    readonly currentQuestionnaireConfig:  FormlyFieldConfigArrayCollection[],
+    readonly currentQuestionnaireConfig: FormlyFieldConfigArrayCollection[],
     readonly currentQuestionnaireDelta: QuestionaireDeltaResponse,
     readonly mergedCurrentTaskWithDelta: Task,
     readonly currentQuestionId: string,
@@ -24,49 +24,8 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
 
     switch (action.type) {
 
-        case ActionTypes.GET_CURRENT_TASK_SUCCESS:
-            return {
-                ...state,
-                currentTask: action.payload
-            }
-
-        /////Todo: set up an error case in state module
-        case ActionTypes.GET_CURRENT_TASK_FAIL:
-            return {
-                ...state
-
-            }
-
-        // case ActionTypes.GET_CURRENT_FORMLY_CONFIG_SUCCESS:
-        //     return {
-        //         ...state,
-        //         currentQuestionnaireConfig: action.payload
-        //     }
-        // /// Todo : handle error case wit error object
-        // case ActionTypes.GET_CURRENT_FORMLY_CONFIG_FAIL:
-        //     return {
-        //         ...state,
-        //     }
-
-        case ActionTypes.GET_CURRENT_FIELD_CHANGE_DELTA_SUCCESS:
-            if (action.payload.fieldChangeDelta) {
 
 
-                return {
-                    ...state,
-                    currentQuestionnaireDelta: action.payload.fieldChangeDelta,
-                    currentQuestionId: action.payload.currentQuestionId,
-
-                }
-            }
-            else {
-                return state;
-            }
-        /// Todo : handle error case wit error object
-        case ActionTypes.GET_CURRENT_FIELD_CHANGE_DELTA_FAIL:
-            return {
-                ...state,
-            }
 
 
         case ActionTypes.MERGE_DELTA_FIELD_CHANGE_DELTA_AND_CURRENT_TASK_SUCCESS:
@@ -125,6 +84,21 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
             return InitialQuestionnaireState;
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        case ActionTypes.GET_CURRENT_TASK_SUCCESS:
+            return {
+                ...state,
+                currentTask: action.payload
+            }
+
+        /////Todo: set up an error case in state module
+        case ActionTypes.GET_CURRENT_TASK_FAIL:
+            return {
+                ...state
+
+            }
+
+
+
         case ActionTypes.GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG_SUCCESS:
             return {
                 ...state,
@@ -134,6 +108,32 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
         case ActionTypes.GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG_FAIL:
             return {
                 ...state
+            }
+
+        case ActionTypes.GET_CURRENT_FIELD_CHANGE_DELTA_SUCCESS:
+            if (action.payload) {
+
+
+                return {
+                    ...state,
+                    currentTask: action.payload
+
+                }
+            }
+            else {
+                return state;
+            }
+        /// Todo : handle error case wit error object
+        case ActionTypes.GET_CURRENT_FIELD_CHANGE_DELTA_FAIL:
+            return {
+                ...state,
+            }
+
+        case ActionTypes.SET_CURRENT_QUESTION_ID:
+        debugger;
+            return {
+                ...state,
+                currentQuestionId:action.payload
             }
 
         default:

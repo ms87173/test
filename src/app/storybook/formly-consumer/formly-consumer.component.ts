@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounce';
 import 'rxjs/add/operator/distinctUntilChanged';
 import { Observable } from 'rxjs/Observable';
-import { UploadFileComponent } from 'src/app/custom-formly-fields/components/upload-file/upload-file.component';
+import { UploadFileComponent } from '../../custom-formly-fields/components/upload-file/upload-file.component';
 
 
 // import { debounce } from 'rxjs/internal/operators/debounce';
@@ -32,9 +32,12 @@ export class FormlyConsumerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.listData = ['Alabama', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island',
-      'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Islands', 'Virginia',
-      'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+    this.listData = [
+    { label: 'New York', value: 'new-york' },
+    { label: 'Illinois', value: 'illinois' },
+    { label: 'California', value: 'california' },
+    { label: 'Michigan', value: 'michigan' },
+    { label: 'Ohio', value: 'ohio' }];
     this.fields = [
       {
         key: 'Phone',
@@ -42,7 +45,7 @@ export class FormlyConsumerComponent implements OnInit {
         fieldArray: {
           fieldGroupClassName: 'row',
           templateOptions: {
-            btnText: '+',
+            btnText: '+ add new phone information',
           },
           fieldGroup: [
             {
@@ -70,7 +73,7 @@ export class FormlyConsumerComponent implements OnInit {
                 label: 'Home Phone Number',
               }
             },
-              {
+            {
               type: 'custom-checkbox',
               key: 'setAsPrimary',
               className: 'col-sm-12',
@@ -96,6 +99,26 @@ export class FormlyConsumerComponent implements OnInit {
           label: 'Require text',
           placeholder: 'Formly is terrific!',
           required: true
+        }
+      },
+      {
+        key: 'text',
+        type: 'custom-textbox',
+        templateOptions: {
+          label: 'Optional text',
+          placeholder: 'Formly is terrific!'
+        }
+      },
+      {
+        key: 'text',
+        type: 'custom-textbox',
+        templateOptions: {
+          label: 'Optional Text + tooltip',
+          placeholder: 'Formly is terrific!',
+          tooltip: {
+            content: 'Hey this is tooltip',
+            placement: 'right'
+          }
         }
       },
       {
@@ -197,25 +220,69 @@ export class FormlyConsumerComponent implements OnInit {
           placeholder: 'Search for a state:',
           label: 'Search for a state:',
           search$: (term) => {
+            console.log('inner search', term);
             if ((!term || term === '')) {
               return observableOf(this.listData);
             }
-            return observableOf(this.listData.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
+            return observableOf(
+              this.listData.filter(
+                (v) =>  {
+                  console.log(v, ':::VData');
+                 return v.value.toLowerCase().indexOf(term.toLowerCase()) > -1;     
+                }
+              ).slice(0, 10))
           },
         }
       },
-      // {
-      //   key: 'text',
-      //   type: 'typeahead',
-      //   templateOptions: {
-      //     label: 'Username',
-      //     options: (text$: Observable<string>) =>
-      //       text$
-      //         .distinctUntilChanged()
-      //         .map(term => term.length < 2 ? []
-      //           : this.listData.filter(v => new RegExp(term, 'gi').test(v)).splice(0, 10)),
-      //   }
-      // }
-    ];
-  }
+      {
+        key: 'data',
+        type: 'repeatAddressData',
+        fieldArray: {
+          fieldGroupClassName: 'row col-12 nogutter',
+          templateOptions: {
+            btnText: 'Add a new address proof',
+            tooltip: {
+              content: 'Hey this is tooltip',
+              placement: 'right'
+            }
+          },
+          fieldGroup: [
+            {
+              key: 'IdDropdown',
+              type: 'custom-dropdown',
+              className: 'col-sm-4 PaddingLeftZero',
+              templateOptions: {
+                label: 'ID Country',
+                options: [
+                  { label: 'Iron Man', value: 'iron_man' },
+                  { label: 'Captain America', value: 'captain_america' },
+                  { label: 'Black Widow', value: 'black_widow' },
+                  { label: 'Hulk', value: 'hulk' },
+                  { label: 'Captain Marvel', value: 'captain_marvel' }
+                ]
+              }
+            },
+            {
+              className: 'col-sm-4',
+              type: 'custom-textbox',
+              key: 'idNum',
+              templateOptions: {
+                label: 'ID Number',
+                required: true,
+              },
+            },
+            {
+              key: 'dateOfBirth',
+              type: 'custom-datepicker',
+              className: 'col-sm-4 PaddingRightZero',
+              templateOptions: {
+                label: 'Date of Birth',
+              }
+            },
+          ],
+        },
+    }
+  ];
+
+}
 }

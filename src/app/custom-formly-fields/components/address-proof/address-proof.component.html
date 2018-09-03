@@ -1,15 +1,4 @@
-
-<div *ngFor="let data of field.fieldGroup; let i = index;">
-        <formly-group [field]="data" [options]="options" [form]="formControl">
-            </formly-group>
-</div>
-<div *ngIf="field.fieldArray.recurrent">
-        <button class="btn btn-link mt-2" type="button" (click)="add()">
-                {{ field.fieldArray.templateOptions.btnText }}
-            </button>
-</div>
-
-<!-- <div class="Addressfield">
+<div class="Addressfield">
     <h4>Documents</h4>
 <div *ngFor="let field of field.fieldGroup; let i = index;">
     <p>Address Proof</p>
@@ -27,4 +16,4 @@
     <button class="btn btn-link mt-2" type="button" (click)="add()">
         {{ field.fieldArray.templateOptions.btnText }}
     </button>
-</div> -->
+</div>

@@ -1,4 +1,4 @@
-import * as fromStore from '../reducers/';
+import * as fromStore from '../reducers';
 import * as fromUser from '../reducers/user-info.reducer';
 import { createSelector } from '@ngrx/store';
 
