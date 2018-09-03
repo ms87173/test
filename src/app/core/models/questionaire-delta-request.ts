@@ -6,7 +6,7 @@ export class QuestionaireDeltaRequest {
  
 }
 export class QuestionnaireItem{
-  questionId: string;
+  id: string;
   type: string;
   answerKey: string;
 }

@@ -23,7 +23,9 @@ export const emailFieldArray: FormlyFieldConfig = {
             key: 'emailAddress',
             className: 'col-sm-12',
             templateOptions: {
-                label: 'Email Address'
+                label: 'Email Address',
+                required: true
+
             },
         }
 

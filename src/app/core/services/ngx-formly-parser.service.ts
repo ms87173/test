@@ -192,7 +192,6 @@ export class NgxFormlyParserService {
         field.focus = true;
       }
       field.type = question.type;
-
       field.lifecycle = this.formlyFieldsService
         .getFormlyLifeCycleEventByQuestionType(field.type, requestId, workflowId, taskId);
       field.templateOptions = {
@@ -224,7 +223,6 @@ export class NgxFormlyParserService {
         field.templateOptions.minLength = question.minLength;
       }
       field = this.getFormlyFieldArrayConfigByQuestionType(field);
-      debugger;
       FormlyFieldConfigArray.push(field);
     });
     return FormlyFieldConfigArray;
