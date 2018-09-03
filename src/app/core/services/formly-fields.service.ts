@@ -19,7 +19,10 @@ export class FormlyFieldsService {
     workflowId: string, taskId: string): FormlyLifeCycleOptions {
 
     switch (questionType) {
+      ///Todo Add Custom LifeCycle events custom compound type
       case CustomComponentsEnum.CUSTOM_PHONE:
+      case CustomComponentsEnum.CUSTOM_EMAIL:
+      case CustomComponentsEnum.CUSTOM_ADDRESS_PROOF:
         return null;
       default:
         const GENERIC_LIFECYCLE_EVENT: FormlyLifeCycleOptions =

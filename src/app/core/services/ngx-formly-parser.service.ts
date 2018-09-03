@@ -224,6 +224,7 @@ export class NgxFormlyParserService {
         field.templateOptions.minLength = question.minLength;
       }
       field = this.getFormlyFieldArrayConfigByQuestionType(field);
+      debugger;
       FormlyFieldConfigArray.push(field);
     });
     return FormlyFieldConfigArray;
@@ -235,7 +236,7 @@ export class NgxFormlyParserService {
 
     switch (field.type) {
       case CustomComponentsEnum.CUSTOM_EMAIL:
-        field.fieldArray = emailFieldArray;
+        field.fieldArray ={ ...emailFieldArray};
         break;
       // Todo: UI Team will add their respective field array reference here
       case CustomComponentsEnum.CUSTOM_PHONE:

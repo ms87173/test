@@ -14,8 +14,7 @@ export const emailFieldArray: FormlyFieldConfig = {
                     { label: 'Home', value: 'home' },
                     { label: 'Work', value: 'work' },
                     { label: 'Phone', value: 'phone' }
-                ],
-                tooltip: null
+                ]
             },
         },
 
@@ -24,14 +23,13 @@ export const emailFieldArray: FormlyFieldConfig = {
             key: 'emailAddress',
             className: 'col-sm-12',
             templateOptions: {
-                label: 'Email Address',
-                tooltip: null
+                label: 'Email Address'
             },
         }
 
     ],
     templateOptions: {
-        btnText: '+ Add a new email'
+        btnText: '+ Add a new email',
     }
 }
 

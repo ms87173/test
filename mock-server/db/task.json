@@ -30,7 +30,7 @@
                             "defaultValue": "false"
                         },
                         {
-                            "id": "InterestCheckingCheckBox",
+                            "id": "InterestCheckingEmail",
                             "label": "Would you like to earn interest this account?",
                             "type": "custom-email",
                             "required": "true",

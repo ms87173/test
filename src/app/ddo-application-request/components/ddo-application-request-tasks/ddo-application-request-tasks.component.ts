@@ -66,6 +66,8 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
               workflowId: this.taskRequest.workflowId,
               taskId: this.taskRequest.taskId
             }));
+            this.cd.detectChanges();
+
         }
       }
     );

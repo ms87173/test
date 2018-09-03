@@ -24,9 +24,9 @@ export class SectionComponent implements OnInit, OnChanges {
     this.fields = this.formlyFieldConfigArray.formlyFieldConfigs;
     this.fields.forEach((item) => {
       // /Need to add more If statements for other custom components     
-      if (item.type === CustomComponentsEnum.CUSTOM_PHONE ||
-        item.type === CustomComponentsEnum.CUSTOM_EMAIL ||
-        item.type === CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS
+      if (item.type === CustomComponentsEnum.CUSTOM_PHONE 
+        ||  item.type === CustomComponentsEnum.CUSTOM_EMAIL 
+      //  || item.type === CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS
       ) {
         this.model[item.key] = [{}];
       }
