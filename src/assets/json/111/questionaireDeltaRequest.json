@@ -2,7 +2,19 @@
     "requestid":"<string>",
     "workFlowId":"<string>",
     "taskId":"<string>",
-    "questionId":"string",
-    "questionType":"<string>",
-    "answer":"string"
+    "questionnaireItems":[
+        {
+            "id": "<string>",
+            "type": "<string>",
+            "answerKey": "any"  /// Answerkey will contain values based on Question type and recurrent
+                                /// 1) When Recurrent Set to true , Then Answer Key will contain Array of strings / Objects based on question type i.e simple or compund type 
+                                /// 2) When Recurrent Set to false and question type is simple type and with no multi Select option there , Then Answer key will contain <string> Value  
+                                /// 3) When Recurrent Set to false and question type is simple type and with multi Select option there , Then Answer key will contain [ <string>, <string> ] Values i.e  Array of strings  
+                                /// 4) When Recurrent Set to false and question type is compound type  , Then Answer key will contain <compund type> Value 
+ 
+
+
+        }
+    ]
+    
 }
