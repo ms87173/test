@@ -1,4 +1,36 @@
 .side-nav {
+    .status-container{
+        background: orange;
+        border: solid 1px orange;
+        position: relative;
+        display: block;
+        line-height: 20px;
+        height: 22px;
+        width: 100px;
+        margin-left: 6px;
+        .status-text{
+            padding-left: 10px;
+            color: white;
+    }
+  }
+  .status-container:before{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    border: 10px solid orange;
+    border-color: transparent transparent transparent orange;
+    top: 0px;
+  }
+  .status-container:after{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    border: 9px solid white;
+    border-color: transparent transparent transparent white;
+    top: 1px;
+    left: -1px;
+  }
+  
     border: 1px solid #eeeeee;
     &__tab {
         // position: absolute;

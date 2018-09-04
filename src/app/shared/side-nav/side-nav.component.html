@@ -6,17 +6,21 @@
           <div class="col-sm-1 no-padding-left">
             <i class="fa fa-chevron-right collapsible-icon float-left pull-left"></i>
           </div> 
-          <div class="col-sm-9 side-nav__heading">
+          <div class="col-sm-8 side-nav__heading">
             <div (click)='item.children.length === 1 ? setSelectedId(item.id, item.children[0].id, item.type): false'>
               {{item.label}}
             </div>
             <span class="role" *ngIf="item.subHeading">{{item.subHeading}}</span>
           </div>
-          <div class="col-sm-2 no-padding-left">
-              <i *ngIf = 'item.status'
-              [ngClass]="{'status-icon--completed fa-check': item.status === status.completed,
+          <div class="col-sm-3 no-padding-left">
+              <i *ngIf = 'item.status === status.completed'
+                [ngClass]="{'status-icon--completed fa-check': item.status === status.completed,
                 'status-icon--inprogress fa-circle': item.status === status.inProgress}"
                 class="fa status-icon float-right pull-right"></i>
+                <div 
+                  *ngIf = 'item.status === status.inProgress'class="status-container">
+                  <span class="status-text">Required</span>
+                </div>
           </div>
         </div>
       </div>
@@ -29,6 +33,10 @@
             [ngClass]="{'status-icon--completed fa-check': child.status === status.completed,
               'status-icon--inprogress fa-circle': child.status === status.inProgress}"
               class="fa  status-icon float-right pull-right"></i>
+              <!-- <div 
+                  *ngIf = 'item.status === status.inProgress'class="status-container">
+                  <span class="status-text">Required</span>
+              </div> -->
         </li>
       </ul>
     </accordion-group>

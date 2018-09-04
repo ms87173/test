@@ -19,7 +19,7 @@ export interface AppState {
     questionnaire: questionnaireReducer.QuestionnaireState,
     applications: applicationsReducer.ApplicationsState,
     routerReducer: fromRouter.RouterReducerState,
-    applicationRequest: applicationRequestReducer.ApplicationRequestState
+    applicationRequest: applicationRequestReducer.ApplicationRequestState,
 }
 
 export const rootReducers: ActionReducerMap<AppState> = {
