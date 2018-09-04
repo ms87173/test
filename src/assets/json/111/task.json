@@ -8,14 +8,14 @@
             "title": "Account Information",
             "questions": [
                 {
-                    "id": "<string>", /// Unique Id of the question
-                    "label": "<string>", /// Description of the Question
-                    "type": "<string>", /// Type of the Question
+                    "id": "<string>",
+                    "label": "<string>", 
+                    "type": "<string>", 
                     "required": "<boolean>",
                     "readOnly": "<boolean>",
-                    "recurrent": "<boolean>", /// Check if the simple/compound type is recurrent 
+                    "recurrent": "<boolean>", 
                     "placeHolder": "<string>",
-                    "lookupName": "<string>", /// Use in case of dynamic Lookup
+                    "lookupName": "<string>", 
                     "options": [
                         {
                             "label": "",
@@ -23,11 +23,9 @@
                         }
                     ],
                     "tooltipText": "<string>",
-                    "answers": [             /// 1)Values in the Answers Array will be incremented when we have recurrent Option Set to true 
-                        {                    /// 2) Value in the "value" field  will contain following values based on conditions  
-                            "value": "<any>" ///      a) With simple types and  recurrent set to false , Then value will be of type <string>
-                                             ///      b) With Simple types and recurrent set to false and ability to select multiple values, Then value will be of type [ <string> , <string> ] i.e Array of Strings 
-                                             ///      c) With Compound types and  recurrent set to false , Then value will be of type <compound type>  
+                    "answers": [             
+                        {                  
+                            "value": "<any>"
                            
                         }
                     ]
