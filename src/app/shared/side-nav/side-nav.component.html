@@ -29,14 +29,13 @@
         [ngClass]="{'active': item.id ===selectedParentId && child.id === selectedChildId && item.children.length > 1 }"
         (click) = 'setSelectedId(item.id, child.id, child.type)'>
           <a class='child-link' routerLink="['/workflow/',item.id]"> {{child.label}}</a>
-          <i *ngIf= 'child.status'
-            [ngClass]="{'status-icon--completed fa-check': child.status === status.completed,
-              'status-icon--inprogress fa-circle': child.status === status.inProgress}"
-              class="fa  status-icon float-right pull-right"></i>
-              <!-- <div 
+          <i *ngIf= 'child.status === status.completed'
+            [ngClass]="{'status-icon--completed fa-check': child.status === status.completed}"
+              class="fa status-icon float-right pull-right"></i>
+              <div 
                   *ngIf = 'item.status === status.inProgress'class="status-container">
                   <span class="status-text">Required</span>
-              </div> -->
+              </div>
         </li>
       </ul>
     </accordion-group>
