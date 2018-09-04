@@ -5,6 +5,7 @@ import { ApiService, UserInfoService, QuestionnaireService } from './services';
 import { NgxFormlyParserService } from './services/ngx-formly-parser.service';
 import { ApplicationsService } from './services/applications.service';
 import { ApplicationRequestService } from './services/application-request.service';
+import { DynamicOptionsService } from './services/dynamic-options.service';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { ApplicationRequestService } from './services/application-request.servic
     UserInfoService,
     QuestionnaireService,
     ApplicationsService,
-    ApplicationRequestService
+    ApplicationRequestService,
+    DynamicOptionsService
   ],
   exports:[]
 })

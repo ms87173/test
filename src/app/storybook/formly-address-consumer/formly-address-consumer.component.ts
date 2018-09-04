@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
+import { FormlyFormOptions } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
-import { ViewEncapsulation } from '@angular/core';
 
 import { takeUntil, startWith, tap } from 'rxjs/operators';
 import { Subject, Observable, of } from 'rxjs';
+import { DynamicOptionsService } from '../../core/services/dynamic-options.service';
 
 @Component({
   selector: 'formly-address-consumer',
@@ -50,18 +50,10 @@ export class FormlyAddressConsumerComponent implements OnInit {
     }
   }
   getCountryData(): Observable<any[]> {
-    return of([
-      {
-        label: 'India',
-        value: 'India'
-      },
-      {
-        label: 'United States of America',
-        value: 'United States of America'
-      }
-    ])
+    return this.dynamicOptionsService.getDynamicOptions('allCountry');
   }
-  constructor() { }
+  
+  constructor(private dynamicOptionsService: DynamicOptionsService) { }
 
   ngOnInit() {
     this.fields = [
@@ -164,7 +156,6 @@ export class FormlyAddressConsumerComponent implements OnInit {
                       field.formControl.setValue('');
                       if(country) {
                         field.templateOptions.options = this.getStateData(country);
-                        field.formControl.setValue('');
                       }
                     }),
                   ).subscribe();
@@ -211,7 +202,8 @@ export class FormlyAddressConsumerComponent implements OnInit {
               }
             }],
           templateOptions: {
-            btnText: '+ Add a new address'
+            btnText: '+ Add a new address',
+            heading: 'Addresses'
           },
           recurrent: true
         }

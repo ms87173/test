@@ -1,20 +1,12 @@
 {
     "static-options": [
         {
-            "label": "option 1",
-            "value": "1"
+          "label": "India",
+          "value": "India"
         },
         {
-            "label": "option 2",
-            "value": "2"
-        },
-        {
-            "label": "option 3",
-            "value": "3"
-        },
-        {
-            "label": "option 4",
-            "value": "4"
+          "label": "United States of America",
+          "value": "United States of America"
         }
-    ]
+      ]
 }

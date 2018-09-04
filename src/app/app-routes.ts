@@ -1,10 +1,9 @@
 import { Routes } from '@angular/router';
-
 import { HomeComponent } from './home/home.component';
 
 export const AppRoutes: Routes = [
     {
-        path: '',
+        path: 'ddo',
         component: HomeComponent,
         children: [
             {
@@ -26,5 +25,10 @@ export const AppRoutes: Routes = [
             }
         ]
     },
+    {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'ddo'
+    }
     
 ];
