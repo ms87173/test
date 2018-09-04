@@ -8,4 +8,5 @@ export * from './section';
 export * from './task';
 export * from './ngx-formly-models';
 export * from "./task-request";
+export * from './answer';
 

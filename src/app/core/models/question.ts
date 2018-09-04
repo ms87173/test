@@ -1,4 +1,5 @@
 import { Option } from './option';
+import { Answer } from './answer';
 
 export class Question {
     id: string;
@@ -16,6 +17,9 @@ export class Question {
     max?: number;
     min?: number;
     disabled?: boolean = false;
+    answers: Answer[] = []
+
 
 }
+
 
