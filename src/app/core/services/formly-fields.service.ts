@@ -63,9 +63,14 @@ export class FormlyFieldsService {
                   workflowId: workflowId,
                   taskId: taskId,
                   questionnaireItems: [{
-                    answerKey: fieldValue,
+
                     id: key,
-                    type: questionType
+                    type: questionType,
+                    answers:[
+                      {
+                        value:fieldValue
+                      }
+                    ]
                   }]
                 };
                 // this.store.dispatch(new questionnaireActions.DeleteQuestionnaireErrorByQuestionId(key));

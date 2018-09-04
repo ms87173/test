@@ -1,3 +1,5 @@
+import { Answer } from "./answer";
+
 export class QuestionaireDeltaRequest {
   requestId: string;
   workflowId: string;
@@ -8,5 +10,5 @@ export class QuestionaireDeltaRequest {
 export class QuestionnaireItem{
   id: string;
   type: string;
-  answerKey: string;
+  answers:Answer[]
 }

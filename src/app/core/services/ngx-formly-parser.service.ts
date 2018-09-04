@@ -10,7 +10,7 @@ import { QuestionaireDeltaResponse } from '../models/questionaire-delta-response
 import * as _ from 'lodash';
 import { Store } from '@ngrx/store';
 import { fromRootReducers } from '../../store';
-import { Task, FormlyFieldConfigArrayCollection } from '../models';
+import { Task, FormlyFieldConfigArrayCollection, Answer } from '../models';
 import { debounceTime } from 'rxjs/operators';
 import { CustomComponentsEnum } from '../../custom-formly-fields/enums/custom-components.enum';
 import { emailFieldArray } from '../../custom-formly-fields/formly-configs/email-field-array';
@@ -199,17 +199,17 @@ export class NgxFormlyParserService {
         label: question.label || "",
         options: question.options || [],
         required: question.required || false,
-        disabled: question.disabled || false
+        disabled: question.disabled || false,
+        recurrent: question.recurrent || false
 
-      };      
+      };
 
-      if (question.defaultValue) {
-        if (field.type === CustomComponentsEnum.CUSTOM_CHECKBOX) {
-          field.defaultValue = question.defaultValue === 'true' ? true : false;
-        } else {
-          field.defaultValue = question.defaultValue;
-        }
+      if (question.answers && question.answers.length > 0) {
+        field = this.setDefaultValuesFromAnswers(question.answers, field, question.recurrent)
+      console.log(question.answers)
       }
+
+    
 
       if (question.max) {
         field.templateOptions.max = question.max;
@@ -235,7 +235,7 @@ export class NgxFormlyParserService {
 
     switch (field.type) {
       case CustomComponentsEnum.CUSTOM_EMAIL:
-        field.fieldArray = { ...emailFieldArray};
+        field.fieldArray = { ...emailFieldArray };
         break;
       // Todo: UI Team will add their respective field array reference here
       case CustomComponentsEnum.CUSTOM_PHONE:
@@ -248,6 +248,23 @@ export class NgxFormlyParserService {
     }
     return field;
 
+  }
+
+  setDefaultValuesFromAnswers(answers: Answer[], field: FormlyFieldConfig, isRecurrent: boolean): FormlyFieldConfig {
+    let currField: FormlyFieldConfig = { ...field };
+    if (!isRecurrent) {
+
+      if (currField.type === CustomComponentsEnum.CUSTOM_CHECKBOX) {
+        currField.defaultValue = answers[0].value === 'true' ? true : false;
+      } else {
+        currField.defaultValue = answers[0].value;
+      }
+    }
+    else {
+      currField.defaultValue = answers;
+    }
+
+    return currField;
   }
 
   constructor(private apiService: ApiService,

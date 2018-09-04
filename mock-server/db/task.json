@@ -10,12 +10,14 @@
                     "title": "Personal Information",
                     "questions": [
                         {
-                            "id": "InterestCheckingTextBox",
+                            "id": "InterestCheckingCheckBox",
                             "label": "Would you like to earn interest this account?",
-                            "type": "custom-textbox",
+                            "type": "custom-checkbox",
                             
                             "required": "true",
                             "readOnly": "false",
+                            "recurrent": false,
+
                             "placeHolder": "Interest Account",
                             "options": [
                                 {
@@ -28,8 +30,11 @@
                                 }
                             ],
                             "tooltipText": "<string>",
-                            "defaultValue": "false"
-                            
+                            "answers": [
+                                {
+                                  "value": "false"
+                                }
+                              ]                            
                             
                         },
                         {
@@ -38,6 +43,8 @@
                             "type": "custom-email",
                             "required": "true",
                             "readOnly": "false",
+                            "recurrent": false,
+
                             "placeHolder": "Interest Account",
                             "options": [
                                 {
@@ -50,14 +57,17 @@
                                 }
                             ],
                             "tooltipText": "<string>",
-                            "defaultValue": ""
-                        },
+                            "answers": [
+                               
+                              ]                           },
                         {
                             "id": "InterestCheckingPhone",
                             "label": "Would you like to earn Phone?",
                             "type": "custom-phone",
                             "required": "true",
                             "readOnly": "false",
+                            "recurrent": false,
+
                             "placeHolder": "Interest Account",
                             "options": [
                                 {
@@ -70,7 +80,9 @@
                                 }
                             ],
                             "tooltipText": "<string>",
-                            "defaultValue": ""
+                            "answers": [
+                               
+                            ] 
                         }
                     ]
                 }           

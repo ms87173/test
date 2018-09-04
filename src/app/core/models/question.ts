@@ -17,6 +17,7 @@ export class Question {
     max?: number;
     min?: number;
     disabled?: boolean = false;
+    recurrent: boolean= false;
     answers: Answer[] = []
 
 

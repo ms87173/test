@@ -15,6 +15,7 @@
               "type": "custom-checkbox",
               "required": "true",
               "readOnly": "false",
+              "recurrent": false,
               "placeHolder": "Interest Account",
               "options": [
                 {
@@ -27,7 +28,11 @@
                 }
               ],
               "tooltipText": "<string>",
-              "defaultValue": "true"
+              "answers": [
+                {
+                  "value": "true"
+                }
+              ]
             }
           ]
         },
@@ -40,6 +45,8 @@
               "type": "custom-dropdown",
               "required": "true",
               "readOnly": "false",
+              "recurrent": false,
+
               "placeHolder": "Interest Account",
               "options": [
                 {
@@ -64,7 +71,9 @@
                 }
               ],
               "tooltipText": "<string>",
-              "defaultValue": "<any>"
+              "answers": [
+                
+              ]
             },
             {
               "id": "SavingAccountTextBox2",
@@ -72,6 +81,8 @@
               "type": "custom-radio-button",
               "required": "true",
               "readOnly": "false",
+              "recurrent": false,
+
               "placeHolder": "Saving Account",
               "options": [
                 {
@@ -84,7 +95,9 @@
                 }
               ],
               "tooltipText": "<string>",
-              "defaultValue": "<any>"
+              "answers": [
+                
+              ]
             },
             {
               "id": "SavingAccountCheckBox2",
@@ -92,6 +105,8 @@
               "type": "custom-checkbox",
               "required": "true",
               "readOnly": "false",
+              "recurrent": false,
+
               "placeHolder": "Saving Account",
               "options": [
                 {
@@ -104,7 +119,9 @@
                 }
               ],
               "tooltipText": "<string>",
-              "defaultValue": "false"
+              "answers": [
+                
+              ]
             },
             {
               "id": "ChildDependentTextBox2",
@@ -112,6 +129,8 @@
               "type": "custom-radio-button",
               "required": "true",
               "readOnly": "false",
+              "recurrent": false,
+
               "placeHolder": "Saving Account",
               "options": [
                 {
@@ -124,7 +143,9 @@
                 }
               ],
               "tooltipText": "<string>",
-              "defaultValue": "<any>"
+              "answers": [
+                
+              ]
             },
             {
               "id": "RemoveOnAnswerQuestion2",
@@ -132,6 +153,8 @@
               "type": "custom-textbox",
               "required": "true",
               "readOnly": "false",
+              "recurrent": false,
+
               "placeHolder": "Saving Account",
               "options": [
                 {
@@ -144,7 +167,9 @@
                 }
               ],
               "tooltipText": "<string>",
-              "defaultValue": "<any>"
+              "answers": [
+               
+              ]
             }
           ]
         }
