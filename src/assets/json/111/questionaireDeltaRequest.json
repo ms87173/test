@@ -1,15 +1,16 @@
 {
-    "requestid":"<string>",
-    "workFlowId":"<string>",
-    "taskId":"<string>",
-    "questionnaireItems":[
+    "requestid": "<string>",
+    "workFlowId": "<string>",
+    "taskId": "<string>",
+    "questionnaireItems": [
         {
             "id": "<string>",
             "type": "<string>",
-            "answerKey": "any"   
-
-
+            "answers": [
+                {
+                    "value": "any"
+                }
+            ]
         }
     ]
-    
 }
