@@ -10,9 +10,10 @@
                     "title": "Personal Information",
                     "questions": [
                         {
-                            "id": "InterestCheckingCheckBox",
+                            "id": "InterestCheckingTextBox",
                             "label": "Would you like to earn interest this account?",
-                            "type": "custom-checkbox",
+                            "type": "custom-textbox",
+                            
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Interest Account",
@@ -28,11 +29,33 @@
                             ],
                             "tooltipText": "<string>",
                             "defaultValue": "false"
+                            
+                            
                         },
                         {
                             "id": "InterestCheckingEmail",
                             "label": "Would you like to earn interest this account?",
                             "type": "custom-email",
+                            "required": "true",
+                            "readOnly": "false",
+                            "placeHolder": "Interest Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": "true"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "false"
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "defaultValue": ""
+                        },
+                        {
+                            "id": "InterestCheckingPhone",
+                            "label": "Would you like to earn Phone?",
+                            "type": "custom-phone",
                             "required": "true",
                             "readOnly": "false",
                             "placeHolder": "Interest Account",

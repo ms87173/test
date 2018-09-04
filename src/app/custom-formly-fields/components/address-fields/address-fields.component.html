@@ -1,5 +1,5 @@
 <div class="custom-address-fields">
-    <span class="bold">Addresses</span>
+    <span class="bold">{{field.fieldArray?.templateOptions?.heading}}</span>
     <div *ngFor="let data of field.fieldGroup; let i = index;">
         <formly-group
             [field]="data"

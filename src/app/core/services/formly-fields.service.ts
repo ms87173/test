@@ -21,9 +21,33 @@ export class FormlyFieldsService {
     switch (questionType) {
       ///Todo Add Custom LifeCycle events custom compound type
       case CustomComponentsEnum.CUSTOM_PHONE:
-      case CustomComponentsEnum.CUSTOM_EMAIL:
       case CustomComponentsEnum.CUSTOM_ADDRESS_PROOF:
         return null;
+      case CustomComponentsEnum.CUSTOM_EMAIL:
+        const EMAIL_LIFECYCLE_EVENT: FormlyLifeCycleOptions = {
+          onInit: (form?: FormGroup, field?: FormlyFieldConfig, model?: any, options?: FormlyFormOptions) => {
+            const key = field.key;
+            const formObj = form.get(key);
+            const requiredFields = field.fieldArray.fieldGroup.map(item => {
+              if (item.templateOptions.required) {
+                return item.key
+              }
+            });
+            console.log("requiredFields");
+            console.log(requiredFields);
+
+
+            formObj.valueChanges
+              .pipe(debounceTime(600))
+              //Todo: To be Decided
+              .subscribe((fieldValue) => {
+                console.log(fieldValue);
+              });
+
+          }
+
+        };
+        return EMAIL_LIFECYCLE_EVENT;
       default:
         const GENERIC_LIFECYCLE_EVENT: FormlyLifeCycleOptions =
         {
@@ -40,7 +64,7 @@ export class FormlyFieldsService {
                   taskId: taskId,
                   questionnaireItems: [{
                     answerKey: fieldValue,
-                    questionId: key,
+                    id: key,
                     type: questionType
                   }]
                 };
