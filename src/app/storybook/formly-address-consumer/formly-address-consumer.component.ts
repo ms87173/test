@@ -202,7 +202,8 @@ export class FormlyAddressConsumerComponent implements OnInit {
               }
             }],
           templateOptions: {
-            btnText: '+ Add a new address'
+            btnText: '+ Add a new address',
+            heading: 'Addresses'
           },
           recurrent: true
         }

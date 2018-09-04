@@ -16,6 +16,7 @@ import { CustomComponentsEnum } from '../../custom-formly-fields/enums/custom-co
 import { emailFieldArray } from '../../custom-formly-fields/formly-configs/email-field-array';
 import { FormlyFieldsService } from './formly-fields.service';
 import { PhoneFieldConfig } from '../../custom-formly-fields/formly-configs/phone-field.config';
+import { AddressFieldsFieldArray } from '../../custom-formly-fields/formly-configs/address-fields-field-array';
 
 @Injectable()
 export class NgxFormlyParserService {
@@ -236,12 +237,16 @@ export class NgxFormlyParserService {
 
     switch (field.type) {
       case CustomComponentsEnum.CUSTOM_EMAIL:
-        field.fieldArray ={ ...emailFieldArray};
+        field.fieldArray = { ...emailFieldArray};
         break;
       // Todo: UI Team will add their respective field array reference here
       case CustomComponentsEnum.CUSTOM_PHONE:
         field.fieldArray = PhoneFieldConfig.fieldArray;
         break;
+      case CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS:
+        field.fieldArray = {
+          ...AddressFieldsFieldArray
+        };
     }
     return field;
 
