@@ -52,7 +52,7 @@ export class DdoApplicationsComponent implements OnInit {
       case ACTION_TYPES.rowClicked:
         this.store.dispatch(
           new RouterGo({
-            path: ['applications', payload.params ],
+            path: ['ddo', 'applications', payload.params],
           }
           )
         );
@@ -64,7 +64,7 @@ export class DdoApplicationsComponent implements OnInit {
   }
   sortApplications(data, params) {
     let formatedData;
-    let { key } = params
+    let { key } = params;
     if (params.key === 'status') {
       key = 'status.description';
     }

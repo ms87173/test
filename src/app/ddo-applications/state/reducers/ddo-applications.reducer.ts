@@ -1,19 +1,19 @@
 import {
     ActionTypes,
     ApplicationActions
-} from '../actions/applications.actions';
-import { ApplicationInterface } from '../../core/models/application.interface';
+} from '../actions/ddo-applications.actions';
+import { ApplicationInterface } from '../../../core/models/application.interface';
 
 export interface ApplicationsState {
-    applications: Array<ApplicationInterface>,
-    isLoaded: boolean
-    //TODO: view data if required
+    applications: Array<ApplicationInterface>;
+    isLoaded: boolean;
+    // TODO: view data if required
 }
 
 export const InitialState: ApplicationsState = {
     applications: [],
     isLoaded: false
-}
+};
 
 export function reducer(
     state: ApplicationsState = InitialState,
@@ -26,7 +26,7 @@ export function reducer(
                 ...state,
                 isLoaded: true,
                 applications: action.payload
-            }
+            };
         case ActionTypes.SORT_APPLICATIONS: {
             return {
                 ...state,

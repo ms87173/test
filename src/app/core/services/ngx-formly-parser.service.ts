@@ -173,11 +173,11 @@ export class NgxFormlyParserService {
     const formlyFieldConfigArrayCollections: FormlyFieldConfigArrayCollection[] = [];
     const currTask = { ...currentTask };
     currTask.sections.map((section: Section) => {
-      let FormlyFieldConfigArray: FormlyFieldConfig[] = this.getFormlyFieldConfigArrayFromSection(section, currentQuestionId, requestId, workflowId, taskId);
-      let formlyFieldConfigArray: FormlyFieldConfigArrayCollection = new FormlyFieldConfigArrayCollection(FormlyFieldConfigArray, section.title);
+      const FormlyFieldConfigArray: FormlyFieldConfig[] =
+        this.getFormlyFieldConfigArrayFromSection(section, currentQuestionId, requestId, workflowId, taskId);
+      const formlyFieldConfigArray: FormlyFieldConfigArrayCollection =
+        new FormlyFieldConfigArrayCollection(FormlyFieldConfigArray, section.title);
       formlyFieldConfigArrayCollections.push(formlyFieldConfigArray);
-
-
     });
     return of(formlyFieldConfigArrayCollections);
   }

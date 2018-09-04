@@ -50,10 +50,10 @@ export class DdoApplicationRequestComponent {
         this.selectedTaskId = activeTaskData.task.id;
         this.selectedWorkflowId = activeTaskData.workflowId;
         this.initalRender = !(this.selectedTaskId && this.selectedWorkflowId);
-        if(this.selectedTaskId) {
+        if (this.selectedTaskId) {
           this.store.dispatch(
             new RouterGo({
-              path: ['applications', this.application.id, 'questionnaire'],
+              path: ['ddo', 'applications', this.application.id, 'questionnaire'],
             })
           );
         }

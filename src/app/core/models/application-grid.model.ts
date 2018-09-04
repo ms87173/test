@@ -9,16 +9,7 @@ export class ApplicationGridModel {
             return null;
         }
         const applicationType = new Map(Object.entries(APPLICATION_TYPE));
-        const statusMapping = STATUS_MAPPING;
         this.id = data.id;
-        const descriptionData = {
-            label: data.heading,
-            value: data.title,
-            badgeText: data.state && data.state[0],
-            labelClass: 'grid-label',
-            valueClass: 'grid-value',
-            badgeClass: 'grid-badge'
-        };
         const lastModifiedBy = {
             label: moment(data.lastUpdate).format('DD MMM YYYY'),
             value: `By ${data.lastUpdatedBy}`,
@@ -26,11 +17,8 @@ export class ApplicationGridModel {
             valueClass: 'grid-value'
         };
         const viewData = {
-            description: new LabelValueGroupModel(descriptionData),
+            description: new LabelValueGroupModel({ label: data.title }),
             ownerShip: new LabelValueGroupModel({ label: applicationType.get(data.type) }),
-            ///Todo : Need to discuss on  with server team  where to keep mapping or not
-            // ownerShip: new LabelValueGroupModel({ label: data.type }),
-            lastUpdatedBy: new LabelValueGroupModel({ label: data.lastUpdatedBy }),
             lastUpdate: new LabelValueGroupModel(lastModifiedBy),
             status: new LabelValueGroupModel({
                 label: data.status.description
