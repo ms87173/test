@@ -8,11 +8,7 @@ import { FormlyConsumerComponent } from './formly-consumer/formly-consumer.compo
 import { FormlyAddressConsumerComponent } from './formly-address-consumer/formly-address-consumer.component';
 import { FormlyPhoneConsumerComponent } from './formly-phone-consumer/formly-phone-consumer.component';
 
-const routes: Routes = [
-    {
-        path: '',
-        component: StorybookComponent
-    },
+const storybookRoutes: Routes = [
     {
         path: 'labelgroup',
         component: LabelValueConsumerComponent
@@ -38,8 +34,9 @@ const routes: Routes = [
         component: FormlyPhoneConsumerComponent
     }
 ];
+
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
+    imports: [RouterModule.forChild(storybookRoutes)],
     exports: [RouterModule]
 })
 export class StorybookRoutingModule { }

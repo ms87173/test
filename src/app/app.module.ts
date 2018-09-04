@@ -40,8 +40,8 @@ import { FormlyFieldsService } from './core/services/formly-fields.service';
     HttpModule,
     AppStoreModule,
     CustomFormlyFieldsModule,
-    AppRoutingModule,
     StorybookModule,
+    AppRoutingModule
   ],
   providers: [
     AuthenticationService,
