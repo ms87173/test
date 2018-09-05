@@ -910,7 +910,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApiService", function() { return ApiService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _environments_environment_dev__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../environments/environment.dev */ "./src/environments/environment.dev.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
@@ -936,19 +936,19 @@ var ApiService = /** @class */ (function () {
     };
     ApiService.prototype.get = function (url, httpParams) {
         if (httpParams === void 0) { httpParams = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"](); }
-        return this.http.get("" + _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl + url, { params: httpParams })
+        return this.http.get("" + _environments_environment_dev__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl + url, { params: httpParams })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
     };
     ApiService.prototype.put = function (path, body) {
         if (body === void 0) { body = {}; }
-        return this.http.put("" + _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl + path, JSON.stringify(body)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
+        return this.http.put("" + _environments_environment_dev__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl + path, JSON.stringify(body)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
     };
     ApiService.prototype.post = function (path, body) {
         if (body === void 0) { body = {}; }
-        return this.http.post("" + _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl + path, JSON.stringify(body)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
+        return this.http.post("" + _environments_environment_dev__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl + path, JSON.stringify(body)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
     };
     ApiService.prototype.delete = function (path) {
-        return this.http.delete("" + _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl + path).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
+        return this.http.delete("" + _environments_environment_dev__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl + path).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError));
     };
     ApiService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
@@ -3354,7 +3354,7 @@ var FormlySelectOptionsPipe = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header [config]='navConfig'></app-header>\r\n<nav class=\"navbar navbar-expand-lg navbar--secondary\">\r\n    <div id=\"navbarNavAltMarkup\">\r\n        <div class=\"navbar-nav\">\r\n            <a class=\"nav-item nav-link active\" href=\"ddo/my-applications\">Overview\r\n                <span class=\"sr-only\">(current)</span>\r\n            </a>\r\n        </div>\r\n    </div>\r\n</nav>\r\n<router-outlet></router-outlet>\r\n"
+module.exports = "<!-- <app-header [config]='navConfig'></app-header>\r\n<nav class=\"navbar navbar-expand-lg navbar--secondary\">\r\n    <div id=\"navbarNavAltMarkup\">\r\n        <div class=\"navbar-nav\">\r\n            <a class=\"nav-item nav-link active\" href=\"ddo/my-applications\">Overview\r\n                <span class=\"sr-only\">(current)</span>\r\n            </a>\r\n        </div>\r\n    </div>\r\n</nav> -->\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
@@ -7786,6 +7786,24 @@ var TaskContainerComponent = /** @class */ (function () {
     return TaskContainerComponent;
 }());
 
+
+
+/***/ }),
+
+/***/ "./src/environments/environment.dev.ts":
+/*!*********************************************!*\
+  !*** ./src/environments/environment.dev.ts ***!
+  \*********************************************/
+/*! exports provided: environment */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
+var environment = {
+    production: false,
+    apiUrl: 'http://mktdevvm100621.nam.nsroot.net:9090/'
+};
 
 
 /***/ }),
