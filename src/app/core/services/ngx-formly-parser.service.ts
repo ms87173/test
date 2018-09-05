@@ -254,11 +254,13 @@ export class NgxFormlyParserService {
     let currField: FormlyFieldConfig = { ...field };
     if (!isRecurrent) {
 
-      if (currField.type === CustomComponentsEnum.CUSTOM_CHECKBOX) {
-        currField.defaultValue = answers[0].value === 'true' ? true : false;
-      } else {
-        currField.defaultValue = answers[0].value;
-      }
+      // if (currField.type === CustomComponentsEnum.CUSTOM_CHECKBOX) {
+      //   currField.defaultValue = answers[0].value === 'true' ? true : false;
+      // } else {
+      //   currField.defaultValue = answers[0].value;
+      // }
+      currField.defaultValue = answers[0].value;
+
     }
     else {
       currField.defaultValue = answers;
