@@ -36,6 +36,9 @@
             }
             .grid-label {
                 font-weight: bold;
+                &--accountType {
+                    display: block;
+                }
             }
             .grid-label-container {
                 display: block;

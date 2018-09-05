@@ -8,7 +8,6 @@ export class ApplicationGridModel {
         if (!data) {
             return null;
         }
-        const applicationType = new Map(Object.entries(APPLICATION_TYPE));
         this.id = data.id;
         const lastModifiedBy = {
             label: moment(data.lastUpdate).format('DD MMM YYYY'),
@@ -18,12 +17,11 @@ export class ApplicationGridModel {
         };
         const viewData = {
             description: new LabelValueGroupModel({ label: data.title }),
-            ownerShip: new LabelValueGroupModel({ label: applicationType.get(data.type) }),
+            ownership: new LabelValueGroupModel({ label: data.ownership }),
+            accountTypes: data.accountTypes,
             lastUpdate: new LabelValueGroupModel(lastModifiedBy),
             status: new LabelValueGroupModel({
                 label: data.status.description
-                // ...statusMapping[`${data.status.code}`],
-                // value: data.status.reason
             })
         };
         this.columns = Object.entries(viewData).map((e) => {

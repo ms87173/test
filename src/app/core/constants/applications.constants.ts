@@ -23,6 +23,11 @@ export const APPLICATION_GRID_HEADING = [
         showSortOption: false
     },
     {
+        key: 'accountType',
+        value: 'ACCOUNT TYPE',
+        showSortOption: false
+    },
+    {
         key: 'modified',
         value: 'MODIFIED',
         showSortOption: true,
