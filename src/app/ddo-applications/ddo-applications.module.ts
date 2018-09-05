@@ -7,6 +7,7 @@ import { DdoApplicationsRoutingModule } from './ddo-applications-routing.module'
 import { DdoApplicationsGridComponent } from './components/ddo-applications-grid/ddo-applications-grid.component';
 import { DdoApplicationsRowComponent } from './components/ddo-applications-row/ddo-applications-row.component';
 import { BsDropdownModule } from 'ngx-bootstrap';
+import { DdoApplicationsStateModule } from './state/ddo-applications-store-module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { BsDropdownModule } from 'ngx-bootstrap';
     SharedModule,
     CoreModule,
     DdoApplicationsRoutingModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    DdoApplicationsStateModule
   ],
   declarations: [
     DdoApplicationsComponent,

@@ -1,23 +1,15 @@
-import * as fromStore from '../../../store/reducers';
+import * as fromRoot from '../reducers';
 import * as fromApplications from '../reducers/ddo-applications.reducer';
-import { createSelector } from '@ngrx/store';
+import { createSelector, createFeatureSelector } from '@ngrx/store';
 
-export const getApplicaitonsState = (state: fromStore.AppState) => state.applications;
+export const getApplicationsFeatureState = createFeatureSelector<fromRoot.State>('ddoApplicationsFeature');
 
-export const getApplicaitons = createSelector(
-    getApplicaitonsState,
-    fromApplications.getApplicaitons
+export const getApplicaitonsState = createSelector(
+    getApplicationsFeatureState,
+    (state: fromRoot.State) => state.applications
 );
 
-export const getApplicationsIsLoaded = createSelector(
+export const getApplications = createSelector(
     getApplicaitonsState,
-    fromApplications.getApplicationsIsLoaded
-);
-export const getSelectedApplicationId = createSelector(
-    getApplicaitonsState,
-    fromApplications.getSelectedApplicationId
-);
-export const getSelectedApplication = createSelector(
-    getApplicaitonsState,
-    fromApplications.getSelectedApplication
+    fromApplications.getApplications
 );

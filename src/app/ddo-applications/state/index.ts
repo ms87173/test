@@ -8,3 +8,5 @@ export {
     fromApplicationsReducers,
     fromApplicationsSelectors,
 };
+
+export { DdoApplicationsStateModule } from './ddo-applications-store-module';
