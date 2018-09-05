@@ -61,31 +61,31 @@ export class QuestionnaireService {
   // }
 
   getCurrentTask(taskRequest: TaskRequest): Observable<Task> {
-    return this.apiService.get('tasks/' + taskRequest.taskId);
+    // return this.apiService.get('tasks/' + taskRequest.taskId);
     //Todo: Uncomment to use Production Url
-    // return this.apiService.post("api/ddo/questionnaire/taskQuestions",taskRequest)
+    return this.apiService.post("api/ddo/questionnaire/taskQuestions",taskRequest);
   }
 
   getFieldChangeDelta(deltaRequest: QuestionaireDeltaRequest): Observable<Task> {
 
    /// Todo: uncomment to use mock service
-    switch (deltaRequest.questionnaireItems[0].id) {
+    // switch (deltaRequest.questionnaireItems[0].id) {
       
-      case 'InterestCheckingCheckBox':
-        return this.apiService.get('questionnaireDeltaResponses/1');
+    //   case 'InterestCheckingCheckBox':
+    //     return this.apiService.get('questionnaireDeltaResponses/1');
 
-      case 'SavingAccountTextBox':
-        return this.apiService.get('questionnaireDeltaResponses/2');
+    //   case 'SavingAccountTextBox':
+    //     return this.apiService.get('questionnaireDeltaResponses/2');
 
-      case 'ColorInputBox':
-        return this.apiService.get('questionnaireDeltaResponses/3');
+    //   case 'ColorInputBox':
+    //     return this.apiService.get('questionnaireDeltaResponses/3');
 
-      default:
-        return of(null);
-    }
+    //   default:
+    //     return of(null);
+    // }
 
     //Todo : Production Url
-    // return this.apiService.post("api/ddo/questionnaire/tasks/question",deltaRequest)
+    return this.apiService.post("api/ddo/questionnaire/tasks/question",deltaRequest)
   }
   getCountryCode(): Observable<any[]> {
     return this.apiService.get('countryCode');
