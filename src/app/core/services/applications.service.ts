@@ -8,12 +8,12 @@ export class ApplicationsService {
   getApplications(): Observable<any[]> {
 
     ///Todo : Production Url
-     return this. apiService.get("api/ddo/request/all");
-    // return this.apiService.get('requests');
+    //  return this. apiService.get("api/ddo/request/all");
+    return this.apiService.get('requests');
   }
   //TODO: remove this as we are doing sorting on our end
   sortApplications(orderBy: string): Observable<any> {
-    return this.apiService.get(`requests?orderBy=${orderBy}`);
-    // return this.apiService.get('sortRequests');
+    // return this.apiService.get(`requests?orderBy=${orderBy}`);
+    return this.apiService.get('sortRequests');
   }
 }
