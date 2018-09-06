@@ -28,3 +28,5 @@ export const getApplicationWorkflowsState = (state: ApplicationRequestState) => 
 export const getApplicationWorkflows = (state: ApplicationRequestState) => state.workflows.workflows;
 export const getApplication = (state: ApplicationRequestState) => state.application.application;
 export const getApplicationActiveTask = (state: ApplicationRequestState) => state.workflows.activeTask;
+export const getApplicationPreviousTask = (state: ApplicationRequestState) => state.workflows.previousTask;
+export const getApplicationNextTask = (state: ApplicationRequestState) => state.workflows.nextTask;

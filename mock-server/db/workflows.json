@@ -33,7 +33,7 @@
                     "label": "Personal Information",
                     "description": "This is your primary interest bearing account.",
                     "id": "12",
-                    "status": "IN_PROGRESS",
+                    "status": "COMPLETED",
                     "type": "questionnaire"
                 },
                 {

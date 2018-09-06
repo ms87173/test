@@ -19,6 +19,24 @@ export const getActiveWorkflowTaskId = createSelector(
     getWorkflowsState,
     fromWorkflows.getActiveWorkflowTaskId
 );
+export const getPreviousWorkflowTask = createSelector(
+    getWorkflowsState,
+    fromWorkflows.getPreviousWorkflowTask
+);
+
+export const getPreviousWorkflowTaskId = createSelector(
+    getWorkflowsState,
+    fromWorkflows.getPreviousWorkflowTaskId
+);
+export const getNextWorkflowTask = createSelector(
+    getWorkflowsState,
+    fromWorkflows.getNextWorkflowTask
+);
+
+export const getNextWorkflowTaskId = createSelector(
+    getWorkflowsState,
+    fromWorkflows.getNextWorkflowTaskId
+);
 
 export const getWorkflowsLoaded = createSelector(
     getWorkflowsState,

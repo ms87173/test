@@ -12,7 +12,7 @@
             </div>
             <span class="role" *ngIf="item.subHeading">{{item.subHeading}}</span>
           </div>
-          <div class="col-sm-3 no-padding-left">
+          <div class="col-sm-3 no-padding-left side-nav__status">
               <i *ngIf = 'item.status === status.completed'
                 [ngClass]="{'status-icon--completed fa-check': item.status === status.completed,
                 'status-icon--inprogress fa-circle': item.status === status.inProgress}"

@@ -40,9 +40,9 @@ export class ApplicationModel implements ApplicationInterface {
         this.status = data.status;
         this.title = data.title;
         this.active = false;
-        this.accountTypes = data.accountTypes;
+        this.accountTypes = data.products;
         this.contactPerson = new UserInfoModel(data.contactPerson);
-        this.ownership = data.ownership;
+        this.ownership = data.accountType;
         this.state = data.state;
         this.lastUpdatedBy = data.lastUpdatedBy;
         this.lastUpdate = data.lastUpdateDate;
