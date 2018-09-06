@@ -6,13 +6,13 @@
             "heading": "Application Request for Individual Accounts",
             "lastUpdatedBy": "Vikash Kumar",
             "lastUpdateDate": "05-23-2018",
-            "ownership": "Individual",
-            "accountTypes": [
+            "accountType": "Individual",
+            "products": [
                 "Banking - Saving",
                 "Banking - Checking"
             ],
             "status": {
-                "code": "waiting",
+                "code": "CANCELED",
                 "description": "Waiting for Vikash kumar"
             },
             "priorityAction": "continue",
@@ -27,12 +27,12 @@
             "heading": "Application Request for Individual Accounts",
             "lastUpdatedBy": "Neymar",
             "lastUpdateDate": "06-23-2018",
-            "ownership": "Joint",
-            "accountTypes": [
+            "accountType": "Joint",
+            "products": [
                 "Banking - Saving"
             ],
             "status": {
-                "code": "waiting",
+                "code": "ON_HOLD",
                 "description": "Waiting for Lionel Messi"
             },
             "priorityAction": "continue",
@@ -47,8 +47,8 @@
             "heading": "Application Request for Individual Accounts",
             "lastUpdatedBy": "Vikash Kumar",
             "lastUpdateDate": "05-23-2018",
-            "ownership": "Individual",
-            "accountTypes": [
+            "accountType": "Individual",
+            "products": [
                 "Banking - Saving"
             ],
             "status": {
@@ -67,8 +67,8 @@
             "heading": "Application Request for Individual Accounts",
             "lastUpdatedBy": "Vikash Kumar",
             "lastUpdateDate": "05-23-2018",
-            "ownership": "Individual",
-            "accountTypes": [
+            "accountType": "Individual",
+            "products": [
                 "Banking - Saving"
             ],
             "status": {
@@ -87,8 +87,8 @@
             "heading": "Application Request for Individual Accounts",
             "lastUpdatedBy": "Vikash Kumar",
             "lastUpdateDate": "05-23-2018",
-            "ownership": "Individual",
-            "accountTypes": [
+            "accountType": "Individual",
+            "products": [
                 "Banking - Saving"
             ],
             "status": {
@@ -107,8 +107,8 @@
             "heading": "Application Request for Individual Accounts",
             "lastUpdatedBy": "Vikash Kumar",
             "lastUpdateDate": "05-23-2018",
-            "ownership": "Individual",
-            "accountTypes": [
+            "accountType": "Individual",
+            "products": [
                 "Banking - Saving"
             ],
             "status": {
@@ -127,8 +127,8 @@
             "heading": "Application Request for Individual Accounts",
             "lastUpdatedBy": "Vikash Kumar",
             "lastUpdateDate": "05-23-2018",
-            "ownership": "Individual",
-            "accountTypes": [
+            "accountType": "Individual",
+            "products": [
                 "Banking - Saving"
             ],
             "status": {
@@ -147,8 +147,8 @@
             "heading": "Application Request for Individual Accounts",
             "lastUpdatedBy": "Vikash Kumar",
             "lastUpdateDate": "05-23-2018",
-            "ownership": "Individual",
-            "accountTypes": [
+            "accountType": "Individual",
+            "products": [
                 "Banking - Saving"
             ],
             "status": {

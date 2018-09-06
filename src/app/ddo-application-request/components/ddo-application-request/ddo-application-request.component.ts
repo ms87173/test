@@ -31,7 +31,7 @@ export class DdoApplicationRequestComponent {
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaiton).
       subscribe((application: any) => {
         this.application = application;
-        this.heading = this.applicationHeading.get(application.type);
+        this.heading = application.heading;
       });
     this.store.select(fromRootSelectors.userSelectors.getUserContactPerson).
       subscribe((contactDetail: any) => {

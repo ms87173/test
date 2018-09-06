@@ -11,6 +11,11 @@ export const SORT_ORDER = {
     descending: 'desc'
 }
 
+export const APPLICATIONS_STATUS = {
+    cancelled: 'CANCELED',
+    onHold: 'ON_HOLD',
+    inProgress: 'IN_PROGRESS'
+}
 export const APPLICATION_GRID_HEADING = [
     {
         key: 'description',
@@ -28,7 +33,7 @@ export const APPLICATION_GRID_HEADING = [
         showSortOption: false
     },
     {
-        key: 'modified',
+        key: 'lastUpdate',
         value: 'MODIFIED',
         showSortOption: true,
         sortOrder: 'desc'

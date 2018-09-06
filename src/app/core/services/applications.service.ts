@@ -13,7 +13,7 @@ export class ApplicationsService {
   }
   //TODO: remove this as we are doing sorting on our end
   sortApplications(orderBy: string): Observable<any> {
-    // return this.apiService.get(`requests?orderBy=${orderBy}`);
-    return this.apiService.get('sortRequests');
+    return this.apiService.get(`requests?orderBy=${orderBy}`);
+    // return this.apiService.get('sortRequests');
   }
 }

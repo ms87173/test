@@ -61,9 +61,9 @@ export class QuestionnaireService {
   // }
 
   getCurrentTask(taskRequest: TaskRequest): Observable<Task> {
-    // return this.apiService.get('tasks/' + taskRequest.taskId);
+    return this.apiService.get('tasks/' + taskRequest.taskId);
     //Todo: Uncomment to use Production Url
-    return this.apiService.post("api/ddo/questionnaire/taskQuestions",taskRequest);
+    // return this.apiService.post("api/ddo/questionnaire/taskQuestions",taskRequest);
   }
 
   getFieldChangeDelta(deltaRequest: QuestionaireDeltaRequest): Observable<Task> {
