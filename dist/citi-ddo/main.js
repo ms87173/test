@@ -1632,7 +1632,7 @@ var QuestionnaireService = /** @class */ (function () {
         return this.apiService.post("api/ddo/questionnaire/taskQuestions", taskRequest);
     };
     QuestionnaireService.prototype.getFieldChangeDelta = function (deltaRequest) {
-        /// Todo: uncomment to use mock service
+        // Todo: uncomment to use mock service
         // switch (deltaRequest.questionnaireItems[0].id) {
         //   case 'InterestCheckingCheckBox':
         //     return this.apiService.get('questionnaireDeltaResponses/1');
@@ -4642,13 +4642,6 @@ var ActionTypes;
     ActionTypes["GET_APPLICATION_REQUEST_SUCCESS"] = "[App State] Get Application Request Success";
     ActionTypes["GET_APPLICATION_REQUEST_FAIL"] = "[App State] Get Application Request Failure";
     ActionTypes["CLEAR_APPLICATION_REQUEST"] = "[App State] Clear Application Request";
-    ActionTypes["GET_APPLICATION_REQUEST_WORKFLOWS"] = "[App State] Get Application Request Workflows";
-    ActionTypes["GET_APPLICATION_REQUEST_WORKFLOWS_SUCCESS"] = "[App State] Get Application Request Workflows Success";
-    ActionTypes["GET_APPLICATION_REQUEST_WORKFLOWS_FAILURE"] = "[App State] Get Application Request Workflows Failure";
-    ActionTypes["DETERMINE_PENDING_TASK_OF_APPLICATION_REQUEST"] = "[App State] Determine pending task of application request";
-    ActionTypes["GET_APPLICATION_REQUEST_TASK"] = "[App State] Get Application request task";
-    ActionTypes["GET_APPLICATION_REQUEST_TASK_SUCCESS"] = "[App State] Get Application request task success";
-    ActionTypes["GET_APPLICATION_REQUEST_TASK_FAILURE"] = "[App State] Get Application request task failure";
     // SET_APPLICATION_REQUEST_TASK = '[App State] Select Application request task',
     // BUILD_NAVIGATION_CONFIG = '[Some State] Build Navigation Config',
     // SELECT_NAVIGATION_ITEM = '[Some State] Select Navigation Item',
@@ -5096,7 +5089,7 @@ var GetUserContactPersonFailure = /** @class */ (function () {
 /*!***************************************************!*\
   !*** ./src/app/store/actions/workflows.action.ts ***!
   \***************************************************/
-/*! exports provided: ActionTypes, GetApplicationWorkflows, GetApplicationWorkflowsSuccess, GetApplicationWorkflowsFailure, DeterminePendingTaskOfApplication, GetApplicationTask, GetApplicationTaskSuccess, GetApplicationTaskFailure, SetActiveTask */
+/*! exports provided: ActionTypes, GetApplicationWorkflows, GetApplicationWorkflowsSuccess, GetApplicationWorkflowsFailure, DeterminePendingTaskOfApplication, GetApplicationTask, GetApplicationTaskSuccess, GetApplicationTaskFailure, SetActiveTask, SaveActiveTask */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5110,6 +5103,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetApplicationTaskSuccess", function() { return GetApplicationTaskSuccess; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetApplicationTaskFailure", function() { return GetApplicationTaskFailure; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SetActiveTask", function() { return SetActiveTask; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SaveActiveTask", function() { return SaveActiveTask; });
 var ActionTypes;
 (function (ActionTypes) {
     ActionTypes["GET_APPLICATION_REQUEST_WORKFLOWS"] = "[App State] Get Application Request Workflows";
@@ -5120,9 +5114,10 @@ var ActionTypes;
     ActionTypes["GET_APPLICATION_REQUEST_TASK_SUCCESS"] = "[App State] Get Application request task success";
     ActionTypes["GET_APPLICATION_REQUEST_TASK_FAILURE"] = "[App State] Get Application request task failure";
     ActionTypes["SET_ACTIVE_TASK"] = "[App State] Set Active Task";
-    // SET_APPLICATION_REQUEST_TASK = '[App State] Select Application request task',
+    ActionTypes["SET_APPLICATION_REQUEST_ACTIVE_TASK"] = "[App State] Select Application Request Active task";
     // BUILD_NAVIGATION_CONFIG = '[Some State] Build Navigation Config',
     // SELECT_NAVIGATION_ITEM = '[Some State] Select Navigation Item',
+    ActionTypes["SAVE_APPLICATION_REQUEST_ACTIVE_TASK"] = "[App State] Save Application Request Task";
 })(ActionTypes || (ActionTypes = {}));
 var GetApplicationWorkflows = /** @class */ (function () {
     function GetApplicationWorkflows(payload) {
@@ -5194,6 +5189,15 @@ var SetActiveTask = /** @class */ (function () {
         this.payload = payload;
     }
     return SetActiveTask;
+}());
+
+var SaveActiveTask = /** @class */ (function () {
+    function SaveActiveTask(payload) {
+        this.payload = payload;
+        this.type = ActionTypes.SAVE_APPLICATION_REQUEST_ACTIVE_TASK;
+        this.payload = payload;
+    }
+    return SaveActiveTask;
 }());
 
 
@@ -6145,6 +6149,7 @@ var __assign = (undefined && undefined.__assign) || Object.assign || function(t)
 //we can dispatch change task action and calculate all the task again.
 var InitialState = {
     workflows: [],
+    entities: {},
     activeTask: {
         workflowId: '',
         task: {
@@ -6182,11 +6187,21 @@ function reducer(state, action) {
     if (state === void 0) { state = InitialState; }
     switch (action.type) {
         case _actions_workflows_action__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].GET_APPLICATION_REQUEST_WORKFLOWS_SUCCESS:
+            var workflows = action.payload;
+            if (workflows && workflows.length > 0) {
+                var entities_1 = {};
+                workflows.forEach(function (workflow) {
+                    var tasks = workflow.tasks;
+                    var entity = tasks.reduce(function (entities, task) {
+                        return __assign({}, entities, (_a = {}, _a[task.id] = __assign({}, task, { workflowId: workflow.id }), _a));
+                        var _a;
+                    }, __assign({}, entities_1));
+                    entities_1 = __assign({}, entity);
+                });
+            }
             return __assign({}, state, { loaded: true, loading: false, workflows: action.payload });
         case _actions_workflows_action__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].SET_ACTIVE_TASK:
             var _a = action.payload, workflowId_1 = _a.workflowId, taskId_1 = _a.taskId;
-            //TODO: change this to key value pair
-            //determine routing as well with different actions
             var workflow = state.workflows.find(function (e) { return e.id === workflowId_1; });
             var task = workflow && workflow.tasks.find(function (e) { return e.id === taskId_1; });
             return __assign({}, state, { activeTask: {
