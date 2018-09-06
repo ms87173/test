@@ -48,8 +48,14 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
         this.taskRequest.workflowId = activeTask.workflowId;
         this.taskRequest.taskId = activeTask.task.id;
         this.taskRequest.requestId = this.requestId;
-        this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask(this.taskRequest));
-      });
+        if (this.taskRequest.workflowId &&
+          this.taskRequest.taskId &&
+          this.taskRequest.requestId
+        ) {
+          this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask(this.taskRequest));
+        }
+      }
+      );
 
     this.store.pipe(select(fromRootSelectors.questionnaireSelectors.getCurrentTask),
       takeWhile(() => this.isComponentActive)
@@ -66,7 +72,7 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
               workflowId: this.taskRequest.workflowId,
               taskId: this.taskRequest.taskId
             }));
-            this.cd.detectChanges();
+          this.cd.detectChanges();
 
         }
       }
@@ -75,21 +81,21 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
     this.store.pipe(select(fromRootSelectors.questionnaireSelectors.getCurrentQuestionnaireConfig),
       takeWhile(() => this.isComponentActive))
       .subscribe((formlyFieldConfigArrayCollections) => {
-      if (formlyFieldConfigArrayCollections) {
-        this.formlyFieldConfigArrayCollections = formlyFieldConfigArrayCollections;
-        this.forms = new FormArray(this.formlyFieldConfigArrayCollections.map(() => new FormGroup({})));
-        this.options = this.formlyFieldConfigArrayCollections.map(() => <FormlyFormOptions>{});
-        this.cd.detectChanges();
-      }
-    });
+        if (formlyFieldConfigArrayCollections) {
+          this.formlyFieldConfigArrayCollections = formlyFieldConfigArrayCollections;
+          this.forms = new FormArray(this.formlyFieldConfigArrayCollections.map(() => new FormGroup({})));
+          this.options = this.formlyFieldConfigArrayCollections.map(() => <FormlyFormOptions>{});
+          this.cd.detectChanges();
+        }
+      });
 
     this.store.pipe(select(fromRootSelectors.questionnaireSelectors.getCurrentQuestionId),
       takeWhile(() => this.isComponentActive))
       .subscribe((currentQuestionId) => {
-      if (currentQuestionId) {
-        this.currentQuestionId = currentQuestionId;
-      }
-    });
+        if (currentQuestionId) {
+          this.currentQuestionId = currentQuestionId;
+        }
+      });
   }
 
 
