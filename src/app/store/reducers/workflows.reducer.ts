@@ -1,36 +1,19 @@
 import { ActionTypes, WorkflowsActions } from '../actions/workflows.action';
+import { workflowsSelectors } from '../selectors';
 
 export interface WorkflowsState {
     workflows: any,
     activeTask: {
-        workflowId: string,
-        task: {
-            label: string,
-            description: string,
-            id: string,
-            status: string,
-            type: string
-        }
+        workflowId: any,
+        task: any
     },
     previousTask: {
-        workflowId: string,
-        task: {
-            label: string,
-            description: string,
-            id: string,
-            status: string,
-            type: string
-        }
+        workflowId: any,
+        task: any
     },
     nextTask: {
-        workflowId: string,
-        task: {
-            label: string,
-            description: string,
-            id: string,
-            status: string,
-            type: string
-        }
+        workflowId: any,
+        task: any
     },
     loaded: boolean,
     loading: boolean
@@ -87,17 +70,81 @@ export function reducer(
             }
         case ActionTypes.SET_ACTIVE_TASK:
             const { workflowId, taskId } = action.payload;
-            //TODO: change this to key value pair
-            //determine routing as well with different actions
-            const workflow = state.workflows.find(e => e.id === workflowId);
-            const task = workflow && workflow.tasks.find(e => e.id === taskId);
-            return {
-                ...state,
-                activeTask: {
+            if (state.workflows && state.workflows.length > 0) {
+                let count1 = 0,
+                    taskFound = false,
+                    nextWorkflow = { id: '', tasks: []},
+                    previousWorkflow = { id: '', tasks: [] },
+                    currentWorkflow = { id: '', tasks: [] },
+                    nextTask = {id: ''},
+                    currentTask = {id: ''},
+                    previousTask = {id: ''};
+
+                const workflows = state.workflows;
+                while(count1 < state.workflows.length) {
+                    nextWorkflow = workflows[count1 + 1];
+                    currentWorkflow = workflows[count1];
+                    previousWorkflow = workflows[count1 - 1];
+                    const tasks = currentWorkflow && currentWorkflow.tasks;
+                    if(currentWorkflow.id === workflowId && tasks && tasks.length > 0) {
+                        let count2 = 0;
+                        while(count2 < tasks.length) {
+                            const currentTask = tasks[count2];
+                            let nextTask = tasks[count2 + 1];
+                            let previousTask = tasks[count2 - 1];
+                            if(currentTask.id === taskId) {
+                                taskFound = true;
+                                if(!nextTask) {
+                                    nextTask = nextWorkflow && nextWorkflow.tasks[0];
+                                }
+                                if(!previousTask) {
+                                    const len = previousWorkflow &&
+                                        previousWorkflow.tasks &&
+                                        previousWorkflow.tasks.length;
+                                    previousTask = len && previousWorkflow.tasks[len-1];
+                                }
+                                break;
+                            }
+                            count2++;
+                        }
+                    }
+                    if(taskFound) {
+                        break;
+                    }
+                    count1++;
+                }
+                const activeTask = {
                     workflowId,
-                    task
+                    task: currentTask
+                };
+                const nextStateTask = {
+                    workflowId: nextWorkflow && nextWorkflow.id,
+                    task: nextTask
+                };
+                const previousStateTask = {
+                    workflowId: previousWorkflow && previousWorkflow.id,
+                    task: previousTask
+                };
+                const x= {
+                    ...state,
+                    activeTask,
+                    previousTask: previousStateTask,
+                    nextTask: nextStateTask
+
+                }
+
+                console.log(x)
+
+                return {
+                    ...state,
+                    activeTask,
+                    previousTask: previousStateTask,
+                    nextTask: nextStateTask
+
                 }
             }
+            // const workflow = state.workflows.find(e => e.id === workflowId);
+            // const task = workflow && workflow.tasks.find(e => e.id === taskId);
         default:
             return state;
     }
