@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ApplicationGridModel } from '../core/models/application-grid.model';
-import { fromRootReducers, fromRootSelectors } from '../store';
+import { fromApplicationsSelectors, fromApplicationsReducers } from './state';
 import { Store } from '@ngrx/store';
-import { GetApplications } from '../store/actions/applications.actions';
+import { GetApplications } from './state/actions/ddo-applications.actions';
 import { APPLICATION_GRID_HEADING, APPLICATION_DROPDOWN_OPTIONS, ACTION_TYPES } from '../core/constants/applications.constants';
 import { ContactDetailsModel } from '../core/models/contact-detail.model';
 import * as _ from 'lodash';
 import { RouteChange, RouterGo } from '../store/actions/router.actions';
+import { fromRootSelectors, fromRootReducers } from '../store';
 
 @Component({
   selector: 'app-ddo-applications',
@@ -22,7 +23,8 @@ export class DdoApplicationsComponent implements OnInit {
   contactPersonDetails: any;
   applicationsData: any;
   constructor(
-    private store: Store<fromRootReducers.AppState>
+    private store: Store<fromApplicationsReducers.ddoApplicationsReducers.ApplicationsState>,
+    private rootStore: Store<fromRootReducers.AppState>
   ) {
     const headings = APPLICATION_GRID_HEADING;
     const dropDownOptions = APPLICATION_DROPDOWN_OPTIONS;
@@ -31,11 +33,11 @@ export class DdoApplicationsComponent implements OnInit {
       data: [],
       dropDownOptions
     };
-    this.store.select(fromRootSelectors.userSelectors.getUserContactPerson).
+    this.rootStore.select(fromRootSelectors.userSelectors.getUserContactPerson).
       subscribe((contactDetail: any) => {
         this.contactPersonDetails = new ContactDetailsModel(contactDetail);
       });
-    this.store.select(fromRootSelectors.applicationsSelectors.getApplicaitons)
+    this.store.select(fromApplicationsSelectors.ddoApplicationsSelectors.getApplications)
       .subscribe((applications: any) => {
         this.gridConfig.data =
           applications.map((application) => new ApplicationGridModel(application));

@@ -2,172 +2,164 @@
     "requests": [
         {
             "id": "1",
-            "heading": "Application for 2 Joint Accounts",
-            "title": "John Robbins, Jane Robbins and Susan Sandron",
-            "accountHolders": [
-                {
-                    "firstName": "John",
-                    "lastName": "Robbins",
-                    "middleName": "",
-                    "email": "johnRobbins@gmail.com",
-                    "role": [
-                        "primary"
-                    ]
-                },
-                {
-                    "firstName": "Jane",
-                    "lastName": "Robbins",
-                    "middleName": "",
-                    "email": "janeRobbins@gmail.com",
-                    "role": [
-                        "coApplicant"
-                    ]
-                },
-                {
-                    "firstName": "Susan",
-                    "lastName": "Sandron",
-                    "middleName": "",
-                    "email": "susanSandron@gmail.com",
-                    "role": [
-                        "coApplicant"
-                    ]
-                }
+            "title": "Vikash Kumar",
+            "heading": "Application Request for Individual Accounts",
+            "lastUpdatedBy": "Vikash Kumar",
+            "lastUpdateDate": "05-23-2018",
+            "ownership": "Individual",
+            "accountTypes": [
+                "Banking - Saving",
+                "Banking - Checking"
             ],
             "status": {
-                "code": "submitted",
-                "description": "Waiting for Jane Robbins"
+                "code": "waiting",
+                "description": "Waiting for Vikash kumar"
             },
-            "type": "joint",
-            "state": [
-                "New"
-            ],
-            "lastUpdatedBy": "Vikash Kumar",
-            "lastUpdateDate": "05-23-2018"
+            "priorityAction": "continue",
+            "actions": [
+                "continue",
+                "cancel"
+            ]
         },
         {
             "id": "2",
-            "heading": "Application for Individiual Account",
-            "title": "John Robbins",
-            "accountHolders": [
-                {
-                    "firstName": "John",
-                    "lastName": "Robbins",
-                    "middleName": "",
-                    "email": "johnRobbins@gmail.com",
-                    "role": [
-                        "primary"
-                    ]
-                }
+            "title": "Lionel Messi, Cristiano Ronaldo and Neymar",
+            "heading": "Application Request for Individual Accounts",
+            "lastUpdatedBy": "Neymar",
+            "lastUpdateDate": "06-23-2018",
+            "ownership": "Joint",
+            "accountTypes": [
+                "Banking - Saving"
             ],
             "status": {
-                "code": "completed",
-                "description": "Account Opened"
+                "code": "waiting",
+                "description": "Waiting for Lionel Messi"
             },
-            "type": "individual",
-            "state": [
-                "New"
-            ],
-            "lastUpdatedBy": "Karan Sharma",
-            "lastUpdateDate": "03-15-2018"
+            "priorityAction": "continue",
+            "actions": [
+                "continue",
+                "cancel"
+            ]
         },
         {
             "id": "3",
-            "heading": "Application for 2 Joint Accounts",
-            "title": "this is the title for this application",
-            "accountHolders": [
-                {
-                    "firstName": "Jurgen",
-                    "lastName": "Klopp",
-                    "middleName": "",
-                    "email": "josemourinho@gmail.com",
-                    "role": [
-                        "primary"
-                    ]
-                },
-                {
-                    "firstName": "Paul",
-                    "lastName": "Pogba",
-                    "middleName": "",
-                    "email": "paulPogba@gmail.com",
-                    "role": [
-                        "coApplicant"
-                    ]
-                }
+            "title": "Pulkit",
+            "heading": "Application Request for Individual Accounts",
+            "lastUpdatedBy": "Vikash Kumar",
+            "lastUpdateDate": "05-23-2018",
+            "ownership": "Individual",
+            "accountTypes": [
+                "Banking - Saving"
             ],
             "status": {
-                "code": "inProgress",
-                "description": "In Progress"
+                "code": "waiting",
+                "description": "Waiting for Vikash kumar"
             },
-            "type": "joint",
-            "state": [
-                "New"
-            ],
-            "lastUpdatedBy": "Tinsu Sasi",
-            "lastUpdateDate": "09-12-2018"
+            "priorityAction": "continue",
+            "actions": [
+                "continue",
+                "cancel"
+            ]
         },
         {
             "id": "4",
-            "heading": "Application for 2 Joint Accounts",
-            "title": "this is application title",
-            "accountHolders": [
-                {
-                    "firstName": "Jimmy",
-                    "lastName": "Hendrix",
-                    "middleName": "",
-                    "email": "josemourinho@gmail.com",
-                    "role": [
-                        "primary"
-                    ]
-                },
-                {
-                    "firstName": "John",
-                    "lastName": "Lenon",
-                    "middleName": "",
-                    "email": "janeRobbins@gmail.com",
-                    "role": [
-                        "coApplicant"
-                    ]
-                }
+            "title": "Pulkit",
+            "heading": "Application Request for Individual Accounts",
+            "lastUpdatedBy": "Vikash Kumar",
+            "lastUpdateDate": "05-23-2018",
+            "ownership": "Individual",
+            "accountTypes": [
+                "Banking - Saving"
             ],
             "status": {
-                "code": "cancelledByBanker",
-                "description": "Cancelled"
+                "code": "waiting",
+                "description": "Waiting for Vikash kumar"
             },
-            "type": "custodial",
-            "lastUpdatedBy": "Lionel Messi",
-            "lastUpdateDate": "03-05-2018"
+            "priorityAction": "continue",
+            "actions": [
+                "continue",
+                "cancel"
+            ]
         },
         {
-            "id": "4",
-            "heading": "Application for 2 Joint Accounts",
-            "title": "this is application title",
-            "accountHolders": [
-                {
-                    "firstName": "Jose",
-                    "lastName": "Mourinho",
-                    "middleName": "",
-                    "email": "josemourinho@gmail.com",
-                    "role": [
-                        "primary"
-                    ]
-                },
-                {
-                    "firstName": "Paul",
-                    "lastName": "Pogba",
-                    "middleName": "",
-                    "email": "janeRobbins@gmail.com",
-                    "role": [
-                        "coApplicant"
-                    ]
-                }
+            "id": "5",
+            "title": "Pulkit",
+            "heading": "Application Request for Individual Accounts",
+            "lastUpdatedBy": "Vikash Kumar",
+            "lastUpdateDate": "05-23-2018",
+            "ownership": "Individual",
+            "accountTypes": [
+                "Banking - Saving"
             ],
             "status": {
-                "code": "cancelledByUser",
-                "description": "Done"
+                "code": "waiting",
+                "description": "Waiting for Vikash kumar"
             },
-            "type": "trust",
-            "lastUpdatedBy": "Cristiano Ronaldo",
-            "lastUpdateDate": "10-05-2017"
+            "priorityAction": "continue",
+            "actions": [
+                "continue",
+                "cancel"
+            ]
+        },
+        {
+            "id": "6",
+            "title": "Pulkit",
+            "heading": "Application Request for Individual Accounts",
+            "lastUpdatedBy": "Vikash Kumar",
+            "lastUpdateDate": "05-23-2018",
+            "ownership": "Individual",
+            "accountTypes": [
+                "Banking - Saving"
+            ],
+            "status": {
+                "code": "waiting",
+                "description": "Waiting for Vikash kumar"
+            },
+            "priorityAction": "continue",
+            "actions": [
+                "continue",
+                "cancel"
+            ]
+        },
+        {
+            "id": "7",
+            "title": "Pulkit",
+            "heading": "Application Request for Individual Accounts",
+            "lastUpdatedBy": "Vikash Kumar",
+            "lastUpdateDate": "05-23-2018",
+            "ownership": "Individual",
+            "accountTypes": [
+                "Banking - Saving"
+            ],
+            "status": {
+                "code": "waiting",
+                "description": "Waiting for Vikash kumar"
+            },
+            "priorityAction": "continue",
+            "actions": [
+                "continue",
+                "cancel"
+            ]
+        },
+        {
+            "id": "8",
+            "title": "Pulkit",
+            "heading": "Application Request for Individual Accounts",
+            "lastUpdatedBy": "Vikash Kumar",
+            "lastUpdateDate": "05-23-2018",
+            "ownership": "Individual",
+            "accountTypes": [
+                "Banking - Saving"
+            ],
+            "status": {
+                "code": "waiting",
+                "description": "Waiting for Vikash kumar"
+            },
+            "priorityAction": "continue",
+            "actions": [
+                "continue",
+                "cancel"
+            ]
         }
     ]
 }

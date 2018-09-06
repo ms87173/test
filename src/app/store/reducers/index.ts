@@ -5,7 +5,6 @@ import { Params, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/ro
 
 import * as userInfoReducer from './user-info.reducer';
 import * as questionnaireReducer from './questionnaire.reducer';
-import * as applicationsReducer from './applications.reducer';
 import * as applicationRequestReducer from './application-request.reducer';
 
 export interface RouteStateUrl {
@@ -17,7 +16,6 @@ export interface RouteStateUrl {
 export interface AppState {
     user: userInfoReducer.UserInfoState,
     questionnaire: questionnaireReducer.QuestionnaireState,
-    applications: applicationsReducer.ApplicationsState,
     routerReducer: fromRouter.RouterReducerState,
     applicationRequest: applicationRequestReducer.ApplicationRequestState,
 }
@@ -25,7 +23,6 @@ export interface AppState {
 export const rootReducers: ActionReducerMap<AppState> = {
     user: userInfoReducer.reducer,
     questionnaire: questionnaireReducer.reducer,
-    applications: applicationsReducer.reducer,
     routerReducer: fromRouter.routerReducer,
     applicationRequest: applicationRequestReducer.reducer
 };
@@ -33,7 +30,6 @@ export const rootReducers: ActionReducerMap<AppState> = {
 export {
     userInfoReducer,
     questionnaireReducer,
-    applicationsReducer,
     applicationRequestReducer
 };
 

@@ -1,5 +1,5 @@
 import * as ddoApplicationsEffects from './ddo-applications.effects';
 
-export {
+export  {
     ddoApplicationsEffects
 };

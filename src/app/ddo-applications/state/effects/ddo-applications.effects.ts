@@ -12,7 +12,7 @@ import { of } from 'rxjs';
 import { ApplicationModel } from '../../../core/models/application.interface';
 
 @Injectable()
-export class ApplicationsEffectsService {
+export class DdoApplicationsEffects {
 
     @Effect() getApplicationsEffect = this.actions$.pipe(
         ofType(ActionTypes.GET_APPLICATIONS),
