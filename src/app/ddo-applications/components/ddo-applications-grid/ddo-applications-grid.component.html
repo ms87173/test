@@ -17,8 +17,16 @@
     </thead>
     <tbody class="table__body">
       <tr *ngFor="let item of config.data" class="table-row">
-        <td *ngFor="let col of item.columns" class="table-col" (click)='ongridItemClick(actionTypes.rowClicked, item.id)'>
-          <label-value-group [config]='getRowDetails(col)'></label-value-group>
+        <td *ngFor="let col of item.columns" class="table-col"
+          (click)='ongridItemClick(actionTypes.rowClicked, item.id)'>
+          <label-value-group *ngIf='!(col.accountTypes && col.accountTypes.length > 0)'
+              [config]='getRowDetails(col)'></label-value-group>
+          <div *ngIf='col.accountTypes && col.accountTypes.length > 0'>
+              <span *ngFor = 'let type of col.accountTypes'
+                class="grid-label--accountType">
+                  {{type}}
+              </span>
+          </div>
         </td>
         <td>
           <a class="btn btn-link btn-link--primary pl-0" (click)='ongridItemClick(actionTypes.rowClicked, item.id)'>Continue Now</a>
@@ -36,6 +44,11 @@
                       {{dropdownItem.value}}
                     </a>
                   </li>
+                  <li role="menuitem">
+                      <a class="dropdown-item" *ngFor='let dropdownItem of config.dropDownOptions' (click)='ongridItemClick(dropdownItem.key, item.id)'>
+                        {{dropdownItem.value}}
+                      </a>
+                    </li>
                 </ul>
               </div>
             </div>

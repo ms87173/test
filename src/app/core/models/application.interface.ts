@@ -6,15 +6,16 @@ export interface ApplicationInterface {
     status: {
         code: string,
         description: string
-    },
-    title: string,
-    accountHolders: Array<UserInfoInterface>,
+    };
+    title: string;
+    accountHolders: Array<UserInfoInterface>;
     active: boolean;
-    contactPerson: UserInfoInterface,
-    type: string;
+    contactPerson: UserInfoInterface;
+    ownership: string;
     state: Array<any>;
     lastUpdatedBy: string;
     lastUpdate: any;
+    accountTypes: any;
 }
 
 export class ApplicationModel implements ApplicationInterface {
@@ -25,10 +26,11 @@ export class ApplicationModel implements ApplicationInterface {
     accountHolders;
     active;
     contactPerson;
-    type;
+    ownership;
     state;
     lastUpdatedBy;
     lastUpdate;
+    accountTypes;
     constructor(data) {
         if (!data) {
             return null;
@@ -38,11 +40,9 @@ export class ApplicationModel implements ApplicationInterface {
         this.status = data.status;
         this.title = data.title;
         this.active = false;
-        this.accountHolders = data.accountHolders && data.accountHolders.map(e => {
-            new UserInfoModel(e)
-        })
+        this.accountTypes = data.accountTypes;
         this.contactPerson = new UserInfoModel(data.contactPerson);
-        this.type = data.type;
+        this.ownership = data.ownership;
         this.state = data.state;
         this.lastUpdatedBy = data.lastUpdatedBy;
         this.lastUpdate = data.lastUpdateDate;
