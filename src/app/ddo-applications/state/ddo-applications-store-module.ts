@@ -9,7 +9,7 @@ import { applicationsReducer } from './reducers';
   imports: [
     CommonModule,
     EffectsModule.forFeature([DdoApplicationsEffects]),
-    StoreModule.forFeature("ddoApplicationsFeature", applicationsReducer)
+    StoreModule.forFeature('ddoApplicationsFeature', applicationsReducer)
   ],
   declarations: []
 })

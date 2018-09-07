@@ -39,8 +39,7 @@ export class DdoApplicationsComponent implements OnInit {
       });
     this.store.select(fromApplicationsSelectors.ddoApplicationsSelectors.getApplications)
       .subscribe((applications: any) => {
-        this.gridConfig.data =
-          applications.map((application) => new ApplicationGridModel(application));
+        this.sortApplications(applications, { sortOrder: 'desc', key: 'lastUpdate' });
         this.applicationsData = applications;
       });
   }

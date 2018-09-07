@@ -10,7 +10,7 @@ export const InitialState: ApplicationState = {
     application: {},
     loaded: false,
     loading: false
-}
+};
 
 export function applicationReducer(
     state: ApplicationState = InitialState,
@@ -21,7 +21,7 @@ export function applicationReducer(
             return {
                 ...state,
                 loading: true
-            }
+            };
         case ActionTypes.GET_APPLICATION_REQUEST_SUCCESS:
             return {
                 ...state,

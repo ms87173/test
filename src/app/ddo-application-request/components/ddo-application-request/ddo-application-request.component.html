@@ -1,7 +1,7 @@
 <div class="container-fluid ddo-application-request">
     <div class="row ddo-application-request__page-heading mt-3">
         <div class="col-md-10  pt-3 pb-3">
-            <h5 class="heading">{{heading}}</h5>
+            <h5 class="heading">{{application$.heading}}</h5>
         </div>
         <div class="col-md-2 pt-3 pb-3">
             <a class="cancel-application"
@@ -15,12 +15,12 @@
     <div class="row">
         <div class="col-sm-3 pl-0 pr-0">
             <app-side-nav
-                [config]='workflows'
-                [(selectedParentId)]='selectedWorkflowId'
-                [(selectedChildId)]='selectedTaskId'
+                [config]='workflows$'
+                [(selectedParentId)]='currentWorkflowId$'
+                [(selectedChildId)]='currentTaskId$'
                 (actions)='onSideNavClick($event)'>
             </app-side-nav>
-            <contact-detail [config]='contactPersonDetails'></contact-detail>
+            <contact-detail [config]='contactPersonDetails$'></contact-detail>
         </div>
         <div class="col-sm-9 pl-0 ddo-application-request__tasks">
             <router-outlet></router-outlet>
@@ -38,12 +38,14 @@
             <div class="float-right">
                 <button type="button"
                     (click)="buttonActionsClick('back')"
-                    class="btn btn-outline-primary ddo-application-request__button  mr-3">
+                    class="btn btn-outline-primary ddo-application-request__button  mr-3"
+                    *ngIf="previousTaskId$">
                     Back
                 </button>
                 <button type="button"
                     (click)="buttonActionsClick('next')"
-                    class="btn btn-outline-primary ddo-application-request__button--next">
+                    class="btn btn-outline-primary ddo-application-request__button--next"
+                    *ngIf="nextTaskId$">
                     Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                 </button>
             </div>
