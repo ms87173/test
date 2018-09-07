@@ -4,13 +4,14 @@
 /*!**********************************************************!*\
   !*** ./src/app/core/constants/applications.constants.ts ***!
   \**********************************************************/
-/*! exports provided: APPLICATION_DROPDOWN_OPTIONS, SORT_ORDER, APPLICATION_GRID_HEADING, ACTION_TYPES, STATUS_MAPPING, APPLICATION_TYPE, ROLE */
+/*! exports provided: APPLICATION_DROPDOWN_OPTIONS, SORT_ORDER, APPLICATIONS_STATUS, APPLICATION_GRID_HEADING, ACTION_TYPES, STATUS_MAPPING, APPLICATION_TYPE, ROLE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "APPLICATION_DROPDOWN_OPTIONS", function() { return APPLICATION_DROPDOWN_OPTIONS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SORT_ORDER", function() { return SORT_ORDER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "APPLICATIONS_STATUS", function() { return APPLICATIONS_STATUS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "APPLICATION_GRID_HEADING", function() { return APPLICATION_GRID_HEADING; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ACTION_TYPES", function() { return ACTION_TYPES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "STATUS_MAPPING", function() { return STATUS_MAPPING; });
@@ -27,6 +28,11 @@ var SORT_ORDER = {
     ascending: 'asc',
     descending: 'desc'
 };
+var APPLICATIONS_STATUS = {
+    cancelled: 'CANCELED',
+    onHold: 'ON_HOLD',
+    inProgress: 'IN_PROGRESS'
+};
 var APPLICATION_GRID_HEADING = [
     {
         key: 'description',
@@ -39,10 +45,15 @@ var APPLICATION_GRID_HEADING = [
         showSortOption: false
     },
     {
-        key: 'modified',
+        key: 'accountType',
+        value: 'ACCOUNT TYPE',
+        showSortOption: false
+    },
+    {
+        key: 'lastUpdate',
         value: 'MODIFIED',
         showSortOption: true,
-        sortOrder: 'desc'
+        sortOrder: 'asc'
     },
     {
         key: 'status',

@@ -34287,10 +34287,8 @@ module.exports = function(module) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApplicationGridModel", function() { return ApplicationGridModel; });
 /* harmony import */ var _label_value_group_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./label-value-group.model */ "./src/app/core/models/label-value-group.model.ts");
-/* harmony import */ var _constants_applications_constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/applications.constants */ "./src/app/core/constants/applications.constants.ts");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
-
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
 
 
 var ApplicationGridModel = /** @class */ (function () {
@@ -34298,22 +34296,21 @@ var ApplicationGridModel = /** @class */ (function () {
         if (!data) {
             return null;
         }
-        var applicationType = new Map(Object.entries(_constants_applications_constants__WEBPACK_IMPORTED_MODULE_1__["APPLICATION_TYPE"]));
         this.id = data.id;
+        this.status = data.status && data.status.code;
         var lastModifiedBy = {
-            label: moment__WEBPACK_IMPORTED_MODULE_2__(data.lastUpdate).format('DD MMM YYYY'),
+            label: moment__WEBPACK_IMPORTED_MODULE_1__(data.lastUpdate).format('DD MMM YYYY'),
             value: "By " + data.lastUpdatedBy,
             labelClass: 'grid-label',
             valueClass: 'grid-value'
         };
         var viewData = {
             description: new _label_value_group_model__WEBPACK_IMPORTED_MODULE_0__["default"]({ label: data.title }),
-            ownerShip: new _label_value_group_model__WEBPACK_IMPORTED_MODULE_0__["default"]({ label: applicationType.get(data.type) }),
+            ownership: new _label_value_group_model__WEBPACK_IMPORTED_MODULE_0__["default"]({ label: data.ownership }),
+            accountTypes: data.accountTypes,
             lastUpdate: new _label_value_group_model__WEBPACK_IMPORTED_MODULE_0__["default"](lastModifiedBy),
             status: new _label_value_group_model__WEBPACK_IMPORTED_MODULE_0__["default"]({
                 label: data.status.description
-                // ...statusMapping[`${data.status.code}`],
-                // value: data.status.reason
             })
         };
         this.columns = Object.entries(viewData).map(function (e) {
@@ -34340,6 +34337,9 @@ var ApplicationGridModel = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ApplicationModel", function() { return ApplicationModel; });
 /* harmony import */ var _user_info_interface__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./user-info.interface */ "./src/app/core/models/user-info.interface.ts");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+
 
 var ApplicationModel = /** @class */ (function () {
     function ApplicationModel(data) {
@@ -34351,14 +34351,12 @@ var ApplicationModel = /** @class */ (function () {
         this.status = data.status;
         this.title = data.title;
         this.active = false;
-        this.accountHolders = data.accountHolders && data.accountHolders.map(function (e) {
-            new _user_info_interface__WEBPACK_IMPORTED_MODULE_0__["UserInfoModel"](e);
-        });
+        this.accountTypes = data.products;
         this.contactPerson = new _user_info_interface__WEBPACK_IMPORTED_MODULE_0__["UserInfoModel"](data.contactPerson);
-        this.type = data.type;
+        this.ownership = data.accountType;
         this.state = data.state;
         this.lastUpdatedBy = data.lastUpdatedBy;
-        this.lastUpdate = data.lastUpdateDate;
+        this.lastUpdate = moment__WEBPACK_IMPORTED_MODULE_1__(data.lastUpdateDate).format('MM DD YYYY HH:mm:ss');
     }
     return ApplicationModel;
 }());
@@ -34402,7 +34400,7 @@ var LabelValueGroupModel = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ddo-applications-grid table-responsive\">\r\n  <table class=\"table table-hover\">\r\n    <thead>\r\n      <tr>\r\n        <th *ngFor=\"let item of config.headings\"\r\n            [ngClass]=\"item.showSortOption ? 'cursor-pointer': 'cursor-default'\"\r\n            [class.active] = 'sortByKey === item.key'\r\n            (click)=\"item.showSortOption && ongridItemClick(actionTypes.sort, item)\">\r\n          {{item.value}}\r\n          <a *ngIf='item.showSortOption'>\r\n            <i *ngIf=\"item.sortOrder === 'asc'\" class=\"fa fa-caret-up float-right\" aria-hidden=\"true\"></i>\r\n            <i *ngIf=\"item.sortOrder === 'desc'\" class=\"fa fa-caret-down float-right\" aria-hidden=\"true\"></i>\r\n          </a>\r\n        </th>\r\n        <th></th>\r\n      </tr>\r\n    </thead>\r\n    <tbody class=\"table__body\">\r\n      <tr *ngFor=\"let item of config.data\" class=\"table-row\">\r\n        <td *ngFor=\"let col of item.columns\" class=\"table-col\" (click)='ongridItemClick(actionTypes.rowClicked, item.id)'>\r\n          <label-value-group [config]='getRowDetails(col)'></label-value-group>\r\n        </td>\r\n        <td>\r\n          <a class=\"btn btn-link btn-link--primary pl-0\" (click)='ongridItemClick(actionTypes.rowClicked, item.id)'>Continue Now</a>\r\n        </td>\r\n        <td>\r\n          <td>\r\n            <div class=\"col-sm-12\">\r\n              <div class=\"btn-group\" dropdown>\r\n                <a id=\"button-config1\" dropdownToggle class=\"kebab-link\" aria-controls=\"dropdown-config1\">\r\n                  <i class=\"fa fa-ellipsis-v\"></i>\r\n                </a>\r\n                <ul id=\"dropdown-config1\" *dropdownMenu class=\"dropdown-menu\" role=\"menu\" aria-labelledby=\"button-config1\">\r\n                  <li role=\"menuitem\">\r\n                    <a class=\"dropdown-item\" *ngFor='let dropdownItem of config.dropDownOptions' (click)='ongridItemClick(dropdownItem.key, item.id)'>\r\n                      {{dropdownItem.value}}\r\n                    </a>\r\n                  </li>\r\n                </ul>\r\n              </div>\r\n            </div>\r\n          </td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>"
+module.exports = "<div class=\"ddo-applications-grid table-responsive\">\r\n  <table class=\"table table-hover\">\r\n    <thead>\r\n      <tr>\r\n        <th *ngFor=\"let item of config.headings\"\r\n            [ngClass]=\"item.showSortOption ? 'cursor-pointer': 'cursor-default'\"\r\n            [class.active] = 'sortByKey === item.key'\r\n            (click)=\"item.showSortOption && ongridItemClick(actionTypes.sort, item)\">\r\n          {{item.value}}\r\n          <a *ngIf='item.showSortOption'>\r\n            <i *ngIf=\"item.sortOrder === 'asc'\" class=\"fa fa-caret-up float-right\" aria-hidden=\"true\"></i>\r\n            <i *ngIf=\"item.sortOrder === 'desc'\" class=\"fa fa-caret-down float-right\" aria-hidden=\"true\"></i>\r\n          </a>\r\n        </th>\r\n        <th></th>\r\n      </tr>\r\n    </thead>\r\n    <tbody class=\"table__body\">\r\n      <tr *ngFor=\"let item of config.data\" class=\"table-row\">\r\n        <td *ngFor=\"let col of item.columns\" class=\"table-col\"\r\n          (click)='ongridItemClick(actionTypes.rowClicked, item.id)'>\r\n          <label-value-group *ngIf='!(col.accountTypes && col.accountTypes.length > 0)'\r\n              [config]='getRowDetails(col)'></label-value-group>\r\n          <div *ngIf='col.accountTypes && col.accountTypes.length > 0'>\r\n              <span *ngFor = 'let type of col.accountTypes'\r\n                class=\"grid-label--accountType\">\r\n                  {{type}}\r\n              </span>\r\n          </div>\r\n        </td>\r\n        <td class=\"table-col\">\r\n          <a class=\"btn btn-link btn-link--primary pl-0\"\r\n            (click)='ongridItemClick(actionTypes.rowClicked, item.id)'\r\n            *ngIf='!(item.status === status.cancelled || item.status === status.onHold)'>Continue Now</a>\r\n        </td>\r\n        <td class=\"table-col\">\r\n            <div class=\"col-sm-12\">\r\n              <div class=\"btn-group\" dropdown>\r\n                <a id=\"button-config1\" dropdownToggle class=\"kebab-link\"\r\n                  [class.disabled]= '(item.status === status.cancelled || item.status === status.onHold)'\r\n                  aria-controls=\"dropdown-config1\">\r\n                  <i class=\"fa fa-ellipsis-v\"></i>\r\n                </a>\r\n                <ul id=\"dropdown-config1\" *dropdownMenu class=\"dropdown-menu\" role=\"menu\" aria-labelledby=\"button-config1\">\r\n                  <li role=\"menuitem\">\r\n                    <a class=\"dropdown-item\"\r\n                    *ngFor='let dropdownItem of config.dropDownOptions' (click)='ongridItemClick(actionTypes.rowClicked, item.id)'>\r\n                      {{dropdownItem.value}}\r\n                    </a>\r\n                  </li>\r\n                </ul>\r\n              </div>\r\n            </div>\r\n          </td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</div>"
 
 /***/ }),
 
@@ -34413,7 +34411,7 @@ module.exports = "<div class=\"ddo-applications-grid table-responsive\">\r\n  <t
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".ddo-applications-grid .table {\n  background: #ffffff;\n  white-space: nowrap;\n  margin-bottom: 0; }\n  .ddo-applications-grid .table thead th {\n    font-weight: 400;\n    color: #898b8d;\n    border-bottom: 1px solid #000000; }\n  .ddo-applications-grid .table thead th.active {\n      border-bottom: 2px solid #000000; }\n  .ddo-applications-grid .table thead th.active i {\n        color: #000000; }\n  .ddo-applications-grid .table__body .table-row {\n    border-bottom: 1px solid #dee2e6; }\n  .ddo-applications-grid .table__body .table-row .table-col {\n      vertical-align: middle; }\n  .ddo-applications-grid .table__body .dropdown-menu {\n    position: absolute;\n    will-change: transform;\n    top: 0px;\n    left: 0px;\n    -webkit-transform: translate3d(-160px, 0px, 0px) !important;\n    transform: translate3d(-160px, 0, 0px) !important; }\n  .ddo-applications-grid .table__body .dropdown-menu .dropdown-item {\n      cursor: pointer; }\n  .ddo-applications-grid .table__body .grid-label {\n    font-weight: bold; }\n  .ddo-applications-grid .table__body .grid-label-container {\n    display: block; }\n  .ddo-applications-grid .table__body .grid-value {\n    font-size: 12px;\n    color: #898b8d; }\n  .ddo-applications-grid .table__body .btn-group {\n    z-index: 1000;\n    cursor: pointer; }\n  .ddo-applications-grid .table__body .grid-badge {\n    margin-left: 10px; }\n"
+module.exports = ".ddo-applications-grid .table {\n  background: #ffffff;\n  white-space: nowrap;\n  margin-bottom: 0; }\n  .ddo-applications-grid .table thead {\n    border-bottom: 1px solid #000000; }\n  .ddo-applications-grid .table thead th {\n      font-weight: 400;\n      color: #898b8d;\n      border-bottom: 1px solid #000000; }\n  .ddo-applications-grid .table thead th.active {\n        border-bottom: 2px solid #000000; }\n  .ddo-applications-grid .table thead th.active i {\n          color: #000000; }\n  .ddo-applications-grid .table__body .table-row {\n    border-bottom: 1px solid #dee2e6; }\n  .ddo-applications-grid .table__body .table-row .table-col {\n      vertical-align: middle;\n      border-top: 0; }\n  .ddo-applications-grid .table__body .kebab-link.disabled {\n    pointer-events: none; }\n  .ddo-applications-grid .table__body .dropdown-menu {\n    position: absolute;\n    will-change: transform;\n    top: 0px;\n    left: 0px;\n    -webkit-transform: translate3d(-160px, 0px, 0px) !important;\n    transform: translate3d(-160px, 0, 0px) !important; }\n  .ddo-applications-grid .table__body .dropdown-menu .dropdown-item {\n      cursor: pointer; }\n  .ddo-applications-grid .table__body .grid-label {\n    font-weight: bold; }\n  .ddo-applications-grid .table__body .grid-label--accountType {\n      display: block; }\n  .ddo-applications-grid .table__body .grid-label-container {\n    display: block; }\n  .ddo-applications-grid .table__body .grid-value {\n    font-size: 12px;\n    color: #898b8d; }\n  .ddo-applications-grid .table__body .btn-group {\n    z-index: 1000;\n    cursor: pointer; }\n  .ddo-applications-grid .table__body .grid-badge {\n    margin-left: 10px; }\n"
 
 /***/ }),
 
@@ -34446,6 +34444,7 @@ var DdoApplicationsGridComponent = /** @class */ (function () {
     function DdoApplicationsGridComponent() {
         this.actions = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.actionTypes = _core_constants_applications_constants__WEBPACK_IMPORTED_MODULE_2__["ACTION_TYPES"];
+        this.status = _core_constants_applications_constants__WEBPACK_IMPORTED_MODULE_2__["APPLICATIONS_STATUS"];
     }
     DdoApplicationsGridComponent.prototype.ngOnInit = function () {
     };
@@ -34604,7 +34603,7 @@ var DdoApplicationsRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ddo-applications container-fluid  mt-2\">\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-12 heading pl-md-5 pr-md-5\">\r\n      <h6 class=\"pt-2 pb-2\">My Applications</h6>\r\n    </div>\r\n    <div class=\"col-sm-12 mt-3 pl-md-5 pr-md-5\">\r\n      <app-ddo-applications-grid [config]=\"gridConfig\" (actions)=\"gridActions($event)\">\r\n      </app-ddo-applications-grid>\r\n    </div>\r\n    <!-- <div class=\"col-sm-12 col-md-4 col-lg-3 mt-5 pl-md-5 pr-md-5\">\r\n      <contact-detail [config]='contactPersonDetails'></contact-detail>\r\n    </div> -->\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"ddo-applications container-fluid  mt-2\">\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-12 heading pl-md-5 pr-md-5\">\r\n      <h5 class=\"pt-2 pb-2\">My Applications</h5>\r\n    </div>\r\n    <div class=\"col-sm-12 mt-3 pl-md-5 pr-md-5\">\r\n      <app-ddo-applications-grid [config]=\"gridConfig\" (actions)=\"gridActions($event)\">\r\n      </app-ddo-applications-grid>\r\n    </div>\r\n    <!-- <div class=\"col-sm-12 col-md-4 col-lg-3 mt-5 pl-md-5 pr-md-5\">\r\n      <contact-detail [config]='contactPersonDetails'></contact-detail>\r\n    </div> -->\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -34677,8 +34676,7 @@ var DdoApplicationsComponent = /** @class */ (function () {
         });
         this.store.select(_state__WEBPACK_IMPORTED_MODULE_2__["fromApplicationsSelectors"].ddoApplicationsSelectors.getApplications)
             .subscribe(function (applications) {
-            _this.gridConfig.data =
-                applications.map(function (application) { return new _core_models_application_grid_model__WEBPACK_IMPORTED_MODULE_1__["ApplicationGridModel"](application); });
+            _this.sortApplications(applications, { sortOrder: 'desc', key: 'lastUpdate' });
             _this.applicationsData = applications;
         });
     }
@@ -34916,7 +34914,7 @@ var DdoApplicationsStateModule = /** @class */ (function () {
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
                 _ngrx_effects__WEBPACK_IMPORTED_MODULE_3__["EffectsModule"].forFeature([_effects_ddo_applications_effects__WEBPACK_IMPORTED_MODULE_4__["DdoApplicationsEffects"]]),
-                _ngrx_store__WEBPACK_IMPORTED_MODULE_2__["StoreModule"].forFeature("ddoApplicationsFeature", _reducers__WEBPACK_IMPORTED_MODULE_5__["applicationsReducer"])
+                _ngrx_store__WEBPACK_IMPORTED_MODULE_2__["StoreModule"].forFeature('ddoApplicationsFeature', _reducers__WEBPACK_IMPORTED_MODULE_5__["applicationsReducer"])
             ],
             declarations: []
         })
@@ -34974,23 +34972,11 @@ var DdoApplicationsEffects = /** @class */ (function () {
             }
             return new _actions_ddo_applications_actions__WEBPACK_IMPORTED_MODULE_3__["GetApplicationsSuccess"]([]);
         }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["of"])(new _actions_ddo_applications_actions__WEBPACK_IMPORTED_MODULE_3__["GetApplicationsFailure"](err)); })); }));
-        this.sortApplicationsEffect = this.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_ddo_applications_actions__WEBPACK_IMPORTED_MODULE_3__["ActionTypes"].SORT_APPLICATIONS), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function (action) { return _this.applicationsService.sortApplications('status')
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (applications) {
-            if (applications && applications.length > 0) {
-                var payload = applications.map(function (e) { return new _core_models_application_interface__WEBPACK_IMPORTED_MODULE_6__["ApplicationModel"](e); });
-                return new _actions_ddo_applications_actions__WEBPACK_IMPORTED_MODULE_3__["SortApplicationsSuccess"](payload);
-            }
-            return new _actions_ddo_applications_actions__WEBPACK_IMPORTED_MODULE_3__["SortApplicationsSuccess"]([]);
-        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["of"])(new _actions_ddo_applications_actions__WEBPACK_IMPORTED_MODULE_3__["GetApplicationsFailure"](err)); })); }));
     }
     __decorate([
         Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["Effect"])(),
         __metadata("design:type", Object)
     ], DdoApplicationsEffects.prototype, "getApplicationsEffect", void 0);
-    __decorate([
-        Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["Effect"])(),
-        __metadata("design:type", Object)
-    ], DdoApplicationsEffects.prototype, "sortApplicationsEffect", void 0);
     DdoApplicationsEffects = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
         __metadata("design:paramtypes", [_core_services_applications_service__WEBPACK_IMPORTED_MODULE_1__["ApplicationsService"],
