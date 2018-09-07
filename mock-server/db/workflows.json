@@ -39,7 +39,7 @@
                 {
                     "label": "Trusted Contact",
                     "description": "This is your primary interest bearing account.",
-                    "id": "22",
+                    "id": "2",
                     "status": "IN_PROGRESS",
                     "type": "questionnaire"
                 },
