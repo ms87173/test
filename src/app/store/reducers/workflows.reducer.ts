@@ -1,26 +1,24 @@
 import { ActionTypes, WorkflowsActions } from '../actions/workflows.action';
-import { workflowsSelectors } from '../selectors';
 
 export interface WorkflowsState {
-    workflows: any,
+    workflows: any;
     activeTask: {
         workflowId: any,
         task: any
-    },
+    };
     previousTask: {
         workflowId: any,
         task: any
-    },
+    };
     nextTask: {
         workflowId: any,
         task: any
-    },
-    firstTaskId: string,
-    lastTaskId: string,
-    loaded: boolean,
-    loading: boolean
+    };
+    firstTaskId: string;
+    lastTaskId: string;
+    loaded: boolean;
+    loading: boolean;
 }
-//we can dispatch change task action and calculate all the task again.
 
 export const InitialState: WorkflowsState = {
     workflows: [],
@@ -58,7 +56,7 @@ export const InitialState: WorkflowsState = {
     lastTaskId: '',
     loaded: false,
     loading: false
-}
+};
 
 export function reducer(
     state: WorkflowsState = InitialState,
@@ -74,43 +72,43 @@ export function reducer(
                 firstTaskId,
                 loaded: true,
                 loading: false
-            }
+            };
         case ActionTypes.SET_ACTIVE_TASK:
             const { workflowId, taskId } = action.payload;
             if (state.workflows && state.workflows.length > 0) {
                 let count1 = 0,
                     taskFound = false,
-                    nextWorkflow = { id: '', tasks: []},
+                    nextWorkflow = { id: '', tasks: [] },
                     previousWorkflow = { id: '', tasks: [] },
                     currentWorkflow = { id: '', tasks: [] },
-                    nextTask = {id: ''},
-                    currentTask = {id: ''},
-                    previousTask = {id: ''};
+                    nextTask = { id: '' },
+                    currentTask = { id: '' },
+                    previousTask = { id: '' };
 
                 const workflows = state.workflows;
-                while(count1 < state.workflows.length) {
-                    nextWorkflow = workflows[count1 + 1];
+                while (count1 < workflows.length) {
+                    nextWorkflow = workflows[count1 + 1] || '';
                     currentWorkflow = workflows[count1];
-                    previousWorkflow = workflows[count1 - 1];
+                    previousWorkflow = workflows[count1 - 1] || '';
                     const tasks = currentWorkflow && currentWorkflow.tasks;
-                    if(currentWorkflow.id === workflowId && tasks && tasks.length > 0) {
+                    if (currentWorkflow.id === workflowId && tasks && tasks.length > 0) {
                         let count2 = 0;
-                        while(count2 < tasks.length) {
+                        while (count2 < tasks.length) {
                             currentTask = tasks[count2];
                             nextTask = tasks[count2 + 1];
                             previousTask = tasks[count2 - 1];
-                            if(currentTask.id === taskId) {
+                            if (currentTask.id === taskId) {
                                 taskFound = true;
-                                if(!nextTask) {
-                                    nextTask = nextWorkflow && nextWorkflow.tasks[0];
+                                if (!nextTask) {
+                                    nextTask = nextWorkflow && nextWorkflow.tasks[0]
                                 } else {
                                     nextWorkflow = currentWorkflow;
                                 }
-                                if(!previousTask) {
+                                if (!previousTask) {
                                     const len = previousWorkflow &&
                                         previousWorkflow.tasks &&
                                         previousWorkflow.tasks.length;
-                                    previousTask = len && previousWorkflow.tasks[len-1];
+                                    previousTask = len && previousWorkflow.tasks[len - 1];
                                 } else {
                                     previousWorkflow = currentWorkflow;
                                 }
@@ -119,7 +117,7 @@ export function reducer(
                             count2++;
                         }
                     }
-                    if(taskFound) {
+                    if (taskFound) {
                         break;
                     }
                     count1++;
@@ -129,28 +127,43 @@ export function reducer(
                     task: currentTask
                 };
                 const nextStateTask = {
-                    workflowId: nextWorkflow && nextWorkflow.id,
-                    task: nextTask
+                    workflowId: (nextWorkflow && nextWorkflow.id) || '',
+                    task: nextTask ||
+                        {
+                            label: '',
+                            description: '',
+                            id: '',
+                            status: '',
+                            type: ''
+                        }
                 };
                 const previousStateTask = {
-                    workflowId: previousWorkflow && previousWorkflow.id,
-                    task: previousTask
+                    workflowId: (previousWorkflow && previousWorkflow.id) || '',
+                    task: previousTask ||
+                        {
+                            label: '',
+                            description: '',
+                            id: '',
+                            status: '',
+                            type: ''
+                        }
                 };
-                const x= {
-                    ...state,
-                    activeTask,
-                    previousTask: previousStateTask,
-                    nextTask: nextStateTask
+                // const x = {
+                //     ...state,
+                //     activeTask,
+                //     previousTask: previousStateTask,
+                //     nextTask: nextStateTask
 
-                }
-                console.log(x);
+                // };
+                // console.log(x);
                 return {
                     ...state,
                     activeTask,
                     previousTask: previousStateTask,
                     nextTask: nextStateTask
-                }
+                };
             }
+            break;
         default:
             return state;
     }
