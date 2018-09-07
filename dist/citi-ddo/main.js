@@ -1481,39 +1481,41 @@ var NgxFormlyParserService = /** @class */ (function () {
         var FormlyFieldConfigArray = [];
         var currSection = __assign({}, currentSection);
         currSection.questions.map(function (question) {
-            var field = {};
-            field.key = question.id.toString();
-            if (field.key == currentQuestionId) {
-                field.focus = true;
+            if (_custom_formly_fields_enums_custom_components_enum__WEBPACK_IMPORTED_MODULE_5__["EXISTING_COMPONENTS"].includes(question.type) && !question.recurrent) {
+                var field = {};
+                field.key = question.id.toString();
+                if (field.key == currentQuestionId) {
+                    field.focus = true;
+                }
+                field.type = question.type;
+                field.lifecycle = _this.formlyFieldsService
+                    .getFormlyLifeCycleEventByQuestionType(field.type, requestId, workflowId, taskId);
+                field.templateOptions = {
+                    label: question.label || "",
+                    options: question.options || [],
+                    required: question.required || false,
+                    disabled: question.disabled || false,
+                    recurrent: question.recurrent || false
+                };
+                if (question.answers && question.answers.length > 0) {
+                    field = _this.setDefaultValuesFromAnswers(question.answers, field, question.recurrent);
+                    console.log(question.answers);
+                }
+                if (question.max) {
+                    field.templateOptions.max = question.max;
+                }
+                if (question.maxLength) {
+                    field.templateOptions.maxLength = question.maxLength;
+                }
+                if (question.min) {
+                    field.templateOptions.min = question.min;
+                }
+                if (question.minLength) {
+                    field.templateOptions.minLength = question.minLength;
+                }
+                field = _this.getFormlyFieldArrayConfigByQuestionType(field);
+                FormlyFieldConfigArray.push(field);
             }
-            field.type = question.type;
-            field.lifecycle = _this.formlyFieldsService
-                .getFormlyLifeCycleEventByQuestionType(field.type, requestId, workflowId, taskId);
-            field.templateOptions = {
-                label: question.label || "",
-                options: question.options || [],
-                required: question.required || false,
-                disabled: question.disabled || false,
-                recurrent: question.recurrent || false
-            };
-            if (question.answers && question.answers.length > 0) {
-                field = _this.setDefaultValuesFromAnswers(question.answers, field, question.recurrent);
-                console.log(question.answers);
-            }
-            if (question.max) {
-                field.templateOptions.max = question.max;
-            }
-            if (question.maxLength) {
-                field.templateOptions.maxLength = question.maxLength;
-            }
-            if (question.min) {
-                field.templateOptions.min = question.min;
-            }
-            if (question.minLength) {
-                field.templateOptions.minLength = question.minLength;
-            }
-            field = _this.getFormlyFieldArrayConfigByQuestionType(field);
-            FormlyFieldConfigArray.push(field);
         });
         return FormlyFieldConfigArray;
     };
@@ -2928,12 +2930,13 @@ var CustomFormlyFieldsModule = /** @class */ (function () {
 /*!**********************************************************************!*\
   !*** ./src/app/custom-formly-fields/enums/custom-components.enum.ts ***!
   \**********************************************************************/
-/*! exports provided: CustomComponentsEnum */
+/*! exports provided: CustomComponentsEnum, EXISTING_COMPONENTS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomComponentsEnum", function() { return CustomComponentsEnum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EXISTING_COMPONENTS", function() { return EXISTING_COMPONENTS; });
 var CustomComponentsEnum;
 (function (CustomComponentsEnum) {
     CustomComponentsEnum["CUSTOM_CHECKBOX"] = "custom-checkbox";
@@ -2947,6 +2950,16 @@ var CustomComponentsEnum;
     CustomComponentsEnum["CUSTOM_EMAIL"] = "custom-email";
     CustomComponentsEnum["CUSTOM_PHONE"] = "custom-phone";
 })(CustomComponentsEnum || (CustomComponentsEnum = {}));
+var EXISTING_COMPONENTS = [
+    CustomComponentsEnum.CUSTOM_CHECKBOX,
+    CustomComponentsEnum.CUSTOM_DROPDOWN,
+    CustomComponentsEnum.CUSTOM_RADIO_BUTTON,
+    // CustomComponentsEnum.CUSTOM_TYPEAHEAD,
+    CustomComponentsEnum.CUSTOM_DATEPICKER,
+    // CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS,
+    // CustomComponentsEnum.CUSTOM_ADDRESS_PROOF,
+    CustomComponentsEnum.CUSTOM_TEXTBOX,
+];
 
 
 /***/ }),
@@ -4339,7 +4352,7 @@ module.exports = "<div class=\"side-nav\">\r\n  <accordion>\r\n    <accordion-gr
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".side-nav {\n  border: 1px solid #eeeeee; }\n  .side-nav .status-container {\n    background: orange;\n    border: solid 1px orange;\n    position: relative;\n    display: block;\n    line-height: 20px;\n    height: 22px;\n    width: 100px;\n    margin-left: 6px; }\n  .side-nav .status-container .status-text {\n      padding-left: 10px;\n      color: white; }\n  .side-nav .status-container:before {\n      content: \"\";\n      display: inline-block;\n      position: absolute;\n      border: 10px solid orange;\n      border-color: transparent transparent transparent orange;\n      top: 0px; }\n  .side-nav .status-container:after {\n      content: \"\";\n      display: inline-block;\n      position: absolute;\n      border: 9px solid white;\n      border-color: transparent transparent transparent white;\n      top: 1px;\n      left: -1px; }\n  .side-nav .collapsible-icon {\n    -webkit-text-stroke: 2px white; }\n  .side-nav .status-icon {\n    position: absolute;\n    -webkit-transform: translate(0, -50%);\n            transform: translate(0, -50%);\n    top: 50%;\n    right: 20%; }\n  .side-nav .status-icon--inprogress {\n      color: orange; }\n  .side-nav .status-icon--completed {\n      color: #1568a9;\n      -webkit-text-stroke: 1px white; }\n  .side-nav__heading {\n    line-height: 100%; }\n  .side-nav .role {\n    font-size: 0.7rem;\n    color: darkgrey; }\n  .side-nav .card {\n    border: 0; }\n  .side-nav .card-header {\n    background-color: white;\n    cursor: pointer;\n    min-height: 65px;\n    max-height: 65px; }\n  .side-nav .card-body {\n    padding: 0; }\n  .side-nav .list-item {\n    padding-left: 18%;\n    padding-right: 0;\n    cursor: pointer;\n    min-height: 65px;\n    border: 0;\n    background: #fafafa;\n    border: 1px solid #e5e5e5; }\n  .side-nav .list-item .status-container {\n      width: 76px; }\n  .side-nav .list-item .status-container:after {\n      border: 9px solid #fafafa;\n      border-color: transparent transparent transparent #fafafa; }\n  .side-nav .list-item:hover {\n      background: #e6f8fe; }\n  .side-nav .list-item:hover .collapsible-icon {\n        -webkit-text-stroke: 1px #e6f8fe; }\n  .side-nav .list-item:hover .status-container:after {\n        border: 9px solid #e6f8fe;\n        border-color: transparent transparent transparent #e6f8fe; }\n  .side-nav .list-item.active {\n      padding-left: 17%;\n      background: #e6f8fe;\n      color: black;\n      font-weight: bold;\n      border-left: 5px solid #005AA1; }\n  .side-nav .list-item.active a {\n        font-weight: bold; }\n  .side-nav .list-item.active i.status-icon--completed {\n        -webkit-text-stroke: 1px #e6f8fe; }\n  .side-nav .list-item.active .status-container {\n        width: 76px; }\n  .side-nav .list-item.active .status-container .status-text {\n          font-weight: 400; }\n  .side-nav .list-item.active .status-container:after {\n        border: 9px solid #e6f8fe;\n        border-color: transparent transparent transparent #e6f8fe; }\n  .side-nav .list-item .status-icon {\n      position: absolute;\n      right: 6%; }\n  .child-link {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 15px;\n  font-weight: 400; }\n  .panel-open .collapsible-icon {\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg); }\n  .panel-open .side-nav__status .status-icon--completed {\n  display: none; }\n  .panel-open .side-nav__status .status-container {\n  display: none; }\n"
+module.exports = ".side-nav {\n  border: 1px solid #eeeeee; }\n  .side-nav .status-container {\n    background: orange;\n    border: solid 1px orange;\n    position: relative;\n    display: block;\n    line-height: 20px;\n    height: 22px;\n    width: 100px;\n    margin-left: 6px; }\n  .side-nav .status-container .status-text {\n      padding-left: 10px;\n      font-size: 14px;\n      font-weight: 500;\n      color: white; }\n  .side-nav .status-container:before {\n      content: \"\";\n      display: inline-block;\n      position: absolute;\n      border: 10px solid orange;\n      border-color: transparent transparent transparent orange;\n      top: 0px; }\n  .side-nav .status-container:after {\n      content: \"\";\n      display: inline-block;\n      position: absolute;\n      border: 9px solid white;\n      border-color: transparent transparent transparent white;\n      top: 1px;\n      left: -1px; }\n  .side-nav .collapsible-icon {\n    -webkit-text-stroke: 2px white; }\n  .side-nav .status-icon {\n    position: absolute;\n    -webkit-transform: translate(0, -50%);\n            transform: translate(0, -50%);\n    top: 50%;\n    right: 20%; }\n  .side-nav .status-icon--inprogress {\n      color: orange; }\n  .side-nav .status-icon--completed {\n      color: #1568a9;\n      -webkit-text-stroke: 1px white; }\n  .side-nav__heading {\n    line-height: 100%; }\n  .side-nav .role {\n    font-size: 0.7rem;\n    color: darkgrey; }\n  .side-nav .card {\n    border: 0; }\n  .side-nav .card-header {\n    background-color: white;\n    cursor: pointer;\n    min-height: 65px;\n    max-height: 65px; }\n  .side-nav .card-body {\n    padding: 0; }\n  .side-nav .list-item {\n    padding-left: 18%;\n    padding-right: 0;\n    cursor: pointer;\n    min-height: 65px;\n    border: 0;\n    background: #fafafa;\n    border: 1px solid #e5e5e5; }\n  .side-nav .list-item .status-container {\n      width: 76px; }\n  .side-nav .list-item .status-container:after {\n      border: 9px solid #fafafa;\n      border-color: transparent transparent transparent #fafafa; }\n  .side-nav .list-item:hover {\n      background: #e6f8fe; }\n  .side-nav .list-item:hover .collapsible-icon {\n        -webkit-text-stroke: 1px #e6f8fe; }\n  .side-nav .list-item:hover .status-container:after {\n        border: 9px solid #e6f8fe;\n        border-color: transparent transparent transparent #e6f8fe; }\n  .side-nav .list-item.active {\n      padding-left: 17%;\n      background: #e6f8fe;\n      color: black;\n      font-weight: bold;\n      border-left: 5px solid #005AA1; }\n  .side-nav .list-item.active a {\n        font-weight: bold; }\n  .side-nav .list-item.active i.status-icon--completed {\n        -webkit-text-stroke: 1px #e6f8fe; }\n  .side-nav .list-item.active .status-container {\n        width: 76px; }\n  .side-nav .list-item.active .status-container .status-text {\n          font-weight: 500; }\n  .side-nav .list-item.active .status-container:after {\n        border: 9px solid #e6f8fe;\n        border-color: transparent transparent transparent #e6f8fe; }\n  .side-nav .list-item .status-icon {\n      position: absolute;\n      right: 6%; }\n  .child-link {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 15px;\n  font-weight: 400; }\n  .panel-open .collapsible-icon {\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg); }\n  .panel-open .side-nav__status .status-icon--completed {\n  display: none; }\n  .panel-open .side-nav__status .status-container {\n  display: none; }\n"
 
 /***/ }),
 
