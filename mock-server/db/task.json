@@ -32,7 +32,7 @@
                             "tooltipText": "<string>",
                             "answers": [
                                 {
-                                  "value": "false"
+                                  "value":false
                                 }
                               ]                            
                             
