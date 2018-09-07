@@ -6,11 +6,14 @@ import {
     GetApplicationWorkflows,
     GetApplicationWorkflowsFailure,
     GetApplicationWorkflowsSuccess,
-    SaveActiveTask,
+    SetActiveTask,
+    SaveActiveTaskAndNext,
+    SaveActiveTaskAndExit,
 } from '../actions/workflows.action';
 import { switchMap, map, catchError, filter } from 'rxjs/operators';
 import { of } from 'rxjs';
 import * as fromRouterActions from '../actions/router.actions';
+import { RouterGo } from '../actions/router.actions';
 
 @Injectable()
 export class ApplicationWorkflowsEffects {
@@ -47,7 +50,7 @@ export class ApplicationWorkflowsEffects {
                                     workflows,
                                     lastTaskId,
                                     firstTaskId
-                                })
+                                });
                             }
                         ),
                         catchError(
@@ -55,15 +58,50 @@ export class ApplicationWorkflowsEffects {
                         )
                     )
         ));
-        // @Effect() saveApplicationRequestTaskEffect = this.actions$.pipe(
-        //     ofType(ActionTypes.SAVE_APPLICATION_REQUEST_ACTIVE_TASK),
-        //     filter((action: SaveActiveTask) =>
-        //         this.applicationRequestService.saveApplicationRequestTask(action.payload),
-        //         map((response) => {
-        //             console.log(response);
-        //             console.log('Task is Saved');    
-        //         })
-        //     );
+        @Effect() saveAndNextRequestTaskEffect = this.actions$.pipe(
+            ofType(ActionTypes.SAVE_NEXT_REQUEST_ACTIVE_TASK),
+            switchMap((action: SaveActiveTaskAndNext) =>
+                this.applicationRequestService
+                    .saveApplicationRequestTask(action.payload.current)
+                    .pipe(
+                        map(response => {
+                            const { workflowId, taskId} = action.payload;
+                            console.log(response);
+                            console.log(`Task is Saved Redirecting to next task with workflowId ${workflowId} and taskId ${taskId}`);
+                            return new SetActiveTask({
+                                workflowId,
+                                taskId
+                            });
+                        }),
+                        catchError(
+                            error => of(
+                                new RouterGo({
+                                    path: ['ddo', 'error', { ...error }]
+                                }))
+                        )
+                    )
+                ));
+        @Effect() saveAndExitRequestTaskEffect = this.actions$.pipe(
+            ofType(ActionTypes.SAVE_EXIT_REQUEST_ACTIVE_TASK),
+            switchMap((action: SaveActiveTaskAndExit) =>
+                this.applicationRequestService
+                    .saveApplicationRequestTask(action.payload)
+                    .pipe(
+                        map(response => {
+                            console.log(response);
+                            console.log('Task is Saved');
+                            return new RouterGo({
+                                path: ['ddo', 'my-applications']
+                            });
+                        }),
+                        catchError(
+                            error => of(
+                                new RouterGo({
+                                    path: ['ddo', 'error', { ...error }]
+                                }))
+                        )
+                    )
+                ));
 
     constructor(
         private applicationRequestService: ApplicationRequestService,

@@ -1,5 +1,5 @@
-import { Action } from "@ngrx/store";
-import { NavigationExtras } from "@angular/router";
+import { Action } from '@ngrx/store';
+import { NavigationExtras } from '@angular/router';
 
 export enum ActionTypes {
     ROUTER_GO = '[Router] Go',
