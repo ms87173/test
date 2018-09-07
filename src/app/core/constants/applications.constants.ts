@@ -36,7 +36,7 @@ export const APPLICATION_GRID_HEADING = [
         key: 'lastUpdate',
         value: 'MODIFIED',
         showSortOption: true,
-        sortOrder: 'desc'
+        sortOrder: 'asc'
     },
     {
         key: 'status',

@@ -4,6 +4,7 @@
         white-space: nowrap;
         margin-bottom: 0;
         thead {
+            border-bottom: 1px solid #000000;
             th {
                 font-weight: 400;
                 color: #898b8d;
@@ -21,6 +22,12 @@
                 border-bottom: 1px solid #dee2e6;
                 .table-col {
                     vertical-align: middle;
+                    border-top: 0;
+                }
+            }
+            .kebab-link {
+                &.disabled {
+                    pointer-events: none;
                 }
             }
             .dropdown-menu {

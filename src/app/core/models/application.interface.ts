@@ -1,4 +1,5 @@
 import { UserInfoInterface, UserInfoModel } from './user-info.interface';
+import * as moment from 'moment';
 
 export interface ApplicationInterface {
     id: any;
@@ -45,6 +46,6 @@ export class ApplicationModel implements ApplicationInterface {
         this.ownership = data.accountType;
         this.state = data.state;
         this.lastUpdatedBy = data.lastUpdatedBy;
-        this.lastUpdate = data.lastUpdateDate;
+        this.lastUpdate = moment(data.lastUpdateDate).format('MM DD YYYY HH:mm:ss');
     }
 }
