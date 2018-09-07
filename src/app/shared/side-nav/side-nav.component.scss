@@ -11,6 +11,8 @@
         margin-left: 6px;
         .status-text {
             padding-left: 10px;
+            font-size: 14px;
+            font-weight: 500;
             color: white;
         }
         &:before {
@@ -111,7 +113,7 @@
             .status-container {
                 width: 76px;
                 .status-text {
-                    font-weight: 400;
+                    font-weight: 500;
                 }
             }
             .status-container:after {
