@@ -12,7 +12,7 @@ import { Store } from '@ngrx/store';
 import { fromRootReducers } from '../../store';
 import { Task, FormlyFieldConfigArrayCollection, Answer } from '../models';
 import { debounceTime } from 'rxjs/operators';
-import { CustomComponentsEnum } from '../../custom-formly-fields/enums/custom-components.enum';
+import { CustomComponentsEnum, EXISTING_COMPONENTS } from '../../custom-formly-fields/enums/custom-components.enum';
 import { emailFieldArray } from '../../custom-formly-fields/formly-configs/email-field-array';
 import { FormlyFieldsService } from './formly-fields.service';
 import { PhoneFieldConfig } from '../../custom-formly-fields/formly-configs/phone-field.config';
@@ -187,44 +187,48 @@ export class NgxFormlyParserService {
     let FormlyFieldConfigArray: FormlyFieldConfig[] = [];
     let currSection = { ...currentSection };
     currSection.questions.map((question: Question) => {
-      let field: FormlyFieldConfig = {};
-      field.key = question.id.toString();
-      if (field.key == currentQuestionId) {
-        field.focus = true;
-      }
-      field.type = question.type;
-      field.lifecycle = this.formlyFieldsService
-        .getFormlyLifeCycleEventByQuestionType(field.type, requestId, workflowId, taskId);
-      field.templateOptions = {
-        label: question.label || "",
-        options: question.options || [],
-        required: question.required || false,
-        disabled: question.disabled || false,
-        recurrent: question.recurrent || false
+      if (EXISTING_COMPONENTS.includes(question.type) && !question.recurrent) {
 
-      };
 
-      if (question.answers && question.answers.length > 0) {
-        field = this.setDefaultValuesFromAnswers(question.answers, field, question.recurrent)
-      console.log(question.answers)
-      }
+        let field: FormlyFieldConfig = {};
+        field.key = question.id.toString();
+        if (field.key == currentQuestionId) {
+          field.focus = true;
+        }
+        field.type = question.type;
+        field.lifecycle = this.formlyFieldsService
+          .getFormlyLifeCycleEventByQuestionType(field.type, requestId, workflowId, taskId);
+        field.templateOptions = {
+          label: question.label || "",
+          options: question.options || [],
+          required: question.required || false,
+          disabled: question.disabled || false,
+          recurrent: question.recurrent || false
 
-    
+        };
 
-      if (question.max) {
-        field.templateOptions.max = question.max;
+        if (question.answers && question.answers.length > 0) {
+          field = this.setDefaultValuesFromAnswers(question.answers, field, question.recurrent)
+          console.log(question.answers)
+        }
+
+
+
+        if (question.max) {
+          field.templateOptions.max = question.max;
+        }
+        if (question.maxLength) {
+          field.templateOptions.maxLength = question.maxLength;
+        }
+        if (question.min) {
+          field.templateOptions.min = question.min;
+        }
+        if (question.minLength) {
+          field.templateOptions.minLength = question.minLength;
+        }
+        field = this.getFormlyFieldArrayConfigByQuestionType(field);
+        FormlyFieldConfigArray.push(field);
       }
-      if (question.maxLength) {
-        field.templateOptions.maxLength = question.maxLength;
-      }
-      if (question.min) {
-        field.templateOptions.min = question.min;
-      }
-      if (question.minLength) {
-        field.templateOptions.minLength = question.minLength;
-      }
-      field = this.getFormlyFieldArrayConfigByQuestionType(field);
-      FormlyFieldConfigArray.push(field);
     });
     return FormlyFieldConfigArray;
   }

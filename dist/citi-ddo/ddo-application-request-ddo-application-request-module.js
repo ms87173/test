@@ -170,7 +170,11 @@ var DdoApplicationRequestTasksComponent = /** @class */ (function () {
             _this.taskRequest.workflowId = activeTask.workflowId;
             _this.taskRequest.taskId = activeTask.task.id;
             _this.taskRequest.requestId = _this.requestId;
-            _this.store.dispatch(new _store__WEBPACK_IMPORTED_MODULE_3__["fromRootActions"].questionnaireActions.GetCurrentTask(_this.taskRequest));
+            if (_this.taskRequest.workflowId &&
+                _this.taskRequest.taskId &&
+                _this.taskRequest.requestId) {
+                _this.store.dispatch(new _store__WEBPACK_IMPORTED_MODULE_3__["fromRootActions"].questionnaireActions.GetCurrentTask(_this.taskRequest));
+            }
         });
         this.store.pipe(Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["select"])(_store__WEBPACK_IMPORTED_MODULE_3__["fromRootSelectors"].questionnaireSelectors.getCurrentTask), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeWhile"])(function () { return _this.isComponentActive; })).subscribe(function (currTask) {
             if (currTask) {
@@ -234,7 +238,7 @@ var DdoApplicationRequestTasksComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid ddo-application-request\">\r\n    <div class=\"row ddo-application-request__page-heading mt-3\">\r\n        <div class=\"col-md-10  pt-3 pb-3\">\r\n            <h5 class=\"heading bold\">{{heading}}</h5>\r\n        </div>\r\n        <div class=\"col-md-2 pt-3 pb-3\">\r\n            <a class=\"cancel-application\" href=\"#\" (click)=\"cancelApplication()\">Cancel Application</a>\r\n        </div>\r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"col-sm-3 pl-0 pr-0\">\r\n            <app-side-nav [config]='workflows' [(selectedParentId)]='selectedWorkflowId' [(selectedChildId)]='selectedTaskId' (actions)='onSideNavClick($event)'></app-side-nav>\r\n            <contact-detail [config]='contactPersonDetails'></contact-detail>\r\n        </div>\r\n        <div class=\"col-sm-9 pl-0 ddo-application-request__tasks\">\r\n            <router-outlet></router-outlet>\r\n        </div>\r\n    </div>\r\n    <div class=\"row ddo-application-request__footer\">\r\n        <div class=\"col-sm-3 mt-4 mb-4\">\r\n            <button type=\"button\" class=\"btn ddo-application-request__button btn-outline-primary float-left\">Save for Later</button>\r\n        </div>\r\n        <div class=\"col-sm-9 mt-4 mb-4\">\r\n            <div class=\"float-right\">\r\n                <button type=\"button\" class=\"btn btn-outline-primary ddo-application-request__button  mr-3\">\r\n                    Back\r\n                </button>\r\n                <button type=\"button\" class=\"btn btn-outline-primary ddo-application-request__button--next\">\r\n                    Next <i class=\"fa fa-long-arrow-right\" aria-hidden=\"true\"></i>\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"container-fluid ddo-application-request\">\r\n    <div class=\"row ddo-application-request__page-heading mt-3\">\r\n        <div class=\"col-md-10  pt-3 pb-3\">\r\n            <h5 class=\"heading\">{{application$.heading}}</h5>\r\n        </div>\r\n        <div class=\"col-md-2 pt-3 pb-3\">\r\n            <a class=\"cancel-application\"\r\n                href=\"javascript:void(0)\"\r\n                (click)=\"buttonActionsClick('cancel')\">\r\n                Cancel Application\r\n            </a>\r\n\r\n        </div>\r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"col-sm-3 pl-0 pr-0\">\r\n            <app-side-nav\r\n                [config]='workflows$'\r\n                [(selectedParentId)]='currentWorkflowId$'\r\n                [(selectedChildId)]='currentTaskId$'\r\n                (actions)='onSideNavClick($event)'>\r\n            </app-side-nav>\r\n            <contact-detail [config]='contactPersonDetails$'></contact-detail>\r\n        </div>\r\n        <div class=\"col-sm-9 pl-0 ddo-application-request__tasks\">\r\n            <router-outlet></router-outlet>\r\n        </div>\r\n    </div>\r\n    <div class=\"row ddo-application-request__footer\">\r\n        <div class=\"col-sm-3 mt-4 mb-4\">\r\n            <button type=\"button\"\r\n                (click)=\"buttonActionsClick('saveAndExit')\"\r\n                class=\"btn ddo-application-request__button btn-outline-primary float-left\">\r\n                Save and Exit\r\n            </button>\r\n        </div>\r\n        <div class=\"col-sm-9 mt-4 mb-4\">\r\n            <div class=\"float-right\">\r\n                <button type=\"button\"\r\n                    (click)=\"buttonActionsClick('back')\"\r\n                    class=\"btn btn-outline-primary ddo-application-request__button  mr-3\"\r\n                    *ngIf=\"previousTaskId$\">\r\n                    Back\r\n                </button>\r\n                <button type=\"button\"\r\n                    (click)=\"buttonActionsClick('next')\"\r\n                    class=\"btn btn-outline-primary ddo-application-request__button--next\"\r\n                    *ngIf=\"nextTaskId$\">\r\n                    Next <i class=\"fa fa-long-arrow-right\" aria-hidden=\"true\"></i>\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -292,39 +296,78 @@ var DdoApplicationRequestComponent = /** @class */ (function () {
         this.applicationHeading = new Map(Object.entries(_core_constants_application_request_constants__WEBPACK_IMPORTED_MODULE_5__["APPLICATION_HEADING"]));
         this.store.select(_store__WEBPACK_IMPORTED_MODULE_2__["fromRootSelectors"].applicationRequestSelectors.getApplicaiton).
             subscribe(function (application) {
-            _this.application = application;
-            _this.heading = _this.applicationHeading.get(application.type);
+            _this.application$ = application;
         });
         this.store.select(_store__WEBPACK_IMPORTED_MODULE_2__["fromRootSelectors"].userSelectors.getUserContactPerson).
             subscribe(function (contactDetail) {
-            _this.contactPersonDetails = new _core_models_contact_detail_model__WEBPACK_IMPORTED_MODULE_6__["ContactDetailsModel"](contactDetail);
+            _this.contactPersonDetails$ = new _core_models_contact_detail_model__WEBPACK_IMPORTED_MODULE_6__["ContactDetailsModel"](contactDetail);
         });
         this.store.select(_store__WEBPACK_IMPORTED_MODULE_2__["fromRootSelectors"].applicationRequestSelectors.getApplicationWorkflows)
             .subscribe(function (workflows) {
-            _this.workflows = workflows && workflows.map(function (workflow) { return new _core_models_workflow_sidenav_model__WEBPACK_IMPORTED_MODULE_4__["default"](workflow); });
-            if (_this.initalRender && _this.workflows && _this.workflows.length > 0) {
+            _this.workflows$ = workflows && workflows.map(function (workflow) { return new _core_models_workflow_sidenav_model__WEBPACK_IMPORTED_MODULE_4__["default"](workflow); });
+            if (_this.initalRender && workflows && workflows.length > 0) {
                 //TODO: to avoid further dispatching when we re fetch the configuration
                 _this.store.dispatch(new _store_actions_workflows_action__WEBPACK_IMPORTED_MODULE_3__["DeterminePendingTaskOfApplication"](workflows));
             }
         });
         this.store.select(_store__WEBPACK_IMPORTED_MODULE_2__["fromRootSelectors"].applicationRequestSelectors.getApplicationActiveTask)
             .subscribe(function (activeTaskData) {
-            _this.selectedTaskId = activeTaskData.task.id;
-            _this.selectedWorkflowId = activeTaskData.workflowId;
-            _this.initalRender = !(_this.selectedTaskId && _this.selectedWorkflowId);
-            if (_this.selectedTaskId) {
+            _this.currentTaskId$ = activeTaskData.task.id;
+            _this.currentWorkflowId$ = activeTaskData.workflowId;
+            _this.initalRender = !(_this.currentTaskId$ && _this.currentWorkflowId$);
+            if (_this.currentTaskId$) {
                 _this.store.dispatch(new _store_actions_router_actions__WEBPACK_IMPORTED_MODULE_7__["RouterGo"]({
-                    path: ['ddo', 'applications', _this.application.id, 'questionnaire'],
+                    path: ['ddo', 'applications', _this.application$.id, 'questionnaire']
                 }));
             }
         });
+        this.store.select(_store__WEBPACK_IMPORTED_MODULE_2__["fromRootSelectors"].applicationRequestSelectors.getApplicationNextTask)
+            .subscribe(function (nextTaskData) {
+            _this.nextTaskId$ = nextTaskData.task.id;
+            _this.nextWorkflowId$ = nextTaskData.workflowId;
+        });
+        this.store.select(_store__WEBPACK_IMPORTED_MODULE_2__["fromRootSelectors"].applicationRequestSelectors.getApplicationPreviousTask)
+            .subscribe(function (previousTaskData) {
+            _this.previousTaskId$ = previousTaskData.task.id;
+            _this.previousWorkflowId$ = previousTaskData.workflowId;
+        });
     }
-    DdoApplicationRequestComponent.prototype.onSideNavClick = function (payload) {
-        var data = {
-            workflowId: payload.parentId,
-            taskId: payload.childId
-        };
-        this.store.dispatch(new _store_actions_workflows_action__WEBPACK_IMPORTED_MODULE_3__["SetActiveTask"](data));
+    DdoApplicationRequestComponent.prototype.onSideNavClick = function (_a) {
+        var parentId = _a.parentId, childId = _a.childId;
+        this.store.dispatch(new _store_actions_workflows_action__WEBPACK_IMPORTED_MODULE_3__["SetActiveTask"]({
+            workflowId: parentId,
+            taskId: childId
+        }));
+    };
+    DdoApplicationRequestComponent.prototype.buttonActionsClick = function (action) {
+        switch (action) {
+            case 'back':
+                this.store.dispatch(new _store_actions_workflows_action__WEBPACK_IMPORTED_MODULE_3__["SetActiveTask"]({
+                    workflowId: this.previousWorkflowId$,
+                    taskId: this.previousTaskId$
+                }));
+                break;
+            case 'cancel':
+            case 'saveAndExit':
+                this.store.dispatch(new _store_actions_workflows_action__WEBPACK_IMPORTED_MODULE_3__["SaveActiveTaskAndExit"]({
+                    workflowId: this.currentWorkflowId$,
+                    taskId: this.currentTaskId$
+                }));
+                break;
+            case 'next':
+                this.store.dispatch(new _store_actions_workflows_action__WEBPACK_IMPORTED_MODULE_3__["SaveActiveTaskAndNext"]({
+                    current: {
+                        applicationId: this.application$.id,
+                        workflowId: this.currentWorkflowId$,
+                        taskId: this.currentTaskId$
+                    },
+                    workflowId: this.nextWorkflowId$,
+                    taskId: this.nextTaskId$
+                }));
+                break;
+            case 'signAndSubmit':
+                console.log(action);
+        }
     };
     DdoApplicationRequestComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

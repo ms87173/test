@@ -8,20 +8,20 @@ export class ApplicationRequestService {
     getApplicationRequest(requestId: string): Observable<any> {
 
         // Todo: Production Url
-        // return this.apiService.post('api/ddo/request/details', { requestId });
-        return this.apiService.get('request');
+        return this.apiService.post('api/ddo/request/details', { requestId });
+        // return this.apiService.get('request');
     }
     getApplicationRequestWorkflows(requestId: string): Observable<any[]> {
         // Todo: Production Url
-        // return this.apiService.post('api/ddo/request/workflowsAndTasks', { requestId });
-        return this.apiService.get('workflows');
+        return this.apiService.post('api/ddo/request/workflowsAndTasks', { requestId });
+        // return this.apiService.get('workflows');
     }
     saveApplicationRequestTask({ requestId, workflowId, taskId }): Observable<any> {
-        // return this.apiService.put('/questionnaire/saveTaskQuestions', {
-        //     requestId, workflowId, taskId
-        // });
-        return of({
-            status: 200
+        return this.apiService.put('api/ddo/questionnaire/saveTaskQuestions', {
+            requestId, workflowId, taskId
         });
+        // return of({
+        //     status: 200
+        // });
     }
 }
