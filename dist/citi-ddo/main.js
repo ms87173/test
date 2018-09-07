@@ -989,14 +989,23 @@ var ApplicationRequestService = /** @class */ (function () {
         this.apiService = apiService;
     }
     ApplicationRequestService.prototype.getApplicationRequest = function (requestId) {
-        //Todo: Production Url
+        // Todo: Production Url
         return this.apiService.post('api/ddo/request/details', { requestId: requestId });
         // return this.apiService.get('request');
     };
     ApplicationRequestService.prototype.getApplicationRequestWorkflows = function (requestId) {
-        //Todo: Production Url
+        // Todo: Production Url
         return this.apiService.post('api/ddo/request/workflowsAndTasks', { requestId: requestId });
         // return this.apiService.get('workflows');
+    };
+    ApplicationRequestService.prototype.saveApplicationRequestTask = function (_a) {
+        var requestId = _a.requestId, workflowId = _a.workflowId, taskId = _a.taskId;
+        return this.apiService.put('api/ddo/questionnaire/saveTaskQuestions', {
+            requestId: requestId, workflowId: workflowId, taskId: taskId
+        });
+        // return of({
+        //     status: 200
+        // });
     };
     ApplicationRequestService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
@@ -1037,14 +1046,9 @@ var ApplicationsService = /** @class */ (function () {
         this.apiService = apiService;
     }
     ApplicationsService.prototype.getApplications = function () {
-        ///Todo : Production Url
-        return this.apiService.get("api/ddo/request/all");
+        /// Todo : Production Url
+        return this.apiService.get('api/ddo/request/all');
         // return this.apiService.get('requests');
-    };
-    //TODO: remove this as we are doing sorting on our end
-    ApplicationsService.prototype.sortApplications = function (orderBy) {
-        // return this.apiService.get(`requests?orderBy=${orderBy}`);
-        return this.apiService.get('sortRequests');
     };
     ApplicationsService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
@@ -1477,39 +1481,41 @@ var NgxFormlyParserService = /** @class */ (function () {
         var FormlyFieldConfigArray = [];
         var currSection = __assign({}, currentSection);
         currSection.questions.map(function (question) {
-            var field = {};
-            field.key = question.id.toString();
-            if (field.key == currentQuestionId) {
-                field.focus = true;
+            if (_custom_formly_fields_enums_custom_components_enum__WEBPACK_IMPORTED_MODULE_5__["EXISTING_COMPONENTS"].includes(question.type) && !question.recurrent) {
+                var field = {};
+                field.key = question.id.toString();
+                if (field.key == currentQuestionId) {
+                    field.focus = true;
+                }
+                field.type = question.type;
+                field.lifecycle = _this.formlyFieldsService
+                    .getFormlyLifeCycleEventByQuestionType(field.type, requestId, workflowId, taskId);
+                field.templateOptions = {
+                    label: question.label || "",
+                    options: question.options || [],
+                    required: question.required || false,
+                    disabled: question.disabled || false,
+                    recurrent: question.recurrent || false
+                };
+                if (question.answers && question.answers.length > 0) {
+                    field = _this.setDefaultValuesFromAnswers(question.answers, field, question.recurrent);
+                    console.log(question.answers);
+                }
+                if (question.max) {
+                    field.templateOptions.max = question.max;
+                }
+                if (question.maxLength) {
+                    field.templateOptions.maxLength = question.maxLength;
+                }
+                if (question.min) {
+                    field.templateOptions.min = question.min;
+                }
+                if (question.minLength) {
+                    field.templateOptions.minLength = question.minLength;
+                }
+                field = _this.getFormlyFieldArrayConfigByQuestionType(field);
+                FormlyFieldConfigArray.push(field);
             }
-            field.type = question.type;
-            field.lifecycle = _this.formlyFieldsService
-                .getFormlyLifeCycleEventByQuestionType(field.type, requestId, workflowId, taskId);
-            field.templateOptions = {
-                label: question.label || "",
-                options: question.options || [],
-                required: question.required || false,
-                disabled: question.disabled || false,
-                recurrent: question.recurrent || false
-            };
-            if (question.answers && question.answers.length > 0) {
-                field = _this.setDefaultValuesFromAnswers(question.answers, field, question.recurrent);
-                console.log(question.answers);
-            }
-            if (question.max) {
-                field.templateOptions.max = question.max;
-            }
-            if (question.maxLength) {
-                field.templateOptions.maxLength = question.maxLength;
-            }
-            if (question.min) {
-                field.templateOptions.min = question.min;
-            }
-            if (question.minLength) {
-                field.templateOptions.minLength = question.minLength;
-            }
-            field = _this.getFormlyFieldArrayConfigByQuestionType(field);
-            FormlyFieldConfigArray.push(field);
         });
         return FormlyFieldConfigArray;
     };
@@ -1531,12 +1537,12 @@ var NgxFormlyParserService = /** @class */ (function () {
     NgxFormlyParserService.prototype.setDefaultValuesFromAnswers = function (answers, field, isRecurrent) {
         var currField = __assign({}, field);
         if (!isRecurrent) {
-            if (currField.type === _custom_formly_fields_enums_custom_components_enum__WEBPACK_IMPORTED_MODULE_5__["CustomComponentsEnum"].CUSTOM_CHECKBOX) {
-                currField.defaultValue = answers[0].value === 'true' ? true : false;
-            }
-            else {
-                currField.defaultValue = answers[0].value;
-            }
+            // if (currField.type === CustomComponentsEnum.CUSTOM_CHECKBOX) {
+            //   currField.defaultValue = answers[0].value === 'true' ? true : false;
+            // } else {
+            //   currField.defaultValue = answers[0].value;
+            // }
+            currField.defaultValue = answers[0].value;
         }
         else {
             currField.defaultValue = answers;
@@ -1628,8 +1634,8 @@ var QuestionnaireService = /** @class */ (function () {
     // }
     QuestionnaireService.prototype.getCurrentTask = function (taskRequest) {
         // return this.apiService.get('tasks/' + taskRequest.taskId);
-        //Todo: Uncomment to use Production Url
-        return this.apiService.post("api/ddo/questionnaire/taskQuestions", taskRequest);
+        // Todo: Uncomment to use Production Url
+        return this.apiService.post('api/ddo/questionnaire/taskQuestions', taskRequest);
     };
     QuestionnaireService.prototype.getFieldChangeDelta = function (deltaRequest) {
         // Todo: uncomment to use mock service
@@ -1643,8 +1649,8 @@ var QuestionnaireService = /** @class */ (function () {
         //   default:
         //     return of(null);
         // }
-        //Todo : Production Url
-        return this.apiService.post("api/ddo/questionnaire/tasks/question", deltaRequest);
+        // Todo : Production Url
+        return this.apiService.post('api/ddo/questionnaire/tasks/question', deltaRequest);
     };
     QuestionnaireService.prototype.getCountryCode = function () {
         return this.apiService.get('countryCode');
@@ -2924,12 +2930,13 @@ var CustomFormlyFieldsModule = /** @class */ (function () {
 /*!**********************************************************************!*\
   !*** ./src/app/custom-formly-fields/enums/custom-components.enum.ts ***!
   \**********************************************************************/
-/*! exports provided: CustomComponentsEnum */
+/*! exports provided: CustomComponentsEnum, EXISTING_COMPONENTS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomComponentsEnum", function() { return CustomComponentsEnum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EXISTING_COMPONENTS", function() { return EXISTING_COMPONENTS; });
 var CustomComponentsEnum;
 (function (CustomComponentsEnum) {
     CustomComponentsEnum["CUSTOM_CHECKBOX"] = "custom-checkbox";
@@ -2943,6 +2950,16 @@ var CustomComponentsEnum;
     CustomComponentsEnum["CUSTOM_EMAIL"] = "custom-email";
     CustomComponentsEnum["CUSTOM_PHONE"] = "custom-phone";
 })(CustomComponentsEnum || (CustomComponentsEnum = {}));
+var EXISTING_COMPONENTS = [
+    CustomComponentsEnum.CUSTOM_CHECKBOX,
+    CustomComponentsEnum.CUSTOM_DROPDOWN,
+    CustomComponentsEnum.CUSTOM_RADIO_BUTTON,
+    // CustomComponentsEnum.CUSTOM_TYPEAHEAD,
+    CustomComponentsEnum.CUSTOM_DATEPICKER,
+    // CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS,
+    // CustomComponentsEnum.CUSTOM_ADDRESS_PROOF,
+    CustomComponentsEnum.CUSTOM_TEXTBOX,
+];
 
 
 /***/ }),
@@ -4324,7 +4341,7 @@ var SharedModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"side-nav\">\r\n  <accordion>\r\n    <accordion-group *ngFor='let item of config' [isOpen]=\"item.id === selectedParentId\">\r\n      <div accordion-heading class=\"clearfix\">\r\n        <div class=\"row mb-0 side-nav__tab pl-3\">\r\n          <div class=\"col-sm-1 no-padding-left\">\r\n            <i class=\"fa fa-chevron-right collapsible-icon float-left pull-left\"></i>\r\n          </div> \r\n          <div class=\"col-sm-8 side-nav__heading\">\r\n            <div (click)='item.children.length === 1 ? setSelectedId(item.id, item.children[0].id, item.type): false'>\r\n              {{item.label}}\r\n            </div>\r\n            <span class=\"role\" *ngIf=\"item.subHeading\">{{item.subHeading}}</span>\r\n          </div>\r\n          <div class=\"col-sm-3 no-padding-left\">\r\n              <i *ngIf = 'item.status === status.completed'\r\n                [ngClass]=\"{'status-icon--completed fa-check': item.status === status.completed,\r\n                'status-icon--inprogress fa-circle': item.status === status.inProgress}\"\r\n                class=\"fa status-icon float-right pull-right\"></i>\r\n                <div \r\n                  *ngIf = 'item.status === status.inProgress'class=\"status-container\">\r\n                  <span class=\"status-text\">Required</span>\r\n                </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <ul class=\"list-group\" *ngIf = 'item.children.length > 1'>\r\n        <li class=\"list-group-item list-item d-flex justify-content-between align-items-center\" *ngFor='let child of item.children' \r\n        [ngClass]=\"{'active': item.id ===selectedParentId && child.id === selectedChildId && item.children.length > 1 }\"\r\n        (click) = 'setSelectedId(item.id, child.id, child.type)'>\r\n          <a class='child-link' routerLink=\"['/workflow/',item.id]\"> {{child.label}}</a>\r\n          <i *ngIf= 'child.status === status.completed'\r\n            [ngClass]=\"{'status-icon--completed fa-check': child.status === status.completed}\"\r\n              class=\"fa status-icon float-right pull-right\"></i>\r\n              <div \r\n                  *ngIf = 'item.status === status.inProgress'class=\"status-container\">\r\n                  <span class=\"status-text\">Required</span>\r\n              </div>\r\n        </li>\r\n      </ul>\r\n    </accordion-group>\r\n  </accordion>\r\n</div>"
+module.exports = "<div class=\"side-nav\">\r\n  <accordion>\r\n    <accordion-group *ngFor='let item of config' [isOpen]=\"item.id === selectedParentId\">\r\n      <div accordion-heading class=\"clearfix\">\r\n        <div class=\"row mb-0 side-nav__tab pl-3\">\r\n          <div class=\"col-sm-1 no-padding-left\">\r\n            <i class=\"fa fa-chevron-right collapsible-icon float-left pull-left\"></i>\r\n          </div> \r\n          <div class=\"col-sm-8 side-nav__heading\">\r\n            <div (click)='item.children.length === 1 ? setSelectedId(item.id, item.children[0].id, item.type): false'>\r\n              {{item.label}}\r\n            </div>\r\n            <span class=\"role\" *ngIf=\"item.subHeading\">{{item.subHeading}}</span>\r\n          </div>\r\n          <div class=\"col-sm-3 no-padding-left side-nav__status\">\r\n              <i *ngIf = 'item.status === status.completed'\r\n                [ngClass]=\"{'status-icon--completed fa-check': item.status === status.completed,\r\n                'status-icon--inprogress fa-circle': item.status === status.inProgress}\"\r\n                class=\"fa status-icon float-right pull-right\"></i>\r\n                <div \r\n                  *ngIf = 'item.status === status.inProgress'class=\"status-container\">\r\n                  <span class=\"status-text\">Required</span>\r\n                </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <ul class=\"list-group\" *ngIf = 'item.children.length > 1'>\r\n        <li class=\"list-group-item list-item d-flex justify-content-between align-items-center\" *ngFor='let child of item.children' \r\n        [ngClass]=\"{'active': item.id ===selectedParentId && child.id === selectedChildId && item.children.length > 1 }\"\r\n        (click) = 'setSelectedId(item.id, child.id, child.type)'>\r\n          <a class='child-link' routerLink=\"['/workflow/',item.id]\"> {{child.label}}</a>\r\n          <i *ngIf= 'child.status === status.completed'\r\n            [ngClass]=\"{'status-icon--completed fa-check': child.status === status.completed}\"\r\n              class=\"fa status-icon float-right pull-right\"></i>\r\n              <div \r\n                  *ngIf = 'item.status === status.inProgress'class=\"status-container\">\r\n                  <span class=\"status-text\">Required</span>\r\n              </div>\r\n        </li>\r\n      </ul>\r\n    </accordion-group>\r\n  </accordion>\r\n</div>"
 
 /***/ }),
 
@@ -4335,7 +4352,7 @@ module.exports = "<div class=\"side-nav\">\r\n  <accordion>\r\n    <accordion-gr
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".side-nav {\n  border: 1px solid #eeeeee; }\n  .side-nav .status-container {\n    background: orange;\n    border: solid 1px orange;\n    position: relative;\n    display: block;\n    line-height: 20px;\n    height: 22px;\n    width: 100px;\n    margin-left: 6px; }\n  .side-nav .status-container .status-text {\n      padding-left: 10px;\n      color: white; }\n  .side-nav .status-container:before {\n      content: \"\";\n      display: inline-block;\n      position: absolute;\n      border: 10px solid orange;\n      border-color: transparent transparent transparent orange;\n      top: 0px; }\n  .side-nav .status-container:after {\n      content: \"\";\n      display: inline-block;\n      position: absolute;\n      border: 9px solid white;\n      border-color: transparent transparent transparent white;\n      top: 1px;\n      left: -1px; }\n  .side-nav .collapsible-icon {\n    -webkit-text-stroke: 2px white; }\n  .side-nav .status-icon {\n    position: absolute;\n    -webkit-transform: translate(0, -50%);\n            transform: translate(0, -50%);\n    top: 50%;\n    right: 20%; }\n  .side-nav .status-icon--inprogress {\n      color: orange; }\n  .side-nav .status-icon--completed {\n      color: #1568a9;\n      -webkit-text-stroke: 1px white; }\n  .side-nav__heading {\n    line-height: 100%; }\n  .side-nav .role {\n    font-size: 0.7rem;\n    color: darkgrey; }\n  .side-nav .card {\n    border: 0; }\n  .side-nav .card-header {\n    background-color: white;\n    cursor: pointer;\n    min-height: 65px;\n    max-height: 65px; }\n  .side-nav .card-body {\n    padding: 0; }\n  .side-nav .list-item {\n    padding-left: 18%;\n    padding-right: 0;\n    cursor: pointer;\n    min-height: 65px;\n    border: 0;\n    background: #fafafa;\n    border: 1px solid #e5e5e5; }\n  .side-nav .list-item .status-container {\n      width: 83px; }\n  .side-nav .list-item .status-container:after {\n      border: 9px solid #fafafa;\n      border-color: transparent transparent transparent #fafafa; }\n  .side-nav .list-item:hover {\n      background: #e6f8fe; }\n  .side-nav .list-item:hover .collapsible-icon {\n        -webkit-text-stroke: 1px #e6f8fe; }\n  .side-nav .list-item:hover .status-container:after {\n        border: 9px solid #e6f8fe;\n        border-color: transparent transparent transparent #e6f8fe; }\n  .side-nav .list-item.active {\n      padding-left: 17%;\n      background: #e6f8fe;\n      color: black;\n      font-weight: bold;\n      border-left: 5px solid #005AA1; }\n  .side-nav .list-item.active a {\n        font-weight: bold; }\n  .side-nav .list-item.active i.status-icon--completed {\n        -webkit-text-stroke: 1px #e6f8fe; }\n  .side-nav .list-item.active .status-container {\n        width: 83px; }\n  .side-nav .list-item.active .status-container .status-text {\n          font-weight: 400; }\n  .side-nav .list-item.active .status-container:after {\n        border: 9px solid #e6f8fe;\n        border-color: transparent transparent transparent #e6f8fe; }\n  .side-nav .list-item .status-icon {\n      position: absolute;\n      right: 6%; }\n  .child-link {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 15px;\n  font-weight: 400; }\n  .panel-open .collapsible-icon {\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg); }\n"
+module.exports = ".side-nav {\n  border: 1px solid #eeeeee; }\n  .side-nav .status-container {\n    background: orange;\n    border: solid 1px orange;\n    position: relative;\n    display: block;\n    line-height: 20px;\n    height: 22px;\n    width: 100px;\n    margin-left: 6px; }\n  .side-nav .status-container .status-text {\n      padding-left: 10px;\n      font-size: 14px;\n      font-weight: 500;\n      color: white; }\n  .side-nav .status-container:before {\n      content: \"\";\n      display: inline-block;\n      position: absolute;\n      border: 10px solid orange;\n      border-color: transparent transparent transparent orange;\n      top: 0px; }\n  .side-nav .status-container:after {\n      content: \"\";\n      display: inline-block;\n      position: absolute;\n      border: 9px solid white;\n      border-color: transparent transparent transparent white;\n      top: 1px;\n      left: -1px; }\n  .side-nav .collapsible-icon {\n    -webkit-text-stroke: 2px white; }\n  .side-nav .status-icon {\n    position: absolute;\n    -webkit-transform: translate(0, -50%);\n            transform: translate(0, -50%);\n    top: 50%;\n    right: 20%; }\n  .side-nav .status-icon--inprogress {\n      color: orange; }\n  .side-nav .status-icon--completed {\n      color: #1568a9;\n      -webkit-text-stroke: 1px white; }\n  .side-nav__heading {\n    line-height: 100%; }\n  .side-nav .role {\n    font-size: 0.7rem;\n    color: darkgrey; }\n  .side-nav .card {\n    border: 0; }\n  .side-nav .card-header {\n    background-color: white;\n    cursor: pointer;\n    min-height: 65px;\n    max-height: 65px; }\n  .side-nav .card-body {\n    padding: 0; }\n  .side-nav .list-item {\n    padding-left: 18%;\n    padding-right: 0;\n    cursor: pointer;\n    min-height: 65px;\n    border: 0;\n    background: #fafafa;\n    border: 1px solid #e5e5e5; }\n  .side-nav .list-item .status-container {\n      width: 76px; }\n  .side-nav .list-item .status-container:after {\n      border: 9px solid #fafafa;\n      border-color: transparent transparent transparent #fafafa; }\n  .side-nav .list-item:hover {\n      background: #e6f8fe; }\n  .side-nav .list-item:hover .collapsible-icon {\n        -webkit-text-stroke: 1px #e6f8fe; }\n  .side-nav .list-item:hover .status-container:after {\n        border: 9px solid #e6f8fe;\n        border-color: transparent transparent transparent #e6f8fe; }\n  .side-nav .list-item.active {\n      padding-left: 17%;\n      background: #e6f8fe;\n      color: black;\n      font-weight: bold;\n      border-left: 5px solid #005AA1; }\n  .side-nav .list-item.active a {\n        font-weight: bold; }\n  .side-nav .list-item.active i.status-icon--completed {\n        -webkit-text-stroke: 1px #e6f8fe; }\n  .side-nav .list-item.active .status-container {\n        width: 76px; }\n  .side-nav .list-item.active .status-container .status-text {\n          font-weight: 500; }\n  .side-nav .list-item.active .status-container:after {\n        border: 9px solid #e6f8fe;\n        border-color: transparent transparent transparent #e6f8fe; }\n  .side-nav .list-item .status-icon {\n      position: absolute;\n      right: 6%; }\n  .child-link {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 15px;\n  font-weight: 400; }\n  .panel-open .collapsible-icon {\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg); }\n  .panel-open .side-nav__status .status-icon--completed {\n  display: none; }\n  .panel-open .side-nav__status .status-container {\n  display: none; }\n"
 
 /***/ }),
 
@@ -5089,7 +5106,7 @@ var GetUserContactPersonFailure = /** @class */ (function () {
 /*!***************************************************!*\
   !*** ./src/app/store/actions/workflows.action.ts ***!
   \***************************************************/
-/*! exports provided: ActionTypes, GetApplicationWorkflows, GetApplicationWorkflowsSuccess, GetApplicationWorkflowsFailure, DeterminePendingTaskOfApplication, GetApplicationTask, GetApplicationTaskSuccess, GetApplicationTaskFailure, SetActiveTask, SaveActiveTask */
+/*! exports provided: ActionTypes, GetApplicationWorkflows, GetApplicationWorkflowsSuccess, GetApplicationWorkflowsFailure, DeterminePendingTaskOfApplication, GetApplicationTask, GetApplicationTaskSuccess, GetApplicationTaskFailure, SetActiveTask, SaveActiveTaskAndExit, SaveActiveTaskAndNext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5103,7 +5120,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetApplicationTaskSuccess", function() { return GetApplicationTaskSuccess; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GetApplicationTaskFailure", function() { return GetApplicationTaskFailure; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SetActiveTask", function() { return SetActiveTask; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SaveActiveTask", function() { return SaveActiveTask; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SaveActiveTaskAndExit", function() { return SaveActiveTaskAndExit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SaveActiveTaskAndNext", function() { return SaveActiveTaskAndNext; });
 var ActionTypes;
 (function (ActionTypes) {
     ActionTypes["GET_APPLICATION_REQUEST_WORKFLOWS"] = "[App State] Get Application Request Workflows";
@@ -5117,7 +5135,9 @@ var ActionTypes;
     ActionTypes["SET_APPLICATION_REQUEST_ACTIVE_TASK"] = "[App State] Select Application Request Active task";
     // BUILD_NAVIGATION_CONFIG = '[Some State] Build Navigation Config',
     // SELECT_NAVIGATION_ITEM = '[Some State] Select Navigation Item',
-    ActionTypes["SAVE_APPLICATION_REQUEST_ACTIVE_TASK"] = "[App State] Save Application Request Task";
+    // TODO: review the names
+    ActionTypes["SAVE_EXIT_REQUEST_ACTIVE_TASK"] = "[App State] Save Application Request Task And Exit";
+    ActionTypes["SAVE_NEXT_REQUEST_ACTIVE_TASK"] = "[App State] Save Application Request Task And Next";
 })(ActionTypes || (ActionTypes = {}));
 var GetApplicationWorkflows = /** @class */ (function () {
     function GetApplicationWorkflows(payload) {
@@ -5191,13 +5211,22 @@ var SetActiveTask = /** @class */ (function () {
     return SetActiveTask;
 }());
 
-var SaveActiveTask = /** @class */ (function () {
-    function SaveActiveTask(payload) {
+var SaveActiveTaskAndExit = /** @class */ (function () {
+    function SaveActiveTaskAndExit(payload) {
         this.payload = payload;
-        this.type = ActionTypes.SAVE_APPLICATION_REQUEST_ACTIVE_TASK;
+        this.type = ActionTypes.SAVE_EXIT_REQUEST_ACTIVE_TASK;
         this.payload = payload;
     }
-    return SaveActiveTask;
+    return SaveActiveTaskAndExit;
+}());
+
+var SaveActiveTaskAndNext = /** @class */ (function () {
+    function SaveActiveTaskAndNext(payload) {
+        this.payload = payload;
+        this.type = ActionTypes.SAVE_NEXT_REQUEST_ACTIVE_TASK;
+        this.payload = payload;
+    }
+    return SaveActiveTaskAndNext;
 }());
 
 
@@ -5735,6 +5764,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var _actions_router_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../actions/router.actions */ "./src/app/store/actions/router.actions.ts");
+var __assign = (undefined && undefined.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5744,6 +5781,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -5765,8 +5803,52 @@ var ApplicationWorkflowsEffects = /** @class */ (function () {
         this.getApplicationRequestWorkflowsEffect = this.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_workflows_action__WEBPACK_IMPORTED_MODULE_3__["ActionTypes"].GET_APPLICATION_REQUEST_WORKFLOWS), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function (action) {
             return _this.applicationRequestService.getApplicationRequestWorkflows(action.payload)
                 .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (workflows) {
-                return new _actions_workflows_action__WEBPACK_IMPORTED_MODULE_3__["GetApplicationWorkflowsSuccess"](workflows);
+                var firstTaskId = '', lastTaskId = '';
+                if (workflows && workflows.length > 0) {
+                    var lastWorkflowIndex = workflows.length - 1;
+                    var lastWorkflow = workflows[lastWorkflowIndex];
+                    var tlen = lastWorkflow && lastWorkflow.tasks && lastWorkflow.tasks.length;
+                    var lastTask = lastWorkflow && lastWorkflow.tasks && lastWorkflow.tasks[tlen - 1];
+                    lastTaskId = lastTask && lastTask.id;
+                    firstTaskId = workflows[0] &&
+                        workflows[0].tasks &&
+                        workflows[0].tasks[0] &&
+                        workflows[0].tasks[0].id;
+                }
+                return new _actions_workflows_action__WEBPACK_IMPORTED_MODULE_3__["GetApplicationWorkflowsSuccess"]({
+                    workflows: workflows,
+                    lastTaskId: lastTaskId,
+                    firstTaskId: firstTaskId
+                });
             }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["of"])(new _actions_workflows_action__WEBPACK_IMPORTED_MODULE_3__["GetApplicationWorkflowsFailure"](err)); }));
+        }));
+        this.saveAndNextRequestTaskEffect = this.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_workflows_action__WEBPACK_IMPORTED_MODULE_3__["ActionTypes"].SAVE_NEXT_REQUEST_ACTIVE_TASK), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function (action) {
+            return _this.applicationRequestService
+                .saveApplicationRequestTask(action.payload.current)
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (response) {
+                var _a = action.payload, workflowId = _a.workflowId, taskId = _a.taskId;
+                console.log(response);
+                console.log("Task is Saved Redirecting to next task with workflowId " + workflowId + " and taskId " + taskId);
+                return new _actions_workflows_action__WEBPACK_IMPORTED_MODULE_3__["SetActiveTask"]({
+                    workflowId: workflowId,
+                    taskId: taskId
+                });
+            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["of"])(new _actions_router_actions__WEBPACK_IMPORTED_MODULE_6__["RouterGo"]({
+                path: ['ddo', 'error', __assign({}, error)]
+            })); }));
+        }));
+        this.saveAndExitRequestTaskEffect = this.actions$.pipe(Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["ofType"])(_actions_workflows_action__WEBPACK_IMPORTED_MODULE_3__["ActionTypes"].SAVE_EXIT_REQUEST_ACTIVE_TASK), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function (action) {
+            return _this.applicationRequestService
+                .saveApplicationRequestTask(action.payload)
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (response) {
+                console.log(response);
+                console.log('Task is Saved');
+                return new _actions_router_actions__WEBPACK_IMPORTED_MODULE_6__["RouterGo"]({
+                    path: ['ddo', 'my-applications']
+                });
+            }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["of"])(new _actions_router_actions__WEBPACK_IMPORTED_MODULE_6__["RouterGo"]({
+                path: ['ddo', 'error', __assign({}, error)]
+            })); }));
         }));
     }
     __decorate([
@@ -5777,6 +5859,14 @@ var ApplicationWorkflowsEffects = /** @class */ (function () {
         Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["Effect"])(),
         __metadata("design:type", Object)
     ], ApplicationWorkflowsEffects.prototype, "getApplicationRequestWorkflowsEffect", void 0);
+    __decorate([
+        Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["Effect"])(),
+        __metadata("design:type", Object)
+    ], ApplicationWorkflowsEffects.prototype, "saveAndNextRequestTaskEffect", void 0);
+    __decorate([
+        Object(_ngrx_effects__WEBPACK_IMPORTED_MODULE_2__["Effect"])(),
+        __metadata("design:type", Object)
+    ], ApplicationWorkflowsEffects.prototype, "saveAndExitRequestTaskEffect", void 0);
     ApplicationWorkflowsEffects = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
         __metadata("design:paramtypes", [_core_services_application_request_service__WEBPACK_IMPORTED_MODULE_1__["ApplicationRequestService"],
@@ -5819,7 +5909,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!***************************************************************!*\
   !*** ./src/app/store/reducers/application-request.reducer.ts ***!
   \***************************************************************/
-/*! exports provided: InitialState, reducer, getApplicaitonRequestState, getApplicationWorkflowsState, getApplicationWorkflows, getApplication, getApplicationActiveTask */
+/*! exports provided: InitialState, reducer, getApplicaitonRequestState, getApplicationWorkflowsState, getApplicationWorkflows, getApplication, getApplicationActiveTask, getApplicationPreviousTask, getApplicationNextTask */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5831,6 +5921,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getApplicationWorkflows", function() { return getApplicationWorkflows; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getApplication", function() { return getApplication; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getApplicationActiveTask", function() { return getApplicationActiveTask; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getApplicationPreviousTask", function() { return getApplicationPreviousTask; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getApplicationNextTask", function() { return getApplicationNextTask; });
 /* harmony import */ var _workflows_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./workflows.reducer */ "./src/app/store/reducers/workflows.reducer.ts");
 /* harmony import */ var _application_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./application.reducer */ "./src/app/store/reducers/application.reducer.ts");
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
@@ -5853,6 +5945,8 @@ var getApplicationWorkflowsState = function (state) { return state.workflows; };
 var getApplicationWorkflows = function (state) { return state.workflows.workflows; };
 var getApplication = function (state) { return state.application.application; };
 var getApplicationActiveTask = function (state) { return state.workflows.activeTask; };
+var getApplicationPreviousTask = function (state) { return state.workflows.previousTask; };
+var getApplicationNextTask = function (state) { return state.workflows.nextTask; };
 
 
 /***/ }),
@@ -6124,7 +6218,7 @@ var getUserContactPerson = function (state) { return state.contactPerson; };
 /*!*****************************************************!*\
   !*** ./src/app/store/reducers/workflows.reducer.ts ***!
   \*****************************************************/
-/*! exports provided: InitialState, reducer, getWorkflows, getWorkflowsLoaded, getWorkflowsLoading, getActiveWorkflowTask, getActiveWorkflowTaskId */
+/*! exports provided: InitialState, reducer, getWorkflows, getWorkflowsLoaded, getWorkflowsLoading, getActiveWorkflowTask, getActiveWorkflowTaskId, getPreviousWorkflowTask, getPreviousWorkflowTaskId, getNextWorkflowTask, getNextWorkflowTaskId, getLastTaskId, getFirstTaskId */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6136,6 +6230,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getWorkflowsLoading", function() { return getWorkflowsLoading; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getActiveWorkflowTask", function() { return getActiveWorkflowTask; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getActiveWorkflowTaskId", function() { return getActiveWorkflowTaskId; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPreviousWorkflowTask", function() { return getPreviousWorkflowTask; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPreviousWorkflowTaskId", function() { return getPreviousWorkflowTaskId; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNextWorkflowTask", function() { return getNextWorkflowTask; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNextWorkflowTaskId", function() { return getNextWorkflowTaskId; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLastTaskId", function() { return getLastTaskId; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFirstTaskId", function() { return getFirstTaskId; });
 /* harmony import */ var _actions_workflows_action__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/workflows.action */ "./src/app/store/actions/workflows.action.ts");
 var __assign = (undefined && undefined.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -6146,10 +6246,8 @@ var __assign = (undefined && undefined.__assign) || Object.assign || function(t)
     return t;
 };
 
-//we can dispatch change task action and calculate all the task again.
 var InitialState = {
     workflows: [],
-    entities: {},
     activeTask: {
         workflowId: '',
         task: {
@@ -6180,6 +6278,8 @@ var InitialState = {
             type: ''
         }
     },
+    firstTaskId: '',
+    lastTaskId: '',
     loaded: false,
     loading: false
 };
@@ -6187,27 +6287,89 @@ function reducer(state, action) {
     if (state === void 0) { state = InitialState; }
     switch (action.type) {
         case _actions_workflows_action__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].GET_APPLICATION_REQUEST_WORKFLOWS_SUCCESS:
-            var workflows = action.payload;
-            if (workflows && workflows.length > 0) {
-                var entities_1 = {};
-                workflows.forEach(function (workflow) {
-                    var tasks = workflow.tasks;
-                    var entity = tasks.reduce(function (entities, task) {
-                        return __assign({}, entities, (_a = {}, _a[task.id] = __assign({}, task, { workflowId: workflow.id }), _a));
-                        var _a;
-                    }, __assign({}, entities_1));
-                    entities_1 = __assign({}, entity);
-                });
-            }
-            return __assign({}, state, { loaded: true, loading: false, workflows: action.payload });
+            var _a = action.payload, workflows = _a.workflows, lastTaskId = _a.lastTaskId, firstTaskId = _a.firstTaskId;
+            return __assign({}, state, { workflows: workflows,
+                lastTaskId: lastTaskId,
+                firstTaskId: firstTaskId, loaded: true, loading: false });
         case _actions_workflows_action__WEBPACK_IMPORTED_MODULE_0__["ActionTypes"].SET_ACTIVE_TASK:
-            var _a = action.payload, workflowId_1 = _a.workflowId, taskId_1 = _a.taskId;
-            var workflow = state.workflows.find(function (e) { return e.id === workflowId_1; });
-            var task = workflow && workflow.tasks.find(function (e) { return e.id === taskId_1; });
-            return __assign({}, state, { activeTask: {
-                    workflowId: workflowId_1,
-                    task: task
-                } });
+            var _b = action.payload, workflowId = _b.workflowId, taskId = _b.taskId;
+            if (state.workflows && state.workflows.length > 0) {
+                var count1 = 0, taskFound = false, nextWorkflow = { id: '', tasks: [] }, previousWorkflow = { id: '', tasks: [] }, currentWorkflow = { id: '', tasks: [] }, nextTask = { id: '' }, currentTask = { id: '' }, previousTask = { id: '' };
+                var workflows_1 = state.workflows;
+                while (count1 < workflows_1.length) {
+                    nextWorkflow = workflows_1[count1 + 1] || '';
+                    currentWorkflow = workflows_1[count1];
+                    previousWorkflow = workflows_1[count1 - 1] || '';
+                    var tasks = currentWorkflow && currentWorkflow.tasks;
+                    if (currentWorkflow.id === workflowId && tasks && tasks.length > 0) {
+                        var count2 = 0;
+                        while (count2 < tasks.length) {
+                            currentTask = tasks[count2];
+                            nextTask = tasks[count2 + 1];
+                            previousTask = tasks[count2 - 1];
+                            if (currentTask.id === taskId) {
+                                taskFound = true;
+                                if (!nextTask) {
+                                    nextTask = nextWorkflow && nextWorkflow.tasks[0];
+                                }
+                                else {
+                                    nextWorkflow = currentWorkflow;
+                                }
+                                if (!previousTask) {
+                                    var len = previousWorkflow &&
+                                        previousWorkflow.tasks &&
+                                        previousWorkflow.tasks.length;
+                                    previousTask = len && previousWorkflow.tasks[len - 1];
+                                }
+                                else {
+                                    previousWorkflow = currentWorkflow;
+                                }
+                                break;
+                            }
+                            count2++;
+                        }
+                    }
+                    if (taskFound) {
+                        break;
+                    }
+                    count1++;
+                }
+                var activeTask = {
+                    workflowId: workflowId,
+                    task: currentTask
+                };
+                var nextStateTask = {
+                    workflowId: (nextWorkflow && nextWorkflow.id) || '',
+                    task: nextTask ||
+                        {
+                            label: '',
+                            description: '',
+                            id: '',
+                            status: '',
+                            type: ''
+                        }
+                };
+                var previousStateTask = {
+                    workflowId: (previousWorkflow && previousWorkflow.id) || '',
+                    task: previousTask ||
+                        {
+                            label: '',
+                            description: '',
+                            id: '',
+                            status: '',
+                            type: ''
+                        }
+                };
+                // const x = {
+                //     ...state,
+                //     activeTask,
+                //     previousTask: previousStateTask,
+                //     nextTask: nextStateTask
+                // };
+                // console.log(x);
+                return __assign({}, state, { activeTask: activeTask, previousTask: previousStateTask, nextTask: nextStateTask });
+            }
+            break;
         default:
             return state;
     }
@@ -6217,6 +6379,12 @@ var getWorkflowsLoaded = function (state) { return state.loaded; };
 var getWorkflowsLoading = function (state) { return state.loading; };
 var getActiveWorkflowTask = function (state) { return state.activeTask.task; };
 var getActiveWorkflowTaskId = function (state) { return state.activeTask.task.id; };
+var getPreviousWorkflowTask = function (state) { return state.previousTask.task; };
+var getPreviousWorkflowTaskId = function (state) { return state.previousTask.task.id; };
+var getNextWorkflowTask = function (state) { return state.nextTask.task; };
+var getNextWorkflowTaskId = function (state) { return state.nextTask.task.id; };
+var getLastTaskId = function (state) { return state.lastTaskId; };
+var getFirstTaskId = function (state) { return state.firstTaskId; };
 
 
 /***/ }),
@@ -6225,7 +6393,7 @@ var getActiveWorkflowTaskId = function (state) { return state.activeTask.task.id
 /*!******************************************************************!*\
   !*** ./src/app/store/selectors/application-request.selectors.ts ***!
   \******************************************************************/
-/*! exports provided: getApplicaitonRequestState, getApplicaitonState, getApplicationWorkflowsState, getApplicaiton, getApplicationWorkflows, getApplicationActiveTask */
+/*! exports provided: getApplicaitonRequestState, getApplicaitonState, getApplicationWorkflowsState, getApplicaiton, getApplicationWorkflows, getApplicationActiveTask, getApplicationPreviousTask, getApplicationNextTask */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6236,6 +6404,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getApplicaiton", function() { return getApplicaiton; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getApplicationWorkflows", function() { return getApplicationWorkflows; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getApplicationActiveTask", function() { return getApplicationActiveTask; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getApplicationPreviousTask", function() { return getApplicationPreviousTask; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getApplicationNextTask", function() { return getApplicationNextTask; });
 /* harmony import */ var _reducers_application_request_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../reducers/application-request.reducer */ "./src/app/store/reducers/application-request.reducer.ts");
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
 
@@ -6246,6 +6416,8 @@ var getApplicationWorkflowsState = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1
 var getApplicaiton = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getApplicaitonRequestState, _reducers_application_request_reducer__WEBPACK_IMPORTED_MODULE_0__["getApplication"]);
 var getApplicationWorkflows = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getApplicaitonRequestState, _reducers_application_request_reducer__WEBPACK_IMPORTED_MODULE_0__["getApplicationWorkflows"]);
 var getApplicationActiveTask = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getApplicaitonRequestState, _reducers_application_request_reducer__WEBPACK_IMPORTED_MODULE_0__["getApplicationActiveTask"]);
+var getApplicationPreviousTask = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getApplicaitonRequestState, _reducers_application_request_reducer__WEBPACK_IMPORTED_MODULE_0__["getApplicationPreviousTask"]);
+var getApplicationNextTask = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getApplicaitonRequestState, _reducers_application_request_reducer__WEBPACK_IMPORTED_MODULE_0__["getApplicationNextTask"]);
 
 
 /***/ }),
@@ -6362,7 +6534,7 @@ var getUserContactPerson = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["crea
 /*!********************************************************!*\
   !*** ./src/app/store/selectors/workflows.selectors.ts ***!
   \********************************************************/
-/*! exports provided: getWorkflowsState, getWorkflows, getActiveWorkflowTask, getActiveWorkflowTaskId, getWorkflowsLoaded, getWorkflowsLoading */
+/*! exports provided: getWorkflowsState, getWorkflows, getActiveWorkflowTask, getActiveWorkflowTaskId, getPreviousWorkflowTask, getPreviousWorkflowTaskId, getNextWorkflowTask, getNextWorkflowTaskId, getWorkflowsLoaded, getWorkflowsLoading */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6371,6 +6543,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getWorkflows", function() { return getWorkflows; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getActiveWorkflowTask", function() { return getActiveWorkflowTask; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getActiveWorkflowTaskId", function() { return getActiveWorkflowTaskId; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPreviousWorkflowTask", function() { return getPreviousWorkflowTask; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPreviousWorkflowTaskId", function() { return getPreviousWorkflowTaskId; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNextWorkflowTask", function() { return getNextWorkflowTask; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNextWorkflowTaskId", function() { return getNextWorkflowTaskId; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getWorkflowsLoaded", function() { return getWorkflowsLoaded; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getWorkflowsLoading", function() { return getWorkflowsLoading; });
 /* harmony import */ var _reducers_workflows_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../reducers/workflows.reducer */ "./src/app/store/reducers/workflows.reducer.ts");
@@ -6381,6 +6557,10 @@ var getWorkflowsState = function (state) { return state.applicationRequest.workf
 var getWorkflows = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getWorkflowsState, _reducers_workflows_reducer__WEBPACK_IMPORTED_MODULE_0__["getWorkflows"]);
 var getActiveWorkflowTask = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getWorkflowsState, _reducers_workflows_reducer__WEBPACK_IMPORTED_MODULE_0__["getActiveWorkflowTask"]);
 var getActiveWorkflowTaskId = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getWorkflowsState, _reducers_workflows_reducer__WEBPACK_IMPORTED_MODULE_0__["getActiveWorkflowTaskId"]);
+var getPreviousWorkflowTask = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getWorkflowsState, _reducers_workflows_reducer__WEBPACK_IMPORTED_MODULE_0__["getPreviousWorkflowTask"]);
+var getPreviousWorkflowTaskId = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getWorkflowsState, _reducers_workflows_reducer__WEBPACK_IMPORTED_MODULE_0__["getPreviousWorkflowTaskId"]);
+var getNextWorkflowTask = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getWorkflowsState, _reducers_workflows_reducer__WEBPACK_IMPORTED_MODULE_0__["getNextWorkflowTask"]);
+var getNextWorkflowTaskId = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getWorkflowsState, _reducers_workflows_reducer__WEBPACK_IMPORTED_MODULE_0__["getNextWorkflowTaskId"]);
 var getWorkflowsLoaded = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getWorkflowsState, _reducers_workflows_reducer__WEBPACK_IMPORTED_MODULE_0__["getWorkflowsLoaded"]);
 var getWorkflowsLoading = Object(_ngrx_store__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(getWorkflowsState, _reducers_workflows_reducer__WEBPACK_IMPORTED_MODULE_0__["getWorkflowsLoading"]);
 
@@ -7817,7 +7997,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
 var environment = {
     production: false,
-    apiUrl: 'http://mktdevvm100621.nam.nsroot.net:9090/'
+    apiUrl: 'mktdevvm100621.nam.nsroot.net:9090/'
 };
 
 
@@ -7884,7 +8064,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\karsharm7\Documents\Vikash\test\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\vku155\Documents\test\src\main.ts */"./src/main.ts");
 
 
 /***/ })

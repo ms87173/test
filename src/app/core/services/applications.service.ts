@@ -7,8 +7,8 @@ export class ApplicationsService {
   constructor(private apiService: ApiService) { }
   getApplications(): Observable<any[]> {
 
-    ///Todo : Production Url
-    //  return this. apiService.get("api/ddo/request/all");
-    return this.apiService.get('requests');
+    /// Todo : Production Url
+     return this. apiService.get('api/ddo/request/all');
+    // return this.apiService.get('requests');
   }
 }
