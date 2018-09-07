@@ -16,4 +16,9 @@ export class ApplicationRequestService {
         // return this.apiService.post('api/ddo/request/workflowsAndTasks', { requestId });
         return this.apiService.get('workflows');
     }
+    saveApplicationRequestTask({ requestId, workflowId, taskId }): Observable<any> {
+        return this.apiService.put('/questionnaire/saveTaskQuestions', {
+            requestId, workflowId, taskId
+        })
+    }
 }

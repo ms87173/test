@@ -4,8 +4,7 @@ import { Effect, Actions, ofType } from '@ngrx/effects';
 import {
     ActionTypes,
     GetApplicationsSuccess,
-    GetApplicationsFailure,
-    SortApplicationsSuccess
+    GetApplicationsFailure
 } from '../actions/ddo-applications.actions';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -27,25 +26,6 @@ export class DdoApplicationsEffects {
                             }
                             return new GetApplicationsSuccess([]);
                         }),
-                    catchError(
-                        (err) => of(new GetApplicationsFailure(err))
-                    )
-                )
-        ));
-    @Effect() sortApplicationsEffect = this.actions$.pipe(
-        ofType(ActionTypes.SORT_APPLICATIONS),
-        switchMap(
-            (action) => this.applicationsService.sortApplications('status')
-                .pipe(
-                    map(
-                        (applications) => {
-                            if (applications && applications.length > 0) {
-                                const payload = applications.map(e => new ApplicationModel(e));
-                                return new SortApplicationsSuccess(payload);
-                            }
-                            return new SortApplicationsSuccess([]);
-                        }
-                    ),
                     catchError(
                         (err) => of(new GetApplicationsFailure(err))
                     )

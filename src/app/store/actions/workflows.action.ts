@@ -8,10 +8,12 @@ export enum ActionTypes {
     GET_APPLICATION_REQUEST_TASK = '[App State] Get Application request task',
     GET_APPLICATION_REQUEST_TASK_SUCCESS = '[App State] Get Application request task success',
     GET_APPLICATION_REQUEST_TASK_FAILURE = '[App State] Get Application request task failure',
-    SET_ACTIVE_TASK = '[App State] Set Active Task'
-    // SET_APPLICATION_REQUEST_TASK = '[App State] Select Application request task',
+    SET_ACTIVE_TASK = '[App State] Set Active Task',
+    SET_APPLICATION_REQUEST_ACTIVE_TASK = '[App State] Select Application Request Active task',
     // BUILD_NAVIGATION_CONFIG = '[Some State] Build Navigation Config',
     // SELECT_NAVIGATION_ITEM = '[Some State] Select Navigation Item',
+    SAVE_APPLICATION_REQUEST_ACTIVE_TASK = '[App State] Save Application Request Task'
+
 }
 
 export class GetApplicationWorkflows implements Action {
@@ -64,6 +66,13 @@ export class SetActiveTask implements Action {
         this.payload = payload;
     }
 }
+export class SaveActiveTask implements Action {
+    readonly type = ActionTypes.SAVE_APPLICATION_REQUEST_ACTIVE_TASK;
+    constructor(public payload) {
+        this.payload = payload;
+    }
+}
+
 export type WorkflowsActions = GetApplicationTask
     | GetApplicationTaskFailure
     | GetApplicationTaskSuccess
@@ -71,4 +80,5 @@ export type WorkflowsActions = GetApplicationTask
     | GetApplicationWorkflows
     | GetApplicationWorkflowsFailure
     | GetApplicationWorkflowsSuccess
-    | SetActiveTask;
+    | SetActiveTask
+    | SaveActiveTask;

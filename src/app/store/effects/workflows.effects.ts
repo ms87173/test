@@ -6,6 +6,7 @@ import {
     GetApplicationWorkflows,
     GetApplicationWorkflowsFailure,
     GetApplicationWorkflowsSuccess,
+    SaveActiveTask,
 } from '../actions/workflows.action';
 import { switchMap, map, catchError, filter } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -30,7 +31,23 @@ export class ApplicationWorkflowsEffects {
                     .pipe(
                         map(
                             (workflows) => {
-                                return new GetApplicationWorkflowsSuccess(workflows)
+                                let firstTaskId = '', lastTaskId = '';
+                                if (workflows && workflows.length > 0) {
+                                    const lastWorkflowIndex = workflows.length - 1;
+                                    const lastWorkflow = workflows[lastWorkflowIndex];
+                                    const tlen = lastWorkflow && lastWorkflow.tasks && lastWorkflow.tasks.length;
+                                    const lastTask = lastWorkflow && lastWorkflow.tasks && lastWorkflow.tasks[tlen - 1];
+                                    lastTaskId = lastTask && lastTask.id;
+                                    firstTaskId = workflows[0] &&
+                                        workflows[0].tasks &&
+                                        workflows[0].tasks[0] &&
+                                        workflows[0].tasks[0].id;
+                                }
+                                return new GetApplicationWorkflowsSuccess({
+                                    workflows,
+                                    lastTaskId,
+                                    firstTaskId
+                                })
                             }
                         ),
                         catchError(
@@ -38,6 +55,15 @@ export class ApplicationWorkflowsEffects {
                         )
                     )
         ));
+        // @Effect() saveApplicationRequestTaskEffect = this.actions$.pipe(
+        //     ofType(ActionTypes.SAVE_APPLICATION_REQUEST_ACTIVE_TASK),
+        //     filter((action: SaveActiveTask) =>
+        //         this.applicationRequestService.saveApplicationRequestTask(action.payload),
+        //         map((response) => {
+        //             console.log(response);
+        //             console.log('Task is Saved');    
+        //         })
+        //     );
 
     constructor(
         private applicationRequestService: ApplicationRequestService,

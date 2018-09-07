@@ -4,11 +4,13 @@ import * as moment from 'moment';
 export class ApplicationGridModel {
     columns: any;
     id: any;
+    status: any;
     constructor(data) {
         if (!data) {
             return null;
         }
         this.id = data.id;
+        this.status = data.status && data.status.code;
         const lastModifiedBy = {
             label: moment(data.lastUpdate).format('DD MMM YYYY'),
             value: `By ${data.lastUpdatedBy}`,

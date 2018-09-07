@@ -28,3 +28,11 @@ export const getApplicationActiveTask = createSelector(
     getApplicaitonRequestState,
     fromApplicationRequest.getApplicationActiveTask
 );
+export const getApplicationPreviousTask = createSelector(
+    getApplicaitonRequestState,
+    fromApplicationRequest.getApplicationPreviousTask
+);
+export const getApplicationNextTask = createSelector(
+    getApplicaitonRequestState,
+    fromApplicationRequest.getApplicationNextTask
+);
