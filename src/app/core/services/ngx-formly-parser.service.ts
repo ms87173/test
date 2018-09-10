@@ -17,6 +17,7 @@ import { emailFieldArray } from '../../custom-formly-fields/formly-configs/email
 import { FormlyFieldsService } from './formly-fields.service';
 import { PhoneFieldConfig } from '../../custom-formly-fields/formly-configs/phone-field.config';
 import { AddressFieldsFieldArray } from '../../custom-formly-fields/formly-configs/address-fields-field-array';
+import { documentFieldArray } from '../../custom-formly-fields/formly-configs/document-field-array';
 
 @Injectable()
 export class NgxFormlyParserService {
@@ -249,6 +250,15 @@ export class NgxFormlyParserService {
         field.fieldArray = {
           ...AddressFieldsFieldArray
         };
+        // case CustomComponentsEnum.CUSTOM_UPLOAD:
+        // field.fieldArray = {
+        //   ...documentFieldArray
+        // };
+        case CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD:
+        field.fieldArray = {
+          ...documentFieldArray
+        };
+        
     }
     return field;
 

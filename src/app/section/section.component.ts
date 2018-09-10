@@ -26,6 +26,8 @@ export class SectionComponent implements OnInit, OnChanges {
       // /Need to add more If statements for other custom components     
       if (item.type === CustomComponentsEnum.CUSTOM_PHONE 
         ||  item.type === CustomComponentsEnum.CUSTOM_EMAIL 
+        // || item.type === CustomComponentsEnum.CUSTOM_UPLOAD
+        || item.type === CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD
       //  || item.type === CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS
       ) {
         this.model[item.key] = [{}];

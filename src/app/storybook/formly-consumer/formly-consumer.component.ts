@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
 import { ViewEncapsulation } from '@angular/core';
@@ -29,7 +29,7 @@ export class FormlyConsumerComponent implements OnInit {
   fields: Array<any>;
   listData: any;
 
-  constructor() { }
+  constructor(private cd:ChangeDetectorRef) { }
 
   ngOnInit() {
     this.listData = [
@@ -236,53 +236,110 @@ export class FormlyConsumerComponent implements OnInit {
       },
       {
         key: 'data',
-        type: 'repeatAddressData',
+        type: 'custom-document-upload',
         fieldArray: {
-          fieldGroupClassName: 'row col-12 nogutter',
+          fieldGroupClassName: 'row',
           templateOptions: {
             btnText: 'Add a new address proof',
-            tooltip: {
-              content: 'Hey this is tooltip',
-              placement: 'right'
-            }
+            // tooltip: {
+            //   content: 'Hey this is tooltip',
+            //   placement: 'right'
+            // }
           },
           fieldGroup: [
             {
-              key: 'IdDropdown',
-              type: 'custom-dropdown',
-              className: 'col-sm-4 PaddingLeftZero',
-              templateOptions: {
-                label: 'ID Country',
-                options: [
-                  { label: 'Iron Man', value: 'iron_man' },
-                  { label: 'Captain America', value: 'captain_america' },
-                  { label: 'Black Widow', value: 'black_widow' },
-                  { label: 'Hulk', value: 'hulk' },
-                  { label: 'Captain Marvel', value: 'captain_marvel' }
-                ]
-              }
-            },
-            {
-              className: 'col-sm-4',
-              type: 'custom-textbox',
-              key: 'idNum',
-              templateOptions: {
-                label: 'ID Number',
-                required: true,
-              },
-            },
-            {
-              key: 'dateOfBirth',
-              type: 'custom-datepicker',
-              className: 'col-sm-4 PaddingRightZero',
-              templateOptions: {
-                label: 'Date of Birth',
-              }
-            },
+                      key: 'IdDropdown',
+                      type: 'custom-dropdown',
+                      className: 'col-sm-4 PaddingLeftZero',
+                      templateOptions: {
+                        label: 'ID Country',
+                        options: [
+                          { label: 'Iron Man', value: 'iron_man' },
+                          { label: 'Captain America', value: 'captain_america' },
+                          { label: 'Black Widow', value: 'black_widow' },
+                          { label: 'Hulk', value: 'hulk' },
+                          { label: 'Captain Marvel', value: 'captain_marvel' }
+                        ]
+                      }
+                    },
+                    {
+                              className: 'col-sm-4',
+                              type: 'custom-textbox',
+                              key: 'idNum',
+                              templateOptions: {
+                                label: 'ID Number',
+                                required: true,
+                              },
+                            },
+                            {
+                                      key: 'dateOfBirth',
+                                      type: 'custom-datepicker',
+                                      className: 'col-sm-4 PaddingRightZero',
+                                      templateOptions: {
+                                        label: 'Date of Birth',
+                                      }
+                                    },
+          //         {
+          //     key: 'document',
+          //     type: 'custom-document-upload',
+          //     templateOptions: {
+          //       label: 'Documents'
+          //     }
+          // },
+            // {
+            //   type: 'custom-checkbox',
+            //   key: 'setForBanking',
+            //   className: 'col-sm-12',
+            //   templateOptions: {
+            //     label: 'Use this number for approving banking activity',
+            //   },
+            // }
           ],
-        },
-    }
-  ];
+      //     fieldGroup: [
+      //       {
+      //         key: 'IdDropdown',
+      //         type: 'custom-dropdown',
+      //         className: 'col-sm-4 PaddingLeftZero',
+      //         templateOptions: {
+      //           label: 'ID Country',
+      //           options: [
+      //             { label: 'Iron Man', value: 'iron_man' },
+      //             { label: 'Captain America', value: 'captain_america' },
+      //             { label: 'Black Widow', value: 'black_widow' },
+      //             { label: 'Hulk', value: 'hulk' },
+      //             { label: 'Captain Marvel', value: 'captain_marvel' }
+      //           ]
+      //         }
+      //       },
+      //       {
+      //         className: 'col-sm-4',
+      //         type: 'custom-textbox',
+      //         key: 'idNum',
+      //         templateOptions: {
+      //           label: 'ID Number',
+      //           required: true,
+      //         },
+      //       },
+      //       {
+      //         key: 'dateOfBirth',
+      //         type: 'custom-datepicker',
+      //         className: 'col-sm-4 PaddingRightZero',
+      //         templateOptions: {
+      //           label: 'Date of Birth',
+      //         }
+      //       },
+      //       {
+      //         key: 'document',
+      //         type: 'custom-document-upload',
+      //         templateOptions: {
+      //           heading: 'Documents'
+      //         }
+      //  //   ],
+      //   },
+      // ],
+    },
+      }, ];
 
+  this.cd.detectChanges();
 }
 }

@@ -21,7 +21,7 @@ export class FormlyFieldsService {
     switch (questionType) {
       ///Todo Add Custom LifeCycle events custom compound type
       case CustomComponentsEnum.CUSTOM_PHONE:
-      case CustomComponentsEnum.CUSTOM_ADDRESS_PROOF:
+      case CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD:
         return null;
       case CustomComponentsEnum.CUSTOM_EMAIL:
         const EMAIL_LIFECYCLE_EVENT: FormlyLifeCycleOptions = {

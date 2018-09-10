@@ -21,6 +21,7 @@ import { WindowRef } from './core/services/window-ref.service';
 import { CustomFormlyFieldsModule } from './custom-formly-fields/custom-formly-fields.module';
 import { StorybookModule } from './storybook/storybook.module';
 import { FormlyFieldsService } from './core/services/formly-fields.service';
+import { UploadService } from './core/services/upload.service';
 // import { UploadFileComponent } from './custom-formly-fields/components/upload-file/upload-file.component';
 
   @NgModule({
@@ -45,6 +46,7 @@ import { FormlyFieldsService } from './core/services/formly-fields.service';
   ],
   providers: [
     AuthenticationService,
+    UploadService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

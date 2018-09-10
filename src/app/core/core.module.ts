@@ -6,6 +6,8 @@ import { NgxFormlyParserService } from './services/ngx-formly-parser.service';
 import { ApplicationsService } from './services/applications.service';
 import { ApplicationRequestService } from './services/application-request.service';
 import { DynamicOptionsService } from './services/dynamic-options.service';
+import { UploadService } from './services/upload.service';
+
 
 @NgModule({
   imports: [
@@ -20,7 +22,8 @@ import { DynamicOptionsService } from './services/dynamic-options.service';
     QuestionnaireService,
     ApplicationsService,
     ApplicationRequestService,
-    DynamicOptionsService
+    DynamicOptionsService,
+    UploadService
   ],
   exports:[]
 })
