@@ -1,7 +1,7 @@
 {
   "questionnaireDeltaResponses": [
     {
-      "id": 1,
+      "id": 12,
       "label": "John Robbins",
       "description": "This is the information we have on you.",
       "status": "InProgress",
@@ -33,6 +33,27 @@
                   "value": "true"
                 }
               ]
+            },
+            {
+              "id": "InterestCheckingEmail",
+              "label": "Would you like to earn interest this account?",
+              "type": "custom-email",
+              "required": "true",
+              "readOnly": "false",
+              "recurrent": false,
+              "placeHolder": "Interest Account",
+              "options": [
+                {
+                  "label": "Yes",
+                  "value": "true"
+                },
+                {
+                  "label": "No",
+                  "value": "false"
+                }
+              ],
+              "tooltipText": "<string>",
+              "answers": []
             }
           ]
         },
@@ -46,7 +67,6 @@
               "required": "true",
               "readOnly": "false",
               "recurrent": false,
-
               "placeHolder": "Interest Account",
               "options": [
                 {
@@ -71,9 +91,7 @@
                 }
               ],
               "tooltipText": "<string>",
-              "answers": [
-                
-              ]
+              "answers": []
             },
             {
               "id": "SavingAccountTextBox2",
@@ -82,7 +100,6 @@
               "required": "true",
               "readOnly": "false",
               "recurrent": false,
-
               "placeHolder": "Saving Account",
               "options": [
                 {
@@ -95,9 +112,7 @@
                 }
               ],
               "tooltipText": "<string>",
-              "answers": [
-                
-              ]
+              "answers": []
             },
             {
               "id": "SavingAccountCheckBox2",
@@ -106,7 +121,6 @@
               "required": "true",
               "readOnly": "false",
               "recurrent": false,
-
               "placeHolder": "Saving Account",
               "options": [
                 {
@@ -119,9 +133,7 @@
                 }
               ],
               "tooltipText": "<string>",
-              "answers": [
-                
-              ]
+              "answers": []
             },
             {
               "id": "ChildDependentTextBox2",
@@ -130,7 +142,6 @@
               "required": "true",
               "readOnly": "false",
               "recurrent": false,
-
               "placeHolder": "Saving Account",
               "options": [
                 {
@@ -143,9 +154,7 @@
                 }
               ],
               "tooltipText": "<string>",
-              "answers": [
-                
-              ]
+              "answers": []
             },
             {
               "id": "RemoveOnAnswerQuestion2",
@@ -154,7 +163,6 @@
               "required": "true",
               "readOnly": "false",
               "recurrent": false,
-
               "placeHolder": "Saving Account",
               "options": [
                 {
@@ -167,9 +175,7 @@
                 }
               ],
               "tooltipText": "<string>",
-              "answers": [
-               
-              ]
+              "answers": []
             }
           ]
         }

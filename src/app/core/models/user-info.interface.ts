@@ -3,7 +3,7 @@ import { PersonalInfoInterface, PersonalInfoModel } from './personal-info.interf
 export interface UserInfoInterface {
     personalInfo: PersonalInfoInterface;
     role: string;
-    entitlements: Array<any>
+    entitlements: Array<any>;
 }
 
 export class UserInfoModel implements UserInfoInterface {
@@ -11,7 +11,7 @@ export class UserInfoModel implements UserInfoInterface {
     personalInfo;
     entitlements;
     constructor(data) {
-        if(!data) {
+        if (!data) {
             return null;
         }
             this.role = data.role;

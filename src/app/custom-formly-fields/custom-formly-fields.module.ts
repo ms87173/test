@@ -19,13 +19,18 @@ import { AddressFieldsComponent } from './components/address-fields/address-fiel
 import { QuestionnaireComponent } from '../questionnaire/questionnaire.component';
 import { SectionComponent } from '../section/section.component';
 import { TaskContainerComponent } from '../task-container/task-container.component';
-import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { EmailComponent } from './components/email/email.component';
 import { CustomComponentsEnum } from './enums/custom-components.enum';
 import { PhoneComponent } from './components/phone/phone.component';
 import { ModalModule } from 'ngx-bootstrap';
 import { FormlySelectOptionsPipe } from './pipes/select-options.pipe';
-import { AddressProofComponent } from './components/address-proof/address-proof.component';
+
+// import { FormUploadComponent } from './components/upload/form-upload/form-upload.component';
+
+// import { DetailsUploadComponent } from './components/upload/details-upload/details-upload.component';
+import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
+
 
 @NgModule({
   imports: [
@@ -51,10 +56,10 @@ import { AddressProofComponent } from './components/address-proof/address-proof.
         { name: CustomComponentsEnum.CUSTOM_EMAIL, component: EmailComponent },
         { name: CustomComponentsEnum.CUSTOM_PHONE, component: PhoneComponent },
         { name: CustomComponentsEnum.CUSTOM_CHECKBOX, component: CheckboxComponent },
-        { name: CustomComponentsEnum.CUSTOM_ADDRESS_PROOF, component: AddressProofComponent },
+        { name: CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD, component: DocumentUploadComponent },
+        { name: CustomComponentsEnum.CUSTOM_UPLOAD, component: UploadFileComponent },
       ]
     }),
-    
     FormlyBootstrapModule,
     TooltipModule.forRoot(),
     BsDatepickerModule.forRoot()
@@ -65,7 +70,7 @@ import { AddressProofComponent } from './components/address-proof/address-proof.
     RadiobuttonComponent,
     AutoCompleteComponent,
     DatePickerComponent,
-    AddressProofComponent,
+    DocumentUploadComponent,
     QuestionnaireComponent,
     SectionComponent,
     TaskContainerComponent,
@@ -74,7 +79,9 @@ import { AddressProofComponent } from './components/address-proof/address-proof.
     PhoneComponent,
     AddressFieldsComponent,
     EmailComponent,
-    FormlySelectOptionsPipe
+    FormlySelectOptionsPipe,
+    // FormUploadComponent,
+    // DetailsUploadComponent,
   ],
   exports: [
     DropdownComponent,
@@ -82,7 +89,7 @@ import { AddressProofComponent } from './components/address-proof/address-proof.
     RadiobuttonComponent,
     AutoCompleteComponent,
     DatePickerComponent,
-    AddressProofComponent,
+    DocumentUploadComponent,
     QuestionnaireComponent,
     SectionComponent,
     TaskContainerComponent,

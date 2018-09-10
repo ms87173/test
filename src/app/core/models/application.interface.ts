@@ -46,6 +46,6 @@ export class ApplicationModel implements ApplicationInterface {
         this.ownership = data.accountType;
         this.state = data.state;
         this.lastUpdatedBy = data.lastUpdatedBy;
-        this.lastUpdate = moment(data.lastUpdateDate).format('MM-DD-YYYY');
+        this.lastUpdate = moment(data.lastUpdateDate).format('MM DD YYYY HH:mm:ss');
     }
 }

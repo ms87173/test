@@ -1,5 +1,7 @@
 <div class="custom-address-fields">
-    <span class="bold">{{field.fieldArray?.templateOptions?.heading}}</span>
+    <span class="bold">
+        {{field.fieldArray?.templateOptions?.heading}}
+    </span>
     <div *ngFor="let data of field.fieldGroup; let i = index;">
         <formly-group
             [field]="data"
@@ -9,7 +11,7 @@
     </div>
     <div *ngIf="field.fieldArray?.recurrent">
         <button class="btn btn-link mt-2" type="button" (click)="add()">
-            {{ field.fieldArray.templateOptions.btnText }}
+            {{ field.fieldArray?.templateOptions?.btnText }}
         </button>
     </div>
 </div>

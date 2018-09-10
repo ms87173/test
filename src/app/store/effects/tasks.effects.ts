@@ -7,6 +7,7 @@ import {
 } from '../actions/workflows.action';
 import { switchMap, map } from 'rxjs/operators';
 import { determinePendingTask } from '../../core/utilities/application-request.utility';
+import { of } from 'rxjs';
 
 @Injectable()
 export class TasksEffects {
@@ -14,8 +15,8 @@ export class TasksEffects {
     @Effect() setPendingTask = this.actions$.pipe(
         ofType(ActionTypes.DETERMINE_PENDING_TASK_OF_APPLICATION_REQUEST),
         switchMap(
-            (action: DeterminePendingTaskOfApplication) => 
-                determinePendingTask(action.payload)
+            (action: DeterminePendingTaskOfApplication) =>
+                of(determinePendingTask(action.payload))
                     .pipe(
                         map(
                             (data) => {

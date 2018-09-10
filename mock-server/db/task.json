@@ -1,7 +1,181 @@
 {
     "tasks": [
         {
-            "id": 1,
+            "id": 22,
+            "label": "John Robbins",
+            "description": "This is the information we have on you.",
+            "status": "InProgress",
+            "sections": [
+                {
+                    "title": "Trusted Contact",
+                    "questions": [
+                        {
+                            "id": "InterestCheckingCheckBox",
+                            "label": "Would you like to earn interest this account?",
+                            "type": "custom-checkbox",
+                            "required": "true",
+                            "readOnly": "false",
+                            "recurrent": false,
+                            "placeHolder": "Interest Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": "true"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "false"
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "answers": [
+                                {
+                                    "value": "false"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "InterestCheckingEmail",
+                            "label": "Would you like to earn interest this account?",
+                            "type": "custom-email",
+                            "required": "true",
+                            "readOnly": "false",
+                            "recurrent": false,
+                            "placeHolder": "Interest Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": "true"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "false"
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "answers": []
+                        },
+                        {
+                            "id": "InterestCheckingPhone",
+                            "label": "Would you like to earn Phone?",
+                            "type": "custom-phone",
+                            "required": "true",
+                            "readOnly": "false",
+                            "recurrent": false,
+                            "placeHolder": "Interest Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": "true"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "false"
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "answers": []
+                        },
+                        {
+                            "id": "addressFields_test_1",
+                            "label": "Addresses",
+                            "type": "custom-address-fields",
+                            "required": true,
+                            "readOnly": false,
+                            "recurrent": false,
+                            "lookupName": "",
+                            "answers": [
+                                {
+                                    "value": {}
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 32,
+            "label": "John Robbins",
+            "description": "This is the information we have on you.",
+            "status": "InProgress",
+            "sections": [
+                {
+                    "title": "Documents",
+                    "questions": [
+                        {
+                            "id": "InterestCheckingCheckBox",
+                            "label": "Would you like to earn interest this account?",
+                            "type": "custom-checkbox",
+                            "required": "true",
+                            "readOnly": "false",
+                            "recurrent": false,
+                            "placeHolder": "Interest Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": "true"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "false"
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "answers": [
+                                {
+                                    "value": "false"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "InterestCheckingEmail",
+                            "label": "Would you like to earn interest this account?",
+                            "type": "custom-email",
+                            "required": "true",
+                            "readOnly": "false",
+                            "recurrent": false,
+                            "placeHolder": "Interest Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": "true"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "false"
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "answers": []
+                        },
+                        {
+                            "id": "InterestCheckingPhone",
+                            "label": "Would you like to earn Phone?",
+                            "type": "custom-phone",
+                            "required": "true",
+                            "readOnly": "false",
+                            "recurrent": false,
+                            "placeHolder": "Interest Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": "true"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "false"
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "answers": []
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 12,
             "label": "John Robbins",
             "description": "This is the information we have on you.",
             "status": "InProgress",
@@ -13,11 +187,9 @@
                             "id": "InterestCheckingCheckBox",
                             "label": "Would you like to earn interest this account?",
                             "type": "custom-checkbox",
-                            
                             "required": "true",
                             "readOnly": "false",
                             "recurrent": false,
-
                             "placeHolder": "Interest Account",
                             "options": [
                                 {
@@ -32,10 +204,9 @@
                             "tooltipText": "<string>",
                             "answers": [
                                 {
-                                  "value": "false"
+                                    "value": false
                                 }
-                              ]                            
-                            
+                            ]
                         },
                         {
                             "id": "InterestCheckingEmail",
@@ -44,7 +215,6 @@
                             "required": "true",
                             "readOnly": "false",
                             "recurrent": false,
-
                             "placeHolder": "Interest Account",
                             "options": [
                                 {
@@ -57,9 +227,8 @@
                                 }
                             ],
                             "tooltipText": "<string>",
-                            "answers": [
-                               
-                              ]                           },
+                            "answers": []
+                        },
                         {
                             "id": "InterestCheckingPhone",
                             "label": "Would you like to earn Phone?",
@@ -67,7 +236,6 @@
                             "required": "true",
                             "readOnly": "false",
                             "recurrent": false,
-
                             "placeHolder": "Interest Account",
                             "options": [
                                 {
@@ -80,12 +248,10 @@
                                 }
                             ],
                             "tooltipText": "<string>",
-                            "answers": [
-                               
-                            ] 
+                            "answers": []
                         }
                     ]
-                }           
+                }
             ]
         }
     ]

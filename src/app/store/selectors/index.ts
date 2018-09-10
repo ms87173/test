@@ -10,4 +10,4 @@ export {
     applicationRequestSelectors,
     routerSelectors,
     workflowsSelectors
-}
+};

@@ -1,8 +1,8 @@
 <div class="container ddo-application-tasks pl-5 pr-4">
     <card>
         <card-header>
-            <h4 class="card-header__heading">{{currentTask?.label}}</h4>
-            <h6 class="card-header__description">{{currentTask?.description}}</h6>
+            <h4 class="card-header__heading">{{currentTask?.workflowName}}</h4>
+            <h6 class="card-header__description">{{currentTask?.workflowDescription}}</h6>
         </card-header>
         <card-body>
             <div *ngIf="formlyFieldConfigArrayCollections?.length > 0">

@@ -17,12 +17,29 @@ export class FormlyFieldsService {
 
   getFormlyLifeCycleEventByQuestionType(questionType: string, requestId: string,
     workflowId: string, taskId: string): FormlyLifeCycleOptions {
-
     switch (questionType) {
-      ///Todo Add Custom LifeCycle events custom compound type
+      // Add Custom LifeCycle events custom compound type
       case CustomComponentsEnum.CUSTOM_PHONE:
-      case CustomComponentsEnum.CUSTOM_ADDRESS_PROOF:
+      case CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD:
         return null;
+      case CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS:
+      const ADDRESS_LIFECYCLE_EVENT: FormlyLifeCycleOptions = {
+        onInit: (form?: FormGroup, field?: FormlyFieldConfig) => {
+          // const key = field.key;
+          // const formObj = form.get(key);
+          // formObj.valueChanges
+          //   .pipe(debounceTime(600))
+          //   .subscribe((fieldValue) => {
+          //     console.log(fieldValue);
+          //   });
+          field.formControl.valueChanges
+            .pipe(debounceTime(600))
+            .subscribe((fieldValue) => {
+              console.log(fieldValue);
+            });
+        }
+      };
+      return ADDRESS_LIFECYCLE_EVENT;
       case CustomComponentsEnum.CUSTOM_EMAIL:
         const EMAIL_LIFECYCLE_EVENT: FormlyLifeCycleOptions = {
           onInit: (form?: FormGroup, field?: FormlyFieldConfig, model?: any, options?: FormlyFormOptions) => {

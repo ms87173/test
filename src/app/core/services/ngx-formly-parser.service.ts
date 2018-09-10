@@ -12,20 +12,22 @@ import { Store } from '@ngrx/store';
 import { fromRootReducers } from '../../store';
 import { Task, FormlyFieldConfigArrayCollection, Answer } from '../models';
 import { debounceTime } from 'rxjs/operators';
-import { CustomComponentsEnum } from '../../custom-formly-fields/enums/custom-components.enum';
+import { CustomComponentsEnum, EXISTING_COMPONENTS } from '../../custom-formly-fields/enums/custom-components.enum';
 import { emailFieldArray } from '../../custom-formly-fields/formly-configs/email-field-array';
 import { FormlyFieldsService } from './formly-fields.service';
 import { PhoneFieldConfig } from '../../custom-formly-fields/formly-configs/phone-field.config';
 import { AddressFieldsFieldArray } from '../../custom-formly-fields/formly-configs/address-fields-field-array';
+import { documentFieldArray } from '../../custom-formly-fields/formly-configs/document-field-array';
+import { DynamicOptionsService } from './dynamic-options.service';
 
 @Injectable()
 export class NgxFormlyParserService {
-  /// Todo: Waiting for client Store module. 
+  /// Todo: Waiting for client Store module.
   /// this should be handled in a property from state
   public currentQuestionId: string = null;
   public fieldChangeObj = null;
 
-  // private fieldChangeLifecycleTrigger: FormlyLifeCycleOptions = 
+  // private fieldChangeLifecycleTrigger: FormlyLifeCycleOptions =
   // {
   //   onInit: (form?: FormGroup, field?: FormlyFieldConfig, model?: any, options?: FormlyFormOptions) => {
   //     let key = field.key;
@@ -187,44 +189,48 @@ export class NgxFormlyParserService {
     let FormlyFieldConfigArray: FormlyFieldConfig[] = [];
     let currSection = { ...currentSection };
     currSection.questions.map((question: Question) => {
-      let field: FormlyFieldConfig = {};
-      field.key = question.id.toString();
-      if (field.key == currentQuestionId) {
-        field.focus = true;
-      }
-      field.type = question.type;
-      field.lifecycle = this.formlyFieldsService
-        .getFormlyLifeCycleEventByQuestionType(field.type, requestId, workflowId, taskId);
-      field.templateOptions = {
-        label: question.label || "",
-        options: question.options || [],
-        required: question.required || false,
-        disabled: question.disabled || false,
-        recurrent: question.recurrent || false
+      if (EXISTING_COMPONENTS.includes(question.type) && !question.recurrent) {
 
-      };
 
-      if (question.answers && question.answers.length > 0) {
-        field = this.setDefaultValuesFromAnswers(question.answers, field, question.recurrent)
-      console.log(question.answers)
-      }
+        let field: FormlyFieldConfig = {};
+        field.key = question.id.toString();
+        if (field.key == currentQuestionId) {
+          field.focus = true;
+        }
+        field.type = question.type;
+        field.lifecycle = this.formlyFieldsService
+          .getFormlyLifeCycleEventByQuestionType(field.type, requestId, workflowId, taskId);
+        field.templateOptions = {
+          label: question.label || "",
+          options: question.options || [],
+          required: question.required || false,
+          disabled: question.disabled || false,
+          recurrent: question.recurrent || false
 
-    
+        };
 
-      if (question.max) {
-        field.templateOptions.max = question.max;
+        if (question.answers && question.answers.length > 0) {
+          field = this.setDefaultValuesFromAnswers(question.answers, field, question.recurrent);
+          // console.log(question.answers)
+        }
+
+
+
+        if (question.max) {
+          field.templateOptions.max = question.max;
+        }
+        if (question.maxLength) {
+          field.templateOptions.maxLength = question.maxLength;
+        }
+        if (question.min) {
+          field.templateOptions.min = question.min;
+        }
+        if (question.minLength) {
+          field.templateOptions.minLength = question.minLength;
+        }
+        field = this.getFormlyFieldArrayConfigByQuestionType(field);
+        FormlyFieldConfigArray.push(field);
       }
-      if (question.maxLength) {
-        field.templateOptions.maxLength = question.maxLength;
-      }
-      if (question.min) {
-        field.templateOptions.min = question.min;
-      }
-      if (question.minLength) {
-        field.templateOptions.minLength = question.minLength;
-      }
-      field = this.getFormlyFieldArrayConfigByQuestionType(field);
-      FormlyFieldConfigArray.push(field);
     });
     return FormlyFieldConfigArray;
   }
@@ -237,13 +243,25 @@ export class NgxFormlyParserService {
       case CustomComponentsEnum.CUSTOM_EMAIL:
         field.fieldArray = { ...emailFieldArray };
         break;
-      // Todo: UI Team will add their respective field array reference here
+      // Everyone needs to add their respective field array.
       case CustomComponentsEnum.CUSTOM_PHONE:
         field.fieldArray = PhoneFieldConfig.fieldArray;
         break;
       case CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS:
+        field.fieldArray = { ...AddressFieldsFieldArray };
+        const addressCountryField = { ...field.fieldArray.fieldGroup[7] };
+        addressCountryField.templateOptions.options = this.dynamicOptionsService
+          .getDynamicOptions('country');
+        field.fieldArray.fieldGroup[7] = { ...addressCountryField };
+        console.log(field);
+        break;
+        // case CustomComponentsEnum.CUSTOM_UPLOAD:
+        // field.fieldArray = {
+        //   ...documentFieldArray
+        // };
+        case CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD:
         field.fieldArray = {
-          ...AddressFieldsFieldArray
+          ...documentFieldArray
         };
     }
     return field;
@@ -253,24 +271,22 @@ export class NgxFormlyParserService {
   setDefaultValuesFromAnswers(answers: Answer[], field: FormlyFieldConfig, isRecurrent: boolean): FormlyFieldConfig {
     let currField: FormlyFieldConfig = { ...field };
     if (!isRecurrent) {
-
       // if (currField.type === CustomComponentsEnum.CUSTOM_CHECKBOX) {
       //   currField.defaultValue = answers[0].value === 'true' ? true : false;
       // } else {
       //   currField.defaultValue = answers[0].value;
       // }
       currField.defaultValue = answers[0].value;
-
-    }
-    else {
+    } else {
       currField.defaultValue = answers;
     }
-
     return currField;
   }
 
-  constructor(private apiService: ApiService,
+  constructor(
+    private apiService: ApiService,
     private store: Store<fromRootReducers.AppState>,
-    private formlyFieldsService: FormlyFieldsService
+    private formlyFieldsService: FormlyFieldsService,
+    private dynamicOptionsService: DynamicOptionsService
   ) { }
 }
