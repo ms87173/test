@@ -30,5 +30,4 @@ export const AppRoutes: Routes = [
         pathMatch: 'full',
         redirectTo: 'ddo'
     }
-    
 ];

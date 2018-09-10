@@ -50,7 +50,8 @@ export class AutoCompleteComponent extends FieldType implements OnInit, OnDestro
     console.log('::::blucrchanges',evt);
   }
 
-  searchChanges1() {
+  searchChanges1(evt) {
+    console.log(evt);
     this.search$.emit('');
   }
 }
