@@ -1,0 +1,37 @@
+{
+    "description": "This is your primary interest bearing account.",
+    "status": "<string>",
+    "taskId":"<string>",
+    "workflowName":"<string>",
+    "workflowDescription":"<string>",
+    "tasks":[
+        {
+            "description": "<string>",
+            "status": "<string>",
+            "taskId":"<string>",
+            "workflowName":"<string>",
+            "workflowDescription":"<string>",        
+            "sections": [
+                {
+                    "title": "<string>",
+                    "questions": [
+                        {
+                            "id": "<string>",
+                            "label": "<string>", 
+                            "type": "<string>",                            
+                            "recurrent": "<boolean>",
+                            "readOnly":"<boolean>",
+                            "answers": [             
+                                {                  
+                                    "value": "<any>"
+                                   
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+
+}

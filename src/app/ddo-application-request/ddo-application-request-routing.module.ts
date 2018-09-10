@@ -12,6 +12,10 @@ const routes: Routes = [
       {
         path: 'questionnaire',
         component: DdoApplicationRequestTasksComponent
+      },
+      {
+        path: 'reviewInformation',
+        component: DdoApplicationRequestTasksComponent
       }
     ]
   },

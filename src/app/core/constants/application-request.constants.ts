@@ -8,7 +8,8 @@ export const TASK_STATUSES = {
     disabled: 'DISABLED'
 };
 export const TASK_TYPES = {
-    QUESTION: 'questionnaire'
+    QUESTION: 'questionnaire',
+    REVIEW_INFORMATION: 'reviewInformation'
 };
 
 export const QUESTIONS_TYPE = {
