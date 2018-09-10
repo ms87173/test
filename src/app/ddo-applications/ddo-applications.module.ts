@@ -8,12 +8,18 @@ import { DdoApplicationsGridComponent } from './components/ddo-applications-grid
 import { DdoApplicationsRowComponent } from './components/ddo-applications-row/ddo-applications-row.component';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { DdoApplicationsStateModule } from './state/ddo-applications-store-module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CustomFormlyFieldsModule } from '../custom-formly-fields/custom-formly-fields.module';
+import { FormlyModule } from '@ngx-formly/core';
 
 @NgModule({
   imports: [
     CommonModule,
+    CustomFormlyFieldsModule,
     SharedModule,
     CoreModule,
+    ReactiveFormsModule,
+    FormlyModule.forRoot(),
     DdoApplicationsRoutingModule,
     BsDropdownModule.forRoot(),
     DdoApplicationsStateModule

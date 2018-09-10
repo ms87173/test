@@ -13,3 +13,8 @@ export const getApplications = createSelector(
     getApplicaitonsState,
     fromApplications.getApplications
 );
+
+export const modifyApplications = createSelector(
+    getApplicaitonsState,
+    fromApplications.modifyApplications
+);

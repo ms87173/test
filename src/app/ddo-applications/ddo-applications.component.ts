@@ -2,12 +2,18 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ApplicationGridModel } from '../core/models/application-grid.model';
 import { fromApplicationsSelectors, fromApplicationsReducers } from './state';
 import { Store } from '@ngrx/store';
-import { GetApplications } from './state/actions/ddo-applications.actions';
-import { APPLICATION_GRID_HEADING, APPLICATION_DROPDOWN_OPTIONS, ACTION_TYPES } from '../core/constants/applications.constants';
+import { GetApplications, SortApplications, FilterApplications } from './state/actions/ddo-applications.actions';
+import { APPLICATION_GRID_HEADING, APPLICATION_DROPDOWN_OPTIONS, ACTION_TYPES, FILTER_CRITERIA } from '../core/constants/applications.constants';
 import { ContactDetailsModel } from '../core/models/contact-detail.model';
 import * as _ from 'lodash';
 import { RouteChange, RouterGo } from '../store/actions/router.actions';
 import { fromRootSelectors, fromRootReducers } from '../store';
+import { FormlyFormOptions } from '@ngx-formly/core';
+import { FormGroup } from '@angular/forms';
+import * as moment from 'moment';
+
+import { takeUntil, startWith, tap } from 'rxjs/operators';
+import { Subject, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-ddo-applications',
@@ -22,6 +28,12 @@ export class DdoApplicationsComponent implements OnInit {
   gridConfig: any;
   contactPersonDetails: any;
   applicationsData: any;
+  onDestroy$ = new Subject<void>();
+  form = new FormGroup({});
+  model: any;
+  options: FormlyFormOptions = {};
+  fields: Array<any>;
+  isModifiedData: boolean;
   constructor(
     private store: Store<fromApplicationsReducers.ddoApplicationsReducers.ApplicationsState>,
     private rootStore: Store<fromRootReducers.AppState>
@@ -41,11 +53,112 @@ export class DdoApplicationsComponent implements OnInit {
       .subscribe((applications: any) => {
         this.gridConfig.data =
           applications.map((application) => new ApplicationGridModel(application));
-        this.applicationsData = applications;
+        if (!this.isModifiedData) {
+          this.applicationsData = applications;
+        }
       });
   }
 
   ngOnInit() {
+    this.isModifiedData = false;
+    this.fields = [
+      {
+        fieldGroupClassName: 'row',
+        fieldGroup: [
+          {
+            key: 'modified',
+            type: 'custom-dropdown',
+            className: 'col-sm-12 col-md-3 col-lg-2',
+            templateOptions: {
+              label: 'Modified Date',
+              hideRequiredMarker: true,
+              required: true,
+              options: FILTER_CRITERIA.modified
+            },
+            lifecycle: {
+              onInit: (form, field) => {
+                form.get('modified').valueChanges.
+                  distinctUntilChanged((a, b) => a === b).pipe(
+                    takeUntil(this.onDestroy$),
+                    startWith(form.get('modified').value),
+                    tap(modified => {
+                      if (modified && modified != 'customDate') {
+                        this.filterApplication({ key: 'modified', value: modified });
+                      }
+                    }),
+                  ).subscribe();
+              },
+            },
+          },
+          {
+            key: 'status',
+            type: 'custom-dropdown',
+            className: 'col-sm-12 col-md-3 col-lg-2',
+            templateOptions: {
+              label: 'Status',
+              required: true,
+              hideRequiredMarker: true,
+              options: FILTER_CRITERIA.status
+            },
+            lifecycle: {
+              onInit: (form, field) => {
+                form.get('status').valueChanges
+                  .distinctUntilChanged((a, b) => a === b)
+                  .pipe(
+                    takeUntil(this.onDestroy$),
+                    startWith(form.get('status').value),
+                    tap(filterBy => {
+                      if (filterBy) {
+                        this.filterApplication({ key: 'status', value: filterBy })
+                      }
+                    }),
+                  ).subscribe();
+              },
+            },
+          },
+          {
+            key: 'customDate',
+            type: 'custom-datepicker',
+            className: 'col-sm-12 col-md-3 col-lg-2',
+            templateOptions: {
+              label: 'Date of Birth',
+              datepickerOptions: {
+                show: false,
+                placement: 'left'
+              }
+            },
+            lifecycle: {
+              onInit: (form, field) => {
+                form.get('modified').valueChanges.
+                  distinctUntilChanged((a, b) => a === b).pipe(
+                    takeUntil(this.onDestroy$),
+                    startWith(form.get('modified').value),
+                    tap(modified => {
+                      field.formControl.setValue('');
+                      if (modified === 'customDate') {
+                        field.templateOptions.datepickerOptions.show = true;
+                      } else {
+                        field.templateOptions.datepickerOptions.show = false;
+                      }
+                    }),
+                  ).subscribe();
+                form.get('customDate').valueChanges.
+                  distinctUntilChanged((a, b) => a === b).
+                  pipe(
+                    takeUntil(this.onDestroy$),
+                    startWith(form.get('customDate').value),
+                    tap(selectedDate => {
+                      if (selectedDate) {
+                        this.filterApplication({ key: 'modified', value: 'customDate', filterDate: moment(selectedDate).format('MM-DD-YYYY') });
+                      }
+                    })
+                  ).subscribe();
+              },
+            },
+          }
+        ]
+      }
+    ]
     this.store.dispatch(new GetApplications());
   }
 
@@ -59,23 +172,17 @@ export class DdoApplicationsComponent implements OnInit {
           )
         );
         break;
-      case ACTION_TYPES.sort: this.sortApplications(this.applicationsData, payload.params);
+      case ACTION_TYPES.sort: {
+        this.isModifiedData = true;
+        this.store.dispatch(new SortApplications({ data: this.applicationsData, params: payload.params }));
+      }
         break;
       case ACTION_TYPES.completeNow:
     }
   }
-  sortApplications(data, params) {
-    let formatedData;
-    let { key } = params;
-    if (params.key === 'status') {
-      key = 'status.description';
-    }
-    formatedData = _.orderBy(data, [key], [params.sortOrder]);
-    params.sortOrder = params.sortOrder === 'asc' ? 'desc' : 'asc';
-    //TODO refactor this completely via actions or this container being store.
-    if (formatedData) {
-      this.gridConfig.data = formatedData.map((application) =>
-        new ApplicationGridModel(application));
-    }
+
+  filterApplication(filterCriteria) {
+    this.isModifiedData = true;
+    this.store.dispatch(new FilterApplications({ data: this.applicationsData, params: filterCriteria }));
   }
 }

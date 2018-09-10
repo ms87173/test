@@ -54,7 +54,8 @@ export const APPLICATION_GRID_HEADING = [
 export const ACTION_TYPES = {
     rowClicked: 'rowClicked',
     sort: 'sort',
-    completeNow: 'completeNow'
+    completeNow: 'completeNow',
+    filter: 'filter'
 };
 
 export const STATUS_MAPPING = {
@@ -99,4 +100,47 @@ export const APPLICATION_TYPE = {
 
 export const ROLE = {
     assistantBanker: 'Assistant Banker'
+};
+
+export const FILTER_CRITERIA = {
+    modified: [
+        {
+            label: 'Last Week',
+            value: 'lastWeek'
+        },
+        {
+            label: 'Last Month',
+            value: 'lastMonth'
+        },
+        {
+            label: 'Last Quarter',
+            value: 'lastQuarter'
+        },
+        {
+            label: 'Custom Date',
+            value: 'customDate'
+        }
+    ],
+    status: [
+        {
+            label: 'Action Required',
+            value: 'actionRequired'
+        },
+        {
+            label: 'Waiting For Others',
+            value: 'waiting'
+        },
+        {
+            label: 'Submitted To Banker',
+            value: 'submitted'
+        },
+        {
+            label: 'Completed',
+            value: 'completed'
+        },
+        {
+            label: 'Cancelled',
+            value: 'canceled'
+        }
+    ]
 };
