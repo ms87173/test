@@ -4,11 +4,14 @@ import { Effect, Actions, ofType } from '@ngrx/effects';
 import {
     ActionTypes,
     GetApplicationsSuccess,
-    GetApplicationsFailure
+    GetApplicationsFailure,
+    SortApplications,
+    FilterApplications
 } from '../actions/ddo-applications.actions';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { ApplicationModel } from '../../../core/models/application.interface';
+import { sortApplications, filterApplications } from '../../../core/utilities/applications.utility';
 
 @Injectable()
 export class DdoApplicationsEffects {
@@ -31,7 +34,30 @@ export class DdoApplicationsEffects {
                     )
                 )
         ));
-
+        @Effect() sortApplications = this.actions$.pipe(
+            ofType(ActionTypes.SORT_APPLICATIONS),
+            switchMap(
+                (action: SortApplications) => 
+                    sortApplications(action.payload.data, action.payload.params)
+                        .pipe(
+                            map(
+                                (data) => {
+                                    return new GetApplicationsSuccess(data);
+                                })
+                        )
+                ));
+                @Effect() filterApplications = this.actions$.pipe(
+                    ofType(ActionTypes.FILTER_APPLICATIONS),
+                    switchMap(
+                        (action: FilterApplications) => 
+                            filterApplications(action.payload.data, action.payload.params)
+                                .pipe(
+                                    map(
+                                        (data) => {
+                                            return new GetApplicationsSuccess(data);
+                                        })
+                                )
+                        ));
     constructor(
         private applicationsService: ApplicationsService,
         private actions$: Actions

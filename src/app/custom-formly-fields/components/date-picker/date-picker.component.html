@@ -16,7 +16,9 @@
       bsDatepicker #dp="bsDatepicker"
       [minDate]="to.datepickerOptions && to.datepickerOptions.minDate"
       [maxDate]="to.datepickerOptions && to.datepickerOptions.maxDate"
-      showWeekNumbers="false">
+      placement = "{{to.datepickerOptions && to.datepickerOptions.placement}}"
+      showWeekNumbers="false"
+      [isOpen]='to.datepickerOptions && to.datepickerOptions.show'>
     <div class="input-group-append">
       <div class="input-group-text">
         <i class="fa fa-calendar-o" aria-hidden="true" (click)="dp.toggle()"></i>

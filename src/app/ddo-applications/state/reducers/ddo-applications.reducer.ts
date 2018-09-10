@@ -20,7 +20,7 @@ export function ApplicationsReducer(
     action: ApplicationActions
 ): ApplicationsState {
     switch (action.type) {
-        case ActionTypes.GET_APPLICATIONS: 
+        case ActionTypes.GET_APPLICATIONS:
             return {
                 ...state,
                 loaded: false,
@@ -38,6 +38,18 @@ export function ApplicationsReducer(
                 loaded: false,
                 loading: false
             };
+        case ActionTypes.SORT_APPLICATIONS:
+            return {
+                ...state,
+                loaded: false,
+                loading: false
+            };
+        case ActionTypes.FILTER_APPLICATIONS:
+            return {
+                ...state,
+                loaded: false,
+                loading: false
+            };
         default:
             return state;
     }
@@ -46,3 +58,4 @@ export function ApplicationsReducer(
 export const getApplications = (state: ApplicationsState) => state.applications;
 export const getApplicationLoaded = (state: ApplicationsState) => state.loaded;
 export const getApplicationLoading = (state: ApplicationsState) => state.loading;
+export const modifyApplications = (state: ApplicationsState) => state.applications;

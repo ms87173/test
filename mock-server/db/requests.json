@@ -5,7 +5,7 @@
             "title": "Vikash Kumar",
             "heading": "Application Request for Individual Accounts",
             "lastUpdatedBy": "Vikash Kumar",
-            "lastUpdateDate": "05-23-2018",
+            "lastUpdateDate": "05 Sep 2018",
             "accountType": "Individual",
             "products": [
                 "Banking - Saving",
@@ -13,7 +13,7 @@
             ],
             "status": {
                 "code": "CANCELED",
-                "description": "Waiting for Vikash kumar"
+                "description": "Cancelled"
             },
             "priorityAction": "continue",
             "actions": [
@@ -26,7 +26,7 @@
             "title": "Lionel Messi, Cristiano Ronaldo and Neymar",
             "heading": "Application Request for Individual Accounts",
             "lastUpdatedBy": "Neymar",
-            "lastUpdateDate": "06-23-2018",
+            "lastUpdateDate": "04 Sep 2018",
             "accountType": "Joint",
             "products": [
                 "Banking - Saving"
@@ -46,7 +46,7 @@
             "title": "Pulkit",
             "heading": "Application Request for Individual Accounts",
             "lastUpdatedBy": "Vikash Kumar",
-            "lastUpdateDate": "05-23-2018",
+            "lastUpdateDate": "06 Sep 2018",
             "accountType": "Individual",
             "products": [
                 "Banking - Saving"
@@ -66,14 +66,14 @@
             "title": "Pulkit",
             "heading": "Application Request for Individual Accounts",
             "lastUpdatedBy": "Vikash Kumar",
-            "lastUpdateDate": "05-23-2018",
+            "lastUpdateDate": "09 Aug 2018",
             "accountType": "Individual",
             "products": [
                 "Banking - Saving"
             ],
             "status": {
-                "code": "waiting",
-                "description": "Waiting for Vikash kumar"
+                "code": "actionRequired",
+                "description": "Action Required"
             },
             "priorityAction": "continue",
             "actions": [
@@ -86,14 +86,14 @@
             "title": "Pulkit",
             "heading": "Application Request for Individual Accounts",
             "lastUpdatedBy": "Vikash Kumar",
-            "lastUpdateDate": "05-23-2018",
+            "lastUpdateDate": "05 Aug 2018",
             "accountType": "Individual",
             "products": [
                 "Banking - Saving"
             ],
             "status": {
-                "code": "waiting",
-                "description": "Waiting for Vikash kumar"
+                "code": "submitted",
+                "description": "Submitted"
             },
             "priorityAction": "continue",
             "actions": [
@@ -106,14 +106,14 @@
             "title": "Pulkit",
             "heading": "Application Request for Individual Accounts",
             "lastUpdatedBy": "Vikash Kumar",
-            "lastUpdateDate": "05-23-2018",
+            "lastUpdateDate": "23 Jul 2018",
             "accountType": "Individual",
             "products": [
                 "Banking - Saving"
             ],
             "status": {
-                "code": "waiting",
-                "description": "Waiting for Vikash kumar"
+                "code": "completed",
+                "description": "Completed"
             },
             "priorityAction": "continue",
             "actions": [
@@ -126,7 +126,7 @@
             "title": "Pulkit",
             "heading": "Application Request for Individual Accounts",
             "lastUpdatedBy": "Vikash Kumar",
-            "lastUpdateDate": "05-23-2018",
+            "lastUpdateDate": "17 Jul 2018",
             "accountType": "Individual",
             "products": [
                 "Banking - Saving"
@@ -146,7 +146,7 @@
             "title": "Pulkit",
             "heading": "Application Request for Individual Accounts",
             "lastUpdatedBy": "Vikash Kumar",
-            "lastUpdateDate": "05-23-2018",
+            "lastUpdateDate": "15 Jun 2018",
             "accountType": "Individual",
             "products": [
                 "Banking - Saving"
