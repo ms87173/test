@@ -1,7 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ApiService } from './api.service';
-import { Task, QuestionaireDeltaResponse, QuestionaireDeltaRequest, TaskRequest } from '../models';
+import {
+  Task,
+  QuestionaireDeltaResponse,
+  QuestionaireDeltaRequest,
+  TaskRequest
+} from '../models';
+import { environment } from '../../../environments/environment';
+
 @Injectable()
 export class QuestionnaireService {
   constructor(private apiService: ApiService) { }
@@ -61,31 +68,34 @@ export class QuestionnaireService {
   // }
 
   getCurrentTask(taskRequest: TaskRequest): Observable<Task> {
-    // return this.apiService.get('tasks/' + taskRequest.taskId);
+    const url = environment.apiUrls.fetchTaskQuestionnaire;
+    return this.apiService
+      .get(`${url}/${taskRequest.taskId}`);
     // Todo: Uncomment to use Production Url
-    return this.apiService.post('api/ddo/questionnaire/taskQuestions', taskRequest);
+    // return this.apiService
+    //   .post(url, taskRequest);
   }
 
   getFieldChangeDelta(deltaRequest: QuestionaireDeltaRequest): Observable<Task> {
 
-   // Todo: uncomment to use mock service
-    // switch (deltaRequest.questionnaireItems[0].id) {
-      
-    //   case 'InterestCheckingCheckBox':
-    //     return this.apiService.get('questionnaireDeltaResponses/1');
+    // Todo: uncomment to use mock service
+    switch (deltaRequest.questionnaireItems[0].id) {
+      case 'InterestCheckingCheckBox':
+        return this.apiService.get('questionnaireDeltaResponses/1');
 
-    //   case 'SavingAccountTextBox':
-    //     return this.apiService.get('questionnaireDeltaResponses/2');
+      case 'SavingAccountTextBox':
+        return this.apiService.get('questionnaireDeltaResponses/2');
 
-    //   case 'ColorInputBox':
-    //     return this.apiService.get('questionnaireDeltaResponses/3');
+      case 'ColorInputBox':
+        return this.apiService.get('questionnaireDeltaResponses/3');
 
-    //   default:
-    //     return of(null);
-    // }
+      default:
+        return of(null);
+    }
 
     // Todo : Production Url
-    return this.apiService.post('api/ddo/questionnaire/tasks/question', deltaRequest);
+    // return this.apiService
+    //   .post(environment.apiUrls.fetchTaskQuestionnaireDelts, deltaRequest);
   }
   getCountryCode(): Observable<any[]> {
     return this.apiService.get('countryCode');

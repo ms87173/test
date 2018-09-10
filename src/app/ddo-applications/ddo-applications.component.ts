@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ApplicationGridModel } from '../core/models/application-grid.model';
-import { fromApplicationsSelectors, fromApplicationsReducers } from './state';
+import { fromApplicationsSelectors } from './state';
 import { Store } from '@ngrx/store';
 import { GetApplications } from './state/actions/ddo-applications.actions';
 import { APPLICATION_GRID_HEADING, APPLICATION_DROPDOWN_OPTIONS, ACTION_TYPES } from '../core/constants/applications.constants';
 import { ContactDetailsModel } from '../core/models/contact-detail.model';
 import * as _ from 'lodash';
-import { RouteChange, RouterGo } from '../store/actions/router.actions';
+import { RouterGo } from '../store/actions/router.actions';
 import { fromRootSelectors, fromRootReducers } from '../store';
 
 @Component({
@@ -23,8 +23,7 @@ export class DdoApplicationsComponent implements OnInit {
   contactPersonDetails: any;
   applicationsData: any;
   constructor(
-    private store: Store<fromApplicationsReducers.ddoApplicationsReducers.ApplicationsState>,
-    private rootStore: Store<fromRootReducers.AppState>
+    private store: Store<fromRootReducers.AppState>
   ) {
     const headings = APPLICATION_GRID_HEADING;
     const dropDownOptions = APPLICATION_DROPDOWN_OPTIONS;
@@ -33,7 +32,7 @@ export class DdoApplicationsComponent implements OnInit {
       data: [],
       dropDownOptions
     };
-    this.rootStore.select(fromRootSelectors.userSelectors.getUserContactPerson).
+    this.store.select(fromRootSelectors.userSelectors.getUserContactPerson).
       subscribe((contactDetail: any) => {
         this.contactPersonDetails = new ContactDetailsModel(contactDetail);
       });

@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { FieldArrayType, FormlyFormBuilder  } from '@ngx-formly/core';
+import { DynamicOptionsService } from '../../../core';
 
 @Component({
   selector: 'address-fields',
@@ -9,7 +10,7 @@ import { FieldArrayType, FormlyFormBuilder  } from '@ngx-formly/core';
 })
 
 export class AddressFieldsComponent extends FieldArrayType{
-  constructor(builder: FormlyFormBuilder) {
+  constructor(builder: FormlyFormBuilder, private dynamicOptionsService: DynamicOptionsService) {
     super(builder);
   }
 }

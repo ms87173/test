@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { environment } from '../../../environments/environment.dev';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-
 
 @Injectable()
 export class ApiService {
@@ -16,28 +15,25 @@ export class ApiService {
     return Observable.throw(error);
   }
 
-  get(url: string, httpParams: HttpParams = new HttpParams()): Observable<any> {
-
-    return this.http.get(`${environment.apiUrl}${url}`, { params: httpParams })
+  get(path: string): Observable<any> {
+    return this.http.get(`${environment.apiBaseUrl}${path}`)
       .pipe(catchError(this.handleError));
   }
   put(path: string, body: Object = {}): Observable<any> {
     return this.http.put(
-      `${environment.apiUrl}${path}`,
+      `${environment.apiBaseUrl}${path}`,
       JSON.stringify(body)
     ).pipe(catchError(this.handleError));
   }
-
   post(path: string, body: Object = {}): Observable<any> {
     return this.http.post(
-      `${environment.apiUrl}${path}`,
+      `${environment.apiBaseUrl}${path}`,
       JSON.stringify(body)
     ).pipe(catchError(this.handleError));
   }
-
   delete(path): Observable<any> {
     return this.http.delete(
-      `${environment.apiUrl}${path}`
+      `${environment.apiBaseUrl}${path}`
     ).pipe(catchError(this.handleError));
   }
 

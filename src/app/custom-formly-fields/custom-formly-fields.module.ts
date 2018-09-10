@@ -59,7 +59,6 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
         { name: CustomComponentsEnum.CUSTOM_UPLOAD, component: UploadFileComponent },
       ]
     }),
-    
     FormlyBootstrapModule,
     TooltipModule.forRoot(),
     BsDatepickerModule.forRoot()
@@ -82,7 +81,6 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     FormlySelectOptionsPipe,
     // FormUploadComponent,
     // DetailsUploadComponent,
-    
   ],
   exports: [
     DropdownComponent,

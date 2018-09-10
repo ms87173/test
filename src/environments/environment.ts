@@ -3,8 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000/'
-}
+  apiBaseUrl: 'http://localhost:3000/',
+  apiUrls: {
+    fetchAllApplications: 'requests',
+    fetchApplication: 'request',
+    fetchWorkflowsAndTasks: 'workflows',
+    fetchTaskQuestionnaire: 'tasks',
+    fetchTaskQuestionnaireDelts: 'questionnaireDeltaResponses',
+    saveTaskQuestionnaire: 'success',
+    fetchDynamicOptions: 'dynamic-options'
+  }
+};
 /*
  * In development mode, to ignore zone related error stack frames such as
  * `zone.run`, `zoneDelegate.invokeTask` for easier debugging, you can

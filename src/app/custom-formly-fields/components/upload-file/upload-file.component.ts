@@ -34,8 +34,8 @@ export class UploadFileComponent extends FieldArrayType implements OnInit{
         method: 'POST',
         file: this.files[0],
       };
-    //  this.apiService.post('api/ddo/request/details', this.files[0]);
-      this.apiService.post('api/ddo/questionnaire/document/upload', this.files[0]);
+    //  this.apiService.post('/request/details', this.files[0]);
+      this.apiService.post('/questionnaire/document/upload', this.files[0]);
       // /api/ddo/questionnaire/document/upload
     //  this.apiService.get('request');
      this.uploadInput.emit(event);
