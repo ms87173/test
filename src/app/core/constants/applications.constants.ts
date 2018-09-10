@@ -9,13 +9,14 @@ export const SORT_ORDER = {
     default: 'default',
     ascending: 'asc',
     descending: 'desc'
-}
+};
 
 export const APPLICATIONS_STATUS = {
     cancelled: 'CANCELED',
     onHold: 'ON_HOLD',
     inProgress: 'IN_PROGRESS'
-}
+};
+
 export const APPLICATION_GRID_HEADING = [
     {
         key: 'description',

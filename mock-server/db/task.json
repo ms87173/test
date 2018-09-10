@@ -33,10 +33,9 @@
                             "tooltipText": "<string>",
                             "answers": [
                                 {
-                                  "value": "false"
+                                    "value": "false"
                                 }
-                              ]                            
-                            
+                            ]
                         },
                         {
                             "id": "InterestCheckingEmail",
@@ -45,7 +44,6 @@
                             "required": "true",
                             "readOnly": "false",
                             "recurrent": false,
-
                             "placeHolder": "Interest Account",
                             "options": [
                                 {
@@ -58,9 +56,8 @@
                                 }
                             ],
                             "tooltipText": "<string>",
-                            "answers": [
-                               
-                              ]                           },
+                            "answers": []
+                        },
                         {
                             "id": "InterestCheckingPhone",
                             "label": "Would you like to earn Phone?",
@@ -68,7 +65,6 @@
                             "required": "true",
                             "readOnly": "false",
                             "recurrent": false,
-
                             "placeHolder": "Interest Account",
                             "options": [
                                 {
@@ -81,12 +77,24 @@
                                 }
                             ],
                             "tooltipText": "<string>",
+                            "answers": []
+                        },
+                        {
+                            "id": "addressFields_test_1",
+                            "label": "Addresses",
+                            "type": "custom-address-fields",
+                            "required": true,
+                            "readOnly": false,
+                            "recurrent": false,
+                            "lookupName": "",
                             "answers": [
-                               
-                            ] 
+                                {
+                                    "value": {}
+                                }
+                            ]
                         }
                     ]
-                }           
+                }
             ]
         },
         {
@@ -122,10 +130,9 @@
                             "tooltipText": "<string>",
                             "answers": [
                                 {
-                                  "value": "false"
+                                    "value": "false"
                                 }
-                              ]                            
-                            
+                            ]
                         },
                         {
                             "id": "InterestCheckingEmail",
@@ -134,7 +141,6 @@
                             "required": "true",
                             "readOnly": "false",
                             "recurrent": false,
-
                             "placeHolder": "Interest Account",
                             "options": [
                                 {
@@ -147,9 +153,8 @@
                                 }
                             ],
                             "tooltipText": "<string>",
-                            "answers": [
-                               
-                              ]                           },
+                            "answers": []
+                        },
                         {
                             "id": "InterestCheckingPhone",
                             "label": "Would you like to earn Phone?",
@@ -157,7 +162,6 @@
                             "required": "true",
                             "readOnly": "false",
                             "recurrent": false,
-
                             "placeHolder": "Interest Account",
                             "options": [
                                 {
@@ -170,12 +174,10 @@
                                 }
                             ],
                             "tooltipText": "<string>",
-                            "answers": [
-                               
-                            ] 
+                            "answers": []
                         }
                     ]
-                }           
+                }
             ]
         },
         {
@@ -194,11 +196,9 @@
                             "id": "InterestCheckingCheckBox",
                             "label": "Would you like to earn interest this account?",
                             "type": "custom-checkbox",
-                            
                             "required": "true",
                             "readOnly": "false",
                             "recurrent": false,
-
                             "placeHolder": "Interest Account",
                             "options": [
                                 {
@@ -213,10 +213,9 @@
                             "tooltipText": "<string>",
                             "answers": [
                                 {
-                                  "value":false
+                                    "value": false
                                 }
-                              ]                            
-                            
+                            ]
                         },
                         {
                             "id": "InterestCheckingEmail",
@@ -225,7 +224,6 @@
                             "required": "true",
                             "readOnly": "false",
                             "recurrent": false,
-
                             "placeHolder": "Interest Account",
                             "options": [
                                 {
@@ -238,9 +236,8 @@
                                 }
                             ],
                             "tooltipText": "<string>",
-                            "answers": [
-                               
-                              ]                           },
+                            "answers": []
+                        },
                         {
                             "id": "InterestCheckingPhone",
                             "label": "Would you like to earn Phone?",
@@ -248,7 +245,6 @@
                             "required": "true",
                             "readOnly": "false",
                             "recurrent": false,
-
                             "placeHolder": "Interest Account",
                             "options": [
                                 {
@@ -261,12 +257,10 @@
                                 }
                             ],
                             "tooltipText": "<string>",
-                            "answers": [
-                               
-                            ] 
+                            "answers": []
                         }
                     ]
-                }           
+                }
             ]
         }
     ]

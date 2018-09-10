@@ -7,7 +7,7 @@ import { ApiService } from './api.service';
 export class UploadService {
 
   constructor(private apiService: ApiService) { }
-    uploadFile(){            
-    return this.apiService.post('/api/ddo/questionnaire/document/upload/', );
+  uploadFile() {
+    return this.apiService.post('/api/ddo/questionnaire/document/upload/');
   }
 }

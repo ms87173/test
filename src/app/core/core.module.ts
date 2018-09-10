@@ -1,31 +1,45 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ConstantsModule } from './constants/constants.module';
-import { ApiService, UserInfoService, QuestionnaireService } from './services';
-import { NgxFormlyParserService } from './services/ngx-formly-parser.service';
-import { ApplicationsService } from './services/applications.service';
-import { ApplicationRequestService } from './services/application-request.service';
-import { DynamicOptionsService } from './services/dynamic-options.service';
-import { UploadService } from './services/upload.service';
-
+import {
+  UploadService,
+  DynamicOptionsService,
+  ApplicationRequestService,
+  ApplicationsService,
+  ApiService,
+  UserInfoService,
+  QuestionnaireService,
+  NgxFormlyParserService,
+  AuthenticationService,
+  WindowRef,
+  FormlyFieldsService
+} from './services';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './services/token.interceptor';
 
 @NgModule({
   imports: [
-    CommonModule,
-    ConstantsModule,
+    CommonModule
   ],
   providers: [
     ApiService,
     NgxFormlyParserService,
-    ApiService,
     UserInfoService,
     QuestionnaireService,
     ApplicationsService,
     ApplicationRequestService,
     DynamicOptionsService,
-    UploadService
+    UploadService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    AuthenticationService,
+    UploadService,
+    WindowRef,
+    FormlyFieldsService
   ],
-  exports:[]
+  exports: []
 })
 
 export class CoreModule { }

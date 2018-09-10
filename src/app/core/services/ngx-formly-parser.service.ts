@@ -18,15 +18,16 @@ import { FormlyFieldsService } from './formly-fields.service';
 import { PhoneFieldConfig } from '../../custom-formly-fields/formly-configs/phone-field.config';
 import { AddressFieldsFieldArray } from '../../custom-formly-fields/formly-configs/address-fields-field-array';
 import { documentFieldArray } from '../../custom-formly-fields/formly-configs/document-field-array';
+import { DynamicOptionsService } from './dynamic-options.service';
 
 @Injectable()
 export class NgxFormlyParserService {
-  /// Todo: Waiting for client Store module. 
+  /// Todo: Waiting for client Store module.
   /// this should be handled in a property from state
   public currentQuestionId: string = null;
   public fieldChangeObj = null;
 
-  // private fieldChangeLifecycleTrigger: FormlyLifeCycleOptions = 
+  // private fieldChangeLifecycleTrigger: FormlyLifeCycleOptions =
   // {
   //   onInit: (form?: FormGroup, field?: FormlyFieldConfig, model?: any, options?: FormlyFormOptions) => {
   //     let key = field.key;
@@ -209,8 +210,8 @@ export class NgxFormlyParserService {
         };
 
         if (question.answers && question.answers.length > 0) {
-          field = this.setDefaultValuesFromAnswers(question.answers, field, question.recurrent)
-          console.log(question.answers)
+          field = this.setDefaultValuesFromAnswers(question.answers, field, question.recurrent);
+          // console.log(question.answers)
         }
 
 
@@ -242,14 +243,18 @@ export class NgxFormlyParserService {
       case CustomComponentsEnum.CUSTOM_EMAIL:
         field.fieldArray = { ...emailFieldArray };
         break;
-      // Todo: UI Team will add their respective field array reference here
+      // Everyone needs to add their respective field array.
       case CustomComponentsEnum.CUSTOM_PHONE:
         field.fieldArray = PhoneFieldConfig.fieldArray;
         break;
       case CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS:
-        field.fieldArray = {
-          ...AddressFieldsFieldArray
-        };
+        field.fieldArray = { ...AddressFieldsFieldArray };
+        const addressCountryField = { ...field.fieldArray.fieldGroup[7] };
+        addressCountryField.templateOptions.options = this.dynamicOptionsService
+          .getDynamicOptions('country');
+        field.fieldArray.fieldGroup[7] = { ...addressCountryField };
+        console.log(field);
+        break;
         // case CustomComponentsEnum.CUSTOM_UPLOAD:
         // field.fieldArray = {
         //   ...documentFieldArray
@@ -258,7 +263,6 @@ export class NgxFormlyParserService {
         field.fieldArray = {
           ...documentFieldArray
         };
-        
     }
     return field;
 
@@ -267,24 +271,22 @@ export class NgxFormlyParserService {
   setDefaultValuesFromAnswers(answers: Answer[], field: FormlyFieldConfig, isRecurrent: boolean): FormlyFieldConfig {
     let currField: FormlyFieldConfig = { ...field };
     if (!isRecurrent) {
-
       // if (currField.type === CustomComponentsEnum.CUSTOM_CHECKBOX) {
       //   currField.defaultValue = answers[0].value === 'true' ? true : false;
       // } else {
       //   currField.defaultValue = answers[0].value;
       // }
       currField.defaultValue = answers[0].value;
-
-    }
-    else {
+    } else {
       currField.defaultValue = answers;
     }
-
     return currField;
   }
 
-  constructor(private apiService: ApiService,
+  constructor(
+    private apiService: ApiService,
     private store: Store<fromRootReducers.AppState>,
-    private formlyFieldsService: FormlyFieldsService
+    private formlyFieldsService: FormlyFieldsService,
+    private dynamicOptionsService: DynamicOptionsService
   ) { }
 }

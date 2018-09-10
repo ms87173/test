@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class AuthenticationService {
-    //MOCK authentication service
+    // MOCK authentication service
     public getToken(): any {
         return 'KERMIT COBLEAD';
     }

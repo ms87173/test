@@ -1,14 +1,13 @@
-import { TASK_STATUSES } from "../constants/application-request.constants";
-import { of } from "rxjs";
+import { TASK_STATUSES } from '../constants/application-request.constants';
 
 export function determinePendingTask(workflows) {
     let count = 0, taskId = '', workflowId = '';
-    while(count < workflows.length) {
+    while (count < workflows.length) {
         const workflow = workflows[count];
         if (workflow.status === TASK_STATUSES.inProgress) {
             workflowId = workflow.id;
             let count1 = 0;
-            while(count1 < workflow.tasks.length) {
+            while (count1 < workflow.tasks.length) {
                 const task = workflow.tasks[count1];
                 if (task.status === TASK_STATUSES.inProgress) {
                     taskId = task.id;
@@ -20,12 +19,12 @@ export function determinePendingTask(workflows) {
         }
         count++;
     }
-    if(workflows && workflows.length > 0 && !workflowId && !taskId) {
+    if (workflows && workflows.length > 0 && !workflowId && !taskId) {
         workflowId = workflows[0].id;
         taskId = workflows[0].tasks[0].id;
     }
-    return of({
+    return {
         workflowId,
         taskId
-    });
+    };
 }
