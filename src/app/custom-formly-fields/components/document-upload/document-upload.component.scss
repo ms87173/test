@@ -1,0 +1,35 @@
+.box_wrapper, .is-drop-over{
+    border: 1px dashed #ccc;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10px;   
+
+    h4{
+        font-size: 12px;
+    }
+}
+.nogutter{
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+.document-field{
+    margin-top: 10px;
+    p{
+        margin: 0px;
+        padding: 0px;
+    }
+    .add-document{
+        color: blue;
+        cursor: pointer;
+    }
+    .document-upload{
+        border:1px solid #dedede;
+        padding: 10px;
+        P{
+            border-bottom:1px solid #dedede;
+            padding-bottom: 10px;
+        }
+    }
+}
+

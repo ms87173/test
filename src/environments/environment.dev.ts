@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'mktdevvm100621.nam.nsroot.net:9090/'
+  apiUrl: 'mktdevvm773134.nam.nsroot.net:9090/'
 };

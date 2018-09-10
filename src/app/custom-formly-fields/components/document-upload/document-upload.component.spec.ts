@@ -1,23 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { AddressProofComponent } from './address-proof.component';
-
-describe('AddressProofComponent', () => {
-  let component: AddressProofComponent;
-  let fixture: ComponentFixture<AddressProofComponent>;
+import { DocumentUploadComponent } from './document-upload.component';
+describe('DocumentUploadComponent', () => {
+  let component: DocumentUploadComponent;
+  let fixture: ComponentFixture<DocumentUploadComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddressProofComponent ]
+      declarations: [ DocumentUploadComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddressProofComponent);
+    fixture = TestBed.createComponent(DocumentUploadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+  }); 
 
   it('should create', () => {
     expect(component).toBeTruthy();

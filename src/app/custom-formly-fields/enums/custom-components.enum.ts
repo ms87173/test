@@ -5,10 +5,11 @@ export enum CustomComponentsEnum {
     CUSTOM_TYPEAHEAD = 'typeahead',
     CUSTOM_DATEPICKER = 'custom-datepicker',
     CUSTOM_ADDRESS_FIELDS = 'custom-address-fields',
-    CUSTOM_ADDRESS_PROOF = 'repeatAddressData',
+    CUSTOM_DOCUMENT_UPLOAD = 'custom-document-upload',
     CUSTOM_TEXTBOX = 'custom-textbox',
     CUSTOM_EMAIL = 'custom-email',
     CUSTOM_PHONE = 'custom-phone',
+    CUSTOM_UPLOAD = 'custom-upload' 
 }
 
 export const EXISTING_COMPONENTS: string[] = [
@@ -22,4 +23,5 @@ export const EXISTING_COMPONENTS: string[] = [
     CustomComponentsEnum.CUSTOM_TEXTBOX,
     // CustomComponentsEnum.CUSTOM_EMAIL,
     // CustomComponentsEnum.CUSTOM_PHONE
+    CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD
 ];

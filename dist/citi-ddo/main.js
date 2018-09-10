@@ -3371,7 +3371,7 @@ var FormlySelectOptionsPipe = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- <app-header [config]='navConfig'></app-header>\r\n<nav class=\"navbar navbar-expand-lg navbar--secondary\">\r\n    <div id=\"navbarNavAltMarkup\">\r\n        <div class=\"navbar-nav\">\r\n            <a class=\"nav-item nav-link active\" href=\"ddo/my-applications\">Overview\r\n                <span class=\"sr-only\">(current)</span>\r\n            </a>\r\n        </div>\r\n    </div>\r\n</nav> -->\r\n<router-outlet></router-outlet>\r\n"
+module.exports = "<!-- <app-header [config]='navConfig'></app-header>\r\n<nav class=\"navbar navbar-expand-lg navbar--secondary\">\r\n    <div id=\"navbarNavAltMarkup\">\r\n        <div class=\"navbar-nav\">\r\n            <a class=\"nav-item nav-link active\" href=\"ddo/my-applications\">Overview\r\n                <span class=\"sr-only\">(current)</span>\r\n            </a>\r\n        </div>\r\n    </div>\r\n</nav> -->\r\n<div class=\"row\">\r\n    <div class=\"col-sm-12 pl-md-5 pr-md-5\">\r\n        <a class=\"btn btn-link \" href=\"ddo/my-applications\">Home</a>\r\n    </div>\r\n</div>\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
@@ -7997,7 +7997,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
 var environment = {
     production: false,
-    apiUrl: 'mktdevvm100621.nam.nsroot.net:9090/'
+    apiUrl: 'mktdevvm773134.nam.nsroot.net:9090/'
 };
 
 

@@ -101,7 +101,7 @@ var DdoApplicationRequestDashboardComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container ddo-application-tasks pl-5 pr-4\">\r\n    <card>\r\n        <card-header>\r\n            <h4 class=\"card-header__heading\">{{currentTask?.label}}</h4>\r\n            <h6 class=\"card-header__description\">{{currentTask?.description}}</h6>\r\n        </card-header>\r\n        <card-body>\r\n            <div *ngIf=\"formlyFieldConfigArrayCollections?.length > 0\">\r\n                <div *ngFor=\"let formlyFieldConfigArray of formlyFieldConfigArrayCollections; let index = index;\">\r\n                    <section [formlyFieldConfigArray]=\"formlyFieldConfigArray\">\r\n                    </section>\r\n                </div>\r\n            </div>\r\n        </card-body>\r\n    </card>\r\n</div>"
+module.exports = "<div class=\"container ddo-application-tasks pl-5 pr-4\">\r\n    <card>\r\n        <card-header>\r\n            <h4 class=\"card-header__heading\">{{currentTask?.workflowName}}</h4>\r\n            <h6 class=\"card-header__description\">{{currentTask?.workflowDescription}}</h6>\r\n        </card-header>\r\n        <card-body>\r\n            <div *ngIf=\"formlyFieldConfigArrayCollections?.length > 0\">\r\n                <div *ngFor=\"let formlyFieldConfigArray of formlyFieldConfigArrayCollections; let index = index;\">\r\n                    <section [formlyFieldConfigArray]=\"formlyFieldConfigArray\">\r\n                    </section>\r\n                </div>\r\n            </div>\r\n        </card-body>\r\n    </card>\r\n</div>"
 
 /***/ }),
 
