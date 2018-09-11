@@ -15,19 +15,34 @@ export function sortApplications(data, params) {
 }
 
 export function filterApplications(data, params) {
-  let filteredData;
-  if (params.key === 'status') {
-    filteredData = _.filter(data, (e) => e.status.code.toLowerCase() === params.value);
-  }
-  if (params.key === 'modified') {
-    if (params.value === 'lastWeek') {
+  let filteredData = [];
+  if (params.statusFilter.value === 'all' && params.modifiedFilter.value === 'all') {
+    filteredData = data;
+  } else if (params.modifiedFilter.value === 'all' && params.statusFilter.value != 'all') {
+    filteredData = _.filter(data, (e) => e.status.code.toLowerCase() === params.statusFilter.value);
+  } else if (params.modifiedFilter.value != 'all' && params.statusFilter.value != 'all') {
+    if (params.modifiedFilter.value === 'lastWeek') {
+      filteredData = _.filter(data, (e) => moment().add(-1, 'week').isSameOrBefore(moment(e.lastUpdate))
+        && e.status.code.toLowerCase() === params.statusFilter.value);
+    } else if (params.modifiedFilter.value === 'lastMonth') {
+      filteredData = _.filter(data, (e) => moment().add(-1, 'month').isSameOrBefore(moment(e.lastUpdate))
+        && e.status.code.toLowerCase() === params.statusFilter.value);
+    } else if (params.modifiedFilter.value === 'lastQuarter') {
+      filteredData = _.filter(data, (e) => moment().add(-3, 'month').isSameOrBefore(moment(e.lastUpdate))
+        && e.status.code.toLowerCase() === params.statusFilter.value);
+    } else if (params.modifiedFilter.value === 'customDate') {
+      filteredData = _.filter(data, (e) => moment(params.modifiedFilter.filterDate).isSame(moment(e.lastUpdate))
+        && e.status.code.toLowerCase() === params.statusFilter.value);
+    }
+  } else if (params.modifiedFilter.value != 'all' && params.statusFilter.value === 'all') {
+    if (params.modifiedFilter.value === 'lastWeek') {
       filteredData = _.filter(data, (e) => moment().add(-1, 'week').isSameOrBefore(moment(e.lastUpdate)));
-    } else if (params.value === 'lastMonth') {
+    } else if (params.modifiedFilter.value === 'lastMonth') {
       filteredData = _.filter(data, (e) => moment().add(-1, 'month').isSameOrBefore(moment(e.lastUpdate)));
-    } else if (params.value === 'lastQuarter') {
-      filteredData = _.filter(data, (e) => moment().add(-3 , 'month').isSameOrBefore(moment(e.lastUpdate)));
-    } else if (params.value === 'customDate') {
-      filteredData = _.filter(data, (e) => moment(params.filterDate).isSame(moment(e.lastUpdate)));
+    } else if (params.modifiedFilter.value === 'lastQuarter') {
+      filteredData = _.filter(data, (e) => moment().add(-3, 'month').isSameOrBefore(moment(e.lastUpdate)));
+    } else if (params.modifiedFilter.value === 'customDate') {
+      filteredData = _.filter(data, (e) => moment(params.modifiedFilter.filterDate).isSame(moment(e.lastUpdate)));
     }
   }
   return of(filteredData);

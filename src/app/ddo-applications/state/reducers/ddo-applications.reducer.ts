@@ -6,12 +6,14 @@ import { ApplicationInterface } from '../../../core/models/application.interface
 
 export interface ApplicationsState {
     applications: Array<ApplicationInterface>;
+    modifiedApplications: Array<ApplicationInterface>
     loaded: boolean;
     loading: boolean;
 }
 
 export const InitialState: ApplicationsState = {
     applications: [],
+    modifiedApplications: [],
     loaded: false,
     loading: false
 };
@@ -28,6 +30,7 @@ export function ApplicationsReducer(
             };
         case ActionTypes.GET_APPLICATIONS_SUCCESS:
             return {
+                ...state,
                 loaded: true,
                 loading: false,
                 applications: action.payload
@@ -42,7 +45,7 @@ export function ApplicationsReducer(
             return {
                 ...state,
                 loaded: false,
-                loading: false
+                loading: false             
             };
         case ActionTypes.FILTER_APPLICATIONS:
             return {
@@ -50,6 +53,13 @@ export function ApplicationsReducer(
                 loaded: false,
                 loading: false
             };
+        case ActionTypes.MODIFY_APPLICATIONS: 
+            return {
+                ...state,
+                loaded: true,
+                loading: false,
+                modifiedApplications: action.payload
+            }
         default:
             return state;
     }
@@ -58,4 +68,6 @@ export function ApplicationsReducer(
 export const getApplications = (state: ApplicationsState) => state.applications;
 export const getApplicationLoaded = (state: ApplicationsState) => state.loaded;
 export const getApplicationLoading = (state: ApplicationsState) => state.loading;
-export const modifyApplications = (state: ApplicationsState) => state.applications;
+export const filterApplications = (state: ApplicationsState) => state.applications;
+export const sortApplications = (state: ApplicationsState) => state.applications;
+export const modifyApplicationsList = (state: ApplicationsState) => state.modifiedApplications;

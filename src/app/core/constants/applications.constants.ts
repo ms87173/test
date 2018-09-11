@@ -19,9 +19,10 @@ export const APPLICATIONS_STATUS = {
 
 export const APPLICATION_GRID_HEADING = [
     {
-        key: 'description',
+        key: 'title',
         value: 'DESCRIPTION',
-        showSortOption: false
+        showSortOption: true,
+        sortOrder: 'desc'
     },
     {
         key: 'ownership',
@@ -106,6 +107,10 @@ export const ROLE = {
 export const FILTER_CRITERIA = {
     modified: [
         {
+            label: 'All',
+            value: 'all'
+        },
+        {
             label: 'Last Week',
             value: 'lastWeek'
         },
@@ -123,6 +128,10 @@ export const FILTER_CRITERIA = {
         }
     ],
     status: [
+        {
+            label: 'All',
+            value: 'all'
+        },
         {
             label: 'Action Required',
             value: 'actionRequired'

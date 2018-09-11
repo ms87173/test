@@ -1,4 +1,5 @@
 .ddo-applications-grid {
+    overflow-y: -webkit-paged-x;
     & .table {
         background: #ffffff;
         white-space: nowrap;
@@ -9,10 +10,14 @@
                 font-weight: 400;
                 color: #898b8d;
                 border-bottom: 1px solid #000000;
+                i {
+                    display: none;
+                }
                 &.active {
                     border-bottom: 2px solid #000000;
                     i {
                         color: #000000;
+                        display: block;
                     }
                 }
             }

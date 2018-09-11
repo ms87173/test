@@ -52,9 +52,19 @@ export class DdoApplicationsComponent implements OnInit {
       .subscribe((applications: any) => {
         this.gridConfig.data =
           applications.map((application) => new ApplicationGridModel(application));
-        if (!this.isModifiedData) {
-          this.applicationsData = applications;
-        }
+        this.store.dispatch(new SortApplications({ data: applications, params: { key: 'lastUpdate', sortOrder: 'desc' } }))
+        this.applicationsData = applications;
+      }
+      );
+    this.store.select(fromApplicationsSelectors.ddoApplicationsSelectors.sortApplications)
+      .subscribe((applications: any) => {
+        this.gridConfig.data =
+          applications && applications.map((application) => new ApplicationGridModel(application));
+      });
+    this.store.select(fromApplicationsSelectors.ddoApplicationsSelectors.filterApplications)
+      .subscribe((applications: any) => {
+        this.gridConfig.data =
+          applications && applications.map((application) => new ApplicationGridModel(application));
       });
   }
 
@@ -68,6 +78,7 @@ export class DdoApplicationsComponent implements OnInit {
             key: 'modified',
             type: 'custom-dropdown',
             className: 'col-sm-12 col-md-3 col-lg-2',
+            defaultValue: 'all',
             templateOptions: {
               label: 'Modified Date',
               hideRequiredMarker: true,
@@ -82,7 +93,12 @@ export class DdoApplicationsComponent implements OnInit {
                     startWith(form.get('modified').value),
                     tap(modified => {
                       if (modified && modified != 'customDate') {
-                        this.filterApplication({ key: 'modified', value: modified });
+                        const statusFilterValue = form.get('status').value;
+                        this.filterApplication(
+                          {
+                            statusFilter: { key: 'status', value: statusFilterValue },
+                            modifiedFilter: { key: 'modified', value: modified }
+                          });
                       }
                     }),
                   ).subscribe();
@@ -93,6 +109,7 @@ export class DdoApplicationsComponent implements OnInit {
             key: 'status',
             type: 'custom-dropdown',
             className: 'col-sm-12 col-md-3 col-lg-2',
+            defaultValue: 'all',
             templateOptions: {
               label: 'Status',
               required: true,
@@ -108,7 +125,13 @@ export class DdoApplicationsComponent implements OnInit {
                     startWith(form.get('status').value),
                     tap(filterBy => {
                       if (filterBy) {
-                        this.filterApplication({ key: 'status', value: filterBy })
+                        const selectedDate = form.get('customDate');
+                        const modifiedFilterValue = form.get('modified').value;
+                        this.filterApplication(
+                          {
+                            statusFilter: { key: 'status', value: filterBy },
+                            modifiedFilter: { key: 'modified', value: modifiedFilterValue, filterDate: moment(selectedDate).format('MM-DD-YYYY') }
+                          });
                       }
                     }),
                   ).subscribe();
@@ -123,7 +146,8 @@ export class DdoApplicationsComponent implements OnInit {
               label: 'Date of Birth',
               datepickerOptions: {
                 show: false,
-                placement: 'left'
+                placement: 'left',
+                initialState: moment().format('DD/MM/YYYY')
               }
             },
             lifecycle: {
@@ -148,7 +172,13 @@ export class DdoApplicationsComponent implements OnInit {
                     startWith(form.get('customDate').value),
                     tap(selectedDate => {
                       if (selectedDate) {
-                        this.filterApplication({ key: 'modified', value: 'customDate', filterDate: moment(selectedDate).format('MM-DD-YYYY') });
+                        const statusFilterValue = form.get('status').value;
+                        field.templateOptions.datepickerOptions.initialState = selectedDate;
+                        this.filterApplication(
+                          {
+                            statusFilter: { key: 'status', value: statusFilterValue },
+                            modifiedFilter: { key: 'modified', value: 'customDate', filterDate: moment(selectedDate).format('MM-DD-YYYY') }
+                          });
                       }
                     })
                   ).subscribe();
@@ -181,6 +211,7 @@ export class DdoApplicationsComponent implements OnInit {
   }
 
   filterApplication(filterCriteria) {
+    console.log(filterCriteria)
     this.isModifiedData = true;
     this.store.dispatch(new FilterApplications({ data: this.applicationsData, params: filterCriteria }));
   }

@@ -6,7 +6,8 @@ import {
     GetApplicationsSuccess,
     GetApplicationsFailure,
     SortApplications,
-    FilterApplications
+    FilterApplications,
+    ModifyApplications
 } from '../actions/ddo-applications.actions';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -42,7 +43,7 @@ export class DdoApplicationsEffects {
                         .pipe(
                             map(
                                 (data) => {
-                                    return new GetApplicationsSuccess(data);
+                                    return new ModifyApplications(data);
                                 })
                         )
                 ));
@@ -54,7 +55,7 @@ export class DdoApplicationsEffects {
                                 .pipe(
                                     map(
                                         (data) => {
-                                            return new GetApplicationsSuccess(data);
+                                            return new ModifyApplications(data);
                                         })
                                 )
                         ));
