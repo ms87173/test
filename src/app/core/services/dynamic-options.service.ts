@@ -10,6 +10,6 @@ export class DynamicOptionsService {
     const url = environment.apiUrls.fetchDynamicOptions;
     // TODO: Production Url
     // return this.apiService.get(`${url}${param}`);
-    return this.apiService.get(url);
+    return this.apiService.get(param);
   }
 }

@@ -12,5 +12,35 @@
           "label": "Australia",
           "value": "Australia"
         }
+      ],
+      "Countries": [
+        {
+          "label": "India",
+          "value": "IN"
+        },
+        {
+          "label": "USA",
+          "value": "USA"
+        }
+      ],
+      "usa-states": [
+        {
+          "label": "Utah",
+          "value": "UT"
+        },
+        {
+          "label": "New Jersey",
+          "value": "NJ"
+        }
+      ],
+      "indian-states": [
+        {
+          "label": "Delhi",
+          "value": "DL"
+        },
+        {
+          "label": "Maharashtra",
+          "value": "MH"
+        }
       ]
 }
