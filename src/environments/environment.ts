@@ -5,6 +5,7 @@ export const environment = {
   production: false,
   apiBaseUrl: 'http://localhost:3000/',
   apiUrls: {
+    fetchContactPerson: 'contact',
     fetchAllApplications: 'requests',
     fetchApplication: 'request',
     fetchWorkflowsAndTasks: 'workflows',

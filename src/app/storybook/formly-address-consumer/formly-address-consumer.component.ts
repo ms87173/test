@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormlyFormOptions } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
-
 import { takeUntil, startWith, tap } from 'rxjs/operators';
 import { Subject, Observable, of } from 'rxjs';
 import { DynamicOptionsService } from '../../core/services/dynamic-options.service';
@@ -16,43 +15,12 @@ export class FormlyAddressConsumerComponent implements OnInit {
   onDestroy$ = new Subject<void>();
   form = new FormGroup({});
   model: any = {
-    addresses: [{}]//this is mandatory
+    addresses: [{}]
   };
   options: FormlyFormOptions = {};
   fields: Array<any>;
   stateData: any;
-  getStateData(country): Observable<any[]> {
-    switch (country) {
-      case 'India': return of([
-        {
-          value: 'Maharashtra',
-          label: 'Maharashtra'
-        },
-        {
-          value: 'Delhi',
-          label: 'Delhi'
-        },
-        {
-          value: 'Uttar Pradesh',
-          label: 'Uttar Pradesh'
-        }
-      ]);
-      case 'United States of America': return of([
-        {
-          value: 'Utah',
-          label: 'Utah'
-        },
-        {
-          value: 'Texas',
-          label: 'Texas'
-        }
-      ]);
-    }
-  }
-  getCountryData(): Observable<any[]> {
-    return this.dynamicOptionsService.getDynamicOptions('allCountry');
-  }
-  
+
   constructor(private dynamicOptionsService: DynamicOptionsService) { }
 
   ngOnInit() {
@@ -70,7 +38,7 @@ export class FormlyAddressConsumerComponent implements OnInit {
               templateOptions: {
                 required: true,
                 label: 'Address Description',
-                options: [//TODO: what are all the values and the structure of options
+                options: [// HARDCODED: what are all the values and the structure of options
                   {
                     label: 'Home Address',
                     value: 'homeAddress'
@@ -88,7 +56,7 @@ export class FormlyAddressConsumerComponent implements OnInit {
               className: 'col-sm-12 mt-2',
               templateOptions: {
                 required: true,
-                label: "Is your home/legal address the same as the primary account holder's address?",
+                label: `Is your home/legal address the same as the primary account holder's address?`,
                 options: [
                   {
                     label: 'Yes',
@@ -154,8 +122,9 @@ export class FormlyAddressConsumerComponent implements OnInit {
                     startWith(form.get('country').value),
                     tap(country => {
                       field.formControl.setValue('');
-                      if(country) {
-                        field.templateOptions.options = this.getStateData(country);
+                      if (country) {
+                        const url = country === 'USA' ? 'usa-states' : 'indian-states';
+                        field.templateOptions.options = this.dynamicOptionsService.getDynamicOptions(url);
                       }
                     }),
                   ).subscribe();
@@ -169,7 +138,7 @@ export class FormlyAddressConsumerComponent implements OnInit {
               templateOptions: {
                 required: true,
                 label: 'Country',
-                options: this.getCountryData(),
+                options: this.dynamicOptionsService.getDynamicOptions('Countries'),
                 hideRequiredMarker: true
               }
             },
@@ -188,7 +157,7 @@ export class FormlyAddressConsumerComponent implements OnInit {
               className: 'col-sm-12 mt-2',
               templateOptions: {
                 required: true,
-                label: "Would you like to use this address as your mailing address?",
+                label: 'Would you like to use this address as your mailing address?',
                 options: [
                   {
                     label: 'Yes',

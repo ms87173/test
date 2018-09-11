@@ -1,44 +1,63 @@
 {
-    "application": {
-        "id": "",
-        "title": "",
-        "accountHolders": [
-            {
-                "firstName": "",
-                "lastName": "",
-                "middleName": "",
-                "email": "",
-                "role": [
-                    "primary", "custodial"
-                ]
-            }
-        ],
-        "states": [
-            "new" //can be more required on business
-        ],
-        "type": "",
-        "status": {
-            "code": "",
-            "description": ""
+    "id": "1",
+    "title": "John Robbins and/or Jane Robbins and/or Susan Sandron",
+    "status": {
+        "code": "submitted",
+        "description": "Waiting for Jane Robbins"
+    },
+    "type": "joint",
+    "lastUpdatedBy": "Vikash Kumar",
+    "lastUpdateDate": "05-23-2018",
+    "actions": [
+        "continue",
+        "cancel"
+    ],
+    "priorityAction": "continue",
+    "accountHolders": "John Robbins, Jane Robbins & Susan Sarandon",
+    "workflowsCategories": [
+        {
+            "label": "Update Product Info",
+            "type": "PRODUCTS_INFO",
+            "disabled": false,
+            "status": "comlpeted",
+            "tasks": [
+                "Interest Checking",
+                "Savings"
+            ]
         },
-        "lastUpdatedBy": "",
-        "lastUpdate": "",
-        "prodcuts": [
-            {
-                "id": "interestCheckingAccount",
-                "label": "Interest Checking Account"
-            },
-            {
-                "id": "savingsAccount",
-                "label": "Savings Account"
-            }
-        ],
-        "workflowStatus": [//TODO: Need to discuss this is for successful submission of application
-            {
-                "status": "",
-                "label": "",
-                "type": ""
-            }
-        ]
-    }
+        {
+            "label": "Update info and documents",
+            "type": "APPLICANTS_INFO",
+            "status": "in-progress",
+            "disabled": false,
+            "tasks": [
+                "John Robbins- Primary",
+                "Jane Robbins - Co-applicant"
+            ]
+        },
+        {
+            "label": "Review & submit to clients",
+            "type": "REVIEW_SUBMIT",
+            "status": "not-started",
+            "disabled": true,
+            "tasks": [
+                "Review Information",
+                "Sign and Submit"
+            ]
+        },
+        {
+            "label": "Clients",
+            "type": "CLIENTS",
+            "status": "not-started",
+            "disabled": false,
+            "tasks": []
+        },
+        {
+            "label": "Banker",
+            "type": "BANKER",
+            "status": "not-started",
+            "disabled": false,
+            "tasks": []
+        }
+    ]
 }
