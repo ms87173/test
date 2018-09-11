@@ -237,6 +237,9 @@ export class FormlyConsumerComponent implements OnInit {
       {
         key: 'data',
         type: 'custom-document-upload',
+        templateOptions: {
+          label: 'Address proof',
+        }
         fieldArray: {
           fieldGroupClassName: 'row',
           templateOptions: {

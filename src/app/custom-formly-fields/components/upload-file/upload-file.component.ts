@@ -3,6 +3,8 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions, UploadStatus } from 'ngx-uploader';
 import { FieldArrayType, FormlyFormBuilder } from '@ngx-formly/core';
 import { ApiService } from '../../../core';
+import { environment } from '../../../../environments/environment';
+
 @Component({
   selector: 'upload-file',
   templateUrl: './upload-file.component.html',
@@ -25,17 +27,18 @@ export class UploadFileComponent extends FieldArrayType implements OnInit{
     this.humanizeBytes = humanizeBytes;
 
   }
+  // environment.apiBaseUrl
 
   onUploadOutput(output: UploadOutput): void {
     if (output.type === 'allAddedToQueue') {
       const event: UploadInput = {
         type: 'uploadAll',
-        url: 'https://ngx-uploader.com/upload',
+        url: `${environment.apiBaseUrl}questionnaire/document/upload`,
         method: 'POST',
         file: this.files[0],
       };
     //  this.apiService.post('/request/details', this.files[0]);
-      this.apiService.post('/questionnaire/document/upload', this.files[0]);
+     // this.apiService.post('questionnaire/document/upload', this.files[0]);
       // /api/ddo/questionnaire/document/upload
     //  this.apiService.get('request');
      this.uploadInput.emit(event);

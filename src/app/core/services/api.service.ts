@@ -26,6 +26,7 @@ export class ApiService {
     ).pipe(catchError(this.handleError));
   }
   post(path: string, body: Object = {}): Observable<any> {
+    console.log(`${environment.apiBaseUrl}${path}`, '::::', environment);
     return this.http.post(
       `${environment.apiBaseUrl}${path}`,
       JSON.stringify(body)
