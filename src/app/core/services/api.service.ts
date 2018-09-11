@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -15,8 +15,8 @@ export class ApiService {
     return Observable.throw(error);
   }
 
-  get(path: string): Observable<any> {
-    return this.http.get(`${environment.apiBaseUrl}${path}`)
+  get(path: string, httpParams: HttpParams = new HttpParams()): Observable<any> {
+    return this.http.get(`${environment.apiBaseUrl}${path}`, { params: httpParams })
       .pipe(catchError(this.handleError));
   }
   put(path: string, body: Object = {}): Observable<any> {
@@ -26,6 +26,7 @@ export class ApiService {
     ).pipe(catchError(this.handleError));
   }
   post(path: string, body: Object = {}): Observable<any> {
+    console.log(`${environment.apiBaseUrl}${path}`, '::::', environment);
     return this.http.post(
       `${environment.apiBaseUrl}${path}`,
       JSON.stringify(body)

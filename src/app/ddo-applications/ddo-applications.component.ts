@@ -2,8 +2,16 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ApplicationGridModel } from '../core/models/application-grid.model';
 import { fromApplicationsSelectors } from './state';
 import { Store } from '@ngrx/store';
-import { GetApplications, SortApplications, FilterApplications } from './state/actions/ddo-applications.actions';
-import { APPLICATION_GRID_HEADING, APPLICATION_DROPDOWN_OPTIONS, ACTION_TYPES, FILTER_CRITERIA } from '../core/constants/applications.constants';
+import {
+  GetApplications,
+  SortApplications,
+  FilterApplications
+} from './state/actions/ddo-applications.actions';
+import {
+  APPLICATION_GRID_HEADING,
+  APPLICATION_DROPDOWN_OPTIONS,
+  ACTION_TYPES, FILTER_CRITERIA
+} from '../core/constants/applications.constants';
 import { ContactDetailsModel } from '../core/models/contact-detail.model';
 import * as _ from 'lodash';
 import { RouterGo } from '../store/actions/router.actions';
@@ -13,7 +21,7 @@ import { FormGroup } from '@angular/forms';
 import * as moment from 'moment';
 
 import { takeUntil, startWith, tap } from 'rxjs/operators';
-import { Subject, Observable, of } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-ddo-applications',

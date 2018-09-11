@@ -2,6 +2,9 @@
     "tasks": [
         {
             "id": 22,
+            "taskId":22,
+            "workflowName":"John Robbins",
+            "workflowDescription": "This is the information we have on you.",
             "label": "John Robbins",
             "description": "This is the information we have on you.",
             "status": "InProgress",
@@ -97,6 +100,9 @@
         {
             "id": 32,
             "label": "John Robbins",
+            "taskId":32,
+            "workflowName":"John Robbins",
+            "workflowDescription": "This is the information we have on you.",
             "description": "This is the information we have on you.",
             "status": "InProgress",
             "sections": [
@@ -178,6 +184,9 @@
             "id": 12,
             "label": "John Robbins",
             "description": "This is the information we have on you.",
+            "taskId":12,
+            "workflowName":"John Robbins",
+            "workflowDescription": "This is the information we have on you.",
             "status": "InProgress",
             "sections": [
                 {

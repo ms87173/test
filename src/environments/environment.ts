@@ -5,13 +5,16 @@ export const environment = {
   production: false,
   apiBaseUrl: 'http://localhost:3000/',
   apiUrls: {
+    fetchContactPerson: 'contact',
     fetchAllApplications: 'requests',
     fetchApplication: 'request',
     fetchWorkflowsAndTasks: 'workflows',
     fetchTaskQuestionnaire: 'tasks',
     fetchTaskQuestionnaireDelts: 'questionnaireDeltaResponses',
     saveTaskQuestionnaire: 'success',
-    fetchDynamicOptions: 'dynamic-options'
+    fetchDynamicOptions: 'dynamic-options',
+    fetchReviewInformationTask:'reviewInformation'
+
   }
 };
 /*

@@ -29,15 +29,15 @@ export class FormlyConsumerComponent implements OnInit {
   fields: Array<any>;
   listData: any;
 
-  constructor(private cd:ChangeDetectorRef) { }
+  constructor(private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.listData = [
-    { label: 'New York', value: 'new-york' },
-    { label: 'Illinois', value: 'illinois' },
-    { label: 'California', value: 'california' },
-    { label: 'Michigan', value: 'michigan' },
-    { label: 'Ohio', value: 'ohio' }];
+      { label: 'New York', value: 'new-york' },
+      { label: 'Illinois', value: 'illinois' },
+      { label: 'California', value: 'california' },
+      { label: 'Michigan', value: 'michigan' },
+      { label: 'Ohio', value: 'ohio' }];
     this.fields = [
       {
         key: 'Phone',
@@ -226,17 +226,20 @@ export class FormlyConsumerComponent implements OnInit {
             }
             return observableOf(
               this.listData.filter(
-                (v) =>  {
+                (v) => {
                   console.log(v, ':::VData');
-                 return v.value.toLowerCase().indexOf(term.toLowerCase()) > -1;     
+                  return v.value.toLowerCase().indexOf(term.toLowerCase()) > -1;
                 }
-              ).slice(0, 10))
+              ).slice(0, 10));
           },
         }
       },
       {
         key: 'data',
         type: 'custom-document-upload',
+        templateOptions: {
+          label: 'Address proof',
+        },
         fieldArray: {
           fieldGroupClassName: 'row',
           templateOptions: {
@@ -248,44 +251,44 @@ export class FormlyConsumerComponent implements OnInit {
           },
           fieldGroup: [
             {
-                      key: 'IdDropdown',
-                      type: 'custom-dropdown',
-                      className: 'col-sm-4 PaddingLeftZero',
-                      templateOptions: {
-                        label: 'ID Country',
-                        options: [
-                          { label: 'Iron Man', value: 'iron_man' },
-                          { label: 'Captain America', value: 'captain_america' },
-                          { label: 'Black Widow', value: 'black_widow' },
-                          { label: 'Hulk', value: 'hulk' },
-                          { label: 'Captain Marvel', value: 'captain_marvel' }
-                        ]
-                      }
-                    },
-                    {
-                              className: 'col-sm-4',
-                              type: 'custom-textbox',
-                              key: 'idNum',
-                              templateOptions: {
-                                label: 'ID Number',
-                                required: true,
-                              },
-                            },
-                            {
-                                      key: 'dateOfBirth',
-                                      type: 'custom-datepicker',
-                                      className: 'col-sm-4 PaddingRightZero',
-                                      templateOptions: {
-                                        label: 'Date of Birth',
-                                      }
-                                    },
-          //         {
-          //     key: 'document',
-          //     type: 'custom-document-upload',
-          //     templateOptions: {
-          //       label: 'Documents'
-          //     }
-          // },
+              key: 'IdDropdown',
+              type: 'custom-dropdown',
+              className: 'col-sm-4 PaddingLeftZero',
+              templateOptions: {
+                label: 'ID Country',
+                options: [
+                  { label: 'Iron Man', value: 'iron_man' },
+                  { label: 'Captain America', value: 'captain_america' },
+                  { label: 'Black Widow', value: 'black_widow' },
+                  { label: 'Hulk', value: 'hulk' },
+                  { label: 'Captain Marvel', value: 'captain_marvel' }
+                ]
+              }
+            },
+            {
+              className: 'col-sm-4',
+              type: 'custom-textbox',
+              key: 'idNum',
+              templateOptions: {
+                label: 'ID Number',
+                required: true,
+              },
+            },
+            {
+              key: 'dateOfBirth',
+              type: 'custom-datepicker',
+              className: 'col-sm-4 PaddingRightZero',
+              templateOptions: {
+                label: 'Date of Birth',
+              }
+            },
+            //         {
+            //     key: 'document',
+            //     type: 'custom-document-upload',
+            //     templateOptions: {
+            //       label: 'Documents'
+            //     }
+            // },
             // {
             //   type: 'custom-checkbox',
             //   key: 'setForBanking',
@@ -295,51 +298,52 @@ export class FormlyConsumerComponent implements OnInit {
             //   },
             // }
           ],
-      //     fieldGroup: [
-      //       {
-      //         key: 'IdDropdown',
-      //         type: 'custom-dropdown',
-      //         className: 'col-sm-4 PaddingLeftZero',
-      //         templateOptions: {
-      //           label: 'ID Country',
-      //           options: [
-      //             { label: 'Iron Man', value: 'iron_man' },
-      //             { label: 'Captain America', value: 'captain_america' },
-      //             { label: 'Black Widow', value: 'black_widow' },
-      //             { label: 'Hulk', value: 'hulk' },
-      //             { label: 'Captain Marvel', value: 'captain_marvel' }
-      //           ]
-      //         }
-      //       },
-      //       {
-      //         className: 'col-sm-4',
-      //         type: 'custom-textbox',
-      //         key: 'idNum',
-      //         templateOptions: {
-      //           label: 'ID Number',
-      //           required: true,
-      //         },
-      //       },
-      //       {
-      //         key: 'dateOfBirth',
-      //         type: 'custom-datepicker',
-      //         className: 'col-sm-4 PaddingRightZero',
-      //         templateOptions: {
-      //           label: 'Date of Birth',
-      //         }
-      //       },
-      //       {
-      //         key: 'document',
-      //         type: 'custom-document-upload',
-      //         templateOptions: {
-      //           heading: 'Documents'
-      //         }
-      //  //   ],
-      //   },
-      // ],
-    },
-      }, ];
+          //     fieldGroup: [
+          //       {
+          //         key: 'IdDropdown',
+          //         type: 'custom-dropdown',
+          //         className: 'col-sm-4 PaddingLeftZero',
+          //         templateOptions: {
+          //           label: 'ID Country',
+          //           options: [
+          //             { label: 'Iron Man', value: 'iron_man' },
+          //             { label: 'Captain America', value: 'captain_america' },
+          //             { label: 'Black Widow', value: 'black_widow' },
+          //             { label: 'Hulk', value: 'hulk' },
+          //             { label: 'Captain Marvel', value: 'captain_marvel' }
+          //           ]
+          //         }
+          //       },
+          //       {
+          //         className: 'col-sm-4',
+          //         type: 'custom-textbox',
+          //         key: 'idNum',
+          //         templateOptions: {
+          //           label: 'ID Number',
+          //           required: true,
+          //         },
+          //       },
+          //       {
+          //         key: 'dateOfBirth',
+          //         type: 'custom-datepicker',
+          //         className: 'col-sm-4 PaddingRightZero',
+          //         templateOptions: {
+          //           label: 'Date of Birth',
+          //         }
+          //       },
+          //       {
+          //         key: 'document',
+          //         type: 'custom-document-upload',
+          //         templateOptions: {
+          //           heading: 'Documents'
+          //         }
+          //  //   ],
+          //   },
+          // ],
+        }
+      }
+    ];
 
-  this.cd.detectChanges();
-}
+    this.cd.detectChanges();
+  }
 }

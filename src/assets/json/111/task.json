@@ -1,8 +1,10 @@
 {
-    "label": "Interest Checking",
     "description": "This is your primary interest bearing account.",
-    "id": "<unique-identifier>",
     "status": "<string>",
+    "taskId":"<string>",
+    "workflowName":"<string>",
+    "workflowDescription":"<string>",
+
     "sections": [
         {
             "title": "Account Information",

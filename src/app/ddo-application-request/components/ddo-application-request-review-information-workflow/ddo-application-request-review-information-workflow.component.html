@@ -1,0 +1,20 @@
+<div>
+  <card-header class="review-information-workflow__card-header">
+    <h4 class="card-header__heading">
+      {{workflow?.workflowName}}
+    </h4>
+    <h6 class="card-header__description">
+      {{workflow?.workflowDescription}} </h6>
+  </card-header>
+
+  <div *ngIf="workflow && workflow.tasks && workflow.tasks.length > 0">
+    <div *ngFor="let task of workflow.tasks">
+      <ddo-application-request-review-information-task
+      [task]="task">
+
+      </ddo-application-request-review-information-task>
+    </div>
+  </div>
+
+
+</div>

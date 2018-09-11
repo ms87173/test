@@ -253,7 +253,6 @@ export class NgxFormlyParserService {
         addressCountryField.templateOptions.options = this.dynamicOptionsService
           .getDynamicOptions('country');
         field.fieldArray.fieldGroup[7] = { ...addressCountryField };
-        console.log(field);
         break;
         // case CustomComponentsEnum.CUSTOM_UPLOAD:
         // field.fieldArray = {

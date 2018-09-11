@@ -1,13 +1,16 @@
 export const environment = {
   production: false,
-  apiBaseUrl: 'https://mktdevvm773134.nam.nsroot.net:9090/api/ddo/',
+  apiBaseUrl: 'http://mktdevvm773134.nam.nsroot.net:9090/api/ddo/',
   apiUrls: {
+    fetchContactPerson: 'application/contact',
     fetchAllApplications: 'request/all',
     fetchApplication: 'request/details',
     fetchWorkflowsAndTasks: 'request/workflowsAndTasks',
     fetchTaskQuestionnaire: 'questionnaire/taskQuestions',
     fetchTaskQuestionnaireDelts: 'questionnaire/tasks/question',
     saveTaskQuestionnaire: 'questionnaire/saveTaskQuestions',
-    fetchDynamicOptions: 'questionnaire/dynamicLookup/'
+    fetchDynamicOptions: 'questionnaire/dynamicLookup/',
+    fetchReviewInformationTask:'questionnaire/reviewInformation'
+
   }
 };
