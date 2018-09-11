@@ -6,7 +6,7 @@ export enum ActionTypes {
     /// Current Task Actions
     GET_CURRENT_TASK = '[App State] Get Current Task',
     GET_CURRENT_TASK_SUCCESS = '[App State] Get Current Task Success',
-    GET_CURRENT_TASK_FAIL = '[App State] Get Current Task Fail',
+    GET_CURRENT_TASK_FAIL = '[App State] Get Current Task Failure',
 
     ///Formly Parser Actions
     ///Todo: Remove this  
