@@ -5,7 +5,9 @@ export enum ActionTypes {
     GET_APPLICATIONS_SUCCESS = '[App State] Get Applications Success',
     GET_APPLICATIONS_FAIL = '[App State] Get Applications Failure',
     SORT_APPLICATIONS = '[App State] Sort Applications',
-    APPLICATIONS_SORT_SUCCESS = '[App State] Applications Sort Success'
+    APPLICATIONS_SORT_SUCCESS = '[App State] Applications Sort Success',
+    FILTER_APPLICATIONS = '[App State] Filter Applications',
+    MODIFY_APPLICATIONS = '[App State] Modify Applications'
 }
 
 export class GetApplications implements Action {
@@ -30,8 +32,20 @@ export class SortApplications implements Action {
         this.payload = payload;
     }
 }
+export class FilterApplications implements Action {
+    readonly type = ActionTypes.FILTER_APPLICATIONS;
+    constructor(public payload) {
+        this.payload = payload;
+    }
+}
 export class SortApplicationsSuccess implements Action {
     readonly type = ActionTypes.APPLICATIONS_SORT_SUCCESS;
+    constructor(public payload) {
+        this.payload = payload;
+    }
+}
+export class ModifyApplications implements Action {
+    readonly type = ActionTypes.MODIFY_APPLICATIONS;
     constructor(public payload) {
         this.payload = payload;
     }
@@ -40,4 +54,6 @@ export type ApplicationActions = GetApplications
     | GetApplicationsSuccess
     | GetApplicationsFailure
     | SortApplications
-    | SortApplicationsSuccess;
+    | SortApplicationsSuccess
+    | FilterApplications
+    | ModifyApplications;

@@ -22,7 +22,7 @@ import { TaskContainerComponent } from '../task-container/task-container.compone
 import { EmailComponent } from './components/email/email.component';
 import { CustomComponentsEnum } from './enums/custom-components.enum';
 import { PhoneComponent } from './components/phone/phone.component';
-
+import { ModalModule } from 'ngx-bootstrap';
 import { FormlySelectOptionsPipe } from './pipes/select-options.pipe';
 
 // import { FormUploadComponent } from './components/upload/form-upload/form-upload.component';
@@ -40,6 +40,7 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     FormlyBootstrapModule,
     NgSelectModule,
     NgxUploaderModule,
+    ModalModule.forRoot(),
     NgbModule.forRoot(),
     FormlyModule.forRoot({
       validationMessages: [

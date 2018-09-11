@@ -1,6 +1,6 @@
 <div class="document-field">       
 <div *ngFor="let field of field.fieldGroup; let i = index;" class="document-upload">    
-    <p><b>Address Proof</b></p>
+    <p><b>{{ to.label }}</b></p>
     <upload-file></upload-file>
     <formly-group
     [model]="model[i]"
