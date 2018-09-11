@@ -138,7 +138,7 @@ export class DdoApplicationsComponent implements OnInit {
                         this.filterApplication(
                           {
                             statusFilter: { key: 'status', value: filterBy },
-                            modifiedFilter: { key: 'modified', value: modifiedFilterValue, filterDate: moment(selectedDate).format('MM-DD-YYYY') }
+                            modifiedFilter: { key: 'modified', value: modifiedFilterValue, filterDate: moment(selectedDate).format('MM DD YYYY') }
                           });
                       }
                     }),
@@ -185,7 +185,7 @@ export class DdoApplicationsComponent implements OnInit {
                         this.filterApplication(
                           {
                             statusFilter: { key: 'status', value: statusFilterValue },
-                            modifiedFilter: { key: 'modified', value: 'customDate', filterDate: moment(selectedDate).format('MM-DD-YYYY') }
+                            modifiedFilter: { key: 'modified', value: 'customDate', filterDate: moment(selectedDate).format('MM DD YYYY') }
                           });
                       }
                     })
