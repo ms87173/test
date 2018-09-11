@@ -14,6 +14,11 @@ export const getApplicationWorkflowsState = createSelector(
     fromApplicationRequest.getApplicationWorkflowsState
 );
 
+export const getApplicationReviewInformationState = createSelector(
+    getApplicaitonRequestState,
+    fromApplicationRequest.getApplicationReviewInformationState
+);
+
 export const getApplicaiton = createSelector(
     getApplicaitonRequestState,
     fromApplicationRequest.getApplication
@@ -35,4 +40,13 @@ export const getApplicationPreviousTask = createSelector(
 export const getApplicationNextTask = createSelector(
     getApplicaitonRequestState,
     fromApplicationRequest.getApplicationNextTask
+);
+export const getApplicationReviewInformationTask = createSelector(
+    getApplicaitonRequestState,
+    fromApplicationRequest.getApplicationReviewInformationTask
+);
+
+export const getApplicaitonId = createSelector(
+    getApplicaitonRequestState,
+    fromApplicationRequest.getApplicationId
 );

@@ -2,18 +2,16 @@
   <card>
     <card-header>
       <h4 class="card-header__heading">
-        name
+        {{reviewInformationTask?.workflowName}}
       </h4>
       <h6 class="card-header__description">
-        description </h6>
+        {{reviewInformationTask?.workflowDescription}} </h6>
     </card-header>
-    <card-body>
-      <!-- <div *ngIf="formlyFieldConfigArrayCollections?.length > 0">
-              <div *ngFor="let formlyFieldConfigArray of formlyFieldConfigArrayCollections; let index = index;">
-                  <section [formlyFieldConfigArray]="formlyFieldConfigArray">
-                  </section>
-              </div>
-          </div> -->
-    </card-body>
+    <div *ngIf="reviewInformationTask && reviewInformationTask.workflows && reviewInformationTask.workflows.length > 0">
+      <div *ngFor="let workflow of reviewInformationTask.workflows">
+        <ddo-application-request-review-information-workflow [workflow]="workflow">
+        </ddo-application-request-review-information-workflow>        
+      </div>
+    </div>   
   </card>
 </div>

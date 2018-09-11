@@ -5,7 +5,6 @@ export class ReviewInformationTask {
     description: string;
     status: string;
     taskId: string;
-    workflowName: string;
-    workflowDescription: string;
+    taskName: string;
     sections: ReviewInformationSection[]
 }

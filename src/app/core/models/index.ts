@@ -14,4 +14,5 @@ export * from './review-information-response';
 export * from './review-information-task';
 export * from './review-information-section';
 export * from './review-information-question';
+export * from './review-information-workflow';
 

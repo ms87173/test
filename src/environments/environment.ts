@@ -11,7 +11,9 @@ export const environment = {
     fetchTaskQuestionnaire: 'tasks',
     fetchTaskQuestionnaireDelts: 'questionnaireDeltaResponses',
     saveTaskQuestionnaire: 'success',
-    fetchDynamicOptions: 'dynamic-options'
+    fetchDynamicOptions: 'dynamic-options',
+    fetchReviewInformationTask:'reviewInformation'
+
   }
 };
 /*

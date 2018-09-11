@@ -15,10 +15,8 @@ export class QuestionnaireComponent implements OnInit {
   @Input() fields: FormlyFieldConfig[];
   constructor() {}
   ngOnInit() {
-    console.log(this);
   }
   fieldChanged() {
-    console.log(" fieldChanged called")
 
   }
 }

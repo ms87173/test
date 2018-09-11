@@ -1,4 +1,4 @@
-import { ReviewInformationTask } from "./review-information-task";
+import { ReviewInformationWorkflow } from "./review-information-workflow";
 
 export class ReviewInformationResponse {
     taskId:string;
@@ -6,7 +6,7 @@ export class ReviewInformationResponse {
     workflowDescription:string;
     status:string;
     description:string;
-    tasks:ReviewInformationTask[]
+    workflows:ReviewInformationWorkflow[]
    
     
 }

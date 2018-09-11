@@ -239,7 +239,7 @@ export class FormlyConsumerComponent implements OnInit {
         type: 'custom-document-upload',
         templateOptions: {
           label: 'Address proof',
-        }
+        },
         fieldArray: {
           fieldGroupClassName: 'row',
           templateOptions: {

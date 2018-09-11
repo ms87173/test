@@ -8,6 +8,8 @@ export const environment = {
     fetchTaskQuestionnaire: 'questionnaire/taskQuestions',
     fetchTaskQuestionnaireDelts: 'questionnaire/tasks/question',
     saveTaskQuestionnaire: 'questionnaire/saveTaskQuestions',
-    fetchDynamicOptions: 'questionnaire/dynamicLookup/'
+    fetchDynamicOptions: 'questionnaire/dynamicLookup/',
+    fetchReviewInformationTask:'questionnaire/reviewInformation'
+
   }
 };

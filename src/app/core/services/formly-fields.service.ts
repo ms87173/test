@@ -35,7 +35,6 @@ export class FormlyFieldsService {
           field.formControl.valueChanges
             .pipe(debounceTime(600))
             .subscribe((fieldValue) => {
-              console.log(fieldValue);
             });
         }
       };

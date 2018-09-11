@@ -3,9 +3,9 @@ import { Task, ReviewInformationResponse, ReviewInformationRequest } from '../..
 
 export enum ActionTypes {
 
-    GET_ALL_TASKS_FOR_REVIEW_INFORMATION_TASK='[App State] Get All Tasks For Review Information Task',
-    GET_ALL_TASKS_FOR_REVIEW_INFORMATION_TASK_SUCCESS='[App State] Get All Tasks For Review Information Task Success',
-    GET_ALL_TASKS_FOR_REVIEW_INFORMATION_TASK_FAIL='[App State] Get All Tasks For Review Information Task Failure'
+    GET_ALL_TASKS_FOR_REVIEW_INFORMATION_TASK = '[App State] Get All Tasks For Review Information Task',
+    GET_ALL_TASKS_FOR_REVIEW_INFORMATION_TASK_SUCCESS = '[App State] Get All Tasks For Review Information Task Success',
+    GET_ALL_TASKS_FOR_REVIEW_INFORMATION_TASK_FAIL = '[App State] Get All Tasks For Review Information Task Failure'
 
 }
 
@@ -27,3 +27,7 @@ export class GetAllTasksForReviewInformationTaskFailure implements Action {
         this.payload = payload
     }
 }
+
+export type ReviewInformationActions = GetAllTasksForReviewInformationTask
+    | GetAllTasksForReviewInformationTaskSuccess
+    | GetAllTasksForReviewInformationTaskFailure;

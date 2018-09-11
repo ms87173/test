@@ -5,8 +5,8 @@ export class ReviewInformationQuestion {
     id: string;
     label: string;
     type: string;
-    recurrent: boolean;
-    readOnly: boolean
-    answers :Answer[] =[]
+    recurrent: boolean = false;
+    readOnly: boolean = false;
+    answers: Answer[] = []
 
 }
