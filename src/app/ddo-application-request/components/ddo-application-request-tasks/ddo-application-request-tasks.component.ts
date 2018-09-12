@@ -6,6 +6,7 @@ import { fromRootReducers, fromRootActions, fromRootSelectors } from '../../../s
 import { QuestionaireDeltaResponse, QuestionaireDeltaError, FormlyFieldConfigArrayCollection, TaskRequest } from '../../../core/models';
 import { takeWhile } from 'rxjs/operators';
 import { Task } from '../../../core/models';
+import { TASK_TYPES } from '../../../core/constants/application-request.constants';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'ddo-application-request-tasks',
