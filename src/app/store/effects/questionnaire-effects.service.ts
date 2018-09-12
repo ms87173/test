@@ -11,8 +11,7 @@ import {
   GetCurrentQuestionnaireFormlyConfigSuccess,
   GetCurrentQuestionnaireFormlyConfigFailure,
   GetCurrentQuestionnaireFormlyConfig
-}
-  from '../actions/questionnaire.actions';
+} from '../actions/questionnaire.actions';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { QuestionnaireService, NgxFormlyParserService, ApiService } from '../../core/services';
 import { Observable } from 'rxjs/Observable';
@@ -36,18 +35,16 @@ export class QuestionnaireEffectsService {
           )
         )
     )
-  )
+  );
 
   @Effect() getCurrentQuestionnaireDelta = this.actions$.pipe(
     ofType(ActionTypes.GET_CURRENT_FIELD_CHANGE_DELTA),
     switchMap(
       (action: GetCurrentFieldChangeDelta) =>
-
-
         this.questionnaireService.getFieldChangeDelta(action.payload)
           .pipe(
             map((currentTask) => {
-              return (new GetCurrentFieldChangeDeltaSuccess(currentTask))
+              return (new GetCurrentFieldChangeDeltaSuccess(currentTask));
             }
             ),
             catchError(
@@ -55,8 +52,8 @@ export class QuestionnaireEffectsService {
             )
           )
     )
-  )
-  
+  );
+
   @Effect() getCurrentQuestionnaireConfig = this.actions$.pipe(
     ofType(ActionTypes.GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG),
     switchMap(
@@ -78,7 +75,7 @@ export class QuestionnaireEffectsService {
           )
         )
     )
-  )
+  );
 
 
 

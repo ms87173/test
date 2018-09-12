@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Task, QuestionaireDeltaRequest, QuestionaireDeltaResponse, QuestionaireDeltaError, FormlyFieldConfigArrayCollection, TaskRequest } from '../../core/models';
+import { Task, QuestionaireDeltaRequest, FormlyFieldConfigArrayCollection, TaskRequest } from '../../core/models';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 
 export enum ActionTypes {
@@ -18,79 +18,79 @@ export enum ActionTypes {
     GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG_SUCCESS = '[App State] Get Current Questionnaire formly config Success',
     GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG_FAIL = '[App State] Get Current  Questionnaire formly config Failure',
 
-    SET_CURRENT_QUESTION_ID = "[App State] Set The Current Question Id"
+    SET_CURRENT_QUESTION_ID = '[App State] Set The Current Question Id'
 }
 
 export class GetCurrentTask implements Action {
-    readonly type = ActionTypes.GET_CURRENT_TASK
+    readonly type = ActionTypes.GET_CURRENT_TASK;
     constructor(public payload: TaskRequest) {
-        this.payload = payload
+        this.payload = payload;
     }
 }
 export class GetCurrentTaskSuccess implements Action {
-    readonly type = ActionTypes.GET_CURRENT_TASK_SUCCESS
+    readonly type = ActionTypes.GET_CURRENT_TASK_SUCCESS;
     constructor(public payload: Task) {
-        this.payload = payload
+        this.payload = payload;
     }
 }
 
 export class GetCurrentTaskFailure implements Action {
-    readonly type = ActionTypes.GET_CURRENT_TASK_FAIL
+    readonly type = ActionTypes.GET_CURRENT_TASK_FAIL;
     constructor(public payload) {
-        this.payload = payload
+        this.payload = payload;
     }
 }
 
 export class GetCurrentFieldChangeDelta implements Action {
-    readonly type = ActionTypes.GET_CURRENT_FIELD_CHANGE_DELTA
+    readonly type = ActionTypes.GET_CURRENT_FIELD_CHANGE_DELTA;
     constructor(public payload: QuestionaireDeltaRequest) {
-        this.payload = payload
+        this.payload = payload;
     }
 }
 export class GetCurrentFieldChangeDeltaSuccess implements Action {
-    readonly type = ActionTypes.GET_CURRENT_FIELD_CHANGE_DELTA_SUCCESS
+    readonly type = ActionTypes.GET_CURRENT_FIELD_CHANGE_DELTA_SUCCESS;
 
     constructor(public payload: Task) {
-        this.payload = payload
+        this.payload = payload;
     }
 }
 export class GetCurrentFieldChangeDeltaFailure implements Action {
-    readonly type = ActionTypes.GET_CURRENT_FIELD_CHANGE_DELTA_FAIL
+    readonly type = ActionTypes.GET_CURRENT_FIELD_CHANGE_DELTA_FAIL;
     constructor(public payload) {
-        this.payload = payload
+        this.payload = payload;
     }
 }
 export class ResetQuestionnaireState implements Action {
-    readonly type = ActionTypes.RESET_QUESTIONNAIRE_STATE_TO_INTIAL_STATE
+    readonly type = ActionTypes.RESET_QUESTIONNAIRE_STATE_TO_INTIAL_STATE;
 
 }
 
 export class GetCurrentQuestionnaireFormlyConfig implements Action {
-    readonly type = ActionTypes.GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG
+    readonly type = ActionTypes.GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG;
     constructor(public payload: {
         task: Task, currentQuestionId: string,
         requestId: string, workflowId: string, taskId: string
     }) {
-        this.payload = payload
+        this.payload = payload;
     }
 }
 export class GetCurrentQuestionnaireFormlyConfigSuccess implements Action {
-    readonly type = ActionTypes.GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG_SUCCESS
+    readonly type = ActionTypes.GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG_SUCCESS;
     constructor(public payload: FormlyFieldConfigArrayCollection[]) {
-        this.payload = payload
+        this.payload = payload;
     }
 }
 export class GetCurrentQuestionnaireFormlyConfigFailure implements Action {
-    readonly type = ActionTypes.GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG_FAIL
+    readonly type = ActionTypes.GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG_FAIL;
     constructor(public payload) {
-        this.payload = payload
+        this.payload = payload;
     }
 }
 
 export class SetCurrentQuestionId implements Action {
-    readonly type = ActionTypes.SET_CURRENT_QUESTION_ID
+    readonly type = ActionTypes.SET_CURRENT_QUESTION_ID;
     constructor(public payload: string) {
-        this.payload = payload
+        this.payload = payload;
     }
 }
 
@@ -104,4 +104,5 @@ export type QuesitonnaireActions = GetCurrentTask
     | GetCurrentQuestionnaireFormlyConfig
     | GetCurrentQuestionnaireFormlyConfigSuccess
     | GetCurrentQuestionnaireFormlyConfigFailure
-    | SetCurrentQuestionId;
+    | SetCurrentQuestionId
+    ;
