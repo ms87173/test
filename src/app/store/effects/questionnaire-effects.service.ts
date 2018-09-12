@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import {
-  ActionTypes, GetCurrentTask, GetCurrentTaskSuccess, GetCurrentTaskFailure,
-  GetCurrentFormlyConfig, GetCurrentFormlyConfigSuccess, GetCurrentFieldChangeDelta,
-  GetCurrentFieldChangeDeltaSuccess, GetCurrentFieldChangeDeltaFailure, MergeDeltaFieldChangeAndCurrentTask, MergeDeltaFieldChangeAndCurrentTaskSuccess, MergeDeltaFieldChangeAndCurrentTaskFailure, UpdateCurrentTask, GetCurrentQuestionnaireFormlyConfigSuccess, GetCurrentQuestionnaireFormlyConfigFailure, GetCurrentQuestionnaireFormlyConfig
+  ActionTypes,
+  GetCurrentTask,
+  GetCurrentTaskSuccess,
+  GetCurrentTaskFailure,
+  GetCurrentFieldChangeDelta,
+  GetCurrentFieldChangeDeltaSuccess,
+  GetCurrentFieldChangeDeltaFailure,
+  GetCurrentQuestionnaireFormlyConfigSuccess,
+  GetCurrentQuestionnaireFormlyConfigFailure,
+  GetCurrentQuestionnaireFormlyConfig
 }
   from '../actions/questionnaire.actions';
 import { switchMap, map, catchError } from 'rxjs/operators';
@@ -31,33 +38,16 @@ export class QuestionnaireEffectsService {
     )
   )
 
-  // @Effect() getCurrentQuestionnaireConfig = this.actions$.pipe(
-  //   ofType(ActionTypes.GET_CURRENT_FORMLY_CONFIG),
-  //   switchMap(
-  //     (action: GetCurrentFormlyConfig) => this.ngxFormlyParserService
-  //       .getFormlyFieldConfigFromTask(action.payload.task, action.payload.currentQuestionId)
-
-  //       .pipe(
-  //         map((formlyConfig) => (new GetCurrentFormlyConfigSuccess(formlyConfig))
-  //         ),
-  //         catchError(
-  //           (err) => of(new GetCurrentTaskFailure(err))
-  //         )
-  //       )
-  //   )
-  // )
-
   @Effect() getCurrentQuestionnaireDelta = this.actions$.pipe(
     ofType(ActionTypes.GET_CURRENT_FIELD_CHANGE_DELTA),
     switchMap(
       (action: GetCurrentFieldChangeDelta) =>
 
-      
+
         this.questionnaireService.getFieldChangeDelta(action.payload)
           .pipe(
             map((currentTask) => {
               return (new GetCurrentFieldChangeDeltaSuccess(currentTask))
-
             }
             ),
             catchError(
@@ -66,27 +56,7 @@ export class QuestionnaireEffectsService {
           )
     )
   )
-
-  // @Effect() getMergedCurrentTaskWithDelta = this.actions$.pipe(
-  //   ofType(ActionTypes.MERGE_DELTA_FIELD_CHANGE_DELTA_AND_CURRENT_TASK),
-  //   switchMap(
-  //     (action: MergeDeltaFieldChangeAndCurrentTask) =>
-  //       this.ngxFormlyParserService.mergeFieldChangeDeltaAndCurrentcurrentTask(
-  //         action.payload.currentTask,
-  //         action.payload.delta,
-  //         action.payload.model)
-
-  //         .pipe(
-  //           map((mergedCurrentTaskWithDelta) => (new MergeDeltaFieldChangeAndCurrentTaskSuccess(mergedCurrentTaskWithDelta))
-  //           ),
-  //           catchError(
-  //             (err) => of(new MergeDeltaFieldChangeAndCurrentTaskFailure(err))
-  //           )
-  //         )
-  //   )
-  // )
-  //////////////////////////////////////////////////////////////////////////////////////////
-
+  
   @Effect() getCurrentQuestionnaireConfig = this.actions$.pipe(
     ofType(ActionTypes.GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG),
     switchMap(

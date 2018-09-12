@@ -78,21 +78,8 @@
                             ],
                             "tooltipText": "<string>",
                             "answers": []
-                        },
-                        {
-                            "id": "addressFields_test_1",
-                            "label": "Addresses",
-                            "type": "custom-address-fields",
-                            "required": true,
-                            "readOnly": false,
-                            "recurrent": false,
-                            "lookupName": "",
-                            "answers": [
-                                {
-                                    "value": {}
-                                }
-                            ]
                         }
+                        
                     ]
                 }
             ]

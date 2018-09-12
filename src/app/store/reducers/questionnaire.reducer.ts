@@ -23,67 +23,6 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
     let errorList;
 
     switch (action.type) {
-
-
-
-
-
-        case ActionTypes.MERGE_DELTA_FIELD_CHANGE_DELTA_AND_CURRENT_TASK_SUCCESS:
-            return {
-                ...state,
-                mergedCurrentTaskWithDelta: action.payload
-            }
-        /// Todo : handle error case wit error object
-        case ActionTypes.MERGE_DELTA_FIELD_CHANGE_DELTA_AND_CURRENT_TASK_FAIL:
-            return {
-                ...state,
-
-            }
-
-        case ActionTypes.UPDATE_CURRENT_TASK:
-
-            return {
-                ...state,
-                currentTask: action.payload
-
-            }
-
-        case ActionTypes.SET_QUESTIONNAIRE_ERRORS:
-            if (action.payload) {
-                errorList = state.errors.concat(action.payload);
-
-                return {
-                    ...state,
-                    errors: errorList
-
-                }
-            }
-            else {
-                return state;
-            }
-
-
-        case ActionTypes.DELETE_QUESTIONNAIRE_ERRORS_BY_QUESTION_ID:
-
-            if (action.payload) {
-                errorList = state.errors.filter((error) => {
-                    return error.id != action.payload;
-                });
-
-                return {
-                    ...state,
-                    errors: errorList
-
-                }
-            } else {
-                return state;
-            }
-
-        case ActionTypes.RESET_QUESTIONNAIRE_STATE_TO_INTIAL_STATE:
-
-            return InitialQuestionnaireState;
-
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case ActionTypes.GET_CURRENT_TASK_SUCCESS:
             return {
                 ...state,
@@ -96,9 +35,6 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
                 ...state
 
             }
-
-
-
         case ActionTypes.GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG_SUCCESS:
             return {
                 ...state,
@@ -132,7 +68,7 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
         case ActionTypes.SET_CURRENT_QUESTION_ID:
             return {
                 ...state,
-                currentQuestionId:action.payload
+                currentQuestionId: action.payload
             }
 
         default:
@@ -146,6 +82,5 @@ export const getCurrentQuestionnaireDelta = (state: QuestionnaireState) => state
 export const getMergedCurrentTaskWithDelta = (state: QuestionnaireState) => state.mergedCurrentTaskWithDelta;
 export const getCurrentQuestionId = (state: QuestionnaireState) => state.currentQuestionId;
 export const getCurrentQuestionnaireErrors = (state: QuestionnaireState) => state.errors;
-///////////////////////////////////////////////////////////////////////////////////////////
 
 

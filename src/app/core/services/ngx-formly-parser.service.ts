@@ -22,154 +22,8 @@ import { DynamicOptionsService } from './dynamic-options.service';
 
 @Injectable()
 export class NgxFormlyParserService {
-  /// Todo: Waiting for client Store module.
-  /// this should be handled in a property from state
   public currentQuestionId: string = null;
   public fieldChangeObj = null;
-
-  // private fieldChangeLifecycleTrigger: FormlyLifeCycleOptions =
-  // {
-  //   onInit: (form?: FormGroup, field?: FormlyFieldConfig, model?: any, options?: FormlyFormOptions) => {
-  //     let key = field.key;
-  //     let formObj = form.get(key);
-
-  //     formObj.valueChanges
-  //       .pipe(debounceTime(600))
-  //       //Todo: To be Decided
-  //       .subscribe((fieldValue) => {
-  //         console.log("field changes occured")
-  //         console.log(fieldValue);
-  //         console.log(field.defaultValue);
-  //         // this.currentQuestionId = key;
-  //         // let questionaireRequest: QuestionaireDeltaRequest = {
-  //         //   id: key,
-  //         //   value: fieldValue
-  //         // };
-  //         // this.store.dispatch(new questionnaireActions.DeleteQuestionnaireErrorByQuestionId(this.currentQuestionId));
-  //         // this.store.dispatch(new questionnaireActions.GetCurrentFieldChangeDelta(questionaireRequest));
-  //       });
-  //   }
-  // }
-  // getfieldChange() {
-  //   return of(this.fieldChangeObj);
-  // }
-
-  // getFormlyFieldConfigFromTask(currentTask: Task, currentQuestionId: string): Observable<FormlyFieldConfig[]> {
-  //   let currentConfig: FormlyFieldConfig = {
-  //   };
-
-  //   currentTask.sections.map((section: Section) => {
-  //     // currentConfig.key = section.id;
-  //     currentConfig.wrappers = ['form-group'];
-  //     currentConfig.templateOptions = {
-  //       label: section.title
-  //     };
-  //     let fieldGroup: FormlyFieldConfig[] = [];
-  //     section.questions.map((question: Question) => {
-  //       let field: FormlyFieldConfig = {};
-  //       if (question.id == currentQuestionId) {
-
-  //         field.focus = true;
-  //       }
-
-  //       field.key = question.id;
-  //       field.type = question.type;
-  //       field.lifecycle = this.fieldChangeLifecycleTrigger;
-
-  //       field.templateOptions = {
-  //         label: question.label,
-  //         options: question.options,
-  //         required: question.required,
-  //       };
-
-  //       if (question.serverErrorMessage) {
-  //         field.validators = {
-  //           ip: {
-  //             expression: (c) => true,
-  //             message: (error, field: FormlyFieldConfig) => question.serverErrorMessage,
-  //           }
-  //         }
-  //       }
-  //       ////Todo:Find Immutable way
-  //       fieldGroup.push(field);
-  //     });
-  //     currentConfig.fieldGroup = fieldGroup;
-  //   });
-  //   return of([currentConfig]);
-  // }
-
-  // ///Todo: Change it to call delta from  server
-
-  // mergeFieldChangeDeltaAndCurrentcurrentTask(currentTask: Task, delta: QuestionaireDeltaResponse, model: any): Observable<Task> {
-
-  //   let currTask = { ...currentTask };
-  //   if (delta) {
-
-  //     if (delta.delete) {
-  //       let modelProperties = _.keys(model);
-
-  //       delta.delete.forEach((question) => {
-  //         let currentSection = currTask.sections.find((section) => {
-  //           return section.title == question.sectionName;
-  //         });
-
-  //         currentSection.questions = currentSection.questions
-  //           .filter((questionItem) => {
-  //             return questionItem.id !== question.id
-  //           });
-
-  //         if (modelProperties.find((modelproperty) => { return modelproperty == question.id; })) {
-  //           delete model[question.id];
-  //         }
-  //       });
-  //     }
-
-  //     ////Todo: Update Loop for delta
-
-  //     if (delta.new) {
-  //       delta.new.forEach((question) => {
-  //         let currentSection = currTask.sections.find((section) => {
-  //           return section.title === question.sectionName;
-  //         });
-  //         let currentQuestionIndex = currentSection.questions.findIndex((questioItem) => {
-  //           return questioItem.id == question.questionIdAfterToBeInserted;
-  //         });
-
-  //         let newQuestion: Question = {
-  //           id: question.id,
-  //           defaultValue: question.defaultValue,
-  //           label: question.label,
-  //           options: question.options,
-  //           placeHolder: question.placeHolder,
-  //           readOnly: question.readOnly,
-  //           required: question.required,
-  //           tooltipText: question.tooltipText,
-  //           type: question.type
-  //         }
-  //         if (currentSection.questions.findIndex((questioItem) => { return questioItem.id == question.id }) == -1)
-  //           currentSection.questions.splice(currentQuestionIndex + 1, 0, newQuestion);
-  //       });
-  //     }
-
-  //     ////Todo:Error loop for delta
-
-  //     if (delta.errors) {
-  //       delta.errors.forEach((error) => {
-  //         let currentSection = currTask.sections.find((section) => {
-  //           return section.title === error.sectionName;
-  //         });
-  //         let currentQuestion = currentSection.questions.find((questionItem) => {
-  //           return questionItem.id == error.id;
-  //         });
-  //         currentQuestion.serverErrorMessage = error.errorMessage;
-  //       });
-  //     }
-  //   }
-  //   return of(currTask);
-  // }
-
-  //////////////////////////////////////////////////////////////////////////////////////////////////
-
   getFormlyFieldConfigArrayCollectionFromTask(currentTask: Task, currentQuestionId: string,
     requestId: string, workflowId: string, taskId: string): Observable<FormlyFieldConfigArrayCollection[]> {
     const formlyFieldConfigArrayCollections: FormlyFieldConfigArrayCollection[] = [];
@@ -211,11 +65,7 @@ export class NgxFormlyParserService {
 
         if (question.answers && question.answers.length > 0) {
           field = this.setDefaultValuesFromAnswers(question.answers, field, question.recurrent);
-          // console.log(question.answers)
         }
-
-
-
         if (question.max) {
           field.templateOptions.max = question.max;
         }
@@ -243,7 +93,6 @@ export class NgxFormlyParserService {
       case CustomComponentsEnum.CUSTOM_EMAIL:
         field.fieldArray = { ...emailFieldArray };
         break;
-      // Everyone needs to add their respective field array.
       case CustomComponentsEnum.CUSTOM_PHONE:
         field.fieldArray = PhoneFieldConfig.fieldArray;
         break;
@@ -254,11 +103,11 @@ export class NgxFormlyParserService {
           .getDynamicOptions('country');
         field.fieldArray.fieldGroup[7] = { ...addressCountryField };
         break;
-        // case CustomComponentsEnum.CUSTOM_UPLOAD:
-        // field.fieldArray = {
-        //   ...documentFieldArray
-        // };
-        case CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD:
+      // case CustomComponentsEnum.CUSTOM_UPLOAD:
+      // field.fieldArray = {
+      //   ...documentFieldArray
+      // };
+      case CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD:
         field.fieldArray = {
           ...documentFieldArray
         };
@@ -270,11 +119,6 @@ export class NgxFormlyParserService {
   setDefaultValuesFromAnswers(answers: Answer[], field: FormlyFieldConfig, isRecurrent: boolean): FormlyFieldConfig {
     let currField: FormlyFieldConfig = { ...field };
     if (!isRecurrent) {
-      // if (currField.type === CustomComponentsEnum.CUSTOM_CHECKBOX) {
-      //   currField.defaultValue = answers[0].value === 'true' ? true : false;
-      // } else {
-      //   currField.defaultValue = answers[0].value;
-      // }
       currField.defaultValue = answers[0].value;
     } else {
       currField.defaultValue = answers;
