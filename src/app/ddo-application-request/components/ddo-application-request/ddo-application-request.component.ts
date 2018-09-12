@@ -53,7 +53,7 @@ export class DdoApplicationRequestComponent {
       .subscribe((workflows: any) => {
         this.workflows$ = workflows && workflows.map((workflow) => new WorkFlowsSideNavModel(workflow));
         if (this.initalRender && workflows && workflows.length > 0) {
-          //TODO: to avoid further dispatching when we re fetch the configuration
+          // TODO: to avoid further dispatching when we re fetch the configuration
           this.store.dispatch(new DeterminePendingTaskOfApplication(workflows));
         }
       });
