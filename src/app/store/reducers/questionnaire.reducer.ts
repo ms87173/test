@@ -69,6 +69,16 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
                 currentQuestionId: action.payload
             };
 
+            case ActionTypes.RESET_QUESTIONNAIRE_STATE_TO_INTIAL_STATE:
+            return {
+                ...state,
+                currentTask: null,
+                currentQuestionnaireConfig: null,
+                currentQuestionnaireDelta: null,
+
+            };
+       
+
         default:
             return state;
     }

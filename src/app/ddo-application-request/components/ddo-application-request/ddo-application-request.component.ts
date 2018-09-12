@@ -36,7 +36,7 @@ export class DdoApplicationRequestComponent {
   contactPersonDetails$: any;
   initalRender = true;
   constructor(
-    private store: Store<fromRootReducers.AppState>
+    private store: Store<fromRootReducers.AppState>,
   ) {
     this.applicationHeading = new Map(Object.entries(APPLICATION_HEADING));
 
@@ -61,32 +61,34 @@ export class DdoApplicationRequestComponent {
 
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationActiveTask)
       .subscribe((activeTaskData: any) => {
-        this.currentTaskId$ = activeTaskData.task.id;
-        this.currentWorkflowId$ = activeTaskData.workflowId;
-        this.currentTaskType=activeTaskData.task.type;
-        this.initalRender = !(this.currentTaskId$ && this.currentWorkflowId$);
-        if (this.currentTaskId$ &&  this.currentTaskType) {
-          
-          this.store.dispatch(
-            new RouterGo({
-              // path: ['ddo', 'applications', this.application$.id, 'questionnaire'],
-              path: ['ddo', 'applications', this.application$.id,  this.currentTaskType]
+          this.currentTaskId$ = activeTaskData.task.id;
+          this.currentWorkflowId$ = activeTaskData.workflowId;
+          this.currentTaskType = activeTaskData.task.type;
+          this.initalRender = !(this.currentTaskId$ && this.currentWorkflowId$);
+          if (this.currentTaskId$ && this.currentTaskType) {
+            this.store.dispatch(
+              new RouterGo({
+                // path: ['ddo', 'applications', this.application$.id, 'questionnaire'],
+                path: ['ddo', 'applications', this.application$.id, this.currentTaskType]
 
-            })
-          );
-        }
+              })
+            );
+          }
+       
+
+
       });
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationNextTask)
       .subscribe((nextTaskData: any) => {
-          this.nextTaskId$ = nextTaskData.task.id;
-          this.nextWorkflowId$ = nextTaskData.workflowId;
-        }
+        this.nextTaskId$ = nextTaskData.task.id;
+        this.nextWorkflowId$ = nextTaskData.workflowId;
+      }
       );
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationPreviousTask)
       .subscribe((previousTaskData: any) => {
-          this.previousTaskId$ = previousTaskData.task.id;
-          this.previousWorkflowId$ = previousTaskData.workflowId;
-        }
+        this.previousTaskId$ = previousTaskData.task.id;
+        this.previousWorkflowId$ = previousTaskData.workflowId;
+      }
       );
   }
 
@@ -101,19 +103,19 @@ export class DdoApplicationRequestComponent {
   buttonActionsClick(action: string) {
     switch (action) {
       case 'back':
-      this.store.dispatch(
-        new SetActiveTask({
-          workflowId: this.previousWorkflowId$,
-          taskId: this.previousTaskId$
-        }));
+        this.store.dispatch(
+          new SetActiveTask({
+            workflowId: this.previousWorkflowId$,
+            taskId: this.previousTaskId$
+          }));
         break;
       case 'cancel':
       case 'saveAndExit':
-      this.store.dispatch(
-        new SaveActiveTaskAndExit({
-          workflowId: this.currentWorkflowId$,
-          taskId: this.currentTaskId$
-        }));
+        this.store.dispatch(
+          new SaveActiveTaskAndExit({
+            workflowId: this.currentWorkflowId$,
+            taskId: this.currentTaskId$
+          }));
         break;
       case 'next':
         this.store.dispatch(
