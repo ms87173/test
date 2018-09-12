@@ -4,17 +4,21 @@ import { createSelector, createFeatureSelector } from '@ngrx/store';
 
 export const getApplicationsFeatureState = createFeatureSelector<fromRoot.State>('ddoApplicationsFeature');
 
-export const getApplicaitonsState = createSelector(
+export const getApplicationsState = createSelector(
     getApplicationsFeatureState,
     (state: fromRoot.State) => state.applications
 );
 
 export const getApplications = createSelector(
-    getApplicaitonsState,
+    getApplicationsState,
     fromApplications.getApplications
 );
 
-export const modifyApplications = createSelector(
-    getApplicaitonsState,
-    fromApplications.modifyApplications
-);
+export const sortApplications = createSelector(
+    getApplicationsState,
+    fromApplications.modifyApplicationsList
+)
+export const filterApplications = createSelector(
+    getApplicationsState,
+    fromApplications.modifyApplicationsList
+)

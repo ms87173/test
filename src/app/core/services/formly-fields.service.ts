@@ -35,7 +35,6 @@ export class FormlyFieldsService {
           field.formControl.valueChanges
             .pipe(debounceTime(600))
             .subscribe((fieldValue) => {
-              console.log(fieldValue);
             });
         }
       };
@@ -56,7 +55,6 @@ export class FormlyFieldsService {
 
             formObj.valueChanges
               .pipe(debounceTime(600))
-              //Todo: To be Decided
               .subscribe((fieldValue) => {
                 console.log(fieldValue);
               });
@@ -73,7 +71,6 @@ export class FormlyFieldsService {
             let formObj = form.get(key);
             formObj.valueChanges
               .pipe(debounceTime(600))
-              //Todo: To be Decided
               .subscribe((fieldValue) => {
                 let questionaireRequest: QuestionaireDeltaRequest = {
                   requestId: requestId,

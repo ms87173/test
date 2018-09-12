@@ -1,0 +1,238 @@
+{
+    "reviewInformation": {
+        "id": "1",
+        "taskId": "1",
+        "workflowName": "Review and Submit",
+        "workflowDescription": "Review and Submit Workflow",
+        "status": "InProgress",
+        "description": "Review Information Task Description",
+        "workflows": [
+            {
+                "workflowId": "2",
+                "workflowName": "Workflow 1",
+                "workflowDescription": "This is the information we have on you.",
+                "tasks": [
+                    {
+                        "description": "This is your primary interest bearing account.",
+                        "status": "IN_PROGRESS",
+                        "taskId": "22",
+                        "taskName": "Task 1",
+                        "sections": [
+                            {
+                                "title": "Section 1",
+                                "questions": [
+                                    {
+                                        "id": "InterestCheckingCheckBox",
+                                        "label": "Would you like to earn interest this account?",
+                                        "type": "custom-checkbox",
+                                        "readOnly": "false",
+                                        "recurrent": false,
+                                        "answers": [
+                                            {
+                                                "value": "false"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "InterestCheckingEmail",
+                                        "label": "Would you like to earn interest this account?",
+                                        "type": "custom-email",
+                                        "readOnly": "false",
+                                        "recurrent": false,
+                                        "answers": []
+                                    },
+                                    {
+                                        "id": "InterestCheckingPhone",
+                                        "label": "Would you like to earn Phone?",
+                                        "type": "custom-phone",
+                                        "readOnly": "false",
+                                        "recurrent": false,
+                                        "answers": []
+                                    },
+                                    {
+                                        "id": "InterestCheckingCheckBox1",
+                                        "label": "Would you like to earn interest this account?",
+                                        "type": "custom-checkbox",
+                                        "readOnly": "false",
+                                        "recurrent": false,
+                                        "answers": [
+                                            {
+                                                "value": "false"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "InterestCheckingEmail1",
+                                        "label": "Would you like to earn interest this account?",
+                                        "type": "custom-email",
+                                        "readOnly": "false",
+                                        "recurrent": false,
+                                        "answers": []
+                                    },
+                                    {
+                                        "id": "InterestCheckingPhone1",
+                                        "label": "Would you like to earn Phone?",
+                                        "type": "custom-phone",
+                                        "readOnly": "false",
+                                        "recurrent": false,
+                                        "answers": []
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Section 2",
+                                "questions": [
+                                    {
+                                        "id": "InterestCheckingCheckBox2",
+                                        "label": "Would you like to earn interest this account?",
+                                        "type": "custom-checkbox",
+                                        "readOnly": "false",
+                                        "recurrent": false,
+                                        "answers": [
+                                            {
+                                                "value": "false"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "InterestCheckingEmail2",
+                                        "label": "Would you like to earn interest this account?",
+                                        "type": "custom-email",
+                                        "readOnly": "false",
+                                        "recurrent": false,
+                                        "answers": []
+                                    },
+                                    {
+                                        "id": "InterestCheckingPhone2",
+                                        "label": "Would you like to earn Phone?",
+                                        "type": "custom-phone",
+                                        "readOnly": "false",
+                                        "recurrent": false,
+                                        "answers": []
+                                    },
+                                    {
+                                        "id": "InterestCheckingCheckBox3",
+                                        "label": "Would you like to earn interest this account?",
+                                        "type": "custom-checkbox",
+                                        "readOnly": "false",
+                                        "recurrent": false,
+                                        "answers": [
+                                            {
+                                                "value": "false"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "InterestCheckingEmail3",
+                                        "label": "Would you like to earn interest this account?",
+                                        "type": "custom-email",
+                                        "readOnly": "false",
+                                        "recurrent": false,
+                                        "answers": []
+                                    },
+                                    {
+                                        "id": "InterestCheckingPhone3",
+                                        "label": "Would you like to earn Phone?",
+                                        "type": "custom-phone",
+                                        "readOnly": "false",
+                                        "recurrent": false,
+                                        "answers": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "description": "This is your primary interest bearing account.",
+                        "status": "IN_PROGRESS",
+                        "taskId": "22",
+                        "taskName": "Task 2",
+                        "sections": [
+                            {
+                                "title": "Section 3",
+                                "questions": [
+                                    {
+                                        "id": "InterestCheckingCheckBox4",
+                                        "label": "Would you like to earn interest this account?",
+                                        "type": "custom-checkbox",
+                                        "readOnly": "false",
+                                        "recurrent": false,
+                                        "answers": [
+                                            {
+                                                "value": "false"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "InterestCheckingEmail4",
+                                        "label": "Would you like to earn interest this account?",
+                                        "type": "custom-email",
+                                        "readOnly": "false",
+                                        "recurrent": false,
+                                        "answers": []
+                                    },
+                                    {
+                                        "id": "InterestCheckingPhone4",
+                                        "label": "Would you like to earn Phone?",
+                                        "type": "custom-phone",
+                                        "readOnly": "false",
+                                        "recurrent": false,
+                                        "answers": []
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "workflowId": "3",
+                "workflowName": "John Robbins",
+                "workflowDescription": "This is the information we have on you.",
+                "tasks": [
+                    {
+                        "description": "This is your primary interest bearing account.",
+                        "status": "IN_PROGRESS",
+                        "taskId": "32",
+                        "taskName": "Task 4",
+                        "sections": [
+                            {
+                                "title": "Section 4",
+                                "questions": [
+                                    {
+                                        "id": "InterestCheckingCheckBox5",
+                                        "label": "Would you like to earn interest this account?",
+                                        "type": "custom-checkbox",
+                                        "readOnly": "false",
+                                        "recurrent": false,
+                                        "answers": [
+                                            {
+                                                "value": "false"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "id": "InterestCheckingEmail5",
+                                        "label": "Would you like to earn interest this account?",
+                                        "type": "custom-email",
+                                        "readOnly": "false",
+                                        "recurrent": false,
+                                        "answers": []
+                                    },
+                                    {
+                                        "id": "InterestCheckingPhone5",
+                                        "label": "Would you like to earn Phone?",
+                                        "type": "custom-phone",
+                                        "readOnly": "false",
+                                        "recurrent": false,
+                                        "answers": []
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

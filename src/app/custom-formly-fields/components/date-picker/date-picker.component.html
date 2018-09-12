@@ -18,7 +18,8 @@
       [maxDate]="to.datepickerOptions && to.datepickerOptions.maxDate"
       placement = "{{to.datepickerOptions && to.datepickerOptions.placement}}"
       showWeekNumbers="false"
-      [isOpen]='to.datepickerOptions && to.datepickerOptions.show'>
+      [isOpen]='to.datepickerOptions && to.datepickerOptions.show'
+      [bsValue]= 'to.datepickerOptions && to.datepickerOptions.initialState'>
     <div class="input-group-append">
       <div class="input-group-text">
         <i class="fa fa-calendar-o" aria-hidden="true" (click)="dp.toggle()"></i>

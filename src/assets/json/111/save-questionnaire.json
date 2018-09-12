@@ -1,7 +1,7 @@
 ///Request
 {
     "requestId":"<string>",
-    "workFlowId":"<string>",
+    "workflowId":"<string>",
     "taskId":"<string>"
 }
 

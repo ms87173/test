@@ -1,6 +1,6 @@
 {
     "requestid": "<string>",
-    "workFlowId": "<string>",
+    "workflowId": "<string>",
     "taskId": "<string>",
     "questionnaireItems": [
         {

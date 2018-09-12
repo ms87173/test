@@ -18,7 +18,6 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
 import { AddressFieldsComponent } from './components/address-fields/address-fields.component';
 import { QuestionnaireComponent } from '../questionnaire/questionnaire.component';
 import { SectionComponent } from '../section/section.component';
-import { TaskContainerComponent } from '../task-container/task-container.component';
 import { EmailComponent } from './components/email/email.component';
 import { CustomComponentsEnum } from './enums/custom-components.enum';
 import { PhoneComponent } from './components/phone/phone.component';
@@ -73,7 +72,6 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     DocumentUploadComponent,
     QuestionnaireComponent,
     SectionComponent,
-    TaskContainerComponent,
     UploadFileComponent,
     TextboxComponent,
     PhoneComponent,
@@ -92,7 +90,6 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     DocumentUploadComponent,
     QuestionnaireComponent,
     SectionComponent,
-    TaskContainerComponent,
     UploadFileComponent,
     TextboxComponent,
     AddressFieldsComponent,

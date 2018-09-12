@@ -1,0 +1,17 @@
+<div class="container ddo-application-review-information pl-5 pr-4">
+  <card>
+    <card-header >
+      <h4 class="card-header__heading">
+        {{reviewInformationTask?.workflowName}}
+      </h4>
+      <h6 class="card-header__description">
+        {{reviewInformationTask?.workflowDescription}} </h6>
+    </card-header>
+    <div *ngIf="reviewInformationTask && reviewInformationTask.workflows && reviewInformationTask.workflows.length > 0">
+      <div *ngFor="let workflow of reviewInformationTask.workflows">
+        <ddo-application-request-review-information-workflow [workflow]="workflow">
+        </ddo-application-request-review-information-workflow>        
+      </div>
+    </div>   
+  </card>
+</div>

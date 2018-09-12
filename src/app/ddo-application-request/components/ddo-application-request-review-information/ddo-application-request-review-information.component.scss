@@ -1,0 +1,19 @@
+.ddo-application-review-information {
+    .card {
+        .card-header {
+            background: #fafafa;
+            border: none !important;
+            padding-left: 0;
+            padding-top: 20px;
+            &__heading {
+                font-size: 20px;
+            }
+            &__description {
+                font-size: 12px;
+                color: #898b8d;
+            }
+        }
+       
+    }
+}
+  

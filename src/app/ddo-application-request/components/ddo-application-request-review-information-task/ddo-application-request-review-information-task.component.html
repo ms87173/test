@@ -1,0 +1,34 @@
+<card-body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <h6 class="pt10px"> {{task.taskName}} </h6>
+      </div>
+      <div class="offset-md-8 col-md-1  ">
+        <a class="cancel-application" href="javascript:void(0)">
+          Edit
+        </a>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <hr />
+      </div>
+    </div>
+    <div class="multColumn">
+      <div *ngFor="let section of task.sections" class="pb10px">
+        <h5> {{section.title}}</h5>
+        <div class="row" *ngFor="let question of section.questions" class="pb10px">
+          <div class="col-md-12 plr0px">
+            <h6> {{question.label}} </h6>
+            <h6> {{question?.answers[0]?.value}} </h6>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</card-body>

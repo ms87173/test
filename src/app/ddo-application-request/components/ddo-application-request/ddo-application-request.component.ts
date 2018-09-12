@@ -25,6 +25,7 @@ export class DdoApplicationRequestComponent {
   workflows$: any;
   currentWorkflowId$: string;
   currentTaskId$: string;
+  currentTaskType: string;
   nextTaskId$: string;
   nextWorkflowId$: string;
   previousTaskId$: string;
@@ -62,11 +63,15 @@ export class DdoApplicationRequestComponent {
       .subscribe((activeTaskData: any) => {
         this.currentTaskId$ = activeTaskData.task.id;
         this.currentWorkflowId$ = activeTaskData.workflowId;
+        this.currentTaskType=activeTaskData.task.type;
         this.initalRender = !(this.currentTaskId$ && this.currentWorkflowId$);
-        if (this.currentTaskId$) {
+        if (this.currentTaskId$ &&  this.currentTaskType) {
+          
           this.store.dispatch(
             new RouterGo({
-              path: ['ddo', 'applications', this.application$.id, 'questionnaire']
+              // path: ['ddo', 'applications', this.application$.id, 'questionnaire'],
+              path: ['ddo', 'applications', this.application$.id,  this.currentTaskType]
+
             })
           );
         }

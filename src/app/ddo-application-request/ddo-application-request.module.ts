@@ -7,6 +7,9 @@ import { DdoApplicationRequestDashboardComponent } from './components/ddo-applic
 import { DdoApplicationRequestTasksComponent } from './components/ddo-application-request-tasks/ddo-application-request-tasks.component';
 import { SharedModule } from '../shared/shared.module';
 import { CustomFormlyFieldsModule } from '../custom-formly-fields/custom-formly-fields.module';
+import { DdoApplicationRequestReviewInformationComponent } from './components/ddo-application-request-review-information/ddo-application-request-review-information.component';
+import { DdoApplicationRequestReviewInformationWorkflowComponent } from './components/ddo-application-request-review-information-workflow/ddo-application-request-review-information-workflow.component';
+import { DdoApplicationRequestReviewInformationTaskComponent } from './components/ddo-application-request-review-information-task/ddo-application-request-review-information-task.component';
 
 @NgModule({
   imports: [
@@ -18,7 +21,10 @@ import { CustomFormlyFieldsModule } from '../custom-formly-fields/custom-formly-
   declarations: [
     DdoApplicationRequestComponent,
     DdoApplicationRequestDashboardComponent,
-    DdoApplicationRequestTasksComponent
+    DdoApplicationRequestTasksComponent,
+    DdoApplicationRequestReviewInformationComponent,
+    DdoApplicationRequestReviewInformationWorkflowComponent,
+    DdoApplicationRequestReviewInformationTaskComponent
   ]
 })
 export class DdoApplicationRequestModule { }
