@@ -1,5 +1,5 @@
 {
-    "description": "This is your primary interest bearing account.",
+    "description": "<string>",
     "status": "<string>",
     "taskId":"<string>",
     "workflowName":"<string>",
@@ -27,7 +27,10 @@
                     "tooltipText": "<string>",
                     "answers": [             
                         {                  
-                            "value": "<any>"
+                            "value": "<any>",
+                            "error":{
+                                "value":"any"
+                            }
                            
                         }
                     ]

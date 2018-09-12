@@ -1,9 +1,8 @@
 .ddo-application-review-information {
     .card {
-        border: 0;
         .card-header {
             background: #fafafa;
-            border: 0;
+            border: none !important;
             padding-left: 0;
             padding-top: 20px;
             &__heading {
@@ -14,9 +13,7 @@
                 color: #898b8d;
             }
         }
-        .card-body {
-            border: 1px solid #dfdfdf;
-            padding: 35px;
-        }
+       
     }
 }
+  
