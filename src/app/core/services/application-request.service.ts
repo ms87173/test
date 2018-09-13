@@ -26,4 +26,9 @@ export class ApplicationRequestService {
         //     .put(url, params);
         return this.apiService.get(url);
     }
+    cancelApplicationRequest(data: any): Observable<any> {
+        const url = environment.apiUrls.cancelApplicationRequest;
+        // return this.apiService.post(url, { data })
+        return this.apiService.get(url);
+    }
 }
