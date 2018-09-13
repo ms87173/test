@@ -15,7 +15,7 @@ const routes: Routes = [
         component: DdoApplicationRequestTasksComponent
       },
       {
-        path: 'reviewInformation',
+        path: 'review-application',
         component: DdoApplicationRequestReviewInformationComponent
       }
     ]

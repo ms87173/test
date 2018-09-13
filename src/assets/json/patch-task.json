@@ -1,9 +1,0 @@
-{
-    "id": "<unique-identifier>",
-    "questions": [
-        {
-            "id": "<question-id>",
-            "value": "<any>"
-        }
-    ]
-}
