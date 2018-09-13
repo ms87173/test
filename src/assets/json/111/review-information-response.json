@@ -15,6 +15,7 @@
                     "status": "<string>",
                     "taskId": "<string>",
                     "taskName": "<string>",
+                    "showEdit": "<boolean>",
                     "sections": [
                         {
                             "title": "<string>",

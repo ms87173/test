@@ -17,6 +17,7 @@
                         "status": "IN_PROGRESS",
                         "taskId": "22",
                         "taskName": "Task 1",
+                        "showEdit": true,
                         "sections": [
                             {
                                 "title": "Section 1",
@@ -147,6 +148,7 @@
                         "status": "IN_PROGRESS",
                         "taskId": "22",
                         "taskName": "Task 2",
+                        "showEdit": true,
                         "sections": [
                             {
                                 "title": "Section 3",
@@ -195,6 +197,7 @@
                         "status": "IN_PROGRESS",
                         "taskId": "32",
                         "taskName": "Task 4",
+                        "showEdit": true,
                         "sections": [
                             {
                                 "title": "Section 4",

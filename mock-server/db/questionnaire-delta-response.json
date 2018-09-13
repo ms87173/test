@@ -4,13 +4,15 @@
       "id": 12,
       "label": "John Robbins",
       "description": "This is the information we have on you.",
-      "taskId":12,
-      "workflowName":"John Robbins",
+      "taskId": 12,
+      "workflowName": "John Robbins",
       "workflowDescription": "This is the information we have on you.",
       "status": "InProgress",
+      "showEdit": true,
       "sections": [
         {
           "title": "Personal Information",
+          "editableMode": true,
           "questions": [
             {
               "id": "InterestCheckingCheckBox",

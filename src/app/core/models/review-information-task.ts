@@ -6,5 +6,6 @@ export class ReviewInformationTask {
     status: string;
     taskId: string;
     taskName: string;
+    showEdit: boolean = false;
     sections: ReviewInformationSection[]
 }
