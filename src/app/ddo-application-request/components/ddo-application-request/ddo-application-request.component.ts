@@ -36,7 +36,7 @@ export class DdoApplicationRequestComponent {
   contactPersonDetails$: any;
   initalRender = true;
   constructor(
-    private store: Store<fromRootReducers.AppState>,
+    private store: Store<fromRootReducers.AppState>
   ) {
     this.applicationHeading = new Map(Object.entries(APPLICATION_HEADING));
 
@@ -54,7 +54,7 @@ export class DdoApplicationRequestComponent {
       .subscribe((workflows: any) => {
         this.workflows$ = workflows && workflows.map((workflow) => new WorkFlowsSideNavModel(workflow));
         if (this.initalRender && workflows && workflows.length > 0) {
-          // TODO: to avoid further dispatching when we re fetch the configuration
+          //TODO: to avoid further dispatching when we re fetch the configuration
           this.store.dispatch(new DeterminePendingTaskOfApplication(workflows));
         }
       });
@@ -73,10 +73,7 @@ export class DdoApplicationRequestComponent {
 
               })
             );
-          }
-       
-
-
+          }  
       });
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationNextTask)
       .subscribe((nextTaskData: any) => {
