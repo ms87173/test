@@ -2,14 +2,13 @@ import { ActionTypes, UserActions } from '../actions/user-info.actions';
 import { PersonalInfoInterface, PersonalInfoModel } from '../../core/models/personal-info.interface';
 import { UserInfoInterface, UserInfoModel } from '../../core/models/user-info.interface';
 
-//TODO: we can discuss the naming convention
 export interface UserInfoState {
-    personalInfo: PersonalInfoInterface,
-    role: string,
-    isLoggedIn: boolean,
-    isAuthenticated: boolean,
-    entitlements: Array<any>,
-    contactPerson: any
+    personalInfo: PersonalInfoInterface;
+    role: string;
+    isLoggedIn: boolean;
+    isAuthenticated: boolean;
+    entitlements: Array<any>;
+    contactPerson: any; // Review Pt. 1 need to separate models into view and domain.
 }
 
 export const InitialUserInfoState: UserInfoState = {
@@ -19,7 +18,7 @@ export const InitialUserInfoState: UserInfoState = {
     isAuthenticated: null,
     entitlements: [],
     contactPerson: null
-}
+};
 
 export function reducer(state: UserInfoState = InitialUserInfoState, action: UserActions) {
     switch (action.type) {

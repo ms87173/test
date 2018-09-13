@@ -1,22 +1,36 @@
-<card-body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3">
-       <h6 class="pt10px"> {{task.taskName}} </h6>
+<div class="card mb20px">
+  <div class="card-body ">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="pt10px title"> {{task.taskName}} </div>
+        </div>
+        <div class="offset-md-8 col-md-1  ">
+          <a class="edit" href="javascript:void(0)" (click)="editBtnClicked(task.taskId)">
+            Edit
+          </a>
+        </div>
+
       </div>
-      <div class="offset-md-8 col-md-1  ">
-        <a class="cancel-application" href="javascript:void(0)">
-          Edit
-        </a>
+      <div class="row">
+        <div class="col-md-12">
+          <hr />
+        </div>
+      </div>
+
+      <div class="multColumn">
+        <div class="row" *ngFor="let section of task.sections" class="pb10px">
+          <div *ngFor="let question of section.questions; let index=index;">
+            <div class="col-md-12 display-inline-block pb20px">
+              <h4 class="task" *ngIf="index === 0"> {{section.title}} </h4>
+              <h6 class="question-label"> {{question.label}} </h6>
+              <div class="answers"> {{question?.answers[0]?.value}} </div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
-    <div class="row">
-        <div class="col-md-12">
-        <hr />
-        </div>   
-      </div>
 
   </div>
-
-</card-body>
+</div>

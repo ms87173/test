@@ -6,6 +6,7 @@ import { fromRootReducers, fromRootActions, fromRootSelectors } from '../../../s
 import { QuestionaireDeltaResponse, QuestionaireDeltaError, FormlyFieldConfigArrayCollection, TaskRequest } from '../../../core/models';
 import { takeWhile } from 'rxjs/operators';
 import { Task } from '../../../core/models';
+import { TASK_TYPES } from '../../../core/constants/application-request.constants';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'ddo-application-request-tasks',
@@ -17,21 +18,17 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
   forms: FormArray = null;
   options: FormlyFormOptions[] = [];
   model: any = {};
-  currentTask: Task;
-  currentFieldChange: QuestionaireDeltaResponse;
-  mergedCurrentTaskWithDelta: Task;
+  currentTask: Task = null;
   currentQuestionId: string;
-  questionnaireFormErrors: QuestionaireDeltaError[];
   isComponentActive = true;
   requestId: string = null;
-  formlyFieldConfigArrayCollections: FormlyFieldConfigArrayCollection[] = [];
+  formlyFieldConfigArrayCollections: FormlyFieldConfigArrayCollection[] = null;
   taskRequest: TaskRequest;
 
   constructor(
     private cd: ChangeDetectorRef,
     private store: Store<fromRootReducers.AppState>
   ) {
-
     this.store.pipe(select(fromRootSelectors.applicationRequestSelectors.getApplicaiton),
       takeWhile(() => this.isComponentActive))
       .subscribe((application) => {
@@ -48,12 +45,15 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
         this.taskRequest.workflowId = activeTask.workflowId;
         this.taskRequest.taskId = activeTask.task.id;
         this.taskRequest.requestId = this.requestId;
+        this.taskRequest.taskType = activeTask.task.type;
         if (this.taskRequest.workflowId &&
           this.taskRequest.taskId &&
-          this.taskRequest.requestId
+          this.taskRequest.requestId &&
+          this.taskRequest.taskType === TASK_TYPES.QUESTION
         ) {
           this.store.dispatch(new fromRootActions.questionnaireActions.GetCurrentTask(this.taskRequest));
         }
+
       }
       );
 

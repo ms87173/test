@@ -1,6 +1,49 @@
-.cancel-application {
+.edit {
     position: absolute;
+    padding-top: 16px;
 }
 .pt10px{
     padding-top: 10px !important;
+}
+.pb10px{
+    padding-bottom: 10px;
+}
+.pb20px{
+    padding-bottom: 20px;
+}
+.plr0px{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.mb20px{
+    margin-bottom: 20px;
+}
+
+.multColumn{
+    width: 90%;
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+    column-count: 3;  
+
+}
+
+.display-inline-block{
+    display: inline-block !important;
+}
+
+.title
+{
+    font-size:23px; 
+}
+.task{
+    font-size:20px;
+}
+.question-label {
+    font-size: 14px;
+    color: #898b8d;
+
+}
+.answers{
+    font-size: 16px;
 }

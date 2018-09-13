@@ -1,9 +1,12 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { fromRootReducers, fromRootSelectors } from '../../../store';
 import { ReviewInformationResponse } from '../../../core/models';
 import { takeWhile } from 'rxjs/operators';
 import { GetAllTasksForReviewInformationTask } from '../../../store/actions/review-information.actions';
+import { SetActiveTask } from '../../../store/actions/workflows.action';
+import { TASK_TYPES } from '../../../core/constants/application-request.constants';
+import { RouterGo } from '../../../store/actions/router.actions';
 
 
 
@@ -21,7 +24,7 @@ export class DdoApplicationRequestReviewInformationComponent implements OnInit, 
   currentWorkflowId: string = null
   isComponentActive = true;
 
-  constructor(
+  constructor(private cd: ChangeDetectorRef,
     private store: Store<fromRootReducers.AppState>
   ) {
 
@@ -38,7 +41,7 @@ export class DdoApplicationRequestReviewInformationComponent implements OnInit, 
       .pipe(select(fromRootSelectors.applicationRequestSelectors.getApplicaitonId),
         takeWhile(() => this.isComponentActive))
       .subscribe((applicationId: string) => {
-        if (applicationId) {         
+        if (applicationId) {
           this.applicationId = applicationId;
           this.dispatchReviewInformationTaskAction();
         }
@@ -47,7 +50,7 @@ export class DdoApplicationRequestReviewInformationComponent implements OnInit, 
     this.store.pipe(
       select(fromRootSelectors.applicationRequestSelectors.getApplicationActiveTask),
       takeWhile(() => this.isComponentActive))
-      .subscribe((activeTaskData: any) => {       
+      .subscribe((activeTaskData: any) => {
         this.currentTaskId = activeTaskData.task.id;
         this.currentWorkflowId = activeTaskData.workflowId;
         this.dispatchReviewInformationTaskAction();
@@ -61,14 +64,20 @@ export class DdoApplicationRequestReviewInformationComponent implements OnInit, 
     console.log("change occured")
   }
 
-  dispatchReviewInformationTaskAction()
-  {
-    if(this.applicationId && this.currentWorkflowId && this.currentTaskId)
-    {
+  editBtnClicked(data) {    
+    this.store.dispatch(
+      new SetActiveTask({
+        workflowId: data.workflowId,
+        taskId: data.taskId
+      }));
+  }
+
+  dispatchReviewInformationTaskAction() {
+    if (this.applicationId && this.currentWorkflowId && this.currentTaskId) {
       this.store.dispatch(new GetAllTasksForReviewInformationTask({
-        requestId:this.applicationId,
-        workflowId:this.currentWorkflowId,
-        taskId:this.currentTaskId
+        requestId: this.applicationId,
+        workflowId: this.currentWorkflowId,
+        taskId: this.currentTaskId
       }));
     }
   }

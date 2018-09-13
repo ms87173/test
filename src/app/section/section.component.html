@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">     
         <div class="col-md-4 col-xs-4 col-lg-4">
-            <h5 class="heading paddTop7px">{{ formlyFieldConfigArray.title }}</h5>
+            <h5 class="heading paddTop7px">{{ formlyFieldConfigArray?.title }}</h5>
         </div>
         <div *ngIf='false' class="col-md-1 col-xs-1 col-lg-1">
             <button type="button" class="btn btn-link editBtn ">Edit</button>
@@ -19,7 +19,7 @@
 
     </div>
     <div class="row mb-4">
-        <div class="col-md-8 col-xs-12 col-lg-8">
+        <div class="col-md-8 col-xs-12 col-lg-8" *ngIf="fields">
             <app-questionnaire [form]="form"
                 [options]="options" 
                 [model]="model"

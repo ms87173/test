@@ -68,20 +68,19 @@ export class DdoApplicationRequestComponent {
 
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationActiveTask)
       .subscribe((activeTaskData: any) => {
-        this.currentTaskId$ = activeTaskData.task.id;
-        this.currentWorkflowId$ = activeTaskData.workflowId;
-        this.currentTaskType = activeTaskData.task.type;
-        this.initalRender = !(this.currentTaskId$ && this.currentWorkflowId$);
-        if (this.currentTaskId$ && this.currentTaskType) {
+          this.currentTaskId$ = activeTaskData.task.id;
+          this.currentWorkflowId$ = activeTaskData.workflowId;
+          this.currentTaskType = activeTaskData.task.type;
+          this.initalRender = !(this.currentTaskId$ && this.currentWorkflowId$);
+          if (this.currentTaskId$ && this.currentTaskType) {
+            this.store.dispatch(
+              new RouterGo({
+                // path: ['ddo', 'applications', this.application$.id, 'questionnaire'],
+                path: ['ddo', 'applications', this.application$.id, this.currentTaskType]
 
-          this.store.dispatch(
-            new RouterGo({
-              // path: ['ddo', 'applications', this.application$.id, 'questionnaire'],
-              path: ['ddo', 'applications', this.application$.id, this.currentTaskType]
-
-            })
-          );
-        }
+              })
+            );
+          } 
       });
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationNextTask)
       .subscribe((nextTaskData: any) => {

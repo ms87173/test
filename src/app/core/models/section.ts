@@ -1,9 +1,7 @@
 import { Question } from './question';
 
-export class Section{
-    // ToDo: May need to do for custom type
-    // id:string;
-
+export class Section {
     title: string;
-    questions:Question[]
+    editableMode: boolean = false;
+    questions: Question[]
 }

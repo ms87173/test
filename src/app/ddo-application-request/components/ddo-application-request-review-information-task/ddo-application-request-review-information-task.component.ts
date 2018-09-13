@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ReviewInformationTask } from '../../../core';
 
 @Component({
@@ -8,10 +8,16 @@ import { ReviewInformationTask } from '../../../core';
 })
 export class DdoApplicationRequestReviewInformationTaskComponent implements OnInit {
 
-  @Input() task:ReviewInformationTask;
+  @Input() task: ReviewInformationTask;
+  @Output() editClicked = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
+
+  }
+
+  editBtnClicked(taskId: string) {
+    this.editClicked.emit(taskId);
   }
 
 }

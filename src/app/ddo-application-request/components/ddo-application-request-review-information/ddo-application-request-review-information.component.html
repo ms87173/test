@@ -1,17 +1,21 @@
-<div class="container ddo-application-review-information pl-5 pr-4">
-  <card>
-    <card-header>
-      <h4 class="card-header__heading">
+<div class="container pl-5 pr-4">
+  <div>
+    <div class="pb20px pt15px">
+      <h4 class="title">
         {{reviewInformationTask?.workflowName}}
       </h4>
-      <h6 class="card-header__description">
+      <h6 class="description">
         {{reviewInformationTask?.workflowDescription}} </h6>
-    </card-header>
-    <div *ngIf="reviewInformationTask && reviewInformationTask.workflows && reviewInformationTask.workflows.length > 0">
-      <div *ngFor="let workflow of reviewInformationTask.workflows">
-        <ddo-application-request-review-information-workflow [workflow]="workflow">
-        </ddo-application-request-review-information-workflow>        
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div *ngIf="reviewInformationTask && reviewInformationTask.workflows && reviewInformationTask.workflows.length > 0">
+          <div *ngFor="let workflow of reviewInformationTask.workflows">
+            <ddo-application-request-review-information-workflow [workflow]="workflow" (editClicked)="editBtnClicked($event)">
+            </ddo-application-request-review-information-workflow>
+          </div>
+        </div>
       </div>
-    </div>   
-  </card>
+    </div>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { ReviewInformationWorkflow } from '../../../core';
 
 @Component({
@@ -8,9 +8,15 @@ import { ReviewInformationWorkflow } from '../../../core';
 })
 export class DdoApplicationRequestReviewInformationWorkflowComponent implements OnInit {
 
-  @Input() workflow:ReviewInformationWorkflow;
+  @Input() workflow: ReviewInformationWorkflow;
+  @Output() editClicked = new EventEmitter();
+
   constructor() { }
 
+  editBtnClicked(taskId: string) {
+    this.editClicked.emit({
+      taskId:  taskId,workflowId:this.workflow.workflowId});
+  }
   ngOnInit() {
   }
 

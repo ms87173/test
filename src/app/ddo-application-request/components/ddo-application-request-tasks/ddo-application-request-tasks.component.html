@@ -5,7 +5,7 @@
             <h6 class="card-header__description">{{currentTask?.workflowDescription}}</h6>
         </card-header>
         <card-body>
-            <div *ngIf="formlyFieldConfigArrayCollections?.length > 0">
+            <div *ngIf="formlyFieldConfigArrayCollections && formlyFieldConfigArrayCollections?.length > 0">
                 <div *ngFor="let formlyFieldConfigArray of formlyFieldConfigArrayCollections; let index = index;">
                     <section [formlyFieldConfigArray]="formlyFieldConfigArray">
                     </section>

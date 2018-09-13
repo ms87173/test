@@ -10,21 +10,21 @@ export enum ActionTypes {
 }
 
 export class GetAllTasksForReviewInformationTask implements Action {
-    readonly type = ActionTypes.GET_ALL_TASKS_FOR_REVIEW_INFORMATION_TASK
+    readonly type = ActionTypes.GET_ALL_TASKS_FOR_REVIEW_INFORMATION_TASK;
     constructor(public payload: ReviewInformationRequest) {
-        this.payload = payload
+        this.payload = payload;
     }
 }
 export class GetAllTasksForReviewInformationTaskSuccess implements Action {
-    readonly type = ActionTypes.GET_ALL_TASKS_FOR_REVIEW_INFORMATION_TASK_SUCCESS
+    readonly type = ActionTypes.GET_ALL_TASKS_FOR_REVIEW_INFORMATION_TASK_SUCCESS;
     constructor(public payload: ReviewInformationResponse) {
-        this.payload = payload
+        this.payload = payload;
     }
 }
 export class GetAllTasksForReviewInformationTaskFailure implements Action {
-    readonly type = ActionTypes.GET_ALL_TASKS_FOR_REVIEW_INFORMATION_TASK_FAIL
+    readonly type = ActionTypes.GET_ALL_TASKS_FOR_REVIEW_INFORMATION_TASK_FAIL;
     constructor(public payload: any) {
-        this.payload = payload
+        this.payload = payload;
     }
 }
 

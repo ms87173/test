@@ -14,49 +14,44 @@
     ],
     "priorityAction": "continue",
     "accountHolders": "John Robbins, Jane Robbins & Susan Sarandon",
-    "workflowsCategories": [
+    "workflowsGroups": [
         {
-            "label": "Update Product Info",
+            "name": "Update Product Info",
             "type": "PRODUCTS_INFO",
-            "disabled": false,
-            "status": "comlpeted",
+            "status": "completed",
             "tasks": [
                 "Interest Checking",
                 "Savings"
             ]
         },
         {
-            "label": "Update info and documents",
+            "name": "Update info and documents",
             "type": "APPLICANTS_INFO",
             "status": "in-progress",
-            "disabled": false,
             "tasks": [
                 "John Robbins- Primary",
                 "Jane Robbins - Co-applicant"
             ]
         },
         {
-            "label": "Review & submit to clients",
+            "name": "Review & submit to clients",
             "type": "REVIEW_SUBMIT",
             "status": "not-started",
-            "disabled": true,
             "tasks": [
                 "Review Information",
                 "Sign and Submit"
             ]
         },
         {
-            "label": "Clients",
+            "name": "Clients",
             "type": "CLIENTS",
             "status": "not-started",
-            "disabled": false,
             "tasks": []
         },
         {
-            "label": "Banker",
+            "name": "Banker",
             "type": "BANKER",
             "status": "not-started",
-            "disabled": false,
             "tasks": []
         }
     ]

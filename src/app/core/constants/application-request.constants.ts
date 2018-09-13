@@ -9,7 +9,7 @@ export const TASK_STATUSES = {
 };
 export const TASK_TYPES = {
     QUESTION: 'questionnaire',
-    REVIEW_INFORMATION: 'reviewInformation'
+    REVIEW_INFORMATION: 'review-application'
 };
 
 export const QUESTIONS_TYPE = {

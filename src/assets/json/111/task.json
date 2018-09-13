@@ -1,23 +1,24 @@
 {
-    "description": "This is your primary interest bearing account.",
+    "description": "<string>",
     "status": "<string>",
-    "taskId":"<string>",
-    "workflowName":"<string>",
-    "workflowDescription":"<string>",
-
+    "taskId": "<string>",
+    "workflowName": "<string>",
+    "workflowDescription": "<string>",
+    "showEdit": "<boolean>",
     "sections": [
         {
             "title": "Account Information",
+            "editableMode": "<boolean>",
             "questions": [
                 {
                     "id": "<string>",
-                    "label": "<string>", 
-                    "type": "<string>", 
+                    "label": "<string>",
+                    "type": "<string>",
                     "required": "<boolean>",
                     "readOnly": "<boolean>",
-                    "recurrent": "<boolean>", 
+                    "recurrent": "<boolean>",
                     "placeHolder": "<string>",
-                    "lookupName": "<string>", 
+                    "lookupName": "<string>",
                     "options": [
                         {
                             "label": "",
@@ -25,10 +26,12 @@
                         }
                     ],
                     "tooltipText": "<string>",
-                    "answers": [             
-                        {                  
-                            "value": "<any>"
-                           
+                    "answers": [
+                        {
+                            "value": "<any>",
+                            "validationError ": {
+                                "value": "any"
+                            }
                         }
                     ]
                 }

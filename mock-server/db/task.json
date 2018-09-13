@@ -2,15 +2,17 @@
     "tasks": [
         {
             "id": 22,
-            "taskId":22,
-            "workflowName":"John Robbins",
+            "taskId": 22,
+            "workflowName": "John Robbins",
             "workflowDescription": "This is the information we have on you.",
             "label": "John Robbins",
             "description": "This is the information we have on you.",
             "status": "InProgress",
+            "showEdit": true,
             "sections": [
                 {
                     "title": "Trusted Contact",
+                    "editableMode": true,
                     "questions": [
                         {
                             "id": "InterestCheckingCheckBox",
@@ -78,20 +80,6 @@
                             ],
                             "tooltipText": "<string>",
                             "answers": []
-                        },
-                        {
-                            "id": "addressFields_test_1",
-                            "label": "Addresses",
-                            "type": "custom-address-fields",
-                            "required": true,
-                            "readOnly": false,
-                            "recurrent": false,
-                            "lookupName": "",
-                            "answers": [
-                                {
-                                    "value": {}
-                                }
-                            ]
                         }
                     ]
                 }
@@ -100,14 +88,16 @@
         {
             "id": 32,
             "label": "John Robbins",
-            "taskId":32,
-            "workflowName":"John Robbins",
+            "taskId": 32,
+            "workflowName": "John Robbins",
             "workflowDescription": "This is the information we have on you.",
             "description": "This is the information we have on you.",
             "status": "InProgress",
+            "showEdit": true,
             "sections": [
                 {
                     "title": "Documents",
+                    "editableMode": true,
                     "questions": [
                         {
                             "id": "InterestCheckingCheckBox",
@@ -184,13 +174,15 @@
             "id": 12,
             "label": "John Robbins",
             "description": "This is the information we have on you.",
-            "taskId":12,
-            "workflowName":"John Robbins",
+            "taskId": 12,
+            "workflowName": "John Robbins",
             "workflowDescription": "This is the information we have on you.",
             "status": "InProgress",
+            "showEdit": true,
             "sections": [
                 {
                     "title": "Personal Information",
+                    "editableMode": true,
                     "questions": [
                         {
                             "id": "InterestCheckingCheckBox",
