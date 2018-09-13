@@ -56,7 +56,7 @@ import { TooltipModule } from 'ngx-bootstrap';
     CardFooterComponent,
     GridComponent,
     TileComponent,
-    ContactDetailComponent  
+    ContactDetailComponent
   ]
 })
 export class SharedModule { }

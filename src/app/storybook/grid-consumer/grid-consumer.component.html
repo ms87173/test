@@ -4,7 +4,23 @@
       <h4>Application Grid :</h4>
     </div>
     <div class="col-sm-12">
-      <grid [data]='gridData'></grid>
+      <!-- <grid [data]='gridData'></grid> -->
+      <div class="container doo-application-tasks">
+          <card>
+              <card-header>
+                  <h4 class="card-header__heading">Application Info</h4>
+              </card-header>
+              <card-body>
+                  <!-- <div *ngIf="formlyFieldConfigArrayCollections && formlyFieldConfigArrayCollections?.length > 0">
+                      <div *ngFor="let formlyFieldConfigArray of formlyFieldConfigArrayCollections; let index = index;">
+                          <section [formlyFieldConfigArray]="formlyFieldConfigArray">
+                          </section>
+                      </div>
+                  </div> -->
+              </card-body>
+          </card>
+      </div>
+      
     </div>
   </div>
 </div>
