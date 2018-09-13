@@ -122,7 +122,7 @@
                     "label": "Review Application",
                     "description": "This is your primary interest bearing account.",
                     "id": "15",
-                    "type": "reviewInformation"
+                    "type": "review-application"
                 },
                 {
                     "label": "Sign and Submit",

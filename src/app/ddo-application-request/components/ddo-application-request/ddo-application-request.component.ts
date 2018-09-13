@@ -73,7 +73,7 @@ export class DdoApplicationRequestComponent {
 
               })
             );
-          }  
+          } 
       });
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationNextTask)
       .subscribe((nextTaskData: any) => {

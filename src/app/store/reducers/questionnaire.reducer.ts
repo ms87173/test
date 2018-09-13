@@ -76,7 +76,7 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
                 currentQuestionnaireConfig: null,
                 currentQuestionnaireDelta: null,
 
-            };      
+            };     
 
         default:
             return state;
