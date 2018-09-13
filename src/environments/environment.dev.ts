@@ -10,7 +10,7 @@ export const environment = {
     fetchTaskQuestionnaireDelts: 'questionnaire/tasks/question',
     saveTaskQuestionnaire: 'questionnaire/saveTaskQuestions',
     fetchDynamicOptions: 'questionnaire/dynamicLookup/',
-    fetchReviewInformationTask:'questionnaire/reviewInformation'
+    fetchReviewInformationTask:'questionnaire/reviewTask'
 
   }
 };
