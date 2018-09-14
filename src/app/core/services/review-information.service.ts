@@ -11,7 +11,6 @@ export class ReviewInformationService {
 
   getReviewInformationTask(reviewInformationRequest: ReviewInformationRequest): Observable<ReviewInformationResponse> {
     const url = environment.apiUrls.fetchReviewInformationTask;
-    debugger;
     return this.apiService
       .get(url);
 
