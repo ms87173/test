@@ -1,13 +1,13 @@
 <div class="ddo-application-request">
   <div class="container-fluid">
     <div class="row ddo-application-request__page-heading mt-3">
-      <div class="col-md-10  pt-3 pb-3">
-        <h5 class="heading">
-          {{title}}
-        </h5>
-      </div>
+      <h5 class="col-md-10 pt-3 pb-3 heading">
+        {{application.title}}
+      </h5>
       <div class="col-md-2 pt-3 pb-3">
-        <a class="cancel-application" href="javascript:void(0)" (click)="cancelApplication">
+        <a class="cancel-application"
+          href="javascript:void(0)"
+          (click)="cancelApplication">
           Cancel Application
         </a>
       </div>
@@ -31,9 +31,14 @@
       <div class="row">
         <div class="card col-md-12">
           <div class="card-header">
-            <h4 class="ddo-application-request__card-heading">
-              Application Info
-            </h4>
+              <div class="row ddo-application-request__card-heading">
+                <h4 class="col-md-11 ddo-application-request__card-heading-description">
+                  Application Info
+                </h4>
+                <h6 class="col-md-1 ddo-application-request__card-heading-edit-button">
+                  Edit
+                </h6>
+              </div>
           </div>
           <div class="card-body">
             <div class="label-value">
@@ -49,7 +54,7 @@
                 Account Holders:
               </span>
               <span>
-                John Robbins, Jane Robbins and Susan Sandron
+                {{application.accountHolders}}
               </span>
             </div>
             <div class="label-value">
@@ -57,41 +62,43 @@
                 Title of the accounts:
               </span>
               <span>
-                Interest Checking account, Savings account
+                {{application.title}}
               </span>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-2">
-              <div class="step">
-                  <span class="circle">
-                    <i class="fa fa-sliders"></i>
-                  </span>
-                  <p>Update Product Info</p>
-              </div>
+      
+      <div class="stepper mt-4">
+        <div class="stepper-steps">
+            <div class="step">
+                <button class="circle" style="margin-left: 15px">
+                  <i class="fa fa-sliders"></i>
+                </button>
+                <span class="step-line"></span>
             </div>
-            <div class="col-md-2">
-                <div class="step">
-                    <span class="circle">
-                      <i class="fa fa-sliders"></i>
-                    </span>
-                    <p>Update Product Info</p>
-                </div>
-              </div>
-              <div class="col-md-2">
-                  <div class="step">
-                      <span class="circle">
-                        <i class="fa fa-sliders"></i>
-                      </span>
-                      <p>Update Product Info</p>
-                  </div>
-                </div>
-                
-          </div>
+            <div class="step">
+                <button class="circle">
+                  <i class="fa fa-sliders"></i>
+                </button>
+                <span class="step-line"></span>
+            </div>
+            <div class="step">
+                <button class="circle" style="margin-right: 15px">
+                  <i class="fa fa-sliders"></i>
+                </button>
+            </div>
+        </div>
+        <div class="stepper-steps-description">
+          <span class="step-description">
+              Update Product Info
+          </span>
+          <span class="step-description">
+            Update Info &amp; Documents
+          </span>
+          <span class="step-description" style="margin-right: 0px">
+            banker
+          </span>
         </div>
       </div>
     </div>

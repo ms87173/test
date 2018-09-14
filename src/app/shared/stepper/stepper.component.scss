@@ -1,0 +1,30 @@
+.step-description {
+    display: inline-block;
+    width: 90px;
+    vertical-align: middle;
+    margin-right: 102px;
+    font-size: 14px;
+    height: 100%;
+    text-align: center;
+}
+.stepper-steps {
+    height: 100%;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+.stepper-steps-description {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+}
+step:first-child {
+    margin-left: 15px;
+}
+step:last-child {
+    margin-right: 15px;
+}
+.step-description:last-child {
+    margin-right: 0;
+}

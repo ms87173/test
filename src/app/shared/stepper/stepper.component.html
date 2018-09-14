@@ -1,0 +1,12 @@
+<div class="stepper">
+    <div class="stepper-steps">
+        <step *ngFor="let step of steps; let i = index" [config]="step">
+        </step>
+    </div>
+    <div class="stepper-steps-description">
+        <span class="step-description"
+            *ngFor="let step of steps; let i = index">
+            {{step.name}}
+        </span>
+    </div>
+</div>

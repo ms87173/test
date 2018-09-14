@@ -17,6 +17,8 @@ import { TileComponent } from './tile/tile.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { TooltipModule } from 'ngx-bootstrap';
+import { StepperComponent } from './stepper/stepper.component';
+import { StepComponent } from './step/step.component';
 
 @NgModule({
   imports: [
@@ -41,7 +43,9 @@ import { TooltipModule } from 'ngx-bootstrap';
     CardFooterComponent,
     GridComponent,
     TileComponent,
-    ContactDetailComponent
+    ContactDetailComponent,
+    StepperComponent,
+    StepComponent
   ],
   exports: [
     HeaderComponent,
@@ -56,7 +60,9 @@ import { TooltipModule } from 'ngx-bootstrap';
     CardFooterComponent,
     GridComponent,
     TileComponent,
-    ContactDetailComponent
+    ContactDetailComponent,
+    StepperComponent,
+    StepComponent
   ]
 })
 export class SharedModule { }

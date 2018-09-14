@@ -18,46 +18,197 @@
             "Banking - Checking"
         ],
         "priorityAction": "continue",
-        "accountHolders": "John Robbins, Jane Robbins & Susan Sarandon",
-        "workflowsGroups": [
-            {
+        "accountHolders": [
+            "John Robbins",
+            "Jane Robbins",
+            "Susan Sarandon"
+        ],
+        "workflowsGroups":  [
+            {   
                 "name": "Update Product Info",
+                "status": "COMPLETED",
                 "type": "PRODUCTS_INFO",
-                "status": "completed",
-                "tasks": [
-                    "Interest Checking",
-                    "Savings"
+                "workflows": [
+                    {
+                        "id": "1",
+                        "label": "Banking accounts",
+                        "description": "",
+                        "status": "COMPLETED",
+                        "tasks": [
+                            {
+                                "label": "Interest Checking",
+                                "description": "This is your primary interest bearing account.",
+                                "id": "11",
+                                "status": "COMPLETED",
+                                "type": "questionnaire"
+                            },
+                            {
+                                "label": "Saving",
+                                "description": "This is your primary interest bearing account.",
+                                "id": "21",
+                                "status": "COMPLETED",
+                                "type": "questionnaire"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2",
+                        "label": "John Robbins",
+                        "description": "Primary",
+                        "subHeading": "Primary",
+                        "status": "IN_PROGRESS",
+                        "tasks": [
+                            {
+                                "label": "Personal Information",
+                                "description": "This is your primary interest bearing account.",
+                                "id": "12",
+                                "status": "COMPLETED",
+                                "type": "questionnaire"
+                            },
+                            {
+                                "label": "Trusted Contact",
+                                "description": "This is your primary interest bearing account.",
+                                "id": "22",
+                                "status": "IN_PROGRESS",
+                                "type": "questionnaire"
+                            },
+                            {
+                                "label": "Documents",
+                                "description": "This is your primary interest bearing account.",
+                                "id": "32",
+                                "status": "IN_PROGRESS",
+                                "type": "questionnaire"
+                            }
+                        ]
+                    }
                 ]
             },
             {
-                "name": "Update info and documents",
+                "name": "Update Info & documents",
+                "status": "IN_PROGRESS",
                 "type": "APPLICANTS_INFO",
-                "status": "in-progress",
-                "tasks": [
-                    "John Robbins- Primary",
-                    "Jane Robbins - Co-applicant"
+                "workflows": [
+                    {
+                        "id": "2",
+                        "label": "John Robbins",
+                        "description": "Primary",
+                        "subHeading": "Primary",
+                        "status": "IN_PROGRESS",
+                        "tasks": [
+                            {
+                                "label": "Personal Information",
+                                "description": "This is your primary interest bearing account.",
+                                "id": "12",
+                                "status": "COMPLETED",
+                                "type": "questionnaire"
+                            },
+                            {
+                                "label": "Trusted Contact",
+                                "description": "This is your primary interest bearing account.",
+                                "id": "22",
+                                "status": "IN_PROGRESS",
+                                "type": "questionnaire"
+                            },
+                            {
+                                "label": "Documents",
+                                "description": "This is your primary interest bearing account.",
+                                "id": "32",
+                                "status": "IN_PROGRESS",
+                                "type": "questionnaire"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "3",
+                        "label": "Jane Robbins",
+                        "description": "Co-applicant",
+                        "status": "IN_PROGRESS",
+                        "subHeading": "Co-applicant",
+                        "tasks": [
+                            {
+                                "label": "Documents",
+                                "description": "This is your primary interest bearing account.",
+                                "id": "13",
+                                "status": "IN_PROGRESS",
+                                "type": "questionnaire"
+                            },
+                            {
+                                "label": "Personal Information",
+                                "description": "This is your primary interest bearing account.",
+                                "id": "23",
+                                "status": "IN_PROGRESS",
+                                "type": "questionnaire"
+                            },
+                            {
+                                "label": "Trusted Contact",
+                                "description": "This is your primary interest bearing account.",
+                                "id": "33",
+                                "status": "IN_PROGRESS",
+                                "type": "questionnaire"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "4",
+                        "label": "Susan Robbins",
+                        "description": "Co-applicant",
+                        "subHeading": "Co-applicant",
+                        "status": "COMPLETED",
+                        "tasks": [
+                            {
+                                "label": "Documents",
+                                "description": "This is your primary interest bearing account.",
+                                "id": "14",
+                                "status": "COMPLETED",
+                                "type": "questionnaire"
+                            },
+                            {
+                                "label": "Personal Information",
+                                "description": "This is your primary interest bearing account.",
+                                "id": "24",
+                                "status": "COMPLETED",
+                                "type": "questionnaire"
+                            },
+                            {
+                                "label": "Trusted Contact",
+                                "description": "This is your primary interest bearing account.",
+                                "id": "34",
+                                "status": "COMPLETED",
+                                "type": "questionnaire"
+                            }
+                        ]
+                    }
                 ]
             },
             {
-                "name": "Review & submit to clients",
+                "name": "Review and Submit to Clients",
+                "status": "NOT_STARTED",
                 "type": "REVIEW_SUBMIT",
-                "status": "not-started",
-                "tasks": [
-                    "Review Information",
-                    "Sign and Submit"
+                "workflows": [
+                    {
+                        "id": "5",
+                        "label": "Review and Submit",
+                        "description": "Please fill required information first.",
+                        "subHeading": "Please fill required information first.",
+                        "status": "",
+                        "tasks": [
+                            {
+                                "label": "Review Application",
+                                "description": "This is your primary interest bearing account.",
+                                "id": "15",
+                                "type": "review-application",
+                                "status": "NOT_STARTED"
+                            },
+                            {
+                                "label": "Sign and Submit",
+                                "description": "This is your primary interest bearing account.",
+                                "id": "25",
+                                "type": "sign-submit",
+                                "status": "NOT_STARTED"
+                            }
+                        ]
+                    }
                 ]
-            },
-            {
-                "name": "Clients",
-                "type": "CLIENTS",
-                "status": "not-started",
-                "tasks": []
-            },
-            {
-                "name": "Banker",
-                "type": "BANKER",
-                "status": "not-started",
-                "tasks": []
             }
         ]
     }

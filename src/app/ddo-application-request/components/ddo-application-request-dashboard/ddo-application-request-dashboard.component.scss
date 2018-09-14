@@ -12,10 +12,49 @@
         border-bottom: 0px;
     }
     &__card-heading {
-        border-bottom: 1px solid #898b8d;
         padding: 1rem 0;
+        border-bottom: 1px solid grey;
+        margin: 0px;
+    }
+    &__card-heading-edit-button {
+        padding: 0;
+        height: 100%;
+        text-align: right;
+    }
+    &__card-heading-description {
+        padding: 0;
+        height: 100%;
+    }
+    .stepper-steps {
+        height: 100%;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .stepper-steps-description {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        height: 100%;
     }
     .step {
+        text-align: center;
+        display: inline-block;
+    }
+    .step-line {
+        display: inline-block;
+        width: 136px;
+        height: 1px;
+        background-color: black;
+        margin-bottom: 5px;
+    }
+    .step-description {
+        display: inline-block;
+        width: 90px;
+        vertical-align: middle;
+        margin-right: 102px;
+        font-size: 14px;
+        height: 100%;
         text-align: center;
     }
     .circle {
@@ -26,7 +65,6 @@
         border-radius: 50px;
         .fa {
             font-size: 25px;
-            margin-top: 12px;
         }
     }
 }
