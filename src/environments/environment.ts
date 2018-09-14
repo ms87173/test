@@ -13,7 +13,8 @@ export const environment = {
     fetchTaskQuestionnaireDelts: 'questionnaireDeltaResponses',
     saveTaskQuestionnaire: 'success',
     fetchDynamicOptions: 'dynamic-options',
-    fetchReviewInformationTask:'reviewInformation'
+    fetchReviewInformationTask:'reviewInformation',
+    cancelApplicationRequest: 'cancel-application'
 
   }
 };

@@ -9,8 +9,56 @@
         "type": "joint",
         "lastUpdatedBy": "Vikash Kumar",
         "lastUpdateDate": "05-23-2018",
-        "actions": ["continue", "cancel"],
+        "actions": [
+            "continue",
+            "cancel"
+        ],
+        "products": [
+            "Banking - Saving",
+            "Banking - Checking"
+        ],
         "priorityAction": "continue",
-        "accountHolders": "John Robbins, Jane Robbins & Susan Sarandon"
+        "accountHolders": "John Robbins, Jane Robbins & Susan Sarandon",
+        "workflowsGroups": [
+            {
+                "name": "Update Product Info",
+                "type": "PRODUCTS_INFO",
+                "status": "completed",
+                "tasks": [
+                    "Interest Checking",
+                    "Savings"
+                ]
+            },
+            {
+                "name": "Update info and documents",
+                "type": "APPLICANTS_INFO",
+                "status": "in-progress",
+                "tasks": [
+                    "John Robbins- Primary",
+                    "Jane Robbins - Co-applicant"
+                ]
+            },
+            {
+                "name": "Review & submit to clients",
+                "type": "REVIEW_SUBMIT",
+                "status": "not-started",
+                "tasks": [
+                    "Review Information",
+                    "Sign and Submit"
+                ]
+            },
+            {
+                "name": "Clients",
+                "type": "CLIENTS",
+                "status": "not-started",
+                "tasks": []
+            },
+            {
+                "name": "Banker",
+                "type": "BANKER",
+                "status": "not-started",
+                "tasks": []
+            }
+        ]
     }
 }

@@ -5,11 +5,13 @@ import {
     ActionTypes,
     GetApplicationRequestSuccess,
     GetApplicationRequestFailure,
-    GetApplicationRequest
+    GetApplicationRequest,
+    CancelApplicationRequest
 } from '../actions/application.actions';
 import { switchMap, map, catchError, filter } from 'rxjs/operators';
 import { of } from 'rxjs';
 import * as fromRouterActions from '../actions/router.actions';
+import { RouterGo } from '../actions/router.actions';
 
 @Injectable()
 export class ApplicationRequestEffects {
@@ -38,6 +40,26 @@ export class ApplicationRequestEffects {
                         )
                     )
         ));
+    @Effect() cancelApplicationRequestEffect = this.actions$.pipe(
+        ofType(ActionTypes.CANCEL_APPLICATION_REQUEST),
+        switchMap(
+            (action: CancelApplicationRequest) =>
+                this.applicationRequestService.cancelApplicationRequest(action.payload)
+                    .pipe(
+                        map(response => {
+                            return new RouterGo({
+                                path: ['ddo', 'my-applications']
+                            });
+                        }),
+                        catchError(
+                            error => of(
+                                new RouterGo({
+                                    path: ['ddo', 'error', { ...error }]
+                                }))
+                        )
+                    )
+        )
+    )
     constructor(
         private applicationRequestService: ApplicationRequestService,
         private actions$: Actions

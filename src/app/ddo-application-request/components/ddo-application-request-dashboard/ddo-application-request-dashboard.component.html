@@ -1,3 +1,99 @@
-<p>
-  ddo-application-request-dashboard works!
-</p>
+<div class="ddo-application-request">
+  <div class="container-fluid">
+    <div class="row ddo-application-request__page-heading mt-3">
+      <div class="col-md-10  pt-3 pb-3">
+        <h5 class="heading">
+          {{title}}
+        </h5>
+      </div>
+      <div class="col-md-2 pt-3 pb-3">
+        <a class="cancel-application" href="javascript:void(0)" (click)="cancelApplication">
+          Cancel Application
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 ddo-application-request__content">
+        <h4 class="ddo-application-request__content-heading">
+          Complete the Set up of your accounts
+        </h4>
+        <h6 class="ddo-application-request__content-subheading">
+          The Citi Private Bank team has created account application for which your assistance in completion is
+          required.
+        </h6>
+        <h6 class="ddo-application-request__content-subheading">
+          Please provide information where indicated and review available client data prior to routing to account
+          holders for attestation.
+        </h6>
+      </div>
+    </div>
+    <div class="container mt-3">
+      <div class="row">
+        <div class="card col-md-12">
+          <div class="card-header">
+            <h4 class="ddo-application-request__card-heading">
+              Application Info
+            </h4>
+          </div>
+          <div class="card-body">
+            <div class="label-value">
+              <span class="ddo-application-request__content-subheading">
+                Joint Accounts:
+              </span>
+              <span>
+                {{productsDescription}}
+              </span>
+            </div>
+            <div class="label-value">
+              <span class="ddo-application-request__content-subheading">
+                Account Holders:
+              </span>
+              <span>
+                John Robbins, Jane Robbins and Susan Sandron
+              </span>
+            </div>
+            <div class="label-value">
+              <span class="ddo-application-request__content-subheading">
+                Title of the accounts:
+              </span>
+              <span>
+                Interest Checking account, Savings account
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-2">
+              <div class="step">
+                  <span class="circle">
+                    <i class="fa fa-sliders"></i>
+                  </span>
+                  <p>Update Product Info</p>
+              </div>
+            </div>
+            <div class="col-md-2">
+                <div class="step">
+                    <span class="circle">
+                      <i class="fa fa-sliders"></i>
+                    </span>
+                    <p>Update Product Info</p>
+                </div>
+              </div>
+              <div class="col-md-2">
+                  <div class="step">
+                      <span class="circle">
+                        <i class="fa fa-sliders"></i>
+                      </span>
+                      <p>Update Product Info</p>
+                  </div>
+                </div>
+                
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
