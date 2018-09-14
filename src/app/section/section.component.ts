@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyFieldConfigArrayCollection, Section } from '../core';
-import {  EXISTING_CUSTOM_COMPONENTS } from '../custom-formly-fields/enums/custom-components.enum';
+import { EXISTING_CUSTOM_COMPONENTS } from '../custom-formly-fields/enums/custom-components.enum';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -24,31 +24,27 @@ export class SectionComponent implements OnInit, OnChanges {
   constructor() {
     console.log("FormlyFieldConfig");
     console.log(this.fields);
-   }
+  }
 
   editClicked() {
     this.changeEditableMode(true);
   }
 
-  saveClicked()
-  {
+  saveClicked() {
     this.changeEditableMode(false);
   }
 
-  discardClicked()
-  {
+  discardClicked() {
     this.changeEditableMode(false);
 
   }
 
-  changeEditableMode(mode:boolean)
-  {
+  changeEditableMode(mode: boolean) {
     this.editableMode = mode;
   }
 
   ngOnInit() {
     this.fields = this.formlyFieldConfigArray.formlyFieldConfigs;
-    debugger;
     this.fields.forEach((item) => {
       // /Need to add more If statements for other custom components
       if (EXISTING_CUSTOM_COMPONENTS.includes(item.type)) {
