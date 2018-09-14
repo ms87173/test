@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, TemplateRef } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { fromRootReducers, fromRootSelectors } from '../../../store';
 import {
@@ -8,10 +8,12 @@ import {
   SaveActiveTaskAndNext
 } from '../../../store/actions/workflows.action';
 import WorkFlowsSideNavModel from '../../../core/models/workflow-sidenav.model';
-import { APPLICATION_HEADING } from '../../../core/constants/application-request.constants';
+import { APPLICATION_HEADING, CANCELLATION_REASONS } from '../../../core/constants/application-request.constants';
 import { ContactDetailsModel } from '../../../core/models/contact-detail.model';
 import { RouterGo } from '../../../store/actions/router.actions';
-
+import { FormlyFormOptions } from '@ngx-formly/core';
+import { FormGroup } from '@angular/forms';
+import { CancelApplicationRequest } from '../../../store/actions/application.actions';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'ddo-application-request',
@@ -35,8 +37,13 @@ export class DdoApplicationRequestComponent {
   applicationHeading: any;
   contactPersonDetails$: any;
   initalRender = true;
+  form = new FormGroup({});
+  model: any = {};
+  options: FormlyFormOptions = {};
+  fields: Array<any>;
+  showCancellationForm: boolean;
   constructor(
-    private store: Store<fromRootReducers.AppState>
+    private store: Store<fromRootReducers.AppState>,
   ) {
     this.applicationHeading = new Map(Object.entries(APPLICATION_HEADING));
 
@@ -87,6 +94,7 @@ export class DdoApplicationRequestComponent {
         this.previousWorkflowId$ = previousTaskData.workflowId;
       }
       );
+    this.fields = this.getCancelApplicationFormFields();
   }
 
   onSideNavClick({ parentId, childId }) {
@@ -130,5 +138,39 @@ export class DdoApplicationRequestComponent {
         console.log(action);
     }
   }
+  getCancelApplicationFormFields() {
+    return [
+      {
+        key: 'reason',
+        type: 'custom-dropdown',
+        templateOptions: {
+          label: 'Please select the reason for cancellation',
+          hideRequiredMarker: true,
+          required: true,
+          options: CANCELLATION_REASONS
+        },
+      },
+      {
+        key: 'comments',
+        type: 'textarea',
+        hideExpression: (model) => this.model.reason !== 'other',
+        templateOptions: {
+          label: 'Additional Comments',
+          rows: 3,
+          cols: 15,
+          required: false,
+        },
+      },
+    ]
+  }
 
+  cancelApplication() {
+    this.showCancellationForm = true;
+  }
+  hideCancelAppicationForm() {
+    this.showCancellationForm = false;
+  }
+  cancelApplicationRequest() {
+    this.store.dispatch(new CancelApplicationRequest(this.model))
+  }
 }

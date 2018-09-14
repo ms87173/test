@@ -4,19 +4,38 @@
             <h5 class="heading">{{application$.heading}}</h5>
         </div>
         <div class="col-md-2 pt-3 pb-3">
-            <a class="cancel-application"
-                href="javascript:void(0)"
-                (click)="buttonActionsClick('cancel')">
-                Cancel Application
-            </a>
+            <a class="btn btn-link btn-link--primary" (click)="cancelApplication()">Cancel Application</a>
+        </div>
+    </div>
+    <div class="row ddo-application-request__cancel-form" *ngIf='showCancellationForm'>
+        <div class="col-sm-12 pt-3">
+            <div class="row">
+                <div class="col-sm-10">
+                    <h6 class="cancel-heading">
+                        Cancel Application
+                    </h6>
+                </div>
+                <div class="col-sm-2">
+                    <i class="fa fa-times cancel--icon float-right" (click)='hideCancelAppicationForm()'></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 pb-3">
+            <form class="ddo-applications__filter" [formGroup]="form">
+                <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form">
+                </formly-form>
+            </form>
+        </div>
+        <div class="col-sm-12 pb-3">
+            <div class="float-right">
+                <a class="btn btn-link btn--small" (click)='hideCancelAppicationForm()'>Don't cancel</a>
+                <button class="btn btn-primary btn--small" [disabled]="!form.valid" (click)='cancelApplicationRequest()'>Cancel application</button>
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-3 pl-0 pr-0">
-            <app-side-nav
-                [config]='workflows$'
-                [(selectedParentId)]='currentWorkflowId$'
-                [(selectedChildId)]='currentTaskId$'
+            <app-side-nav [config]='workflows$' [(selectedParentId)]='currentWorkflowId$' [(selectedChildId)]='currentTaskId$'
                 (actions)='onSideNavClick($event)'>
             </app-side-nav>
             <contact-detail [config]='contactPersonDetails$'></contact-detail>
@@ -27,23 +46,17 @@
     </div>
     <div class="row ddo-application-request__footer">
         <div class="col-sm-3 mt-4 mb-4">
-            <button type="button"
-                (click)="buttonActionsClick('saveAndExit')"
-                class="btn ddo-application-request__button btn-outline-primary float-left">
+            <button type="button" (click)="buttonActionsClick('saveAndExit')" class="btn ddo-application-request__button btn-outline-primary float-left">
                 Save and Exit
             </button>
         </div>
         <div class="col-sm-9 mt-4 mb-4">
             <div class="float-right">
-                <button type="button"
-                    (click)="buttonActionsClick('back')"
-                    class="btn btn-outline-primary ddo-application-request__button  mr-3"
+                <button type="button" (click)="buttonActionsClick('back')" class="btn btn-outline-primary ddo-application-request__button  mr-3"
                     *ngIf="previousTaskId$">
                     Back
                 </button>
-                <button type="button"
-                    (click)="buttonActionsClick('next')"
-                    class="btn btn-outline-primary ddo-application-request__button--next"
+                <button type="button" (click)="buttonActionsClick('next')" class="btn btn-outline-primary ddo-application-request__button--next"
                     *ngIf="nextTaskId$">
                     Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                 </button>

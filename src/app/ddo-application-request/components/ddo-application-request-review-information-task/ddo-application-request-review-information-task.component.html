@@ -1,9 +1,15 @@
-<div class="card mb20px">
+<div class="pb10px">
+    <h4 class="taskTitle">
+        {{task.taskName}}
+    </h4>    
+  </div>
+
+<div class="card mb20px"  *ngFor="let section of task.sections">
   <div class="card-body ">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-3">
-          <div class="pt10px title"> {{task.taskName}} </div>
+          <div class="pt10px title">  {{section.title}} </div>
         </div>
         <div class="offset-md-8 col-md-1  ">
           <a class="edit" href="javascript:void(0)" (click)="editBtnClicked(task.taskId)">
@@ -13,21 +19,18 @@
 
       </div>
       <div class="row">
-        <div class="col-md-12">
-          <hr />
+        <div class="col-md-12 pb15px pt10px">
+          <div class="hLine"></div>
         </div>
       </div>
 
       <div class="multColumn">
-        <div class="row" *ngFor="let section of task.sections" class="pb10px">
           <div *ngFor="let question of section.questions; let index=index;">
             <div class="col-md-12 display-inline-block pb20px">
-              <h4 class="task" *ngIf="index === 0"> {{section.title}} </h4>
               <h6 class="question-label"> {{question.label}} </h6>
               <div class="answers"> {{question?.answers[0]?.value}} </div>
             </div>
           </div>
-        </div>
       </div>
 
     </div>

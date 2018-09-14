@@ -10,13 +10,16 @@ import { CustomFormlyFieldsModule } from '../custom-formly-fields/custom-formly-
 import { DdoApplicationRequestReviewInformationComponent } from './components/ddo-application-request-review-information/ddo-application-request-review-information.component';
 import { DdoApplicationRequestReviewInformationWorkflowComponent } from './components/ddo-application-request-review-information-workflow/ddo-application-request-review-information-workflow.component';
 import { DdoApplicationRequestReviewInformationTaskComponent } from './components/ddo-application-request-review-information-task/ddo-application-request-review-information-task.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormlyModule } from '@ngx-formly/core';
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     DdoApplicationRequestRoutingModule,
-    CustomFormlyFieldsModule
+    CustomFormlyFieldsModule,
+    ReactiveFormsModule,
+    FormlyModule.forRoot(),
   ],
   declarations: [
     DdoApplicationRequestComponent,

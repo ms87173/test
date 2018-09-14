@@ -5,7 +5,8 @@ import {
   Task,
   QuestionaireDeltaResponse,
   QuestionaireDeltaRequest,
-  TaskRequest
+  TaskRequest,
+  Section
 } from '../models';
 import { environment } from '../../../environments/environment';
 
@@ -46,6 +47,14 @@ export class QuestionnaireService {
   }
   getCountryCode(): Observable<any[]> {
     return this.apiService.get('countryCode');
+  }
+
+  setAllEditiableModeProperty(currentTask: Task, mode: boolean): Observable<Task> {
+    let currTask = { ...currentTask };
+    currTask.sections.forEach((section: Section) => {
+      section.editableMode = mode;
+    });
+    return of(currTask);
   }
 
 }
