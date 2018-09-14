@@ -10,7 +10,9 @@ import {
   GetCurrentFieldChangeDeltaFailure,
   GetCurrentQuestionnaireFormlyConfigSuccess,
   GetCurrentQuestionnaireFormlyConfigFailure,
-  GetCurrentQuestionnaireFormlyConfig
+  GetCurrentQuestionnaireFormlyConfig,
+  SetSectionEditiableMode,
+  SetSectionEditiableModeSuccess
 } from '../actions/questionnaire.actions';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { QuestionnaireService, NgxFormlyParserService, ApiService } from '../../core/services';
@@ -76,6 +78,25 @@ export class QuestionnaireEffectsService {
         )
     )
   );
+
+  @Effect() setAllEditiableModeProperty = this.actions$.pipe(
+    ofType(ActionTypes.SET_SECTIONS_EDITABLE_MODE),
+    switchMap(
+      (action: SetSectionEditiableMode) => this.questionnaireService
+        .setAllEditiableModeProperty
+        (action.payload.currentTask,
+        action.payload.mode
+        )
+        .pipe(
+          map((currentTask) => (new SetSectionEditiableModeSuccess({mode:action.payload.mode, currentTask:currentTask}))
+          ),
+          catchError(
+            (err) => of(new GetCurrentQuestionnaireFormlyConfigFailure(err))
+          )
+        )
+    )
+  );
+
 
 
 

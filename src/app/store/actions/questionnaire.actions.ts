@@ -1,6 +1,5 @@
 import { Action } from '@ngrx/store';
 import { Task, QuestionaireDeltaRequest, FormlyFieldConfigArrayCollection, TaskRequest } from '../../core/models';
-import { FormlyFieldConfig } from '@ngx-formly/core';
 
 export enum ActionTypes {
     /// Current Task Actions
@@ -18,7 +17,11 @@ export enum ActionTypes {
     GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG_SUCCESS = '[App State] Get Current Questionnaire formly config Success',
     GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG_FAIL = '[App State] Get Current  Questionnaire formly config Failure',
 
-    SET_CURRENT_QUESTION_ID = '[App State] Set The Current Question Id'
+    SET_CURRENT_QUESTION_ID = '[App State] Set The Current Question Id',
+
+    SET_SECTIONS_EDITABLE_MODE = '[App State] Set  Task Sections EditiableMode Property',
+    SET_SECTIONS_EDITABLE_MODE_SUCCESS = '[App State] Set  Task Sections EditiableMode Property Success'
+
 }
 
 export class GetCurrentTask implements Action {
@@ -93,6 +96,18 @@ export class SetCurrentQuestionId implements Action {
         this.payload = payload;
     }
 }
+export class SetSectionEditiableMode implements Action {
+    readonly type = ActionTypes.SET_SECTIONS_EDITABLE_MODE;
+    constructor(public payload: {currentTask:Task, mode: boolean}) {
+        this.payload = payload;
+    }
+}
+export class SetSectionEditiableModeSuccess implements Action {
+    readonly type = ActionTypes.SET_SECTIONS_EDITABLE_MODE_SUCCESS;
+    constructor(public payload:  {currentTask:Task, mode: boolean}) {
+        this.payload = payload;
+    }
+}
 
 export type QuesitonnaireActions = GetCurrentTask
     | GetCurrentTaskSuccess
@@ -105,4 +120,6 @@ export type QuesitonnaireActions = GetCurrentTask
     | GetCurrentQuestionnaireFormlyConfigSuccess
     | GetCurrentQuestionnaireFormlyConfigFailure
     | SetCurrentQuestionId
+    | SetSectionEditiableMode
+    | SetSectionEditiableModeSuccess
     ;

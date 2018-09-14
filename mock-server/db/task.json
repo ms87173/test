@@ -12,12 +12,12 @@
             "sections": [
                 {
                     "title": "Trusted Contact",
-                    "editableMode": true,
+                    "editableMode": false,
                     "questions": [
                         {
                             "id": "InterestCheckingCheckBox",
                             "label": "Would you like to earn interest this account?",
-                            "type": "custom-checkbox",
+                            "type": "custom-textbox",
                             "required": "true",
                             "readOnly": "false",
                             "recurrent": false,
@@ -25,17 +25,17 @@
                             "options": [
                                 {
                                     "label": "Yes",
-                                    "value": "true"
+                                    "value": true
                                 },
                                 {
                                     "label": "No",
-                                    "value": "false"
+                                    "value": false
                                 }
                             ],
                             "tooltipText": "<string>",
                             "answers": [
                                 {
-                                    "value": "false"
+                                    "value": "tinsu Sasi"
                                 }
                             ]
                         },
@@ -97,7 +97,7 @@
             "sections": [
                 {
                     "title": "Documents",
-                    "editableMode": true,
+                    "editableMode": false,
                     "questions": [
                         {
                             "id": "InterestCheckingCheckBox",
@@ -182,7 +182,7 @@
             "sections": [
                 {
                     "title": "Personal Information",
-                    "editableMode": true,
+                    "editableMode": false,
                     "questions": [
                         {
                             "id": "InterestCheckingCheckBox",

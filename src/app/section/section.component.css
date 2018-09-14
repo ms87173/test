@@ -1,6 +1,23 @@
-.paddTop7px{
-    padding-top: 5px !important;
+.paddTop6px{
+    padding-top: 6px !important;
 }
 .paddTop25px{
     padding-top: 25px !important;
+}
+.paddTop2px{
+    padding-top: 2px !important;
+
+}
+.editBtn
+{
+    padding-top: 3px !important;
+}
+.question-label {
+    font-size: 14px;
+    color: #898b8d;
+
+}
+.answers{
+    font-size: 16px;
+    padding-bottom: 10px !important;
 }

@@ -78,6 +78,14 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
 
             };     
 
+            case ActionTypes.SET_SECTIONS_EDITABLE_MODE_SUCCESS:
+            return {
+                ...state,
+                currentTask: action.payload.currentTask,
+              
+
+            };     
+
         default:
             return state;
     }
