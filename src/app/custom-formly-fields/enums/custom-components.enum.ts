@@ -25,3 +25,14 @@ export const EXISTING_COMPONENTS: string[] = [
     // CustomComponentsEnum.CUSTOM_PHONE
     CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD
 ];
+
+export const EXISTING_CUSTOM_COMPONENTS: string[] = [
+    // CustomComponentsEnum.CUSTOM_TYPEAHEAD,
+    CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS,
+    CustomComponentsEnum.CUSTOM_EMAIL,
+    CustomComponentsEnum.CUSTOM_PHONE,
+    CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD
+];
+
+
+
