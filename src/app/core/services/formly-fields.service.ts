@@ -22,8 +22,6 @@ export class FormlyFieldsService {
       case CustomComponentsEnum.CUSTOM_PHONE:
       case CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD:
         return null;
-        case CustomComponentsEnum.CUSTOM_DOCUMENT_DOWNLOAD:
-        return null;
       case CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS:
       const ADDRESS_LIFECYCLE_EVENT: FormlyLifeCycleOptions = {
         onInit: (form?: FormGroup, field?: FormlyFieldConfig) => {

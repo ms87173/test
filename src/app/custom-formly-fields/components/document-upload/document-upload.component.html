@@ -1,15 +1,7 @@
-<div>
-<div *ngIf="!downloadRes">
 <div class="document-field">       
 <div *ngFor="let field of field.fieldGroup; let i = index;" class="document-upload">    
-    <p>{{ to.label }}
-        <i *ngIf="to.tooltip" 
-        class="control-label-help fa fa-question-circle-o ml-3" 
-        containerClass="{{to.tooltip.containerClass}}" 
-        tooltip="{{to.tooltip.content}}" 
-        placement="{{to.tooltip.placement}}"></i>
-    </p>
-   <!-- <upload-file (uploadResponse)="uploadedResponse($event)"></upload-file> -->
+    <p><b>{{ to.label }}</b></p>
+    <upload-file></upload-file>
     <formly-group
     [model]="model[i]"
       [field]="field"
@@ -21,8 +13,3 @@
     <button class="btn btn-link mt-2" type="button" (click)="add()">
         {{ field.fieldArray.templateOptions.btnText }}
     </button>
-</div>
-<div *ngIf="downloadRes">
-   <!--<document-download *ngIf="respData" [downloadData] = "respData"></document-download>-->
-</div>
-</div>
