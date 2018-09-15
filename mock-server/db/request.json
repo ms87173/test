@@ -26,7 +26,6 @@
         "workflowsGroups":  [
             {   
                 "name": "Update Product Info",
-                "status": "COMPLETED",
                 "type": "PRODUCTS_INFO",
                 "workflows": [
                     {
@@ -56,7 +55,6 @@
                         "label": "John Robbins",
                         "description": "Primary",
                         "subHeading": "Primary",
-                        "status": "IN_PROGRESS",
                         "tasks": [
                             {
                                 "label": "Personal Information",
@@ -85,7 +83,6 @@
             },
             {
                 "name": "Update Info & documents",
-                "status": "IN_PROGRESS",
                 "type": "APPLICANTS_INFO",
                 "workflows": [
                     {
@@ -182,7 +179,6 @@
             },
             {
                 "name": "Review and Submit to Clients",
-                "status": "NOT_STARTED",
                 "type": "REVIEW_SUBMIT",
                 "workflows": [
                     {
@@ -197,14 +193,14 @@
                                 "description": "This is your primary interest bearing account.",
                                 "id": "15",
                                 "type": "review-application",
-                                "status": "NOT_STARTED"
+                                "status": "ON_HOLD"
                             },
                             {
                                 "label": "Sign and Submit",
                                 "description": "This is your primary interest bearing account.",
                                 "id": "25",
                                 "type": "sign-submit",
-                                "status": "NOT_STARTED"
+                                "status": "ON_HOLD"
                             }
                         ]
                     }
