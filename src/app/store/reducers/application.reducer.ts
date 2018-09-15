@@ -7,7 +7,22 @@ export interface ApplicationState {
 }
 
 export const InitialState: ApplicationState = {
-    application: {},
+    application: {
+        id: '',
+        title: '',
+        status: {
+            code: '',
+            description: ''
+        },
+        type: '',
+        lastUpdateDate: '',
+        lastUpdatedBy: '',
+        actions: [],
+        products: [],
+        priorityAction: '',
+        accountHolders: '',
+        workflowsGroups: []
+    },
     loaded: false,
     loading: false
 };

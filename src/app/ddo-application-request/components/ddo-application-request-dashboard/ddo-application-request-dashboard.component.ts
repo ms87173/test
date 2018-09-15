@@ -14,21 +14,21 @@ export class DdoApplicationRequestDashboardComponent {
   contactPersonDetails$: any;
   productsDescription: string;
   title: string;
-  constructor(
-    private store: Store<fromRootReducers.AppState>
-  ) {this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaiton).
-      subscribe((application: any) => {
+  constructor(private store: Store<fromRootReducers.AppState>) {
+    this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaiton)
+      .subscribe((application: any) => {
         this.application = application;
-        this.productsDescription = this.application.products.join(',');
-        this.title = this.application.title;
+        this.productsDescription = this.application.products.join(', ');
       });
-
-    this.store.select(fromRootSelectors.userSelectors.getUserContactPerson).
-      subscribe((contactDetail: any) => {
+    this.store.select(fromRootSelectors.userSelectors.getUserContactPerson)
+      .subscribe((contactDetail: any) => {
         this.contactPersonDetails$ = new ContactDetailsModel(contactDetail);
       });
   }
   cancelApplication() {
     console.log('cancel clicked');
+  }
+  editClick() {
+    console.log('edit clicked');
   }
 }

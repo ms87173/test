@@ -38,10 +38,11 @@ export class DdoApplicationsComponent implements OnInit {
   applicationsData: any;
   onDestroy$ = new Subject<void>();
   form = new FormGroup({});
-  model: any;
+  model: any = {};
   options: FormlyFormOptions = {};
   fields: Array<any>;
-  isModifiedData: boolean;
+  isFilteredData: boolean;
+  filteredData: any;
   constructor(
     private store: Store<fromRootReducers.AppState>
   ) {
@@ -73,11 +74,12 @@ export class DdoApplicationsComponent implements OnInit {
       .subscribe((applications: any) => {
         this.gridConfig.data =
           applications && applications.map((application) => new ApplicationGridModel(application));
+        this.filteredData = applications;
       });
   }
 
   ngOnInit() {
-    this.isModifiedData = false;
+    this.isFilteredData = false;
     this.fields = [
       {
         fieldGroupClassName: 'row',
@@ -133,7 +135,7 @@ export class DdoApplicationsComponent implements OnInit {
                     startWith(form.get('status').value),
                     tap(filterBy => {
                       if (filterBy) {
-                        const selectedDate = form.get('customDate');
+                        const selectedDate = form.get('customDate').value;
                         const modifiedFilterValue = form.get('modified').value;
                         this.filterApplication(
                           {
@@ -182,6 +184,7 @@ export class DdoApplicationsComponent implements OnInit {
                       if (selectedDate) {
                         const statusFilterValue = form.get('status').value;
                         field.templateOptions.datepickerOptions.initialState = selectedDate;
+                        form.get('customDate').value = selectedDate;
                         this.filterApplication(
                           {
                             statusFilter: { key: 'status', value: statusFilterValue },
@@ -210,8 +213,11 @@ export class DdoApplicationsComponent implements OnInit {
         );
         break;
       case ACTION_TYPES.sort: {
-        this.isModifiedData = true;
-        this.store.dispatch(new SortApplications({ data: this.applicationsData, params: payload.params }));
+        if (this.isFilteredData) {
+          this.store.dispatch(new SortApplications({ data: this.filteredData, params: payload.params }))
+        } else {
+          this.store.dispatch(new SortApplications({ data: this.applicationsData, params: payload.params }));
+        }
       }
         break;
       case ACTION_TYPES.completeNow:
@@ -219,8 +225,7 @@ export class DdoApplicationsComponent implements OnInit {
   }
 
   filterApplication(filterCriteria) {
-    console.log(filterCriteria)
-    this.isModifiedData = true;
+    this.isFilteredData = true;
     this.store.dispatch(new FilterApplications({ data: this.applicationsData, params: filterCriteria }));
   }
 }

@@ -16,7 +16,7 @@ import { GridConsumerComponent } from './grid-consumer/grid-consumer.component';
 import { FormlyConsumerComponent } from './formly-consumer/formly-consumer.component';
 import { FormlyAddressConsumerComponent } from './formly-address-consumer/formly-address-consumer.component';
 import { FormlyPhoneConsumerComponent } from './formly-phone-consumer/formly-phone-consumer.component';
-import { CoreModule } from '../core';
+import { StepperConsumerComponent } from './stepper-consumer/stepper-consumer.component';
 
 @NgModule({
   imports: [
@@ -41,7 +41,8 @@ import { CoreModule } from '../core';
     GridConsumerComponent,
     FormlyConsumerComponent,
     FormlyAddressConsumerComponent,
-    FormlyPhoneConsumerComponent
+    FormlyPhoneConsumerComponent,
+    StepperConsumerComponent
   ]
 })
 export class StorybookModule { }
