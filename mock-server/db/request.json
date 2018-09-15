@@ -157,7 +157,7 @@
                         "label": "Review and Submit",
                         "description": "Please fill required information first.",
                         "subHeading": "Please fill required information first.",
-                        "status": "",
+                        "status": "ON_HOLD",
                         "tasks": [
                             {
                                 "label": "Review Application",
@@ -173,6 +173,36 @@
                                 "type": "sign-submit",
                                 "status": "ON_HOLD"
                             }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Clients",
+                "type": "CLIENTS",
+                "workflows": [
+                    {
+                        "id": "5",
+                        "label": "Review and Submit",
+                        "description": "Please fill required information first.",
+                        "subHeading": "Please fill required information first.",
+                        "status": "DISABLED",
+                        "tasks": [
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Banker",
+                "type": "BANKER",
+                "workflows": [
+                    {
+                        "id": "5",
+                        "label": "Review and Submit",
+                        "description": "Please fill required information first.",
+                        "subHeading": "Please fill required information first.",
+                        "status": "DISABLED",
+                        "tasks": [
                         ]
                     }
                 ]

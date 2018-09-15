@@ -7,10 +7,8 @@ import { Step } from '../../core/view-model/stepper-step.model';
   styleUrls: ['./stepper-consumer.component.scss']
 })
 export class StepperConsumerComponent implements OnInit {
-  steps: Step[];
-
+  steps: any;
   constructor() { }
-
   ngOnInit() {
     this.steps = [
       {
@@ -22,8 +20,7 @@ export class StepperConsumerComponent implements OnInit {
         status: 'completed',
         statusIconClass: 'fa-check',
         stepCssClass: 'step-circle--completed',
-        disabled: false,
-        lineCssClass: ''
+        disabled: false
       },
       {
         name: 'Update Applicants Info & Documents',
@@ -32,10 +29,8 @@ export class StepperConsumerComponent implements OnInit {
         tooltipItems: ['Task 2_1', 'Task 2_2'],
         showTooltip: true,
         status: 'pending',
-        statusIconClass: '',
         stepCssClass: 'step-circle--active',
-        disabled: false,
-        lineCssClass: ''
+        disabled: false
       },
       {
         name: 'Review Information & Send to Banker',
@@ -43,7 +38,6 @@ export class StepperConsumerComponent implements OnInit {
         tooltipItems: ['Task 3_1', 'Task 3_2'],
         showTooltip: true,
         status: 'not-started',
-        statusIconClass: '',
         stepCssClass: 'step-circle--disabled',
         showLine: true,
         disabled: false,
@@ -55,7 +49,6 @@ export class StepperConsumerComponent implements OnInit {
         tooltipItems: ['Task 4_1', 'Task 4_2'],
         showTooltip: false,
         status: 'not-started',
-        statusIconClass: '',
         stepCssClass: 'step-circle--forbidden',
         showLine: true,
         disabled: true,
@@ -67,7 +60,6 @@ export class StepperConsumerComponent implements OnInit {
         tooltipItems: ['Task 5_1', 'Task 5_2'],
         showTooltip: false,
         status: 'not-started',
-        statusIconClass: '',
         stepCssClass: 'step-circle--forbidden',
         showLine: true,
         disabled: true,
