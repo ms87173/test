@@ -11,14 +11,14 @@ import {
   GetCurrentQuestionnaireFormlyConfigSuccess,
   GetCurrentQuestionnaireFormlyConfigFailure,
   GetCurrentQuestionnaireFormlyConfig,
-  SetSectionEditiableMode,
-  SetSectionEditiableModeSuccess
+
 } from '../actions/questionnaire.actions';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { QuestionnaireService, NgxFormlyParserService, ApiService } from '../../core/services';
 import { Observable } from 'rxjs/Observable';
 import { QuestionaireDeltaResponse } from '../../core/models';
 import { of } from 'rxjs';
+import { EXISTING_COMPONENTS } from '../../custom-formly-fields/enums/custom-components.enum';
 
 
 @Injectable()
@@ -30,7 +30,16 @@ export class QuestionnaireEffectsService {
     switchMap(
       (action: GetCurrentTask) => this.questionnaireService.getCurrentTask(action.payload)
         .pipe(
-          map((task) => (new GetCurrentTaskSuccess(task))
+          map((task) => {
+            let currTask = { ...task };
+            currTask.sections.forEach((section) => {
+              section.questions = section.questions.filter((question) => {
+                return EXISTING_COMPONENTS.includes(question.type);
+              })
+            });
+            return new GetCurrentTaskSuccess(currTask);
+          }
+
           ),
           catchError(
             (err) => of(new GetCurrentTaskFailure(err))
@@ -46,7 +55,14 @@ export class QuestionnaireEffectsService {
         this.questionnaireService.getFieldChangeDelta(action.payload)
           .pipe(
             map((currentTask) => {
-              return (new GetCurrentFieldChangeDeltaSuccess(currentTask));
+              let currTask = { ...currentTask };
+              currTask.sections.forEach((section) => {
+                section.questions = section.questions.filter((question) => {
+                  return EXISTING_COMPONENTS.includes(question.type);
+                })
+              });
+
+              return (new GetCurrentFieldChangeDeltaSuccess(currTask));
             }
             ),
             catchError(
@@ -71,24 +87,6 @@ export class QuestionnaireEffectsService {
 
         .pipe(
           map((FormlyFieldConfigArrayCollections) => (new GetCurrentQuestionnaireFormlyConfigSuccess(FormlyFieldConfigArrayCollections))
-          ),
-          catchError(
-            (err) => of(new GetCurrentQuestionnaireFormlyConfigFailure(err))
-          )
-        )
-    )
-  );
-
-  @Effect() setAllEditiableModeProperty = this.actions$.pipe(
-    ofType(ActionTypes.SET_SECTIONS_EDITABLE_MODE),
-    switchMap(
-      (action: SetSectionEditiableMode) => this.questionnaireService
-        .setAllEditiableModeProperty
-        (action.payload.currentTask,
-        action.payload.mode
-        )
-        .pipe(
-          map((currentTask) => (new SetSectionEditiableModeSuccess({mode:action.payload.mode, currentTask:currentTask}))
           ),
           catchError(
             (err) => of(new GetCurrentQuestionnaireFormlyConfigFailure(err))

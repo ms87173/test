@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ReviewInformationTask } from '../../../core';
+import { CustomComponentsEnum } from '../../../custom-formly-fields/enums/custom-components.enum';
 
 @Component({
   selector: 'ddo-application-request-review-information-task',
@@ -10,14 +11,16 @@ export class DdoApplicationRequestReviewInformationTaskComponent implements OnIn
 
   @Input() task: ReviewInformationTask;
   @Output() editClicked = new EventEmitter();
+  CustomComponentsEnum = CustomComponentsEnum;
+
   constructor() { }
 
   ngOnInit() {
 
   }
 
-  editBtnClicked(taskId: string) {
-    this.editClicked.emit(taskId);
+  editBtnClicked(taskId: string, sectionTitle: string) {
+    this.editClicked.emit({ taskId: taskId, sectionTitle: sectionTitle });
   }
 
 }

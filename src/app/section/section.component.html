@@ -3,32 +3,37 @@
         <div class="col-md-4 col-xs-4 col-lg-4">
             <h5 class="heading paddTop6px">{{ formlyFieldConfigArray?.title }}</h5>
         </div>
-        <div *ngIf='showEdit && !editableMode' class="col-md-1 col-xs-1 col-lg-1">
+        <div *ngIf='showEditButton && !editableMode' class="col-md-1 col-xs-1 col-lg-1">
             <button type="button" (click)="editClicked()" class="btn btn-link editBtn ">Edit</button>
         </div>
         <div class="col-md-3 col-xs-3 col-lg-3">
         </div>
 
-        <div *ngIf='showEdit && editableMode' lass="col-md-2 col-xs-2 col-lg-2">
+        <div *ngIf='showEditButton && editableMode' lass="col-md-2 col-xs-2 col-lg-2">
             <button type="button" (click)="saveClicked()" class="btn btn-link editBtn ">Save Changes</button>
         </div>
 
-        <div *ngIf='showEdit && editableMode' class="col-md-2 col-xs-2 col-lg-2">
+        <div *ngIf='showEditButton && editableMode' class="col-md-2 col-xs-2 col-lg-2">
             <button type="button" (click)="discardClicked()" class="btn btn-link editBtn ">Discard Changes</button>
         </div>
 
     </div>
-    <div class="row mb-4" *ngIf='showEdit && editableMode'>
+    <div class="row mb-4" *ngIf='showEditButton && editableMode'>
         <div class="col-md-8 col-xs-12 col-lg-8">
             <app-questionnaire [form]="form" [options]="options" [model]="model" [fields]="fields">
             </app-questionnaire>
         </div>
     </div>
 
-    <div class="row mb-4" *ngIf='showEdit && !editableMode'>
+    <div class="row mb-4" *ngIf='showEditButton && !editableMode'>
         <div class="col-md-8 col-xs-12 col-lg-8" *ngFor="let question of currSection.questions">
                 <h6 class="question-label"> {{question.label}} </h6>
-                <div class="answers"> {{question?.answers[0]?.value}} </div>
+                <div *ngIf="question.type != CustomComponentsEnum.CUSTOM_RADIO_BUTTON &&  question.type != CustomComponentsEnum.CUSTOM_CHECKBOX" >
+                        <div class="answers"> {{question?.answers[0]?.value}} </div>
+                </div>
+                <div class="answers" *ngIf="question.type == CustomComponentsEnum.CUSTOM_RADIO_BUTTON ||  question.type == CustomComponentsEnum.CUSTOM_CHECKBOX"> 
+                    {{question?.answers[0]?.value == true ? "Yes" :"No"}}
+                 </div>
         </div>
     </div>
 

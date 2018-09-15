@@ -20,7 +20,7 @@
                         "showEdit": true,
                         "sections": [
                             {
-                                "title": "Section 1",
+                                "title": "Trusted Contact",
                                 "questions": [
                                     {
                                         "id": "InterestCheckingCheckBox",

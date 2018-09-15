@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyFieldConfigArrayCollection, Section } from '../core';
-import { EXISTING_CUSTOM_COMPONENTS } from '../custom-formly-fields/enums/custom-components.enum';
+import { EXISTING_CUSTOM_COMPONENTS, CustomComponentsEnum } from '../custom-formly-fields/enums/custom-components.enum';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -16,14 +16,17 @@ export class SectionComponent implements OnInit, OnChanges {
   model: any = {};
   fields: FormlyFieldConfig[] = [];
   isReadonly = false;
+  showEditButton: boolean = null;
   @Input() formlyFieldConfigArray: FormlyFieldConfigArrayCollection;
-  @Input() showEdit: boolean = false;
+  @Input() showEdit: boolean;
   @Input() editableMode: boolean = false;
   @Input() currSection: Section;
 
+  CustomComponentsEnum = CustomComponentsEnum;
   constructor() {
     console.log("FormlyFieldConfig");
     console.log(this.fields);
+
   }
 
   editClicked() {
@@ -51,9 +54,18 @@ export class SectionComponent implements OnInit, OnChanges {
         this.model[item.key] = [{}];
       }
     });
+    console.log(" section onInit");
+
+    if (this.showEditButton == null) {
+      this.showEditButton = this.showEdit;
+    }
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.fields = this.formlyFieldConfigArray.formlyFieldConfigs;
+    console.log(" section onchanges");
+    if (this.showEditButton == null) {
+      this.showEditButton = this.showEdit;
+    }
   }
 
 

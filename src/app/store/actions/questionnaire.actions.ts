@@ -18,10 +18,8 @@ export enum ActionTypes {
     GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG_FAIL = '[App State] Get Current  Questionnaire formly config Failure',
 
     SET_CURRENT_QUESTION_ID = '[App State] Set The Current Question Id',
-
-    SET_SECTIONS_EDITABLE_MODE = '[App State] Set  Task Sections EditiableMode Property',
-    SET_SECTIONS_EDITABLE_MODE_SUCCESS = '[App State] Set  Task Sections EditiableMode Property Success'
-
+   
+    SET_SELECTED_SECTION_NAME = '[App State] Open Selected Section In Questionnaire'
 }
 
 export class GetCurrentTask implements Action {
@@ -96,15 +94,11 @@ export class SetCurrentQuestionId implements Action {
         this.payload = payload;
     }
 }
-export class SetSectionEditiableMode implements Action {
-    readonly type = ActionTypes.SET_SECTIONS_EDITABLE_MODE;
-    constructor(public payload: {currentTask:Task, mode: boolean}) {
-        this.payload = payload;
-    }
-}
-export class SetSectionEditiableModeSuccess implements Action {
-    readonly type = ActionTypes.SET_SECTIONS_EDITABLE_MODE_SUCCESS;
-    constructor(public payload:  {currentTask:Task, mode: boolean}) {
+
+
+export class SetSelectedSectionName implements Action {
+    readonly type = ActionTypes.SET_SELECTED_SECTION_NAME;
+    constructor(public payload: string) {
         this.payload = payload;
     }
 }
@@ -119,7 +113,6 @@ export type QuesitonnaireActions = GetCurrentTask
     | GetCurrentQuestionnaireFormlyConfig
     | GetCurrentQuestionnaireFormlyConfigSuccess
     | GetCurrentQuestionnaireFormlyConfigFailure
-    | SetCurrentQuestionId
-    | SetSectionEditiableMode
-    | SetSectionEditiableModeSuccess
+    | SetCurrentQuestionId   
+    | SetSelectedSectionName
     ;
