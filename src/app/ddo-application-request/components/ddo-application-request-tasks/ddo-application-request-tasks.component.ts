@@ -24,6 +24,7 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
   requestId: string = null;
   formlyFieldConfigArrayCollections: FormlyFieldConfigArrayCollection[] = null;
   taskRequest: TaskRequest;
+  isIntialRender:boolean= true;
 
   constructor(
     private cd: ChangeDetectorRef,

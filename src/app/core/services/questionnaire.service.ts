@@ -25,7 +25,7 @@ export class QuestionnaireService {
   }
 
   getFieldChangeDelta(deltaRequest: QuestionaireDeltaRequest): Observable<Task> {
-
+debugger;
     // Todo: uncomment to use mock service
     switch (deltaRequest.questionnaireItems[0].id) {
       case 'InterestCheckingCheckBox':

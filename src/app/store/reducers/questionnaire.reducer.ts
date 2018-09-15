@@ -8,6 +8,7 @@ export interface QuestionnaireState {
     readonly mergedCurrentTaskWithDelta: Task;
     readonly currentQuestionId: string;
     readonly errors: QuestionaireDeltaError[];
+    readonly selectedSection: string;
 }
 
 export const InitialQuestionnaireState: QuestionnaireState = {
@@ -16,6 +17,7 @@ export const InitialQuestionnaireState: QuestionnaireState = {
     currentQuestionnaireDelta: null,
     mergedCurrentTaskWithDelta: null,
     currentQuestionId: null,
+    selectedSection: null,
     errors: []
 };
 
@@ -23,9 +25,18 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
 
     switch (action.type) {
         case ActionTypes.GET_CURRENT_TASK_SUCCESS:
+        debugger;
+            let currTask = { ...action.payload };
+            if (state.selectedSection) {
+                currTask.sections.forEach((section) => {
+                    if (section.title == state.selectedSection) {
+                        section.editableMode = true;
+                    }
+                })
+            }
             return {
                 ...state,
-                currentTask: action.payload
+                currentTask: currTask
             };
 
         ///// Todo: set up an error case in state module
@@ -69,22 +80,26 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
                 currentQuestionId: action.payload
             };
 
-            case ActionTypes.RESET_QUESTIONNAIRE_STATE_TO_INTIAL_STATE:
+        case ActionTypes.RESET_QUESTIONNAIRE_STATE_TO_INTIAL_STATE:
             return {
                 ...state,
                 currentTask: null,
                 currentQuestionnaireConfig: null,
                 currentQuestionnaireDelta: null,
+                selectedSection: null
 
-            };     
+            };
 
-            case ActionTypes.SET_SECTIONS_EDITABLE_MODE_SUCCESS:
+      
+
+        case ActionTypes.SET_SELECTED_SECTION_NAME:
+
             return {
                 ...state,
-                currentTask: action.payload.currentTask,
-              
+                selectedSection: action.payload
+            };
 
-            };     
+
 
         default:
             return state;
@@ -97,5 +112,6 @@ export const getCurrentQuestionnaireDelta = (state: QuestionnaireState) => state
 export const getMergedCurrentTaskWithDelta = (state: QuestionnaireState) => state.mergedCurrentTaskWithDelta;
 export const getCurrentQuestionId = (state: QuestionnaireState) => state.currentQuestionId;
 export const getCurrentQuestionnaireErrors = (state: QuestionnaireState) => state.errors;
+export const getSelectedSection = (state: QuestionnaireState) => state.selectedSection;
 
 

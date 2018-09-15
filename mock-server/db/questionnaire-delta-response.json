@@ -41,7 +41,7 @@
             },
             {
               "id": "InterestCheckingEmail",
-              "label": "Would you like to earn interest this account?",
+              "label": "Tis is email?",
               "type": "custom-email",
               "required": "true",
               "readOnly": "false",

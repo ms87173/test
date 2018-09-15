@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { ApiService } from './api.service';
 import { environment } from '../../../environments/environment';
 
@@ -24,7 +24,7 @@ export class ApplicationRequestService {
         const url = environment.apiUrls.saveTaskQuestionnaire;
         // return this.apiService
         //     .put(url, params);
-        return this.apiService.get(url);
+        return of("Task Saved");
     }
     cancelApplicationRequest(data: any): Observable<any> {
         const url = environment.apiUrls.cancelApplicationRequest;

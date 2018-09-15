@@ -7,6 +7,7 @@ import { GetAllTasksForReviewInformationTask } from '../../../store/actions/revi
 import { SetActiveTask } from '../../../store/actions/workflows.action';
 import { TASK_TYPES } from '../../../core/constants/application-request.constants';
 import { RouterGo } from '../../../store/actions/router.actions';
+import { SetSelectedSectionName } from '../../../store/actions/questionnaire.actions';
 
 
 
@@ -65,11 +66,15 @@ export class DdoApplicationRequestReviewInformationComponent implements OnInit, 
   }
 
   editBtnClicked(data) {    
+    console.log(data);
     this.store.dispatch(
       new SetActiveTask({
         workflowId: data.workflowId,
         taskId: data.taskId
       }));
+
+    this.store.dispatch(
+      new SetSelectedSectionName(data.sectionTitle));
   }
 
   dispatchReviewInformationTaskAction() {

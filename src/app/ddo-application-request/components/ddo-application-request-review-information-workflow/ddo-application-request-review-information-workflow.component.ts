@@ -13,9 +13,12 @@ export class DdoApplicationRequestReviewInformationWorkflowComponent implements 
 
   constructor() { }
 
-  editBtnClicked(taskId: string) {
+  editBtnClicked(data) {
     this.editClicked.emit({
-      taskId:  taskId,workflowId:this.workflow.workflowId});
+      taskId: data.taskId,
+      workflowId: this.workflow.workflowId,
+      sectionTitle: data.sectionTitle
+    });
   }
   ngOnInit() {
   }
