@@ -1,8 +1,8 @@
 .step-description {
     display: inline-block;
-    width: 110px;
+    width: 120px;
     vertical-align: top;
-    margin-right: 82px;
+    margin-right: 72px;
     font-size: 14px;
     height: 100%;
     text-align: center;
@@ -21,7 +21,8 @@
 }
 .status-description-icon{
     display: block;
-    margin-top: 5px;
+    margin-top: 10px;
+    color: #0089ce;
 }
 step:first-child {
     margin-left: 25px;

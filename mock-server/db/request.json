@@ -49,35 +49,6 @@
                                 "type": "questionnaire"
                             }
                         ]
-                    },
-                    {
-                        "id": "2",
-                        "label": "John Robbins",
-                        "description": "Primary",
-                        "subHeading": "Primary",
-                        "tasks": [
-                            {
-                                "label": "Personal Information",
-                                "description": "This is your primary interest bearing account.",
-                                "id": "12",
-                                "status": "COMPLETED",
-                                "type": "questionnaire"
-                            },
-                            {
-                                "label": "Trusted Contact",
-                                "description": "This is your primary interest bearing account.",
-                                "id": "22",
-                                "status": "IN_PROGRESS",
-                                "type": "questionnaire"
-                            },
-                            {
-                                "label": "Documents",
-                                "description": "This is your primary interest bearing account.",
-                                "id": "32",
-                                "status": "IN_PROGRESS",
-                                "type": "questionnaire"
-                            }
-                        ]
                     }
                 ]
             },

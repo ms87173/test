@@ -11,7 +11,9 @@
       <div class="col-md-12">
         <div *ngIf="reviewInformationTask && reviewInformationTask.workflows && reviewInformationTask.workflows.length > 0">
           <div *ngFor="let workflow of reviewInformationTask.workflows">
-            <ddo-application-request-review-information-workflow [workflow]="workflow" (editClicked)="editBtnClicked($event)">
+            <ddo-application-request-review-information-workflow
+              [workflow]="workflow"
+              (editClicked)="editBtnClicked($event)">
             </ddo-application-request-review-information-workflow>
           </div>
         </div>

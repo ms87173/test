@@ -1,4 +1,7 @@
 .ddo-application-request {
+    &__page-heading {
+        background-color: white;
+    }
     &__content {
         padding: 20px 40px !important;
     }
@@ -25,46 +28,7 @@
         padding: 0;
         height: 100%;
     }
-    .stepper-steps {
-        height: 100%;
-        width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .stepper-steps-description {
-        width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
-        height: 100%;
-    }
-    .step {
-        text-align: center;
-        display: inline-block;
-    }
-    .step-line {
-        display: inline-block;
-        width: 136px;
-        height: 1px;
-        background-color: black;
-        margin-bottom: 5px;
-    }
-    .step-description {
-        display: inline-block;
-        width: 90px;
-        vertical-align: middle;
-        margin-right: 102px;
-        font-size: 14px;
-        height: 100%;
-        text-align: center;
-    }
-    .circle {
-        border: 1px solid black;
-        height: 56px;
-        width: 56px;
-        display: inline-block;
-        border-radius: 50px;
-        .fa {
-            font-size: 25px;
-        }
+    .card-body {
+        padding-bottom: 1.75rem;
     }
 }
