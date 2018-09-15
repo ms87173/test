@@ -113,8 +113,6 @@ export type QuesitonnaireActions = GetCurrentTask
     | GetCurrentQuestionnaireFormlyConfig
     | GetCurrentQuestionnaireFormlyConfigSuccess
     | GetCurrentQuestionnaireFormlyConfigFailure
-    | SetCurrentQuestionId
-    | SetSectionEditiableMode
-    | SetSectionEditiableModeSuccess
+    | SetCurrentQuestionId   
     | SetSelectedSectionName
     ;
