@@ -147,3 +147,10 @@ label {
     line-height: 1.428571429;
     border-radius: 15px;
 }
+.fa.fa-pencil {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+}

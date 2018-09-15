@@ -1,12 +1,18 @@
 <div class="stepper">
     <div class="stepper-steps">
-        <step *ngFor="let step of steps; let i = index" [config]="step">
+        <step *ngFor="let step of steps; let i = index"
+            [config]="step"
+            (stepClick)="stepClicked($event)">
         </step>
     </div>
-    <div class="stepper-steps-description">
+    <div class="stepper-steps-description mt-1">
         <span class="step-description"
             *ngFor="let step of steps; let i = index">
             {{step.name}}
+            <i *ngIf="step.statusIconClass"
+                class="status-description-icon fa"
+                [ngClass]="step.statusIconClass">
+            </i>
         </span>
     </div>
 </div>
