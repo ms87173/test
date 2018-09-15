@@ -12,7 +12,7 @@
       "sections": [
         {
           "title": "Personal Information",
-          "editableMode": true,
+          "editableMode": false,
           "questions": [
             {
               "id": "InterestCheckingCheckBox",
@@ -55,128 +55,6 @@
                 {
                   "label": "No",
                   "value": "false"
-                }
-              ],
-              "tooltipText": "<string>",
-              "answers": []
-            }
-          ]
-        },
-        {
-          "title": "Account Information 2",
-          "questions": [
-            {
-              "id": "InterestCheckingCheckBox2",
-              "label": "Where should i invest ?",
-              "type": "custom-dropdown",
-              "required": "true",
-              "readOnly": "false",
-              "recurrent": false,
-              "placeHolder": "Interest Account",
-              "options": [
-                {
-                  "label": "Iron Man",
-                  "value": "iron_man"
-                },
-                {
-                  "label": "Captain America",
-                  "value": "captain_america"
-                },
-                {
-                  "label": "Black Widow",
-                  "value": "black_widow"
-                },
-                {
-                  "label": "Hulk",
-                  "value": "hulk"
-                },
-                {
-                  "label": "Captain Marvel",
-                  "value": "captain_marvel"
-                }
-              ],
-              "tooltipText": "<string>",
-              "answers": []
-            },
-            {
-              "id": "SavingAccountTextBox2",
-              "label": "Super hero?",
-              "type": "custom-radio-button",
-              "required": "true",
-              "readOnly": "false",
-              "recurrent": false,
-              "placeHolder": "Saving Account",
-              "options": [
-                {
-                  "label": "Yes",
-                  "value": "true"
-                },
-                {
-                  "label": "No",
-                  "value": "False"
-                }
-              ],
-              "tooltipText": "<string>",
-              "answers": []
-            },
-            {
-              "id": "SavingAccountCheckBox2",
-              "label": "where is super man?",
-              "type": "custom-checkbox",
-              "required": "true",
-              "readOnly": "false",
-              "recurrent": false,
-              "placeHolder": "Saving Account",
-              "options": [
-                {
-                  "label": "Yes",
-                  "value": "true"
-                },
-                {
-                  "label": "No",
-                  "value": "false"
-                }
-              ],
-              "tooltipText": "<string>",
-              "answers": []
-            },
-            {
-              "id": "ChildDependentTextBox2",
-              "label": "where are we?",
-              "type": "custom-radio-button",
-              "required": "true",
-              "readOnly": "false",
-              "recurrent": false,
-              "placeHolder": "Saving Account",
-              "options": [
-                {
-                  "label": "Yes",
-                  "value": "true"
-                },
-                {
-                  "label": "No",
-                  "value": "False"
-                }
-              ],
-              "tooltipText": "<string>",
-              "answers": []
-            },
-            {
-              "id": "RemoveOnAnswerQuestion2",
-              "label": "what is ur name",
-              "type": "custom-textbox",
-              "required": "true",
-              "readOnly": "false",
-              "recurrent": false,
-              "placeHolder": "Saving Account",
-              "options": [
-                {
-                  "label": "Yes",
-                  "value": "true"
-                },
-                {
-                  "label": "No",
-                  "value": "False"
                 }
               ],
               "tooltipText": "<string>",

@@ -11,6 +11,7 @@
             "showEdit": true,
             "sections": [
                 {
+                    "id": "section1",
                     "title": "Trusted Contact",
                     "editableMode": false,
                     "questions": [
@@ -83,6 +84,7 @@
                         }
                     ]
                 }
+                
             ]
         },
         {

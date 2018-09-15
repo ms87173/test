@@ -16,14 +16,17 @@ export class SectionComponent implements OnInit, OnChanges {
   model: any = {};
   fields: FormlyFieldConfig[] = [];
   isReadonly = false;
+  showEditButton: boolean = null;
   @Input() formlyFieldConfigArray: FormlyFieldConfigArrayCollection;
-  @Input() showEdit: boolean = false;
+  @Input() showEdit: boolean;
   @Input() editableMode: boolean = false;
   @Input() currSection: Section;
+
   CustomComponentsEnum = CustomComponentsEnum;
   constructor() {
     console.log("FormlyFieldConfig");
     console.log(this.fields);
+
   }
 
   editClicked() {
@@ -51,9 +54,18 @@ export class SectionComponent implements OnInit, OnChanges {
         this.model[item.key] = [{}];
       }
     });
+    console.log(" section onInit");
+
+    if (this.showEditButton == null) {
+      this.showEditButton = this.showEdit;
+    }
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.fields = this.formlyFieldConfigArray.formlyFieldConfigs;
+    console.log(" section onchanges");
+    if (this.showEditButton == null) {
+      this.showEditButton = this.showEdit;
+    }
   }
 
 

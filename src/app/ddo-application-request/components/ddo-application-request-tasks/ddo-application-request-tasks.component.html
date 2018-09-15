@@ -9,8 +9,8 @@
                 <div *ngFor="let formlyFieldConfigArray of formlyFieldConfigArrayCollections; let index = index;">
                     <section [formlyFieldConfigArray]="formlyFieldConfigArray"
                      [showEdit]="currentTask?.showEdit"
-                     [editableMode]="currentTask.sections[index].editableMode"
-                     [currSection]="currentTask.sections[index]"
+                     [editableMode]="currentTask?.sections[index].editableMode"
+                     [currSection]="currentTask?.sections[index]"
                      >
                     </section>
                 </div>

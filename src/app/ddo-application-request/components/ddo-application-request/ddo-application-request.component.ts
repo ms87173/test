@@ -8,7 +8,7 @@ import {
   SaveActiveTaskAndNext
 } from '../../../store/actions/workflows.action';
 import WorkFlowsSideNavModel from '../../../core/models/workflow-sidenav.model';
-import { APPLICATION_HEADING, CANCELLATION_REASONS } from '../../../core/constants/application-request.constants';
+import { APPLICATION_HEADING, CANCELLATION_REASONS, TASK_TYPES } from '../../../core/constants/application-request.constants';
 import { ContactDetailsModel } from '../../../core/models/contact-detail.model';
 import { RouterGo } from '../../../store/actions/router.actions';
 import { FormlyFormOptions } from '@ngx-formly/core';
@@ -68,19 +68,19 @@ export class DdoApplicationRequestComponent {
 
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationActiveTask)
       .subscribe((activeTaskData: any) => {
-          this.currentTaskId$ = activeTaskData.task.id;
-          this.currentWorkflowId$ = activeTaskData.workflowId;
-          this.currentTaskType = activeTaskData.task.type;
-          this.initalRender = !(this.currentTaskId$ && this.currentWorkflowId$);
-          if (this.currentTaskId$ && this.currentTaskType) {
-            this.store.dispatch(
-              new RouterGo({
-                // path: ['ddo', 'applications', this.application$.id, 'questionnaire'],
-                path: ['ddo', 'applications', this.application$.id, this.currentTaskType]
+        this.currentTaskId$ = activeTaskData.task.id;
+        this.currentWorkflowId$ = activeTaskData.workflowId;
+        this.currentTaskType = activeTaskData.task.type;
+        this.initalRender = !(this.currentTaskId$ && this.currentWorkflowId$);
+        if (this.currentTaskId$ && this.currentTaskType) {
+          this.store.dispatch(
+            new RouterGo({
+              // path: ['ddo', 'applications', this.application$.id, 'questionnaire'],
+              path: ['ddo', 'applications', this.application$.id, this.currentTaskType]
 
-              })
-            );
-          } 
+            })
+          );
+        }
       });
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationNextTask)
       .subscribe((nextTaskData: any) => {
@@ -123,16 +123,27 @@ export class DdoApplicationRequestComponent {
           }));
         break;
       case 'next':
-        this.store.dispatch(
-          new SaveActiveTaskAndNext({
-            current: {
-              applicationId: this.application$.id,
-              workflowId: this.currentWorkflowId$,
-              taskId: this.currentTaskId$
-            },
-            workflowId: this.nextWorkflowId$,
-            taskId: this.nextTaskId$
-          }));
+        if (this.currentTaskType === TASK_TYPES.QUESTION) {
+          this.store.dispatch(
+            new SaveActiveTaskAndNext({
+              current: {
+                applicationId: this.application$.id,
+                workflowId: this.currentWorkflowId$,
+                taskId: this.currentTaskId$
+              },
+              workflowId: this.nextWorkflowId$,
+              taskId: this.nextTaskId$
+            }));
+        }
+        else {
+          this.store.dispatch(
+            new SetActiveTask({
+              workflowId: this.nextWorkflowId$,
+              taskId: this.nextTaskId$
+            }));
+
+        }
+
         break;
       case 'signAndSubmit':
         console.log(action);

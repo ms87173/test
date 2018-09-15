@@ -25,7 +25,6 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
 
     switch (action.type) {
         case ActionTypes.GET_CURRENT_TASK_SUCCESS:
-        debugger;
             let currTask = { ...action.payload };
             if (state.selectedSection) {
                 currTask.sections.forEach((section) => {
