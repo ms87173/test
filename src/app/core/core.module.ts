@@ -1,3 +1,4 @@
+import { AppLayoutService } from './services/app-layout.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
@@ -15,6 +16,7 @@ import {
 } from './services';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './services/token.interceptor';
+import { SharedService } from './services/shared.service';
 
 @NgModule({
   imports: [
@@ -37,7 +39,9 @@ import { TokenInterceptor } from './services/token.interceptor';
     AuthenticationService,
     UploadService,
     WindowRef,
-    FormlyFieldsService
+    FormlyFieldsService,
+    AppLayoutService,
+    SharedService
   ],
   exports: []
 })

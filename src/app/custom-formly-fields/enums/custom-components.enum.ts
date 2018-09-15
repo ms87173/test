@@ -9,7 +9,8 @@ export enum CustomComponentsEnum {
     CUSTOM_TEXTBOX = 'custom-textbox',
     CUSTOM_EMAIL = 'custom-email',
     CUSTOM_PHONE = 'custom-phone',
-    CUSTOM_UPLOAD = 'custom-upload'
+    CUSTOM_UPLOAD = 'custom-upload',
+    CUSTOM_DOCUMENT_DOWNLOAD = 'custom-download'
 }
 
 export const EXISTING_COMPONENTS: string[] = [
@@ -23,7 +24,8 @@ export const EXISTING_COMPONENTS: string[] = [
     CustomComponentsEnum.CUSTOM_TEXTBOX,
     // CustomComponentsEnum.CUSTOM_EMAIL,
     // CustomComponentsEnum.CUSTOM_PHONE
-    CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD
+    CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD,
+    CustomComponentsEnum.CUSTOM_DOCUMENT_DOWNLOAD
 ];
 
 export const EXISTING_CUSTOM_COMPONENTS: string[] = [
@@ -31,8 +33,9 @@ export const EXISTING_CUSTOM_COMPONENTS: string[] = [
     CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS,
     CustomComponentsEnum.CUSTOM_EMAIL,
     CustomComponentsEnum.CUSTOM_PHONE,
-    CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD
-];
+    CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD,
+    CustomComponentsEnum.CUSTOM_UPLOAD
 
+];
 
 
