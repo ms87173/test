@@ -27,7 +27,7 @@ export const STATUS_STEPPER_MAPPING = {
   DISABLED: {
     disabled: true,
     statusIconClass: '',
-    stepCssClass: '',
+    stepCssClass: 'step-circle--forbidden',
     lineCssClass: 'dashed-grey-line'
   }
 };

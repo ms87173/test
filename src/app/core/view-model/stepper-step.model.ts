@@ -97,8 +97,12 @@ export class StepViewModel implements Step {
                     workflowId,
                     taskId
                 };
-            case TASK_STATUSES.disabled:
             case TASK_STATUSES.onHold:
+                return {
+                    workflowId: workflows[0].id,
+                    taskId: workflows[0] && workflows[0].tasks[0].id
+                };
+            case TASK_STATUSES.disabled:
             default: return {
                 workflowId: '',
                 taskId: ''
