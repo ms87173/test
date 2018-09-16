@@ -7,15 +7,17 @@
         <card-body>
             <div *ngIf="formlyFieldConfigArrayCollections && formlyFieldConfigArrayCollections?.length > 0">
                 <div *ngFor="let formlyFieldConfigArray of formlyFieldConfigArrayCollections; let index = index;">
+                  <div *ngIf="currentTask?.sections && currentTask?.sections.length > 0 && currentTask?.sections[index]">
                     <section [formlyFieldConfigArray]="formlyFieldConfigArray"
                      [showEdit]="currentTask?.showEdit"
-                     [editableMode]="currentTask?.sections[index].editableMode"
+                     [editableMode]="currentTask?.sections[index]?.editableMode"
                      [currSection]="currentTask?.sections[index]"
                      (updateOpenSections)="updateOpenSections($event)"
                      (saveChangesBtnClicked)="saveChangesBtnClicked($event)"
                      (discardChangesBtnClicked)="discardChangesBtnClicked($event)"
                      >
                     </section>
+                </div>
                 </div>
             </div>
         </card-body>

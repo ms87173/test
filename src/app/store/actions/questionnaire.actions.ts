@@ -23,6 +23,7 @@ export enum ActionTypes {
     GET_OPEN_SECTIONS_IN_TASK = '[App State] Get Open Sections In A Task',
     PUSH_SECTION_IN_OPEN_SECTIONS = '[App State] Push A Section Id In Open Sections Array',
     POP_SECTION_IN_OPEN_SECTIONS = '[App State] Pop A Section Id In Open Sections Array',
+    RESET_OPEN_SECTIONS= '[App State] Reset Open Sections',
     SAVE_CHANGES_BY_SECTION_IN_TASK = '[App State] Save Changes By Section For A Task',
     SAVE_CHANGES_BY_SECTION_IN_TASK_SUCCESS = '[App State] Save Changes By Section For A Task Success',
     SAVE_CHANGES_BY_SECTION_IN_TASK_FAIL = '[App State] Save Changes By Section For A Task Failure',
@@ -165,6 +166,11 @@ export class DiscardChangesBySectionInTaskFailure implements Action {
     }
 }
 
+export class ResetOpenSections implements Action {
+    readonly type = ActionTypes.RESET_OPEN_SECTIONS;
+    
+}
+
 export type QuesitonnaireActions = GetCurrentTask
     | GetCurrentTaskSuccess
     | GetCurrentTaskFailure
@@ -186,4 +192,5 @@ export type QuesitonnaireActions = GetCurrentTask
     | DiscardChangesBySectionInTask
     | DiscardChangesBySectionInTaskSuccess
     | DiscardChangesBySectionInTaskFailure
+    | ResetOpenSections
     ;

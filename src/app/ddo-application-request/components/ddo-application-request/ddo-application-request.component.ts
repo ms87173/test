@@ -14,6 +14,7 @@ import { RouterGo } from '../../../store/actions/router.actions';
 import { FormlyFormOptions } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
 import { CancelApplicationRequest } from '../../../store/actions/application.actions';
+import { ResetOpenSections } from '../../../store/actions/questionnaire.actions';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'ddo-application-request',
@@ -108,6 +109,7 @@ export class DdoApplicationRequestComponent {
   buttonActionsClick(action: string) {
     switch (action) {
       case 'back':
+        this.store.dispatch(new ResetOpenSections());
         this.store.dispatch(
           new SetActiveTask({
             workflowId: this.previousWorkflowId$,
@@ -123,6 +125,7 @@ export class DdoApplicationRequestComponent {
           }));
         break;
       case 'next':
+        this.store.dispatch(new ResetOpenSections());
         if (this.currentTaskType === TASK_TYPES.QUESTION) {
           this.store.dispatch(
             new SaveActiveTaskAndNext({

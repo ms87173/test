@@ -123,7 +123,6 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
       this.currentTaskid &&
       this.currentTaskType) {
 
-debugger;
       this.store.dispatch(new fromRootActions
         .questionnaireActions.SaveChangesBySectionInTask(
           {
@@ -142,7 +141,6 @@ debugger;
       this.currentTaskid &&
       this.currentTaskType) {
 
-debugger;
       this.store.dispatch(new fromRootActions
         .questionnaireActions.DiscardChangesBySectionInTask(
           {

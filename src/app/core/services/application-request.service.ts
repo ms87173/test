@@ -30,7 +30,6 @@ export class ApplicationRequestService {
     }
 
     discardApplicationRequestTask(params: TaskRequest): Observable<any> {
-        debugger;
         const url = environment.apiUrls.discardQuestionsChanges;
         console.log("Task discarded");
 

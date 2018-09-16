@@ -29,6 +29,7 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
         case ActionTypes.GET_CURRENT_TASK_SUCCESS:
             let currTask = { ...action.payload };
             let openSections = [...state.openSections];
+            console.log(openSections);
             openSections.forEach((openSection) => {
                 currTask.sections.forEach((section) => {
                     if (section.id == openSection) {
@@ -118,43 +119,60 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
             } else {
                 let openSections = [...state.openSections];
                 openSections.push(action.payload);
-                let currTask = { ...state.currentTask };
-                openSections.forEach((openSection) => {
-                    currTask.sections.forEach((section) => {
-                        if (section.id == openSection) {
-                            section.editableMode = true;
-                        }
+                let currTask = state.currentTask;
+                if (currTask) {
+                    openSections.forEach((openSection) => {
+                        currTask.sections.forEach((section) => {
+                            if (section.id == openSection) {
+                                section.editableMode = true;
+                            }
+                        });
                     });
-                });
-                return {
-                    ...state,
-                    openSections: openSections,
-                    currentTask: currTask
-                };
+                    return {
+                        ...state,
+                        openSections: openSections,
+                        currentTask: currTask
+                    };
+                } else {
+                    return {
+                        ...state,
+                        openSections: openSections,
+                        // currentTask: currTask
+                    };
+                }
+
             }
 
         case ActionTypes.POP_SECTION_IN_OPEN_SECTIONS:
             if (state.openSections.includes(action.payload)) {
-                let currTask = { ...state.currentTask };
+                // let currTask = { ...state.currentTask };
                 let openSections = [...state.openSections];
                 //Todo : Need to remove as Save Changes will  be doing this working for it
-                currTask.sections.forEach((section) => {
-                    if (section.id == action.payload) {
-                        section.editableMode = false;
-                    }
-                });              
+                // currTask.sections.forEach((section) => {
+                //     if (section.id == action.payload) {
+                //         section.editableMode = false;
+                //     }
+                // });              
                 openSections.splice(openSections.indexOf(action.payload), 1);
-                
+
                 return {
                     ...state,
                     openSections: openSections,
-                    currentTask: currTask
+                    // currentTask: currTask
                 }
             } else {
                 return {
                     ...state
                 };
             }
+
+        case ActionTypes.RESET_OPEN_SECTIONS:
+
+            return {
+                ...state,
+                openSections: []
+            };
+
 
         default:
             return state;

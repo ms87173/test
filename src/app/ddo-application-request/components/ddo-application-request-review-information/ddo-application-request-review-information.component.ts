@@ -63,6 +63,8 @@ export class DdoApplicationRequestReviewInformationComponent implements OnInit, 
   }
 
   editBtnClicked(data) {
+    this.store.dispatch(
+      new PushSectionInOpenSections(data.sectionId));
     console.log(data);
     this.store.dispatch(
       new SetActiveTask({
@@ -70,8 +72,7 @@ export class DdoApplicationRequestReviewInformationComponent implements OnInit, 
         taskId: data.taskId
       }));
 
-    this.store.dispatch(
-      new PushSectionInOpenSections(data.sectionId));
+    
   }
 
   dispatchReviewInformationTaskAction() {
