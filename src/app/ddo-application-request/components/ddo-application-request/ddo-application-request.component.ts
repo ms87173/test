@@ -73,7 +73,6 @@ export class DdoApplicationRequestComponent {
         this.currentWorkflowId$ = activeTaskData.workflowId;
         this.currentTaskType = activeTaskData.task.type;
         this.initalRender = !(this.currentTaskId$ && this.currentWorkflowId$);
-        debugger;
         if (this.currentTaskId$ && this.currentTaskType && this.application$.id) {
           this.store.dispatch(
             new RouterGo({
