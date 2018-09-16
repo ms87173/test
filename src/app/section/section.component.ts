@@ -32,7 +32,7 @@ export class SectionComponent implements OnInit, OnChanges {
   }
 
   editClicked(sectionId: string) {
-\    this.updateOpenSections.emit({
+  this.updateOpenSections.emit({
       actionName: questionnaireActions.ActionTypes.PUSH_SECTION_IN_OPEN_SECTIONS,
       sectionId: sectionId
     });
