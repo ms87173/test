@@ -19,6 +19,7 @@ export interface Step {
         workflowId: string,
         taskId: string
     };
+    descriptionCssClass: string;
 }
 export class StepViewModel implements Step {
     name: string;
@@ -35,6 +36,7 @@ export class StepViewModel implements Step {
         workflowId: string,
         taskId: string
     };
+    descriptionCssClass: string;
     constructor(data) {
         if (data === null) {
             return data;
@@ -48,6 +50,7 @@ export class StepViewModel implements Step {
         this.disabled = statusMapping.disabled;
         this.stepCssClass = statusMapping.stepCssClass;
         this.lineCssClass = statusMapping.lineCssClass;
+        this.descriptionCssClass = statusMapping.descriptionCssClass;
         this.tooltipItems = this.determineTooltipItems(data.workflows);
         this.showTooltip = data.workflows && data.workflows.length > 0;
         this.routingInformation = this.determineRoutingInformation(data.workflows, this.status);

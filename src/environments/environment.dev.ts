@@ -11,7 +11,8 @@ export const environment = {
     saveTaskQuestionnaire: 'questionnaire/saveTaskQuestions',
     discardQuestionsChanges : 'questionnaire/discardQuestionsChanges',
     fetchDynamicOptions: 'questionnaire/dynamicLookup/',
-    fetchReviewInformationTask:'questionnaire/reviewTask'
-
+    fetchReviewInformationTask: 'questionnaire/reviewTask',
+    cancelApplicationRequest: '<cancel-url-is-missing>',
+    editApplicationRequest: '<edit-request-is-missing>'
   }
 };

@@ -17,10 +17,14 @@ export class DdoApplicationRequestDashboardComponent {
   productsDescription: string;
   accountHoldersDescription: string;
   stepperSteps: Array<Step>;
+  showTitleEditable: boolean;
+  titleValue: string;
   constructor(private store: Store<fromRootReducers.AppState>) {
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaiton)
       .subscribe((application: any) => {
+        this.showTitleEditable = false;
         this.application = application;
+        this.titleValue = this.application.title;
         this.productsDescription = this.application.products.join(', ');
         this.accountHoldersDescription = showcaseArrayElements(this.application.accountHolders);
         const workflowGroups = [ ...this.application.workflowsGroups ];
@@ -34,6 +38,7 @@ export class DdoApplicationRequestDashboardComponent {
         this.contactPersonDetails$ = new ContactDetailsModel(contactDetail);
       });
   }
+
   editClick() {
     console.log('edit clicked');
   }
@@ -42,5 +47,16 @@ export class DdoApplicationRequestDashboardComponent {
   }
   routeToTask(item) {
     console.log(item.routingInformation);
+  }
+  editTitle() {
+    this.showTitleEditable = true;
+  }
+  discardTitle() {
+    this.showTitleEditable = false;
+    this.titleValue = this.application.title;
+  }
+  saveTitle() {
+    this.showTitleEditable = false;
+    console.log('title is saved');
   }
 }

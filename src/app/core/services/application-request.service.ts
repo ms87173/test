@@ -23,23 +23,27 @@ export class ApplicationRequestService {
     }
     saveApplicationRequestTask(params: Object): Observable<any> {
         const url = environment.apiUrls.saveTaskQuestionnaire;
-        console.log("Task Saved");
+        console.log('Task Saved');
         // return this.apiService
         //     .put(url, params);
-        return of("Task Saved");
+        return of({});
     }
 
     discardApplicationRequestTask(params: TaskRequest): Observable<any> {
         const url = environment.apiUrls.discardQuestionsChanges;
-        console.log("Task discarded");
-
+        console.log('Task discarded');
         // return this.apiService
         //     .put(url, params);
-        return of("Task discard");
+        return of({});
     }
     cancelApplicationRequest(data: any): Observable<any> {
         const url = environment.apiUrls.cancelApplicationRequest;
         // return this.apiService.post(url, { data })
         return this.apiService.get(url);
+    }
+    editApplicationRequest(data: any): Observable<any> {
+        const url = environment.apiUrls.editApplicationRequest;
+        // return of({});
+        return this.apiService.put(`${url}/${data.requestId}`, data);
     }
 }
