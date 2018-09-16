@@ -42,11 +42,11 @@
 
     <div class="row mb-4" *ngIf='showEditButton && !editableMode'>
         <div class="col-md-8 col-xs-12 col-lg-8" *ngFor="let question of currSection.questions">
-                <h6 class="question-label"> {{question.label}} </h6>
-                <div *ngIf="question.type != CustomComponentsEnum.CUSTOM_RADIO_BUTTON &&  question.type != CustomComponentsEnum.CUSTOM_CHECKBOX" >
+                <h6 class="question-label"> {{question?.label}} </h6>
+                <div *ngIf="question?.answers && question?.answers.length > 0 && question.type != CustomComponentsEnum.CUSTOM_RADIO_BUTTON &&  question.type != CustomComponentsEnum.CUSTOM_CHECKBOX" >
                         <div class="answers"> {{question?.answers[0]?.value}} </div>
                 </div>
-                <div class="answers" *ngIf="question.type == CustomComponentsEnum.CUSTOM_RADIO_BUTTON ||  question.type == CustomComponentsEnum.CUSTOM_CHECKBOX"> 
+                <div class="answers" *ngIf="question?.answers && question?.answers.length > 0 && question.type == CustomComponentsEnum.CUSTOM_RADIO_BUTTON ||  question.type == CustomComponentsEnum.CUSTOM_CHECKBOX"> 
                     {{question?.answers[0]?.value == true ? "Yes" :"No"}}
                  </div>
         </div>

@@ -66,6 +66,12 @@ export class NgxFormlyParserService {
         if (question.answers && question.answers.length > 0) {
           field = this.setDefaultValuesFromAnswers(question.answers, field, question.recurrent);
         }
+        else {
+          ///Todo: remove this
+
+          field.defaultValue = [];
+        }
+
         if (question.max) {
           field.templateOptions.max = question.max;
         }
@@ -82,6 +88,7 @@ export class NgxFormlyParserService {
         FormlyFieldConfigArray.push(field);
       }
     });
+    debugger;
     return FormlyFieldConfigArray;
   }
 
@@ -103,11 +110,9 @@ export class NgxFormlyParserService {
           .getDynamicOptions('country');
         field.fieldArray.fieldGroup[7] = { ...addressCountryField };
         break;
-      // case CustomComponentsEnum.CUSTOM_UPLOAD:
-      // field.fieldArray = {
-      //   ...documentFieldArray
-      // };
+
       case CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD:
+        debugger;
         field.fieldArray = {
           ...documentFieldArray
         };
