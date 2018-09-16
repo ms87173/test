@@ -1,44 +1,56 @@
 
-<div class="drop-file">
 <div  *ngIf = "fileUpload">
-<div class="box_wrapper"
-     [ngClass]="{ 'is-drop-over': dragOver }"
-     [uploadInput]="uploadInput"  
-     ngFileDrop [options]="options"
-     (uploadOutput)="onUploadOutput($event)" 
-     >
-    <div class="uparrow">
-        <span><i class="fa fa-arrow-up"></i></span>
-      </div>  
-<div class="drop-container">
-  
- <label class="upload-button"><h4>Drag documents here or</h4></label>
-      <input 
-        type="file" 
-        ngFileSelect [options]="options" 
-        (uploadOutput)="onUploadOutput($event)" 
-        [uploadInput]="uploadInput" 
-        multiple>
- 
-  </div>
-  </div>
-  </div>
-  <div  *ngIf = "!fileUpload">
-  <div class="upload-item" *ngFor="let f of files; let i = index;">
-    <div class="upload-item-content">
-        <i class="fa fa-file-pdf-o"></i>
-        <div class="upload-second">
-      <div class="filename">
-        
-        <span>{{ f.name }}</span>
+    <div class="box_wrapper"
+         [ngClass]="{ 'is-drop-over': dragOver }"
+         [uploadInput]="uploadInput"  
+         ngFileDrop [options]="options"
+         (uploadOutput)="onUploadOutput($event)" 
+         >
+        <div class="uparrow">
+            <span><i class="fa fa-arrow-up"></i></span>
+          </div>  
+    <div class="drop-container">
+      
+     <label class="upload-button"><h4>Drag documents here or</h4></label>
+          <input 
+            type="file" 
+            ngFileSelect
+            [options]="options" 
+            (uploadOutput)="onUploadOutput($event)" 
+            [uploadInput]="uploadInput" 
+            multiple>
+     
       </div>
-      <div *ngIf="f.progress?.data?.percentage !== 100" class="progress-content">
-        <div class="progress">
-          <span class="bar" [style.width]="f?.progress?.data?.percentage + '%'" [class.is-done]="f?.progress?.data?.percentage === 100"></span>
+      </div>
+      </div>
+      <div  *ngIf = "!fileUpload">
+      <div class="upload-item" *ngFor="let f of files; let i = index;">
+        <div class="upload-item-content">
+            <i class="fa fa-file-pdf-o"></i>
+            <div class="upload-second">
+          <div class="filename">            
+            <span (click)="downloadFile(f.response)">{{ f?.response?.fileName }}              
+            </span>
+          </div> 
+          <div *ngIf="f.progress?.data?.percentage !== 100" class="progress-content">            
+            <div class="progress">
+              <span class="bar" [style.width]="f?.progress?.data?.percentage + '%'" [class.is-done]="f?.progress?.data?.percentage === 100"></span>
+            </div>
+          </div>     
+          </div>
         </div>
-      </div>     
       </div>
     </div>
-  </div>
-</div>
-  </div>
+    <!--Today-->
+    <!-- <div *ngIf = "!fileUpload">
+      <div class="upload-item" *ngFor="let f of files; let i = index;">
+        <div class="upload-item-content">
+            <i class="fa fa-file-pdf-o"></i>
+            <div class="upload-second">
+              <div class="filename">
+                <span (click)>{{ f.response ? f.response.fileName : '' }}</span>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
