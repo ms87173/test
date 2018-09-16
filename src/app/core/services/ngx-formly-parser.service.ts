@@ -112,7 +112,6 @@ export class NgxFormlyParserService {
         break;
 
       case CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD:
-        debugger;
         field.fieldArray = {
           ...documentFieldArray
         };

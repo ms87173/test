@@ -33,19 +33,31 @@
       <div class="multColumn">
         <div *ngFor="let question of section.questions; let index=index;">
           <div class="col-md-12 display-inline-block pb20px">
-            <h6 class="question-label"> {{question?.label}} </h6>
-            <div *ngIf="question.type != CustomComponentsEnum.CUSTOM_RADIO_BUTTON &&  question.type != CustomComponentsEnum.CUSTOM_CHECKBOX">
-              <div class="answers"> {{question?.answers[0]?.value}} </div>
+            <div [ngSwitch]="question.type">
+              <div *ngSwitchCase="CustomComponentsEnum.CUSTOM_RADIO_BUTTON">
+                <h6 class="question-label"> {{question?.label}} </h6>
+                <div class="answers" *ngIf="question?.answers && question?.answers.length > 0">
+                  {{question?.answers[0]?.value == true ? "Yes" :"No"}}
+                </div>
+              </div>
+              <div *ngSwitchCase="CustomComponentsEnum.CUSTOM_CHECKBOX">
+                <h6 class="question-label"> {{question?.label}} </h6>
+                <div class="answers" *ngIf="question?.answers && question?.answers.length > 0">
+                  {{question?.answers[0]?.value == true ? "Yes" :"No"}}
+                </div>
+              </div>
+              <div *ngSwitchDefault >
+                <h6 class="question-label"  > {{question?.label}} </h6>
+                <div class="answers" *ngIf="question?.answers && question?.answers.length > 0">
+                  {{question?.answers[0]?.value}}
+                </div>
+              </div>
             </div>
-            <div class="answers" *ngIf="question.type == CustomComponentsEnum.CUSTOM_RADIO_BUTTON ||  question.type == CustomComponentsEnum.CUSTOM_CHECKBOX">
-              {{question?.answers[0]?.value == true ? "Yes" :"No"}}
-            </div>
-
           </div>
         </div>
       </div>
-
     </div>
 
   </div>
+
 </div>
