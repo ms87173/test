@@ -22,7 +22,7 @@ export class ApplicationRequestEffects {
             routeChangeAction.payload.path === 'applications/:applicationId'),
         map((action) => {
             const { applicationId } = action.payload.params;
-            return new GetApplicationRequest(applicationId)
+            return new GetApplicationRequest(applicationId);
         })
     );
     @Effect() getApplicationRequestEffect = this.actions$.pipe(

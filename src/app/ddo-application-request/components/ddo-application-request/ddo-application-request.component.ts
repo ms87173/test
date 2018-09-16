@@ -118,7 +118,8 @@ export class DdoApplicationRequestComponent {
         this.store.dispatch(
           new SaveActiveTaskAndExit({
             workflowId: this.currentWorkflowId$,
-            taskId: this.currentTaskId$
+            taskId: this.currentTaskId$,
+            requestId: this.application$.id
           }));
         break;
       case 'next':
@@ -126,7 +127,7 @@ export class DdoApplicationRequestComponent {
           this.store.dispatch(
             new SaveActiveTaskAndNext({
               current: {
-                applicationId: this.application$.id,
+                requestId: this.application$.id,
                 workflowId: this.currentWorkflowId$,
                 taskId: this.currentTaskId$
               },
