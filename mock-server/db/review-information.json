@@ -83,7 +83,7 @@
                             },
                             {
                                 "id": "section2",
-                                "title": "Section 2",
+                                "title": "Personal Info",
                                 "questions": [
                                     {
                                         "id": "InterestCheckingCheckBox2",

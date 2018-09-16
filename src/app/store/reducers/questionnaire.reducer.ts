@@ -32,9 +32,13 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
             console.log(openSections);
             openSections.forEach((openSection) => {
                 currTask.sections.forEach((section) => {
-                    if (section.id == openSection) {
+                    if (section.title == openSection) {
                         section.editableMode = true;
                     }
+                    ////Todo:Todo: Uncomment to use id
+                    // if (section.id == openSection) {
+                    //     section.editableMode = true;
+                    // }
                 });
             });
 
@@ -66,9 +70,13 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
                 let openSections = [...state.openSections];
                 openSections.forEach((openSection) => {
                     currTask.sections.forEach((section) => {
-                        if (section.id == openSection) {
+                        if (section.title == openSection) {
                             section.editableMode = true;
                         }
+                        ////Todo:Todo: Uncomment to use id
+                        // if (section.id == openSection) {
+                        //     section.editableMode = true;
+                        // }
                     });
                 });
                 return {
@@ -123,9 +131,14 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
                 if (currTask) {
                     openSections.forEach((openSection) => {
                         currTask.sections.forEach((section) => {
-                            if (section.id == openSection) {
+                            
+                            if (section.title == openSection) {
                                 section.editableMode = true;
                             }
+                            ////Todo:Todo: Uncomment to use id
+                            // if (section.id == openSection) {
+                            //     section.editableMode = true;
+                            // }
                         });
                     });
                     return {

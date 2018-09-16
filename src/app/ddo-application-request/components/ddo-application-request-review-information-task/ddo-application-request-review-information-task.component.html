@@ -12,10 +12,16 @@
           <div class="pt10px title"> {{section?.title}} </div>
         </div>
         <div class="offset-md-5 col-md-1  ">
-          <a class="edit" href="javascript:void(0)" *ngIf="task?.showEdit" (click)="editBtnClicked(task.taskId , section.id)">
+          <a class="edit" href="javascript:void(0)" *ngIf="task?.showEdit" (click)="editBtnClicked(task.taskId , section.title)">
             Edit
           </a>
         </div>
+        <!-- ///Todo: Uncomment to use id -->
+        <!-- <div class="offset-md-5 col-md-1  ">
+          <a class="edit" href="javascript:void(0)" *ngIf="task?.showEdit" (click)="editBtnClicked(task.taskId , section.id)">
+            Edit
+          </a>
+        </div> -->
 
       </div>
       <div class="row">
