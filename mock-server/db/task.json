@@ -42,10 +42,10 @@
                         },
                         {
                             "id": "InterestCheckingCheckBox",
-                            "label": "Would you like to earn interest this account?",
+                            "label": "Doc uploader?",
                             "type": "custom-document-upload",
                             "required": "true",
-                            "readOnly": "false",
+                            "readOnly": false,
                             "recurrent": false,
                             "placeHolder": "Interest Account",
                             "options": [
@@ -60,7 +60,17 @@
                             ],
                             "tooltipText": "<string>",
                             "answers": [
-                               
+                               {
+                                   "value":{
+                                       "expireDate":"16-10-2019",
+                                       "idNumber":"1",
+                                       "idCountry":"India",
+                                       "document":{
+                                           "documentID": 37971,
+                                           "fileName": "upload-test.jpg"
+                                       }
+                                   }
+                               }
                             ]
                         }
                        
