@@ -15,7 +15,8 @@ export const environment = {
     discardQuestionsChanges : 'discard',
     fetchDynamicOptions: 'dynamic-options',
     fetchReviewInformationTask: 'reviewInformation',
-    cancelApplicationRequest: 'cancel-application'
+    cancelApplicationRequest: 'cancel-application',
+    editApplicationRequest: 'request'
   }
 };
 /*

@@ -6,7 +6,7 @@
       </h5>
       <div class="col-md-2 pt-3 pb-3 text-align-center">
         <a href="javascript:void(0)"
-          (click)="cancelApplication">
+          (click)="cancelApplication()">
           Cancel Application
         </a>
       </div>
@@ -35,7 +35,9 @@
                   Application Info
                 </h4>
                 <h6 class="col-md-1 ddo-application-request__card-heading-edit-button">
-                  <a href="javascript:void(0)">
+                  <a href="javascript:void(0)"
+                    *ngIf="!showTitleEditable"
+                    (click)="editTitle()">
                     Edit
                   </a>
                 </h6>
@@ -62,8 +64,17 @@
               <span class="ddo-application-request__content-subheading">
                 Title of the accounts:
               </span>
-              <span>
-                {{application.title}}
+              <span *ngIf="!showTitleEditable">
+                {{titleValue}}
+              </span>
+              <span *ngIf="showTitleEditable">
+                <input type="text" id="applicationTitle" value="{{application.title}}" [(ngModel)]="titleValue">
+                <a href="javascript:void(0)" style="margin-left: 10px;margin-right: 20px;" (click)="discardTitle()">
+                  Discard Title
+                </a>
+                <a href="javascript:void(0)" (click)="saveTitle()">
+                  Save Title
+                </a>
               </span>
             </div>
           </div>

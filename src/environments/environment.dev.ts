@@ -12,6 +12,7 @@ export const environment = {
     discardQuestionsChanges : 'questionnaire/discardQuestionsChanges',
     fetchDynamicOptions: 'questionnaire/dynamicLookup/',
     fetchReviewInformationTask: 'questionnaire/reviewTask',
-    cancelApplicationRequest: '<cancel-url-is-missing>'
+    cancelApplicationRequest: '<cancel-url-is-missing>',
+    editApplicationRequest: '<edit-request-is-missing>'
   }
 };
