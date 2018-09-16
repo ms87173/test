@@ -3,15 +3,15 @@ import { FormlyFieldConfig } from "@ngx-formly/core";
 export const documentFieldArray: FormlyFieldConfig = {
     fieldGroupClassName: 'row',
     fieldGroup: [
-        // {
-        //     className: 'col-sm-12',
-        //     type: 'custom-upload',
-        //     key: 'description',
-        //     templateOptions: {
-        //         label: 'Document upload',
-        //         required: true,
-        //     },
-        // },
+        {
+            className: 'col-sm-12',
+            type: 'custom-upload',
+            key: 'description',
+            templateOptions: {
+                label: 'Document upload',
+                required: true,
+            },
+        },
 
         {
             className: 'col-sm-4',

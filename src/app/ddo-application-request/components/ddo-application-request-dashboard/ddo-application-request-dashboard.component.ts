@@ -4,7 +4,7 @@ import { fromRootReducers, fromRootSelectors } from '../../../store';
 import { ContactDetailsModel } from '../../../core/models/contact-detail.model';
 import { showcaseArrayElements } from '../../../core/utilities/array.utility';
 import {
-  GROUPE_TYPE_ICON_CLASS,
+  GROUP_TYPE_ICON_CLASS,
   STATUS_STEPPER_MAPPING
 } from '../../../core/constants/application-request-dashboard.constants';
 import { Step, StepViewModel } from '../../../core/view-model/stepper-step.model';
