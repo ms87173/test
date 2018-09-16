@@ -10,24 +10,28 @@ export const STATUS_STEPPER_MAPPING = {
     disabled: false,
     statusIconClass: '',
     stepCssClass: 'step-circle--active',
-    lineCssClass: 'solid-black-line'
+    lineCssClass: 'solid-black-line',
+    descriptionCssClass: 'step-description--active'
   },
   COMPLETED: {
     disabled: false,
     statusIconClass: 'fa-check',
     stepCssClass: 'step-circle--active',
-    lineCssClass: 'solid-black-line'
+    lineCssClass: 'solid-black-line',
+    descriptionCssClass: 'step-description--active'
   },
   ON_HOLD: {
     disabled: false,
     statusIconClass: '',
     stepCssClass: '',
-    lineCssClass: 'solid-grey-line'
+    lineCssClass: 'solid-grey-line',
+    descriptionCssClass: 'step-description--active'
   },
   DISABLED: {
     disabled: true,
     statusIconClass: '',
     stepCssClass: 'step-circle--forbidden',
-    lineCssClass: 'dashed-grey-line'
+    lineCssClass: 'dashed-grey-line',
+    descriptionCssClass: 'step-description--forbidden'
   }
 };

@@ -14,9 +14,8 @@ export const environment = {
     saveTaskQuestionnaire: 'success',
     discardQuestionsChanges : 'discard',
     fetchDynamicOptions: 'dynamic-options',
-    fetchReviewInformationTask:'reviewInformation',
+    fetchReviewInformationTask: 'reviewInformation',
     cancelApplicationRequest: 'cancel-application'
-
   }
 };
 /*

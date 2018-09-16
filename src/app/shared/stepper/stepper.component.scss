@@ -2,27 +2,38 @@
     display: inline-block;
     width: 120px;
     vertical-align: top;
+    @media only screen and (max-width: 768px) {
+        margin-right: 15px;
+    }
     margin-right: 72px;
     font-size: 14px;
     height: 100%;
     text-align: center;
+    &--active {
+        cursor: pointer;
+    }
+    &--forbidden {
+        pointer-events: none;
+    }
 }
-.stepper-steps {
-    height: 100%;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-}
-.stepper-steps-description {
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    height: 100%;
-}
-.status-description-icon{
-    display: block;
-    margin-top: 10px;
-    color: #0089ce;
+.stepper {
+    &-steps {
+        height: 100%;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &-steps-description {
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        height: 100%;
+    }
+    &-description-icon{
+        display: block;
+        margin-top: 10px;
+        color: #0089ce;
+    }
 }
 step:first-child {
     margin-left: 25px;

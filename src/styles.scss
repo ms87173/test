@@ -7,6 +7,7 @@
 @import './assets/styles/font.scss';
 @import './assets/styles/helper.scss';
 @import '../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
+
 body {
     margin: 0;
     padding-bottom: 90px;
@@ -141,19 +142,39 @@ label {
     }
 }
 
-.btn-circle {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    padding: 6px 0;
-    font-size: 12px;
-    line-height: 1.428571429;
-    border-radius: 15px;
-}
+/* This is for using pencil globally FA provides tilt icon*/
 .fa.fa-pencil {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
     -moz-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg);
     -o-transform: rotate(-45deg);
+}
+
+/*
+    this is for tooltip attached to body on cover page steps
+    attached to body hence need it here.
+*/
+.stepper-step-tooltip {
+    margin-top: 10px;
+    .tooltip-inner {
+        color: black;
+        background-color: white;
+        box-shadow: 0 0 2px 0px #afa8a8;
+        border-radius: 0px;
+        & > div {
+            margin: 15px;
+        }
+        div > div {
+            &::before {
+                content: "-";
+                margin-right: 5px;
+                color: orange;
+            }
+            text-align: left;
+        }
+    }
+    .tooltip-arrow.arrow::before {
+        border-bottom-color: white;
+    }
 }
