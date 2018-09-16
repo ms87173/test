@@ -19,7 +19,6 @@ import { fromRootSelectors, fromRootReducers } from '../store';
 import { FormlyFormOptions } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
 import * as moment from 'moment';
-
 import { takeUntil, startWith, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
@@ -61,7 +60,12 @@ export class DdoApplicationsComponent implements OnInit {
       .subscribe((applications: any) => {
         this.gridConfig.data =
           applications.map((application) => new ApplicationGridModel(application));
-        this.store.dispatch(new SortApplications({ data: applications, params: { key: 'lastUpdate', sortOrder: 'desc' } }))
+        this.store.dispatch(
+          new SortApplications({
+            data: applications,
+            params: { key: 'lastUpdate', sortOrder: 'desc' }
+          })
+        );
         this.applicationsData = applications;
       }
       );
@@ -102,7 +106,7 @@ export class DdoApplicationsComponent implements OnInit {
                     takeUntil(this.onDestroy$),
                     startWith(form.get('modified').value),
                     tap(modified => {
-                      if (modified && modified != 'customDate') {
+                      if (modified && modified !== 'customDate') {
                         const statusFilterValue = form.get('status').value;
                         this.filterApplication(
                           {
@@ -139,8 +143,15 @@ export class DdoApplicationsComponent implements OnInit {
                         const modifiedFilterValue = form.get('modified').value;
                         this.filterApplication(
                           {
-                            statusFilter: { key: 'status', value: filterBy },
-                            modifiedFilter: { key: 'modified', value: modifiedFilterValue, filterDate: moment(selectedDate).format('MM DD YYYY') }
+                            statusFilter: {
+                              key: 'status',
+                              value: filterBy
+                            },
+                            modifiedFilter: {
+                              key: 'modified',
+                              value: modifiedFilterValue,
+                              filterDate: moment(selectedDate).format('MM DD YYYY')
+                            }
                           });
                       }
                     }),
@@ -187,8 +198,15 @@ export class DdoApplicationsComponent implements OnInit {
                         form.get('customDate').value = selectedDate;
                         this.filterApplication(
                           {
-                            statusFilter: { key: 'status', value: statusFilterValue },
-                            modifiedFilter: { key: 'modified', value: 'customDate', filterDate: moment(selectedDate).format('MM DD YYYY') }
+                            statusFilter: {
+                              key: 'status',
+                              value: statusFilterValue
+                            },
+                            modifiedFilter: {
+                              key: 'modified',
+                              value: 'customDate',
+                              filterDate: moment(selectedDate).format('MM DD YYYY')
+                            }
                           });
                       }
                     })
@@ -198,7 +216,7 @@ export class DdoApplicationsComponent implements OnInit {
           }
         ]
       }
-    ]
+    ];
     this.store.dispatch(new GetApplications());
   }
 
@@ -207,20 +225,22 @@ export class DdoApplicationsComponent implements OnInit {
       case ACTION_TYPES.rowClicked:
         this.store.dispatch(
           new RouterGo({
-            path: ['ddo', 'applications', payload.params],
-          }
-          )
+            path: ['ddo', 'applications', payload.params, 'dashboard'],
+          })
         );
         break;
-      case ACTION_TYPES.sort: {
+      case ACTION_TYPES.sort:
         if (this.isFilteredData) {
-          this.store.dispatch(new SortApplications({ data: this.filteredData, params: payload.params }))
-        } else {
-          this.store.dispatch(new SortApplications({ data: this.applicationsData, params: payload.params }));
+          this.store.dispatch(new SortApplications({ data: this.filteredData, params: payload.params }));
         }
-      }
+        this.store.dispatch(new SortApplications({ data: this.applicationsData, params: payload.params }));
         break;
-      case ACTION_TYPES.completeNow:
+      case ACTION_TYPES.continueNow:
+        this.store.dispatch(
+          new RouterGo({
+            path: ['ddo', 'applications', payload.params, 'tasks'],
+          })
+        );
     }
   }
 

@@ -30,8 +30,10 @@
         </td>
         <td class="table-col">
           <a class="btn btn-link btn-link--primary pl-0"
-            (click)='ongridItemClick(actionTypes.rowClicked, item.id)'
-            *ngIf='!(item.status === status.cancelled || item.status === status.onHold)'>Continue Now</a>
+            (click)='ongridItemClick(actionTypes.continueNow, item.id)'
+            *ngIf='!(item.status === status.cancelled || item.status === status.onHold)'>
+            Continue Now
+          </a>
         </td>
         <td class="table-col">
             <div class="col-sm-12">
@@ -41,10 +43,15 @@
                   aria-controls="dropdown-config1">
                   <i class="fa fa-ellipsis-v"></i>
                 </a>
-                <ul id="dropdown-config1" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-config1">
+                <ul id="dropdown-config1"
+                  class="dropdown-menu"
+                  role="menu"
+                  aria-labelledby="button-config1"
+                  *dropdownMenu>
                   <li role="menuitem">
                     <a class="dropdown-item"
-                    *ngFor='let dropdownItem of config.dropDownOptions' (click)='ongridItemClick(actionTypes.rowClicked, item.id)'>
+                      *ngFor='let dropdownItem of config.dropDownOptions'
+                      (click)='ongridItemClick(actionTypes.rowClicked, item.id)'>
                       {{dropdownItem.value}}
                     </a>
                   </li>

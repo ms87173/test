@@ -56,7 +56,7 @@ export const APPLICATION_GRID_HEADING = [
 export const ACTION_TYPES = {
     rowClicked: 'rowClicked',
     sort: 'sort',
-    completeNow: 'completeNow',
+    continueNow: 'continueNow',
     filter: 'filter'
 };
 

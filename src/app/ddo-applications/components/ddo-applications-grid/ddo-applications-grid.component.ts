@@ -23,7 +23,7 @@ export class DdoApplicationsGridComponent implements OnInit {
   status: any;
   constructor() {
     this.actionTypes = ACTION_TYPES;
-    this.status = APPLICATIONS_STATUS
+    this.status = APPLICATIONS_STATUS;
   }
 
   ngOnInit() {

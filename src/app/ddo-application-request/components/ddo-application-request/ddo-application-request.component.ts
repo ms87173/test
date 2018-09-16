@@ -76,7 +76,7 @@ export class DdoApplicationRequestComponent {
           this.store.dispatch(
             new RouterGo({
               // path: ['ddo', 'applications', this.application$.id, 'questionnaire'],
-              path: ['ddo', 'applications', this.application$.id, this.currentTaskType]
+              path: ['ddo', 'applications', this.application$.id, 'tasks', this.currentTaskType]
             })
           );
         }
@@ -139,7 +139,6 @@ export class DdoApplicationRequestComponent {
               workflowId: this.nextWorkflowId$,
               taskId: this.nextTaskId$
             }));
-
         }
 
         break;

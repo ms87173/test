@@ -9,7 +9,7 @@ import {
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'tasks',
     component: DdoApplicationRequestComponent,
     children: [
       {
