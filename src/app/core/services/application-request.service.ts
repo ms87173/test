@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ApiService } from './api.service';
 import { environment } from '../../../environments/environment';
+import { TaskRequest } from '../models';
 
 @Injectable()
 export class ApplicationRequestService {
@@ -22,9 +23,20 @@ export class ApplicationRequestService {
     }
     saveApplicationRequestTask(params: Object): Observable<any> {
         const url = environment.apiUrls.saveTaskQuestionnaire;
+        console.log("Task Saved");
         // return this.apiService
         //     .put(url, params);
         return of("Task Saved");
+    }
+
+    discardApplicationRequestTask(params: TaskRequest): Observable<any> {
+        debugger;
+        const url = environment.apiUrls.discardQuestionsChanges;
+        console.log("Task discarded");
+
+        // return this.apiService
+        //     .put(url, params);
+        return of("Task discard");
     }
     cancelApplicationRequest(data: any): Observable<any> {
         const url = environment.apiUrls.cancelApplicationRequest;

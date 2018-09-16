@@ -11,13 +11,14 @@
       "showEdit": true,
       "sections": [
         {
-          "title": "Personal Information",
+          "id": "section1",
+          "title": "Trusted Contact",
           "editableMode": false,
           "questions": [
             {
               "id": "InterestCheckingCheckBox",
               "label": "Would you like to earn interest this account?",
-              "type": "custom-checkbox",
+              "type": "custom-textbox",
               "required": "true",
               "readOnly": "false",
               "recurrent": false,
@@ -25,24 +26,31 @@
               "options": [
                 {
                   "label": "Yes",
-                  "value": "true"
+                  "value": true
                 },
                 {
                   "label": "No",
-                  "value": "False"
+                  "value": false
                 }
               ],
               "tooltipText": "<string>",
               "answers": [
                 {
-                  "value": "true"
+                  "value": "tinsu Sasi Protocol"
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "id": "section2",
+          "title": "Personal Info",
+          "editableMode": false,
+          "questions": [
             {
-              "id": "InterestCheckingEmail",
-              "label": "Tis is email?",
-              "type": "custom-email",
+              "id": "PersonalInfoTextBox",
+              "label": "What is your age?",
+              "type": "custom-textbox",
               "required": "true",
               "readOnly": "false",
               "recurrent": false,
@@ -50,15 +58,19 @@
               "options": [
                 {
                   "label": "Yes",
-                  "value": "true"
+                  "value": true
                 },
                 {
                   "label": "No",
-                  "value": "false"
+                  "value": false
                 }
               ],
               "tooltipText": "<string>",
-              "answers": []
+              "answers": [
+                {
+                  "value": "Age"
+                }
+              ]
             }
           ]
         }

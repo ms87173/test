@@ -12,6 +12,7 @@ export const environment = {
     fetchTaskQuestionnaire: 'tasks',
     fetchTaskQuestionnaireDelts: 'questionnaireDeltaResponses',
     saveTaskQuestionnaire: 'success',
+    discardQuestionsChanges : 'discard',
     fetchDynamicOptions: 'dynamic-options',
     fetchReviewInformationTask:'reviewInformation',
     cancelApplicationRequest: 'cancel-application'

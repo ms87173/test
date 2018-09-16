@@ -4,17 +4,17 @@
             <h5 class="heading paddTop6px">{{ formlyFieldConfigArray?.title }}</h5>
         </div>
         <div *ngIf='showEditButton && !editableMode' class="col-md-1 col-xs-1 col-lg-1">
-            <button type="button" (click)="editClicked()" class="btn btn-link editBtn ">Edit</button>
+            <button type="button" (click)="editClicked(currSection.id)" class="btn btn-link editBtn ">Edit</button>
         </div>
         <div class="col-md-3 col-xs-3 col-lg-3">
         </div>
 
         <div *ngIf='showEditButton && editableMode' lass="col-md-2 col-xs-2 col-lg-2">
-            <button type="button" (click)="saveClicked()" class="btn btn-link editBtn ">Save Changes</button>
+            <button type="button" (click)="saveClicked(currSection.id)" class="btn btn-link editBtn ">Save Changes</button>
         </div>
 
         <div *ngIf='showEditButton && editableMode' class="col-md-2 col-xs-2 col-lg-2">
-            <button type="button" (click)="discardClicked()" class="btn btn-link editBtn ">Discard Changes</button>
+            <button type="button" (click)="discardClicked(currSection.id)" class="btn btn-link editBtn ">Discard Changes</button>
         </div>
 
     </div>

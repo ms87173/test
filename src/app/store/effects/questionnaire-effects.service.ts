@@ -11,10 +11,14 @@ import {
   GetCurrentQuestionnaireFormlyConfigSuccess,
   GetCurrentQuestionnaireFormlyConfigFailure,
   GetCurrentQuestionnaireFormlyConfig,
+  SaveChangesBySectionInTask,
+  SaveChangesBySectionInTaskFailure,
+  DiscardChangesBySectionInTask,
+  DiscardChangesBySectionInTaskFailure,
 
 } from '../actions/questionnaire.actions';
 import { switchMap, map, catchError } from 'rxjs/operators';
-import { QuestionnaireService, NgxFormlyParserService, ApiService } from '../../core/services';
+import { QuestionnaireService, NgxFormlyParserService, ApiService, ApplicationRequestService } from '../../core/services';
 import { Observable } from 'rxjs/Observable';
 import { QuestionaireDeltaResponse } from '../../core/models';
 import { of } from 'rxjs';
@@ -95,12 +99,45 @@ export class QuestionnaireEffectsService {
     )
   );
 
+  @Effect() saveChangesBySectionInTask = this.actions$.pipe(
+    ofType(ActionTypes.SAVE_CHANGES_BY_SECTION_IN_TASK),
+    switchMap(
+      (action: SaveChangesBySectionInTask) => this.applicationRequestService
+      .saveApplicationRequestTask(action.payload)
+        .pipe(
+          map((response) => (new GetCurrentTask(action.payload))
+          ),
+          catchError(
+            (err) => of(new SaveChangesBySectionInTaskFailure(err))
+          )
+        )
+    )
+  );
+
+  @Effect() discardChangesBySectionInTask = this.actions$.pipe(
+    ofType(ActionTypes.DISCARD_CHANGES_BY_SECTION_IN_TASK),
+    switchMap(
+      (action: DiscardChangesBySectionInTask) => this.applicationRequestService
+      .discardApplicationRequestTask(action.payload)
+        .pipe(
+          map((response) => (new GetCurrentTask(action.payload))
+          ),
+          catchError(
+            (err) => of(new DiscardChangesBySectionInTaskFailure(err))
+          )
+        )
+    )
+  );
+
+
+
 
 
 
   constructor(private actions$: Actions,
     private questionnaireService: QuestionnaireService,
-    private ngxFormlyParserService: NgxFormlyParserService
+    private ngxFormlyParserService: NgxFormlyParserService,
+    private applicationRequestService:ApplicationRequestService
   ) { }
 
 

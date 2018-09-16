@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyFieldConfigArrayCollection, Section } from '../core';
 import { EXISTING_CUSTOM_COMPONENTS, CustomComponentsEnum } from '../custom-formly-fields/enums/custom-components.enum';
+import { questionnaireActions } from '../store/actions'
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -11,6 +12,7 @@ import { EXISTING_CUSTOM_COMPONENTS, CustomComponentsEnum } from '../custom-form
   styleUrls: ['./section.component.css']
 })
 export class SectionComponent implements OnInit, OnChanges {
+
   form = new FormGroup({});
   options: FormlyFormOptions = {};
   model: any = {};
@@ -21,30 +23,40 @@ export class SectionComponent implements OnInit, OnChanges {
   @Input() showEdit: boolean;
   @Input() editableMode: boolean = false;
   @Input() currSection: Section;
-
+  @Output() updateOpenSections: EventEmitter<{ actionName: string, sectionId: string }> = new EventEmitter();
+  @Output() saveChangesBtnClicked: EventEmitter<string> = new EventEmitter();
+  @Output() discardChangesBtnClicked: EventEmitter<string> = new EventEmitter();
   CustomComponentsEnum = CustomComponentsEnum;
   constructor() {
-    console.log("FormlyFieldConfig");
-    console.log(this.fields);
 
   }
 
-  editClicked() {
-    this.changeEditableMode(true);
-  }
-
-  saveClicked() {
-    this.changeEditableMode(false);
-  }
-
-  discardClicked() {
-    this.changeEditableMode(false);
+  editClicked(sectionId: string) {
+    this.updateOpenSections.emit({
+      actionName: questionnaireActions.ActionTypes.PUSH_SECTION_IN_OPEN_SECTIONS,
+      sectionId: sectionId
+    });
 
   }
 
-  changeEditableMode(mode: boolean) {
-    this.editableMode = mode;
+  saveClicked(sectionId: string) {
+    this.saveChangesBtnClicked.emit(sectionId);
+
+    this.updateOpenSections.emit({
+      actionName: questionnaireActions.ActionTypes.POP_SECTION_IN_OPEN_SECTIONS,
+      sectionId: sectionId
+    });
+
   }
+
+  discardClicked(sectionId: string) {
+    this.discardChangesBtnClicked.emit(sectionId);
+    this.updateOpenSections.emit({
+      actionName: questionnaireActions.ActionTypes.POP_SECTION_IN_OPEN_SECTIONS,
+      sectionId: sectionId
+    });
+  }
+
 
   ngOnInit() {
     this.fields = this.formlyFieldConfigArray.formlyFieldConfigs;
@@ -54,7 +66,6 @@ export class SectionComponent implements OnInit, OnChanges {
         this.model[item.key] = [{}];
       }
     });
-    console.log(" section onInit");
 
     if (this.showEditButton == null) {
       this.showEditButton = this.showEdit;
@@ -62,7 +73,6 @@ export class SectionComponent implements OnInit, OnChanges {
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.fields = this.formlyFieldConfigArray.formlyFieldConfigs;
-    console.log(" section onchanges");
     if (this.showEditButton == null) {
       this.showEditButton = this.showEdit;
     }

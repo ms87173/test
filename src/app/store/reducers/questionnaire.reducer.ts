@@ -8,7 +8,8 @@ export interface QuestionnaireState {
     readonly mergedCurrentTaskWithDelta: Task;
     readonly currentQuestionId: string;
     readonly errors: QuestionaireDeltaError[];
-    readonly selectedSection: string;
+    readonly selectedSectionId: string;
+    readonly openSections: string[]
 }
 
 export const InitialQuestionnaireState: QuestionnaireState = {
@@ -17,7 +18,8 @@ export const InitialQuestionnaireState: QuestionnaireState = {
     currentQuestionnaireDelta: null,
     mergedCurrentTaskWithDelta: null,
     currentQuestionId: null,
-    selectedSection: null,
+    selectedSectionId: null,
+    openSections: [],
     errors: []
 };
 
@@ -26,13 +28,15 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
     switch (action.type) {
         case ActionTypes.GET_CURRENT_TASK_SUCCESS:
             let currTask = { ...action.payload };
-            if (state.selectedSection) {
+            let openSections = [...state.openSections];
+            openSections.forEach((openSection) => {
                 currTask.sections.forEach((section) => {
-                    if (section.title == state.selectedSection) {
+                    if (section.id == openSection) {
                         section.editableMode = true;
                     }
-                })
-            }
+                });
+            });
+
             return {
                 ...state,
                 currentTask: currTask
@@ -57,8 +61,15 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
 
         case ActionTypes.GET_CURRENT_FIELD_CHANGE_DELTA_SUCCESS:
             if (action.payload) {
-
-
+                let currTask = { ...action.payload };
+                let openSections = [...state.openSections];
+                openSections.forEach((openSection) => {
+                    currTask.sections.forEach((section) => {
+                        if (section.id == openSection) {
+                            section.editableMode = true;
+                        }
+                    });
+                });
                 return {
                     ...state,
                     currentTask: action.payload
@@ -85,20 +96,65 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
                 currentTask: null,
                 currentQuestionnaireConfig: null,
                 currentQuestionnaireDelta: null,
-                selectedSection: null
+                selectedSectionId: null,
+                openSections: []
 
             };
 
-      
 
-        case ActionTypes.SET_SELECTED_SECTION_NAME:
+
+        case ActionTypes.SET_SELECTED_SECTION_ID:
 
             return {
                 ...state,
-                selectedSection: action.payload
+                selectedSectionId: action.payload
             };
 
+        case ActionTypes.PUSH_SECTION_IN_OPEN_SECTIONS:
+            if (state.openSections.includes(action.payload)) {
+                return {
+                    ...state
+                }
+            } else {
+                let openSections = [...state.openSections];
+                openSections.push(action.payload);
+                let currTask = { ...state.currentTask };
+                openSections.forEach((openSection) => {
+                    currTask.sections.forEach((section) => {
+                        if (section.id == openSection) {
+                            section.editableMode = true;
+                        }
+                    });
+                });
+                return {
+                    ...state,
+                    openSections: openSections,
+                    currentTask: currTask
+                };
+            }
 
+        case ActionTypes.POP_SECTION_IN_OPEN_SECTIONS:
+            if (state.openSections.includes(action.payload)) {
+                let currTask = { ...state.currentTask };
+                let openSections = [...state.openSections];
+                //Todo : Need to remove as Save Changes will  be doing this working for it
+                currTask.sections.forEach((section) => {
+                    if (section.id == action.payload) {
+                        section.editableMode = false;
+                    }
+                });              
+                openSections.splice(openSections.indexOf(action.payload), 1);
+                
+                return {
+                    ...state,
+                    openSections: openSections,
+                    currentTask: currTask
+                }
+            } else {
+                return {
+                    ...state
+                };
+            }
 
         default:
             return state;
@@ -111,6 +167,7 @@ export const getCurrentQuestionnaireDelta = (state: QuestionnaireState) => state
 export const getMergedCurrentTaskWithDelta = (state: QuestionnaireState) => state.mergedCurrentTaskWithDelta;
 export const getCurrentQuestionId = (state: QuestionnaireState) => state.currentQuestionId;
 export const getCurrentQuestionnaireErrors = (state: QuestionnaireState) => state.errors;
-export const getSelectedSection = (state: QuestionnaireState) => state.selectedSection;
+export const getSelectedSectionId = (state: QuestionnaireState) => state.selectedSectionId;
+export const getOpenSectionsInTask = (state: QuestionnaireState) => state.openSections;
 
 

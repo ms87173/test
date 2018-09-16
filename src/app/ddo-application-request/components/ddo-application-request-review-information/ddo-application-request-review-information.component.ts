@@ -5,9 +5,7 @@ import { ReviewInformationResponse } from '../../../core/models';
 import { takeWhile } from 'rxjs/operators';
 import { GetAllTasksForReviewInformationTask } from '../../../store/actions/review-information.actions';
 import { SetActiveTask } from '../../../store/actions/workflows.action';
-import { TASK_TYPES } from '../../../core/constants/application-request.constants';
-import { RouterGo } from '../../../store/actions/router.actions';
-import { SetSelectedSectionName } from '../../../store/actions/questionnaire.actions';
+import { PushSectionInOpenSections } from '../../../store/actions/questionnaire.actions';
 
 
 
@@ -62,10 +60,9 @@ export class DdoApplicationRequestReviewInformationComponent implements OnInit, 
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("change occured")
   }
 
-  editBtnClicked(data) {    
+  editBtnClicked(data) {
     console.log(data);
     this.store.dispatch(
       new SetActiveTask({
@@ -74,7 +71,7 @@ export class DdoApplicationRequestReviewInformationComponent implements OnInit, 
       }));
 
     this.store.dispatch(
-      new SetSelectedSectionName(data.sectionTitle));
+      new PushSectionInOpenSections(data.sectionId));
   }
 
   dispatchReviewInformationTaskAction() {

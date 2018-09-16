@@ -19,8 +19,9 @@ export class DdoApplicationRequestReviewInformationTaskComponent implements OnIn
 
   }
 
-  editBtnClicked(taskId: string, sectionTitle: string) {
-    this.editClicked.emit({ taskId: taskId, sectionTitle: sectionTitle });
+  editBtnClicked(taskId: string, sectionId: string) {
+    
+    this.editClicked.emit({ taskId: taskId, sectionId: sectionId });
   }
 
 }

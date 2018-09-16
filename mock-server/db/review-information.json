@@ -20,6 +20,7 @@
                         "showEdit": true,
                         "sections": [
                             {
+                                "id": "section1",
                                 "title": "Trusted Contact",
                                 "questions": [
                                     {
@@ -81,6 +82,7 @@
                                 ]
                             },
                             {
+                                "id": "section2",
                                 "title": "Section 2",
                                 "questions": [
                                     {
@@ -151,6 +153,7 @@
                         "showEdit": true,
                         "sections": [
                             {
+                                "id": "section3",
                                 "title": "Section 3",
                                 "questions": [
                                     {
@@ -200,6 +203,7 @@
                         "showEdit": true,
                         "sections": [
                             {
+                                "id": "section4",
                                 "title": "Section 4",
                                 "questions": [
                                     {

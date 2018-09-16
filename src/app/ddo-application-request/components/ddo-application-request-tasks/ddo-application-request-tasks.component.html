@@ -11,6 +11,9 @@
                      [showEdit]="currentTask?.showEdit"
                      [editableMode]="currentTask?.sections[index].editableMode"
                      [currSection]="currentTask?.sections[index]"
+                     (updateOpenSections)="updateOpenSections($event)"
+                     (saveChangesBtnClicked)="saveChangesBtnClicked($event)"
+                     (discardChangesBtnClicked)="discardChangesBtnClicked($event)"
                      >
                     </section>
                 </div>

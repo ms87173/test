@@ -18,8 +18,19 @@ export enum ActionTypes {
     GET_CURRENT_QUESTIONNAIRE_FORMLY_CONFIG_FAIL = '[App State] Get Current  Questionnaire formly config Failure',
 
     SET_CURRENT_QUESTION_ID = '[App State] Set The Current Question Id',
-   
-    SET_SELECTED_SECTION_NAME = '[App State] Open Selected Section In Questionnaire'
+
+    SET_SELECTED_SECTION_ID = '[App State] Open Selected Section In Questionnaire By Section Id',
+    GET_OPEN_SECTIONS_IN_TASK = '[App State] Get Open Sections In A Task',
+    PUSH_SECTION_IN_OPEN_SECTIONS = '[App State] Push A Section Id In Open Sections Array',
+    POP_SECTION_IN_OPEN_SECTIONS = '[App State] Pop A Section Id In Open Sections Array',
+    SAVE_CHANGES_BY_SECTION_IN_TASK = '[App State] Save Changes By Section For A Task',
+    SAVE_CHANGES_BY_SECTION_IN_TASK_SUCCESS = '[App State] Save Changes By Section For A Task Success',
+    SAVE_CHANGES_BY_SECTION_IN_TASK_FAIL = '[App State] Save Changes By Section For A Task Failure',
+    DISCARD_CHANGES_BY_SECTION_IN_TASK = '[App State] Discard Changes By Section For A Task',
+    DISCARD_CHANGES_BY_SECTION_IN_TASK_SUCCESS = '[App State] Discard Changes By Section For A Task Success',
+    DISCARD_CHANGES_BY_SECTION_IN_TASK_FAIL = '[App State] Discard Changes By Section For A Task Failure'
+
+
 }
 
 export class GetCurrentTask implements Action {
@@ -95,10 +106,61 @@ export class SetCurrentQuestionId implements Action {
     }
 }
 
-
-export class SetSelectedSectionName implements Action {
-    readonly type = ActionTypes.SET_SELECTED_SECTION_NAME;
+export class SetSelectedSectionId implements Action {
+    readonly type = ActionTypes.SET_SELECTED_SECTION_ID;
     constructor(public payload: string) {
+        this.payload = payload;
+    }
+}
+
+export class GetOpenSectionInTask implements Action {
+    readonly type = ActionTypes.GET_OPEN_SECTIONS_IN_TASK;
+
+}
+
+export class PushSectionInOpenSections implements Action {
+    readonly type = ActionTypes.PUSH_SECTION_IN_OPEN_SECTIONS;
+    constructor(public payload: string) {
+        this.payload = payload;
+    }
+}
+
+export class PopSectionInOpenSections implements Action {
+    readonly type = ActionTypes.POP_SECTION_IN_OPEN_SECTIONS;
+    constructor(public payload: string) {
+        this.payload = payload;
+    }
+}
+export class SaveChangesBySectionInTask implements Action {
+    readonly type = ActionTypes.SAVE_CHANGES_BY_SECTION_IN_TASK;
+    constructor(public payload: TaskRequest) {
+        this.payload = payload;
+    }
+}
+export class SaveChangesBySectionInTaskSuccess implements Action {
+    readonly type = ActionTypes.SAVE_CHANGES_BY_SECTION_IN_TASK_SUCCESS;
+
+}
+export class SaveChangesBySectionInTaskFailure implements Action {
+    readonly type = ActionTypes.SAVE_CHANGES_BY_SECTION_IN_TASK_FAIL;
+    constructor(public payload) {
+        this.payload = payload;
+    }
+}
+
+export class DiscardChangesBySectionInTask implements Action {
+    readonly type = ActionTypes.DISCARD_CHANGES_BY_SECTION_IN_TASK;
+    constructor(public payload: TaskRequest) {
+        this.payload = payload;
+    }
+}
+export class DiscardChangesBySectionInTaskSuccess implements Action {
+    readonly type = ActionTypes.SAVE_CHANGES_BY_SECTION_IN_TASK_SUCCESS;
+
+}
+export class DiscardChangesBySectionInTaskFailure implements Action {
+    readonly type = ActionTypes.SAVE_CHANGES_BY_SECTION_IN_TASK_FAIL;
+    constructor(public payload) {
         this.payload = payload;
     }
 }
@@ -113,6 +175,15 @@ export type QuesitonnaireActions = GetCurrentTask
     | GetCurrentQuestionnaireFormlyConfig
     | GetCurrentQuestionnaireFormlyConfigSuccess
     | GetCurrentQuestionnaireFormlyConfigFailure
-    | SetCurrentQuestionId   
-    | SetSelectedSectionName
+    | SetCurrentQuestionId
+    | SetSelectedSectionId
+    | GetOpenSectionInTask
+    | PushSectionInOpenSections
+    | PopSectionInOpenSections
+    | SaveChangesBySectionInTask
+    | SaveChangesBySectionInTaskSuccess
+    | SaveChangesBySectionInTaskFailure
+    | DiscardChangesBySectionInTask
+    | DiscardChangesBySectionInTaskSuccess
+    | DiscardChangesBySectionInTaskFailure
     ;
