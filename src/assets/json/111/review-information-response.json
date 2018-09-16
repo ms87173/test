@@ -18,6 +18,7 @@
                     "showEdit": "<boolean>",
                     "sections": [
                         {
+                            "id":"<string>", /// Section Id  - unique in a task
                             "title": "<string>",
                             "questions": [
                                 {

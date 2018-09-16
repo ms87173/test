@@ -6,7 +6,7 @@
     "workflowDescription": "<string>",
     "showEdit": "<boolean>",
     "sections": [
-        {
+        {   "id":"<string>", //// Section Id  - unique in a task
             "title": "Account Information",
             "editableMode": "<boolean>",
             "questions": [

@@ -36,4 +36,9 @@ export const getCurrentQuestionnaireErrors = createSelector(
     fromRootReducer.questionnaireReducer.getCurrentQuestionnaireErrors
 
 );
+export const getOpenSectionsInTask = createSelector(
+    getQuestionnaireState,
+    fromRootReducer.questionnaireReducer.getOpenSectionsInTask
+
+);
 

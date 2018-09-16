@@ -23,7 +23,7 @@ export const EXISTING_COMPONENTS: string[] = [
     CustomComponentsEnum.CUSTOM_TEXTBOX,
     // CustomComponentsEnum.CUSTOM_EMAIL,
     // CustomComponentsEnum.CUSTOM_PHONE
-    CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD
+    // CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD
 ];
 
 export const EXISTING_CUSTOM_COMPONENTS: string[] = [

@@ -41,9 +41,9 @@
                             ]
                         },
                         {
-                            "id": "InterestCheckingEmail",
+                            "id": "InterestCheckingCheckBox",
                             "label": "Would you like to earn interest this account?",
-                            "type": "custom-email",
+                            "type": "custom-document-upload",
                             "required": "true",
                             "readOnly": "false",
                             "recurrent": false,
@@ -51,37 +51,52 @@
                             "options": [
                                 {
                                     "label": "Yes",
-                                    "value": "true"
+                                    "value": true
                                 },
                                 {
                                     "label": "No",
-                                    "value": "false"
+                                    "value": false
                                 }
                             ],
                             "tooltipText": "<string>",
-                            "answers": []
-                        },
-                        {
-                            "id": "InterestCheckingPhone",
-                            "label": "Would you like to earn Phone?",
-                            "type": "custom-phone",
-                            "required": "true",
-                            "readOnly": "false",
-                            "recurrent": false,
-                            "placeHolder": "Interest Account",
-                            "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": "true"
-                                },
-                                {
-                                    "label": "No",
-                                    "value": "false"
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "answers": []
+                            "answers": [
+                               
+                            ]
                         }
+                       
+                    ]
+                },
+                {
+                    "id": "section2",
+                    "title": "Personal Info",
+                    "editableMode": false,
+                    "questions": [
+                        {
+                            "id": "PersonalInfoTextBox",
+                            "label": "What is your age?",
+                            "type": "custom-textbox",
+                            "required": "true",
+                            "readOnly": "false",
+                            "recurrent": false,
+                            "placeHolder": "Interest Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": true
+                                },
+                                {
+                                    "label": "No",
+                                    "value": false
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "answers": [
+                                {
+                                    "value": "Age"
+                                }
+                            ]
+                        }
+                       
                     ]
                 }
                 
@@ -98,6 +113,8 @@
             "showEdit": true,
             "sections": [
                 {
+                    "id": "section2",
+
                     "title": "Documents",
                     "editableMode": false,
                     "questions": [
@@ -183,6 +200,8 @@
             "showEdit": true,
             "sections": [
                 {
+                    "id": "section3",
+
                     "title": "Personal Information",
                     "editableMode": false,
                     "questions": [

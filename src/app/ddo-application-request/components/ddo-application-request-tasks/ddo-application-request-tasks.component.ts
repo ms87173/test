@@ -7,6 +7,7 @@ import { QuestionaireDeltaResponse, QuestionaireDeltaError, FormlyFieldConfigArr
 import { takeWhile } from 'rxjs/operators';
 import { Task } from '../../../core/models';
 import { TASK_TYPES } from '../../../core/constants/application-request.constants';
+import { questionnaireActions } from '../../../store/actions'
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'ddo-application-request-tasks',
@@ -22,9 +23,12 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
   currentQuestionId: string;
   isComponentActive = true;
   requestId: string = null;
+  currentTaskid: string = null;
+  currentWorkflowId: string = null;
+  currentTaskType: string = null;
   formlyFieldConfigArrayCollections: FormlyFieldConfigArrayCollection[] = null;
   taskRequest: TaskRequest;
-  isIntialRender:boolean= true;
+  isIntialRender: boolean = true;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -47,6 +51,9 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
         this.taskRequest.taskId = activeTask.task.id;
         this.taskRequest.requestId = this.requestId;
         this.taskRequest.taskType = activeTask.task.type;
+        this.currentTaskid = activeTask.task.id;
+        this.currentWorkflowId = activeTask.workflowId;
+        this.currentTaskType = activeTask.task.type;
         if (this.taskRequest.workflowId &&
           this.taskRequest.taskId &&
           this.taskRequest.requestId &&
@@ -98,7 +105,54 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
         }
       });
   }
+  updateOpenSections(data) {
+    console.log("updateOpenSections");
+    if (data.actionName === questionnaireActions.ActionTypes.PUSH_SECTION_IN_OPEN_SECTIONS) {
+      this.store.dispatch(new fromRootActions
+        .questionnaireActions.PushSectionInOpenSections(data.sectionId));
+    }
+    else {
+      this.store.dispatch(new fromRootActions
+        .questionnaireActions.PopSectionInOpenSections(data.sectionId));
+    }
+  }
 
+  saveChangesBtnClicked(sectionId: string) {
+    if (this.requestId &&
+      this.currentWorkflowId &&
+      this.currentTaskid &&
+      this.currentTaskType) {
+
+      this.store.dispatch(new fromRootActions
+        .questionnaireActions.SaveChangesBySectionInTask(
+          {
+            requestId: this.requestId,
+            taskId: this.currentTaskid,
+            workflowId: this.currentWorkflowId,
+            taskType: this.currentTaskType
+          }
+        ));
+    }
+  }
+
+  discardChangesBtnClicked(sectionId: string) {
+    if (this.requestId &&
+      this.currentWorkflowId &&
+      this.currentTaskid &&
+      this.currentTaskType) {
+
+      this.store.dispatch(new fromRootActions
+        .questionnaireActions.DiscardChangesBySectionInTask(
+          {
+            requestId: this.requestId,
+            taskId: this.currentTaskid,
+            workflowId: this.currentWorkflowId,
+            taskType: this.currentTaskType
+          }
+        ));
+    }
+
+  }
 
   ngOnInit() {
   }

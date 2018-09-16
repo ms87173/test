@@ -17,7 +17,7 @@ export class DdoApplicationRequestReviewInformationWorkflowComponent implements 
     this.editClicked.emit({
       taskId: data.taskId,
       workflowId: this.workflow.workflowId,
-      sectionTitle: data.sectionTitle
+      sectionId: data.sectionId
     });
   }
   ngOnInit() {

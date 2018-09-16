@@ -9,6 +9,7 @@ export const environment = {
     fetchTaskQuestionnaire: 'questionnaire/taskQuestions',
     fetchTaskQuestionnaireDelts: 'questionnaire/tasks/question',
     saveTaskQuestionnaire: 'questionnaire/saveTaskQuestions',
+    discardQuestionsChanges : 'questionnaire/discardQuestionsChanges',
     fetchDynamicOptions: '',
     fetchReviewInformationTask:'questionnaire/reviewTask'
   }
