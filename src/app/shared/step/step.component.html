@@ -1,14 +1,8 @@
 <div class="step">
-  <span *ngIf="showLine"
-    [ngClass]="lineCssClass"
-    class="step-line">
+  <span *ngIf="showLine" [ngClass]="lineCssClass" class="step-line">
   </span>
-  <button class="step-circle"
-    [ngClass]="stepCssClass"
-    (click)="onStepClick($event)">
-    <i class="fa"
-      *ngIf="iconClass"
-      [ngClass]="iconClass">
+  <button class="step-circle" [ngClass]="stepCssClass" (click)="onStepClick($event)">
+    <i class="fa" *ngIf="iconClass" [ngClass]="iconClass">
     </i>
     <span *ngIf="!iconClass">
       {{text}}

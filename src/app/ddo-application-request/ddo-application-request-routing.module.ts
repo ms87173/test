@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DdoApplicationRequestComponent } from './components/ddo-application-request/ddo-application-request.component';
-import { DdoApplicationRequestDashboardComponent } from './components/ddo-application-request-dashboard/ddo-application-request-dashboard.component';
-import { DdoApplicationRequestTasksComponent } from './components/ddo-application-request-tasks/ddo-application-request-tasks.component';
-import { DdoApplicationRequestReviewInformationComponent } from './components/ddo-application-request-review-information/ddo-application-request-review-information.component';
+import {
+  DdoApplicationRequestComponent,
+  DdoApplicationRequestDashboardComponent,
+  DdoApplicationRequestTasksComponent,
+  DdoApplicationRequestReviewInformationComponent
+} from './components';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'tasks',
     component: DdoApplicationRequestComponent,
     children: [
       {

@@ -1,12 +1,11 @@
 <div class="ddo-application-request">
   <div class="container-fluid">
-    <div class="row ddo-application-request__page-heading mt-3">
+    <div class="row ddo-application-request__page-heading">
       <h5 class="col-md-10 pt-3 pb-3 heading">
         {{application.title}}
       </h5>
-      <div class="col-md-2 pt-3 pb-3">
-        <a class="cancel-application"
-          href="javascript:void(0)"
+      <div class="col-md-2 pt-3 pb-3 text-align-center">
+        <a href="javascript:void(0)"
           (click)="cancelApplication">
           Cancel Application
         </a>
@@ -36,7 +35,9 @@
                   Application Info
                 </h4>
                 <h6 class="col-md-1 ddo-application-request__card-heading-edit-button">
-                  Edit
+                  <a href="javascript:void(0)">
+                    Edit
+                  </a>
                 </h6>
               </div>
           </div>
@@ -54,7 +55,7 @@
                 Account Holders:
               </span>
               <span>
-                {{application.accountHolders}}
+                {{accountHoldersDescription}}
               </span>
             </div>
             <div class="label-value">
@@ -68,37 +69,9 @@
           </div>
         </div>
       </div>
-      
-      <div class="stepper mt-4">
-        <div class="stepper-steps">
-            <div class="step">
-                <button class="circle" style="margin-left: 15px">
-                  <i class="fa fa-sliders"></i>
-                </button>
-                <span class="step-line"></span>
-            </div>
-            <div class="step">
-                <button class="circle">
-                  <i class="fa fa-sliders"></i>
-                </button>
-                <span class="step-line"></span>
-            </div>
-            <div class="step">
-                <button class="circle" style="margin-right: 15px">
-                  <i class="fa fa-sliders"></i>
-                </button>
-            </div>
-        </div>
-        <div class="stepper-steps-description">
-          <span class="step-description">
-              Update Product Info
-          </span>
-          <span class="step-description">
-            Update Info &amp; Documents
-          </span>
-          <span class="step-description" style="margin-right: 0px">
-            banker
-          </span>
+      <div class="row ddo-application-request__stepper">
+        <div class="col-md-12">
+          <stepper [steps]="stepperSteps" (clickOnStep)="routeToTask($event)"></stepper>
         </div>
       </div>
     </div>

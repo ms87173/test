@@ -62,7 +62,7 @@ export class DdoApplicationRequestComponent {
       .subscribe((workflows: any) => {
         this.workflows$ = workflows && workflows.map((workflow) => new WorkFlowsSideNavModel(workflow));
         if (this.initalRender && workflows && workflows.length > 0) {
-          //TODO: to avoid further dispatching when we re fetch the configuration
+          // TODO: to avoid further dispatching when we re fetch the configuration
           this.store.dispatch(new DeterminePendingTaskOfApplication(workflows));
         }
       });
@@ -77,8 +77,7 @@ export class DdoApplicationRequestComponent {
           this.store.dispatch(
             new RouterGo({
               // path: ['ddo', 'applications', this.application$.id, 'questionnaire'],
-              path: ['ddo', 'applications', this.application$.id, this.currentTaskType]
-
+              path: ['ddo', 'applications', this.application$.id, 'tasks', this.currentTaskType]
             })
           );
         }
@@ -121,7 +120,8 @@ export class DdoApplicationRequestComponent {
         this.store.dispatch(
           new SaveActiveTaskAndExit({
             workflowId: this.currentWorkflowId$,
-            taskId: this.currentTaskId$
+            taskId: this.currentTaskId$,
+            requestId: this.application$.id
           }));
         break;
       case 'next':
@@ -130,21 +130,19 @@ export class DdoApplicationRequestComponent {
           this.store.dispatch(
             new SaveActiveTaskAndNext({
               current: {
-                applicationId: this.application$.id,
+                requestId: this.application$.id,
                 workflowId: this.currentWorkflowId$,
                 taskId: this.currentTaskId$
               },
               workflowId: this.nextWorkflowId$,
               taskId: this.nextTaskId$
             }));
-        }
-        else {
+        } else {
           this.store.dispatch(
             new SetActiveTask({
               workflowId: this.nextWorkflowId$,
               taskId: this.nextTaskId$
             }));
-
         }
 
         break;
@@ -175,7 +173,7 @@ export class DdoApplicationRequestComponent {
           required: false,
         },
       },
-    ]
+    ];
   }
 
   cancelApplication() {
@@ -185,6 +183,6 @@ export class DdoApplicationRequestComponent {
     this.showCancellationForm = false;
   }
   cancelApplicationRequest() {
-    this.store.dispatch(new CancelApplicationRequest(this.model))
+    this.store.dispatch(new CancelApplicationRequest(this.model));
   }
 }

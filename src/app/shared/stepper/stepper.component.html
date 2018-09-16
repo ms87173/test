@@ -2,10 +2,10 @@
     <div class="stepper-steps">
         <step *ngFor="let step of steps; let i = index"
             [config]="step"
-            (stepClick)="stepClicked($event)">
+            (stepClick)="onStepClicked($event)">
         </step>
     </div>
-    <div class="stepper-steps-description mt-1">
+    <div class="stepper-steps-description mt-2">
         <span class="step-description"
             *ngFor="let step of steps; let i = index">
             {{step.name}}

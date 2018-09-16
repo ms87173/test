@@ -49,35 +49,6 @@
                                 "type": "questionnaire"
                             }
                         ]
-                    },
-                    {
-                        "id": "2",
-                        "label": "John Robbins",
-                        "description": "Primary",
-                        "subHeading": "Primary",
-                        "tasks": [
-                            {
-                                "label": "Personal Information",
-                                "description": "This is your primary interest bearing account.",
-                                "id": "12",
-                                "status": "COMPLETED",
-                                "type": "questionnaire"
-                            },
-                            {
-                                "label": "Trusted Contact",
-                                "description": "This is your primary interest bearing account.",
-                                "id": "22",
-                                "status": "IN_PROGRESS",
-                                "type": "questionnaire"
-                            },
-                            {
-                                "label": "Documents",
-                                "description": "This is your primary interest bearing account.",
-                                "id": "32",
-                                "status": "IN_PROGRESS",
-                                "type": "questionnaire"
-                            }
-                        ]
                     }
                 ]
             },
@@ -186,7 +157,7 @@
                         "label": "Review and Submit",
                         "description": "Please fill required information first.",
                         "subHeading": "Please fill required information first.",
-                        "status": "",
+                        "status": "ON_HOLD",
                         "tasks": [
                             {
                                 "label": "Review Application",
@@ -202,6 +173,36 @@
                                 "type": "sign-submit",
                                 "status": "ON_HOLD"
                             }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Clients",
+                "type": "CLIENTS",
+                "workflows": [
+                    {
+                        "id": "5",
+                        "label": "Review and Submit",
+                        "description": "Please fill required information first.",
+                        "subHeading": "Please fill required information first.",
+                        "status": "DISABLED",
+                        "tasks": [
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Banker",
+                "type": "BANKER",
+                "workflows": [
+                    {
+                        "id": "5",
+                        "label": "Review and Submit",
+                        "description": "Please fill required information first.",
+                        "subHeading": "Please fill required information first.",
+                        "status": "DISABLED",
+                        "tasks": [
                         ]
                     }
                 ]

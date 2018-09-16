@@ -1,10 +1,11 @@
-import { Component, Input, EventEmitter, Output, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'step',
   templateUrl: './step.component.html',
   styleUrls: ['./step.component.scss']
 })
+
 export class StepComponent implements OnChanges {
   @Input() config: any;
   @Output() stepClick = new EventEmitter();
@@ -14,13 +15,14 @@ export class StepComponent implements OnChanges {
   lineCssClass: string;
   stepCssClass: string;
   tooltipItems: any;
-  html: string;
+  iconText: string;
 
   constructor() { }
 
   ngOnChanges() {
     if (this.config) {
       this.iconClass = this.config.iconClass;
+      this.iconText = this.config.iconText || '';
       this.showLine = this.config.showLine;
       this.text = this.config.text;
       this.lineCssClass = this.config.lineCssClass || 'solid-black-line';
