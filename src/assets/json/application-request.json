@@ -17,7 +17,7 @@
     "workflowGroups": [
         {
             "name": "Update Product Info",
-            "type": "PRODUCTS_INFO",
+            "type": "PRODUCT_INFO",
             "status": "completed",
             "tasks": [
                 "Interest Checking",
