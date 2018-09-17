@@ -10,6 +10,7 @@ import { ReviewInformationService } from '../../core/services/review-information
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { ReviewInformationResponse } from '../../core';
+import { EXISTING_COMPONENTS } from '../../custom-formly-fields/enums/custom-components.enum';
 
 
 
@@ -23,7 +24,19 @@ export class ApplicationReviewInformationEffects {
                 this.reviewInformationService.getReviewInformationTask(action.payload)
                     .pipe(
                         map(
-                            (reviewInformationTask: ReviewInformationResponse) =>(new GetAllTasksForReviewInformationTaskSuccess(reviewInformationTask))
+                            (reviewInformationTask: ReviewInformationResponse) => {
+                                let reviewinfo = { ...reviewInformationTask };
+                                reviewinfo.workflows.forEach((workflow) => {
+                                    workflow.tasks.forEach((task) => {
+                                        task.sections.forEach((section) => {
+                                            section.questions = section.questions.filter((question) => {
+                                                return EXISTING_COMPONENTS.includes(question.type);
+                                            });
+                                        });
+                                    });
+                                });
+                                return new GetAllTasksForReviewInformationTaskSuccess(reviewInformationTask)
+                            }
                         ),
                         catchError(
                             (err) => of(new GetAllTasksForReviewInformationTaskFailure(err))

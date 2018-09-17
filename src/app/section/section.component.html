@@ -42,26 +42,38 @@
 
     <div class="row mb-4" *ngIf='showEditButton && !editableMode'>
         <div class="col-md-8 col-xs-12 col-lg-8" *ngFor="let question of currSection.questions">
-                <div [ngSwitch]="question.type">
-                        <div *ngSwitchCase="CustomComponentsEnum.CUSTOM_RADIO_BUTTON">
-                          <h6 class="question-label"> {{question?.label}} </h6>
-                          <div class="answers" *ngIf="question?.answers && question?.answers.length > 0">
-                            {{question?.answers[0]?.value == true ? "Yes" :"No"}}
-                          </div>
-                        </div>
-                        <div *ngSwitchCase="CustomComponentsEnum.CUSTOM_CHECKBOX">
-                          <h6 class="question-label"> {{question?.label}} </h6>
-                          <div class="answers" *ngIf="question?.answers && question?.answers.length > 0">
-                            {{question?.answers[0]?.value == true ? "Yes" :"No"}}
-                          </div>
-                        </div>
-                        <div *ngSwitchDefault >
-                          <h6 class="question-label"  > {{question?.label}} </h6>
-                          <div class="answers" *ngIf="question?.answers && question?.answers.length > 0">
-                            {{question?.answers[0]?.value}}
-                          </div>
-                        </div>
-                      </div>
+            <div [ngSwitch]="question.type">
+                <div *ngSwitchCase="CustomComponentsEnum.CUSTOM_RADIO_BUTTON">
+                    <h6 class="question-label"> {{question?.label}} </h6>
+                    <div class="answers" *ngIf="question?.answers && question?.answers.length > 0">
+                        {{question?.answers[0]?.value == true ? "Yes" :"No"}}
+                    </div>
+                </div>
+                <div *ngSwitchCase="CustomComponentsEnum.CUSTOM_CHECKBOX">
+                    <h6 class="question-label"> {{question?.label}} </h6>
+                    <div class="answers" *ngIf="question?.answers && question?.answers.length > 0">
+                        {{question?.answers[0]?.value == true ? "Yes" :"No"}}
+                    </div>
+                </div>
+                <div *ngSwitchCase="CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS">
+                    <!-- <h6 class="question-label"> {{question?.label}} </h6>
+                    <div class="answers" *ngIf="question?.answers && question?.answers.length > 0">
+                        {{question?.answers[0]?.value == true ? "Yes" :"No"}}
+                    </div> -->
+                </div>
+                <div *ngSwitchCase="CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD">
+                    <!-- <h6 class="question-label"> {{question?.label}} </h6>
+                    <div class="answers" *ngIf="question?.answers && question?.answers.length > 0">
+                        {{question?.answers[0]?.value == true ? "Yes" :"No"}}
+                    </div> -->
+                </div>
+                <div *ngSwitchDefault>
+                    <h6 class="question-label"> {{question?.label}} </h6>
+                    <div class="answers" *ngIf="question?.answers && question?.answers.length > 0">
+                        {{question?.answers[0]?.value}}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

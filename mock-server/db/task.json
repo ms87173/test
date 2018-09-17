@@ -14,11 +14,11 @@
                     "id": "section1",
                     "title": "Trusted Contact",
                     "editableMode": false,
-                    "questions": [                        
+                    "questions": [
                         {
-                            "id": "docUploader",
-                            "label": "Doc uploader?",
-                            "type": "custom-address-fields",
+                            "id": "Datepicker",
+                            "label": "Date Picker",
+                            "type": "custom-datepicker",
                             "required": "true",
                             "readOnly": false,
                             "recurrent": false,
@@ -35,20 +35,44 @@
                             ],
                             "tooltipText": "<string>",
                             "answers": [
-                               {
-                                   "value":{
-                                       "expireDate":"16-10-2019",
-                                       "idNumber":"1",
-                                       "idCountry":"India",
-                                       "document":{
-                                           "documentID": 37971,
-                                           "fileName": "upload-test.jpg"
-                                       }
-                                   }
-                               }
+                                {
+                                    "value": "09/05/2018"
+                                }
                             ]
+                        },
+                        {
+                            "id": "docUploader",
+                            "label": "Doc uploader",
+                            "type": "custom-document-upload",
+                            "required": "true",
+                            "readOnly": false,
+                            "recurrent": false,
+                            "placeHolder": "Interest Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": true
+                                },
+                                {
+                                    "label": "No",
+                                    "value": false
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "answers": [
+                                {
+                                    "value":{
+                                        "expireDate":"16-10-2019",
+                                        "idNumber":"1",
+                                        "idCountry":"India",
+                                        "document":{
+                                            "documentID": 37971,
+                                            "fileName": "upload-test.jpg"
+                                        }
+                                    }
+                                }
+                             ]
                         }
-                       
                     ]
                 },
                 {
@@ -81,10 +105,8 @@
                                 }
                             ]
                         }
-                       
                     ]
                 }
-                
             ]
         },
         {
@@ -99,7 +121,6 @@
             "sections": [
                 {
                     "id": "section2",
-
                     "title": "Documents",
                     "editableMode": false,
                     "questions": [
@@ -186,7 +207,6 @@
             "sections": [
                 {
                     "id": "section3",
-
                     "title": "Personal Information",
                     "editableMode": false,
                     "questions": [
