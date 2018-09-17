@@ -12,6 +12,7 @@ import { DdoApplicationRequestReviewInformationWorkflowComponent } from './compo
 import { DdoApplicationRequestReviewInformationTaskComponent } from './components/ddo-application-request-review-information-task/ddo-application-request-review-information-task.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
+import { DdoApplicationRequestHeaderComponent } from './components/ddo-application-request-header/ddo-application-request-header.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -28,7 +29,8 @@ import { FormlyModule } from '@ngx-formly/core';
     DdoApplicationRequestTasksComponent,
     DdoApplicationRequestReviewInformationComponent,
     DdoApplicationRequestReviewInformationWorkflowComponent,
-    DdoApplicationRequestReviewInformationTaskComponent
+    DdoApplicationRequestReviewInformationTaskComponent,
+    DdoApplicationRequestHeaderComponent
   ]
 })
 export class DdoApplicationRequestModule { }
