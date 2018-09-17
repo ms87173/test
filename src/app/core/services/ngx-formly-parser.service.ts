@@ -19,6 +19,7 @@ import { PhoneFieldConfig } from '../../custom-formly-fields/formly-configs/phon
 import { AddressFieldsFieldArray } from '../../custom-formly-fields/formly-configs/address-fields-field-array';
 import { documentFieldArray } from '../../custom-formly-fields/formly-configs/document-field-array';
 import { DynamicOptionsService } from './dynamic-options.service';
+import { CustomTestFieldArray } from '../../custom-formly-fields/formly-configs/custom-test-field-array';
 
 @Injectable()
 export class NgxFormlyParserService {
@@ -97,6 +98,10 @@ export class NgxFormlyParserService {
     const field: FormlyFieldConfig = { ...formlyField };
 
     switch (field.type) {
+      case CustomComponentsEnum.CUSTOM_TEST:
+        field.fieldArray = { ...CustomTestFieldArray };
+        break;
+
       case CustomComponentsEnum.CUSTOM_EMAIL:
         field.fieldArray = { ...emailFieldArray };
         break;

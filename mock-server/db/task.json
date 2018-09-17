@@ -14,36 +14,11 @@
                     "id": "section1",
                     "title": "Trusted Contact",
                     "editableMode": false,
-                    "questions": [
+                    "questions": [                        
                         {
-                            "id": "InterestCheckingCheckBox",
-                            "label": "Would you like to earn interest this account?",
-                            "type": "custom-textbox",
-                            "required": "true",
-                            "readOnly": "false",
-                            "recurrent": false,
-                            "placeHolder": "Interest Account",
-                            "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": true
-                                },
-                                {
-                                    "label": "No",
-                                    "value": false
-                                }
-                            ],
-                            "tooltipText": "<string>",
-                            "answers": [
-                                {
-                                    "value": "tinsu Sasi"
-                                }
-                            ]
-                        },
-                        {
-                            "id": "InterestCheckingCheckBox",
+                            "id": "docUploader",
                             "label": "Doc uploader?",
-                            "type": "custom-document-upload",
+                            "type": "custom-address-fields",
                             "required": "true",
                             "readOnly": false,
                             "recurrent": false,
