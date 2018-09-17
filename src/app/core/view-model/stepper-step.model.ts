@@ -50,6 +50,7 @@ export class StepViewModel implements Step {
         this.disabled = statusMapping.disabled;
         this.stepCssClass = statusMapping.stepCssClass;
         this.lineCssClass = statusMapping.lineCssClass;
+        this.statusIconClass = statusMapping.statusIconClass;
         this.descriptionCssClass = statusMapping.descriptionCssClass;
         this.tooltipItems = this.determineTooltipItems(data.workflows);
         this.showTooltip = data.workflows && data.workflows.length > 0;
@@ -73,20 +74,21 @@ export class StepViewModel implements Step {
     determineTooltipItems(workflows: Array<any>) {
         const arr = [];
         workflows.forEach(workflow => {
-            workflow.tasks.forEach(task => arr.push(task.label));
+            workflow.tasks && workflow.tasks.forEach(task => arr.push(task.label));
         });
         return arr;
     }
     determineRoutingInformation(workflows: Array<any>, status) {
         switch (status) {
             case TASK_STATUSES.completed: return {
-                workflowId: workflows[0].id,
-                taskId: workflows[0].tasks[0].id
+                workflowId: (workflows[0] && workflows[0].id) || '',
+                taskId: (workflows[0] && workflows[0].tasks[0] && workflows[0].tasks[0].id) || ''
             };
             case TASK_STATUSES.inProgress:
                 let i = 0, task = { id: '' };
                 while (i < workflows.length) {
                     task = workflows[i] &&
+                        workflows[i].tasks &&
                         workflows[i].tasks.find(e => e.status === TASK_STATUSES.inProgress);
                     if (task) {
                         break;
@@ -94,16 +96,16 @@ export class StepViewModel implements Step {
                         i++;
                     }
                 }
-                const workflowId = workflows[i].id;
-                const taskId = task.id;
+                const workflowId = (workflows[i] && workflows[i].id) || '';
+                const taskId = (task && task.id) || '';
                 return {
                     workflowId,
                     taskId
                 };
             case TASK_STATUSES.onHold:
                 return {
-                    workflowId: workflows[0].id,
-                    taskId: workflows[0] && workflows[0].tasks[0].id
+                    workflowId: (workflows[0] && workflows[0].id) || '',
+                    taskId: (workflows[0] && workflows[0].tasks[0] && workflows[0].tasks[0].id) || ''
                 };
             case TASK_STATUSES.disabled:
             default: return {

@@ -1,5 +1,5 @@
 export const GROUP_TYPE_ICON_CLASS = {
-  PRODUCTS_INFO: 'fa-sliders',
+  PRODUCT_INFO: 'fa-sliders',
   APPLICANTS_INFO: 'fa-pencil',
   REVIEW_SUBMIT: 'fa-file-text-o',
   CLIENTS: 'fa-user',
@@ -16,7 +16,7 @@ export const STATUS_STEPPER_MAPPING = {
   COMPLETED: {
     disabled: false,
     statusIconClass: 'fa-check',
-    stepCssClass: 'step-circle--active',
+    stepCssClass: '',
     lineCssClass: 'solid-black-line',
     descriptionCssClass: 'step-description--active'
   },

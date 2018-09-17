@@ -8,7 +8,6 @@
     <div class="stepper-steps-description mt-2">
         <span class="step-description"
             placement="bottom"
-            triggers="click"
             container="body"
             [ngClass]="step.descriptionCssClass"
             containerClass="stepper-step-tooltip"
@@ -16,7 +15,7 @@
             *ngFor="let step of steps; let i = index">
             {{step.name}}
             <i *ngIf="step.statusIconClass"
-                class="status-description-icon fa"
+                class="step-description-status-icon fa"
                 [ngClass]="step.statusIconClass">
             </i>
             <ng-template #tooltipTemplate>
