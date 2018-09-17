@@ -19,7 +19,8 @@
       placement = "{{to.datepickerOptions && to.datepickerOptions.placement ? to.datepickerOptions.placement : 'bottom'}}"
       showWeekNumbers="false"
       [isOpen]='to.datepickerOptions && to.datepickerOptions.show'
-      [bsValue]= 'to.datepickerOptions && to.datepickerOptions.initialState'>
+      [bsValue]= 'to.datepickerOptions && to.datepickerOptions.initialState'
+      [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }">
     <div class="input-group-append">
       <div class="input-group-text">
         <i class="fa fa-calendar-o" aria-hidden="true" (click)="dp.toggle()"></i>
