@@ -29,6 +29,7 @@ import { FormlySelectOptionsPipe } from './pipes/select-options.pipe';
 // import { DetailsUploadComponent } from './components/upload/details-upload/details-upload.component';
 import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { CustomTestComponent } from './components/custom-test/custom-test.component';
 
 
 @NgModule({
@@ -43,7 +44,9 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     NgbModule.forRoot(),
     FormlyModule.forRoot({
       validationMessages: [
-        { name: 'server-error', message: (err) => err }
+        // { name: 'server-error', message: (err) => err }
+        { name: 'server-error', message: errorMessage }
+
       ],
       types: [
         { name: CustomComponentsEnum.CUSTOM_DROPDOWN, component: DropdownComponent },
@@ -57,6 +60,8 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
         { name: CustomComponentsEnum.CUSTOM_CHECKBOX, component: CheckboxComponent },
         { name: CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD, component: DocumentUploadComponent },
         { name: CustomComponentsEnum.CUSTOM_UPLOAD, component: UploadFileComponent },
+        { name: CustomComponentsEnum.CUSTOM_TEST, component: CustomTestComponent },
+
       ]
     }),
     FormlyBootstrapModule,
@@ -78,6 +83,7 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     AddressFieldsComponent,
     EmailComponent,
     FormlySelectOptionsPipe,
+    CustomTestComponent,
     // FormUploadComponent,
     // DetailsUploadComponent,
   ],
@@ -98,4 +104,11 @@ import { UploadFileComponent } from './components/upload-file/upload-file.compon
     FormlySelectOptionsPipe
   ]
 })
-export class CustomFormlyFieldsModule { }
+export class CustomFormlyFieldsModule {
+
+ }
+
+ export function errorMessage(errorMessage: string)
+ {
+   return errorMessage;
+ }
