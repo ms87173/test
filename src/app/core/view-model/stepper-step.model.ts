@@ -74,7 +74,7 @@ export class StepViewModel implements Step {
     determineTooltipItems(workflows: Array<any>) {
         const arr = [];
         workflows.forEach(workflow => {
-            workflow.tasks.forEach(task => arr.push(task.label));
+            workflow.tasks && workflow.tasks.forEach(task => arr.push(task.label));
         });
         return arr;
     }
