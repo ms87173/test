@@ -16,7 +16,7 @@
       bsDatepicker #dp="bsDatepicker"
       [minDate]="to.datepickerOptions && to.datepickerOptions.minDate"
       [maxDate]="to.datepickerOptions && to.datepickerOptions.maxDate"
-      placement = "{{to.datepickerOptions && to.datepickerOptions.placement}}"
+      placement = "{{to.datepickerOptions && to.datepickerOptions.placement ? to.datepickerOptions.placement : 'bottom'}}"
       showWeekNumbers="false"
       [isOpen]='to.datepickerOptions && to.datepickerOptions.show'
       [bsValue]= 'to.datepickerOptions && to.datepickerOptions.initialState'>

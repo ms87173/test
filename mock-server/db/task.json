@@ -16,11 +16,11 @@
                     "editableMode": false,
                     "questions": [
                         {
-                            "id": "InterestCheckingCheckBox",
-                            "label": "Would you like to earn interest this account?",
-                            "type": "custom-textbox",
+                            "id": "Datepicker",
+                            "label": "Date Picker",
+                            "type": "custom-datepicker",
                             "required": "true",
-                            "readOnly": "false",
+                            "readOnly": false,
                             "recurrent": false,
                             "placeHolder": "Interest Account",
                             "options": [
@@ -36,13 +36,13 @@
                             "tooltipText": "<string>",
                             "answers": [
                                 {
-                                    "value": "tinsu Sasi"
+                                    "value": "09/05/2018"
                                 }
                             ]
                         },
                         {
-                            "id": "InterestCheckingCheckBox",
-                            "label": "Doc uploader?",
+                            "id": "docUploader",
+                            "label": "Doc uploader",
                             "type": "custom-document-upload",
                             "required": "true",
                             "readOnly": false,
@@ -60,20 +60,19 @@
                             ],
                             "tooltipText": "<string>",
                             "answers": [
-                               {
-                                   "value":{
-                                       "expireDate":"16-10-2019",
-                                       "idNumber":"1",
-                                       "idCountry":"India",
-                                       "document":{
-                                           "documentID": 37971,
-                                           "fileName": "upload-test.jpg"
-                                       }
-                                   }
-                               }
-                            ]
+                                {
+                                    "value":{
+                                        "expireDate":"16-10-2019",
+                                        "idNumber":"1",
+                                        "idCountry":"India",
+                                        "document":{
+                                            "documentID": 37971,
+                                            "fileName": "upload-test.jpg"
+                                        }
+                                    }
+                                }
+                             ]
                         }
-                       
                     ]
                 },
                 {
@@ -106,10 +105,8 @@
                                 }
                             ]
                         }
-                       
                     ]
                 }
-                
             ]
         },{
             "id": 11,
@@ -235,7 +232,6 @@
             "sections": [
                 {
                     "id": "section2",
-
                     "title": "Documents",
                     "editableMode": false,
                     "questions": [
@@ -322,7 +318,6 @@
             "sections": [
                 {
                     "id": "section3",
-
                     "title": "Personal Information",
                     "editableMode": false,
                     "questions": [

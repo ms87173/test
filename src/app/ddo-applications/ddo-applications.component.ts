@@ -232,8 +232,9 @@ export class DdoApplicationsComponent implements OnInit {
       case ACTION_TYPES.sort:
         if (this.isFilteredData) {
           this.store.dispatch(new SortApplications({ data: this.filteredData, params: payload.params }));
+        } else {
+          this.store.dispatch(new SortApplications({ data: this.applicationsData, params: payload.params }));
         }
-        this.store.dispatch(new SortApplications({ data: this.applicationsData, params: payload.params }));
         break;
       case ACTION_TYPES.continueNow:
         this.store.dispatch(
