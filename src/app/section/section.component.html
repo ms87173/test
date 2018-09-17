@@ -55,6 +55,12 @@
                         {{question?.answers[0]?.value == true ? "Yes" :"No"}}
                     </div>
                 </div>
+                <div *ngSwitchCase="CustomComponentsEnum.CUSTOM_DATEPICKER">
+                    <h6 class="question-label"> {{question?.label}} </h6>
+                    <div class="answers" *ngIf="question?.answers && question?.answers.length > 0">
+                        {{question?.answers[0]?.value.toString().substring(0,10)}}
+                    </div>
+                </div>
                 <div *ngSwitchCase="CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS">
                     <!-- <h6 class="question-label"> {{question?.label}} </h6>
                     <div class="answers" *ngIf="question?.answers && question?.answers.length > 0">
