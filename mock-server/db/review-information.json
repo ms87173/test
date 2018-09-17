@@ -78,6 +78,39 @@
                                         "readOnly": "false",
                                         "recurrent": false,
                                         "answers": []
+                                    },
+                                    {
+                                        "id": "docUploader",
+                                        "label": "Doc uploader",
+                                        "type": "custom-document-upload",
+                                        "required": "true",
+                                        "readOnly": false,
+                                        "recurrent": false,
+                                        "placeHolder": "Interest Account",
+                                        "options": [
+                                            {
+                                                "label": "Yes",
+                                                "value": true
+                                            },
+                                            {
+                                                "label": "No",
+                                                "value": false
+                                            }
+                                        ],
+                                        "tooltipText": "<string>",
+                                        "answers": [
+                                            {
+                                                "value": {
+                                                    "expireDate": "16-10-2019",
+                                                    "idNumber": "1",
+                                                    "idCountry": "India",
+                                                    "document": {
+                                                        "documentID": 37971,
+                                                        "fileName": "upload-test.jpg"
+                                                    }
+                                                }
+                                            }
+                                        ]
                                     }
                                 ]
                             },

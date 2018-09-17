@@ -21,7 +21,7 @@ export const InitialState: ApplicationState = {
         products: [],
         priorityAction: '',
         accountHolders: '',
-        workflowsGroups: []
+        workflowGroups: []
     },
     loaded: false,
     loading: false
