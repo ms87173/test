@@ -48,7 +48,7 @@ export class DdoApplicationRequestDashboardComponent {
         this.titleValue = this.application.title;
         this.productsDescription = this.application.products.join(', ');
         this.accountHoldersDescription = showcaseArrayElements(this.application.accountHolders);
-        const workflowGroups = [ ...this.application.workflowsGroups ];
+        const workflowGroups = [ ...this.application.workflowGroups ];
         this.stepperSteps = workflowGroups.map((group, index) => {
           const showLine = index > 0;
           return new StepViewModel({ ...group, showLine });

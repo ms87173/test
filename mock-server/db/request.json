@@ -23,7 +23,7 @@
             "Jane Robbins",
             "Susan Sarandon"
         ],
-        "workflowsGroups":  [
+        "workflowGroups":  [
             {   
                 "name": "Update Product Info",
                 "type": "PRODUCTS_INFO",
