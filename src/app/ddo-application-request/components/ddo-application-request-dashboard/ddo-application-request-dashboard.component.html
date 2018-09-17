@@ -1,16 +1,6 @@
 <div class="ddo-application-request">
   <div class="container-fluid">
-    <div class="row ddo-application-request__page-heading">
-      <h5 class="col-md-10 pt-3 pb-3 heading">
-        {{application.title}}
-      </h5>
-      <div class="col-md-2 pt-3 pb-3 text-align-center">
-        <a href="javascript:void(0)"
-          (click)="cancelApplication()">
-          Cancel Application
-        </a>
-      </div>
-    </div>
+    <ddo-application-request-header></ddo-application-request-header>
     <div class="row">
       <div class="col-md-12 ddo-application-request__content">
         <h4 class="ddo-application-request__content-heading">
@@ -30,18 +20,16 @@
       <div class="row">
         <div class="card col-md-12">
           <div class="card-header">
-              <div class="row ddo-application-request__card-heading">
-                <h4 class="col-md-11 ddo-application-request__card-heading-description">
-                  Application Info
-                </h4>
-                <h6 class="col-md-1 ddo-application-request__card-heading-edit-button">
-                  <a href="javascript:void(0)"
-                    *ngIf="!showTitleEditable"
-                    (click)="editTitle()">
-                    Edit
-                  </a>
-                </h6>
-              </div>
+            <div class="row ddo-application-request__card-heading">
+              <h4 class="col-md-11 ddo-application-request__card-heading-description">
+                Application Info
+              </h4>
+              <h6 class="col-md-1 ddo-application-request__card-heading-edit-button">
+                <a href="javascript:void(0)" *ngIf="!showTitleEditable" (click)="editTitle()">
+                  Edit
+                </a>
+              </h6>
+            </div>
           </div>
           <div class="card-body">
             <div class="label-value">

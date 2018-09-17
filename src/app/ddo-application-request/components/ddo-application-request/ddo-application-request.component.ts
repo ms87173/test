@@ -38,10 +38,6 @@ export class DdoApplicationRequestComponent {
   applicationHeading: any;
   contactPersonDetails$: any;
   initalRender = true;
-  form = new FormGroup({});
-  model: any = {};
-  options: FormlyFormOptions = {};
-  fields: Array<any>;
   showCancellationForm: boolean;
   constructor(
     private store: Store<fromRootReducers.AppState>,
@@ -94,7 +90,6 @@ export class DdoApplicationRequestComponent {
         this.previousWorkflowId$ = previousTaskData.workflowId;
       }
       );
-    this.fields = this.getCancelApplicationFormFields();
   }
 
   onSideNavClick({ parentId, childId }) {
@@ -150,39 +145,5 @@ export class DdoApplicationRequestComponent {
         console.log(action);
     }
   }
-  getCancelApplicationFormFields() {
-    return [
-      {
-        key: 'reason',
-        type: 'custom-dropdown',
-        templateOptions: {
-          label: 'Please select the reason for cancellation',
-          hideRequiredMarker: true,
-          required: true,
-          options: CANCELLATION_REASONS
-        },
-      },
-      {
-        key: 'comments',
-        type: 'textarea',
-        hideExpression: (model) => this.model.reason !== 'other',
-        templateOptions: {
-          label: 'Additional Comments',
-          rows: 3,
-          cols: 15,
-          required: false,
-        },
-      },
-    ];
-  }
-
-  cancelApplication() {
-    this.showCancellationForm = true;
-  }
-  hideCancelAppicationForm() {
-    this.showCancellationForm = false;
-  }
-  cancelApplicationRequest() {
-    this.store.dispatch(new CancelApplicationRequest(this.model));
-  }
+  
 }

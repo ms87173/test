@@ -1,38 +1,5 @@
 <div class="container-fluid ddo-application-request">
-    <div class="row ddo-application-request__page-heading mt-3">
-        <div class="col-md-10  pt-3 pb-3">
-            <h5 class="heading">{{application$.title}}</h5>
-        </div>
-        <div class="col-md-2 pt-3 pb-3">
-            <a class="btn btn-link btn-link--primary" (click)="cancelApplication()">Cancel Application</a>
-        </div>
-    </div>
-    <div class="row ddo-application-request__cancel-form" *ngIf='showCancellationForm'>
-        <div class="col-sm-12 pt-3">
-            <div class="row">
-                <div class="col-sm-10">
-                    <h6 class="cancel-heading">
-                        Cancel Application
-                    </h6>
-                </div>
-                <div class="col-sm-2">
-                    <i class="fa fa-times cancel--icon float-right" (click)='hideCancelAppicationForm()'></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 pb-3">
-            <form class="ddo-applications__filter" [formGroup]="form">
-                <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form">
-                </formly-form>
-            </form>
-        </div>
-        <div class="col-sm-12 pb-3">
-            <div class="float-right">
-                <a class="btn btn-link btn--small" (click)='hideCancelAppicationForm()'>Don't cancel</a>
-                <button class="btn btn-primary btn--small" [disabled]="!form.valid" (click)='cancelApplicationRequest()'>Cancel application</button>
-            </div>
-        </div>
-    </div>
+    <ddo-application-request-header></ddo-application-request-header>
     <div class="row">
         <div class="col-sm-3 pl-0 pr-0">
             <app-side-nav [config]='workflows$' [(selectedParentId)]='currentWorkflowId$' [(selectedChildId)]='currentTaskId$'

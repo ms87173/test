@@ -1,0 +1,31 @@
+.ddo-application-request-header {
+    &__page-heading {
+        border: 1px solid #e8ecf1;
+        background-color: white;
+    }
+    .cancel-application {
+        top: 25%;
+        position: absolute;
+    }
+    &__form{
+        position: absolute;
+        top: 240px;
+        right: 80px;
+        z-index: 10000;
+        background: #ffffff;
+        box-shadow: 0 0 3px 0px black;
+        max-width: 300px;
+        max-height: 350px;
+        .btn--small {
+            font-size: 11px;
+        }
+        .heading { 
+            font-size: 14px;
+        }
+        .cancel--icon {
+            -webkit-text-stroke: 2px white;
+            color: grey;
+            cursor: pointer;
+        }
+    }
+}
