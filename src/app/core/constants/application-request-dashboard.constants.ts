@@ -16,7 +16,7 @@ export const STATUS_STEPPER_MAPPING = {
   COMPLETED: {
     disabled: false,
     statusIconClass: 'fa-check',
-    stepCssClass: 'step-circle--active',
+    stepCssClass: '',
     lineCssClass: 'solid-black-line',
     descriptionCssClass: 'step-description--active'
   },

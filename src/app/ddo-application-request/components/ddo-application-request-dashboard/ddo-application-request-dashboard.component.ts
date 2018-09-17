@@ -4,6 +4,8 @@ import { fromRootReducers, fromRootSelectors } from '../../../store';
 import { ContactDetailsModel } from '../../../core/models/contact-detail.model';
 import { showcaseArrayElements } from '../../../core/utilities/array.utility';
 import { Step, StepViewModel } from '../../../core/view-model/stepper-step.model';
+import { SetActiveTask } from '../../../store/actions/workflows.action';
+import { RouterGo } from '../../../store/actions/router.actions';
 
 @Component({
   selector: 'ddo-application-request-dashboard',
@@ -20,6 +22,25 @@ export class DdoApplicationRequestDashboardComponent {
   showTitleEditable: boolean;
   titleValue: string;
   constructor(private store: Store<fromRootReducers.AppState>) {
+    this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationActiveTask)
+      .subscribe((activeTaskData: any) => {
+        const currentTaskId = activeTaskData.task.id;
+        const currentWorkflowId = activeTaskData.workflowId;
+        const currentTaskType = activeTaskData.task.type;
+        // this.initalRender = !(this.currentTaskId$ && this.currentWorkflowId$);
+        if (
+          currentTaskId &&
+          currentWorkflowId &&
+          currentTaskType &&
+          this.application.id
+        ) {
+          this.store.dispatch(
+            new RouterGo({
+              path: ['ddo', 'applications', this.application.id, 'tasks']
+            })
+          );
+        }
+      });
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaiton)
       .subscribe((application: any) => {
         this.showTitleEditable = false;
@@ -30,7 +51,7 @@ export class DdoApplicationRequestDashboardComponent {
         const workflowGroups = [ ...this.application.workflowsGroups ];
         this.stepperSteps = workflowGroups.map((group, index) => {
           const showLine = index > 0;
-          return new StepViewModel({ ...group, showLine});
+          return new StepViewModel({ ...group, showLine });
         });
       });
     this.store.select(fromRootSelectors.userSelectors.getUserContactPerson)
@@ -47,6 +68,12 @@ export class DdoApplicationRequestDashboardComponent {
   }
   routeToTask(item) {
     console.log(item.routingInformation);
+    this.store.dispatch(
+      new SetActiveTask({
+        workflowId: item.routingInformation.workflowId,
+        taskId: item.routingInformation.taskId
+      })
+    );
   }
   editTitle() {
     this.showTitleEditable = true;

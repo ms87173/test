@@ -50,6 +50,7 @@ export class StepViewModel implements Step {
         this.disabled = statusMapping.disabled;
         this.stepCssClass = statusMapping.stepCssClass;
         this.lineCssClass = statusMapping.lineCssClass;
+        this.statusIconClass = statusMapping.statusIconClass;
         this.descriptionCssClass = statusMapping.descriptionCssClass;
         this.tooltipItems = this.determineTooltipItems(data.workflows);
         this.showTooltip = data.workflows && data.workflows.length > 0;

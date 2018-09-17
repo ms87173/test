@@ -15,6 +15,7 @@ import { FormlyFormOptions } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
 import { CancelApplicationRequest } from '../../../store/actions/application.actions';
 import { ResetOpenSections } from '../../../store/actions/questionnaire.actions';
+
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'ddo-application-request',
@@ -37,7 +38,7 @@ export class DdoApplicationRequestComponent {
   lastTaskId$: string;
   applicationHeading: any;
   contactPersonDetails$: any;
-  initalRender = true;
+  // initalRender = true;
   form = new FormGroup({});
   model: any = {};
   options: FormlyFormOptions = {};
@@ -58,30 +59,31 @@ export class DdoApplicationRequestComponent {
         this.contactPersonDetails$ = new ContactDetailsModel(contactDetail);
       });
 
-    this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationWorkflows)
-      .subscribe((workflows: any) => {
-        this.workflows$ = workflows && workflows.map((workflow) => new WorkFlowsSideNavModel(workflow));
-        if (this.initalRender && workflows && workflows.length > 0) {
-          // TODO: to avoid further dispatching when we re fetch the configuration
-          this.store.dispatch(new DeterminePendingTaskOfApplication(workflows));
-        }
-      });
-
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationActiveTask)
       .subscribe((activeTaskData: any) => {
         this.currentTaskId$ = activeTaskData.task.id;
         this.currentWorkflowId$ = activeTaskData.workflowId;
         this.currentTaskType = activeTaskData.task.type;
-        this.initalRender = !(this.currentTaskId$ && this.currentWorkflowId$);
+        // this.initalRender = !(this.currentTaskId$ && this.currentWorkflowId$);
         if (this.currentTaskId$ && this.currentTaskType && this.application$.id) {
           this.store.dispatch(
             new RouterGo({
-              // path: ['ddo', 'applications', this.application$.id, 'questionnaire'],
               path: ['ddo', 'applications', this.application$.id, 'tasks', this.currentTaskType]
             })
           );
         }
       });
+    this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationWorkflows)
+      .subscribe((workflows: any) => {
+        this.workflows$ = workflows && workflows.map((workflow) => new WorkFlowsSideNavModel(workflow));
+        // if (this.initalRender && workflows && workflows.length > 0 && !this.currentTaskId$) {
+        if (workflows && workflows.length > 0 && !this.currentTaskId$) {
+          // TODO: to avoid further dispatching when we re fetch the configuration
+          // TODO: Refactor this to avoid taskId in URL.
+          this.store.dispatch(new DeterminePendingTaskOfApplication(workflows));
+        }
+      });
+
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationNextTask)
       .subscribe((nextTaskData: any) => {
         this.nextTaskId$ = nextTaskData.task.id;

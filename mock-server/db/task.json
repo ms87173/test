@@ -111,6 +111,117 @@
                 }
                 
             ]
+        },{
+            "id": 11,
+            "taskId": 11,
+            "workflowName": "John Robbins",
+            "workflowDescription": "This is the information we have on you.",
+            "label": "John Robbins",
+            "description": "This is the information we have on you.",
+            "status": "InProgress",
+            "showEdit": true,
+            "sections": [
+                {
+                    "id": "section1",
+                    "title": "Trusted Contact",
+                    "editableMode": false,
+                    "questions": [
+                        {
+                            "id": "InterestCheckingCheckBox",
+                            "label": "Would you like to earn interest this account?",
+                            "type": "custom-textbox",
+                            "required": "true",
+                            "readOnly": "false",
+                            "recurrent": false,
+                            "placeHolder": "Interest Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": true
+                                },
+                                {
+                                    "label": "No",
+                                    "value": false
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "answers": [
+                                {
+                                    "value": "tinsu Sasi"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "InterestCheckingCheckBox",
+                            "label": "Doc uploader?",
+                            "type": "custom-document-upload",
+                            "required": "true",
+                            "readOnly": false,
+                            "recurrent": false,
+                            "placeHolder": "Interest Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": true
+                                },
+                                {
+                                    "label": "No",
+                                    "value": false
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "answers": [
+                               {
+                                   "value":{
+                                       "expireDate":"16-10-2019",
+                                       "idNumber":"1",
+                                       "idCountry":"India",
+                                       "document":{
+                                           "documentID": 37971,
+                                           "fileName": "upload-test.jpg"
+                                       }
+                                   }
+                               }
+                            ]
+                        }
+                       
+                    ]
+                },
+                {
+                    "id": "section2",
+                    "title": "Personal Info",
+                    "editableMode": false,
+                    "questions": [
+                        {
+                            "id": "PersonalInfoTextBox",
+                            "label": "What is your age?",
+                            "type": "custom-textbox",
+                            "required": "true",
+                            "readOnly": "false",
+                            "recurrent": false,
+                            "placeHolder": "Interest Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": true
+                                },
+                                {
+                                    "label": "No",
+                                    "value": false
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "answers": [
+                                {
+                                    "value": "Age"
+                                }
+                            ]
+                        }
+                       
+                    ]
+                }
+                
+            ]
         },
         {
             "id": 32,
