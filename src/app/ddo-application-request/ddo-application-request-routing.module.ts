@@ -6,6 +6,7 @@ import {
   DdoApplicationRequestTasksComponent,
   DdoApplicationRequestReviewInformationComponent
 } from './components';
+import { DdoApplicationRequestSignAndSubmitComponent } from './components/ddo-application-request-sign-and-submit/ddo-application-request-sign-and-submit.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
       {
         path: 'review-application',
         component: DdoApplicationRequestReviewInformationComponent
+      },
+      {
+        path: 'sign-submit',
+        component: DdoApplicationRequestSignAndSubmitComponent
       }
     ]
   },

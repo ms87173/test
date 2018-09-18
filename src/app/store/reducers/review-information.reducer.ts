@@ -15,10 +15,18 @@ export function reducer(
     switch (action.type) {
         case ActionTypes.GET_ALL_TASKS_FOR_REVIEW_INFORMATION_TASK_SUCCESS:
 
-        return{
-            ...state,
-            reviewInformationTask:action.payload
-        }
+            return {
+                ...state,
+                reviewInformationTask: action.payload
+            }
+        case ActionTypes.GET_ALL_TASKS_FOR_REVIEW_INFORMATION_TASK_FAIL:
+
+            return {
+                ...state
+            }
+
+        default:
+            return state;
     }
 
 }

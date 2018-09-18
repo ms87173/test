@@ -4,10 +4,10 @@ import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions, 
 import { FieldArrayType, FormlyFormBuilder } from '@ngx-formly/core';
 import { ApiService } from '../../../core';
 import { environment } from '../../../../environments/environment';
-import { Observable, BehaviorSubject } from '../../../../../node_modules/rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
-import { ResponseContentType } from '../../../../../node_modules/@angular/http';
-import { HttpClient } from '../../../../../node_modules/@angular/common/http';
+import { ResponseContentType } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({

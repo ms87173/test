@@ -10,7 +10,8 @@ export const TASK_STATUSES = {
 };
 export const TASK_TYPES = {
     QUESTION: 'questionnaire',
-    REVIEW_INFORMATION: 'review-application'
+    REVIEW_INFORMATION: 'review-application',
+    SIGN_AND_SUMBIT: 'sign-submit'
 };
 
 export const QUESTIONS_TYPE = {

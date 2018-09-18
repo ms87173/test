@@ -20,13 +20,14 @@ import { AddressFieldsFieldArray } from '../../custom-formly-fields/formly-confi
 import { documentFieldArray } from '../../custom-formly-fields/formly-configs/document-field-array';
 import { DynamicOptionsService } from './dynamic-options.service';
 import { CustomTestFieldArray } from '../../custom-formly-fields/formly-configs/custom-test-field-array';
+import { TASK_TYPES } from '../constants/application-request.constants';
 
 @Injectable()
 export class NgxFormlyParserService {
   public currentQuestionId: string = null;
   public fieldChangeObj = null;
   getFormlyFieldConfigArrayCollectionFromTask(currentTask: Task, currentQuestionId: string,
-    requestId: string, workflowId: string, taskId: string): Observable<FormlyFieldConfigArrayCollection[]> {
+    requestId: string, workflowId: string, taskId: string, taskType: string = TASK_TYPES.QUESTION): Observable<FormlyFieldConfigArrayCollection[]> {
     const formlyFieldConfigArrayCollections: FormlyFieldConfigArrayCollection[] = [];
     const currTask = { ...currentTask };
     currTask.sections.map((section: Section) => {
@@ -40,7 +41,7 @@ export class NgxFormlyParserService {
   }
 
   getFormlyFieldConfigArrayFromSection(currentSection: Section, currentQuestionId: string,
-    requestId: string, workflowId: string, taskId: string): FormlyFieldConfig[] {
+    requestId: string, workflowId: string, taskId: string, taskType: string = TASK_TYPES.QUESTION): FormlyFieldConfig[] {
     let FormlyFieldConfigArray: FormlyFieldConfig[] = [];
     let currSection = { ...currentSection };
     currSection.questions.map((question: Question) => {
@@ -53,8 +54,11 @@ export class NgxFormlyParserService {
           field.focus = true;
         }
         field.type = question.type;
-        field.lifecycle = this.formlyFieldsService
-          .getFormlyLifeCycleEventByQuestionType(field.type, requestId, workflowId, taskId);
+        if (taskType === TASK_TYPES.QUESTION) {
+          field.lifecycle = this.formlyFieldsService
+            .getFormlyLifeCycleEventByQuestionType(field.type, requestId, workflowId, taskId);
+
+        }
         field.templateOptions = {
           label: question.label || "",
           options: question.options || [],
@@ -89,7 +93,6 @@ export class NgxFormlyParserService {
         FormlyFieldConfigArray.push(field);
       }
     });
-    debugger;
     return FormlyFieldConfigArray;
   }
 

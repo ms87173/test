@@ -50,3 +50,17 @@ export const getApplicaitonId = createSelector(
     getApplicaitonRequestState,
     fromApplicationRequest.getApplicationId
 );
+export const getSignAndSubmitTask = createSelector(
+    getApplicaitonRequestState,
+    fromApplicationRequest.getSignAndSubmitTask
+);
+
+export const getSignAndSubmitTaskFormlyConfig = createSelector(
+    getApplicaitonRequestState,
+    fromApplicationRequest.getSignAndSubmitTaskFormlyConfig
+);
+
+export const getTncReview = createSelector(
+    getApplicaitonRequestState,
+    fromApplicationRequest.getTncReview
+);

@@ -15,6 +15,8 @@ import {
 } from './services';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './services/token.interceptor';
+import { SignAndSubmitService } from './services/sign-and-submit.service';
+import { ReviewInformationService } from './services/review-information.service';
 
 @NgModule({
   imports: [
@@ -28,6 +30,8 @@ import { TokenInterceptor } from './services/token.interceptor';
     ApplicationsService,
     ApplicationRequestService,
     DynamicOptionsService,
+    SignAndSubmitService,
+    ReviewInformationService,
     UploadService,
     {
       provide: HTTP_INTERCEPTORS,

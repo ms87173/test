@@ -5,6 +5,7 @@ import { RouterEffects } from './router.effects';
 import { ApplicationWorkflowsEffects } from './workflows.effects';
 import { TasksEffects } from './tasks.effects';
 import { ApplicationReviewInformationEffects } from './review-information.effects';
+import { ApplicationSignAndSubmitEffects } from './sign-and-submit.effects';
 
 export const effects: any[] = [
     QuestionnaireEffectsService,
@@ -13,7 +14,8 @@ export const effects: any[] = [
     RouterEffects,
     ApplicationWorkflowsEffects,
     TasksEffects,
-    ApplicationReviewInformationEffects
+    ApplicationReviewInformationEffects,
+    ApplicationSignAndSubmitEffects
 ]
 
 export * from './questionnaire-effects.service';

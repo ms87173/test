@@ -1,4 +1,4 @@
-import { ReviewInformationTask } from "src/app/core/models";
+import { ReviewInformationTask } from ".";
 
 export class ReviewInformationWorkflow {
     workflowId: string;

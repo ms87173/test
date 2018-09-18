@@ -1,0 +1,61 @@
+{
+    "signAndSubmit": [
+        {
+            "id": "25",
+            "description": "# Agree and Submit\n#### Placeholder text will go here\n\n\nPlease read both the [Banking Account Terms and Conditions](https://online.citi.com/US/JRS/portal/template.do?ID=TermsDisclaimer) and the [Read befor signing](https://online.citi.com/US/JRS/portal/template.do?ID=TermsDisclaimer) section of this application.\nYou may also print, download or email a copy of each for your accounts.",
+            "workflowId": "65259",
+            "workflowName": "Review & Submit",
+            "workflowDescription": "Review & Submit",
+            "taskId": "65276",
+            "taskName": "Sign and Submit",
+            "status": "In Progress",
+            "showEdit": true,
+            "sections": [
+                {
+                    "title": "DDO DEFAULT",
+                    "editableMode": false,
+                    "questions": [
+                        {
+                            "type": "custom-checkbox",
+                            "defaultValue": "",
+                            "readOnly": false,
+                            "required": true,
+                            "recurrent": false,
+                            "id": "termsconditionsBanking",
+                            "label": "I confirm that I have read the Banking Account Terms and Conditions",
+                            "options": [
+                                {
+                                    "value": true,
+                                    "label": "Yes"
+                                },
+                                {
+                                    "value": false,
+                                    "label": "No"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "custom-checkbox",
+                            "defaultValue": "",
+                            "readOnly": false,
+                            "required": true,
+                            "recurrent": false,
+                            "id": "termsconditionsReadBefore",
+                            "label": "I confirm that I have read the Read Before Signing section of the application",
+                            "options": [
+                                {
+                                    "value": true,
+                                    "label": "Yes"
+                                },
+                                {
+                                    "value": false,
+                                    "label": "No"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

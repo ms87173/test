@@ -11,6 +11,10 @@ export const environment = {
     saveTaskQuestionnaire: 'questionnaire/saveTaskQuestions',
     discardQuestionsChanges : 'questionnaire/discardQuestionsChanges',
     fetchDynamicOptions: '',
-    fetchReviewInformationTask:'questionnaire/reviewTask'
+    fetchReviewInformationTask:'questionnaire/reviewTask',
+    signAndSubmitTask:"questionnaire/taskQuestions",
+    agreeAndSubmitApplication:'questionnaire/submit'
+
+
   }
 };

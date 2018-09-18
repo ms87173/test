@@ -39,6 +39,7 @@
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.10",
     "ngx-bootstrap": "^3.0.1",
+    "ngx-md": "^6.0.0",
     "ngx-uploader": "^6.0.2",
     "popper.js": "^1.14.4",
     "rxjs": "^6.0.0",

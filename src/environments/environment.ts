@@ -16,7 +16,10 @@ export const environment = {
     fetchDynamicOptions: 'dynamic-options',
     fetchReviewInformationTask: 'reviewInformation',
     cancelApplicationRequest: 'cancel-application',
-    editApplicationRequest: 'request'
+    editApplicationRequest: 'request',
+    signAndSubmitTask:"signAndSubmit",
+    agreeAndSubmitApplication:'questionnaire/submit'
+
   }
 };
 /*

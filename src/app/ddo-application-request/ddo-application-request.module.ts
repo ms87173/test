@@ -12,7 +12,18 @@ import { DdoApplicationRequestReviewInformationWorkflowComponent } from './compo
 import { DdoApplicationRequestReviewInformationTaskComponent } from './components/ddo-application-request-review-information-task/ddo-application-request-review-information-task.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
+import { NgxMdModule } from 'ngx-md';
 import { DdoApplicationRequestHeaderComponent } from './components/ddo-application-request-header/ddo-application-request-header.component';
+import 'prismjs/prism';
+import 'prismjs/components/prism-c';
+import 'prismjs/components/prism-cpp';
+import 'prismjs/components/prism-csharp';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-diff';
+import 'prismjs/components/prism-java';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-perl';
+import { DdoApplicationRequestSignAndSubmitComponent } from './components/ddo-application-request-sign-and-submit/ddo-application-request-sign-and-submit.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -21,7 +32,8 @@ import { DdoApplicationRequestHeaderComponent } from './components/ddo-applicati
     DdoApplicationRequestRoutingModule,
     CustomFormlyFieldsModule,
     ReactiveFormsModule,
-    FormlyModule.forRoot()
+    FormlyModule.forRoot(),
+    NgxMdModule.forRoot()
   ],
   declarations: [
     DdoApplicationRequestComponent,
@@ -30,7 +42,8 @@ import { DdoApplicationRequestHeaderComponent } from './components/ddo-applicati
     DdoApplicationRequestReviewInformationComponent,
     DdoApplicationRequestReviewInformationWorkflowComponent,
     DdoApplicationRequestReviewInformationTaskComponent,
-    DdoApplicationRequestHeaderComponent
+    DdoApplicationRequestHeaderComponent,
+    DdoApplicationRequestSignAndSubmitComponent
   ]
 })
 export class DdoApplicationRequestModule { }

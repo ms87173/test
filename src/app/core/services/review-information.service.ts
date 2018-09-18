@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ReviewInformationResponse, ReviewInformationRequest } from 'src/app/core/models';
+import { ReviewInformationResponse, ReviewInformationRequest } from '../models';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { ApiService } from 'src/app/core/services';
+import { ApiService } from '.';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ReviewInformationService {
 
   getReviewInformationTask(reviewInformationRequest: ReviewInformationRequest): Observable<ReviewInformationResponse> {

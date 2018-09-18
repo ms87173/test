@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { fromRootReducers, fromRootSelectors } from '../../../store';
 import { ReviewInformationResponse } from '../../../core/models';
@@ -15,7 +15,7 @@ import { PushSectionInOpenSections } from '../../../store/actions/questionnaire.
   templateUrl: './ddo-application-request-review-information.component.html',
   styleUrls: ['./ddo-application-request-review-information.component.scss']
 })
-export class DdoApplicationRequestReviewInformationComponent implements OnInit, OnChanges {
+export class DdoApplicationRequestReviewInformationComponent implements OnInit, OnChanges , OnDestroy{
 
   reviewInformationTask: ReviewInformationResponse = null;
   applicationId: string = null;
@@ -84,6 +84,8 @@ export class DdoApplicationRequestReviewInformationComponent implements OnInit, 
       }));
     }
   }
-
+  ngOnDestroy(): void {
+    this.isComponentActive = false;
+  }
 
 }

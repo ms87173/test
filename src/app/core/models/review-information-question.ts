@@ -1,4 +1,4 @@
-import { Answer } from "src/app/core/models";
+import { Answer } from ".";
 
 export class ReviewInformationQuestion {
 

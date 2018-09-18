@@ -1,0 +1,32 @@
+.ddo-application-sign-and-submit {
+    .card {
+        border: 0;
+        .card-header {
+            background: #fafafa;
+            border: 0;
+            padding-left: 0;
+            padding-top: 20px;
+            &__heading {
+                font-size: 20px;
+            }
+            &__description {
+                font-size: 12px;
+                color: #898b8d;
+            }
+        }
+        .card-body {
+            border: 1px solid #dfdfdf;
+            padding: 35px;
+        }
+    }
+}
+.markdown{
+padding-left: 48px;
+padding-right: 24px;
+padding-top: 15 px;
+padding-bottom: 10px;
+}
+.card {
+    margin-left: 48px;
+margin-right: 24px;
+}
