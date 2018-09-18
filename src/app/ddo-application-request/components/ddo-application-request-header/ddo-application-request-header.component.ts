@@ -18,7 +18,7 @@ export class DdoApplicationRequestHeaderComponent implements OnInit {
   model: any = {};
   options: FormlyFormOptions = {};
   fields: Array<any>;
-  @Input() showCancellationForm: any
+  @Input() showCancellationForm: any;
   application$: any;
   applicationStatuses: any;
   constructor(private store: Store<fromRootReducers.AppState>,
@@ -48,7 +48,7 @@ export class DdoApplicationRequestHeaderComponent implements OnInit {
       {
         key: 'comments',
         type: 'textarea',
-        hideExpression: (model) => this.model.reason !== 'other',
+        hideExpression: (model) => this.model.reason !== 'Other',
         templateOptions: {
           label: 'Additional Comments',
           rows: 3,

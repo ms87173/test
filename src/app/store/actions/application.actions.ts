@@ -31,7 +31,7 @@ export class ClearApplicationRequest implements Action {
     constructor() { }
 }
 export class CancelApplicationRequest implements Action {
-    readonly type = ActionTypes.CANCEL_APPLICATION_REQUEST
+    readonly type = ActionTypes.CANCEL_APPLICATION_REQUEST;
     constructor(public payload: any) { }
 }
 export type ApplicationActions = GetApplicationRequest
