@@ -22,7 +22,7 @@ export class DdoApplicationRequestHeaderComponent implements OnInit {
   application$: any;
   applicationStatuses: any;
   constructor(private store: Store<fromRootReducers.AppState>,
-    public dynamicOptionsService: DynamicOptionsService ) {
+    public dynamicOptionsService: DynamicOptionsService) {
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaiton).
       subscribe((application: any) => {
         this.application$ = application;
@@ -53,7 +53,7 @@ export class DdoApplicationRequestHeaderComponent implements OnInit {
           label: 'Additional Comments',
           rows: 3,
           cols: 15,
-          required: false,
+          required: this.model.reason === 'Other' ? true : false,
         },
       },
     ];
