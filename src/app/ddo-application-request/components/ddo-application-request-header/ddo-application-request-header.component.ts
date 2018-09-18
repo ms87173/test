@@ -18,7 +18,7 @@ export class DdoApplicationRequestHeaderComponent implements OnInit {
   model: any = {};
   options: FormlyFormOptions = {};
   fields: Array<any>;
-  @Input() showCancellationForm: any
+  @Input() showCancellationForm: any;
   application$: any;
   applicationStatuses: any;
   constructor(private store: Store<fromRootReducers.AppState>,

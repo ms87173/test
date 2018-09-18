@@ -110,7 +110,6 @@ export class DdoApplicationRequestComponent {
             taskId: this.previousTaskId$
           }));
         break;
-      case 'cancel':
       case 'saveAndExit':
         this.store.dispatch(
           new SaveActiveTaskAndExit({

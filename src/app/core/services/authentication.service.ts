@@ -4,10 +4,10 @@ import { Injectable } from '@angular/core';
 export class AuthenticationService {
     // MOCK authentication service
     public getToken(): any {
-        return 'KERMIT COBLEAD';
+        return 'CPB CLIENT';
     }
     public setToken() {
-        document.cookie = 'userId=KERMIT COBLEAD';
+        document.cookie = 'userId=CPB CLIENT';
         return null;
     }
     public clearToken() {
