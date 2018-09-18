@@ -26,38 +26,38 @@ export class ApplicationWorkflowsEffects {
             return new GetApplicationWorkflows(applicationId);
         })
     );
-    @Effect() getApplicationRequestWorkflowsEffect = this.actions$.pipe(
-        ofType(ActionTypes.GET_APPLICATION_REQUEST_WORKFLOWS),
-        switchMap(
-            (action: GetApplicationWorkflows) =>
-                this.applicationRequestService.getApplicationRequestWorkflows(action.payload)
-                    .pipe(
-                        map(
-                            (workflows) => {
-                                let firstTaskId = '', lastTaskId = '';
-                                if (workflows && workflows.length > 0) {
-                                    const lastWorkflowIndex = workflows.length - 1;
-                                    const lastWorkflow = workflows[lastWorkflowIndex];
-                                    const tlen = lastWorkflow && lastWorkflow.tasks && lastWorkflow.tasks.length;
-                                    const lastTask = lastWorkflow && lastWorkflow.tasks && lastWorkflow.tasks[tlen - 1];
-                                    lastTaskId = lastTask && lastTask.id;
-                                    firstTaskId = workflows[0] &&
-                                        workflows[0].tasks &&
-                                        workflows[0].tasks[0] &&
-                                        workflows[0].tasks[0].id;
-                                }
-                                return new GetApplicationWorkflowsSuccess({
-                                    workflows,
-                                    lastTaskId,
-                                    firstTaskId
-                                });
-                            }
-                        ),
-                        catchError(
-                            (err) => of(new GetApplicationWorkflowsFailure(err))
-                        )
-                    )
-        ));
+    // @Effect() getApplicationRequestWorkflowsEffect = this.actions$.pipe(
+    //     ofType(ActionTypes.GET_APPLICATION_REQUEST_WORKFLOWS),
+    //     switchMap(
+    //         (action: GetApplicationWorkflows) =>
+    //             this.applicationRequestService.getApplicationRequestWorkflows(action.payload)
+    //                 .pipe(
+    //                     map(
+    //                         (workflows) => {
+    //                             let firstTaskId = '', lastTaskId = '';
+    //                             if (workflows && workflows.length > 0) {
+    //                                 const lastWorkflowIndex = workflows.length - 1;
+    //                                 const lastWorkflow = workflows[lastWorkflowIndex];
+    //                                 const tlen = lastWorkflow && lastWorkflow.tasks && lastWorkflow.tasks.length;
+    //                                 const lastTask = lastWorkflow && lastWorkflow.tasks && lastWorkflow.tasks[tlen - 1];
+    //                                 lastTaskId = lastTask && lastTask.id;
+    //                                 firstTaskId = workflows[0] &&
+    //                                     workflows[0].tasks &&
+    //                                     workflows[0].tasks[0] &&
+    //                                     workflows[0].tasks[0].id;
+    //                             }
+    //                             return new GetApplicationWorkflowsSuccess({
+    //                                 workflows,
+    //                                 lastTaskId,
+    //                                 firstTaskId
+    //                             });
+    //                         }
+    //                     ),
+    //                     catchError(
+    //                         (err) => of(new GetApplicationWorkflowsFailure(err))
+    //                     )
+    //                 )
+    //     ));
         @Effect() saveAndNextRequestTaskEffect = this.actions$.pipe(
             ofType(ActionTypes.SAVE_NEXT_REQUEST_ACTIVE_TASK),
             switchMap((action: SaveActiveTaskAndNext) =>
