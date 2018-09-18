@@ -48,7 +48,7 @@ export class DdoApplicationRequestHeaderComponent implements OnInit {
       {
         key: 'comments',
         type: 'textarea',
-        hideExpression: (model) => this.model.reason !== 'other',
+        hideExpression: (model) => this.model.reason !== 'Other',
         templateOptions: {
           label: 'Additional Comments',
           rows: 3,
