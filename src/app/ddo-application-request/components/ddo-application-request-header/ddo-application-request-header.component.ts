@@ -6,6 +6,7 @@ import { CancelApplicationRequest } from '../../../store/actions/application.act
 import { Store } from '@ngrx/store';
 import { fromRootReducers, fromRootSelectors } from '../../../store';
 import { DynamicOptionsService } from '../../../core';
+import { APPLICATIONS_STATUS } from '../../../core/constants/applications.constants';
 
 @Component({
   selector: 'ddo-application-request-header',
@@ -19,12 +20,14 @@ export class DdoApplicationRequestHeaderComponent implements OnInit {
   fields: Array<any>;
   @Input() showCancellationForm: any
   application$: any;
+  applicationStatuses: any;
   constructor(private store: Store<fromRootReducers.AppState>,
     public dynamicOptionsService: DynamicOptionsService ) {
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaiton).
       subscribe((application: any) => {
         this.application$ = application;
       });
+    this.applicationStatuses = APPLICATIONS_STATUS;
   }
 
   ngOnInit() {
