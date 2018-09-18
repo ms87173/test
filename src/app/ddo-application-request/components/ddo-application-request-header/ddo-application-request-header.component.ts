@@ -5,6 +5,8 @@ import { CANCELLATION_REASONS } from '../../../core/constants/application-reques
 import { CancelApplicationRequest } from '../../../store/actions/application.actions';
 import { Store } from '@ngrx/store';
 import { fromRootReducers, fromRootSelectors } from '../../../store';
+import { DynamicOptionsService } from '../../../core';
+import { APPLICATIONS_STATUS } from '../../../core/constants/applications.constants';
 
 @Component({
   selector: 'ddo-application-request-header',
@@ -16,13 +18,16 @@ export class DdoApplicationRequestHeaderComponent implements OnInit {
   model: any = {};
   options: FormlyFormOptions = {};
   fields: Array<any>;
-  @Input() showCancellationForm: any
+  @Input() showCancellationForm: any;
   application$: any;
-  constructor(private store: Store<fromRootReducers.AppState>, ) {
+  applicationStatuses: any;
+  constructor(private store: Store<fromRootReducers.AppState>,
+    public dynamicOptionsService: DynamicOptionsService) {
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaiton).
       subscribe((application: any) => {
         this.application$ = application;
       });
+    this.applicationStatuses = APPLICATIONS_STATUS;
   }
 
   ngOnInit() {
@@ -37,18 +42,18 @@ export class DdoApplicationRequestHeaderComponent implements OnInit {
           label: 'Please select the reason for cancellation',
           hideRequiredMarker: true,
           required: true,
-          options: CANCELLATION_REASONS
+          options: this.dynamicOptionsService.getDynamicOptions('CancelReason')
         },
       },
       {
         key: 'comments',
         type: 'textarea',
-        hideExpression: (model) => this.model.reason !== 'other',
+        hideExpression: (model) => this.model.reason !== 'Other',
         templateOptions: {
           label: 'Additional Comments',
           rows: 3,
           cols: 15,
-          required: false,
+          required: this.model.reason === 'Other' ? true : false,
         },
       },
     ];
@@ -61,6 +66,11 @@ export class DdoApplicationRequestHeaderComponent implements OnInit {
     this.showCancellationForm = false;
   }
   cancelApplicationRequest() {
-    this.store.dispatch(new CancelApplicationRequest(this.model));
+    const data = {
+      requestId: this.application$.id,
+      reasonForCancellation: this.model.reason,
+      comment: this.model.comment
+    }
+    this.store.dispatch(new CancelApplicationRequest(data));
   }
 }
