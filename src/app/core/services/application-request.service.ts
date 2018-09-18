@@ -41,7 +41,7 @@ export class ApplicationRequestService {
     cancelApplicationRequest(data: any): Observable<any> {
         const url = environment.apiUrls.cancelApplicationRequest;
         // TODO: Production Url
-        // return this.apiService.post(url, { data })
+        // return this.apiService.post(url, data )
         return this.apiService.get(url);
     }
     editApplicationRequest(data: any): Observable<any> {
