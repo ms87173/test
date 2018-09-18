@@ -74,7 +74,7 @@ export class StepViewModel implements Step {
     determineTooltipItems(workflows: Array<any>) {
         const arr = [];
         workflows.forEach(workflow => {
-            workflow.tasks.forEach(task => arr.push(task.label));
+            workflow.tasks && workflow.tasks.forEach(task => arr.push(task.label));
         });
         return arr;
     }
@@ -88,6 +88,7 @@ export class StepViewModel implements Step {
                 let i = 0, task = { id: '' };
                 while (i < workflows.length) {
                     task = workflows[i] &&
+                        workflows[i].tasks &&
                         workflows[i].tasks.find(e => e.status === TASK_STATUSES.inProgress);
                     if (task) {
                         break;
