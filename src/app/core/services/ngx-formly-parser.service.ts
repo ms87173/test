@@ -73,8 +73,12 @@ export class NgxFormlyParserService {
         }
         else {
           ///Todo: remove this
+          if (field.type === CustomComponentsEnum.CUSTOM_CHECKBOX) {
+            field.defaultValue = false;
 
-          field.defaultValue = [];
+          } else {
+            field.defaultValue = [];
+          }
         }
 
         if (question.max) {
