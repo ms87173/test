@@ -1,11 +1,11 @@
 <div>
-  <div class="pb10px">
+  <!-- <div class="pb10px">
     <h4 class="title">
       {{workflow?.workflowName}}
     </h4>
     <h6 class="description">
       {{workflow?.workflowDescription}} </h6>
-  </div>
+  </div> -->
 
   <div *ngIf="workflow && workflow.tasks && workflow.tasks.length > 0">
     <div *ngFor="let task of workflow.tasks">

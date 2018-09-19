@@ -6,13 +6,15 @@ import { FormlyFieldConfig } from "@ngx-formly/core";
 export interface SignAndSubmitState {
     signAndSubmitTask: SignAndSubmit
     signAndSubmitTaskFormlyConfig:FormlyFieldConfigArrayCollection[],
-    tncReview: boolean
+    tncReview: boolean,
+    agreeAndSubmitMode: boolean;
 }
 
 export const InitialState: SignAndSubmitState = {
     signAndSubmitTask: null,
     signAndSubmitTaskFormlyConfig:[],
-    tncReview: null
+    tncReview: null,
+    agreeAndSubmitMode: null
 }
 
 export function reducer(
@@ -44,6 +46,11 @@ export function reducer(
                 ...state,
                 tncReview:action.payload
 
+            }
+            case ActionTypes.SET_AGREE_SUBMIT_MODE:
+            return {
+                ...state,
+                agreeAndSubmitMode:action.payload
             }
         default:
             return state;

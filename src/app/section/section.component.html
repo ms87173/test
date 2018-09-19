@@ -1,6 +1,6 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-4 col-xs-4 col-lg-4">
+    <div class="row pdb20px">
+        <div class="col-md-4 col-xs-4 col-lg-4 ">
             <h5 class="heading paddTop6px">{{ formlyFieldConfigArray?.title }}</h5>
         </div>
         <div *ngIf='showEditButton && !editableMode' class="col-md-1 col-xs-1 col-lg-1">
@@ -41,7 +41,7 @@
     </div>
 
     <div class="row mb-4" *ngIf='showEditButton && !editableMode'>
-        <div class="col-md-8 col-xs-12 col-lg-8" *ngFor="let question of currSection.questions">
+        <div class="col-md-8 col-xs-12 col-lg-8 pdb20px" *ngFor="let question of currSection.questions">
             <div [ngSwitch]="question.type">
                 <div *ngSwitchCase="CustomComponentsEnum.CUSTOM_RADIO_BUTTON">
                     <h6 class="question-label"> {{question?.label}} </h6>

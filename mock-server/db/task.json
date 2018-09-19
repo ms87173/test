@@ -41,6 +41,56 @@
                             ]
                         },
                         {
+                            "id": "Datepicker1",
+                            "label": "Date Picker",
+                            "type": "custom-datepicker",
+                            "required": "true",
+                            "readOnly": false,
+                            "recurrent": false,
+                            "placeHolder": "Interest Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": true
+                                },
+                                {
+                                    "label": "No",
+                                    "value": false
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "answers": [
+                                {
+                                    "value": "09-05-2018T12:00:00"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "txtBox1",
+                            "label": "Name",
+                            "type": "custom-textbox",
+                            "required": "true",
+                            "readOnly": false,
+                            "recurrent": false,
+                            "placeHolder": "Interest Account",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": true
+                                },
+                                {
+                                    "label": "No",
+                                    "value": false
+                                }
+                            ],
+                            "tooltipText": "<string>",
+                            "answers": [
+                                {
+                                    "value": "09-05-2018T12:00:00"
+                                }
+                            ]
+                        },
+                        {
                             "id": "docUploader",
                             "label": "Doc uploader",
                             "type": "custom-document-upload",
