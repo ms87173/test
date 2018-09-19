@@ -46,5 +46,5 @@ export function filterApplications(data, params) {
       filteredData = _.filter(data, (e) => moment(params.modifiedFilter.filterDate).isSame(moment(e.lastUpdate).format('MM DD YYYY')));
     }
   }
-  return of(filteredData);
+  return sortApplications(filteredData, { key: 'lastUpdate', sortOrder: 'desc' });
 }
