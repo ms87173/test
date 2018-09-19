@@ -2,10 +2,7 @@
     <ddo-application-request-header></ddo-application-request-header>
     <div class="row">
         <div class="col-sm-3 pl-0 pr-0">
-            <app-side-nav [config]='workflows$'
-                [(selectedParentId)]='currentWorkflowId$'
-                [(selectedChildId)]='currentTaskId$'
-                (actions)='onSideNavClick($event)'>
+            <app-side-nav [config]='workflows$' [(selectedParentId)]='currentWorkflowId$' [(selectedChildId)]='currentTaskId$' (actions)='onSideNavClick($event)'>
             </app-side-nav>
             <contact-detail [config]='contactPersonDetails$'></contact-detail>
         </div>
@@ -15,31 +12,32 @@
     </div>
     <div class="row ddo-application-request__footer">
         <div class="col-sm-3 mt-4 mb-4">
-            <button type="button"
-                (click)="buttonActionsClick('saveAndExit')"
-                class="btn ddo-application-request__button btn-outline-primary float-left">
+            <button type="button" (click)="buttonActionsClick('saveAndExit')" class="btn ddo-application-request__button btn-outline-primary float-left">
                 Save and Exit
             </button>
         </div>
-        <div class="col-sm-9 mt-4 mb-4">
+        <div class="col-sm-6 mt-4 mb-4">
+            <div class="agreeAndSubmitLabel" *ngIf="currentTaskType === TASK_TYPES.SIGN_AND_SUMBIT">
+                By clicking on &#34;Agree And Submit&#34;, I confirm that I agree to the Banking Account Terms And Conditions and the Read
+                Before Signing section of this Application above.
+            </div>
+        </div>
+        <div class="col-sm-3 mt-4 mb-4">
+
             <div class="float-right">
-                <button type="button"
-                    (click)="buttonActionsClick('back')"
-                    class="btn btn-outline-primary ddo-application-request__button  mr-3"
+                <button type="button" (click)="buttonActionsClick('back')" class="btn btn-outline-primary ddo-application-request__button  mr-3"
                     *ngIf="previousTaskId$">
                     Back
                 </button>
-                <button type="button" (click)="buttonActionsClick('agreeAndSubmit')" 
-                class="btn btn-outline-primary ddo-application-request__button--next"
-                    *ngIf="currentTaskType === TASK_TYPES.SIGN_AND_SUMBIT"
-                    [disabled] = "agreeAndSubmitMode"
-                    >
-                    Agree And Submit 
+                <button type="button" (click)="buttonActionsClick('agreeAndSubmit')" class="btn btn-outline-primary ddo-application-request__button--next"
+                    *ngIf="currentTaskType === TASK_TYPES.SIGN_AND_SUMBIT" [disabled]="agreeAndSubmitMode">
+                    Agree And Submit
                 </button>
 
                 <button type="button" (click)="buttonActionsClick('next')" class="btn btn-outline-primary ddo-application-request__button--next"
                     *ngIf="nextTaskId$">
-                    Next <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                    Next
+                    <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
                 </button>
             </div>
         </div>

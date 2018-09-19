@@ -19,7 +19,7 @@ export const EXISTING_COMPONENTS: string[] = [
     CustomComponentsEnum.CUSTOM_CHECKBOX,
     CustomComponentsEnum.CUSTOM_DROPDOWN,
     CustomComponentsEnum.CUSTOM_RADIO_BUTTON,
-    // CustomComponentsEnum.CUSTOM_TYPEAHEAD,
+    CustomComponentsEnum.CUSTOM_TYPEAHEAD,
     CustomComponentsEnum.CUSTOM_DATEPICKER,
     // CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS,
     // CustomComponentsEnum.CUSTOM_ADDRESS_PROOF,
