@@ -10,14 +10,20 @@
                 font-weight: 400;
                 color: #898b8d;
                 border-bottom: 1px solid #000000;
-                // i {
-                //     display: none;
-                // }
+                i {
+                    display: none;
+                    &.sort--default {
+                        display: block;
+                    }
+                }
                 &.active {
                     border-bottom: 2px solid #000000;
                     i {
                         color: #000000;
                         display: block;
+                        &.sort--default {
+                            display: none;
+                        }
                     }
                 }
             }

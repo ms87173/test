@@ -8,6 +8,7 @@
             (click)="item.showSortOption && ongridItemClick(actionTypes.sort, item)">
           {{item.value}}
           <a *ngIf='item.showSortOption'>
+            <i class="sort--default fa fa-sort float-right" aria-hidden="true"></i>
             <i *ngIf="item.sortOrder === 'desc'" class="fa fa-caret-up float-right" aria-hidden="true"></i>
             <i *ngIf="item.sortOrder === 'asc'" class="fa fa-caret-down float-right" aria-hidden="true"></i>
           </a>
