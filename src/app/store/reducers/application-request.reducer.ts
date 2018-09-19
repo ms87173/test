@@ -78,3 +78,13 @@ export const getTncReview = (state: ApplicationRequestState) =>{
     return null;
 
 }
+
+export const getAgreeAndSubmitMode = (state: ApplicationRequestState) =>{  
+    if( state.signAndSubmit &&  state.signAndSubmit.agreeAndSubmitMode !== null){
+        
+     return   state.signAndSubmit.agreeAndSubmitMode;
+
+    }
+    return null;
+
+}

@@ -3,7 +3,7 @@ import { Store, select } from '@ngrx/store';
 import { fromRootReducers, fromRootSelectors } from '../../../store';
 import { SignAndSubmit, FormlyFieldConfigArrayCollection } from '../../../core';
 import { takeWhile } from 'rxjs/operators';
-import { GetSignAndSubmitTask, GetSignAndSubmitTaskFormlyConfig } from '../../../store/actions/sign-and-submit.actions';
+import { GetSignAndSubmitTask, GetSignAndSubmitTaskFormlyConfig, SetAgreeAndSubmitMode, SetTncReview } from '../../../store/actions/sign-and-submit.actions';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 
@@ -27,7 +27,46 @@ export class DdoApplicationRequestSignAndSubmitComponent implements OnInit, OnDe
   constructor(private cd: ChangeDetectorRef,
     private store: Store<fromRootReducers.AppState>
   ) {
+  
+    this.form.valueChanges.subscribe((data)=>{
+      let disableArr= []
+    //  debugger;
+      if(this.fields){
+        let questionIds = this.fields.map((field)=> field.key);
+        questionIds.forEach((id)=>{        
+        let disableVal  =this.form.get(id) && this.form.get(id)['value'] === null ? false : this.form.get(id) && this.form.get(id)['value'];
 
+        if(typeof disableVal==='boolean') {
+          console.log(disableVal,id, 'disabled===90',id === "termsconditionsReadBefore");
+        //  this.disableValuefn(disableVal);
+        if(id === "termsconditionsReadBefore") {
+        disableArr[0] = disableVal;
+        }
+        else{
+          disableArr[1] = disableVal;
+        }
+      }
+        })
+      }
+      let x = disableArr.some(v => !v);
+      this.disableValuefn(x);
+      console.log(x,'disableArr.lengt===')
+    //   if(disableArr.length > 1){
+    //   disableArr.forEach((val,i) => {
+    //     console.log(disableArr[i],'disableArr[i]==')
+    //     if(disableArr[i] === false){
+    //       this.disableValuefn(disableArr[i]);
+    //     }
+    //     else{
+    //       this.disableValuefn(disableArr[i]);
+
+    //     }
+    //   })
+    // }
+     
+    });
+  
+    
     this.store.pipe(select(fromRootSelectors.applicationRequestSelectors.getSignAndSubmitTask),
       takeWhile(() => this.isComponentActive)
     ).
@@ -70,13 +109,25 @@ export class DdoApplicationRequestSignAndSubmitComponent implements OnInit, OnDe
       });
 
   }
-
+  
+  disableValuefn(disableValData){
+    if (disableValData ){
+      this.store.dispatch(new SetTncReview(null))
+    } else {
+      this.store.dispatch(new SetTncReview(disableValData))
+    }
+    console.log(disableValData, ':::4000',typeof disableValData);
+    this.store.dispatch(new SetAgreeAndSubmitMode(
+      disableValData
+    ))
+    console.log("form value changes", this.store);  
+  }
   ngOnInit() {
   }
 
   signAndSubmitTaskAction() {
     if (this.applicationId && this.currentWorkflowId && this.currentTaskId) {
-      this.store.dispatch(new GetSignAndSubmitTask({
+      this.store.dispatch(new GetSignAndSubmitTask({ 
         requestId: this.applicationId,
         workflowId: this.currentWorkflowId,
         taskId: this.currentTaskId

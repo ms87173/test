@@ -29,9 +29,12 @@
                     *ngIf="previousTaskId$">
                     Back
                 </button>
-                <button type="button" (click)="buttonActionsClick('agreeAndSubmit')" class="btn btn-outline-primary ddo-application-request__button--next"
-                    *ngIf="currentTaskType === TASK_TYPES.SIGN_AND_SUMBIT">
-                    Agree And Submit
+                <button type="button" (click)="buttonActionsClick('agreeAndSubmit')" 
+                class="btn btn-outline-primary ddo-application-request__button--next"
+                    *ngIf="currentTaskType === TASK_TYPES.SIGN_AND_SUMBIT"
+                    [disabled] = "agreeAndSubmitMode"
+                    >
+                    Agree And Submit 
                 </button>
 
                 <button type="button" (click)="buttonActionsClick('next')" class="btn btn-outline-primary ddo-application-request__button--next"

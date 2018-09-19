@@ -43,7 +43,8 @@ export class DdoApplicationRequestComponent {
   options: FormlyFormOptions = {};
   fields: Array<any>;
   TASK_TYPES = TASK_TYPES;
-  tncReview: boolean = null;
+  tncReview: boolean = true;
+  agreeAndSubmitMode: boolean = true;
   constructor(
     private store: Store<fromRootReducers.AppState>,
   ) {
@@ -53,6 +54,13 @@ export class DdoApplicationRequestComponent {
       subscribe((tncReview: any) => {
         this.tncReview = tncReview;
       });
+      
+    this.store.select(fromRootSelectors.applicationRequestSelectors.getAgreeAndSubmitMode).
+    subscribe((agreeAndSubmitMode: any) => {
+      console.log(agreeAndSubmitMode,'agreeAndSubmitMode60')
+      this.agreeAndSubmitMode = agreeAndSubmitMode;
+      console.log(this.agreeAndSubmitMode,'agreeAndSubmitMode61')
+    });
 
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaiton).
       subscribe((application: any) => {
@@ -69,6 +77,8 @@ export class DdoApplicationRequestComponent {
         this.currentTaskId$ = activeTaskData.task.id;
         this.currentWorkflowId$ = activeTaskData.workflowId;
         this.currentTaskType = activeTaskData.task.type;
+        
+        console.log(this.store, ':::141');
         if (this.currentTaskId$ && this.currentTaskType && this.application$.id) {
           this.store.dispatch(
             new RouterGo({
