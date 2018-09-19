@@ -6,6 +6,7 @@ import { takeWhile } from 'rxjs/operators';
 import { GetSignAndSubmitTask, GetSignAndSubmitTaskFormlyConfig, SetAgreeAndSubmitMode, SetTncReview } from '../../../store/actions/sign-and-submit.actions';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
+import { NgxMdService } from 'ngx-md';
 
 @Component({
   selector: 'ddo-application-request-sign-and-submit',
@@ -25,6 +26,7 @@ export class DdoApplicationRequestSignAndSubmitComponent implements OnInit, OnDe
   fields: FormlyFieldConfig[] = [];
 
   constructor(private cd: ChangeDetectorRef,
+    private _markdown: NgxMdService,
     private store: Store<fromRootReducers.AppState>
   ) {
   
@@ -123,6 +125,9 @@ export class DdoApplicationRequestSignAndSubmitComponent implements OnInit, OnDe
     console.log("form value changes", this.store);  
   }
   ngOnInit() {
+    this._markdown.renderer.link = (href: string, title:string , text:string ) => {
+      return `<a target="_blank" href="${href}"> ${text} </a>`;
+    }
   }
 
   signAndSubmitTaskAction() {
