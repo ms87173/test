@@ -16,13 +16,22 @@ export enum ActionTypes {
     AGREE_AND_SUBMIT_QUESTIONNAIRE = '[App State] Agree and Submit Questionnaire',
     AGREE_AND_SUBMIT_QUESTIONNAIRE_SUCCESS = '[App State] Agree and Submit Questionnaire Success',
     AGREE_AND_SUBMIT_QUESTIONNAIRE_FAIL = '[App State] Agree and Submit Questionnaire Failure',
-    SET_TNC_REVIEW='[App State] Set Terms And Condition Review State'
+    SET_TNC_REVIEW='[App State] Set Terms And Condition Review State',
+    SET_AGREE_SUBMIT_MODE = '[App State] Set Agree and Submit button state'
+
 
 }
 
 export class GetSignAndSubmitTask implements Action {
     readonly type = ActionTypes.GET_SIGN_AND_SUBMIT_TASK;
     constructor(public payload: SignAndSubmitRequest) {
+        this.payload = payload;
+    }
+}
+export class SetAgreeAndSubmitMode implements Action {
+    readonly type = ActionTypes.SET_AGREE_SUBMIT_MODE
+    constructor(public payload) {
+        console.log(payload, '::payload');
         this.payload = payload;
     }
 }
@@ -96,4 +105,5 @@ export type SignAndSubmitActions = GetSignAndSubmitTask
     | AgreeAndSubmitQuestionnaireSuccess
     | AgreeAndSubmitQuestionnaireFailure
     | SetTncReview
+    | SetAgreeAndSubmitMode
     ;
