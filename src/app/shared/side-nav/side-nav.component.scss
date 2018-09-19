@@ -125,6 +125,11 @@
             position: absolute;
             right: 6%;
         }
+        &.disabled{
+            pointer-events: none;
+            background-color: #fff;
+            color: #b8b3b3;
+        }
     }
 }
 
@@ -152,4 +157,8 @@
         // top: 11%;
         // width: 100%;
     }
+}
+.temp-padding {
+    padding-left: 2.5rem;
+    padding-right: 0px;
 }

@@ -29,9 +29,9 @@ export class AutoCompleteComponent extends FieldType implements OnInit, OnDestro
       switchMap(this.to.search$),
     );
     this.options$.subscribe();
-    console.log(this.to, '::::3222', this);
+    //console.log(this.to, '::::3222', this);
     // this.field.templateOptions.serachTerm = function () {
-    //   console.log('at the serach');
+    //   //console.log('at the serach');
     // }
   }
 
@@ -41,17 +41,17 @@ export class AutoCompleteComponent extends FieldType implements OnInit, OnDestro
 
   clearSelect(evt) {
     this.search$.emit('');
-    console.log('clearselect',evt);
+    //console.log('clearselect',evt);
   }    
   searchChanges(evt){
 
     evt = typeof evt == 'string' ? evt : '';
     this.search$.emit(evt);
-    console.log('::::blucrchanges',evt);
+    //console.log('::::blucrchanges',evt);
   }
 
   searchChanges1(evt) {
-    console.log(evt);
+    //console.log(evt);
     this.search$.emit('');
   }
 }

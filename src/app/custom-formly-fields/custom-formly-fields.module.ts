@@ -44,9 +44,7 @@ import { CustomTestComponent } from './components/custom-test/custom-test.compon
     NgbModule.forRoot(),
     FormlyModule.forRoot({
       validationMessages: [
-        // { name: 'server-error', message: (err) => err }
         { name: 'server-error', message: errorMessage }
-
       ],
       types: [
         { name: CustomComponentsEnum.CUSTOM_DROPDOWN, component: DropdownComponent },
@@ -61,7 +59,7 @@ import { CustomTestComponent } from './components/custom-test/custom-test.compon
         { name: CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD, component: DocumentUploadComponent },
         { name: CustomComponentsEnum.CUSTOM_UPLOAD, component: UploadFileComponent },
         { name: CustomComponentsEnum.CUSTOM_TEST, component: CustomTestComponent },
-
+        { name: 'custom-dynamic-drop', component: DropdownComponent }
       ]
     }),
     FormlyBootstrapModule,

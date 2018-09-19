@@ -77,7 +77,12 @@ label {
 .cursor-default {
     cursor: default !important;
 }
-
+.btn-disabled {
+    pointer-events: none;
+    cursor: default;
+    background-color: lightgrey !important;
+    color: white !important;
+}
 @for $i from 0 through 6 {
     .space-top-#{$i}x {
         margin-top: 10px* $i !important;

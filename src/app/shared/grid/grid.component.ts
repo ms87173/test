@@ -19,6 +19,6 @@ export class GridComponent implements OnInit {
     return Object.values(data)[0];
   }
   rowClick(id: any) {
-    // console.log(id)
+    // //console.log(id)
   }
 }

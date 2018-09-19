@@ -10,7 +10,7 @@ export enum CustomComponentsEnum {
     CUSTOM_EMAIL = 'custom-email',
     CUSTOM_PHONE = 'custom-phone',
     CUSTOM_UPLOAD = 'custom-upload',
-
+    CUSTOM_DYNAMIC_DROP = 'custom-dynamic-drop',
     CUSTOM_TEST = 'custom-test'
 
 }
@@ -21,7 +21,8 @@ export const EXISTING_COMPONENTS: string[] = [
     CustomComponentsEnum.CUSTOM_RADIO_BUTTON,
     CustomComponentsEnum.CUSTOM_TYPEAHEAD,
     CustomComponentsEnum.CUSTOM_DATEPICKER,
-    // CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS,
+    CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS,
+    CustomComponentsEnum.CUSTOM_DYNAMIC_DROP,
     // CustomComponentsEnum.CUSTOM_ADDRESS_PROOF,
     CustomComponentsEnum.CUSTOM_TEXTBOX,
     // CustomComponentsEnum.CUSTOM_EMAIL,

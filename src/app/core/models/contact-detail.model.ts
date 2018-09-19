@@ -9,14 +9,15 @@ export class ContactDetailsModel {
     constructor(data) {
         if (!data) {
             return null;
-        } else {
-            this.iconClass = 'fa-comments';
-            const contactPersonsRole = new Map(Object.entries(ROLE));
-            this.role = `Contact your ${contactPersonsRole.get(data.role)}`;
-            this.name = `${data.firstName} ${data.middleName} ${data.lastName}`;
-            this.emailAddress = data.emailAddress;
-            this.phoneNumber = this.formatPhoneNumber(data.phoneNumber);
         }
+        this.iconClass = 'fa-comments';
+        const contactPersonsRole = new Map(Object.entries(ROLE));
+        this.role = `Contact your ${contactPersonsRole.get(data.role)}`;
+        this.name = data.middleName ?
+            `${data.lastName}, ${data.firstName} ${data.middleName}` :
+            `${data.lastName}, ${data.firstName}`;
+        this.emailAddress = data.emailAddress;
+        this.phoneNumber = this.formatPhoneNumber(data.phoneNumber);
     }
     formatPhoneNumber(number) {
         const formatedNumber = number.replace(/[^\d]+/g, '')

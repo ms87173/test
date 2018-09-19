@@ -68,6 +68,6 @@ export class StepperConsumerComponent implements OnInit {
     ];
   }
   anyFunction($event) {
-    console.log($event);
+    //console.log($event);
   }
 }

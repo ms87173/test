@@ -18,7 +18,8 @@ export class Question {
     min?: number;
     disabled?: boolean = false;
     recurrent: boolean= false;
-    answers: Answer[] = []
+    answers: Answer[] = [];
+    lookUpname: string;
 
 
 }

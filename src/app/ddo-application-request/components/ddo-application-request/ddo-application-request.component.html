@@ -2,7 +2,11 @@
     <ddo-application-request-header></ddo-application-request-header>
     <div class="row">
         <div class="col-sm-3 pl-0 pr-0">
-            <app-side-nav [config]='workflows$' [(selectedParentId)]='currentWorkflowId$' [(selectedChildId)]='currentTaskId$' (actions)='onSideNavClick($event)'>
+            <app-side-nav
+                [config]='workflows$'
+                [(selectedParentId)]='currentWorkflowId$'
+                [(selectedChildId)]='currentTaskId$'
+                (actions)='onSideNavClick($event)'>
             </app-side-nav>
             <contact-detail [config]='contactPersonDetails$'></contact-detail>
         </div>
@@ -12,8 +16,10 @@
     </div>
     <div class="row ddo-application-request__footer">
         <div class="col-sm-3 mt-4 mb-4">
-            <button type="button" (click)="buttonActionsClick('saveAndExit')" class="btn ddo-application-request__button btn-outline-primary float-left">
-                Save and Exit
+            <button type="button"
+                (click)="buttonActionsClick(saveAndExitInfo.status)"
+                class="btn ddo-application-request__button btn-outline-primary float-left">
+                {{saveAndExitInfo.label}}
             </button>
         </div>
         <div class="col-sm-6 mt-4 mb-4">

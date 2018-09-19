@@ -7,17 +7,24 @@ export default class WorkFlowsSideNavModel {
     status: any;
     children: any;
     type: any;
+    singleTaskPresent: boolean;
+    singleTask: any;
     constructor(data) {
         if (!data) {
             return null;
-        } else {
-            this.label = data.label;
-            this.subHeading = data.subHeading;
-            this.status = data.status;
-            this.id = data.id;
-            this.type = data.tasks && data.tasks.length === 1 ? data.tasks[0].type : 'null';
-            this.description = data.description;
-            this.children = data.tasks;
+        }
+        this.label = data.label;
+        this.subHeading = data.subHeading;
+        this.status = data.status;
+        this.id = data.id;
+        this.type = data.tasks && data.tasks.length === 1 ? data.tasks[0].type : 'null';
+        this.description = data.description;
+        this.singleTaskPresent = data.tasks && (data.tasks.length === 1);
+        this.children = data.tasks;
+        if (this.singleTaskPresent) {
+            this.singleTask = data.tasks[0];
+            this.label = this.singleTask.label;
+            this.subHeading = this.singleTask.subHeading;
         }
     }
 }

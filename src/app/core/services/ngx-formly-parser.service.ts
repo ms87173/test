@@ -46,21 +46,20 @@ export class NgxFormlyParserService {
     let currSection = { ...currentSection };
     currSection.questions.map((question: Question) => {
       if (EXISTING_COMPONENTS.includes(question.type) && !question.recurrent) {
-
-
-        let field: FormlyFieldConfig = {};
+        let field: any = {};
         field.key = question.id.toString();
         if (field.key == currentQuestionId) {
           field.focus = true;
         }
         field.type = question.type;
+        field.lookupName = question.lookUpname;
         if (taskType === TASK_TYPES.QUESTION) {
           field.lifecycle = this.formlyFieldsService
             .getFormlyLifeCycleEventByQuestionType(field.type, requestId, workflowId, taskId);
 
         }
         field.templateOptions = {
-          label: question.label || "",
+          label: question.label || '',
           options: question.options || [],
           required: question.required || false,
           disabled: question.disabled || false,
@@ -70,12 +69,10 @@ export class NgxFormlyParserService {
 
         if (question.answers && question.answers.length > 0) {
           field = this.setDefaultValuesFromAnswers(question.answers, field, question.recurrent);
-        }
-        else {
-          ///Todo: remove this
+        } else {
+          // Todo: remove this
           if (field.type === CustomComponentsEnum.CUSTOM_CHECKBOX) {
             field.defaultValue = false;
-
           } else {
             field.defaultValue = [];
           }
@@ -100,9 +97,9 @@ export class NgxFormlyParserService {
     return FormlyFieldConfigArray;
   }
 
-  getFormlyFieldArrayConfigByQuestionType(formlyField: FormlyFieldConfig): FormlyFieldConfig {
+  getFormlyFieldArrayConfigByQuestionType(formlyField: any): any {
 
-    const field: FormlyFieldConfig = { ...formlyField };
+    const field = { ...formlyField };
 
     switch (field.type) {
       case CustomComponentsEnum.CUSTOM_TEST:
@@ -127,6 +124,13 @@ export class NgxFormlyParserService {
         field.fieldArray = {
           ...documentFieldArray
         };
+        break;
+      case CustomComponentsEnum.CUSTOM_DYNAMIC_DROP:
+        // if (field.lookupName) {
+          field.templateOptions.options = this.dynamicOptionsService
+            .getDynamicOptions(field.lookupName);
+        // }
+        break;
     }
     return field;
 
@@ -143,8 +147,6 @@ export class NgxFormlyParserService {
   }
 
   constructor(
-    private apiService: ApiService,
-    private store: Store<fromRootReducers.AppState>,
     private formlyFieldsService: FormlyFieldsService,
     private dynamicOptionsService: DynamicOptionsService
   ) { }

@@ -12,10 +12,10 @@ export const environment = {
     discardQuestionsChanges : 'questionnaire/discardQuestionsChanges',
     fetchDynamicOptions: 'questionnaire/dynamicLookup/',
     fetchReviewInformationTask: 'questionnaire/reviewTask',
-    cancelApplicationRequest: '<cancel-url-is-missing>',
+    cancelApplicationRequest: 'request/cancel',
     editApplicationRequest: '<edit-request-is-missing>',
-    signAndSubmitTask:"questionnaire/taskQuestions",
-    agreeAndSubmitApplication:'questionnaire/submit'
+    signAndSubmitTask: 'questionnaire/taskQuestions',
+    agreeAndSubmitApplication: 'questionnaire/submit'
 
   }
 };

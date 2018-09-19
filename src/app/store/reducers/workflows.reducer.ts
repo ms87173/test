@@ -155,7 +155,7 @@ export function reducer(
                 //     nextTask: nextStateTask
 
                 // };
-                // console.log(x);
+                // //console.log(x);
                 return {
                     ...state,
                     activeTask,

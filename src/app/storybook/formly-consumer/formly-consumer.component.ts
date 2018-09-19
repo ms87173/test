@@ -220,14 +220,14 @@ export class FormlyConsumerComponent implements OnInit {
           placeholder: 'Search for a state:',
           label: 'Search for a state:',
           search$: (term) => {
-            console.log('inner search', term);
+            //console.log('inner search', term);
             if ((!term || term === '')) {
               return observableOf(this.listData);
             }
             return observableOf(
               this.listData.filter(
                 (v) => {
-                  console.log(v, ':::VData');
+                  //console.log(v, ':::VData');
                   return v.value.toLowerCase().indexOf(term.toLowerCase()) > -1;
                 }
               ).slice(0, 10));

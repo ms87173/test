@@ -66,19 +66,21 @@ export class ApplicationWorkflowsEffects {
                     .pipe(
                         map(response => {
                             const { workflowId, taskId} = action.payload;
-                            console.log(response);
-                            console.log(`Task is Saved Redirecting to next task with workflowId ${workflowId} and taskId ${taskId}`);
+                            //console.log(response);
+                            //console.log(`Task is Saved Redirecting to next task with workflowId ${workflowId} and taskId ${taskId}`);
                             return new SetActiveTask({
                                 workflowId,
                                 taskId
                             });
                         }),
-                        catchError(
-                            error => of(
-                                new RouterGo({
-                                    path: ['ddo', 'error', { ...error }]
-                                }))
-                        )
+                        catchError(error => {
+                            //console.log(error);
+                            return of({}
+                            // new RouterGo({
+                            //     path: ['ddo', 'error', { ...error }]
+                            // }))
+                        );
+                    })
                     )
                 ));
         @Effect() saveAndExitRequestTaskEffect = this.actions$.pipe(
@@ -88,8 +90,8 @@ export class ApplicationWorkflowsEffects {
                     .saveApplicationRequestTask(action.payload)
                     .pipe(
                         map(response => {
-                            console.log(response);
-                            console.log('Task is Saved');
+                            //console.log(response);
+                            //console.log('Task is Saved');
                             return new RouterGo({
                                 path: ['ddo', 'my-applications']
                             });

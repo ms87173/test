@@ -1,41 +1,45 @@
 <div class="side-nav">
   <accordion>
-    <accordion-group *ngFor='let item of config' [isOpen]="item.id === selectedParentId">
+    <accordion-group *ngFor='let parentItem of config' [isOpen]="parentItem.id === selectedParentId">
       <div accordion-heading class="clearfix">
         <div class="row mb-0 side-nav__tab pl-3">
-          <div class="col-sm-1 no-padding-left">
+          <div class="col-sm-1 no-padding-left" *ngIf="!parentItem.singleTaskPresent">
             <i class="fa fa-chevron-right collapsible-icon float-left pull-left"></i>
           </div> 
-          <div class="col-sm-8 side-nav__heading">
-            <div (click)='item.children.length === 1 ? setSelectedId(item.id, item.children[0].id, item.type): false'>
-              {{item.label}}
+          <div class="side-nav__heading"
+            [ngClass]="parentItem.singleTaskPresent?'col-sm-9 temp-padding':'col-sm-8'">
+            <div
+              (click)='parentItem.singleTaskPresent ? setSelectedId(parentItem.id, parentItem.children[0].id, parentItem.type): false'>
+              {{parentItem.label}}
             </div>
-            <span class="role" *ngIf="item.subHeading">{{item.subHeading}}</span>
+            <span class="role" *ngIf="parentItem.subHeading">{{parentItem.subHeading}}</span>
           </div>
-          <div class="col-sm-3 no-padding-left side-nav__status">
-              <i *ngIf = 'item.status === status.completed'
-                [ngClass]="{'status-icon--completed fa-check': item.status === status.completed,
-                'status-icon--inprogress fa-circle': item.status === status.inProgress}"
+          <div class="col-sm-3 no-padding-left no-padding-right side-nav__status">
+              <i *ngIf = 'parentItem.status === status.completed'
+                [ngClass]="{'status-icon--completed fa-check': parentItem.status === status.completed}"
                 class="fa status-icon float-right pull-right"></i>
-                <div 
-                  *ngIf = 'item.status === status.inProgress'class="status-container">
-                  <span class="status-text">Required</span>
-                </div>
+              <div *ngIf = 'parentItem.status === status.inProgress'
+                class="status-container">
+                <span class="status-text">Required</span>
+              </div>
           </div>
         </div>
       </div>
-      <ul class="list-group" *ngIf = 'item.children.length > 1'>
-        <li class="list-group-item list-item d-flex justify-content-between align-items-center" *ngFor='let child of item.children' 
-        [ngClass]="{'active': item.id ===selectedParentId && child.id === selectedChildId && item.children.length > 1 }"
-        (click) = 'setSelectedId(item.id, child.id, child.type)'>
-          <a class='child-link' routerLink="['/workflow/',item.id]"> {{child.label}}</a>
+      <ul class="list-group" *ngIf = '!parentItem.singleTaskPresent'>
+        <li class="list-group-item list-item d-flex justify-content-between align-items-center"
+          *ngFor='let child of parentItem.children' 
+          [ngClass]="{'active': parentItem.id ===selectedParentId && child.id === selectedChildId && parentItem.children.length > 1, 'disabled': parentItem.status==='DISABLED' }"
+          (click) = 'setSelectedId(parentItem.id, child.id, child.type)'>
+          <a class='child-link'>
+            {{child.label}}
+          </a>
           <i *ngIf= 'child.status === status.completed'
             [ngClass]="{'status-icon--completed fa-check': child.status === status.completed}"
-              class="fa status-icon float-right pull-right"></i>
-              <div 
-                  *ngIf = 'item.status === status.inProgress'class="status-container">
-                  <span class="status-text">Required</span>
-              </div>
+            class="fa status-icon float-right pull-right"></i>
+            <div  *ngIf = 'parentItem.status === status.inProgress'
+              class="status-container">
+              <span class="status-text">Required</span>
+            </div>
         </li>
       </ul>
     </accordion-group>

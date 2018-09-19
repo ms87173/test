@@ -3,10 +3,8 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions, UploadStatus } from 'ngx-uploader';
 import { FieldArrayType, FormlyFormBuilder } from '@ngx-formly/core';
 import { ApiService } from '../../../core';
-import { environment } from '../../../../environments/environment';
-import { Observable, BehaviorSubject } from 'rxjs';
-
-import { ResponseContentType } from '@angular/http';
+import { environment } from '../../../../environments/environment.dev';
+import {  BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -40,7 +38,7 @@ export class UploadFileComponent extends FieldArrayType implements OnInit {
     this.humanizeBytes = humanizeBytes;
   }
   onUploadOutput(output: UploadOutput): void {
-    // console.log('out-----', output);
+    // //console.log('out-----', output);
     this.fileUploaded = true;
     if (output.type === 'allAddedToQueue') {
       const event: UploadInput = {
@@ -50,7 +48,7 @@ export class UploadFileComponent extends FieldArrayType implements OnInit {
         file: this.files[0],
       };
       this.uploadInput.emit(event);
-    //  console.log(this.files[0], '::::files', UploadStatus);
+    //  //console.log(this.files[0], '::::files', UploadStatus);
     } else if (output.type === 'addedToQueue' && typeof output.file !== 'undefined') {
       //  this.files.push(output.file);
     } else if (output.type === 'uploading' && typeof output.file !== 'undefined') {
@@ -71,27 +69,27 @@ export class UploadFileComponent extends FieldArrayType implements OnInit {
     this.files = this.files.filter(file => {
       this.fileUpload = false;
       const data = file.progress.status !== UploadStatus.Done;
-    //  console.log('files-status----', data, file);
+    //  //console.log('files-status----', data, file);
       return data ? data : file;
     });
-    // console.log('file-outer', this.files);
+    // //console.log('file-outer', this.files);
     this.bsFiles.next(this.files);
-    this.bsFiles.subscribe((data) => {
-      if (data.length > 0) {
-        console.log(data[0].progress.data, 'files-subscribe', data);
-      }
-    });
+    // this.bsFiles.subscribe((data) => {
+    //   if (data.length > 0) {
+    //     //console.log(data[0].progress.data, 'files-subscribe', data);
+    //   }
+    // });
 
-  //   console.log('check available files', this.files);
+  //   //console.log('check available files', this.files);
   //   clearInterval(this.dataTimer);
   //   this.dataTimer = setInterval(() => {
   //     if (this.files[0] && this.files[0].response) {
-  //       console.log(':::inside', this.files[0].response);
+  //       //console.log(':::inside', this.files[0].response);
   //       this.clearIntervalTime = true;
   //         clearInterval(this.dataTimer);
   //     } else if(this.files[0]) { 
   //   this.speedCalculater = this.speedCalculater + Number(this.files[0]['progress']['data']['speed']);
-  //   console.log(this.speedCalculater, '::::not yet', this.files[0]['progress']['data']); 
+  //   //console.log(this.speedCalculater, '::::not yet', this.files[0]['progress']['data']); 
   // }
   //   }, 1000);
   }
@@ -109,19 +107,19 @@ export class UploadFileComponent extends FieldArrayType implements OnInit {
   }
 
   downloadFile(data) {
-    this.apiService.get(`document/download/downloadGet/${data.documentId}/${data.fileName}`)
-    .map(resp => {
-      const ab = new Blob([resp]);
-      console.log('resp blob', resp); return resp; })
-    .subscribe(res => {
-      this.downloadFile1(res);
-      console.log('start download:', res);
-    });
+    // this.apiService.get(`document/download/downloadGet/${data.documentId}/${data.fileName}`)
+    // .map(resp => {
+    //   const ab = new Blob([resp]);
+    //   //console.log('resp blob', resp); return resp; })
+    // .subscribe(res => {
+    //   this.downloadFile1(res);
+    //   //console.log('start download:', res);
+    // });
   }
   downloadFile1(data) {
-    const blob = new Blob([data], { type: 'application/octet-stream' });
-    const url = window.URL.createObjectURL(blob);
-    console.log('df-i', data, blob, url);
+    // const blob = new Blob([data], { type: 'application/octet-stream' });
+    // const url = window.URL.createObjectURL(blob);
+    // console.log('df-i', data, blob, url);
   }
   ngOnInit() {}
 }

@@ -30,7 +30,7 @@ export class FormlyFieldsService {
           // formObj.valueChanges
           //   .pipe(debounceTime(600))
           //   .subscribe((fieldValue) => {
-          //     console.log(fieldValue);
+          //     //console.log(fieldValue);
           //   });
           field.formControl.valueChanges
             .pipe(debounceTime(600))
@@ -49,14 +49,11 @@ export class FormlyFieldsService {
                 return item.key
               }
             });
-            console.log("requiredFields");
-            console.log(requiredFields);
-
 
             formObj.valueChanges
               .pipe(debounceTime(600))
               .subscribe((fieldValue) => {
-                console.log(fieldValue);
+                //console.log(fieldValue);
               });
 
           }

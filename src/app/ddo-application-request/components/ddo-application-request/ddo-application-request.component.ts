@@ -45,22 +45,24 @@ export class DdoApplicationRequestComponent {
   TASK_TYPES = TASK_TYPES;
   tncReview: boolean = true;
   agreeAndSubmitMode: boolean = true;
+  saveAndExitInfo = {
+    label: '',
+    status: ''
+  };
   constructor(
     private store: Store<fromRootReducers.AppState>,
   ) {
     this.applicationHeading = new Map(Object.entries(APPLICATION_HEADING));
-
     this.store.select(fromRootSelectors.applicationRequestSelectors.getTncReview).
       subscribe((tncReview: any) => {
         this.tncReview = tncReview;
       });
-      
     this.store.select(fromRootSelectors.applicationRequestSelectors.getAgreeAndSubmitMode).
-    subscribe((agreeAndSubmitMode: any) => {
-      console.log(agreeAndSubmitMode,'agreeAndSubmitMode60')
-      this.agreeAndSubmitMode = agreeAndSubmitMode;
-      console.log(this.agreeAndSubmitMode,'agreeAndSubmitMode61')
-    });
+      subscribe((agreeAndSubmitMode: any) => {
+        // //console.log(agreeAndSubmitMode, 'agreeAndSubmitMode60')
+        this.agreeAndSubmitMode = agreeAndSubmitMode;
+        // //console.log(this.agreeAndSubmitMode, 'agreeAndSubmitMode61')
+      });
 
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaiton).
       subscribe((application: any) => {
@@ -77,8 +79,21 @@ export class DdoApplicationRequestComponent {
         this.currentTaskId$ = activeTaskData.task.id;
         this.currentWorkflowId$ = activeTaskData.workflowId;
         this.currentTaskType = activeTaskData.task.type;
-        
-        console.log(this.store, ':::141');
+        if (this.currentTaskType === TASK_TYPES.QUESTION) {
+          this.saveAndExitInfo = {
+            label: 'Save and Exit',
+            status: 'saveAndExit'
+          };
+        } else if (
+          this.currentTaskType === TASK_TYPES.REVIEW_INFORMATION ||
+          this.currentTaskType === TASK_TYPES.SIGN_AND_SUMBIT
+        ) {
+          this.saveAndExitInfo = {
+            label: 'Exit',
+            status: 'exit'
+          };
+        }
+        // //console.log(this.store, ':::141');
         if (this.currentTaskId$ && this.currentTaskType && this.application$.id) {
           this.store.dispatch(
             new RouterGo({
@@ -122,11 +137,13 @@ export class DdoApplicationRequestComponent {
     switch (action) {
       case 'agreeAndSubmit':
         if (this.tncReview !== null) {
-          this.store.dispatch(new AgreeAndSubmitQuestionnaire({
-            requestId: this.application$.id,
-            taskId: this.currentTaskId$,
-            tncReviewRequired: this.tncReview
-          }));
+          this.store.dispatch(
+            new AgreeAndSubmitQuestionnaire({
+              requestId: this.application$.id,
+              taskId: this.currentTaskId$,
+              tncReviewRequired: this.tncReview
+            })
+          );
         }
         break;
       case 'back':
@@ -138,21 +155,19 @@ export class DdoApplicationRequestComponent {
           }));
         break;
       case 'saveAndExit':
-      debugger;
-        if (this.currentTaskType !== TASK_TYPES.REVIEW_INFORMATION && this.currentTaskType !== TASK_TYPES.SIGN_AND_SUMBIT) {
-          this.store.dispatch(
-            new SaveActiveTaskAndExit({
-              workflowId: this.currentWorkflowId$,
-              taskId: this.currentTaskId$,
-              requestId: this.application$.id
-            }));
-        } else {
-          this.store.dispatch(
-            new RouterGo({
-              path: ['ddo', 'my-applications']
-            })
-          );
-        }
+        this.store.dispatch(
+          new SaveActiveTaskAndExit({
+            workflowId: this.currentWorkflowId$,
+            taskId: this.currentTaskId$,
+            requestId: this.application$.id
+          }));
+        break;
+      case 'exit':
+        this.store.dispatch(
+          new RouterGo({
+            path: ['ddo', 'my-applications']
+          })
+        );
         break;
       case 'next':
         this.store.dispatch(new ResetOpenSections());
@@ -175,8 +190,6 @@ export class DdoApplicationRequestComponent {
             }));
         }
         break;
-      case 'signAndSubmit':
-        console.log(action);
     }
   }
 }

@@ -29,7 +29,7 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
         case ActionTypes.GET_CURRENT_TASK_SUCCESS:
             let currTask = { ...action.payload };
             let openSections = [...state.openSections];
-            console.log(openSections);
+            //console.log(openSections);
             openSections.forEach((openSection) => {
                 currTask.sections.forEach((section) => {
                     if (section.title == openSection) {

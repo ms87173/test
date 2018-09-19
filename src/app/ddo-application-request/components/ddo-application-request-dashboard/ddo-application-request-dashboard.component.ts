@@ -59,15 +59,8 @@ export class DdoApplicationRequestDashboardComponent {
         this.contactPersonDetails$ = new ContactDetailsModel(contactDetail);
       });
   }
-
-  editClick() {
-    console.log('edit clicked');
-  }
-  cancelApplication() {
-    console.log('cancelling the application');
-  }
   routeToTask(item) {
-    console.log(item.routingInformation);
+    //console.log(item.routingInformation);
     this.store.dispatch(
       new SetActiveTask({
         workflowId: item.routingInformation.workflowId,
@@ -84,6 +77,6 @@ export class DdoApplicationRequestDashboardComponent {
   }
   saveTitle() {
     this.showTitleEditable = false;
-    console.log('title is saved');
+    //console.log('title is saved');
   }
 }

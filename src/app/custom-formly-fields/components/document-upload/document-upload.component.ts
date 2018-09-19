@@ -19,6 +19,6 @@ export class DocumentUploadComponent extends FieldArrayType implements OnInit {
   uploadedResponse(data) {
     this.downloadRes = true;
     this.respData = data;
-console.log(this.respData, '::::evt');
+    //console.log(this.respData, '::::evt');
   }
 }

@@ -31,7 +31,7 @@ export class GetSignAndSubmitTask implements Action {
 export class SetAgreeAndSubmitMode implements Action {
     readonly type = ActionTypes.SET_AGREE_SUBMIT_MODE
     constructor(public payload) {
-        console.log(payload, '::payload');
+        //console.log(payload, '::payload');
         this.payload = payload;
     }
 }

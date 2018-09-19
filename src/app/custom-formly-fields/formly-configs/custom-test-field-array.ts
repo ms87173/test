@@ -28,10 +28,9 @@ export const CustomTestFieldArray: FormlyFieldConfig = {
             templateOptions: {
                 label: 'Stock Identifier:',
                 addonRight: {
-                    class: 'fa fa-code',
-                    onClick: (to, fieldType, $event) => console.log(to, fieldType, $event),
-                },
-            },
-        },
-    ],
-}
+                    class: 'fa fa-code'
+                }
+            }
+        }
+    ]
+};
