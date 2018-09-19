@@ -19,7 +19,7 @@ export class DdoApplicationsGridComponent implements OnInit {
   @Input() config: any;
   @Output() actions: any = new EventEmitter();
   actionTypes: any;
-  sortByKey: any;
+  sortByKey: any = 'lastUpdate';
   status: any;
   constructor() {
     this.actionTypes = ACTION_TYPES;

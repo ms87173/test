@@ -138,12 +138,21 @@ export class DdoApplicationRequestComponent {
           }));
         break;
       case 'saveAndExit':
-        this.store.dispatch(
-          new SaveActiveTaskAndExit({
-            workflowId: this.currentWorkflowId$,
-            taskId: this.currentTaskId$,
-            requestId: this.application$.id
-          }));
+      debugger;
+        if (this.currentTaskType !== TASK_TYPES.REVIEW_INFORMATION && this.currentTaskType !== TASK_TYPES.SIGN_AND_SUMBIT) {
+          this.store.dispatch(
+            new SaveActiveTaskAndExit({
+              workflowId: this.currentWorkflowId$,
+              taskId: this.currentTaskId$,
+              requestId: this.application$.id
+            }));
+        } else {
+          this.store.dispatch(
+            new RouterGo({
+              path: ['ddo', 'my-applications']
+            })
+          );
+        }
         break;
       case 'next':
         this.store.dispatch(new ResetOpenSections());
