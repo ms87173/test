@@ -10,19 +10,19 @@ export class SignAndSubmitService {
 
   getSignAndSubmitTask(signAndSubmitRequest: SignAndSubmitRequest): Observable<SignAndSubmit> {
     const url = environment.apiUrls.signAndSubmitTask;
-    // return this.apiService
-    //   .get(`${url}/${signAndSubmitRequest.taskId}`);
-    // Todo: Uncomment to use Production Url
     return this.apiService
-      .post(url, signAndSubmitRequest);
+      .get(`${url}/${signAndSubmitRequest.taskId}`);
+    // Todo: Uncomment to use Production Url
+    // return this.apiService
+    //   .post(url, signAndSubmitRequest);
   }
 
   agreeAndSubmitApplication(agreeAndSubmitRequest:AgreeAndSubmitRequest): Observable<any>{
     const url = environment.apiUrls.agreeAndSubmitApplication;
-    // return of({})
+    return of({})
   // Todo: Uncomment to use Production Url
-  return this.apiService
-    .post(url, agreeAndSubmitRequest);
+  // return this.apiService
+  //   .post(url, agreeAndSubmitRequest);
   }
 
   constructor(private apiService: ApiService) { }

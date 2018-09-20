@@ -2,25 +2,29 @@
     "dynamic-options": [
         {
           "label": "India",
-          "value": "India"
+          "value": "ind"
         },
         {
           "label": "USA",
-          "value": "USA"
+          "value": "us"
         },
         {
           "label": "Australia",
-          "value": "Australia"
+          "value": "aus"
         }
       ],
       "Countries": [
         {
           "label": "India",
-          "value": "IN"
+          "value": "ind"
         },
         {
           "label": "USA",
-          "value": "USA"
+          "value": "us"
+        },
+        {
+          "label": "Korea",
+          "value": "kr"
         }
       ],
       "usa-states": [

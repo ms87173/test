@@ -3,7 +3,7 @@
     {{application$.title}}
   </h5>
   <div class="col-md-2 pt-3 pb-3 text-align-center"
-    *ngIf = '!(application$.status.code === applicationStatuses.onHold || application$.status.code === applicationStatuses.cancelled)'>
+    *ngIf = '!(application$?.status?.code === applicationStatuses?.onHold || application$?.status?.code === applicationStatuses?.cancelled)'>
     <a class="btn btn-link btn-link--primary" (click)="cancelApplication()">Cancel Application</a>
   </div>
 </div>

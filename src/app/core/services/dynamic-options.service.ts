@@ -10,7 +10,7 @@ export class DynamicOptionsService {
   getDynamicOptions(param: string): Observable<Option[]> {
     const url = environment.apiUrls.fetchDynamicOptions;
     // TODO: Production Url
-    return this.apiService.get(`${url}${param}`);
-    // return this.apiService.get(param);
+    // return this.apiService.get(`${url}${param}`);
+    return this.apiService.get(param);
   }
 }

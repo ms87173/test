@@ -17,26 +17,20 @@
                     "questions": [
                         {
                             "id": "Datepicker",
-                            "label": "Date Picker",
-                            "type": "custom-datepicker",
+                            "label": "Drop Down",
+                            "type": "custom-dynamic-drop",
+                            "lookUpname":"Countries",
                             "required": "true",
                             "readOnly": false,
                             "recurrent": false,
                             "placeHolder": "Interest Account",
                             "options": [
-                                {
-                                    "label": "Yes",
-                                    "value": true
-                                },
-                                {
-                                    "label": "No",
-                                    "value": false
-                                }
+                               
                             ],
                             "tooltipText": "<string>",
                             "answers": [
                                 {
-                                    "value": "09-05-2018T12:00:00"
+                                    "value": "ind"
                                 }
                             ]
                         },
