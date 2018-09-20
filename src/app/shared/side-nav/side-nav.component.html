@@ -1,6 +1,9 @@
 <div class="side-nav">
   <accordion>
-    <accordion-group *ngFor='let parentItem of config' [isOpen]="parentItem.id === selectedParentId">
+    <accordion-group *ngFor='let parentItem of config'
+      [isOpen]="parentItem.id === selectedParentId"
+      [ngClass]= "{'active': parentItem.id === selectedParentId && parentItem.singleTaskPresent}"
+      (click)='parentItem.singleTaskPresent ? setSelectedId(parentItem.id, parentItem.children[0].id, parentItem.type): false'>
       <div accordion-heading class="clearfix">
         <div class="row mb-0 side-nav__tab pl-3">
           <div class="col-sm-1 no-padding-left" *ngIf="!parentItem.singleTaskPresent">
@@ -8,8 +11,7 @@
           </div> 
           <div class="side-nav__heading"
             [ngClass]="parentItem.singleTaskPresent?'col-sm-9 temp-padding':'col-sm-8'">
-            <div
-              (click)='parentItem.singleTaskPresent ? setSelectedId(parentItem.id, parentItem.children[0].id, parentItem.type): false'>
+            <div>
               {{parentItem.label}}
             </div>
             <span class="role" *ngIf="parentItem.subHeading">{{parentItem.subHeading}}</span>
