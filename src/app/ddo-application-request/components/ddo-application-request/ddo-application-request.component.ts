@@ -59,7 +59,7 @@ export class DdoApplicationRequestComponent {
       });
     this.store.select(fromRootSelectors.applicationRequestSelectors.getAgreeAndSubmitMode).
       subscribe((agreeAndSubmitMode: any) => {
-        console.log(agreeAndSubmitMode, 'agreeAndSubmitMode60')
+        // console.log(agreeAndSubmitMode, 'agreeAndSubmitMode60');
         this.agreeAndSubmitMode = agreeAndSubmitMode;
         // //console.log(this.agreeAndSubmitMode, 'agreeAndSubmitMode61')
       });

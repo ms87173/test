@@ -3,7 +3,6 @@ import { Observable, of } from 'rxjs';
 import { ApiService } from './api.service';
 import {
   Task,
-  QuestionaireDeltaResponse,
   QuestionaireDeltaRequest,
   TaskRequest,
   Section
@@ -41,7 +40,7 @@ export class QuestionnaireService {
     // }
 
     // Todo : Production Url
-    console.log(deltaRequest, ':::service');
+    // console.log(deltaRequest, ':::service');
     return this.apiService
       .post(environment.apiUrls.fetchTaskQuestionnaireDelts, deltaRequest);
   }

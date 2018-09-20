@@ -53,7 +53,7 @@ export class SetSignAndSubmitId implements Action {
 export class GetSignAndSubmitDelta implements Action {
     readonly type = ActionTypes.GET_AGREE_AND_SUBMIT_FIELD_CHANGE_DELTA;
     constructor(public payload: SignAndSubmitDeltaRequest) {
-        console.log(payload, '::payloasd');
+        // console.log(payload, '::payloasd');
         this.payload = payload;
     }
 }

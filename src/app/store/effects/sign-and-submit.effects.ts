@@ -53,12 +53,12 @@ export class ApplicationSignAndSubmitEffects {
                 this.signAndSubmitService.getFieldChangeDelta(action.payload)
                     .pipe(
                         map((currentTask) => {
-                            console.log(currentTask, 'questionSErv');
-                            let currTask = { ...currentTask };
+                            // console.log(currentTask, 'questionSErv');
+                            const currTask = { ...currentTask };
                             currTask.sections.forEach((section) => {
                                 section.questions = section.questions.filter((question) => {
                                     return EXISTING_COMPONENTS.includes(question.type);
-                                })
+                                });
                             });
 
                             return (new GetSignAndSubmitDeltaSuccess(currTask));
