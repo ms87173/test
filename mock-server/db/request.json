@@ -40,13 +40,6 @@
                                 "id": "11",
                                 "status": "COMPLETED",
                                 "type": "questionnaire"
-                            },
-                            {
-                                "label": "Saving",
-                                "description": "This is your primary interest bearing account.",
-                                "id": "21",
-                                "status": "COMPLETED",
-                                "type": "questionnaire"
                             }
                         ]
                     }
