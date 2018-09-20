@@ -25,7 +25,9 @@
                 Application Info
               </h4>
               <h6 class="col-md-1 ddo-application-request__card-heading-edit-button">
-                <a href="javascript:void(0)" *ngIf="!showTitleEditable" (click)="editTitle()">
+                <a href="javascript:void(0)"
+                  *ngIf="!showTitleEditable && showEditButton"
+                  (click)="editTitle()">
                   Edit
                 </a>
               </h6>
@@ -55,7 +57,7 @@
               <span *ngIf="!showTitleEditable">
                 {{titleValue}}
               </span>
-              <span *ngIf="showTitleEditable">
+              <span *ngIf="showTitleEditable && showEditButton">
                 <input type="text" id="applicationTitle" value="{{application.title}}" [(ngModel)]="titleValue">
                 <a href="javascript:void(0)" style="margin-left: 10px;margin-right: 20px;" (click)="discardTitle()">
                   Discard Title
