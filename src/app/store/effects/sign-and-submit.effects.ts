@@ -73,8 +73,9 @@ export class ApplicationSignAndSubmitEffects {
                     .pipe(
                         map(
                             (response: any) => {
+                                const requestId = action.payload.requestId;
                                 return new RouterGo({
-                                    path: ['ddo', 'my-applications']
+                                    path: ['ddo', 'applications', requestId, 'success']
                                 });
                             }
                         ),

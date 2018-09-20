@@ -7,6 +7,7 @@ import {
   DdoApplicationRequestReviewInformationComponent
 } from './components';
 import { DdoApplicationRequestSignAndSubmitComponent } from './components/ddo-application-request-sign-and-submit/ddo-application-request-sign-and-submit.component';
+import { DdoApplicationRequestSuccessComponent } from './components/ddo-application-request-success/ddo-application-request-success.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DdoApplicationRequestDashboardComponent
+  },
+  {
+    path: 'success',
+    component: DdoApplicationRequestSuccessComponent
   }
 ];
 
