@@ -9,21 +9,21 @@ export interface ApplicationRequestState {
     application: applicationReducer.ApplicationState;
     workflows: workflowsReducer.WorkflowsState;
     reviewInformation: reviewInformationReducer.ReviewInformationState;
-    signAndSubmit:signAndSubmitReducer.SignAndSubmitState
+    signAndSubmit: signAndSubmitReducer.SignAndSubmitState
 }
 
 export const InitialState: ApplicationRequestState = {
     application: applicationReducer.InitialState,
     workflows: workflowsReducer.InitialState,
     reviewInformation: reviewInformationReducer.InitialState,
-    signAndSubmit:signAndSubmitReducer.InitialState
+    signAndSubmit: signAndSubmitReducer.InitialState
 };
 
 const reducers = {
     application: applicationReducer.applicationReducer,
     workflows: workflowsReducer.reducer,
     reviewInformation: reviewInformationReducer.reducer,
-    signAndSubmit:signAndSubmitReducer.reducer
+    signAndSubmit: signAndSubmitReducer.reducer
 };
 
 export const reducer: ActionReducer<ApplicationRequestState> = combineReducers(reducers);
@@ -50,40 +50,50 @@ export const getApplicationReviewInformationTask = (state: ApplicationRequestSta
     }
     return null;
 };
-export const getSignAndSubmitTask = (state: ApplicationRequestState) =>{  
-    if( state.signAndSubmit &&  state.signAndSubmit.signAndSubmitTask){
-        
-     return   state.signAndSubmit.signAndSubmitTask;
+export const getSignAndSubmitTask = (state: ApplicationRequestState) => {
+    if (state.signAndSubmit && state.signAndSubmit.signAndSubmitTask) {
+
+        return state.signAndSubmit.signAndSubmitTask;
 
     }
     return null
 
 }
 
-export const getSignAndSubmitTaskFormlyConfig = (state: ApplicationRequestState) =>{  
-    if( state.signAndSubmit &&  state.signAndSubmit.signAndSubmitTaskFormlyConfig){
-        
-     return   state.signAndSubmit.signAndSubmitTaskFormlyConfig;
+export const getSignAndSubmitTaskFormlyConfig = (state: ApplicationRequestState) => {
+    if (state.signAndSubmit && state.signAndSubmit.signAndSubmitTaskFormlyConfig) {
+
+        return state.signAndSubmit.signAndSubmitTaskFormlyConfig;
 
     }
     return [];
 
 }
-export const getTncReview = (state: ApplicationRequestState) =>{  
-    if( state.signAndSubmit &&  state.signAndSubmit.tncReview !== null){
-        
-     return   state.signAndSubmit.tncReview;
+export const getTncReview = (state: ApplicationRequestState) => {
+    if (state.signAndSubmit && state.signAndSubmit.tncReview !== null) {
+
+        return state.signAndSubmit.tncReview;
 
     }
     return null;
 
 }
 
-export const getAgreeAndSubmitMode = (state: ApplicationRequestState) =>{  
-    if( state.signAndSubmit &&  state.signAndSubmit.agreeAndSubmitMode !== null){
-        
-     return   state.signAndSubmit.agreeAndSubmitMode;
+export const getAgreeAndSubmitMode = (state: ApplicationRequestState) => {
+    if (state.signAndSubmit && state.signAndSubmit.agreeAndSubmitMode !== null) {
 
+        return state.signAndSubmit.agreeAndSubmitMode;
+
+    }
+    return null;
+
+}
+
+
+export const getSignAndSubmitQuestionId = (state: ApplicationRequestState) => {
+    if (state.signAndSubmit && state.signAndSubmit.signAndSubmitQuestionId !== null) {
+
+        return state.signAndSubmit.signAndSubmitQuestionId;
     }
     return null;
 

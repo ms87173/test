@@ -70,7 +70,7 @@ export class DdoApplicationRequestHeaderComponent implements OnInit {
       requestId: this.application$.id,
       reasonForCancellation: this.model.reason,
       comment: this.model.comment
-    };
+    }
     this.store.dispatch(new CancelApplicationRequest(data));
   }
 }

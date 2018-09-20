@@ -27,12 +27,14 @@ export class NgxFormlyParserService {
   public currentQuestionId: string = null;
   public fieldChangeObj = null;
   getFormlyFieldConfigArrayCollectionFromTask(currentTask: Task, currentQuestionId: string,
-    requestId: string, workflowId: string, taskId: string, taskType: string = TASK_TYPES.QUESTION): Observable<FormlyFieldConfigArrayCollection[]> {
+    requestId: string, workflowId: string, taskId: string,
+    taskType: string = TASK_TYPES.QUESTION): Observable<FormlyFieldConfigArrayCollection[]> {
     const formlyFieldConfigArrayCollections: FormlyFieldConfigArrayCollection[] = [];
     const currTask = { ...currentTask };
     currTask.sections.map((section: Section) => {
       const FormlyFieldConfigArray: FormlyFieldConfig[] =
-        this.getFormlyFieldConfigArrayFromSection(section, currentQuestionId, requestId, workflowId, taskId);
+        this.getFormlyFieldConfigArrayFromSection(section, currentQuestionId, requestId, workflowId, taskId, taskType
+        );
       const formlyFieldConfigArray: FormlyFieldConfigArrayCollection =
         new FormlyFieldConfigArrayCollection(FormlyFieldConfigArray, section.title);
       formlyFieldConfigArrayCollections.push(formlyFieldConfigArray);
@@ -53,11 +55,10 @@ export class NgxFormlyParserService {
         }
         field.type = question.type;
         field.lookupName = question.lookUpname;
-        if (taskType === TASK_TYPES.QUESTION) {
-          field.lifecycle = this.formlyFieldsService
-            .getFormlyLifeCycleEventByQuestionType(field.type, requestId, workflowId, taskId);
+        field.lifecycle = this.formlyFieldsService
+          .getFormlyLifeCycleEventByQuestionType(field.type, requestId, workflowId, taskId, taskType);
 
-        }
+
         field.templateOptions = {
           label: question.label || '',
           options: question.options || [],
@@ -127,8 +128,8 @@ export class NgxFormlyParserService {
         break;
       case CustomComponentsEnum.CUSTOM_DYNAMIC_DROP:
         // if (field.lookupName) {
-          field.templateOptions.options = this.dynamicOptionsService
-            .getDynamicOptions(field.lookupName);
+        field.templateOptions.options = this.dynamicOptionsService
+          .getDynamicOptions(field.lookupName);
         // }
         break;
     }

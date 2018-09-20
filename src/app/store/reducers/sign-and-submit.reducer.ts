@@ -1,20 +1,28 @@
-import { SignAndSubmit, FormlyFieldConfigArrayCollection } from "../../core/models";
+import { Task,
+    SignAndSubmitDeltaResponse,
+    SignAndSubmitDeltaError,
+    SignAndSubmit,
+    FormlyFieldConfigArrayCollection } from "../../core/models";
 import { ActionTypes, SignAndSubmitActions } from '../actions/sign-and-submit.actions';
 import { FormlyFieldConfig } from "@ngx-formly/core";
 
 
 export interface SignAndSubmitState {
-    signAndSubmitTask: SignAndSubmit
+    signAndSubmitTask: SignAndSubmit;
     signAndSubmitTaskFormlyConfig:FormlyFieldConfigArrayCollection[],
     tncReview: boolean,
     agreeAndSubmitMode: boolean;
+    readonly signAndSubmitQuestionId: string;
+
 }
 
 export const InitialState: SignAndSubmitState = {
     signAndSubmitTask: null,
     signAndSubmitTaskFormlyConfig:[],
     tncReview: null,
-    agreeAndSubmitMode: null
+    agreeAndSubmitMode: null,
+    signAndSubmitQuestionId: null
+
 }
 
 export function reducer(
@@ -51,6 +59,11 @@ export function reducer(
             return {
                 ...state,
                 agreeAndSubmitMode:action.payload
+            }
+            case ActionTypes.SET_SIGN_AND_SUBMIT_QUESTION_ID:
+            return {
+                ...state,
+                signAndSubmitQuestionId:action.payload
             }
         default:
             return state;

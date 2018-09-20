@@ -59,11 +59,12 @@ export class QuestionnaireEffectsService {
         this.questionnaireService.getFieldChangeDelta(action.payload)
           .pipe(
             map((currentTask) => {
-              let currTask = { ...currentTask };
+              // console.log(currentTask, 'questionSErv');
+              const currTask = { ...currentTask };
               currTask.sections.forEach((section) => {
                 section.questions = section.questions.filter((question) => {
                   return EXISTING_COMPONENTS.includes(question.type);
-                })
+                });
               });
 
               return (new GetCurrentFieldChangeDeltaSuccess(currTask));
@@ -103,7 +104,7 @@ export class QuestionnaireEffectsService {
     ofType(ActionTypes.SAVE_CHANGES_BY_SECTION_IN_TASK),
     switchMap(
       (action: SaveChangesBySectionInTask) => this.applicationRequestService
-      .saveApplicationRequestTask(action.payload)
+        .saveApplicationRequestTask(action.payload)
         .pipe(
           map((response) => (new GetCurrentTask(action.payload))
           ),
@@ -118,7 +119,7 @@ export class QuestionnaireEffectsService {
     ofType(ActionTypes.DISCARD_CHANGES_BY_SECTION_IN_TASK),
     switchMap(
       (action: DiscardChangesBySectionInTask) => this.applicationRequestService
-      .discardApplicationRequestTask(action.payload)
+        .discardApplicationRequestTask(action.payload)
         .pipe(
           map((response) => (new GetCurrentTask(action.payload))
           ),
@@ -137,7 +138,7 @@ export class QuestionnaireEffectsService {
   constructor(private actions$: Actions,
     private questionnaireService: QuestionnaireService,
     private ngxFormlyParserService: NgxFormlyParserService,
-    private applicationRequestService:ApplicationRequestService
+    private applicationRequestService: ApplicationRequestService
   ) { }
 
 
