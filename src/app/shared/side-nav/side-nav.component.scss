@@ -1,10 +1,5 @@
 .side-nav {
     border: 1px solid #eeeeee;
-    accordion-group {
-        &.active {
-            border-left: 5px solid #005AA1;
-        }
-    }
     .status-container {
         background: orange;
         border: solid 1px orange;

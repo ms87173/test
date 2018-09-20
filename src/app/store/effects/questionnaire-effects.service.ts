@@ -59,6 +59,7 @@ export class QuestionnaireEffectsService {
         this.questionnaireService.getFieldChangeDelta(action.payload)
           .pipe(
             map((currentTask) => {
+              console.log(currentTask, 'questionSErv');
               let currTask = { ...currentTask };
               currTask.sections.forEach((section) => {
                 section.questions = section.questions.filter((question) => {

@@ -7,6 +7,9 @@ import {
     GetSignAndSubmitTask,
     GetSignAndSubmitTaskSuccess,
     GetSignAndSubmitTaskFailure,
+    GetSignAndSubmitDelta,
+    GetSignAndSubmitDeltaSuccess,
+    GetSignAndSubmitDeltaFailure,
     GetSignAndSubmitTaskFormlyConfig,
     GetSignAndSubmitTaskFormlyConfigSuccess,
     GetSignAndSubmitTaskFormlyConfigFailure,
@@ -21,6 +24,8 @@ import { FormlyFieldConfig } from "@ngx-formly/core";
 import { TASK_TYPES } from "../../core/constants/application-request.constants";
 import { NgxFormlyParserService } from "../../core/services";
 import { RouterGo } from "../actions/router.actions";
+import { EXISTING_COMPONENTS } from '../../custom-formly-fields/enums/custom-components.enum';
+
 @Injectable()
 export class ApplicationSignAndSubmitEffects {
 
@@ -41,16 +46,41 @@ export class ApplicationSignAndSubmitEffects {
                     )
         ));
 
+    @Effect() getSignAndSubmitDelta = this.actions$.pipe(
+        ofType(ActionTypes.GET_AGREE_AND_SUBMIT_FIELD_CHANGE_DELTA),
+        switchMap(
+            (action: GetSignAndSubmitDelta) =>
+                this.signAndSubmitService.getFieldChangeDelta(action.payload)
+                    .pipe(
+                        map((currentTask) => {
+                            console.log(currentTask, 'questionSErv');
+                            let currTask = { ...currentTask };
+                            currTask.sections.forEach((section) => {
+                                section.questions = section.questions.filter((question) => {
+                                    return EXISTING_COMPONENTS.includes(question.type);
+                                })
+                            });
+
+                            return (new GetSignAndSubmitDeltaSuccess(currTask));
+                        }
+                        ),
+                        catchError(
+                            (err) => of(new GetSignAndSubmitDeltaFailure(err))
+                        )
+                    )
+        )
+    );
+
     @Effect() getSignAndSubmitTaskFormlyConfigEffect = this.actions$.pipe(
         ofType(ActionTypes.GET_SIGN_AND_SUBMIT_TASK_FORMLY_CONFIG),
         switchMap(
             (action: GetSignAndSubmitTaskFormlyConfig) =>
                 this.ngxFormlyParserService.getFormlyFieldConfigArrayCollectionFromTask(
-                    action.payload,
-                    null,
-                    null,
-                    null,
-                    null,
+                    action.payload.task,
+                    action.payload.signAndSubmitId,
+                    action.payload.requestId,
+                    action.payload.workflowId,
+                    action.payload.taskId,
                     TASK_TYPES.SIGN_AND_SUMBIT)
                     .pipe(
                         map(
