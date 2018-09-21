@@ -30,7 +30,10 @@
                             "tooltipText": "<string>",
                             "answers": [
                                 {
-                                    "value": "ind"
+                                    "value": "ind",
+                                    "validationError":{
+                                        "value":"server Error"
+                                    } 
                                 }
                             ]
                         },
@@ -55,7 +58,10 @@
                             "tooltipText": "<string>",
                             "answers": [
                                 {
-                                    "value": "09-05-2018T12:00:00"
+                                    "value": "09-05-2018T12:00:00",
+                                    "validationError":{
+                                        "value":"server Error 1"
+                                    } 
                                 }
                             ]
                         },
@@ -80,7 +86,10 @@
                             "tooltipText": "<string>",
                             "answers": [
                                 {
-                                    "value": "09-05-2018T12:00:00"
+                                    "value": "09-05-2018T12:00:00",
+                                    "validationError":{
+                                        "value":"server Error 2"
+                                    } 
                                 }
                             ]
                         },

@@ -16,7 +16,7 @@ export class SectionComponent implements OnInit, OnChanges {
   form = new FormGroup({});
   options: FormlyFormOptions = {};
   model: any = {};
-  fields: FormlyFieldConfig[] = [];
+  fields: any[] = [];
   isReadonly = false;
   showEditButton: boolean = null;
   @Input() formlyFieldConfigArray: FormlyFieldConfigArrayCollection;
@@ -32,7 +32,7 @@ export class SectionComponent implements OnInit, OnChanges {
   }
 
   editClicked(sectionId: string) {
-  this.updateOpenSections.emit({
+    this.updateOpenSections.emit({
       actionName: questionnaireActions.ActionTypes.PUSH_SECTION_IN_OPEN_SECTIONS,
       sectionId: sectionId
     });
@@ -64,6 +64,14 @@ export class SectionComponent implements OnInit, OnChanges {
       if (EXISTING_CUSTOM_COMPONENTS.includes(item.type)) {
         this.model[item.key] = [{}];
       }
+      else {
+        this.model[item.key] = item.answers[0].value;
+      }
+
+      if (item.answers && item.answers.length > 0 && item.answers[0].validationError) {
+        console.log(item.answers[0].validationError);
+      }
+
     });
 
     if (this.showEditButton == null) {

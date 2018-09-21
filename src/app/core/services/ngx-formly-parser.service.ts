@@ -68,15 +68,25 @@ export class NgxFormlyParserService {
         };
 
         if (question.answers && question.answers.length > 0) {
-          field = this.setDefaultValuesFromAnswers(question.answers, field, question.recurrent);
-        } else {
-          // Todo: remove this
-          if (field.type === CustomComponentsEnum.CUSTOM_CHECKBOX) {
-            field.defaultValue = false;
-          } else {
-            field.defaultValue = [];
-          }
+          field.answers = question.answers;
+
         }
+        else {
+          field.answers = [];
+
+        }
+
+        // if (question.answers && question.answers.length > 0) {
+        //   field = this.setDefaultValuesFromAnswers(question.answers, field, question.recurrent);
+        // } else {
+        //   // Todo: remove this
+        //   if (field.type === CustomComponentsEnum.CUSTOM_CHECKBOX) {
+
+        //     field.defaultValue = false;
+        //   } else {
+        //     field.defaultValue = [];
+        //   }
+        // }
 
         if (question.max) {
           field.templateOptions.max = question.max;
@@ -127,8 +137,8 @@ export class NgxFormlyParserService {
         break;
       case CustomComponentsEnum.CUSTOM_DYNAMIC_DROP:
         // if (field.lookupName) {
-          field.templateOptions.options = this.dynamicOptionsService
-            .getDynamicOptions(field.lookupName);
+        field.templateOptions.options = this.dynamicOptionsService
+          .getDynamicOptions(field.lookupName);
         // }
         break;
     }

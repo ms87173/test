@@ -44,7 +44,8 @@ import { CustomTestComponent } from './components/custom-test/custom-test.compon
     NgbModule.forRoot(),
     FormlyModule.forRoot({
       validationMessages: [
-        { name: 'server-error', message: errorMessage }
+        { name: 'server-error', message: errorMessage },
+        { name: 'required', message: (err, field) => `${field.templateOptions.label} is required.`}
       ],
       types: [
         { name: CustomComponentsEnum.CUSTOM_DROPDOWN, component: DropdownComponent },
