@@ -1,0 +1,76 @@
+{ 
+    "label": "Interest Checking",
+    "description": "This is your primary interest bearing account.",
+    "id": "task1",
+    "status": "InProgress",
+    "sections": [
+        {
+            "title": "Account Information",
+            "questions": [
+                {
+                    "id": "InterestCheckingCheckBox",
+                    "label": "Would you like to earn interest this account?",
+                    "type": "radio",
+                        "required": "true",
+                        "readOnly": "false",
+                        "placeHolder": "Interest Account",
+                        "options": [
+                            {
+                                "label": "Yes",
+                                "value": "true"
+                              },
+                              {
+                                "label":"No",
+                                "value": "False"
+                              }
+                        ],
+                    "tooltipText": "<string>",
+                    "defaultValue": "<any>"
+                },
+                {
+                    "id": "SavingAccountTextBox",
+                    "label": "Would you like to earn saving this account?",
+                    "type": "custom-textbox",
+                        "required": "true",
+                        "readOnly": "false",
+                        "placeHolder": "Saving Account",
+                        "options": [
+                            {
+                                "label": "Yes",
+                                "value": "true"
+                              },
+                              {
+                                "label":"No",
+                                "value": "False"
+                              }
+                        ],
+                    
+                    "tooltipText": "<string>",
+                    "defaultValue": "<any>"
+                },
+                {
+                    "id": "RemoveOnAnswerQuestion1",
+                    "label": "I will be removed as soon as question 1 is answered",
+                    "type": "custom-textbox",
+                        "required": "true",
+                        "readOnly": "false",
+                        "placeHolder": "Saving Account",
+                        "options": [
+                            {
+                                "label": "Yes",
+                                "value": "true"
+                              },
+                              {
+                                "label":"No",
+                                "value": "False"
+                              }
+                        ],
+                    
+                    "tooltipText": "<string>",
+                    "defaultValue": "<any>"
+                }
+            ]
+            
+        }
+    ]
+}

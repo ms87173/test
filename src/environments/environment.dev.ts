@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://mktdevvm77134.nam.nsroot.net:9090/api/ddo/',
+  apiBaseUrl: 'http://mktdevvm116601.nam.nsroot.net:9090/api/ddo/',
   apiUrls: {
     fetchContactPerson: 'application/contact',
     fetchAllApplications: 'request/all',

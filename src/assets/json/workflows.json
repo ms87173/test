@@ -1,0 +1,10 @@
+{
+    "workflows": [
+        {
+            "id": "<string>",
+            "label": "Banking accounts",
+            "category": "<string>", //based on the application structure the first screen mapping of task in the gien category.
+            "description": "Select the account options you prefer. You can remove the accounts if necessary."
+        }
+    ]
+}

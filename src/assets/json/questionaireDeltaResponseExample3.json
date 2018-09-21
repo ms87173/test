@@ -1,0 +1,36 @@
+{
+    "new":[
+        {
+            "id": "FavourateMovieInput",
+            "label": "What is your favourate Moview?",
+            "type": "radio",
+            "required": true,
+            "readOnly": false,
+            "placeHolder": "Current Account",
+            "options": [
+              {
+                "label": "Yes",
+                "value": "true"
+              },
+              {
+                "label": "No",
+                "value": "false"
+              }
+            ],
+            "tooltipText": "<string>",
+            "defaultValue": true,
+            "questionIdAfterToBeInserted": "ColorInputBox",
+            "sectionName": "Account Information"
+          
+          
+          
+          }
+          
+    ],
+    "update":null,
+
+    "delete":null,
+    "errors":null
+
+
+}

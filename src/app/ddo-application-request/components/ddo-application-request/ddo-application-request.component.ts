@@ -141,7 +141,7 @@ export class DdoApplicationRequestComponent {
             new AgreeAndSubmitQuestionnaire({
               requestId: this.application$.id,
               taskId: this.currentTaskId$,
-              tncReviewRequired: this.tncReview
+              tncReviewRequired: true
             })
           );
         }
