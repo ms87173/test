@@ -68,7 +68,12 @@ export class SectionComponent implements OnInit, OnChanges {
         this.model[item.key] = [{}];
       }
       else {
-        this.model[item.key] = item.answers[0].value;
+        if(item.answers && item.answers.length>0){
+          this.model[item.key] = item.answers[0].value;
+        }
+        else{
+          this.model[item.key] = null;
+        }
       }
       // console.log(this.form.get(item.key));
 
@@ -108,8 +113,13 @@ export class SectionComponent implements OnInit, OnChanges {
             item.answers[0].validationError &&
             item.answers[0].validationError.value
           ) {
+            let field = this.fields.find((data) => {
+              return data.key == item.id;
+            });
+            debugger;
 
-            this.form.get(item.id).setErrors({ "server-error": item.answers[0].validationError.value });
+            field.validation.show = true;
+            // this.form.get(item.id).setErrors({ "server-error": item.answers[0].validationError.value });
             this.form.get(item.id).markAsTouched();
 
           }
