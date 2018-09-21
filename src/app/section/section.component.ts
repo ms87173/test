@@ -29,6 +29,7 @@ export class SectionComponent implements OnInit, OnChanges {
   CustomComponentsEnum = CustomComponentsEnum;
   constructor() {
 
+
   }
 
   editClicked(sectionId: string) {
@@ -58,6 +59,8 @@ export class SectionComponent implements OnInit, OnChanges {
 
 
   ngOnInit() {
+
+    // Todo : Need to add functionality for complex and recurrent  and mix of Complex, simple and recurrent
     this.fields = this.formlyFieldConfigArray.formlyFieldConfigs;
     this.fields.forEach((item) => {
       // /Need to add more If statements for other custom components
@@ -67,24 +70,52 @@ export class SectionComponent implements OnInit, OnChanges {
       else {
         this.model[item.key] = item.answers[0].value;
       }
+      // console.log(this.form.get(item.key));
 
-      if (item.answers && item.answers.length > 0 && item.answers[0].validationError) {
-        console.log(item.answers[0].validationError);
-      }
+      // if (item.answers && item.answers.length > 0 && item.answers[0].validationError) {
+      //   this.form.get(item.key)
+      //   console.log(item.answers[0].validationError);
+      // }
 
     });
+
+
+
+
 
     if (this.showEditButton == null) {
       this.showEditButton = this.showEdit;
     }
   }
   ngOnChanges(changes: SimpleChanges): void {
-    this.fields = this.formlyFieldConfigArray.formlyFieldConfigs;
+
+    // this.fields = this.formlyFieldConfigArray.formlyFieldConfigs;
+    this.test();
     if (this.showEditButton == null) {
       this.showEditButton = this.showEdit;
     }
   }
 
 
+  test() {
+    // Todo : Need to add functionality for complex and recurrent  and mix of Complex, simple and recurrent
+
+    setTimeout(() => {
+      this.currSection.questions.forEach((item) => {
+        if (this.form && this.form.controls && Object.keys(this.form.controls).length > 0) {
+          if (item.answers &&
+            item.answers.length > 0 &&
+            item.answers[0].validationError &&
+            item.answers[0].validationError.value
+          ) {
+
+            this.form.get(item.id).setErrors({ "server-error": item.answers[0].validationError.value });
+            this.form.get(item.id).markAsTouched();
+
+          }
+        }
+      });
+    }, 0);
+  }
 
 }

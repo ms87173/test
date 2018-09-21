@@ -22,6 +22,7 @@ export * from './sign-and-submit-delta-request';
 export * from './sign-and-submit-delta-error';
 export * from './sign-and-submit-delta-question';
 export * from './sign-and-submit-delta-response';
+export * from './validation-error';
 
 
 

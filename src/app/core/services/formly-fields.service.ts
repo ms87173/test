@@ -80,7 +80,8 @@ export class FormlyFieldsService {
                     type: questionType,
                     answers: [
                       {
-                        value: fieldValue
+                        value: fieldValue,
+                        validationError:null
                       }
                     ]
                   }]
