@@ -1,0 +1,29 @@
+.ddo-application-success {
+    text-align: center;
+    &__icon {
+        font-size: 70px;
+        -webkit-text-stroke: 10px #fafafa;
+        color: #015ba1;
+    }
+    &__heading {
+        font-weight: 500;
+    }
+    .divider {
+        width: 30%;
+        margin-left: 35%;
+        border-bottom: 2px solid #e8dede;
+    }
+    &__button {
+        border: 1px solid #002d72;
+        color: #002d72;
+    }
+    &__description {
+        font-size: 15px;
+    }
+    .work-in-progress {
+        width: 300px;
+        background: #ff00a6;
+        padding: 5px;
+        color: white;
+    }
+}

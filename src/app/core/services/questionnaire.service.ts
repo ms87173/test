@@ -3,7 +3,6 @@ import { Observable, of } from 'rxjs';
 import { ApiService } from './api.service';
 import {
   Task,
-  QuestionaireDeltaResponse,
   QuestionaireDeltaRequest,
   TaskRequest,
   Section
@@ -41,8 +40,14 @@ export class QuestionnaireService {
     }
 
     // Todo : Production Url
+<<<<<<< HEAD
     // return this.apiService
     //   .post(environment.apiUrls.fetchTaskQuestionnaireDelts, deltaRequest);
+=======
+    // console.log(deltaRequest, ':::service');
+    return this.apiService
+      .post(environment.apiUrls.fetchTaskQuestionnaireDelts, deltaRequest);
+>>>>>>> 99c5167871a15d75e2b5b8999d4038a4d31ee286
   }
   getCountryCode(): Observable<any[]> {
     return this.apiService.get('countryCode');

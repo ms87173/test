@@ -18,6 +18,10 @@ export * from './review-information-workflow';
 export * from './sign-and-submit';
 export * from './sign-and-submit-request';
 export * from './agree-and-submit-request';
+export * from './sign-and-submit-delta-request';
+export * from './sign-and-submit-delta-error';
+export * from './sign-and-submit-delta-question';
+export * from './sign-and-submit-delta-response';
 
 
 

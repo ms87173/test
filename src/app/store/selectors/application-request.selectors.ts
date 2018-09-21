@@ -68,3 +68,8 @@ export const getAgreeAndSubmitMode = createSelector(
     getApplicaitonRequestState,
     fromApplicationRequest.getAgreeAndSubmitMode
 );
+export const getSignAndSubmitQuestionId = createSelector(
+    getApplicaitonRequestState,
+    fromApplicationRequest.getSignAndSubmitQuestionId
+
+);

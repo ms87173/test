@@ -1,9 +1,18 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { fromRootReducers, fromRootSelectors } from '../../../store';
-import { SignAndSubmit, FormlyFieldConfigArrayCollection } from '../../../core';
+import { fromRootReducers, fromRootActions, fromRootSelectors } from '../../../store';
+import {
+  SignAndSubmit, FormlyFieldConfigArrayCollection, TaskRequest, SignAndSubmitDeltaResponse,
+  SignAndSubmitDeltaError,
+} from '../../../core';
 import { takeWhile } from 'rxjs/operators';
-import { GetSignAndSubmitTask, GetSignAndSubmitTaskFormlyConfig, SetAgreeAndSubmitMode, SetTncReview } from '../../../store/actions/sign-and-submit.actions';
+import { Task } from '../../../core/models';
+import {
+  GetSignAndSubmitTask,
+  GetSignAndSubmitTaskFormlyConfig,
+  SetAgreeAndSubmitMode,
+  SetTncReview
+} from '../../../store/actions/sign-and-submit.actions';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { NgxMdService } from 'ngx-md';
@@ -15,67 +24,88 @@ import { NgxMdService } from 'ngx-md';
 export class DdoApplicationRequestSignAndSubmitComponent implements OnInit, OnDestroy, OnChanges {
 
   isComponentActive = true;
-  signAndSubmitTask: SignAndSubmit = null
+  signAndSubmitTask: SignAndSubmit = null;
   applicationId: string = null;
   currentTaskId: string = null;
+  currentTask: Task = null;
   currentWorkflowId: string = null;
   form = new FormGroup({});
   options: FormlyFormOptions = {};
   model: any = {};
   fields: FormlyFieldConfig[] = [];
+  taskRequest: TaskRequest;
+  signAndSubmitQuestionId: any;
+  requestId: any;
+  currentTaskType: any;
 
   constructor(private cd: ChangeDetectorRef,
     private store: Store<fromRootReducers.AppState>,
     private _markdown: NgxMdService,
   ) {
-  
-    this.form.valueChanges.subscribe((data)=>{
-      let disableArr= []
-    //  debugger;
-      if(this.fields){
-        let questionIds = this.fields.map((field)=> field.key);
-        questionIds.forEach((id)=>{        
-        let disableVal  =this.form.get(id) && this.form.get(id)['value'] === null ? false : this.form.get(id) && this.form.get(id)['value'];
 
-        if(typeof disableVal==='boolean') {
-          //console.log(disableVal,id, 'disabled===90',id === "termsconditionsReadBefore");
-        //  this.disableValuefn(disableVal);
-        if(id === "termsconditionsReadBefore") {
-        disableArr[0] = disableVal;
-        }
-        else{
-          disableArr[1] = disableVal;
-        }
+    this.form.valueChanges.subscribe((data) => {
+      const disableArr = [];
+      if (this.fields) {
+        const questionIds = this.fields.map((field) => field.key);
+        questionIds.forEach((id) => {
+          const disableVal =
+            this.form.get(id) && this.form.get(id)['value'] === null ? false : this.form.get(id) && this.form.get(id)['value'];
+          if (typeof disableVal === 'boolean') {
+            disableArr.push(disableVal);
+          }
+        });
       }
-        })
-      }
-      let x = disableArr.some(v => !v);
-      this.disableValuefn(x);
-      //console.log(x,'disableArr.lengt===')
-    //   if(disableArr.length > 1){
-    //   disableArr.forEach((val,i) => {
-    //     //console.log(disableArr[i],'disableArr[i]==')
-    //     if(disableArr[i] === false){
-    //       this.disableValuefn(disableArr[i]);
-    //     }
-    //     else{
-    //       this.disableValuefn(disableArr[i]);
-
-    //     }
-    //   })
-    // }
-     
+      const boolVal = disableArr.some(v => !v);
+      this.disableValuefn(boolVal);
     });
-  
-    
+
+    this.store.pipe(select(fromRootSelectors.applicationRequestSelectors.getApplicaiton),
+      takeWhile(() => this.isComponentActive))
+      .subscribe((application) => {
+        if (application && application.id) {
+          this.requestId = application.id;
+        }
+      });
+
+
+    this.store.pipe(select(fromRootSelectors.applicationRequestSelectors.getApplicationActiveTask),
+      takeWhile(() => this.isComponentActive))
+      .subscribe((activeTask) => {
+        this.currentTaskId = activeTask.task.id;
+        this.currentWorkflowId = activeTask.workflowId;
+        this.currentTaskType = activeTask.task.type;
+
+
+      }
+      );
+
+
+
+    this.store.pipe(select(fromRootSelectors.applicationRequestSelectors.getSignAndSubmitQuestionId),
+      takeWhile(() => this.isComponentActive)
+    ).
+      subscribe((signAndSubmitQuestionId: string) => {
+        if (signAndSubmitQuestionId) {
+          this.signAndSubmitQuestionId = signAndSubmitQuestionId;
+
+        }
+      });
+
     this.store.pipe(select(fromRootSelectors.applicationRequestSelectors.getSignAndSubmitTask),
       takeWhile(() => this.isComponentActive)
     ).
       subscribe((signAndSubmitTask: SignAndSubmit) => {
         if (signAndSubmitTask) {
           this.signAndSubmitTask = signAndSubmitTask;
-          this.store.dispatch(new GetSignAndSubmitTaskFormlyConfig(
-            this.signAndSubmitTask
+          this.store.dispatch(new GetSignAndSubmitTaskFormlyConfig({
+            task: this.signAndSubmitTask,
+            signAndSubmitId: this.signAndSubmitQuestionId,
+            requestId: this.requestId,
+            workflowId: this.currentWorkflowId,
+            taskId: this.currentTaskId
+          }
+
+
           ));
         }
       });
@@ -110,20 +140,20 @@ export class DdoApplicationRequestSignAndSubmitComponent implements OnInit, OnDe
       });
 
   }
-  disableValuefn(disableValData){
-    if (disableValData ){
-      this.store.dispatch(new SetTncReview(null))
+  disableValuefn(disableValData) {
+    if (disableValData) {
+      this.store.dispatch(new SetTncReview(null));
     } else {
-      this.store.dispatch(new SetTncReview(disableValData))
+      this.store.dispatch(new SetTncReview(disableValData));
     }
-    //console.log(disableValData, ':::4000',typeof disableValData);
+    // console.log(disableValData, ':::4000',typeof disableValData);
     this.store.dispatch(new SetAgreeAndSubmitMode(
       disableValData
-    ))
-    //console.log("form value changes", this.store);  
+    ));
+    // console.log("form value changes", this.store);
   }
   ngOnInit() {
-    this._markdown.renderer.link = (href: string, title: string , text: string ) =>
+    this._markdown.renderer.link = (href: string, title: string, text: string) =>
       `<a target="_blank" href="${href}"> ${text} </a>`;
   }
 

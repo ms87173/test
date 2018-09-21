@@ -1,0 +1,29 @@
+{
+    "applications": [
+        {
+            "id": "",
+            "title": "",
+            "accountHolders": [
+                {
+                    "firstName": "",
+                    "lastName": "",
+                    "middleName": "",
+                    "email": "",
+                    "role": [
+                        "primary", "custodial"
+                    ]
+                }
+            ],
+            "states": [
+                "new" //can be more required on business
+            ],
+            "type": "",
+            "status": {
+                "code": "",
+                "description": ""
+            },
+            "lastUpdatedBy": "",
+            "lastUpdate": ""
+        }
+    ]
+}

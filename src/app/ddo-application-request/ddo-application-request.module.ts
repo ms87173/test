@@ -24,6 +24,7 @@ import 'prismjs/components/prism-java';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-perl';
 import { DdoApplicationRequestSignAndSubmitComponent } from './components/ddo-application-request-sign-and-submit/ddo-application-request-sign-and-submit.component';
+import { DdoApplicationRequestSuccessComponent } from './components/ddo-application-request-success/ddo-application-request-success.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -43,7 +44,8 @@ import { DdoApplicationRequestSignAndSubmitComponent } from './components/ddo-ap
     DdoApplicationRequestReviewInformationWorkflowComponent,
     DdoApplicationRequestReviewInformationTaskComponent,
     DdoApplicationRequestHeaderComponent,
-    DdoApplicationRequestSignAndSubmitComponent
+    DdoApplicationRequestSignAndSubmitComponent,
+    DdoApplicationRequestSuccessComponent
   ]
 })
 export class DdoApplicationRequestModule { }

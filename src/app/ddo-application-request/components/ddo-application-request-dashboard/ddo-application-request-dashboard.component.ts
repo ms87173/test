@@ -6,6 +6,7 @@ import { showcaseArrayElements } from '../../../core/utilities/array.utility';
 import { Step, StepViewModel } from '../../../core/view-model/stepper-step.model';
 import { SetActiveTask } from '../../../store/actions/workflows.action';
 import { RouterGo } from '../../../store/actions/router.actions';
+import { APPLICATIONS_STATUS } from '../../../core/constants/applications.constants';
 
 @Component({
   selector: 'ddo-application-request-dashboard',
@@ -21,6 +22,7 @@ export class DdoApplicationRequestDashboardComponent {
   stepperSteps: Array<Step>;
   showTitleEditable: boolean;
   titleValue: string;
+  showEditButton: boolean;
   constructor(private store: Store<fromRootReducers.AppState>) {
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationActiveTask)
       .subscribe((activeTaskData: any) => {
@@ -32,6 +34,7 @@ export class DdoApplicationRequestDashboardComponent {
           currentTaskId &&
           currentWorkflowId &&
           currentTaskType &&
+          this.application &&
           this.application.id
         ) {
           this.store.dispatch(
@@ -43,7 +46,14 @@ export class DdoApplicationRequestDashboardComponent {
       });
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaiton)
       .subscribe((application: any) => {
+        debugger;
+        this.showEditButton = application &&
+          application.status &&
+          !(application.status.code === APPLICATIONS_STATUS.cancelled ||
+          application.status.code === APPLICATIONS_STATUS.onHold);
         this.showTitleEditable = false;
+        debugger;
+
         this.application = application;
         this.titleValue = this.application.title;
         this.productsDescription = this.application.products.join(', ');
