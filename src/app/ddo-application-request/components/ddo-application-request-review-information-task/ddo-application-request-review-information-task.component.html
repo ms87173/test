@@ -37,15 +37,28 @@
               <div *ngSwitchCase="CustomComponentsEnum.CUSTOM_RADIO_BUTTON">
                 <h6 class="question-label"> {{question?.label}} </h6>
                 <div class="answers" *ngIf="question?.answers && question?.answers.length > 0">
-                  {{question?.answers[0]?.value == true ? "Yes" :"No"}}
+                  {{question?.answers[0]?.label }}
                 </div>
               </div>
               <div *ngSwitchCase="CustomComponentsEnum.CUSTOM_CHECKBOX">
                 <h6 class="question-label"> {{question?.label}} </h6>
                 <div class="answers" *ngIf="question?.answers && question?.answers.length > 0">
-                  {{question?.answers[0]?.value == true ? "Yes" :"No"}}
+                  {{question?.answers[0]?.label }}
                 </div>
               </div>
+              <div *ngSwitchCase="CustomComponentsEnum.CUSTOM_DROPDOWN">
+                <h6 class="question-label"> {{question?.label}} </h6>
+                <div class="answers" *ngIf="question?.answers && question?.answers.length > 0">
+                  {{question?.answers[0]?.label }}
+                </div>
+              </div>
+              <div *ngSwitchCase="CustomComponentsEnum.CUSTOM_DYNAMIC_DROP">
+                <h6 class="question-label"> {{question?.label}} </h6>
+                <div class="answers" *ngIf="question?.answers && question?.answers.length > 0">
+                  {{question?.answers[0]?.label }}
+                </div>
+              </div>
+
               <div *ngSwitchCase="CustomComponentsEnum.CUSTOM_ADDRESS_FIELDS">
                 <!-- <h6 class="question-label"> {{question?.label}} </h6>
                   <div class="answers" *ngIf="question?.answers && question?.answers.length > 0">
