@@ -14,13 +14,12 @@
                 }
             ],
             "tooltipText": "<string>",
-            "defaultValue": "<any>",
-            
+            "defaultValue": "<any>",            
             "sectionName": "string",
             "questionIdAfterToBeInserted": "<string>"
         }
     ],
-    "update": [
+    "update": [ /// optional if Pulkit confirms whether update case exists
         {
             "id": "<question-id>",
             "label": "Would you like to earn interest this account?",

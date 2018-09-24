@@ -3,7 +3,9 @@
         {
             "id": "<string>",
             "label": "Banking accounts",
+            "type" : "<string>", //// Based on which we can questionaire component or review submit component
             "description": "Select the account options you prefer. You can remove the accounts if necessary.",
+            "subHeading":"<string>",/// Primary/Co applicant/ please fill the manditory data 
             "tasks": [
                 {
                     "label": "Interest Checking",
