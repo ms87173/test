@@ -1,6 +1,7 @@
 import { ActionTypes, WorkflowsActions } from '../actions/workflows.action';
 
 export interface WorkflowsState {
+    workflowGroups: any;
     workflows: any;
     activeTask: {
         workflowId: any,
@@ -21,6 +22,7 @@ export interface WorkflowsState {
 }
 
 export const InitialState: WorkflowsState = {
+    workflowGroups: [],
     workflows: [],
     activeTask: {
         workflowId: '',
@@ -64,9 +66,10 @@ export function reducer(
 ): WorkflowsState {
     switch (action.type) {
         case ActionTypes.GET_APPLICATION_REQUEST_WORKFLOWS_SUCCESS:
-            const { workflows, lastTaskId, firstTaskId } = action.payload;
+            const {workflowGroups, workflows, lastTaskId, firstTaskId } = action.payload;
             return {
                 ...state,
+                workflowGroups,
                 workflows,
                 lastTaskId,
                 firstTaskId,
@@ -169,6 +172,7 @@ export function reducer(
     }
 }
 
+export const getWorkflowGroups = (state: WorkflowsState) => state.workflowGroups;
 export const getWorkflows = (state: WorkflowsState) => state.workflows;
 export const getWorkflowsLoaded = (state: WorkflowsState) => state.loaded;
 export const getWorkflowsLoading = (state: WorkflowsState) => state.loading;

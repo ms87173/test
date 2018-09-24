@@ -28,7 +28,10 @@ export const getApplicationWorkflows = createSelector(
     getApplicaitonRequestState,
     fromApplicationRequest.getApplicationWorkflows
 );
-
+export const getApplicaitonWorkflowGroups = createSelector(
+    getApplicaitonRequestState,
+    fromApplicationRequest.getApplicationWorkflowGroups
+);
 export const getApplicationActiveTask = createSelector(
     getApplicaitonRequestState,
     fromApplicationRequest.getApplicationActiveTask

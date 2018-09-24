@@ -13,6 +13,7 @@ import { of } from 'rxjs';
 import * as fromRouterActions from '../actions/router.actions';
 import { RouterGo } from '../actions/router.actions';
 import { GetApplicationWorkflowsSuccess } from '../actions/workflows.action';
+import WorkflowGroupsModel from '../../core/models/workflow-group.model';
 
 @Injectable()
 export class ApplicationRequestEffects {
@@ -65,6 +66,7 @@ export class ApplicationRequestEffects {
                                 return [
                                     new GetApplicationRequestSuccess(application),
                                     new GetApplicationWorkflowsSuccess({
+                                        workflowGroups,
                                         workflows,
                                         lastTaskId,
                                         firstTaskId

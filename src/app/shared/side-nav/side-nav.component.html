@@ -1,49 +1,54 @@
 <div class="side-nav">
   <accordion>
-    <accordion-group *ngFor='let parentItem of config'
-      [isOpen]="parentItem.id === selectedParentId"
-      [ngClass]= "{'active': parentItem.id === selectedParentId && parentItem.singleTaskPresent}"
-      (click)='parentItem.singleTaskPresent ? setSelectedId(parentItem.id, parentItem.children[0].id, parentItem.type): false'>
-      <div accordion-heading class="clearfix">
-        <div class="row mb-0 side-nav__tab pl-3">
-          <div class="col-sm-1 no-padding-left" *ngIf="!parentItem.singleTaskPresent">
-            <i class="fa fa-chevron-right collapsible-icon float-left pull-left"></i>
-          </div> 
-          <div class="side-nav__heading"
-            [ngClass]="parentItem.singleTaskPresent?'col-sm-9 temp-padding':'col-sm-8'">
-            <div>
-              {{parentItem.label}}
-            </div>
-            <span class="role" *ngIf="parentItem.subHeading">{{parentItem.subHeading}}</span>
+    <accordion-group *ngFor="let workflowGroup of (config | orderBy:'workflowGroupOrder' )">
+    <div accordion-heading class="clearfix side-nav__workflow-group">
+        <div class="row mb-0 side-nav__tab">
+          <div class="col-sm-1 pl-3 pr-0">
+            <i class="fa fa-chevron-down collapsible-icon float-left pull-left"></i>
+          </div>
+          <div class="side-nav__heading col-sm-8 pl-3">
+              {{workflowGroup.workflowGroupName}}
           </div>
           <div class="col-sm-3 no-padding-left no-padding-right side-nav__status">
-              <i *ngIf = 'parentItem.status === status.completed'
-                [ngClass]="{'status-icon--completed fa-check': parentItem.status === status.completed}"
-                class="fa status-icon float-right pull-right"></i>
-              <div *ngIf = 'parentItem.status === status.inProgress'
-                class="status-container">
-                <span class="status-text">Required</span>
-              </div>
+            <i 
+              class="fa status-icon fa-check status-icon--completed float-right pull-right"></i>
           </div>
         </div>
       </div>
-      <ul class="list-group" *ngIf = '!parentItem.singleTaskPresent'>
-        <li class="list-group-item list-item d-flex justify-content-between align-items-center"
-          *ngFor='let child of parentItem.children' 
-          [ngClass]="{'active': parentItem.id ===selectedParentId && child.id === selectedChildId && parentItem.children.length > 1, 'disabled': parentItem.status==='DISABLED' }"
-          (click) = 'setSelectedId(parentItem.id, child.id, child.type)'>
-          <a class='child-link'>
-            {{child.label}}
-          </a>
-          <i *ngIf= 'child.status === status.completed'
-            [ngClass]="{'status-icon--completed fa-check': child.status === status.completed}"
-            class="fa status-icon float-right pull-right"></i>
-            <div  *ngIf = 'parentItem.status === status.inProgress'
-              class="status-container">
+      <accordion-group *ngFor='let workflow of workflowGroup.workflows' [isOpen]="workflow.id === selectedParentId" [ngClass]="{'active': workflow.id === selectedParentId && workflow.singleTaskPresent}"
+        (click)='workflow.singleTaskPresent ? setSelectedId(workflowGroup.id, workflow.id, workflow.children[0].id, workflow.type): false'>
+        <div accordion-heading class="clearfix">
+          <div class="row mb-0 side-nav__tab pl-3">
+            <div class="side-nav__heading offset-sm-1" [ngClass]="workflow.singleTaskPresent?'col-sm-8':'col-sm-8'">
+              <div>
+                {{workflow.label}}
+              </div>
+              <span class="role" *ngIf="workflow.subHeading">{{workflow.subHeading}}</span>
+            </div>
+            <div class="col-sm-3 no-padding-left no-padding-right">
+              <i *ngIf='workflow.status === status.completed'
+                class="fa status-icon fa-check status-icon--completed float-right pull-right"></i>
+              <div *ngIf='workflow.status === status.inProgress' class="status-container">
+                <span class="status-text">Required</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="list-group" *ngIf='!workflow.singleTaskPresent'>
+          <li class="list-group-item list-item d-flex justify-content-between align-items-center" *ngFor='let child of workflow.children'
+            [ngClass]="{'active': workflow.id ===selectedParentId && child.id === selectedChildId && workflow.children.length > 1, 'disabled': workflow.status==='DISABLED' }"
+            (click)='setSelectedId(workflowGroup.id, workflow.id, child.id, child.type)'>
+            <a class='child-link'>
+              {{child.label}}
+            </a>
+            <i *ngIf='child.status === status.completed' [ngClass]="{'status-icon--completed fa-check': child.status === status.completed}"
+              class="fa status-icon float-right pull-right"></i>
+            <div *ngIf='workflow.status === status.inProgress' class="status-container">
               <span class="status-text">Required</span>
             </div>
-        </li>
-      </ul>
+          </li>
+        </ul>
+      </accordion-group>
     </accordion-group>
   </accordion>
 </div>

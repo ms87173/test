@@ -23,14 +23,16 @@
             "Jane Robbins",
             "Susan Sarandon"
         ],
-        "workflowGroups":  [
-            {   
+        "workflowGroups": [
+            {
                 "name": "Update Product Info",
                 "type": "PRODUCT_INFO",
+                "order": "2",
                 "workflows": [
                     {
                         "id": "1",
-                        "label": "Banking accounts",
+                        "label": "Interest Checking",
+                        "subHeading": "Banking Account",
                         "description": "",
                         "status": "COMPLETED",
                         "tasks": [
@@ -38,13 +40,24 @@
                                 "label": "Interest Checking",
                                 "description": "This is your primary interest bearing account.",
                                 "id": "11",
+                                "readOnly": "false",
                                 "status": "COMPLETED",
                                 "type": "questionnaire"
-                            },
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2",
+                        "label": "Saving",
+                        "subHeading": "Banking Account",
+                        "description": "",
+                        "status": "COMPLETED",
+                        "tasks": [
                             {
                                 "label": "Saving",
                                 "description": "This is your primary interest bearing account.",
-                                "id": "21",
+                                "id": "11",
+                                "readOnly": "false",
                                 "status": "COMPLETED",
                                 "type": "questionnaire"
                             }
@@ -53,11 +66,12 @@
                 ]
             },
             {
-                "name": "Update Info & documents",
+                "name": "Account Owner Info and Doc",
                 "type": "APPLICANTS_INFO",
+                "order": "1",
                 "workflows": [
                     {
-                        "id": "2",
+                        "id": "3",
                         "label": "John Robbins",
                         "description": "Primary",
                         "subHeading": "Primary",
@@ -87,7 +101,7 @@
                         ]
                     },
                     {
-                        "id": "3",
+                        "id": "4",
                         "label": "Jane Robbins",
                         "description": "Co-applicant",
                         "status": "IN_PROGRESS",
@@ -117,7 +131,7 @@
                         ]
                     },
                     {
-                        "id": "4",
+                        "id": "5",
                         "label": "Susan Robbins",
                         "description": "Co-applicant",
                         "subHeading": "Co-applicant",
@@ -149,60 +163,40 @@
                 ]
             },
             {
-                "name": "Review and Submit to Clients",
+                "name": "Review and Submit",
                 "type": "REVIEW_SUBMIT",
+                "order": "3",
                 "workflows": [
                     {
-                        "id": "5",
+                        "id": "6",
                         "label": "Review and Submit",
                         "description": "Please fill required information first.",
                         "subHeading": "Please fill required information first.",
-                        "status": "ON_HOLD",
+                        "status": "IN_PROGRESS",
                         "tasks": [
                             {
                                 "label": "Review Application",
                                 "description": "This is your primary interest bearing account.",
                                 "id": "15",
                                 "type": "review-application",
-                                "status": "ON_HOLD"
-                            },
+                                "status": "IN_PROGRESS"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "7",
+                        "label": "Sign and Submit",
+                        "description": "Please fill required information first.",
+                        "subHeading": "Please fill required information first.",
+                        "status": "IN_PROGRESS",
+                        "tasks": [
                             {
                                 "label": "Sign and Submit",
                                 "description": "This is your primary interest bearing account.",
                                 "id": "25",
                                 "type": "sign-submit",
-                                "status": "ON_HOLD"
+                                "status": "IN_PROGRESS"
                             }
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "Clients",
-                "type": "CLIENTS",
-                "workflows": [
-                    {
-                        "id": "5",
-                        "label": "Review and Submit",
-                        "description": "Please fill required information first.",
-                        "subHeading": "Please fill required information first.",
-                        "status": "DISABLED",
-                        "tasks": [
-                        ]
-                    }
-                ]
-            },
-            {
-                "name": "Banker",
-                "type": "BANKER",
-                "workflows": [
-                    {
-                        "id": "5",
-                        "label": "Review and Submit",
-                        "description": "Please fill required information first.",
-                        "subHeading": "Please fill required information first.",
-                        "status": "DISABLED",
-                        "tasks": [
                         ]
                     }
                 ]
