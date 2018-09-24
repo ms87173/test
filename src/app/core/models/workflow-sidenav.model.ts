@@ -24,7 +24,6 @@ export default class WorkFlowsSideNavModel {
         if (this.singleTaskPresent) {
             this.singleTask = data.tasks[0];
             this.label = this.singleTask.label;
-            this.subHeading = this.singleTask.subHeading;
         }
     }
 }

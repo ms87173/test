@@ -1,32 +1,41 @@
-{ 
-        "label": "Interest Checking",
-        "description": "This is your primary interest bearing account.",
-        "id": "<unique-identifier>",
-        "status": "<string>",
-        "sections": [
-            {
-                "id":"string",
-                "title": "Account Information",
-                "questions": [
-                    {
-                        "id": "<question-id>",
-                        "label": "Would you like to earn interest this account?",
-                        "type": "",
-                    
-                            "required": "<boolean>",
-                            "readOnly": "<boolean>",
-                            "placeHolder": "<string>",
-                            "options": [
-                                {
-                                    "label": "",
-                                    "value": ""
-                                }
-                            ],
-                        "tooltipText": "<string>",
-                        "defaultValue": "<any>"
-                    }
-                ]
-                
-            }
-        ]
-    }
+{
+    "description": "<string>",
+    "status": "<string>",
+    "taskId": "<string>",
+    "workflowName": "<string>",
+    "workflowDescription": "<string>",
+    "showEdit": "<boolean>",
+    "sections": [
+        {   "id":"<string>", //// Section Id  - unique in a task
+            "title": "Account Information",
+            "editableMode": "<boolean>",
+            "questions": [
+                {
+                    "id": "<string>",
+                    "label": "<string>",
+                    "type": "<string>",
+                    "required": "<boolean>",
+                    "readOnly": "<boolean>",
+                    "recurrent": "<boolean>",
+                    "placeHolder": "<string>",
+                    "lookupName": "<string>",
+                    "options": [
+                        {
+                            "label": "",
+                            "value": ""
+                        }
+                    ],
+                    "tooltipText": "<string>",
+                    "answers": [
+                        {
+                            "value": "<any>",
+                            "validationError ": {
+                                "value": "any"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

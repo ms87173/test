@@ -19,6 +19,7 @@ import { ContactDetailComponent } from './contact-detail/contact-detail.componen
 import { TooltipModule } from 'ngx-bootstrap';
 import { StepperComponent } from './stepper/stepper.component';
 import { StepComponent } from './step/step.component';
+import { OrderByPipe } from '../core/pipes/orderBy.pipe';
 
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ import { StepComponent } from './step/step.component';
     TileComponent,
     ContactDetailComponent,
     StepperComponent,
-    StepComponent
+    StepComponent,
+    OrderByPipe
   ],
   exports: [
     HeaderComponent,

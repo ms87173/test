@@ -1,10 +1,8 @@
 {
-    "contactPerson": {
-        "phoneNumber": "<formatted phone number string>",
-        "firstName": "",
-        "middleName": "",
-        "lastName": "",
-        "emailAddress": "",
-        "role": "assistantBanker" //banker or assistant banker
-    }
+	"phoneNumber": "+14536741234",
+	"firstName": "Sean",
+	"middleName": "",
+	"lastName": "Parker",
+	"emailAddress": "sean@gmail.com",
+    "role": "assistantBanker"
 }

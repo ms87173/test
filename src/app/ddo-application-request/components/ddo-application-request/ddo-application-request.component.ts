@@ -15,6 +15,7 @@ import { FormlyFormOptions } from '@ngx-formly/core';
 import { FormGroup } from '@angular/forms';
 import { ResetOpenSections } from '../../../store/actions/questionnaire.actions';
 import { AgreeAndSubmitQuestionnaire } from '../../../store/actions/sign-and-submit.actions';
+import WorkflowGroupsModel from '../../../core/models/workflow-group.model';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -102,16 +103,22 @@ export class DdoApplicationRequestComponent {
           );
         }
       });
-    this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationWorkflows)
-      .subscribe((workflows: any) => {
-        this.workflows$ = workflows && workflows.map((workflow) => new WorkFlowsSideNavModel(workflow));
+    this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaitonWorkflowGroups)
+      .subscribe((workflowGroups: any) => {
+        this.workflows$ = workflowGroups && workflowGroups.map((workflowGroup) => new WorkflowGroupsModel(workflowGroup));
+        console.log(this.workflows$)
         // TODO: to avoid further dispatching when we re fetch the configuration
         // TODO: Refactor this to avoid taskId in URL.
-        if (workflows && workflows.length > 0 && !this.currentTaskId$) {
+        // if (workflowGroups && workflowGroups.workflows && workflowGroups.workflows.length > 0 && !this.currentTaskId$) {
+        //   this.store.dispatch(new DeterminePendingTaskOfApplication(workflowGroups.workflows));
+        // }
+      });
+    this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationWorkflows)
+      .subscribe((workflows: any) => {
+        if (workflows && workflows.length > 0) {
           this.store.dispatch(new DeterminePendingTaskOfApplication(workflows));
         }
-      });
-
+      })
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationNextTask)
       .subscribe((nextTaskData: any) => {
         this.nextTaskId$ = nextTaskData.task.id;
