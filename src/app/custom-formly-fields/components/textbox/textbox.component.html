@@ -10,9 +10,13 @@
                 placement="{{to.tooltip.placement}}"></i>
         </span>
     </label>
-    <input class="form-control"
+    <input class="form-control" (input)="change()"
         [type]="type"
         [formControl]="formControl"
         [formlyAttributes]="field"
         [class.is-invalid]="showError">
 </div>
+
+<div *ngIf="field.validation.show" class="invalid-feedback" [style.display]="'block'">
+    <span> {{"Error For Test"}}</span>
+  </div>

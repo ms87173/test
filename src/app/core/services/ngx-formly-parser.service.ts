@@ -64,9 +64,15 @@ export class NgxFormlyParserService {
           options: question.options || [],
           required: question.required || false,
           disabled: question.disabled || false,
-          recurrent: question.recurrent || false
+          // recurrent: question.recurrent || false
 
         };
+        field.recurrent = question.recurrent || false;
+
+        // Todo Need to change this
+        field.validation = {
+          show: false
+        }
 
         if (question.answers && question.answers.length > 0) {
           field.answers = question.answers;
