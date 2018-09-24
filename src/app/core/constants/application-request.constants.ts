@@ -1,5 +1,6 @@
 export const APPLICATION_HEADING = {
-    joint: 'Joint Accounts'
+    Joint: 'Joint Accounts',
+    Individual: 'Individual Account'
 };
 
 export const TASK_STATUSES = {

@@ -1,0 +1,23 @@
+{
+    "request-success": {
+        "id": "1",
+        "parties": [
+            {
+                "firstName": "John",
+                "lastName": "Barker",
+                "role": "Primary",
+                "email": "johnBarker@citi.com",
+                "status": "COMPLETED",
+                "order": "1"
+            },
+            {
+                "firstName": "Jane",
+                "lastName": "Barker",
+                "role": "CoApplicant",
+                "email": "janeBarker@citi.com",
+                "status": "IN_PROGRESS",
+                "order": "2"
+            }
+        ]
+    }
+}

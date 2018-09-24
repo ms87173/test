@@ -1,9 +1,10 @@
-import { Component, Input, EventEmitter, Output, OnChanges } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnChanges, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'step',
   templateUrl: './step.component.html',
-  styleUrls: ['./step.component.scss']
+  styleUrls: ['./step.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class StepComponent implements OnChanges {
