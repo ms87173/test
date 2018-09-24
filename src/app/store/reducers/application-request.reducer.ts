@@ -31,7 +31,7 @@ export const reducer: ActionReducer<ApplicationRequestState> = combineReducers(r
 export const getApplicaitonRequestState = (state: ApplicationRequestState) => state.application;
 export const getApplicationWorkflowsState = (state: ApplicationRequestState) => state.workflows;
 export const getApplicationReviewInformationState = (state: ApplicationRequestState) => state.reviewInformation;
-
+export const getApplicationWorkflowGroups = (state: ApplicationRequestState) => state.workflows.workflowGroups;
 export const getApplicationWorkflows = (state: ApplicationRequestState) => state.workflows.workflows;
 export const getApplication = (state: ApplicationRequestState) => state.application.application;
 export const getApplicationId = (state: ApplicationRequestState) => {
