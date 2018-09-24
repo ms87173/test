@@ -44,7 +44,7 @@ import { CustomTestComponent } from './components/custom-test/custom-test.compon
     NgbModule.forRoot(),
     FormlyModule.forRoot({
       validationMessages: [
-        { name: 'server-error', message: errorMessage },
+        // { name: 'server-error', message: errorMessage },
         { name: 'required', message: (err, field) => `${field.templateOptions.label} is required.`}
       ],
       types: [
@@ -60,7 +60,7 @@ import { CustomTestComponent } from './components/custom-test/custom-test.compon
         { name: CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD, component: DocumentUploadComponent },
         { name: CustomComponentsEnum.CUSTOM_UPLOAD, component: UploadFileComponent },
         { name: CustomComponentsEnum.CUSTOM_TEST, component: CustomTestComponent },
-        { name: 'custom-dynamic-drop', component: DropdownComponent }
+        { name: CustomComponentsEnum.CUSTOM_DYNAMIC_DROP, component: DropdownComponent }
       ]
     }),
     FormlyBootstrapModule,

@@ -67,6 +67,9 @@ export class NgxFormlyParserService {
           recurrent: question.recurrent || false
 
         };
+        field.validation= {
+          show : false
+        }
 
         if (question.answers && question.answers.length > 0) {
           field.answers = question.answers;

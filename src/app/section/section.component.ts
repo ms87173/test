@@ -116,7 +116,6 @@ export class SectionComponent implements OnInit, OnChanges {
             let field = this.fields.find((data) => {
               return data.key == item.id;
             });
-            debugger;
 
             field.validation.show = true;
             // this.form.get(item.id).setErrors({ "server-error": item.answers[0].validationError.value });
