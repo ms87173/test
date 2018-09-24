@@ -7,7 +7,7 @@ export * from './questionaire-delta-response';
 export * from './section';
 export * from './task';
 export * from './ngx-formly-models';
-export * from "./task-request";
+export * from './task-request';
 export * from './answer';
 export * from './review-information-request';
 export * from './review-information-response';

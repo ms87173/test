@@ -25,7 +25,7 @@ export class ApplicationReviewInformationEffects {
                     .pipe(
                         map(
                             (reviewInformationTask: ReviewInformationResponse) => {
-                                let reviewinfo = { ...reviewInformationTask };
+                                const reviewinfo = { ...reviewInformationTask };
                                 reviewinfo.workflows.forEach((workflow) => {
                                     workflow.tasks.forEach((task) => {
                                         task.sections.forEach((section) => {
@@ -35,7 +35,7 @@ export class ApplicationReviewInformationEffects {
                                         });
                                     });
                                 });
-                                return new GetAllTasksForReviewInformationTaskSuccess(reviewInformationTask)
+                                return new GetAllTasksForReviewInformationTaskSuccess(reviewInformationTask);
                             }
                         ),
                         catchError(

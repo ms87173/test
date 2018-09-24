@@ -103,7 +103,7 @@ export function reducer(
                             if (currentTask.id === taskId) {
                                 taskFound = true;
                                 if (!nextTask) {
-                                    nextTask = nextWorkflow && nextWorkflow.tasks[0]
+                                    nextTask = nextWorkflow && nextWorkflow.tasks[0];
                                 } else {
                                     nextWorkflow = currentWorkflow;
                                 }

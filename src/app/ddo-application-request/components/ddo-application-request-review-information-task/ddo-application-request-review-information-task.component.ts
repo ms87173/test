@@ -20,7 +20,7 @@ export class DdoApplicationRequestReviewInformationTaskComponent implements OnIn
   }
 
   editBtnClicked(taskId: string, sectionId: string) {
-    
+
     this.editClicked.emit({ taskId: taskId, sectionId: sectionId });
   }
 

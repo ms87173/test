@@ -14,10 +14,10 @@ export interface RouteStateUrl {
 }
 
 export interface AppState {
-    user: userInfoReducer.UserInfoState,
-    questionnaire: questionnaireReducer.QuestionnaireState,
-    routerReducer: fromRouter.RouterReducerState,
-    applicationRequest: applicationRequestReducer.ApplicationRequestState,
+    user: userInfoReducer.UserInfoState;
+    questionnaire: questionnaireReducer.QuestionnaireState;
+    routerReducer: fromRouter.RouterReducerState;
+    applicationRequest: applicationRequestReducer.ApplicationRequestState;
 }
 
 export const rootReducers: ActionReducerMap<AppState> = {

@@ -87,9 +87,9 @@ export class UploadFileComponent extends FieldArrayType implements OnInit {
   //       //console.log(':::inside', this.files[0].response);
   //       this.clearIntervalTime = true;
   //         clearInterval(this.dataTimer);
-  //     } else if(this.files[0]) { 
+  //     } else if(this.files[0]) {
   //   this.speedCalculater = this.speedCalculater + Number(this.files[0]['progress']['data']['speed']);
-  //   //console.log(this.speedCalculater, '::::not yet', this.files[0]['progress']['data']); 
+  //   //console.log(this.speedCalculater, '::::not yet', this.files[0]['progress']['data']);
   // }
   //   }, 1000);
   }

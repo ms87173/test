@@ -2,12 +2,12 @@ import { ActionTypes, ReviewInformationActions } from '../actions/review-informa
 import { ReviewInformationResponse } from '../../core/models';
 
 export interface ReviewInformationState {
-    reviewInformationTask: ReviewInformationResponse
+    reviewInformationTask: ReviewInformationResponse;
 }
 
 export const InitialState: ReviewInformationState = {
     reviewInformationTask: null
-}
+};
 export function reducer(
     state: ReviewInformationState = InitialState,
     action: ReviewInformationActions
@@ -18,12 +18,12 @@ export function reducer(
             return {
                 ...state,
                 reviewInformationTask: action.payload
-            }
+            };
         case ActionTypes.GET_ALL_TASKS_FOR_REVIEW_INFORMATION_TASK_FAIL:
 
             return {
                 ...state
-            }
+            };
 
         default:
             return state;

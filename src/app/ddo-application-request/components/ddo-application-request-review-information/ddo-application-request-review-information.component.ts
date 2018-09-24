@@ -15,12 +15,12 @@ import { PushSectionInOpenSections } from '../../../store/actions/questionnaire.
   templateUrl: './ddo-application-request-review-information.component.html',
   styleUrls: ['./ddo-application-request-review-information.component.scss']
 })
-export class DdoApplicationRequestReviewInformationComponent implements OnInit, OnChanges , OnDestroy{
+export class DdoApplicationRequestReviewInformationComponent implements OnInit, OnChanges , OnDestroy {
 
   reviewInformationTask: ReviewInformationResponse = null;
   applicationId: string = null;
   currentTaskId: string = null;
-  currentWorkflowId: string = null
+  currentWorkflowId: string = null;
   isComponentActive = true;
 
   constructor(private cd: ChangeDetectorRef,
@@ -71,7 +71,7 @@ export class DdoApplicationRequestReviewInformationComponent implements OnInit, 
         taskId: data.taskId
       }));
 
-    
+
   }
 
   dispatchReviewInformationTaskAction() {

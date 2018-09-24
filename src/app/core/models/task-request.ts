@@ -1,9 +1,9 @@
 export class TaskRequest {
     requestId: string;
-    workflowId: string
+    workflowId: string;
     taskId: string;
-    taskType:string;
-    constructor(){
-        
+    taskType: string;
+    constructor() {
+
     }
 }

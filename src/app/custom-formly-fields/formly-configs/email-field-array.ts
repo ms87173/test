@@ -1,4 +1,4 @@
-import { FormlyFieldConfig } from "@ngx-formly/core";
+import { FormlyFieldConfig } from '@ngx-formly/core';
 
 export const emailFieldArray: FormlyFieldConfig = {
     fieldGroupClassName: 'row',
@@ -33,6 +33,6 @@ export const emailFieldArray: FormlyFieldConfig = {
     templateOptions: {
         btnText: '+ Add a new email',
     }
-}
+};
 
 

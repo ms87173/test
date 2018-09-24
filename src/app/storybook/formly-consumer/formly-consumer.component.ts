@@ -248,7 +248,7 @@ export class FormlyConsumerComponent implements OnInit {
         fieldArray: {
           fieldGroupClassName: 'row',
           fieldGroup: [
-           
+
             {
               key: 'documentUpload',
               className: 'col-sm-12 mt-2',

@@ -17,7 +17,7 @@ export enum ActionTypes {
     AGREE_AND_SUBMIT_QUESTIONNAIRE = '[App State] Agree and Submit Questionnaire',
     AGREE_AND_SUBMIT_QUESTIONNAIRE_SUCCESS = '[App State] Agree and Submit Questionnaire Success',
     AGREE_AND_SUBMIT_QUESTIONNAIRE_FAIL = '[App State] Agree and Submit Questionnaire Failure',
-    SET_TNC_REVIEW='[App State] Set Terms And Condition Review State',
+    SET_TNC_REVIEW= '[App State] Set Terms And Condition Review State',
     //
     GET_AGREE_AND_SUBMIT_FIELD_CHANGE_DELTA = '[App State] Get Current Field Change Trigger',
     GET_AGREE_AND_SUBMIT_FIELD_CHANGE_DELTA_SUCCESS = '[App State] Get Current Field Change Trigger Success',
@@ -128,7 +128,7 @@ export class AgreeAndSubmitQuestionnaireFailure implements Action {
 
 export class SetTncReview implements Action {
     readonly type = ActionTypes.SET_TNC_REVIEW;
-    constructor(public payload:boolean) {
+    constructor(public payload: boolean) {
         this.payload = payload;
     }
 }

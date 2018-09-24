@@ -36,4 +36,4 @@ export class RouteChange implements Action {
     constructor(public payload: { params: any, path: string }) { }
 }
 
-export type RouterActions = RouterBack | RouterForward | RouterGo | RouteChange
+export type RouterActions = RouterBack | RouterForward | RouterGo | RouteChange;

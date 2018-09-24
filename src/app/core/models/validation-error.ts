@@ -1,3 +1,3 @@
-export class ValidationError{
-    value:any;
+export class ValidationError {
+    value: any;
 }

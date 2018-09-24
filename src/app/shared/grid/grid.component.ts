@@ -13,7 +13,7 @@ export class GridComponent implements OnInit {
 
   constructor() { }
   @Input() columns: any;
-  @Input() data: any; 
+  @Input() data: any;
   ngOnInit() { }
   getRowDetails(data) {
     return Object.values(data)[0];

@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
@@ -17,13 +17,13 @@ import {
     AgreeAndSubmitQuestionnaireSuccess,
     AgreeAndSubmitQuestionnaireFailure
 
-} from '../actions/sign-and-submit.actions'
-import { SignAndSubmit, FormlyFieldConfigArrayCollection } from "../../core/models";
-import { SignAndSubmitService } from "../../core/services/sign-and-submit.service";
-import { FormlyFieldConfig } from "@ngx-formly/core";
-import { TASK_TYPES } from "../../core/constants/application-request.constants";
-import { NgxFormlyParserService } from "../../core/services";
-import { RouterGo } from "../actions/router.actions";
+} from '../actions/sign-and-submit.actions';
+import { SignAndSubmit, FormlyFieldConfigArrayCollection } from '../../core/models';
+import { SignAndSubmitService } from '../../core/services/sign-and-submit.service';
+import { FormlyFieldConfig } from '@ngx-formly/core';
+import { TASK_TYPES } from '../../core/constants/application-request.constants';
+import { NgxFormlyParserService } from '../../core/services';
+import { RouterGo } from '../actions/router.actions';
 import { EXISTING_COMPONENTS } from '../../custom-formly-fields/enums/custom-components.enum';
 
 @Injectable()

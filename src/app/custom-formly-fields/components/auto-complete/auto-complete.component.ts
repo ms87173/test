@@ -42,8 +42,8 @@ export class AutoCompleteComponent extends FieldType implements OnInit, OnDestro
   clearSelect(evt) {
     this.search$.emit('');
     //console.log('clearselect',evt);
-  }    
-  searchChanges(evt){
+  }
+  searchChanges(evt) {
 
     evt = typeof evt == 'string' ? evt : '';
     this.search$.emit(evt);

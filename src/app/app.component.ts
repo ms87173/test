@@ -30,12 +30,13 @@ export class AppComponent implements OnInit {
       .subscribe((user) => {
       });
     // // TODO: Mohammad to place in view code here.
-    
+
     // Todo: Code for deep linking
     // console.log("our Citi  location");
     // // const winObj = this.winRef.nativeWindow;
     // // const parentLocationObj = winObj.parent.location.slice(1);
-    // let parentLocationHash = "location=DDO&context=relnKey%3D10500000040618%26lrgRelnInd%3DN%26type%3DRelationship&path=tinshu&activeCurrency=AED"
+    // let parentLocationHash =
+     // "location=DDO&context=relnKey%3D10500000040618%26lrgRelnInd%3DN%26type%3DRelationship&path=tinshu&activeCurrency=AED"
     // // parentLocationObj.hash;
     // console.log("location hash");
     // console.log(parentLocationHash);
@@ -52,6 +53,5 @@ export class AppComponent implements OnInit {
     // //     path: ['ddo/applications/1/tasks/questionnaire']
     // //   })
     // // );
-
   }
 }

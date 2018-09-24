@@ -1,14 +1,14 @@
-import { Answer } from "./answer";
+import { Answer } from './answer';
 
 export class SignAndSubmitDeltaRequest {
   requestId: string;
   workflowId: string;
   taskId: string;
-  questionnaireItems:SignAndSubmitQuestionnaireItem[]
- 
+  questionnaireItems: SignAndSubmitQuestionnaireItem[];
+
 }
-export class SignAndSubmitQuestionnaireItem{
+export class SignAndSubmitQuestionnaireItem {
   id: string;
   type: string;
-  answers:Answer[]
+  answers: Answer[];
 }

@@ -5,5 +5,5 @@ export class SignAndSubmitDeltaResponse {
     new: SignAndSubmitDeltaQuestion [];
     update: SignAndSubmitDeltaQuestion[];
     delete: SignAndSubmitDeltaQuestion[];
-    errors: SignAndSubmitDeltaError[]
+    errors: SignAndSubmitDeltaError[];
 }

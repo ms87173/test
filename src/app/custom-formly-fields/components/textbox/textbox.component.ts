@@ -12,11 +12,10 @@ export class TextboxComponent extends FieldType {
     get type() {
         return this.to.type || 'text';
     }
-    change(){
+    change() {
 
-        if(this.field && this.field.validation && this.field.validation.show)
-        {
-            this.field.validation.show=false;
+        if (this.field && this.field.validation && this.field.validation.show) {
+            this.field.validation.show = false;
         }
     }
 }

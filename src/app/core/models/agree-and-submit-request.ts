@@ -1,5 +1,5 @@
-export class AgreeAndSubmitRequest{
-    requestId:string;
-    taskId:string;
-    tncReviewRequired: boolean
+export class AgreeAndSubmitRequest {
+    requestId: string;
+    taskId: string;
+    tncReviewRequired: boolean;
 }

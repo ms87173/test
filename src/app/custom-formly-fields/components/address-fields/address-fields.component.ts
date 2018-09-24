@@ -9,7 +9,7 @@ import { DynamicOptionsService } from '../../../core';
   encapsulation: ViewEncapsulation.None
 })
 
-export class AddressFieldsComponent extends FieldArrayType{
+export class AddressFieldsComponent extends FieldArrayType {
   constructor(builder: FormlyFormBuilder, private dynamicOptionsService: DynamicOptionsService) {
     super(builder);
   }

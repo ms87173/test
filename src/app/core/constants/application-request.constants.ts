@@ -18,17 +18,3 @@ export const TASK_TYPES = {
 export const QUESTIONS_TYPE = {
     phone: 'custom-phone'
 };
-export const CANCELLATION_REASONS = [
-    {
-        label: 'Not Required',
-        value: 'notRequired'
-    },
-    {
-        label: 'Duplicate request',
-        value: 'duplicateRequest'
-    },
-    {
-        label: 'Other',
-        value: 'other'
-    }
-]

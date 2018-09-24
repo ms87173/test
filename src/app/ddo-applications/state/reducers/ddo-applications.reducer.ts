@@ -6,7 +6,7 @@ import { ApplicationInterface } from '../../../core/models/application.interface
 
 export interface ApplicationsState {
     applications: Array<ApplicationInterface>;
-    modifiedApplications: Array<ApplicationInterface>
+    modifiedApplications: Array<ApplicationInterface>;
     loaded: boolean;
     loading: boolean;
 }
@@ -45,7 +45,7 @@ export function ApplicationsReducer(
             return {
                 ...state,
                 loaded: false,
-                loading: false             
+                loading: false
             };
         case ActionTypes.FILTER_APPLICATIONS:
             return {
@@ -53,13 +53,13 @@ export function ApplicationsReducer(
                 loaded: false,
                 loading: false
             };
-        case ActionTypes.MODIFY_APPLICATIONS: 
+        case ActionTypes.MODIFY_APPLICATIONS:
             return {
                 ...state,
                 loaded: true,
                 loading: false,
                 modifiedApplications: action.payload
-            }
+            };
         default:
             return state;
     }

@@ -38,7 +38,7 @@ export class DdoApplicationsEffects {
         @Effect() sortApplications = this.actions$.pipe(
             ofType(ActionTypes.SORT_APPLICATIONS),
             switchMap(
-                (action: SortApplications) => 
+                (action: SortApplications) =>
                     sortApplications(action.payload.data, action.payload.params)
                         .pipe(
                             map(
@@ -50,7 +50,7 @@ export class DdoApplicationsEffects {
                 @Effect() filterApplications = this.actions$.pipe(
                     ofType(ActionTypes.FILTER_APPLICATIONS),
                     switchMap(
-                        (action: FilterApplications) => 
+                        (action: FilterApplications) =>
                             filterApplications(action.payload.data, action.payload.params)
                                 .pipe(
                                     map(

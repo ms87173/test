@@ -44,8 +44,8 @@ export class DdoApplicationRequestComponent {
   options: FormlyFormOptions = {};
   fields: Array<any>;
   TASK_TYPES = TASK_TYPES;
-  tncReview: boolean = true;
-  agreeAndSubmitMode: boolean = true;
+  tncReview = true;
+  agreeAndSubmitMode = true;
   saveAndExitInfo = {
     label: '',
     status: ''
@@ -106,7 +106,7 @@ export class DdoApplicationRequestComponent {
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaitonWorkflowGroups)
       .subscribe((workflowGroups: any) => {
         this.workflows$ = workflowGroups && workflowGroups.map((workflowGroup) => new WorkflowGroupsModel(workflowGroup));
-        console.log(this.workflows$)
+        console.log(this.workflows$);
         // TODO: to avoid further dispatching when we re fetch the configuration
         // TODO: Refactor this to avoid taskId in URL.
         // if (workflowGroups && workflowGroups.workflows && workflowGroups.workflows.length > 0 && !this.currentTaskId$) {
@@ -118,7 +118,7 @@ export class DdoApplicationRequestComponent {
         if (workflows && workflows.length > 0) {
           this.store.dispatch(new DeterminePendingTaskOfApplication(workflows));
         }
-      })
+      });
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicationNextTask)
       .subscribe((nextTaskData: any) => {
         this.nextTaskId$ = nextTaskData.task.id;

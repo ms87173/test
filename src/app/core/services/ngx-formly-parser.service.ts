@@ -44,13 +44,13 @@ export class NgxFormlyParserService {
 
   getFormlyFieldConfigArrayFromSection(currentSection: Section, currentQuestionId: string,
     requestId: string, workflowId: string, taskId: string, taskType: string = TASK_TYPES.QUESTION): FormlyFieldConfig[] {
-    let FormlyFieldConfigArray: FormlyFieldConfig[] = [];
-    let currSection = { ...currentSection };
+    const FormlyFieldConfigArray: FormlyFieldConfig[] = [];
+    const currSection = { ...currentSection };
     currSection.questions.map((question: Question) => {
       if (EXISTING_COMPONENTS.includes(question.type) && !question.recurrent) {
         let field: any = {};
         field.key = question.id.toString();
-        if (field.key == currentQuestionId) {
+        if (field.key === currentQuestionId) {
           field.focus = true;
         }
         field.type = question.type;
@@ -72,13 +72,12 @@ export class NgxFormlyParserService {
         // Todo Need to change this
         field.validation = {
           show: false
-        }
+        };
 
         if (question.answers && question.answers.length > 0) {
           field.answers = question.answers;
 
-        }
-        else {
+        } else {
           field.answers = [];
 
         }
@@ -154,7 +153,7 @@ export class NgxFormlyParserService {
   }
 
   setDefaultValuesFromAnswers(answers: Answer[], field: FormlyFieldConfig, isRecurrent: boolean): FormlyFieldConfig {
-    let currField: FormlyFieldConfig = { ...field };
+    const currField: FormlyFieldConfig = { ...field };
     if (!isRecurrent) {
       currField.defaultValue = answers[0].value;
     } else {

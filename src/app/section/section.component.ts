@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyFieldConfigArrayCollection, Section } from '../core';
 import { EXISTING_CUSTOM_COMPONENTS, CustomComponentsEnum } from '../custom-formly-fields/enums/custom-components.enum';
-import { questionnaireActions } from '../store/actions'
+import { questionnaireActions } from '../store/actions';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -21,7 +21,7 @@ export class SectionComponent implements OnInit, OnChanges {
   showEditButton: boolean = null;
   @Input() formlyFieldConfigArray: FormlyFieldConfigArrayCollection;
   @Input() showEdit: boolean;
-  @Input() editableMode: boolean = false;
+  @Input() editableMode = false;
   @Input() currSection: Section;
   @Output() updateOpenSections: EventEmitter<{ actionName: string, sectionId: string }> = new EventEmitter();
   @Output() saveChangesBtnClicked: EventEmitter<string> = new EventEmitter();
@@ -66,12 +66,10 @@ export class SectionComponent implements OnInit, OnChanges {
       // /Need to add more If statements for other custom components
       if (EXISTING_CUSTOM_COMPONENTS.includes(item.type)) {
         this.model[item.key] = [{}];
-      }
-      else {
-        if(item.answers && item.answers.length>0){
+      } else {
+        if (item.answers && item.answers.length > 0) {
           this.model[item.key] = item.answers[0].value;
-        }
-        else{
+        } else {
           this.model[item.key] = null;
         }
       }
@@ -113,8 +111,8 @@ export class SectionComponent implements OnInit, OnChanges {
             item.answers[0].validationError &&
             item.answers[0].validationError.value
           ) {
-            let field = this.fields.find((data) => {
-              return data.key == item.id;
+            const field = this.fields.find((data) => {
+              return data.key === item.id;
             });
 
             field.validation.show = true;

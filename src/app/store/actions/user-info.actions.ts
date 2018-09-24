@@ -10,36 +10,36 @@ export enum ActionTypes {
 }
 
 export class GetUser implements Action {
-    readonly type = ActionTypes.GET_USER
+    readonly type = ActionTypes.GET_USER;
     constructor() { }
 }
 export class GetUserSuccess implements Action {
-    readonly type = ActionTypes.GET_USER_SUCCESS
+    readonly type = ActionTypes.GET_USER_SUCCESS;
     constructor(public payload) {
-        this.payload = payload
+        this.payload = payload;
     }
 }
 export class GetUserFailure implements Action {
-    readonly type = ActionTypes.GET_USER_FAIL
+    readonly type = ActionTypes.GET_USER_FAIL;
     constructor(public payload) {
-        this.payload = payload
+        this.payload = payload;
     }
 }
 export class GetUserContactPersonSuccess implements Action {
-    readonly type = ActionTypes.GET_USER_CONTACT_PERSON_SUCCESS
+    readonly type = ActionTypes.GET_USER_CONTACT_PERSON_SUCCESS;
     constructor(public payload) {
-        this.payload = payload
+        this.payload = payload;
     }
 }
 export class GetUserContactPerson implements Action {
-    readonly type = ActionTypes.GET_USER_CONTACT_PERSON
+    readonly type = ActionTypes.GET_USER_CONTACT_PERSON;
     constructor() {
     }
 }
 export class GetUserContactPersonFailure implements Action {
-    readonly type = ActionTypes.GET_USER_CONTACT_PERSON_FAILURE
+    readonly type = ActionTypes.GET_USER_CONTACT_PERSON_FAILURE;
     constructor(public payload) {
-        this.payload = payload
+        this.payload = payload;
     }
 }
 

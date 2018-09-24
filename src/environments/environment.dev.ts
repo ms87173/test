@@ -14,8 +14,8 @@ export const environment = {
     fetchReviewInformationTask: 'reviewInformation',
     cancelApplicationRequest: 'cancel-application',
     editApplicationRequest: 'request',
-    signAndSubmitTask:"signAndSubmit",
-    agreeAndSubmitApplication:'questionnaire/submit'
+    signAndSubmitTask: 'signAndSubmit',
+    agreeAndSubmitApplication: 'questionnaire/submit'
 
   }
 

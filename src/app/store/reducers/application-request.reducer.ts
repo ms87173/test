@@ -1,7 +1,7 @@
 import * as workflowsReducer from './workflows.reducer';
 import * as applicationReducer from './application.reducer';
 import * as reviewInformationReducer from './review-information.reducer';
-import * as signAndSubmitReducer from './sign-and-submit.reducer'
+import * as signAndSubmitReducer from './sign-and-submit.reducer';
 import { ActionReducer } from 'ngx-bootstrap/mini-ngrx';
 import { combineReducers } from '@ngrx/store';
 
@@ -9,7 +9,7 @@ export interface ApplicationRequestState {
     application: applicationReducer.ApplicationState;
     workflows: workflowsReducer.WorkflowsState;
     reviewInformation: reviewInformationReducer.ReviewInformationState;
-    signAndSubmit: signAndSubmitReducer.SignAndSubmitState
+    signAndSubmit: signAndSubmitReducer.SignAndSubmitState;
 }
 
 export const InitialState: ApplicationRequestState = {
@@ -56,9 +56,9 @@ export const getSignAndSubmitTask = (state: ApplicationRequestState) => {
         return state.signAndSubmit.signAndSubmitTask;
 
     }
-    return null
+    return null;
 
-}
+};
 
 export const getSignAndSubmitTaskFormlyConfig = (state: ApplicationRequestState) => {
     if (state.signAndSubmit && state.signAndSubmit.signAndSubmitTaskFormlyConfig) {
@@ -68,7 +68,7 @@ export const getSignAndSubmitTaskFormlyConfig = (state: ApplicationRequestState)
     }
     return [];
 
-}
+};
 export const getTncReview = (state: ApplicationRequestState) => {
     if (state.signAndSubmit && state.signAndSubmit.tncReview !== null) {
 
@@ -77,7 +77,7 @@ export const getTncReview = (state: ApplicationRequestState) => {
     }
     return null;
 
-}
+};
 
 export const getAgreeAndSubmitMode = (state: ApplicationRequestState) => {
     if (state.signAndSubmit && state.signAndSubmit.agreeAndSubmitMode !== null) {
@@ -87,7 +87,7 @@ export const getAgreeAndSubmitMode = (state: ApplicationRequestState) => {
     }
     return null;
 
-}
+};
 
 
 export const getSignAndSubmitQuestionId = (state: ApplicationRequestState) => {
@@ -97,4 +97,4 @@ export const getSignAndSubmitQuestionId = (state: ApplicationRequestState) => {
     }
     return null;
 
-}
+};

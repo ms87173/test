@@ -107,7 +107,6 @@ export class CustomFormlyFieldsModule {
 
  }
 
- export function errorMessage(errorMessage: string)
- {
+ export function errorMessage(errorMessage: string) {
    return errorMessage;
  }

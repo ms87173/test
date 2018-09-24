@@ -53,7 +53,7 @@ export const getApplicaitonId = createSelector(
     getApplicaitonRequestState,
     fromApplicationRequest.getApplicationId
 );
-export const getSignAndSubmitTask = createSelector( 
+export const getSignAndSubmitTask = createSelector(
     getApplicaitonRequestState,
     fromApplicationRequest.getSignAndSubmitTask
 );

@@ -97,7 +97,7 @@ export class ApplicationRequestEffects {
                         )
                     )
         )
-    )
+    );
     constructor(
         private applicationRequestService: ApplicationRequestService,
         private actions$: Actions

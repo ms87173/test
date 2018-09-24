@@ -29,7 +29,7 @@ export class UserInfoEffectsService {
                         (err) => of(new GetUserFailure(err))
                     )
                 )
-        ))
+        ));
     @Effect() getUserContactPersonEffect = this.actions$.pipe(
         ofType(ActionTypes.GET_USER_CONTACT_PERSON),
         switchMap(
@@ -44,7 +44,7 @@ export class UserInfoEffectsService {
                         (err) => of(new GetUserContactPersonFailure(err))
                     )
                 )
-        ))
+        ));
 
     constructor(
         private userInfoService: UserInfoService,

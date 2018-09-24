@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions } from '@ngx-formly/core';
-import { CANCELLATION_REASONS } from '../../../core/constants/application-request.constants';
 import { CancelApplicationRequest } from '../../../store/actions/application.actions';
 import { Store } from '@ngrx/store';
 import { fromRootReducers, fromRootSelectors } from '../../../store';
@@ -70,7 +69,7 @@ export class DdoApplicationRequestHeaderComponent implements OnInit {
       requestId: this.application$.id,
       reasonForCancellation: this.model.reason,
       comment: this.model.comment
-    }
+    };
     this.store.dispatch(new CancelApplicationRequest(data));
   }
 }
