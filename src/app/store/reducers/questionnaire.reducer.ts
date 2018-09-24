@@ -29,13 +29,12 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
         case ActionTypes.GET_CURRENT_TASK_SUCCESS:
             const currTask = { ...action.payload };
             const openSections = [...state.openSections];
-            //console.log(openSections);
             openSections.forEach((openSection) => {
                 currTask.sections.forEach((section) => {
-                    if (section.title == openSection) {
+                    if (section.title === openSection) {
                         section.editableMode = true;
                     }
-                    ////Todo:Todo: Uncomment to use id
+                    // Todo:Todo: Uncomment to use id
                     // if (section.id == openSection) {
                     //     section.editableMode = true;
                     // }
@@ -66,14 +65,16 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
 
         case ActionTypes.GET_CURRENT_FIELD_CHANGE_DELTA_SUCCESS:
             if (action.payload) {
+                // tslint:disable-next-line:no-shadowed-variable
                 const currTask = { ...action.payload };
+                // tslint:disable-next-line:no-shadowed-variable
                 const openSections = [...state.openSections];
                 openSections.forEach((openSection) => {
                     currTask.sections.forEach((section) => {
-                        if (section.title == openSection) {
+                        if (section.title === openSection) {
                             section.editableMode = true;
                         }
-                        ////Todo:Todo: Uncomment to use id
+                        // Todo:Todo: Uncomment to use id
                         // if (section.id == openSection) {
                         //     section.editableMode = true;
                         // }
@@ -125,17 +126,19 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
                     ...state
                 };
             } else {
+                // tslint:disable-next-line:no-shadowed-variable
                 const openSections = [...state.openSections];
                 openSections.push(action.payload);
+                // tslint:disable-next-line:no-shadowed-variable
                 const currTask = state.currentTask;
                 if (currTask) {
                     openSections.forEach((openSection) => {
                         currTask.sections.forEach((section) => {
 
-                            if (section.title == openSection) {
+                            if (section.title === openSection) {
                                 section.editableMode = true;
                             }
-                            ////Todo:Todo: Uncomment to use id
+                            //// Todo:Todo: Uncomment to use id
                             // if (section.id == openSection) {
                             //     section.editableMode = true;
                             // }
@@ -159,8 +162,9 @@ export function reducer(state: QuestionnaireState = InitialQuestionnaireState, a
         case ActionTypes.POP_SECTION_IN_OPEN_SECTIONS:
             if (state.openSections.includes(action.payload)) {
                 // let currTask = { ...state.currentTask };
+                // tslint:disable-next-line:no-shadowed-variable
                 const openSections = [...state.openSections];
-                //Todo : Need to remove as Save Changes will  be doing this working for it
+                // Todo : Need to remove as Save Changes will  be doing this working for it
                 // currTask.sections.forEach((section) => {
                 //     if (section.id == action.payload) {
                 //         section.editableMode = false;

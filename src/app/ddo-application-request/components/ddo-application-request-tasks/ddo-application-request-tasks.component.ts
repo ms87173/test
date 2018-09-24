@@ -106,7 +106,6 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
       });
   }
   updateOpenSections(data) {
-    //console.log("updateOpenSections");
     if (data.actionName === questionnaireActions.ActionTypes.PUSH_SECTION_IN_OPEN_SECTIONS) {
       this.store.dispatch(new fromRootActions
         .questionnaireActions.PushSectionInOpenSections(data.sectionId));

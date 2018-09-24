@@ -10,7 +10,7 @@ export const AddressFieldsFieldArray: FormlyFieldConfig = {
             templateOptions: {
                 required: true,
                 label: 'Address Description',
-                options: [//TODO: what are all the values and the structure of options
+                options: [// TODO: what are all the values and the structure of options
                     {
                         label: 'Home Address',
                         value: 'homeAddress'

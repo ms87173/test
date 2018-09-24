@@ -26,7 +26,6 @@ export class TaskContainerComponent implements OnInit, OnDestroy {
   requestId: string = null;
  taskRequest = new TaskRequest();
 
-  /////////////////////////////////////////
 
   formlyFieldConfigArrayCollections: FormlyFieldConfigArrayCollection[] = [];
 
@@ -83,7 +82,7 @@ export class TaskContainerComponent implements OnInit, OnDestroy {
         this.forms = new FormArray(this.formlyFieldConfigArrayCollections.map(() => new FormGroup({})));
         this.options = this.formlyFieldConfigArrayCollections.map(() => <FormlyFormOptions>{});
         this.cd.detectChanges();
-        //Todo: Show server error changes
+        // Todo: Show server error changes
         // if (this.currentFieldChange && this.questionnaireFormErrors) {
         //   this.questionnaireFormErrors.forEach((errorField) => {
         //     this.form.get(errorField.id)

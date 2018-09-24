@@ -15,7 +15,7 @@ import { PushSectionInOpenSections } from '../../../store/actions/questionnaire.
   templateUrl: './ddo-application-request-review-information.component.html',
   styleUrls: ['./ddo-application-request-review-information.component.scss']
 })
-export class DdoApplicationRequestReviewInformationComponent implements OnInit, OnChanges , OnDestroy {
+export class DdoApplicationRequestReviewInformationComponent implements OnInit, OnChanges, OnDestroy {
 
   reviewInformationTask: ReviewInformationResponse = null;
   applicationId: string = null;

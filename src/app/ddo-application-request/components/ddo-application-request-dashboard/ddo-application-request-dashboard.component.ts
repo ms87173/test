@@ -46,14 +46,11 @@ export class DdoApplicationRequestDashboardComponent {
       });
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaiton)
       .subscribe((application: any) => {
-        debugger;
         this.showEditButton = application &&
           application.status &&
           !(application.status.code === APPLICATIONS_STATUS.cancelled ||
           application.status.code === APPLICATIONS_STATUS.onHold);
         this.showTitleEditable = false;
-        debugger;
-
         this.application = application;
         this.titleValue = this.application.title;
         this.productsDescription = this.application.products.join(', ');
@@ -70,7 +67,6 @@ export class DdoApplicationRequestDashboardComponent {
       });
   }
   routeToTask(item) {
-    //console.log(item.routingInformation);
     this.store.dispatch(
       new SetActiveTask({
         workflowId: item.routingInformation.workflowId,
@@ -87,6 +83,5 @@ export class DdoApplicationRequestDashboardComponent {
   }
   saveTitle() {
     this.showTitleEditable = false;
-    //console.log('title is saved');
   }
 }

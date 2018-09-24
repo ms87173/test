@@ -29,10 +29,6 @@ export class AutoCompleteComponent extends FieldType implements OnInit, OnDestro
       switchMap(this.to.search$),
     );
     this.options$.subscribe();
-    //console.log(this.to, '::::3222', this);
-    // this.field.templateOptions.serachTerm = function () {
-    //   //console.log('at the serach');
-    // }
   }
 
   ngOnDestroy() {
@@ -41,17 +37,14 @@ export class AutoCompleteComponent extends FieldType implements OnInit, OnDestro
 
   clearSelect(evt) {
     this.search$.emit('');
-    //console.log('clearselect',evt);
   }
   searchChanges(evt) {
 
-    evt = typeof evt == 'string' ? evt : '';
+    evt = typeof evt === 'string' ? evt : '';
     this.search$.emit(evt);
-    //console.log('::::blucrchanges',evt);
   }
 
   searchChanges1(evt) {
-    //console.log(evt);
     this.search$.emit('');
   }
 }

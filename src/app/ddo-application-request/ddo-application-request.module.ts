@@ -3,13 +3,17 @@ import { CommonModule } from '@angular/common';
 
 import { DdoApplicationRequestRoutingModule } from './ddo-application-request-routing.module';
 import { DdoApplicationRequestComponent } from './components/ddo-application-request/ddo-application-request.component';
-import { DdoApplicationRequestDashboardComponent } from './components/ddo-application-request-dashboard/ddo-application-request-dashboard.component';
+import { DdoApplicationRequestDashboardComponent }
+  from './components/ddo-application-request-dashboard/ddo-application-request-dashboard.component';
 import { DdoApplicationRequestTasksComponent } from './components/ddo-application-request-tasks/ddo-application-request-tasks.component';
 import { SharedModule } from '../shared/shared.module';
 import { CustomFormlyFieldsModule } from '../custom-formly-fields/custom-formly-fields.module';
-import { DdoApplicationRequestReviewInformationComponent } from './components/ddo-application-request-review-information/ddo-application-request-review-information.component';
-import { DdoApplicationRequestReviewInformationWorkflowComponent } from './components/ddo-application-request-review-information-workflow/ddo-application-request-review-information-workflow.component';
-import { DdoApplicationRequestReviewInformationTaskComponent } from './components/ddo-application-request-review-information-task/ddo-application-request-review-information-task.component';
+import { DdoApplicationRequestReviewInformationComponent }
+  from './components/ddo-application-request-review-information/ddo-application-request-review-information.component';
+import { DdoApplicationRequestReviewInformationWorkflowComponent }
+  from './components/ddo-application-request-review-information-workflow/ddo-application-request-review-information-workflow.component';
+import { DdoApplicationRequestReviewInformationTaskComponent }
+  from './components/ddo-application-request-review-information-task/ddo-application-request-review-information-task.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormlyModule } from '@ngx-formly/core';
 import { NgxMdModule } from 'ngx-md';
@@ -23,8 +27,10 @@ import 'prismjs/components/prism-diff';
 import 'prismjs/components/prism-java';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-perl';
-import { DdoApplicationRequestSignAndSubmitComponent } from './components/ddo-application-request-sign-and-submit/ddo-application-request-sign-and-submit.component';
-import { DdoApplicationRequestSuccessComponent } from './components/ddo-application-request-success/ddo-application-request-success.component';
+import { DdoApplicationRequestSignAndSubmitComponent }
+  from './components/ddo-application-request-sign-and-submit/ddo-application-request-sign-and-submit.component';
+import { DdoApplicationRequestSuccessComponent }
+  from './components/ddo-application-request-success/ddo-application-request-success.component';
 @NgModule({
   imports: [
     CommonModule,

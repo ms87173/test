@@ -18,12 +18,10 @@ export enum ActionTypes {
     AGREE_AND_SUBMIT_QUESTIONNAIRE_SUCCESS = '[App State] Agree and Submit Questionnaire Success',
     AGREE_AND_SUBMIT_QUESTIONNAIRE_FAIL = '[App State] Agree and Submit Questionnaire Failure',
     SET_TNC_REVIEW= '[App State] Set Terms And Condition Review State',
-    //
     GET_AGREE_AND_SUBMIT_FIELD_CHANGE_DELTA = '[App State] Get Current Field Change Trigger',
     GET_AGREE_AND_SUBMIT_FIELD_CHANGE_DELTA_SUCCESS = '[App State] Get Current Field Change Trigger Success',
     GET_AGREE_AND_SUBMIT_FIELD_CHANGE_DELTA_FAIL = '[App State] Get Current Field Change Trigger Failure',
     SET_SIGN_AND_SUBMIT_QUESTION_ID = '[App State] Set The Current Question Id',
-    //
     SET_AGREE_SUBMIT_MODE = '[App State] Set Agree and Submit button state'
 
 
@@ -38,7 +36,6 @@ export class GetSignAndSubmitTask implements Action {
 export class SetAgreeAndSubmitMode implements Action {
     readonly type = ActionTypes.SET_AGREE_SUBMIT_MODE;
     constructor(public payload) {
-        //console.log(payload, '::payload');
         this.payload = payload;
     }
 }
@@ -53,7 +50,6 @@ export class SetSignAndSubmitId implements Action {
 export class GetSignAndSubmitDelta implements Action {
     readonly type = ActionTypes.GET_AGREE_AND_SUBMIT_FIELD_CHANGE_DELTA;
     constructor(public payload: SignAndSubmitDeltaRequest) {
-        // console.log(payload, '::payloasd');
         this.payload = payload;
     }
 }
@@ -70,7 +66,6 @@ export class GetSignAndSubmitDeltaFailure implements Action {
         this.payload = payload;
     }
 }
-// ***POSTBACK
 
 export class GetSignAndSubmitTaskSuccess implements Action {
     readonly type = ActionTypes.GET_SIGN_AND_SUBMIT_TASK_SUCCESS;

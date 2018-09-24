@@ -88,6 +88,7 @@ export function reducer(
                     currentTask = { id: '' },
                     previousTask = { id: '' };
 
+                // tslint:disable-next-line:no-shadowed-variable
                 const workflows = state.workflows;
                 while (count1 < workflows.length) {
                     nextWorkflow = workflows[count1 + 1] || '';
