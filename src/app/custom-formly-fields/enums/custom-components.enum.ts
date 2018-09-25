@@ -11,7 +11,8 @@ export enum CustomComponentsEnum {
     CUSTOM_PHONE = 'custom-phone',
     CUSTOM_UPLOAD = 'custom-upload',
     CUSTOM_DYNAMIC_DROP = 'custom-dynamic-drop',
-    CUSTOM_TEST = 'custom-test'
+    CUSTOM_TEST = 'custom-test',
+    CUSTOM_RECURRENT_WRAPPER = 'custom-recurrent-wrapper'
 
 }
 
@@ -39,6 +40,18 @@ export const EXISTING_CUSTOM_COMPONENTS: string[] = [
     CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD,
     CustomComponentsEnum.CUSTOM_TEST
 ];
+export const EXISTING_SIMPLE_COMPONENTS: string[] = [
+    CustomComponentsEnum.CUSTOM_CHECKBOX,
+    CustomComponentsEnum.CUSTOM_DROPDOWN,
+    CustomComponentsEnum.CUSTOM_RADIO_BUTTON,
+    CustomComponentsEnum.CUSTOM_TYPEAHEAD,
+    CustomComponentsEnum.CUSTOM_DATEPICKER,
+    CustomComponentsEnum.CUSTOM_TEXTBOX,
+    CustomComponentsEnum.CUSTOM_DYNAMIC_DROP
+
+
+];
+
 
 
 

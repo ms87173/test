@@ -75,7 +75,7 @@
                             "type": "custom-textbox",
                             "required": "true",
                             "readOnly": false,
-                            "recurrent": false,
+                            "recurrent": true,
                             "placeHolder": "Interest Account",
                             "options": [
                                 {

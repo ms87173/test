@@ -1,4 +1,4 @@
-<div class="formly-textbox form-group pb-3 pt-3">
+<div class="formly-textbox form-group pb-3 pt-3 recurrent">
     <label class="formly-textbox__label" [for]="id">
         {{to.label}}
         <span class="float-right">
@@ -10,13 +10,13 @@
                 placement="{{to.tooltip.placement}}"></i>
         </span>
     </label>
-    <input class="form-control" (input)="change()"
+    <input class="form-control" 
         [type]="type"
         [formControl]="formControl"
         [formlyAttributes]="field"
         [class.is-invalid]="showError">
 </div>
 
-<div *ngIf="field.validation.show" class="invalid-feedback" [style.display]="'block'">
+<!-- <div *ngIf="field.validation.show" class="invalid-feedback" [style.display]="'block'">
     <span> {{"Error For Test"}}</span>
-  </div>
+  </div> -->

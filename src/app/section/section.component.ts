@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitte
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyFieldConfigArrayCollection, Section } from '../core';
-import { EXISTING_CUSTOM_COMPONENTS, CustomComponentsEnum } from '../custom-formly-fields/enums/custom-components.enum';
+import { EXISTING_CUSTOM_COMPONENTS, CustomComponentsEnum, EXISTING_SIMPLE_COMPONENTS } from '../custom-formly-fields/enums/custom-components.enum';
 import { questionnaireActions } from '../store/actions'
 
 @Component({
@@ -63,18 +63,51 @@ export class SectionComponent implements OnInit, OnChanges {
     // Todo : Need to add functionality for complex and recurrent  and mix of Complex, simple and recurrent
     this.fields = this.formlyFieldConfigArray.formlyFieldConfigs;
     this.fields.forEach((item) => {
-      // /Need to add more If statements for other custom components
-      if (EXISTING_CUSTOM_COMPONENTS.includes(item.type)) {
-        this.model[item.key] = [{}];
-      }
-      else {
-        if(item.answers && item.answers.length>0){
-          this.model[item.key] = item.answers[0].value;
+      if (item.recurrent) {
+        if (EXISTING_SIMPLE_COMPONENTS.includes(item.subType)) {
+          let answermodelArray: any[] = [];
+          let key = item.key;
+          if (item.answers && item.answers.length > 0) {
+            item.answers.forEach((data: any) => {
+              let obj ={              
+              };
+              obj[key]=data.value;
+
+              answermodelArray.push(
+                obj
+              );
+            });
+            this.model[item.key] = answermodelArray;
+          }
+          else {
+            this.model[item.key] = [{}];
+          }
+
+          // this.model[item.key] = [{}];
+
         }
-        else{
-          this.model[item.key] = null;
+        // Todo : write case for compound type with recurrent
+        else {
+
+        }
+
+
+      } else {
+        if (EXISTING_CUSTOM_COMPONENTS.includes(item.type)) {
+          /// Todo : Add logic to expand  compound model based on answers array
+          this.model[item.key] = [{}];
+        }
+        else {
+          if (item.answers && item.answers.length > 0) {
+            this.model[item.key] = item.answers[0].value;
+          }
+          else {
+            this.model[item.key] = null;
+          }
         }
       }
+
+
       // console.log(this.form.get(item.key));
 
       // if (item.answers && item.answers.length > 0 && item.answers[0].validationError) {
@@ -106,24 +139,24 @@ export class SectionComponent implements OnInit, OnChanges {
     // Todo : Need to add functionality for complex and recurrent  and mix of Complex, simple and recurrent
 
     setTimeout(() => {
-      this.currSection.questions.forEach((item) => {
-        if (this.form && this.form.controls && Object.keys(this.form.controls).length > 0) {
-          if (item.answers &&
-            item.answers.length > 0 &&
-            item.answers[0].validationError &&
-            item.answers[0].validationError.value
-          ) {
-            let field = this.fields.find((data) => {
-              return data.key == item.id;
-            });
+      // this.currSection.questions.forEach((item) => {
+      //   if (this.form && this.form.controls && Object.keys(this.form.controls).length > 0) {
+      //     if (item.answers &&
+      //       item.answers.length > 0 &&
+      //       item.answers[0].validationError &&
+      //       item.answers[0].validationError.value
+      //     ) {
+      //       let field = this.fields.find((data) => {
+      //         return data.key == item.id;
+      //       });
 
-            field.validation.show = true;
-            // this.form.get(item.id).setErrors({ "server-error": item.answers[0].validationError.value });
-            this.form.get(item.id).markAsTouched();
+      //       // field.validation.show = true;
+      //       // this.form.get(item.id).setErrors({ "server-error": item.answers[0].validationError.value });
+      //       this.form.get(item.id).markAsTouched();
 
-          }
-        }
-      });
+      //     }
+      //   }
+      // });
     }, 0);
   }
 

@@ -12,7 +12,7 @@ import { Store } from '@ngrx/store';
 import { fromRootReducers } from '../../store';
 import { Task, FormlyFieldConfigArrayCollection, Answer } from '../models';
 import { debounceTime } from 'rxjs/operators';
-import { CustomComponentsEnum, EXISTING_COMPONENTS } from '../../custom-formly-fields/enums/custom-components.enum';
+import { CustomComponentsEnum, EXISTING_COMPONENTS, EXISTING_SIMPLE_COMPONENTS } from '../../custom-formly-fields/enums/custom-components.enum';
 import { emailFieldArray } from '../../custom-formly-fields/formly-configs/email-field-array';
 import { FormlyFieldsService } from './formly-fields.service';
 import { PhoneFieldConfig } from '../../custom-formly-fields/formly-configs/phone-field.config';
@@ -47,67 +47,80 @@ export class NgxFormlyParserService {
     let FormlyFieldConfigArray: FormlyFieldConfig[] = [];
     let currSection = { ...currentSection };
     currSection.questions.map((question: Question) => {
-      if (EXISTING_COMPONENTS.includes(question.type) && !question.recurrent) {
+      if (EXISTING_COMPONENTS.includes(question.type)) {
         let field: any = {};
         field.key = question.id.toString();
-        if (field.key == currentQuestionId) {
-          field.focus = true;
-        }
-        field.type = question.type;
-        field.lookupName = question.lookUpname;
-        field.lifecycle = this.formlyFieldsService
-          .getFormlyLifeCycleEventByQuestionType(field.type, requestId, workflowId, taskId, taskType);
-
-
-        field.templateOptions = {
-          label: question.label || '',
-          options: question.options || [],
-          required: question.required || false,
-          disabled: question.disabled || false,
-          // recurrent: question.recurrent || false
-
-        };
-        field.recurrent = question.recurrent || false;
-
-        // Todo Need to change this
-        field.validation = {
-          show: false
-        }
-
         if (question.answers && question.answers.length > 0) {
           field.answers = question.answers;
-
         }
         else {
           field.answers = [];
+        }
+        field.recurrent = question.recurrent || false;
+        if (EXISTING_SIMPLE_COMPONENTS.includes(question.type) && !field.recurrent) {
+          field.type = question.type;
+          if (field.key == currentQuestionId) {
+            field.focus = true;
+          }
+          field.lookupName = question.lookUpname;
+          field.lifecycle = this.formlyFieldsService
+            .getFormlyLifeCycleEventByQuestionType(field.type, requestId, workflowId, taskId, taskType);
+          field.templateOptions = {
+            label: question.label || '',
+            options: question.options || [],
+            required: question.required || false,
+            disabled: question.disabled || false,
+            // recurrent: question.recurrent || false
+          };
+
+          // Todo Need to change this
+          // field.validation = {
+          //   show: false
+          // };
+          if (question.max) {
+            field.templateOptions.max = question.max;
+          }
+          if (question.maxLength) {
+            field.templateOptions.maxLength = question.maxLength;
+          }
+          if (question.min) {
+            field.templateOptions.min = question.min;
+          }
+          if (question.minLength) {
+            field.templateOptions.minLength = question.minLength;
+          }
+          field = this.getFormlyFieldArrayConfigByQuestionType(field);
+        } else if (EXISTING_SIMPLE_COMPONENTS.includes(question.type) && field.recurrent) {
+          field.type = CustomComponentsEnum.CUSTOM_RECURRENT_WRAPPER;
+          field.subType = question.type;
+          field.fieldArray = {
+
+            fieldGroup: [
+              {
+                key: question.id.toString(),
+                // className: 'col-md-9',
+
+                type: question.type,
+                templateOptions: {
+                  label: question.label || '',
+                  options: question.options || [],
+                  required: question.required || false,
+                  disabled: question.disabled || false,
+                  // recurrent: question.recurrent || false
+                },
+                lookupName: question.lookUpname,
+                lifecycle: null
+              }
+            ]
+          };
+
 
         }
+        // Todo : Add Else for Compound types
+        // else {
 
-        // if (question.answers && question.answers.length > 0) {
-        //   field = this.setDefaultValuesFromAnswers(question.answers, field, question.recurrent);
-        // } else {
-        //   // Todo: remove this
-        //   if (field.type === CustomComponentsEnum.CUSTOM_CHECKBOX) {
-
-        //     field.defaultValue = false;
-        //   } else {
-        //     field.defaultValue = [];
-        //   }
         // }
 
-        if (question.max) {
-          field.templateOptions.max = question.max;
-        }
-        if (question.maxLength) {
-          field.templateOptions.maxLength = question.maxLength;
-        }
-        if (question.min) {
-          field.templateOptions.min = question.min;
-        }
-        if (question.minLength) {
-          field.templateOptions.minLength = question.minLength;
-        }
-        field = this.getFormlyFieldArrayConfigByQuestionType(field);
         FormlyFieldConfigArray.push(field);
       }
     });

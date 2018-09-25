@@ -46,13 +46,11 @@ export class DdoApplicationRequestDashboardComponent {
       });
     this.store.select(fromRootSelectors.applicationRequestSelectors.getApplicaiton)
       .subscribe((application: any) => {
-        debugger;
         this.showEditButton = application &&
           application.status &&
           !(application.status.code === APPLICATIONS_STATUS.cancelled ||
           application.status.code === APPLICATIONS_STATUS.onHold);
         this.showTitleEditable = false;
-        debugger;
 
         this.application = application;
         this.titleValue = this.application.title;

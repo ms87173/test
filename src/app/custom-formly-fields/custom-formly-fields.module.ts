@@ -30,6 +30,7 @@ import { FormlySelectOptionsPipe } from './pipes/select-options.pipe';
 import { DocumentUploadComponent } from './components/document-upload/document-upload.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { CustomTestComponent } from './components/custom-test/custom-test.component';
+import { RecurrentWrapperComponent } from './components/recurrent-wrapper/recurrent-wrapper.component';
 
 
 @NgModule({
@@ -60,7 +61,9 @@ import { CustomTestComponent } from './components/custom-test/custom-test.compon
         { name: CustomComponentsEnum.CUSTOM_DOCUMENT_UPLOAD, component: DocumentUploadComponent },
         { name: CustomComponentsEnum.CUSTOM_UPLOAD, component: UploadFileComponent },
         { name: CustomComponentsEnum.CUSTOM_TEST, component: CustomTestComponent },
-        { name: CustomComponentsEnum.CUSTOM_DYNAMIC_DROP, component: DropdownComponent }
+        { name: CustomComponentsEnum.CUSTOM_DYNAMIC_DROP, component: DropdownComponent },
+        { name: CustomComponentsEnum.CUSTOM_RECURRENT_WRAPPER, component: RecurrentWrapperComponent }
+
       ]
     }),
     FormlyBootstrapModule,
@@ -83,6 +86,7 @@ import { CustomTestComponent } from './components/custom-test/custom-test.compon
     EmailComponent,
     FormlySelectOptionsPipe,
     CustomTestComponent,
+    RecurrentWrapperComponent,
     // FormUploadComponent,
     // DetailsUploadComponent,
   ],
