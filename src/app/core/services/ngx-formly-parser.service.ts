@@ -12,7 +12,10 @@ import { Store } from '@ngrx/store';
 import { fromRootReducers } from '../../store';
 import { Task, FormlyFieldConfigArrayCollection, Answer } from '../models';
 import { debounceTime } from 'rxjs/operators';
-import { CustomComponentsEnum, EXISTING_COMPONENTS, EXISTING_SIMPLE_COMPONENTS } from '../../custom-formly-fields/enums/custom-components.enum';
+import {
+  CustomComponentsEnum,
+  EXISTING_COMPONENTS, EXISTING_SIMPLE_COMPONENTS
+} from '../../custom-formly-fields/enums/custom-components.enum';
 import { emailFieldArray } from '../../custom-formly-fields/formly-configs/email-field-array';
 import { FormlyFieldsService } from './formly-fields.service';
 import { PhoneFieldConfig } from '../../custom-formly-fields/formly-configs/phone-field.config';
@@ -52,8 +55,7 @@ export class NgxFormlyParserService {
         field.key = question.id.toString();
         if (question.answers && question.answers.length > 0) {
           field.answers = question.answers;
-        }
-        else {
+        } else {
           field.answers = [];
         }
         field.recurrent = question.recurrent || false;

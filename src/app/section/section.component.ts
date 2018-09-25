@@ -2,8 +2,12 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitte
 import { FormGroup } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
 import { FormlyFieldConfigArrayCollection, Section } from '../core';
-import { EXISTING_CUSTOM_COMPONENTS, CustomComponentsEnum, EXISTING_SIMPLE_COMPONENTS } from '../custom-formly-fields/enums/custom-components.enum';
-import { questionnaireActions } from '../store/actions'
+import {
+  EXISTING_CUSTOM_COMPONENTS,
+  CustomComponentsEnum,
+  EXISTING_SIMPLE_COMPONENTS
+} from '../custom-formly-fields/enums/custom-components.enum';
+import { questionnaireActions } from '../store/actions';
 
 
 @Component({
@@ -66,29 +70,26 @@ export class SectionComponent implements OnInit, OnChanges {
     this.fields.forEach((item) => {
       if (item.recurrent) {
         if (EXISTING_SIMPLE_COMPONENTS.includes(item.subType)) {
-          let answermodelArray: any[] = [];
-          let key = item.key;
+          const answermodelArray: any[] = [];
+          const key = item.key;
           if (item.answers && item.answers.length > 0) {
             item.answers.forEach((data: any) => {
-              let obj ={              
+              const obj = {
               };
-              obj[key]=data.value;
+              obj[key] = data.value;
 
               answermodelArray.push(
                 obj
               );
             });
             this.model[item.key] = answermodelArray;
-          }
-          else {
+          } else {
             this.model[item.key] = [{}];
           }
 
           // this.model[item.key] = [{}];
 
-        }
-        // Todo : write case for compound type with recurrent
-        else {
+        } else {
 
         }
 
@@ -97,12 +98,10 @@ export class SectionComponent implements OnInit, OnChanges {
         if (EXISTING_CUSTOM_COMPONENTS.includes(item.type)) {
           /// Todo : Add logic to expand  compound model based on answers array
           this.model[item.key] = [{}];
-        }
-        else {
+        } else {
           if (item.answers && item.answers.length > 0) {
             this.model[item.key] = item.answers[0].value;
-          }
-          else {
+          } else {
             this.model[item.key] = null;
           }
         }

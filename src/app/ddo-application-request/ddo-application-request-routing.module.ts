@@ -1,39 +1,39 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import {
   DdoApplicationRequestComponent,
   DdoApplicationRequestDashboardComponent,
   DdoApplicationRequestTasksComponent,
   DdoApplicationRequestReviewInformationComponent
-} from "./components";
-import { DdoApplicationRequestSignAndSubmitComponent } from "./components/ddo-application-request-sign-and-submit/ddo-application-request-sign-and-submit.component";
-import { DdoApplicationRequestSuccessComponent } from "./components/ddo-application-request-success/ddo-application-request-success.component";
+} from './components';
+import { DdoApplicationRequestSignAndSubmitComponent } from './components/ddo-application-request-sign-and-submit/ddo-application-request-sign-and-submit.component';
+import { DdoApplicationRequestSuccessComponent } from './components/ddo-application-request-success/ddo-application-request-success.component';
 
 const routes: Routes = [
   {
-    path: "tasks",
+    path: 'tasks',
     component: DdoApplicationRequestComponent,
     children: [
       {
-        path: "questionnaire",
+        path: 'questionnaire',
         component: DdoApplicationRequestTasksComponent
       },
       {
-        path: "review-application",
+        path: 'review-application',
         component: DdoApplicationRequestReviewInformationComponent
       },
       {
-        path: "sign-submit",
+        path: 'sign-submit',
         component: DdoApplicationRequestSignAndSubmitComponent
       }
     ]
   },
   {
-    path: "dashboard",
+    path: 'dashboard',
     component: DdoApplicationRequestDashboardComponent
   },
   {
-    path: "success",
+    path: 'success',
     component: DdoApplicationRequestSuccessComponent
   }
 ];
