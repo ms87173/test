@@ -61,7 +61,7 @@ export class NgxFormlyParserService {
         field.recurrent = question.recurrent || false;
         if (EXISTING_SIMPLE_COMPONENTS.includes(question.type) && !field.recurrent) {
           field.type = question.type;
-          if (field.key == currentQuestionId) {
+          if (field.key === currentQuestionId) {
             field.focus = true;
           }
           field.lookupName = question.lookUpname;
