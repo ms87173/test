@@ -50,41 +50,10 @@ export class NgxFormlyParserService {
       if (EXISTING_COMPONENTS.includes(question.type)) {
         let field: any = {};
         field.key = question.id.toString();
-<<<<<<< HEAD
         if (question.answers && question.answers.length > 0) {
           field.answers = question.answers;
         }
         else {
-=======
-        if (field.key === currentQuestionId) {
-          field.focus = true;
-        }
-        field.type = question.type;
-        field.lookupName = question.lookUpname;
-        field.lifecycle = this.formlyFieldsService
-          .getFormlyLifeCycleEventByQuestionType(field.type, requestId, workflowId, taskId, taskType);
-
-
-        field.templateOptions = {
-          label: question.label || '',
-          options: question.options || [],
-          required: question.required || false,
-          disabled: question.disabled || false,
-          // recurrent: question.recurrent || false
-
-        };
-        field.recurrent = question.recurrent || false;
-
-        // Todo Need to change this
-        field.validation = {
-          show: false
-        };
-
-        if (question.answers && question.answers.length > 0) {
-          field.answers = question.answers;
-
-        } else {
->>>>>>> 5302510ff9ef96b64942e252e25a74f3dcd38a14
           field.answers = [];
         }
         field.recurrent = question.recurrent || false;
