@@ -23,7 +23,6 @@ export class ApplicationRequestService {
     }
     saveApplicationRequestTask(params: Object): Observable<any> {
         const url = environment.apiUrls.saveTaskQuestionnaire;
-        //console.log('Task Saved');
         // TODO: Production Url
         // return this.apiService
         //     .put(url, params);
@@ -32,7 +31,6 @@ export class ApplicationRequestService {
 
     discardApplicationRequestTask(params: TaskRequest): Observable<any> {
         const url = environment.apiUrls.discardQuestionsChanges;
-        //console.log('Task discarded');
         // TODO: Production Url
         // return this.apiService
         //     .put(url, params);

@@ -47,14 +47,14 @@ export class FormlyFieldsService {
             const formObj = form.get(key);
             const requiredFields = field.fieldArray.fieldGroup.map(item => {
               if (item.templateOptions.required) {
-                return item.key
+                return item.key;
               }
             });
 
             formObj.valueChanges
               .pipe(debounceTime(600))
               .subscribe((fieldValue) => {
-                //console.log(fieldValue);
+                // console.log(fieldValue);
               });
 
           }
@@ -62,15 +62,14 @@ export class FormlyFieldsService {
         };
         return EMAIL_LIFECYCLE_EVENT;
       default:
-        const GENERIC_LIFECYCLE_EVENT: FormlyLifeCycleOptions =
-        {
+        const GENERIC_LIFECYCLE_EVENT: FormlyLifeCycleOptions = {
           onInit: (form?: FormGroup, field?: FormlyFieldConfig, model?: any, options?: FormlyFormOptions) => {
-            let key = field.key;
-            let formObj = form.get(key);
+            const key = field.key;
+            const formObj = form.get(key);
             formObj.valueChanges
               .pipe(debounceTime(600))
               .subscribe((fieldValue) => {
-                let questionaireRequest: QuestionaireDeltaRequest = {
+                const questionaireRequest: QuestionaireDeltaRequest = {
                   requestId: requestId,
                   workflowId: workflowId,
                   taskId: taskId,
@@ -81,7 +80,7 @@ export class FormlyFieldsService {
                     answers: [
                       {
                         value: fieldValue,
-                        validationError:null
+                        validationError: null
                       }
                     ]
                   }]
@@ -99,7 +98,7 @@ export class FormlyFieldsService {
                 }
               });
           }
-        }
+        };
         return GENERIC_LIFECYCLE_EVENT;
     }
 

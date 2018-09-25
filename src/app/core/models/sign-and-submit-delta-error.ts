@@ -1,5 +1,5 @@
 export class SignAndSubmitDeltaError {
-    id:string;
-    sectionName:string;
-    errorMessage:string;
+    id: string;
+    sectionName: string;
+    errorMessage: string;
 }

@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { Actions, Effect, ofType } from "@ngrx/effects";
-import { Router, ActivationEnd } from "@angular/router";
-import { Store } from "@ngrx/store";
-import { map, tap, filter } from "rxjs/operators";
-import { RouterGo, RouteChange } from "../actions/router.actions";
+import { Injectable } from '@angular/core';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { Router, ActivationEnd } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { map, tap, filter } from 'rxjs/operators';
+import { RouterGo, RouteChange } from '../actions/router.actions';
 import { Location } from '@angular/common';
 
 @Injectable()

@@ -7,6 +7,7 @@
     }
     &__heading {
         font-weight: 500;
+        font-size: 22px;
     }
     .divider {
         width: 30%;
@@ -25,5 +26,26 @@
         background: #ff00a6;
         padding: 5px;
         color: white;
+    }
+    .step-circle {
+        height: 42px;
+        width: 42px;
+        &:hover {
+            box-shadow: none;
+            cursor: default;
+        }
+        &--completed {
+            color: #005aa1;
+            border-color: white;
+        }
+        &--disabled {
+
+        }
+    }
+    .step-description {
+        margin-right: 60px;
+    }
+    .solid-blue-line {
+        border-color: #005aa1;
     }
 }

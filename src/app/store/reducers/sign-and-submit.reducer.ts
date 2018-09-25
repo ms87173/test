@@ -2,15 +2,15 @@ import { Task,
     SignAndSubmitDeltaResponse,
     SignAndSubmitDeltaError,
     SignAndSubmit,
-    FormlyFieldConfigArrayCollection } from "../../core/models";
+    FormlyFieldConfigArrayCollection } from '../../core/models';
 import { ActionTypes, SignAndSubmitActions } from '../actions/sign-and-submit.actions';
-import { FormlyFieldConfig } from "@ngx-formly/core";
+import { FormlyFieldConfig } from '@ngx-formly/core';
 
 
 export interface SignAndSubmitState {
     signAndSubmitTask: SignAndSubmit;
-    signAndSubmitTaskFormlyConfig:FormlyFieldConfigArrayCollection[],
-    tncReview: boolean,
+    signAndSubmitTaskFormlyConfig: FormlyFieldConfigArrayCollection[];
+    tncReview: boolean;
     agreeAndSubmitMode: boolean;
     readonly signAndSubmitQuestionId: string;
 
@@ -18,12 +18,12 @@ export interface SignAndSubmitState {
 
 export const InitialState: SignAndSubmitState = {
     signAndSubmitTask: null,
-    signAndSubmitTaskFormlyConfig:[],
+    signAndSubmitTaskFormlyConfig: [],
     tncReview: null,
     agreeAndSubmitMode: null,
     signAndSubmitQuestionId: null
 
-}
+};
 
 export function reducer(
     state: SignAndSubmitState = InitialState,
@@ -35,36 +35,36 @@ export function reducer(
             return {
                 ...state,
                 signAndSubmitTask: action.payload
-            }
+            };
 
         case ActionTypes.GET_SIGN_AND_SUBMIT_TASK_FAIL:
             return {
                 ...state
-            }
+            };
 
         case ActionTypes.GET_SIGN_AND_SUBMIT_TASK_FORMLY_CONFIG_SUCCESS:
             return {
                 ...state,
-                signAndSubmitTaskFormlyConfig:action.payload
+                signAndSubmitTaskFormlyConfig: action.payload
 
-            }
+            };
 
             case ActionTypes.SET_TNC_REVIEW:
             return {
                 ...state,
-                tncReview:action.payload
+                tncReview: action.payload
 
-            }
+            };
             case ActionTypes.SET_AGREE_SUBMIT_MODE:
             return {
                 ...state,
-                agreeAndSubmitMode:action.payload
-            }
+                agreeAndSubmitMode: action.payload
+            };
             case ActionTypes.SET_SIGN_AND_SUBMIT_QUESTION_ID:
             return {
                 ...state,
-                signAndSubmitQuestionId:action.payload
-            }
+                signAndSubmitQuestionId: action.payload
+            };
         default:
             return state;
     }

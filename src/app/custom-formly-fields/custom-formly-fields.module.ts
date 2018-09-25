@@ -111,7 +111,7 @@ export class CustomFormlyFieldsModule {
 
  }
 
- export function errorMessage(errorMessage: string)
- {
+ // tslint:disable-next-line:no-shadowed-variable
+ export function errorMessage(errorMessage: string) {
    return errorMessage;
  }

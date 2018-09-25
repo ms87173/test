@@ -16,7 +16,7 @@ export const effects: any[] = [
     TasksEffects,
     ApplicationReviewInformationEffects,
     ApplicationSignAndSubmitEffects
-]
+];
 
 export * from './questionnaire-effects.service';
 export * from './user-info.effects';

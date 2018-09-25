@@ -44,9 +44,9 @@ export class SignAndSubmitService {
     //   .post(environment.apiUrls.fetchTaskQuestionnaireDelts, deltaRequest);
   }
 
-  agreeAndSubmitApplication(agreeAndSubmitRequest:AgreeAndSubmitRequest): Observable<any>{
+  agreeAndSubmitApplication(agreeAndSubmitRequest: AgreeAndSubmitRequest): Observable<any> {
     const url = environment.apiUrls.agreeAndSubmitApplication;
-    return of({})
+    return of({});
   // Todo: Uncomment to use Production Url
   // return this.apiService
   //   .post(url, agreeAndSubmitRequest);

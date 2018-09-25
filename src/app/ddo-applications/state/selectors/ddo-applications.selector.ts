@@ -17,8 +17,8 @@ export const getApplications = createSelector(
 export const sortApplications = createSelector(
     getApplicationsState,
     fromApplications.modifyApplicationsList
-)
+);
 export const filterApplications = createSelector(
     getApplicationsState,
     fromApplications.modifyApplicationsList
-)
+);

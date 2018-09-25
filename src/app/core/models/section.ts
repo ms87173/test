@@ -1,8 +1,8 @@
 import { Question } from './question';
 
 export class Section {
-    id : string;
+    id: string;
     title: string;
-    editableMode: boolean = false;
-    questions: Question[]
+    editableMode = false;
+    questions: Question[];
 }

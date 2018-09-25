@@ -88,6 +88,7 @@ export function reducer(
                     currentTask = { id: '' },
                     previousTask = { id: '' };
 
+                // tslint:disable-next-line:no-shadowed-variable
                 const workflows = state.workflows;
                 while (count1 < workflows.length) {
                     nextWorkflow = workflows[count1 + 1] || '';
@@ -103,7 +104,7 @@ export function reducer(
                             if (currentTask.id === taskId) {
                                 taskFound = true;
                                 if (!nextTask) {
-                                    nextTask = nextWorkflow && nextWorkflow.tasks[0]
+                                    nextTask = nextWorkflow && nextWorkflow.tasks[0];
                                 } else {
                                     nextWorkflow = currentWorkflow;
                                 }

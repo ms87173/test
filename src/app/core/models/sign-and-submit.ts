@@ -1,4 +1,4 @@
-import { Section } from ".";
+import { Section } from '.';
 
 export class SignAndSubmit {
     label: string;
@@ -8,7 +8,7 @@ export class SignAndSubmit {
     taskId: string;
     workflowName: string;
     workflowDescription: string;
-    showEdit: boolean = false;
+    showEdit = false;
     sections: Section[];
 
     constructor() {

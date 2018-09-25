@@ -7,7 +7,7 @@ import { QuestionaireDeltaResponse, QuestionaireDeltaError, FormlyFieldConfigArr
 import { takeWhile } from 'rxjs/operators';
 import { Task } from '../../../core/models';
 import { TASK_TYPES } from '../../../core/constants/application-request.constants';
-import { questionnaireActions } from '../../../store/actions'
+import { questionnaireActions } from '../../../store/actions';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'ddo-application-request-tasks',
@@ -28,7 +28,7 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
   currentTaskType: string = null;
   formlyFieldConfigArrayCollections: FormlyFieldConfigArrayCollection[] = null;
   taskRequest: TaskRequest;
-  isIntialRender: boolean = true;
+  isIntialRender = true;
 
   constructor(
     private cd: ChangeDetectorRef,
@@ -106,12 +106,10 @@ export class DdoApplicationRequestTasksComponent implements OnInit, OnDestroy {
       });
   }
   updateOpenSections(data) {
-    //console.log("updateOpenSections");
     if (data.actionName === questionnaireActions.ActionTypes.PUSH_SECTION_IN_OPEN_SECTIONS) {
       this.store.dispatch(new fromRootActions
         .questionnaireActions.PushSectionInOpenSections(data.sectionId));
-    }
-    else {
+    } else {
       this.store.dispatch(new fromRootActions
         .questionnaireActions.PopSectionInOpenSections(data.sectionId));
     }

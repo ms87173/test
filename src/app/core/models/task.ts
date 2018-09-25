@@ -8,7 +8,7 @@ export class Task {
     taskId: string;
     workflowName: string;
     workflowDescription: string;
-    showEdit: boolean = false;
+    showEdit = false;
     sections: Section[];
 
     constructor() {

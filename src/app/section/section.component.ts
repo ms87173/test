@@ -5,6 +5,7 @@ import { FormlyFieldConfigArrayCollection, Section } from '../core';
 import { EXISTING_CUSTOM_COMPONENTS, CustomComponentsEnum, EXISTING_SIMPLE_COMPONENTS } from '../custom-formly-fields/enums/custom-components.enum';
 import { questionnaireActions } from '../store/actions'
 
+
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'section',
@@ -21,7 +22,7 @@ export class SectionComponent implements OnInit, OnChanges {
   showEditButton: boolean = null;
   @Input() formlyFieldConfigArray: FormlyFieldConfigArrayCollection;
   @Input() showEdit: boolean;
-  @Input() editableMode: boolean = false;
+  @Input() editableMode = false;
   @Input() currSection: Section;
   @Output() updateOpenSections: EventEmitter<{ actionName: string, sectionId: string }> = new EventEmitter();
   @Output() saveChangesBtnClicked: EventEmitter<string> = new EventEmitter();

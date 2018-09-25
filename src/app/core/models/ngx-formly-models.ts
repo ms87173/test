@@ -1,11 +1,11 @@
-import { FormlyFieldConfig } from "@ngx-formly/core";
+import { FormlyFieldConfig } from '@ngx-formly/core';
 
 export class FormlyFieldConfigArrayCollection {
-    title?:string;
+    title?: string;
     formlyFieldConfigs: FormlyFieldConfig[];
-    constructor(formlyFieldConfigs: FormlyFieldConfig[], title:string="") {
+    constructor(formlyFieldConfigs: FormlyFieldConfig[], title: string= '') {
         this.formlyFieldConfigs = formlyFieldConfigs;
-        this.title=title;
+        this.title = title;
     }
 
 

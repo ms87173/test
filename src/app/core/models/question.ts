@@ -16,8 +16,8 @@ export class Question {
     maxLength?: number;
     max?: number;
     min?: number;
-    disabled?: boolean = false;
-    recurrent: boolean= false;
+    disabled = false;
+    recurrent = false;
     answers: Answer[] = [];
     lookUpname: string;
 

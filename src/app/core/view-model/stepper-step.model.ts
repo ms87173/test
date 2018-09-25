@@ -74,6 +74,7 @@ export class StepViewModel implements Step {
     determineTooltipItems(workflows: Array<any>) {
         const arr = [];
         workflows.forEach(workflow => {
+            // tslint:disable-next-line:no-unused-expression
             workflow.tasks && workflow.tasks.forEach(task => arr.push(task.label));
         });
         return arr;

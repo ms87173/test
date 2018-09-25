@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation, OnDestroy, ChangeDetectorRef, } f
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import { FormlyFormOptions, FormlyFieldConfig, FormlyConfig } from '@ngx-formly/core';
 import { Store, select } from '@ngrx/store';
-import { fromRootReducers, fromRootActions, fromRootSelectors } from '../store'
+import { fromRootReducers, fromRootActions, fromRootSelectors } from '../store';
 import { QuestionaireDeltaResponse, QuestionaireDeltaError, FormlyFieldConfigArrayCollection, TaskRequest } from '../core/models';
 import { takeWhile } from 'rxjs/operators';
 import { NgxFormlyParserService, QuestionnaireService, ApiService } from '../core/services';
@@ -26,7 +26,6 @@ export class TaskContainerComponent implements OnInit, OnDestroy {
   requestId: string = null;
  taskRequest = new TaskRequest();
 
-  /////////////////////////////////////////
 
   formlyFieldConfigArrayCollections: FormlyFieldConfigArrayCollection[] = [];
 
@@ -63,12 +62,12 @@ export class TaskContainerComponent implements OnInit, OnDestroy {
           this.currentTask = currTask;
           this.store.dispatch(new fromRootActions
             .questionnaireActions
-            .GetCurrentQuestionnaireFormlyConfig({ 
+            .GetCurrentQuestionnaireFormlyConfig({
               task: this.currentTask,
                currentQuestionId: this.currentQuestionId,
-               requestId:this.requestId,
-               workflowId:this.taskRequest.workflowId,
-               taskId:this.taskRequest.taskId
+               requestId: this.requestId,
+               workflowId: this.taskRequest.workflowId,
+               taskId: this.taskRequest.taskId
              }));
         }
       }
@@ -83,7 +82,7 @@ export class TaskContainerComponent implements OnInit, OnDestroy {
         this.forms = new FormArray(this.formlyFieldConfigArrayCollections.map(() => new FormGroup({})));
         this.options = this.formlyFieldConfigArrayCollections.map(() => <FormlyFormOptions>{});
         this.cd.detectChanges();
-        //Todo: Show server error changes   
+        // Todo: Show server error changes
         // if (this.currentFieldChange && this.questionnaireFormErrors) {
         //   this.questionnaireFormErrors.forEach((errorField) => {
         //     this.form.get(errorField.id)

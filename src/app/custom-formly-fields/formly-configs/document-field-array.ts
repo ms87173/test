@@ -1,4 +1,4 @@
-import { FormlyFieldConfig } from "@ngx-formly/core";
+import { FormlyFieldConfig } from '@ngx-formly/core';
 
 export const documentFieldArray: FormlyFieldConfig = {
     fieldGroupClassName: 'row',
@@ -48,6 +48,6 @@ export const documentFieldArray: FormlyFieldConfig = {
     templateOptions: {
         btnText: '+ Add a new document',
     }
-}
+};
 
 

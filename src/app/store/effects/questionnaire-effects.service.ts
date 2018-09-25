@@ -35,11 +35,11 @@ export class QuestionnaireEffectsService {
       (action: GetCurrentTask) => this.questionnaireService.getCurrentTask(action.payload)
         .pipe(
           map((task) => {
-            let currTask = { ...task };
+            const currTask = { ...task };
             currTask.sections.forEach((section) => {
               section.questions = section.questions.filter((question) => {
                 return EXISTING_COMPONENTS.includes(question.type);
-              })
+              });
             });
             return new GetCurrentTaskSuccess(currTask);
           }

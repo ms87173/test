@@ -7,9 +7,10 @@
       You application has been submitted
     </div>
     <div class="col-sm-12 mt-2">
-      <h6 class="citi-text-grey">Joint Account:</h6>
-      <h6 class="citi-text-grey mb-0">Interest Checking</h6>
-      <h6 class="citi-text-grey">Saving Account</h6>
+      <h6 class="citi-text-grey">Join Accounts:</h6>
+      <h6 class="citi-text-grey mb-0" *ngFor="let product of products;">
+        {{product}}
+      </h6>
     </div>
     <div class="col-sm-2 offset-5 mt-3">
       <p class="divider"></p>
@@ -19,7 +20,7 @@
     </div>
 
     <div class="col-sm-12 mt-3">
-      <p class="mb-1  ddo-application-success__description bold">A confirmation mail will be sent to someone@xyzmail.com</p>
+      <p class="mb-1  ddo-application-success__description bold">A confirmation mail will be sent to tbd@email.com</p>
       <p class="mb-0 ddo-application-success__description">Now it's the next co-applicant turn to confirm.</p>
       <p class="mb-0 ddo-application-success__description">You'll get an email notification after the process is done.</p>
     </div>
@@ -27,12 +28,10 @@
         <stepper [steps]="steps"></stepper>
     </div>
     <div class="col-sm-12">
-      <button class="btn btn-outline-primary ddo-application-success__button" (click)='navigateTo()'>My Application</button>
-    </div>
-    <div class="col-sm-12 mt-5">
-      <div class="work-in-progress mx-auto">
-        <h3>Work In Progress</h3>
-      </div>
+      <button class="btn btn-outline-primary ddo-application-success__button"
+        (click)='navigateTo()'>
+        My Application
+      </button>
     </div>
   </div>
 </div>

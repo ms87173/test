@@ -168,7 +168,7 @@ export class DiscardChangesBySectionInTaskFailure implements Action {
 
 export class ResetOpenSections implements Action {
     readonly type = ActionTypes.RESET_OPEN_SECTIONS;
-    
+
 }
 
 export type QuesitonnaireActions = GetCurrentTask

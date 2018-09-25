@@ -1,4 +1,4 @@
-import { ReviewInformationSection } from "./review-information-section";
+import { ReviewInformationSection } from './review-information-section';
 
 export class ReviewInformationTask {
 
@@ -6,6 +6,6 @@ export class ReviewInformationTask {
     status: string;
     taskId: string;
     taskName: string;
-    showEdit: boolean = false;
-    sections: ReviewInformationSection[]
+    showEdit = false;
+    sections: ReviewInformationSection[];
 }

@@ -1,8 +1,8 @@
 export class SignAndSubmitRequest {
     requestId: string;
-    workflowId: string
+    workflowId: string;
     taskId: string;
-    constructor(){
-        
+    constructor() {
+
     }
 }

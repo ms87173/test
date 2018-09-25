@@ -44,16 +44,47 @@ export class NgxFormlyParserService {
 
   getFormlyFieldConfigArrayFromSection(currentSection: Section, currentQuestionId: string,
     requestId: string, workflowId: string, taskId: string, taskType: string = TASK_TYPES.QUESTION): FormlyFieldConfig[] {
-    let FormlyFieldConfigArray: FormlyFieldConfig[] = [];
-    let currSection = { ...currentSection };
+    const FormlyFieldConfigArray: FormlyFieldConfig[] = [];
+    const currSection = { ...currentSection };
     currSection.questions.map((question: Question) => {
       if (EXISTING_COMPONENTS.includes(question.type)) {
         let field: any = {};
         field.key = question.id.toString();
+<<<<<<< HEAD
         if (question.answers && question.answers.length > 0) {
           field.answers = question.answers;
         }
         else {
+=======
+        if (field.key === currentQuestionId) {
+          field.focus = true;
+        }
+        field.type = question.type;
+        field.lookupName = question.lookUpname;
+        field.lifecycle = this.formlyFieldsService
+          .getFormlyLifeCycleEventByQuestionType(field.type, requestId, workflowId, taskId, taskType);
+
+
+        field.templateOptions = {
+          label: question.label || '',
+          options: question.options || [],
+          required: question.required || false,
+          disabled: question.disabled || false,
+          // recurrent: question.recurrent || false
+
+        };
+        field.recurrent = question.recurrent || false;
+
+        // Todo Need to change this
+        field.validation = {
+          show: false
+        };
+
+        if (question.answers && question.answers.length > 0) {
+          field.answers = question.answers;
+
+        } else {
+>>>>>>> 5302510ff9ef96b64942e252e25a74f3dcd38a14
           field.answers = [];
         }
         field.recurrent = question.recurrent || false;
@@ -167,7 +198,7 @@ export class NgxFormlyParserService {
   }
 
   setDefaultValuesFromAnswers(answers: Answer[], field: FormlyFieldConfig, isRecurrent: boolean): FormlyFieldConfig {
-    let currField: FormlyFieldConfig = { ...field };
+    const currField: FormlyFieldConfig = { ...field };
     if (!isRecurrent) {
       currField.defaultValue = answers[0].value;
     } else {

@@ -68,7 +68,6 @@ export class DdoApplicationRequestDashboardComponent {
       });
   }
   routeToTask(item) {
-    //console.log(item.routingInformation);
     this.store.dispatch(
       new SetActiveTask({
         workflowId: item.routingInformation.workflowId,
@@ -85,6 +84,5 @@ export class DdoApplicationRequestDashboardComponent {
   }
   saveTitle() {
     this.showTitleEditable = false;
-    //console.log('title is saved');
   }
 }

@@ -1,10 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { Step } from '../../core/view-model/stepper-step.model';
 
 @Component({
   selector: 'stepper',
   templateUrl: './stepper.component.html',
-  styleUrls: ['./stepper.component.scss']
+  styleUrls: ['./stepper.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class StepperComponent {

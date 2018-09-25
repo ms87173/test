@@ -7,4 +7,4 @@ export {
     fromRootEffects,
     fromRootReducers,
     fromRootSelectors,
-}
+};

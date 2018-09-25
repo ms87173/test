@@ -22,13 +22,13 @@ export class SideNavComponent implements OnInit {
   selectedId: any;
   status: any;
   constructor() {
-    console.log(this.config)
+    console.log(this.config);
   }
   ngOnInit() {
     this.status = TASK_STATUSES;
   }
   setSelectedId(workFlowGroupId, parentId, childId, type) {
-    console.log(this.config)
+    console.log(this.config);
     this.selectedWorkflowGroupId = workFlowGroupId;
     this.selectedParentId = parentId;
     this.selectedChildId = childId;
